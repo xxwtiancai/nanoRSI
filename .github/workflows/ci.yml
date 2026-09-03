@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: python -m pip install -e .
+      - name: Tests
+        run: python -m unittest discover -v
+      - name: CLI smoke
+        run: |
+          nanorsi new artifact ./artifact-demo
+          nanorsi baseline --workspace ./artifact-demo
+          nanorsi step --workspace ./artifact-demo
+          nanorsi verify --workspace ./artifact-demo

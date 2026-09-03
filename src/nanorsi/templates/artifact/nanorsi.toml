@@ -1,0 +1,26 @@
+[experiment]
+id = "artifact-demo"
+goal = "{{GOAL}}"
+mode = "artifact"
+
+[surface]
+allow = ["target/**"]
+
+[proposer]
+command = ["python3", "proposer/propose.py"]
+timeout_s = 10
+
+[evaluator]
+command = ["python3", "evaluator/evaluate.py"]
+timeout_s = 10
+primary_metric = "score"
+direction = "maximize"
+heldout_enabled = true
+
+[gate]
+minimum_improvement = 0.1
+required_constraints = ["tests_passed"]
+max_heldout_regression = 0.0
+
+[budget]
+max_steps = 10

@@ -36,4 +36,16 @@ nanorsi = "nanorsi.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-nanorsi = ["templates/**/*"]
+nanorsi = [
+  "templates/**/*.md",
+  "templates/**/*.py",
+  "templates/**/*.toml",
+  "templates/**/*.txt",
+  "templates/**/.gitignore",
+]
+
+[tool.setuptools.exclude-package-data]
+nanorsi = [
+  "templates/**/__pycache__/*",
+  "templates/**/*.py[co]",
+]

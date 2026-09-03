@@ -1,0 +1,31 @@
+[experiment]
+id = "model-contract"
+goal = "{{GOAL}}"
+mode = "model"
+
+[surface]
+allow = ["target/**"]
+
+[proposer]
+command = ["python3", "proposer/propose.py"]
+timeout_s = 10
+
+[evaluator]
+command = ["python3", "target/evaluate.py"]
+timeout_s = 60
+primary_metric = "score"
+direction = "maximize"
+heldout_enabled = false
+
+[gate]
+minimum_improvement = 0.0
+required_constraints = ["tests_passed"]
+max_heldout_regression = 0.0
+
+[budget]
+max_steps = 1
+
+[training]
+command = ["python3", "target/train.py"]
+compute_budget_s = 300
+checkpoint_policy = "external"

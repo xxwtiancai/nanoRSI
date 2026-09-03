@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="440" viewBox="0 0 1120 440" role="img" aria-labelledby="layers-title">
+  <title id="layers-title">Model, harness, and artifact RSI layers supported by nanoRSI</title>
+  <rect width="1120" height="440" fill="#FFFFFF"/>
+  <g font-family="Inter, ui-sans-serif, system-ui">
+    <text x="56" y="62" font-size="27" font-weight="700" fill="#0F172A">Three evolution surfaces, one evidence kernel</text>
+    <g transform="translate(56 94)">
+      <rect width="315" height="250" rx="8" fill="#ECFDF5" stroke="#059669"/><text x="24" y="42" font-size="21" font-weight="700" fill="#064E3B">Artifact RSI</text><text x="24" y="82" font-size="16" fill="#065F46">Improve an algorithm, kernel,</text><text x="24" y="108" font-size="16" fill="#065F46">document, or research output.</text><text x="24" y="154" font-size="15" font-weight="700" fill="#064E3B">v0.1 ships runnable offline demo</text><text x="24" y="206" font-size="14" fill="#047857">proposal diff</text><text x="24" y="230" font-size="14" fill="#047857">candidate Git tree</text>
+    </g>
+    <g transform="translate(403 94)">
+      <rect width="315" height="250" rx="8" fill="#EFF6FF" stroke="#2563EB"/><text x="24" y="42" font-size="21" font-weight="700" fill="#1E3A8A">Harness RSI</text><text x="24" y="82" font-size="16" fill="#1E40AF">Improve prompts, skills, memory,</text><text x="24" y="108" font-size="16" fill="#1E40AF">tools, or agent policy.</text><text x="24" y="154" font-size="15" font-weight="700" fill="#1E3A8A">v0.1 ships mock target + private rubric</text><text x="24" y="206" font-size="14" fill="#1D4ED8">public statement</text><text x="24" y="230" font-size="14" fill="#1D4ED8">private scoring truth</text>
+    </g>
+    <g transform="translate(750 94)">
+      <rect width="315" height="250" rx="8" fill="#FFF7ED" stroke="#EA580C"/><text x="24" y="42" font-size="21" font-weight="700" fill="#7C2D12">Model RSI</text><text x="24" y="82" font-size="16" fill="#7C2D12">Define a bounded external training</text><text x="24" y="108" font-size="16" fill="#7C2D12">or adaptation experiment.</text><text x="24" y="154" font-size="15" font-weight="700" fill="#7C2D12">v0.1 ships contract + preflight</text><text x="24" y="206" font-size="14" fill="#9A3412">external runner</text><text x="24" y="230" font-size="14" fill="#9A3412">checkpoint identity</text>
+    </g>
+    <path d="M371 219 H393" stroke="#334155" stroke-width="3"/><path d="M718 219 H740" stroke="#334155" stroke-width="3"/>
+    <g transform="translate(56 370)"><rect width="1009" height="44" rx="6" fill="#0F172A"/><text x="24" y="29" font-size="15" fill="#E2E8F0">All surfaces use the same core: surface check → exact candidate snapshot → canonical evaluator → gate → HMAC lineage</text></g>
+  </g>
+</svg>

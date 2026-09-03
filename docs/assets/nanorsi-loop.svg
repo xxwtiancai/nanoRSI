@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="560" viewBox="0 0 1180 560" role="img" aria-labelledby="title desc">
+  <title id="title">nanoRSI evidence-gated improvement loop</title>
+  <desc id="desc">A diagram showing goal intake, proposal, patch validation, Git candidate snapshot, evaluator subprocess, gate decision, lineage, and report.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#334155"/></marker>
+    <marker id="arrow-accent" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#D97706"/></marker>
+  </defs>
+  <rect width="1180" height="560" fill="#F8FAFC"/>
+  <rect x="48" y="34" width="1084" height="74" rx="8" fill="#0F172A"/>
+  <text x="76" y="79" font-family="Inter, ui-sans-serif, system-ui" font-size="27" font-weight="700" fill="#F8FAFC">nanoRSI kernel: one candidate, one exact tree, one trusted decision</text>
+  <g font-family="Inter, ui-sans-serif, system-ui" font-size="17">
+    <g transform="translate(58 148)">
+      <rect width="190" height="80" rx="8" fill="#E0F2FE" stroke="#0284C7"/><text x="20" y="33" font-weight="700" fill="#0C4A6E">Goal intake</text><text x="20" y="58" fill="#075985">surface + policy</text>
+    </g>
+    <g transform="translate(306 148)">
+      <rect width="205" height="80" rx="8" fill="#FFFBEB" stroke="#D97706"/><text x="20" y="33" font-weight="700" fill="#78350F">External proposer</text><text x="20" y="58" fill="#92400E">diff + hypothesis</text>
+    </g>
+    <g transform="translate(569 148)">
+      <rect width="205" height="80" rx="8" fill="#ECFDF5" stroke="#059669"/><text x="20" y="33" font-weight="700" fill="#064E3B">Patch validation</text><text x="20" y="58" fill="#065F46">deny wins, no escape</text>
+    </g>
+    <g transform="translate(832 148)">
+      <rect width="240" height="80" rx="8" fill="#F5F3FF" stroke="#7C3AED"/><text x="20" y="33" font-weight="700" fill="#3B0764">Git candidate snapshot</text><text x="20" y="58" fill="#4C1D95">commit + tree hash</text>
+    </g>
+    <g transform="translate(832 304)">
+      <rect width="240" height="80" rx="8" fill="#FFF1F2" stroke="#E11D48"/><text x="20" y="33" font-weight="700" fill="#4C0519">Evaluator subprocess</text><text x="20" y="58" fill="#881337">schema + timeout</text>
+    </g>
+    <g transform="translate(569 304)">
+      <rect width="205" height="80" rx="8" fill="#EEF2FF" stroke="#4F46E5"/><text x="20" y="33" font-weight="700" fill="#1E1B4B">Evidence gate</text><text x="20" y="58" fill="#312E81">accept / reject</text>
+    </g>
+    <g transform="translate(306 304)">
+      <rect width="205" height="80" rx="8" fill="#F0FDFA" stroke="#0D9488"/><text x="20" y="33" font-weight="700" fill="#134E4A">HMAC lineage</text><text x="20" y="58" fill="#115E59">append-only JSONL</text>
+    </g>
+    <g transform="translate(58 304)">
+      <rect width="190" height="80" rx="8" fill="#F8FAFC" stroke="#475569"/><text x="20" y="33" font-weight="700" fill="#0F172A">Report + verify</text><text x="20" y="58" fill="#334155">rollback preserved</text>
+    </g>
+    <path d="M248 188 H296" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M511 188 H561" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M774 188 H824" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M952 228 V296" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M832 344 H784" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M569 344 H521" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M306 344 H256" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M153 304 V232" stroke="#D97706" stroke-width="3" stroke-dasharray="8 7" marker-end="url(#arrow-accent)"/>
+    <g transform="translate(58 445)">
+      <rect width="1014" height="68" rx="8" fill="#0F172A"/><text x="24" y="29" fill="#FDE68A" font-weight="700">Frozen boundary</text><text x="24" y="53" fill="#E2E8F0">evaluator/ · nanorsi.toml · lineage.jsonl · .nanorsi/ · accepted refs · mechanism-owned score fields</text>
+    </g>
+  </g>
+</svg>
