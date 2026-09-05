@@ -53,3 +53,18 @@ nanoRSI 将自进化体系严格划分为三层正交结构：
    每一步自修改均有 SHA/Tag 记录并以 HMAC 签名追加至 `lineage.jsonl`；一旦指标未达标或破坏约束，系统必须秒级原子回退至上一有效基线。
 3. **资源开销与子进程沙盒（Subprocess & Resource Boundary）**：
    所有候选提议与评测运行必须受限于超时截断与清理机制，严防递归失控与资源耗尽。
+
+---
+
+## 5. 持续前沿追踪雷达（每日跟踪维护）
+
+- **2026-09-06 跟踪维护**：
+  - *mindsdb/anton*：基于 Verifier-Eval 与动态反思的双重门禁判定（Session 级 `verdict`），确立了智能体执行评估必须采用外部独立运行的测试套件规范；其 Harness 自进化核心依赖于上下文技能逐步沉淀与工具链热拔插。
+  - *simple-agent-lab/RSIHub*：固化 `Select -> Mutate -> Evaluate -> Gate -> Lineage -> Reflect` 循环规范，严格隔离变异面与只读评测器。
+  - *exoharness/exo & OpenEvolve*：验证了基于函数空间进化及代码补丁（Patch Diff）原子合入时的沙盒隔离必要性。
+  - *Darwin Gödel Machine (DGM) & ACE*：强调在 Harness / Context 层级变异时，必须附带结构化不变量检查与策略血统追溯，杜绝盲目 Prompt 变异引发的认知衰退。
+
+- **2026-09-04 / 2026-09-05 历史跟踪**：
+  - *simple-agent-lab/RSIHub*：重构自循环阶段（`Select` 至 `Reflect`）与双语规范；评测器严格保持进程外运行。
+  - *mindsdb/anton*：自进化协作者智能体，融合 Hermes 式技能沉淀与运行时状态持久化。
+  - *Continual-Intelligence/SEAL*：长程任务持续自适应基准与参数调优契约。

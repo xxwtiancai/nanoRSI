@@ -59,6 +59,12 @@ All self-improvement implementations in nanoRSI must preserve three core securit
 
 ## 5. Continuous Research Radar (Updated Daily)
 
+- **2026-09-06 Tracking**:
+  - *mindsdb/anton*: Analyzed dual verification & session reflection logic (verifier-eval workflow). Reinforces that runtime task verification must rely on decoupled test suites and structured verdict gates.
+  - *simple-agent-lab/RSIHub*: Standardized 6-stage operator loop (`Select -> Mutate -> Evaluate -> Gate -> Lineage -> Reflect`) with frozen evaluator boundaries.
+  - *exoharness/exo & OpenEvolve*: Highlighted sandbox requirements for patch mutation isolation and empirical regression prevention.
+  - *DGM & Agentic Context Engineering (ACE)*: Emphasized structured invariant checks and append-only strategy provenance to avert cognitive degradation under context evolution.
+
 - **2026-09-04 / 2026-09-05 Tracking**:
   - *simple-agent-lab/RSIHub*: Restructured loop phases (`Select` through `Reflect`) and bilingual specification. Evaluator remains strictly out-of-process.
   - *mindsdb/anton*: Self-improving coworker agent integrating Hermes-style skill accretion and runtime state logging.
