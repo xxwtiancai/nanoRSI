@@ -154,6 +154,7 @@ These will not compromise the frozen evaluator, protected lineage, or exact cand
 
 ## Documentation
 
+- [RSI Research Dossier & Architecture Survey](docs/research/RSI_SURVEY.md)
 - [Kernel specification](docs/specification.md)
 - [Project charter](docs/PROJECT_CHARTER.md)
 - [Security policy](SECURITY.md)

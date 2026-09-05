@@ -74,6 +74,7 @@ reports/
 
 ## 更多文档
 
+- [RSI 前沿研究全景与架构映射调研](docs/research/RSI_SURVEY.zh-CN.md)
 - [内核规范](docs/specification.md)
 - [项目章程](docs/PROJECT_CHARTER.md)
 - [安全策略](SECURITY.md)
