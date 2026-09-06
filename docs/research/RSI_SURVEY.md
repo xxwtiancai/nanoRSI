@@ -59,6 +59,11 @@ All self-improvement implementations in nanoRSI must preserve three core securit
 
 ## 5. Continuous Research Radar (Updated Daily)
 
+- **2026-09-07 Tracking**:
+  - *ahmd-mohsin/KernelAscent*: GPU kernel capability-stratified causal loop benchmark. Identifies that capability floors strictly govern RSI outcomes: frontier models show statistically significant causal self-use gains (F_selfuse > 0), whereas sub-threshold models experience negative returns from self-revision. Crucially demonstrates harness robustness requirements—native compiler crashes (SIGABRT) bypass Python-level signal timeouts, necessitating dedicated isolated per-task subprocesses and resilient process-group cleanup (mirroring nanoRSI subprocess boundaries).
+  - *asimfish/awesome_rsi*: Synthesizes empirical evidence across 67 RSI papers. Highlights key empirical laws: evaluator discipline (anchoring outside the loop to prevent reward overoptimization/evaluator collapse), realized meta-depth constraints (~2.5 layers in practice), and the imperative for versioning, audit trails, deterministic forecasting, and atomic rollback in production RSI loops. Validates nanoRSI's core architecture of frozen evaluators, HMAC-signed lineage, and detached worktree isolation.
+  - *SystemOriginArchive/creator-theory-operational-canon*: Formalizes recursive self-improvement safety criteria including successor alignment, automated auditing, criterion/evaluator drift mitigation, anti-capture, and provenance continuity. Strongly aligns with nanoRSI lineage verification and explicit gating mechanisms.
+
 - **2026-09-06 Tracking**:
   - *mindsdb/anton*: Analyzed dual verification & session reflection logic (verifier-eval workflow). Reinforces that runtime task verification must rely on decoupled test suites and structured verdict gates.
   - *simple-agent-lab/RSIHub*: Standardized 6-stage operator loop (`Select -> Mutate -> Evaluate -> Gate -> Lineage -> Reflect`) with frozen evaluator boundaries.

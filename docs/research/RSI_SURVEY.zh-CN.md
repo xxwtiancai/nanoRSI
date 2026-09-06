@@ -58,6 +58,11 @@ nanoRSI 将自进化体系严格划分为三层正交结构：
 
 ## 5. 持续前沿追踪雷达（每日跟踪维护）
 
+- **2026-09-07 跟踪维护**：
+  - *ahmd-mohsin/KernelAscent*：GPU Kernel 级能力分层因果自循环基准。其实证揭示了自进化的“能力地板（Capability Floor）”法则：弱模型自修改往往产生负增益（即 N < 0），因果自利用（Causal Self-Use）收益仅在 Frontier 级别模型涌现；同时指出了执行脚手架健壮性瓶颈——底层原生编译崩溃（如 SIGABRT）会绕过 Python 级信号超时，必须采用单任务独立子进程与进程组沙盒清理（严格印证了 nanoRSI 进程边界设计）。
+  - *asimfish/awesome_rsi*：系统性综述 67 篇 RSI 前沿工作并沉淀 10 条核心实证发现。明确指出“评估器决定系统上限且是首要被攻击目标”、“优化窗口外设立锚定评估防止评估器坍塌”、“生产级自进化系统必须具备版本、审计、预测、回滚四项核心机制”。深度佐证了 nanoRSI 冻结评测器、HMAC 审计链以及原子回滚三大铁律的技术必要性。
+  - *SystemOriginArchive/creator-theory-operational-canon*：形式化了针对失控风险、后继对齐（Successor Alignment）、评测漂移防范与血统连续性（Provenance Continuity）的 RSI 安全操作规约，与 nanoRSI 的血统防篡改校验和门禁准入体系高度一致。
+
 - **2026-09-06 跟踪维护**：
   - *mindsdb/anton*：基于 Verifier-Eval 与动态反思的双重门禁判定（Session 级 `verdict`），确立了智能体执行评估必须采用外部独立运行的测试套件规范；其 Harness 自进化核心依赖于上下文技能逐步沉淀与工具链热拔插。
   - *simple-agent-lab/RSIHub*：固化 `Select -> Mutate -> Evaluate -> Gate -> Lineage -> Reflect` 循环规范，严格隔离变异面与只读评测器。
