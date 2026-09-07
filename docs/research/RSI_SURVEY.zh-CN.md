@@ -58,6 +58,11 @@ nanoRSI 将自进化体系严格划分为三层正交结构：
 
 ## 5. 持续前沿追踪雷达（每日跟踪维护）
 
+- **2026-09-08 跟踪维护**：
+  - *TokenRhythm/NeoHorse-1*：基于路由脚手架（Routing Harness）的智能体后训练递归自进化架构（基于 Qwen3.5 的 4B/9B 系列权重）。其核心构建了“评估-选择-更新”闭环：通过多样化模型池分配任务，记录工具交互与执行轨迹，评估能力需求并反哺下一阶段的训练混合配比（Curriculum SFT 与在线策略蒸馏）。指出了面向长程 RSI 时，执行安全性、评估去污染以及脚手架级任务调度的必要前置保障。
+  - *Liuziyu77/Awesome-RSI*（系统性 RSI 分层知识库与论文语料）：将大模型递归自进化系统形式化划分为清晰的三层拓扑架构：经验积累（Experience Accumulation：Prompt、上下文、技能库与记忆演进）、系统修改（System Modification：Harness 脚手架自改动、动态工具链、代码级自变异，如 DGM、SICA、MGM、Metaⁿ）与模型参数（Model Parameters：后训练权重更新、自博弈 RL 与经验蒸馏，如 SafeEvolve、APEx、SPADE）。深度印证了 nanoRSI 作为轻量、稳健的“System Modification”演进框架的架构定性，其冻结只读评测器与 HMAC 血统防篡改审计是保证系统进化不偏航的基础。
+  - *KaiWU5/Awesome-AI4AI*（AI 能否可靠地自我改进？）：周更的 223 篇前沿 AI4AI 综述与论文追踪索引，涵盖长程自主研究、自动化脚手架合成与自进化评测基准。着重强调了防范自进化中的“虚假增益（Phantom Gains）”以及多随机种子任务序的鲁棒性控制。
+
 - **2026-09-07 跟踪维护**：
   - *ahmd-mohsin/KernelAscent*：GPU Kernel 级能力分层因果自循环基准。其实证揭示了自进化的“能力地板（Capability Floor）”法则：弱模型自修改往往产生负增益（即 N < 0），因果自利用（Causal Self-Use）收益仅在 Frontier 级别模型涌现；同时指出了执行脚手架健壮性瓶颈——底层原生编译崩溃（如 SIGABRT）会绕过 Python 级信号超时，必须采用单任务独立子进程与进程组沙盒清理（严格印证了 nanoRSI 进程边界设计）。
   - *asimfish/awesome_rsi*：系统性综述 67 篇 RSI 前沿工作并沉淀 10 条核心实证发现。明确指出“评估器决定系统上限且是首要被攻击目标”、“优化窗口外设立锚定评估防止评估器坍塌”、“生产级自进化系统必须具备版本、审计、预测、回滚四项核心机制”。深度佐证了 nanoRSI 冻结评测器、HMAC 审计链以及原子回滚三大铁律的技术必要性。
