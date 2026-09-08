@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="526" viewBox="0 0 1120 526" role="img" aria-labelledby="title desc">
+<title id="title">Recorded nanoRSI offline fixture demo</title>
+<desc id="desc">Actual CLI fixture output with selected JSON fields: create an experiment, establish a baseline, accept a candidate and verify the lineage. This uses a scripted proposer and makes no model API calls.</desc>
+<rect width="1120" height="526" rx="20" fill="#161b22"/>
+<path d="M0 57H1120" stroke="#30363d"/>
+<circle cx="31" cy="29" r="6" fill="#fa6b61"/><circle cx="53" cy="29" r="6" fill="#f0c85b"/><circle cx="75" cy="29" r="6" fill="#59c68e"/>
+<text x="105" y="35" font-family="Arial,sans-serif" font-size="17" fill="#b8c0cc">nanoRSI / scripted offline demo</text>
+<rect x="869" y="15" width="217" height="28" rx="14" fill="#25372d"/><text x="977" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#9cddb3">NO MODEL API CALLS</text>
+<g font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="21">
+<text x="35" y="101" fill="#ffad88">$ nanorsi new artifact ./artifact-demo</text>
+<text x="35" y="134" fill="#e5e7eb">created artifact workspace with 6 files</text>
+<text x="35" y="167" fill="#fff"></text>
+<text x="35" y="200" fill="#ffad88">$ nanorsi baseline --workspace ./artifact-demo</text>
+<text x="35" y="233" fill="#d5d9df">{&quot;generation&quot;: 0, &quot;gate_metrics&quot;: {&quot;score&quot;: 0.0}}</text>
+<text x="35" y="266" fill="#fff"></text>
+<text x="35" y="299" fill="#ffad88">$ nanorsi step --workspace ./artifact-demo</text>
+<text x="35" y="332" fill="#8fe0ad">{&quot;decision&quot;: &quot;accepted&quot;, &quot;generation&quot;: 1, &quot;attempt_id&quot;: 1}</text>
+<text x="35" y="365" fill="#fff"></text>
+<text x="35" y="398" fill="#ffad88">$ nanorsi verify --workspace ./artifact-demo</text>
+<text x="35" y="431" fill="#8fe0ad">lineage: ok</text>
+</g>
+<path d="M35 464H1085" stroke="#30363d"/>
+<text x="35" y="498" fill="#929dab" font-family="Arial,sans-serif" font-size="15">Recorded fixture output · selected JSON fields · full transcript linked in README</text>
+</svg>

@@ -1,0 +1,18 @@
+Offline compatibility demo (scripted offline fixture; not real model improvement)
+
+$ nanorsi new artifact ./artifact-demo
+created artifact workspace with 6 files
+
+$ nanorsi baseline --workspace ./artifact-demo
+[baseline JSON omitted here; the raw stdout is recorded in demo-evidence.json]
+
+$ nanorsi step --workspace ./artifact-demo
+{"attempt_id": 1, "candidate_tree": "99d95542c6e2bbc0541bf91bffaa6f56ebc10f37", "decision": "accepted", "generation": 1, "reason": "improvement 1.000000"}
+
+$ nanorsi report --workspace ./artifact-demo
+./artifact-demo/reports/report.md
+
+$ nanorsi verify --workspace ./artifact-demo
+lineage: ok
+
+The receipt journal records gate score 0.0 for baseline generation 0 and 1.0 for accepted generation 1. These are deterministic evaluator fixture scores, not a model benchmark or a claim of real model improvement.

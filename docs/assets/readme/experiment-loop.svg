@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+<title id="title">The nanoRSI experiment loop</title>
+<desc id="desc">Within a bounded search budget, run training tasks, propose a skill patch, compare parent and candidate on validation tasks, and keep or reject the candidate. After freezing the selected version, evaluate unseen test tasks without sending their results back to search.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#f4512c" stroke-width="1.7"/></marker></defs>
+<rect width="1120" height="620" rx="28" fill="#fff8e9"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#171717">
+<text x="48" y="58" font-size="15" font-weight="700" letter-spacing="3" fill="#ad3a22">ONE MODEL · ONE PARENT · A FINITE BUDGET</text>
+<text x="48" y="110" font-size="38" font-weight="700">Every change gets an experiment.</text>
+<rect x="48" y="150" width="1024" height="244" rx="20" fill="#fff" stroke="#eddcca" stroke-width="2"/>
+<g transform="translate(76 185)"><text font-size="15" fill="#ad3a22" font-weight="700">01 / TRAIN</text><text y="48" font-size="28" font-weight="700">Run tasks</text><text y="79" font-size="18" fill="#625d55">Gather traces</text><text y="106" font-size="18" fill="#625d55">and feedback</text></g>
+<g transform="translate(328 185)"><text font-size="15" fill="#ad3a22" font-weight="700">02 / PROPOSE</text><text y="48" font-size="28" font-weight="700">Edit skills</text><text y="79" font-size="18" fill="#625d55">Create a patch</text><text y="106" font-size="18" fill="#625d55">with a hypothesis</text></g>
+<g transform="translate(576 185)"><text font-size="15" fill="#ad3a22" font-weight="700">03 / VALIDATE</text><text y="48" font-size="28" font-weight="700">Compare</text><text y="79" font-size="18" fill="#625d55">Same tasks</text><text y="106" font-size="18" fill="#625d55">Same rules</text></g>
+<g transform="translate(818 185)"><text font-size="15" fill="#ad3a22" font-weight="700">04 / DECIDE</text><text y="48" font-size="28" font-weight="700">Keep or reject</text><text y="79" font-size="18" fill="#625d55">Record the result</text><text y="106" font-size="18" fill="#625d55">Select next parent</text></g>
+<g stroke="#f4512c" stroke-width="3" fill="none" marker-end="url(#arrow)"><path d="M270 238H305"/><path d="M520 238H555"/><path d="M760 238H795"/><path d="M940 320V355H161V322"/></g>
+<rect x="386" y="339" width="350" height="30" rx="15" fill="#fff"/><text x="561" y="360" font-size="16" text-anchor="middle" fill="#ad3a22">Next attempt, while budget remains</text>
+<path d="M940 395V454" stroke="#f4512c" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<rect x="48" y="461" width="1024" height="112" rx="18" fill="#171717"/>
+<text x="77" y="493" font-size="14" letter-spacing="2" fill="#ffb9a5">AFTER SEARCH</text>
+<text x="77" y="534" font-size="29" font-weight="700" fill="#fff8e9">Freeze</text>
+<path d="M219 524H287" stroke="#ff865f" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<text x="318" y="534" font-size="29" font-weight="700" fill="#fff8e9">Test unseen tasks</text>
+<text x="710" y="512" font-size="18" fill="#ebdbca">Final results stay out</text><text x="710" y="542" font-size="18" fill="#ebdbca">of the selection loop.</text>
+</g></svg>

@@ -1,0 +1,75 @@
+{
+  "fixture_note": "scripted offline fixture; not real model improvement",
+  "offline": true,
+  "paid_calls": false,
+  "runtime": {
+    "python_version": "3.13.5",
+    "python_minimum": "3.11",
+    "python_requirement_satisfied": true,
+    "git_version": "2.39.5 (Apple Git-154)"
+  },
+  "commands": [
+    {
+      "command": "nanorsi new artifact ./artifact-demo",
+      "exit_code": 0,
+      "stdout": "created artifact workspace with 6 files",
+      "stderr": ""
+    },
+    {
+      "command": "nanorsi baseline --workspace ./artifact-demo",
+      "exit_code": 0,
+      "stdout": "{\"artifacts\": {\"gate.json\": {\"path\": \".nanorsi/baseline/aced9eafaf/gate.json\", \"sha256\": \"6fd1c808c174c1815750d183988a1b3ca63d08a7a39e203bf81546fdc1814f45\"}, \"heldout.json\": {\"path\": \".nanorsi/baseline/aced9eafaf/heldout.json\", \"sha256\": \"3377df67320da0375593cf6ede9673757d5491ee6b4fc02db417de7ba0fcbf12\"}}, \"candidate_commit\": \"68416d1bf69548b5067a843b68720d250711105b\", \"candidate_tree\": \"ce55835ab45dd43169427c355c16e77b15728191\", \"decision\": \"baseline\", \"evaluator_fingerprint\": \"028b39929d110e3bd76ff544cd6561c9bd0bf4b8b5dd45dced72de7752882941\", \"event_type\": \"generation\", \"experiment_id\": \"artifact-demo\", \"gate_constraints\": {\"tests_passed\": true}, \"gate_metrics\": {\"score\": 0.0}, \"generation\": 0, \"heldout_metrics\": {\"score\": 0.0}, \"manifest_hash\": \"c5b39f27503ad480c8624bdd7235ca363161aee7ca58671fcb59644ffc98dd58\", \"parent_generation\": null, \"receipt\": \"1f41704034f70c5f989848fed33dd419f065d7ec1a28ec295a27942c61786547\", \"seq\": 6}",
+      "stderr": ""
+    },
+    {
+      "command": "nanorsi step --workspace ./artifact-demo",
+      "exit_code": 0,
+      "stdout": "{\"attempt_id\": 1, \"candidate_tree\": \"99d95542c6e2bbc0541bf91bffaa6f56ebc10f37\", \"decision\": \"accepted\", \"generation\": 1, \"reason\": \"improvement 1.000000\"}",
+      "stderr": ""
+    },
+    {
+      "command": "nanorsi report --workspace ./artifact-demo",
+      "exit_code": 0,
+      "stdout": "./artifact-demo/reports/report.md",
+      "stderr": ""
+    },
+    {
+      "command": "nanorsi verify --workspace ./artifact-demo",
+      "exit_code": 0,
+      "stdout": "lineage: ok",
+      "stderr": ""
+    }
+  ],
+  "receipt_journal": {
+    "path": "./artifact-demo/lineage.jsonl",
+    "verification": "nanorsi verify returned lineage: ok",
+    "baseline_generation": {
+      "seq": 6,
+      "generation": 0,
+      "decision": "baseline",
+      "gate_score": 0.0,
+      "heldout_score": 0.0,
+      "candidate_commit": "68416d1bf69548b5067a843b68720d250711105b",
+      "candidate_tree": "ce55835ab45dd43169427c355c16e77b15728191",
+      "receipt": "1f41704034f70c5f989848fed33d419f065d7ec1a28ec295a27942c61786547"
+    },
+    "accepted_generation": {
+      "seq": 14,
+      "generation": 1,
+      "decision": "accepted",
+      "gate_score": 1.0,
+      "heldout_score": 1.0,
+      "reason": "improvement 1.000000",
+      "candidate_commit": "2cf7da3b5e580c6673c0b9b68dcf477c4f660652",
+      "candidate_tree": "99d95542c6e2bbc0541bf91bffaa6f56ebc10f37",
+      "receipt": "cbff463d2827411c8461b06faf2fcd180377683317757500ca65e10d39ee29a2"
+    }
+  },
+  "scores": {
+    "baseline_gate": 0.0,
+    "accepted_gate": 1.0,
+    "baseline_heldout": 0.0,
+    "accepted_heldout": 1.0
+  },
+  "interpretation": "The 0.0 to 1.0 transition is the deterministic fixture evaluator output; it is not evidence of real model improvement or a benchmark gain."
+}

@@ -1,89 +1,180 @@
-# nanoRSI
+<p align="center">
+  <img src="docs/assets/brand/nanorsi-hero.png" alt="nanoRSI：小内核，让改进有据可查" width="100%">
+</p>
 
-**一个小而完整的 Skills / Agent Harness 改进实验平台：固定基础模型，在有限预算下修改 Agent 的工作方式，并验证未见任务上的效果。**
+<p align="center"><strong>让 Agent 改进 Skills，让每次改动有据可查。</strong><br>一个小而完整、读得懂的 Skills / Agent Harness 实验平台。</p>
 
-内核只使用 Python 标准库和 Git。执行流程为：训练任务 → 轨迹与反馈 → skill patch → 验证集比较 → 接受或保留父代 → 冻结 → 独立最终测试。
+<p align="center">
+  <a href="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml"><img src="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&amp;logoColor=white" alt="Python 3.11+"></a>
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/runtime_dependencies-0-f4512c" alt="零第三方运行时依赖"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.2.0-f4512c" alt="版本 0.2.0"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-171717" alt="Apache-2.0"></a>
+</p>
 
-[English README](README.md)
+<p align="center">
+  <a href="#快速开始">快速开始</a> · <a href="#一次改进如何发生">工作流程</a> ·
+  <a href="#接入你的模型">接入模型</a> · <a href="#可以研究什么">研究方向</a> · <a href="README.md">English</a>
+</p>
 
-## 安装
+---
+
+Skills 改了一版又一版，Agent 真的变好了吗？
+
+**nanoRSI** 把这个问题变成一个能跑、能比较的小实验：执行任务，收集反馈，提出 skill patch，与当前版本比较。符合条件的改动留下，然后冻结版本，用未见任务检验效果。
+
+模型权重固定，研究对象是 skills 和 Agent 的工作方式。
+
+| 小到可以读懂 | 完整到可以运行 | 每一步可以检查 |
+| :---: | :---: | :---: |
+| **约 1,800 行** Python 内核 | **一个**父代、候选和循环 | **每次尝试**留下证据 |
+| 标准库 + Git | 训练 → 验证 → 最终测试 | 修改、轨迹、决策和成本 |
+
+## 为什么做 nanoRSI
+
+- **有具体的起点。** 参考 Agent、三个 skills、模型桥接和 90 个分组本地任务。
+- **主流程看得懂。** 顺序尝试、普通文件、精确 Git 快照；核心调度集中在 [loop.py](src/nanorsi/loop.py)。
+- **对照实验有位置。** 比较初始 skills、无 skills 和改进后 skills，也能比较固定与 self-use 改进器。
+- **结果可以追溯。** 打开 patch，查看失败轨迹、所选版本和成本记录；未知用量会明确保留。
+
+90 个任务是开发夹具，81 项工程测试验证的是协议。真实模型上的收益，需要由实际实验回答。
+
+## 快速开始
+
+准备 Python 3.11+ 和 Git：
 
 ```bash
+git clone https://github.com/xxwtiancai/nanoRSI.git
+cd nanoRSI
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
 ```
 
-需要 Python 3.11+ 和 Git。参考 Runner 使用外部模型命令，附带一个 OpenAI-compatible HTTP 适配器；兼容的本地模型服务可不配置 key，托管模型调用可能产生费用。
-
-## Skills 实验
-
-```bash
-nanorsi new skills ./skills-lab --goal "改进可靠的文件编辑能力"
-```
-
-**建立 baseline 前**，修改 `skills-lab/nanorsi.toml` 中的 `[agent]`：填写真实 `model`、`base_url`；需要鉴权时配置指向工作区外文件的绝对 `api_key_file` 路径。也可以用自有 JSON 协议桥接替换 `model_command`。默认模型是待配置占位值。
-
-```bash
-nanorsi doctor --workspace ./skills-lab
-nanorsi baseline --workspace ./skills-lab
-nanorsi run --workspace ./skills-lab
-nanorsi report --workspace ./skills-lab
-nanorsi freeze --workspace ./skills-lab --repeats 3
-nanorsi final-test --workspace ./skills-lab
-nanorsi verify --workspace ./skills-lab
-python examples/compare.py ./skills-lab/reports/final.json
-```
-
-模板包含 90 个确定性的本地文件任务，按来源组划分为 train/validation/test 各 30 个。它们用于验证协议，不是公开 benchmark，也不代表已经测得真实模型提升。
-
-参考 Agent 实际加载 inspect、edit、verify 三个 skills，提供 list/read/write/final 操作，记录所加载内容的 hash。每题启动新进程并使用临时目录；本例不执行模型生成的 shell 命令，也不实现 skill 脚本执行或向量检索。
-
-## 实验规则
-
-- 默认只允许修改 `target/agent/skills/**`，单父代、单候选、顺序运行。
-- 失败、拒绝、无变化都消耗尝试预算；只有严格改善且满足约束的候选成为下一代。
-- train 提供任务反馈；validation 用于选择；最终 test 必须在 freeze 后运行，结果不能回流接受决策。
-- `arm="frozen"` 始终使用初始 Harness 产生修改；`arm="self-use"` 使用最新接受的 Harness。修改目标都为当前父代，不同组使用独立工作区。
-- 模型配置、任务数据、评分器、桥接文件从 baseline 起固定；更改它们应创建新实验。
-- 保存逐题结果、skills hash、版本、完整提案与轨迹引用、费用和失败原因；未知费用/tokens 保持 null。
-- 限制 attempts、任务 episodes、超时、模型轮数和输出；美元是观测值，不声称强制美元上限。
-
-默认五轮最多需要 350 个搜索 episodes：baseline 30，加每轮 train 4、父代 validation 30、候选 validation 30；搜索上限为 400。最终测试三组各 30 题×3 次，共另需 270 episodes。提案调用单独记录。建议首次先缩小任务面板和预算。
-
-freeze 固定重复次数（1–10）。最终测试比较初始 skills、无 skills 和选定 skills；已完成面板重复调用时复用，中断面板显式保留失败状态，避免静默重试挑选高分。比较统计区分独立进化与同一版本的重复部署。
-
-## 离线兼容演示
+先运行**脚本化离线演示**，不调用模型 API：
 
 ```bash
 nanorsi new artifact ./artifact-demo
 nanorsi baseline --workspace ./artifact-demo
 nanorsi step --workspace ./artifact-demo
+nanorsi report --workspace ./artifact-demo
 nanorsi verify --workspace ./artifact-demo
 ```
 
-原有 artifact/harness 保留为明确标注的脚本演示；model 保留外部训练合同。旧 `heldout` 参与选择，不能当作独立最终测试。v2 使用新建工作区，不能把旧数据重新命名后宣称未见测试。
+<p align="center"><img src="docs/assets/readme/terminal-demo.svg" alt="真实离线夹具运行的终端展示：创建实验、接受候选、写出报告并校验谱系。" width="100%"></p>
 
-## 执行边界与验证
+<sub>基于实际离线运行输出绘制。<a href="docs/assets/readme/demo-transcript.txt">查看记录</a> · <a href="docs/assets/readme/demo-evidence.json">查看原始输出</a>。这里的分数用于展示实验协议。</sub>
 
-默认是**可信本地运行**。worktree、修改范围限制和 HMAC 提供版本一致性检查，不能阻止同一 OS 用户下的程序读取宿主文件或答案。运行不可信 Harness 或要求真正的标签隔离时，需要外部容器、VM 或评测服务；本版没有内置经过加固的容器适配器。详见 [安全说明](SECURITY.md)。
+## 一次改进如何发生
+
+<p align="center"><img src="docs/assets/readme/experiment-loop.svg" alt="在预算内执行训练任务、修改 Skills、验证比较、保留或拒绝；结束搜索后冻结版本并测试未见任务，最终结果不回流选择。" width="100%"></p>
+
+训练反馈用于提出下一次修改，验证集用于选择候选。最终测试在冻结之后进行，结果不会回流到接受决策。
+
+失败、拒绝和无变化的提案也会消耗尝试预算。每个接受的版本都有明确的父代和候选 commit，方便检查整个过程。
+
+## 接入你的模型
+
+创建 skills 实验：
+
+```bash
+nanorsi new skills ./skills-lab --goal "改进可靠的文件编辑能力"
+```
+
+**建立 baseline 前**，修改 `skills-lab/nanorsi.toml` 中已有的 `[agent]` 配置。填写真实模型 ID 和兼容接口；默认模型名称是占位值。兼容的本地服务可以不使用 key，需要鉴权的接口通过工作区外的绝对路径配置 key 文件。
+
+```toml
+[agent]
+model_command = ["python3", "adapters/model.py"]
+model = "your-model-id"
+base_url = "http://localhost:8000/v1"
+max_turns = 8
+skills = ["inspect", "edit", "verify"]
+```
+
+默认最多五次提案，搜索上限为 400 个任务执行。完整五轮可能使用 350 个搜索任务执行，默认最终测试另需 270 个。提案调用单独记录，托管模型可能产生费用。运行前先按 [详细指南](docs/QUICKSTART.md#choose-a-budget-before-running) 选择预算和接口：
+
+```bash
+nanorsi doctor --workspace ./skills-lab
+nanorsi run --workspace ./skills-lab
+nanorsi freeze --workspace ./skills-lab --repeats 3
+nanorsi final-test --workspace ./skills-lab
+python examples/compare.py ./skills-lab/reports/final.json
+nanorsi verify --workspace ./skills-lab
+```
+
+<details>
+<summary><strong>工作区里有什么？</strong></summary>
+
+```text
+skills-lab/
+├── target/agent/
+│   ├── run.py                 # 小型 task/propose Runner
+│   └── skills/
+│       ├── inspect/SKILL.md
+│       ├── edit/SKILL.md
+│       └── verify/SKILL.md
+├── proposer/propose.py        # 固定的提案驱动
+├── evaluator/evaluate.py      # 固定的任务评分器
+├── adapters/model.py          # 可配置模型桥接
+├── tasks/manifest.json        # 分组 train/validation/test 任务
+├── nanorsi.toml               # 实验配置
+└── reports/                   # 搜索证据和最终对照
+```
+
+默认只允许修改 `target/agent/skills/**`。参考 Runner 加载 Markdown skills，在每题独立的临时目录中提供 list/read/write/final 操作。本例没有实现 skill 脚本执行或向量检索。
+
+[完整操作指南](docs/QUICKSTART.md) · [数据合同与状态](docs/specification.md)
+
+</details>
+
+## 可以研究什么
+
+三个问题，分别做对照：
+
+| 问题 | 对照方式 |
+| --- | --- |
+| 加载这些 skills 有用吗？ | 无 skills 与初始 skills |
+| 改过的 skills 对新任务有效吗？ | 冻结测试集上的初始版本与选定版本 |
+| 递归复用有额外收益吗？ | 固定改进器与 self-use 改进器，保持配置和预算一致 |
+
+`arm="frozen"` 始终通过初始 Harness 提出修改；`arm="self-use"` 通过最新接受的 Harness 提出修改。两种模式的修改目标都是当前父代。不同组使用独立工作区，在查看最终测试结果前冻结所有组。
+
+比较工具输出配对任务宏平均差值、分组结果、单次任务耗时和成本覆盖率，并区分独立进化与重复部署。负结果也值得留下。
+
+[评估调研](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md) 涵盖 DGM、SICA、GEPA、ACE、Memento-Skills 和近期 skills 基准。项目的小型、可读实现风格受到 [nanoGPT](https://github.com/karpathy/nanoGPT) 与 [nanochat](https://github.com/karpathy/nanochat) 的启发。
+
+## 接下来可以看
+
+| 想做什么 | 入口 |
+| --- | --- |
+| 运行自己的实验 | [操作与预算指南](docs/QUICKSTART.md) |
+| 看核心实现 | [实验循环](src/nanorsi/loop.py) · [参考 Runner](src/nanorsi/templates/skills/target/agent/run.py) |
+| 理解设计取舍 | [项目章程](docs/PROJECT_CHARTER.md) · [v0.2 设计](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md) |
+| 准备任务、比较结果 | [示例工具](examples/README.md) |
+| 了解更新、参与贡献 | [变更记录](CHANGELOG.md) · [贡献说明](CONTRIBUTING.md) |
+
+**执行边界：** 默认是可信本地运行。worktree 和 receipt 提供版本检查；不可信代码和真正的标签隔离需要外部容器、VM 或服务。详见 [安全模型](SECURITY.md)。
+
+<details>
+<summary><strong>开发检查与旧版模板</strong></summary>
 
 ```bash
 PYTHONPATH=src python -m unittest discover -v
 python -m compileall -q src examples tests
 ```
 
-测试包含模拟模型命令、本地 HTTP 服务、跨代接受/拒绝、预算、冻结与 self-use hash 验证。它们验证工程协议，不证明真实模型收益。内核保持不超过 2,500 行、每文件 300 行、每函数 50 行，以及零第三方运行时依赖。
+CI 在 Linux/macOS 的 Python 3.11/3.12 上检查。架构测试限制内核不超过 2,500 行，每文件 300 行、每函数 50 行，并禁止第三方运行时导入。
 
-## 文档
+artifact/harness 旧模板保留为脚本演示；model 保留外部训练合同。旧 heldout 数据参与选择，v2 使用新建工作区和独立最终测试。
 
-- [项目章程](docs/PROJECT_CHARTER.md)
-- [内核规范](docs/specification.md)
-- [设计与后续研究工作](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md)
-- [论文评估协议调研](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md)
-- [实施计划](docs/superpowers/plans/2026-09-09-skills-harness.md)
-- [示例与比较工具](examples/README.md)
-- [变更记录](CHANGELOG.md)
-- [早期 RSI 调研](docs/research/RSI_SURVEY.zh-CN.md)
+</details>
 
-Apache-2.0。
+---
+
+<p align="center"><img src="docs/assets/brand/nanorsi-mascot.png" alt="拿着迭代卡片的 nanoRSI 小机器人" width="110"></p>
+<p align="center"><strong>带一个任务来，跑一次实验，分享结果。</strong><br>
+如果你也想看到更多这类 Agent 研究，欢迎给 <a href="https://github.com/xxwtiancai/nanoRSI">nanoRSI 点个 Star</a>。<br>
+<a href="https://github.com/xxwtiancai/nanoRSI/issues">分享实验或报告问题</a> · <a href="CONTRIBUTING.md">参与贡献</a></p>
+
+<p align="center">Apache-2.0 · <a href="LICENSE">许可证</a></p>

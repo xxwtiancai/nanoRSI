@@ -12,3 +12,7 @@ htmlcov/
 .ruff_cache/
 .pytest_cache/
 *.egg-info/
+
+# Local orchestration state and social publishing bundles
+.omx/
+marketing/
