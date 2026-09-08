@@ -154,6 +154,8 @@ These will not compromise the frozen evaluator, protected lineage, or exact cand
 
 ## Documentation
 
+- [Skills / Harness v0.2 design proposal — not yet implemented (Chinese)](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md)
+- [Skills / Harness evaluation research, 2026-09-08 (Chinese)](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md)
 - [RSI Research Dossier & Architecture Survey](docs/research/RSI_SURVEY.md)
 - [Kernel specification](docs/specification.md)
 - [Project charter](docs/PROJECT_CHARTER.md)

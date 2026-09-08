@@ -74,6 +74,8 @@ reports/
 
 ## 更多文档
 
+- [Skills / Harness 平台 v0.2 设计提案（尚未实施）](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md)
+- [Skills / Harness 论文评估协议调研（2026-09-08）](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md)
 - [RSI 前沿研究全景与架构映射调研](docs/research/RSI_SURVEY.zh-CN.md)
 - [内核规范](docs/specification.md)
 - [项目章程](docs/PROJECT_CHARTER.md)
