@@ -17,7 +17,7 @@ nanoRSI 将自进化体系严格划分为三层正交结构：
 | :--- | :--- | :--- | :--- | :--- |
 | **函数空间进化 (MAP-Elites)** | Artifact | 基于大模型变异与质量-多样性（QD）档案保留最优代际 | FunSearch (DeepMind), OpenEvolve | 孤岛隔离；评测器绝对处于变异表面之外 |
 | **智能体上下文工程 (ACE)** | Harness | 动态 Playbook 演化、策略剪枝与执行经验沉淀 | ACE, Memento-Skills, Hermes Agent | 结构化变异规范；追加式策略血统记录 |
-| **达尔文-哥德尔机 (DGM)** | Harness / Artifact | 形式化检验或经验性验证门禁保证每次自修改必须提升全局效用 | DGM, Gödel Agent | 严禁无证明或未过验证代码合入主干 |
+| **达尔文-哥德尔机 (DGM)** | Harness / Artifact | 通过编程基准经验性评估自修改 | DGM, Gödel Agent | 提供实验证据；不构成全局提升的形式化证明 |
 | **自适应语言模型 (SEAL)** | Model | 任务执行反馈 -> 合成训练集 -> 目标参数更新闭环 | SEAL, Continual-Intelligence/SEAL | 泛化保持；防止自训练产生分布崩溃 |
 | **规范评测循环** | 全层级 | 标准化算子生命周期：Select -> Mutate -> Evaluate -> Gate -> Lineage | RSIHub (simple-agent-lab), nanoRSI | 评测器绝对冻结；真实指标不可篡改；HMAC 审计链 |
 
@@ -57,6 +57,15 @@ nanoRSI 将自进化体系严格划分为三层正交结构：
 ---
 
 ## 5. 持续前沿追踪雷达（每日跟踪维护）
+
+- **2026-09-09 追踪（一手来源核验）**：
+  - **RSIHub——较上次检查新增**：[9 月 8 日合并 `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1) 引入持续研究隔离。[生命周期变更](https://github.com/simple-agent-lab/RSIHub/commit/5dbf7a7d36483f576126336d37aa216022a7650d) 将研究统一为持续会话，允许结束前发布候选，显式结束后再进行密封评测。边界检查和评测阶段仍由框架控制。**启示**：未来 nanoRSI 长时实验应将开发反馈与最终保留集验收分离；目前不足以支持向最小内核加入控制器。
+  - **Anton——仓库有新增活动，所查提交未发现 RSI 机制变化**：[9 月 8 日文档依赖修复](https://github.com/mindsdb/anton/commit/d63624618d8897f50b578dec1969870917465b88) 提高 React 声明版本下限，实际锁定版本保持不变。这属于文档依赖维护，不是智能体学习能力提升的证据，也不适用于 nanoRSI 的标准库运行时。
+  - **SEAL——复查基线，并非新发布**：所查默认分支最新提交仍为 [2025 年 8 月 1 日 `6d9c9f9`](https://github.com/Continual-Intelligence/SEAL/commit/6d9c9f9ee392c6cc618e771f399d436d190f6ca4)。[Self-Adapting Language Models](https://arxiv.org/abs/2506.10943) 通过强化学习生成含训练数据与更新指令的自编辑。参数适配继续置于外部训练契约之后；其他同名 SEAL 论文属于不同项目。
+  - **DGM——复查基线并澄清术语**：所查最新提交仍为 [2025 年 8 月 13 日 `a565fd2`](https://github.com/jennyzzt/dgm/commit/a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2)。[参考实现](https://github.com/jennyzzt/dgm) 描述的是通过编程基准对自修改进行经验验证，而非全局提升的形式化证明。nanoRSI 的验收门禁同样只提供有界的实验证据。
+  - **OpenEvolve——本次新评估的既有修复**：[7 月 18 日 `411fb59`](https://github.com/codelion/openevolve/commit/411fb59c886c18704caaffb611e17cf9e7d824d2) 将布尔标记排除出适应度聚合，防止超时标记抬高失败候选的得分。nanoRSI 的 `parse_evaluation` 已拒绝布尔指标值，布尔约束标记单独保存，无须移植运行时改动。
+  - **ACE——本次新评估的既有进展**：[8 月 24 日 `82709de`](https://github.com/ace-agent/ace/commit/82709de050e1db6e6ef2f07bcb0393560b94992a) 加入并行 ComBEE 提案与 LLM 归并器。[参考项目](https://github.com/ace-agent/ace) 通过增量 Playbook 更新保留上下文。**启示**：未来多提案脚手架实验必须评测归并后的候选；单个提案的质量不能证明归并结果的质量。在具体基准支持增加编排复杂度前，暂缓集成。
+  - **决定**：更新研究记录并修正 DGM 术语。本次检查不足以支持新增运行时依赖或行为变更。上述日期为上游提交日期，并不表示每项都是刚发布的新进展。
 
 - **2026-09-08 跟踪维护**：
   - *TokenRhythm/NeoHorse-1*：基于路由脚手架（Routing Harness）的智能体后训练递归自进化架构（基于 Qwen3.5 的 4B/9B 系列权重）。其核心构建了“评估-选择-更新”闭环：通过多样化模型池分配任务，记录工具交互与执行轨迹，评估能力需求并反哺下一阶段的训练混合配比（Curriculum SFT 与在线策略蒸馏）。指出了面向长程 RSI 时，执行安全性、评估去污染以及脚手架级任务调度的必要前置保障。
