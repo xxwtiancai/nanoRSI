@@ -43,7 +43,7 @@ def decide(
     missing = [name for name in config.required_constraints or [] if not child_constraints.get(name)]
     if missing:
         return GateDecision("inconclusive", "failed constraints: " + ", ".join(missing), delta)
-    if improvement < config.minimum_improvement:
+    if improvement <= 0 or improvement < config.minimum_improvement:
         return GateDecision("rejected", f"improvement below minimum: {improvement:.6f}", delta)
     if parent_heldout is not None and child_heldout is not None:
         old = _metric(parent_heldout, metric)

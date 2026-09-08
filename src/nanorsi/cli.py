@@ -9,196 +9,238 @@ import uuid
 from pathlib import Path
 
 from .config import load_config
-from .evaluator import EvaluationError, run_evaluation
 from .gate import decide
 from .gitops import Git, GitError
-from .hashing import tree_hash
-from .lineage import LineageStore
+from .lineage import LineageStore, artifact
 from .locking import Lock
-from .proposer import ProposalError, load_proposal, run_proposer
+from . import loop
+from .proposer import ProposalError, run_proposer
 from .report import write_report
+from .surface import SurfacePolicy
 from .templates import render_template
 
 
-def _store(root: Path) -> LineageStore:
-    return LineageStore.initialize(root)
-
-
 def _baseline(root: Path) -> dict:
-    config = load_config(root / "nanorsi.toml")
-    git = Git(root)
+    config, git = load_config(root / 'nanorsi.toml'), Git(root)
     git.ensure_repository()
-    store = _store(root)
-    existing = [event for event in store.events() if event.get("decision") == "baseline"]
-    if existing:
-        return existing[0]
-    if not git.ref_exists("HEAD"):
-        commit = git.commit_all("nanoRSI generation 0")
-    else:
-        if not git.is_clean():
-            raise GitError("workspace must be clean before baseline")
-        commit = git.resolve_ref("HEAD")
-    git.tag(commit, "nanorsi/gen-0")
-    with git.worktree("nanorsi/gen-0", root / ".nanorsi/worktrees/baseline") as checkout:
-        gate = run_evaluation(config, checkout, "gate", root / ".nanorsi/baseline-gate.json")
-        heldout = run_evaluation(config, checkout, "heldout", root / ".nanorsi/baseline-heldout.json") if config.evaluator.heldout_enabled else None
-    event = store.append(
-        {
-            "event_type": "generation", "experiment_id": config.experiment.id, "generation": 0,
-            "parent_generation": None, "decision": "baseline", "candidate_commit": commit,
-            "candidate_tree": git.tree_hash(commit), "gate_metrics": gate.metrics,
-            "gate_constraints": gate.constraints, "heldout_metrics": heldout.metrics if heldout else None,
-            "evaluator_fingerprint": tree_hash(root / "evaluator"),
-        }
-    )
-    write_report(root, store.events())
-    return event
+    with Lock(root):
+        store = LineageStore.initialize(root)
+        loop.guard(root, config, store)
+        existing = [e for e in store.events() if e.get('decision') == 'baseline' and 'gate_metrics' in e]
+        if existing:
+            return existing[0]
+        if git.ref_exists('HEAD') and not git.is_clean():
+            raise GitError('workspace must be clean before baseline')
+        commit = git.resolve_ref('HEAD') if git.ref_exists('HEAD') else git.commit_all('Establish a reproducible experiment starting point')
+        if not git.ref_exists('nanorsi/gen-0'):
+            git.tag(commit, 'nanorsi/gen-0')
+        run_dir = root / '.nanorsi' / 'baseline' / uuid.uuid4().hex[:10]
+        contract = loop.identity(root, config)
+        store.append({'event_type': 'baseline_started', 'decision': 'baseline', 'manifest_hash': contract})
+        with git.worktree(commit, root / '.nanorsi/worktrees/baseline') as checkout:
+            split = 'validation' if config.experiment.schema_version == 2 else 'gate'
+            gate = loop.evaluate(root, config, checkout, split, run_dir / 'gate.json', store)
+            heldout = loop.evaluate(root, config, checkout, 'heldout', run_dir / 'heldout.json', store) if config.evaluator.heldout_enabled and config.experiment.schema_version == 1 else None
+        event = store.append({'event_type': 'generation', 'experiment_id': config.experiment.id,
+                              'generation': 0, 'parent_generation': None, 'decision': 'baseline',
+                              'candidate_commit': commit, 'candidate_tree': git.tree_hash(commit),
+                              'gate_metrics': gate.metrics, 'gate_constraints': gate.constraints,
+                              'heldout_metrics': heldout.metrics if heldout else None,
+                              'evaluator_fingerprint': loop.fingerprint(root), 'manifest_hash': contract,
+                              'artifacts': _artifacts(root, run_dir)})
+        write_report(root, store.events())
+        return event
+
+
+def _artifacts(root, directory):
+    return {p.relative_to(directory).as_posix(): artifact(root, p) for p in directory.rglob('*') if p.is_file() and not p.is_symlink()}
 
 
 def _step(root: Path) -> dict:
-    config = load_config(root / "nanorsi.toml")
-    git = Git(root)
-    git.ensure_repository()
-    store = _store(root)
-    store.verify()
-    parent = store.latest_accepted()
-    if parent["generation"] >= config.budget.max_steps:
-        raise RuntimeError("generation budget reached")
-    run_id = uuid.uuid4().hex[:10]
-    run_dir = root / ".nanorsi" / "runs" / run_id
-    generation = parent["generation"] + 1
-    parent_ref = f"nanorsi/gen-{parent['generation']}"
-    worktree = root / ".nanorsi" / "worktrees" / run_id
-    with Lock(root), git.worktree(parent_ref, worktree) as checkout:
-        proposal = run_proposer(
-            config, checkout, run_dir / "proposal",
-            {"goal": config.experiment.goal, "surface": config.surface.allow, "parent_generation": parent["generation"], "gate_metrics": parent.get("gate_metrics")},
-        )
-        if git.changed_paths(checkout, parent_ref):
-            raise ProposalError("proposer modified the parent checkout directly")
+    config, git = load_config(root / 'nanorsi.toml'), Git(root)
+    with Lock(root):
+        store = LineageStore.initialize(root)
+        store.verify()
+        parent = loop.prepare_parent(root, config, git, store)
+        attempt = loop.begin_attempt(root, config, store)
+        run_dir = root / '.nanorsi/runs' / uuid.uuid4().hex[:10]
+        try:
+            event = _attempt(root, config, git, store, parent, attempt, run_dir)
+        except Exception as error:
+            loop.record_proposal(store, run_dir, attempt)
+            store.append({'event_type': 'attempt_failed', 'attempt_id': attempt, 'decision': 'failed',
+                          'reason': str(error), 'artifacts': _artifacts(root, run_dir)})
+            raise
+        finally:
+            write_report(root, store.events())
+        return event
+
+
+def _attempt(root, config, git, store, parent, attempt, run_dir):
+    ref = parent['candidate_commit']
+    with git.worktree(ref, root / '.nanorsi/worktrees' / run_dir.name) as checkout:
+        feedback = loop.train_feedback(root, config, checkout, run_dir, store)
+        store.append({'event_type': 'proposal_started', 'attempt_id': attempt})
+        proposal, proposer_commit = _propose(root, config, git, checkout, parent, attempt, feedback, run_dir)
+        loop.record_proposal(store, run_dir, attempt)
+        if git.changed_paths(checkout, ref):
+            raise ProposalError('proposer modified the parent checkout directly')
+        if not proposal.diff.strip():
+            return store.append({'event_type': 'attempt_failed', 'attempt_id': attempt, 'decision': 'no-op',
+                                 'reason': 'proposal changes no files', 'proposer_harness_commit': proposer_commit,
+                                 'artifacts': _artifacts(root, run_dir)})
         git.apply_diff(checkout, proposal.diff)
-        changed = git.changed_paths(checkout, parent_ref)
-        from .surface import SurfacePolicy
+        changed = git.changed_paths(checkout, ref)
         SurfacePolicy(config.surface.allow, config.surface.deny).validate_paths(changed)
-        evaluator_fingerprint = tree_hash(checkout / "evaluator")
-        if evaluator_fingerprint != parent.get("evaluator_fingerprint"):
-            raise RuntimeError("candidate evaluator differs from baseline")
-        commit = git.commit_paths(checkout, changed, f"nanoRSI generation {generation}")
-        gate = run_evaluation(config, checkout, "gate", run_dir / "gate.json")
-        heldout = None
-        if config.evaluator.heldout_enabled:
-            heldout = run_evaluation(config, checkout, "heldout", run_dir / "heldout.json")
-        return _record_generation(root, config, git, store, parent, proposal, changed, commit, gate, heldout, generation)
+        if loop.fingerprint(checkout) != parent.get('evaluator_fingerprint'):
+            raise RuntimeError('candidate evaluator differs from baseline')
+        if loop.identity(checkout, config) != parent['manifest_hash']:
+            raise RuntimeError('candidate changed frozen experiment contract')
+        commit = git.commit_paths(checkout, changed, 'Measure a proposed improvement before adoption')
+        split = 'validation' if config.experiment.schema_version == 2 else 'gate'
+        if config.experiment.schema_version == 2:
+            with git.worktree(ref, root / '.nanorsi/worktrees' / (run_dir.name + '-parent')) as old:
+                measured_parent = loop.evaluate(root, config, old, split, run_dir / 'parent.json', store)
+        else:
+            measured_parent = None
+        gate = loop.evaluate(root, config, checkout, split, run_dir / 'gate.json', store)
+        heldout = loop.evaluate(root, config, checkout, 'heldout', run_dir / 'heldout.json', store) if config.evaluator.heldout_enabled and config.experiment.schema_version == 1 else None
+        return _record(root, config, git, store, parent, proposal, changed, commit, gate, heldout,
+                       attempt, proposer_commit, measured_parent, run_dir)
 
 
-def _record_generation(root, config, git, store, parent, proposal, changed, commit, gate, heldout, generation):
-    decision = decide(
-        config.gate,
-        parent={"score": parent["gate_metrics"][config.evaluator.primary_metric]},
-        child={"score": gate.metrics[config.evaluator.primary_metric], "constraints": gate.constraints},
-        parent_heldout={"score": parent["heldout_metrics"][config.evaluator.primary_metric]} if parent.get("heldout_metrics") else None,
-        child_heldout={"score": heldout.metrics[config.evaluator.primary_metric]} if heldout else None,
-        metric=config.evaluator.primary_metric,
-        direction=config.evaluator.direction,
-    )
-    event = store.append(
-        {
-            "event_type": "generation", "experiment_id": config.experiment.id,
-            "generation": generation, "parent_generation": parent["generation"],
-            "decision": decision.decision, "reason": decision.reason,
-            "candidate_commit": commit, "candidate_tree": git.tree_hash(commit),
-            "changed_paths": changed, "hypothesis": proposal.hypothesis,
-            "gate_metrics": gate.metrics, "gate_constraints": gate.constraints,
-            "heldout_metrics": heldout.metrics if heldout else None,
-        }
-    )
-    if decision.decision == "accepted":
-        git.tag(commit, f"nanorsi/gen-{generation}")
-    write_report(root, store.events())
+def _propose(root, config, git, checkout, parent, attempt, feedback, run_dir):
+    proposer_commit = git.resolve_ref('nanorsi/gen-0') if config.experiment.arm == 'frozen' else parent['candidate_commit']
+    context = {'goal': config.experiment.goal, 'surface': config.surface.allow, 'attempt_id': attempt,
+               'parent_generation': parent['generation'], 'parent_commit': parent['candidate_commit'],
+               'proposer_harness_commit': proposer_commit, 'agent': config.agent, 'train_results': feedback}
+    if config.experiment.schema_version == 1:
+        context['gate_metrics'] = parent['gate_metrics']
+        return run_proposer(config, checkout, run_dir / 'proposal', context), proposer_commit
+    with git.worktree(proposer_commit, root / '.nanorsi/worktrees' / (run_dir.name + '-proposer')) as source:
+        return run_proposer(config, checkout, run_dir / 'proposal', context,
+                            extra_env={'NANORSI_PROPOSER_HARNESS': str(source)}), proposer_commit
+
+
+def _record(root, config, git, store, parent, proposal, changed, commit, gate, heldout,
+            attempt, proposer_commit, measured_parent, run_dir):
+    decision = decide(config.gate, parent=measured_parent.metrics if measured_parent else parent['gate_metrics'],
+                      child={**gate.metrics, 'constraints': gate.constraints},
+                      parent_heldout=parent.get('heldout_metrics'), child_heldout=heldout.metrics if heldout else None,
+                      metric=config.evaluator.primary_metric, direction=config.evaluator.direction)
+    generation = parent['generation'] + (decision.decision == 'accepted')
+    event = store.append({'event_type': 'generation', 'experiment_id': config.experiment.id,
+                          'attempt_id': attempt, 'generation': generation, 'parent_generation': parent['generation'],
+                          'decision': decision.decision, 'reason': decision.reason, 'candidate_commit': commit,
+                          'candidate_tree': git.tree_hash(commit), 'changed_paths': changed, 'hypothesis': proposal.hypothesis,
+                          'gate_metrics': gate.metrics, 'gate_constraints': gate.constraints,
+                          'heldout_metrics': heldout.metrics if heldout else None,
+                          'evaluator_fingerprint': parent['evaluator_fingerprint'], 'manifest_hash': parent['manifest_hash'],
+                          'proposer_harness_commit': proposer_commit, 'artifacts': _artifacts(root, run_dir)})
+    if decision.decision == 'accepted':
+        git.tag(commit, f'nanorsi/gen-{generation}')
     return event
 
 
-def _evaluate(root: Path, split: str, ref: str | None) -> dict:
-    config = load_config(root / "nanorsi.toml")
-    git = Git(root)
-    git.ensure_repository()
-    store = _store(root)
-    selected = ref or f"nanorsi/gen-{store.latest_accepted()['generation']}"
-    result_path = root / ".nanorsi" / f"evaluation-{split}-{uuid.uuid4().hex[:8]}.json"
-    with git.worktree(selected, root / ".nanorsi/worktrees/evaluate") as checkout:
-        result = run_evaluation(config, checkout, split, result_path)
-    return {"metrics": result.metrics, "constraints": result.constraints, "split": split}
+def _evaluate(root, split, ref):
+    config, store = load_config(root / 'nanorsi.toml'), LineageStore.initialize(root)
+    with Lock(root):
+        loop.guard(root, config, store, search=True)
+        if config.experiment.schema_version == 2 and split not in {'train', 'validation'}:
+            raise RuntimeError('v2 evaluate permits train/validation; use freeze then final-test for test')
+        selected = ref or store.latest_accepted()['candidate_commit']
+        output = root / '.nanorsi' / f'evaluation-{uuid.uuid4().hex}.json'
+        with Git(root).worktree(selected, root / '.nanorsi/worktrees/evaluate') as checkout:
+            result = loop.evaluate(root, config, checkout, split, output, store)
+        return {'metrics': result.metrics, 'constraints': result.constraints, 'split': split}
 
 
-def _recover(root: Path) -> None:
-    lock = root / ".nanorsi" / "lock"
+def _recover(root):
+    lock = root / '.nanorsi/lock'
     if lock.exists():
-        process_id = int(lock.read_text(encoding="utf-8").strip())
         try:
-            os.kill(process_id, 0)
+            os.kill(int(lock.read_text().strip()), 0)
         except ProcessLookupError:
             lock.unlink()
         else:
-            raise RuntimeError("lock is still owned by a live process")
-    git = Git(root)
-    git.ensure_repository()
-    git.prune_worktrees()
-    worktrees = root / ".nanorsi" / "worktrees"
-    if worktrees.exists():
-        shutil.rmtree(worktrees)
+            raise RuntimeError('lock is still owned by a live process')
+    with Lock(root):
+        git = Git(root)
+        git.prune_worktrees()
+        worktrees = root / '.nanorsi/worktrees'
+        if worktrees.exists():
+            shutil.rmtree(worktrees)
+        git.prune_worktrees()
+        store = LineageStore.initialize(root)
+        store.recover_attempts()
+        for event in store.events():
+            if event.get('decision') == 'accepted' and not git.ref_exists(f"nanorsi/gen-{event['generation']}"):
+                git.tag(event['candidate_commit'], f"nanorsi/gen-{event['generation']}")
 
 
-def _parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="nanorsi")
-    sub = parser.add_subparsers(dest="command", required=True)
-    new = sub.add_parser("new")
-    new.add_argument("template", choices=["artifact", "harness", "model"])
-    new.add_argument("destination", type=Path)
-    new.add_argument("--goal", default="Improve the target")
-    for name in ["baseline", "step", "report", "verify", "doctor", "recover"]:
+def _parser():
+    parser = argparse.ArgumentParser(prog='nanorsi')
+    sub = parser.add_subparsers(dest='command', required=True)
+    new = sub.add_parser('new')
+    new.add_argument('template', choices=['artifact', 'harness', 'model', 'skills'])
+    new.add_argument('destination', type=Path)
+    new.add_argument('--goal', default='Improve the target')
+    for name in ['baseline', 'step', 'run', 'report', 'verify', 'doctor', 'recover', 'freeze', 'final-test', 'evaluate']:
         command = sub.add_parser(name)
-        command.add_argument("--workspace", type=Path, default=Path.cwd())
-    evaluate = sub.add_parser("evaluate")
-    evaluate.add_argument("--workspace", type=Path, default=Path.cwd())
-    evaluate.add_argument("--split", default="gate", choices=["train", "gate", "heldout"])
-    evaluate.add_argument("--ref")
+        command.add_argument('--workspace', type=Path, default=Path.cwd())
+        if name in {'freeze', 'final-test'}:
+            command.add_argument('--repeats', type=int, default=3 if name == 'freeze' else None)
+        if name == 'evaluate':
+            command.add_argument('--split', default='gate', choices=['train', 'gate', 'heldout', 'validation'])
+            command.add_argument('--ref')
     return parser
 
 
-def main(argv: list[str] | None = None) -> int:
+def _dispatch(args, root):
+    command = args.command
+    if command == 'baseline':
+        return _baseline(root)
+    if command == 'step':
+        event = _step(root)
+        return {key: event[key] for key in ['attempt_id', 'generation', 'decision', 'candidate_tree', 'reason'] if key in event}
+    if command == 'evaluate':
+        return _evaluate(root, args.split, args.ref)
+    if command == 'run':
+        _baseline(root)
+        return loop.bounded_run(root, load_config(root / 'nanorsi.toml'), _step)
+    if command in {'freeze', 'final-test'}:
+        fn = loop.freeze if command == 'freeze' else loop.final_test
+        return fn(root, load_config(root / 'nanorsi.toml'), args.repeats)
+    if command == 'report':
+        return write_report(root, LineageStore.initialize(root).verify())
+    if command == 'verify':
+        LineageStore.initialize(root).verify()
+        return 'lineage: ok'
+    if command == 'recover':
+        _recover(root)
+        return 'recovered stale nanoRSI state'
+    from .doctor import doctor
+    ok, output = doctor(root)
+    if not ok:
+        raise RuntimeError(output.strip())
+    return output
+
+
+def main(argv=None):
     args = _parser().parse_args(argv)
-    if args.command == "new":
-        files = render_template(args.template, args.destination, goal=args.goal)
-        Git(args.destination).init()
-        print(f"created {args.template} workspace with {len(files)} files")
-        return 0
-    root = args.workspace.resolve()
     try:
-        if args.command == "baseline":
-            print(json.dumps(_baseline(root), sort_keys=True))
-        elif args.command == "step":
-            event = _step(root)
-            print(json.dumps({"generation": event["generation"], "decision": event["decision"], "candidate_tree": event["candidate_tree"]}, sort_keys=True))
-        elif args.command == "evaluate":
-            print(json.dumps(_evaluate(root, args.split, args.ref), sort_keys=True))
-        elif args.command == "report":
-            print(write_report(root, _store(root).verify()))
-        elif args.command == "verify":
-            _store(root).verify()
-            print("lineage: ok")
-        elif args.command == "recover":
-            _recover(root)
-            print("recovered stale nanoRSI state")
-        elif args.command == "doctor":
-            from .doctor import doctor
-            ok, output = doctor(root)
-            print(output, end="")
-            return 0 if ok else 1
+        if args.command == 'new':
+            files = render_template(args.template, args.destination, goal=args.goal)
+            Git(args.destination).init()
+            print(f'created {args.template} workspace with {len(files)} files')
+            return 0
+        result = _dispatch(args, args.workspace.resolve())
+        print(json.dumps(result, sort_keys=True) if isinstance(result, (dict, list)) else str(result))
+        return 0
     except Exception as error:
-        print(f"nanorsi: {error}", file=sys.stderr)
+        print(f'nanorsi: {error}', file=sys.stderr)
         return 1
-    return 0
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     raise SystemExit(main())

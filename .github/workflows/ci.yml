@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'feat/**']
   pull_request:
 
 jobs:
@@ -27,3 +27,6 @@ jobs:
           nanorsi baseline --workspace ./artifact-demo
           nanorsi step --workspace ./artifact-demo
           nanorsi verify --workspace ./artifact-demo
+          nanorsi new skills ./skills-contract
+          test -f ./skills-contract/tasks/manifest.json
+          test -f ./skills-contract/adapters/model.py

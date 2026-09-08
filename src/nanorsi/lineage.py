@@ -7,6 +7,19 @@ from hashlib import sha256
 from pathlib import Path
 
 from .hashing import canonical_hash
+from .paths import contained_path
+
+
+def artifact(root: Path, path: Path) -> dict:
+    relative = path.resolve().relative_to(root.resolve()).as_posix()
+    return {"path": relative, "sha256": sha256(path.read_bytes()).hexdigest()}
+
+
+def write_json(path: Path, payload: dict | list) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(payload, sort_keys=True, indent=2, allow_nan=False), encoding="utf-8")
+    temporary.replace(path)
 
 
 class LineageError(RuntimeError):
@@ -64,7 +77,7 @@ class LineageStore:
             raise LineageError("lineage has no accepted generation")
         return accepted[-1]
 
-    def verify(self) -> list[str]:
+    def verify(self) -> list[dict]:
         events = self.events()
         current_parent = None
         for expected, event in enumerate(events, 1):
@@ -73,12 +86,27 @@ class LineageStore:
             if expected == 1 and event.get("decision") != "baseline":
                 raise LineageError("first lineage event must be the baseline")
             if event.get("decision") == "baseline":
-                current_parent = event["generation"]
+                current_parent = event.get("generation", current_parent)
             if event.get("decision") == "accepted":
                 if current_parent is None or event.get("parent_generation") != current_parent:
                     raise LineageError(f"generation {event.get('generation')} has an invalid parent")
                 current_parent = event["generation"]
+            for ref in event.get("artifacts", {}).values():
+                try:
+                    path = contained_path(self.path.parent, ref["path"])
+                    if sha256(path.read_bytes()).hexdigest() != ref["sha256"]:
+                        raise ValueError("hash mismatch")
+                except (OSError, KeyError, ValueError) as error:
+                    raise LineageError(f"invalid artifact in event {expected}: {error}") from error
         return events
+
+    def recover_attempts(self) -> None:
+        events = self.verify()
+        done = {e.get("attempt_id") for e in events if e.get("event_type") in {"generation", "attempt_failed"}}
+        for event in events:
+            if event.get("event_type") == "attempt_started" and event["attempt_id"] not in done:
+                self.append({"event_type": "attempt_failed", "attempt_id": event["attempt_id"],
+                             "decision": "interrupted", "reason": "previous process stopped before completion"})
 
 
 Lineage = LineageStore

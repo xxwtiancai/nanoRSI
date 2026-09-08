@@ -1,0 +1,1103 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "expected_files": {
+        "fixtures/train-001/status.txt": "Workspace: train/train-source-00\nEvidence: train-001\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "train-source-00",
+      "input_files": {
+        "fixtures/train-001/status.txt": "Workspace: train/train-source-00\nEvidence: train-001\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/train-001/status.txt and use the Evidence line for train-001. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "train",
+      "task_id": "train-001"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-002/status.txt": "Workspace: train/train-source-00\nEvidence: train-002\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "train-source-00",
+      "input_files": {
+        "fixtures/train-002/status.txt": "Workspace: train/train-source-00\nEvidence: train-002\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/train-002/status.txt and use the Evidence line for train-002. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "train",
+      "task_id": "train-002"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-003/status.txt": "Workspace: train/train-source-00\nEvidence: train-003\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "train-source-00",
+      "input_files": {
+        "fixtures/train-003/status.txt": "Workspace: train/train-source-00\nEvidence: train-003\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/train-003/status.txt and use the Evidence line for train-003. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "train",
+      "task_id": "train-003"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-004/notes.md": "# Review train-004\nSource group: train-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "train-source-01",
+      "input_files": {
+        "fixtures/train-004/notes.md": "# Review train-004\nSource group: train-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/train-004/notes.md, confirm the Source group identifies train-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "train",
+      "task_id": "train-004"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-005/notes.md": "# Review train-005\nSource group: train-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "train-source-01",
+      "input_files": {
+        "fixtures/train-005/notes.md": "# Review train-005\nSource group: train-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/train-005/notes.md, confirm the Source group identifies train-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "train",
+      "task_id": "train-005"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-006/notes.md": "# Review train-006\nSource group: train-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "train-source-01",
+      "input_files": {
+        "fixtures/train-006/notes.md": "# Review train-006\nSource group: train-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/train-006/notes.md, confirm the Source group identifies train-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "train",
+      "task_id": "train-006"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-007/checklist.txt": "group=train-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "train-source-02",
+      "input_files": {
+        "fixtures/train-007/checklist.txt": "group=train-source-02\nkeep: source inspected\nremove: temporary note for train-007\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/train-007/checklist.txt, locate the line containing the task evidence `train-007` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "train",
+      "task_id": "train-007"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-008/checklist.txt": "group=train-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "train-source-02",
+      "input_files": {
+        "fixtures/train-008/checklist.txt": "group=train-source-02\nkeep: source inspected\nremove: temporary note for train-008\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/train-008/checklist.txt, locate the line containing the task evidence `train-008` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "train",
+      "task_id": "train-008"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-009/checklist.txt": "group=train-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "train-source-02",
+      "input_files": {
+        "fixtures/train-009/checklist.txt": "group=train-source-02\nkeep: source inspected\nremove: temporary note for train-009\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/train-009/checklist.txt, locate the line containing the task evidence `train-009` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "train",
+      "task_id": "train-009"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-010/record.txt": "Record: train-010\nAnchor: verified\nEvidence: train-010\nGroup: train-source-03\nEnd: true\n"
+      },
+      "group_id": "train-source-03",
+      "input_files": {
+        "fixtures/train-010/record.txt": "Record: train-010\nAnchor: verified\nGroup: train-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/train-010/record.txt and insert `Evidence: train-010` immediately before its Group line (train-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "train",
+      "task_id": "train-010"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-011/record.txt": "Record: train-011\nAnchor: verified\nEvidence: train-011\nGroup: train-source-03\nEnd: true\n"
+      },
+      "group_id": "train-source-03",
+      "input_files": {
+        "fixtures/train-011/record.txt": "Record: train-011\nAnchor: verified\nGroup: train-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/train-011/record.txt and insert `Evidence: train-011` immediately before its Group line (train-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "train",
+      "task_id": "train-011"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-012/record.txt": "Record: train-012\nAnchor: verified\nEvidence: train-012\nGroup: train-source-03\nEnd: true\n"
+      },
+      "group_id": "train-source-03",
+      "input_files": {
+        "fixtures/train-012/record.txt": "Record: train-012\nAnchor: verified\nGroup: train-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/train-012/record.txt and insert `Evidence: train-012` immediately before its Group line (train-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "train",
+      "task_id": "train-012"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-013/settings.ini": "[task]\nid=train-013\ngroup=train-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "train-source-04",
+      "input_files": {
+        "fixtures/train-013/settings.ini": "[task]\nid=train-013\ngroup=train-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/train-013/settings.ini, verify the id is train-013 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "train",
+      "task_id": "train-013"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-014/settings.ini": "[task]\nid=train-014\ngroup=train-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "train-source-04",
+      "input_files": {
+        "fixtures/train-014/settings.ini": "[task]\nid=train-014\ngroup=train-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/train-014/settings.ini, verify the id is train-014 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "train",
+      "task_id": "train-014"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-015/settings.ini": "[task]\nid=train-015\ngroup=train-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "train-source-04",
+      "input_files": {
+        "fixtures/train-015/settings.ini": "[task]\nid=train-015\ngroup=train-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/train-015/settings.ini, verify the id is train-015 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "train",
+      "task_id": "train-015"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-016/sequence.txt": "start: train-016\nstep: publish\nstep: prepare\ngroup: train-source-05\n"
+      },
+      "group_id": "train-source-05",
+      "input_files": {
+        "fixtures/train-016/sequence.txt": "start: train-016\nstep: prepare\nstep: publish\ngroup: train-source-05\n"
+      },
+      "instruction": "In fixtures/train-016/sequence.txt, use the group line (train-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "train",
+      "task_id": "train-016"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-017/sequence.txt": "start: train-017\nstep: publish\nstep: prepare\ngroup: train-source-05\n"
+      },
+      "group_id": "train-source-05",
+      "input_files": {
+        "fixtures/train-017/sequence.txt": "start: train-017\nstep: prepare\nstep: publish\ngroup: train-source-05\n"
+      },
+      "instruction": "In fixtures/train-017/sequence.txt, use the group line (train-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "train",
+      "task_id": "train-017"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-018/sequence.txt": "start: train-018\nstep: publish\nstep: prepare\ngroup: train-source-05\n"
+      },
+      "group_id": "train-source-05",
+      "input_files": {
+        "fixtures/train-018/sequence.txt": "start: train-018\nstep: prepare\nstep: publish\ngroup: train-source-05\n"
+      },
+      "instruction": "In fixtures/train-018/sequence.txt, use the group line (train-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "train",
+      "task_id": "train-018"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-019/index.txt": "lookup=train-019\nlabel=ready\n",
+        "fixtures/train-019/source.txt": "entry=train-019\nlabel=ready\ngroup=train-source-06\n"
+      },
+      "group_id": "train-source-06",
+      "input_files": {
+        "fixtures/train-019/index.txt": "lookup=train-019\nlabel=old\n",
+        "fixtures/train-019/source.txt": "entry=train-019\nlabel=old\ngroup=train-source-06\n"
+      },
+      "instruction": "Inspect fixtures/train-019/source.txt and fixtures/train-019/index.txt; their shared lookup is train-019. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "train",
+      "task_id": "train-019"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-020/index.txt": "lookup=train-020\nlabel=ready\n",
+        "fixtures/train-020/source.txt": "entry=train-020\nlabel=ready\ngroup=train-source-06\n"
+      },
+      "group_id": "train-source-06",
+      "input_files": {
+        "fixtures/train-020/index.txt": "lookup=train-020\nlabel=old\n",
+        "fixtures/train-020/source.txt": "entry=train-020\nlabel=old\ngroup=train-source-06\n"
+      },
+      "instruction": "Inspect fixtures/train-020/source.txt and fixtures/train-020/index.txt; their shared lookup is train-020. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "train",
+      "task_id": "train-020"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-021/index.txt": "lookup=train-021\nlabel=ready\n",
+        "fixtures/train-021/source.txt": "entry=train-021\nlabel=ready\ngroup=train-source-06\n"
+      },
+      "group_id": "train-source-06",
+      "input_files": {
+        "fixtures/train-021/index.txt": "lookup=train-021\nlabel=old\n",
+        "fixtures/train-021/source.txt": "entry=train-021\nlabel=old\ngroup=train-source-06\n"
+      },
+      "instruction": "Inspect fixtures/train-021/source.txt and fixtures/train-021/index.txt; their shared lookup is train-021. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "train",
+      "task_id": "train-021"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-022/metadata.yaml": "task: train-022\ngroup: train-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "train-source-07",
+      "input_files": {
+        "fixtures/train-022/metadata.yaml": "task: train-022\ngroup: train-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/train-022/metadata.yaml using task train-022 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "train",
+      "task_id": "train-022"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-023/metadata.yaml": "task: train-023\ngroup: train-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "train-source-07",
+      "input_files": {
+        "fixtures/train-023/metadata.yaml": "task: train-023\ngroup: train-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/train-023/metadata.yaml using task train-023 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "train",
+      "task_id": "train-023"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-024/metadata.yaml": "task: train-024\ngroup: train-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "train-source-07",
+      "input_files": {
+        "fixtures/train-024/metadata.yaml": "task: train-024\ngroup: train-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/train-024/metadata.yaml using task train-024 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "train",
+      "task_id": "train-024"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-025/summary.md": "# train-025\nGroup: train-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "train-source-08",
+      "input_files": {
+        "fixtures/train-025/summary.md": "# train-025\nGroup: train-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/train-025/summary.md; confirm the heading names train-025, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "train",
+      "task_id": "train-025"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-026/summary.md": "# train-026\nGroup: train-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "train-source-08",
+      "input_files": {
+        "fixtures/train-026/summary.md": "# train-026\nGroup: train-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/train-026/summary.md; confirm the heading names train-026, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "train",
+      "task_id": "train-026"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-027/summary.md": "# train-027\nGroup: train-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "train-source-08",
+      "input_files": {
+        "fixtures/train-027/summary.md": "# train-027\nGroup: train-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/train-027/summary.md; confirm the heading names train-027, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "train",
+      "task_id": "train-027"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-028/table.txt": "task | train-028\ngroup | train-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "train-source-09",
+      "input_files": {
+        "fixtures/train-028/table.txt": "task | train-028\ngroup | train-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/train-028/table.txt, use the task row for train-028 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "train",
+      "task_id": "train-028"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-029/table.txt": "task | train-029\ngroup | train-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "train-source-09",
+      "input_files": {
+        "fixtures/train-029/table.txt": "task | train-029\ngroup | train-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/train-029/table.txt, use the task row for train-029 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "train",
+      "task_id": "train-029"
+    },
+    {
+      "expected_files": {
+        "fixtures/train-030/table.txt": "task | train-030\ngroup | train-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "train-source-09",
+      "input_files": {
+        "fixtures/train-030/table.txt": "task | train-030\ngroup | train-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/train-030/table.txt, use the task row for train-030 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "train",
+      "task_id": "train-030"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-031/status.txt": "Workspace: validation/validation-source-00\nEvidence: validation-031\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "validation-source-00",
+      "input_files": {
+        "fixtures/validation-031/status.txt": "Workspace: validation/validation-source-00\nEvidence: validation-031\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/validation-031/status.txt and use the Evidence line for validation-031. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "validation",
+      "task_id": "validation-031"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-032/status.txt": "Workspace: validation/validation-source-00\nEvidence: validation-032\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "validation-source-00",
+      "input_files": {
+        "fixtures/validation-032/status.txt": "Workspace: validation/validation-source-00\nEvidence: validation-032\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/validation-032/status.txt and use the Evidence line for validation-032. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "validation",
+      "task_id": "validation-032"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-033/status.txt": "Workspace: validation/validation-source-00\nEvidence: validation-033\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "validation-source-00",
+      "input_files": {
+        "fixtures/validation-033/status.txt": "Workspace: validation/validation-source-00\nEvidence: validation-033\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/validation-033/status.txt and use the Evidence line for validation-033. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "validation",
+      "task_id": "validation-033"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-034/notes.md": "# Review validation-034\nSource group: validation-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "validation-source-01",
+      "input_files": {
+        "fixtures/validation-034/notes.md": "# Review validation-034\nSource group: validation-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/validation-034/notes.md, confirm the Source group identifies validation-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "validation",
+      "task_id": "validation-034"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-035/notes.md": "# Review validation-035\nSource group: validation-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "validation-source-01",
+      "input_files": {
+        "fixtures/validation-035/notes.md": "# Review validation-035\nSource group: validation-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/validation-035/notes.md, confirm the Source group identifies validation-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "validation",
+      "task_id": "validation-035"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-036/notes.md": "# Review validation-036\nSource group: validation-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "validation-source-01",
+      "input_files": {
+        "fixtures/validation-036/notes.md": "# Review validation-036\nSource group: validation-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/validation-036/notes.md, confirm the Source group identifies validation-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "validation",
+      "task_id": "validation-036"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-037/checklist.txt": "group=validation-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "validation-source-02",
+      "input_files": {
+        "fixtures/validation-037/checklist.txt": "group=validation-source-02\nkeep: source inspected\nremove: temporary note for validation-037\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/validation-037/checklist.txt, locate the line containing the task evidence `validation-037` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "validation",
+      "task_id": "validation-037"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-038/checklist.txt": "group=validation-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "validation-source-02",
+      "input_files": {
+        "fixtures/validation-038/checklist.txt": "group=validation-source-02\nkeep: source inspected\nremove: temporary note for validation-038\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/validation-038/checklist.txt, locate the line containing the task evidence `validation-038` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "validation",
+      "task_id": "validation-038"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-039/checklist.txt": "group=validation-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "validation-source-02",
+      "input_files": {
+        "fixtures/validation-039/checklist.txt": "group=validation-source-02\nkeep: source inspected\nremove: temporary note for validation-039\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/validation-039/checklist.txt, locate the line containing the task evidence `validation-039` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "validation",
+      "task_id": "validation-039"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-040/record.txt": "Record: validation-040\nAnchor: verified\nEvidence: validation-040\nGroup: validation-source-03\nEnd: true\n"
+      },
+      "group_id": "validation-source-03",
+      "input_files": {
+        "fixtures/validation-040/record.txt": "Record: validation-040\nAnchor: verified\nGroup: validation-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/validation-040/record.txt and insert `Evidence: validation-040` immediately before its Group line (validation-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "validation",
+      "task_id": "validation-040"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-041/record.txt": "Record: validation-041\nAnchor: verified\nEvidence: validation-041\nGroup: validation-source-03\nEnd: true\n"
+      },
+      "group_id": "validation-source-03",
+      "input_files": {
+        "fixtures/validation-041/record.txt": "Record: validation-041\nAnchor: verified\nGroup: validation-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/validation-041/record.txt and insert `Evidence: validation-041` immediately before its Group line (validation-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "validation",
+      "task_id": "validation-041"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-042/record.txt": "Record: validation-042\nAnchor: verified\nEvidence: validation-042\nGroup: validation-source-03\nEnd: true\n"
+      },
+      "group_id": "validation-source-03",
+      "input_files": {
+        "fixtures/validation-042/record.txt": "Record: validation-042\nAnchor: verified\nGroup: validation-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/validation-042/record.txt and insert `Evidence: validation-042` immediately before its Group line (validation-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "validation",
+      "task_id": "validation-042"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-043/settings.ini": "[task]\nid=validation-043\ngroup=validation-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "validation-source-04",
+      "input_files": {
+        "fixtures/validation-043/settings.ini": "[task]\nid=validation-043\ngroup=validation-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/validation-043/settings.ini, verify the id is validation-043 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "validation",
+      "task_id": "validation-043"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-044/settings.ini": "[task]\nid=validation-044\ngroup=validation-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "validation-source-04",
+      "input_files": {
+        "fixtures/validation-044/settings.ini": "[task]\nid=validation-044\ngroup=validation-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/validation-044/settings.ini, verify the id is validation-044 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "validation",
+      "task_id": "validation-044"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-045/settings.ini": "[task]\nid=validation-045\ngroup=validation-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "validation-source-04",
+      "input_files": {
+        "fixtures/validation-045/settings.ini": "[task]\nid=validation-045\ngroup=validation-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/validation-045/settings.ini, verify the id is validation-045 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "validation",
+      "task_id": "validation-045"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-046/sequence.txt": "start: validation-046\nstep: publish\nstep: prepare\ngroup: validation-source-05\n"
+      },
+      "group_id": "validation-source-05",
+      "input_files": {
+        "fixtures/validation-046/sequence.txt": "start: validation-046\nstep: prepare\nstep: publish\ngroup: validation-source-05\n"
+      },
+      "instruction": "In fixtures/validation-046/sequence.txt, use the group line (validation-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "validation",
+      "task_id": "validation-046"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-047/sequence.txt": "start: validation-047\nstep: publish\nstep: prepare\ngroup: validation-source-05\n"
+      },
+      "group_id": "validation-source-05",
+      "input_files": {
+        "fixtures/validation-047/sequence.txt": "start: validation-047\nstep: prepare\nstep: publish\ngroup: validation-source-05\n"
+      },
+      "instruction": "In fixtures/validation-047/sequence.txt, use the group line (validation-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "validation",
+      "task_id": "validation-047"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-048/sequence.txt": "start: validation-048\nstep: publish\nstep: prepare\ngroup: validation-source-05\n"
+      },
+      "group_id": "validation-source-05",
+      "input_files": {
+        "fixtures/validation-048/sequence.txt": "start: validation-048\nstep: prepare\nstep: publish\ngroup: validation-source-05\n"
+      },
+      "instruction": "In fixtures/validation-048/sequence.txt, use the group line (validation-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "validation",
+      "task_id": "validation-048"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-049/index.txt": "lookup=validation-049\nlabel=ready\n",
+        "fixtures/validation-049/source.txt": "entry=validation-049\nlabel=ready\ngroup=validation-source-06\n"
+      },
+      "group_id": "validation-source-06",
+      "input_files": {
+        "fixtures/validation-049/index.txt": "lookup=validation-049\nlabel=old\n",
+        "fixtures/validation-049/source.txt": "entry=validation-049\nlabel=old\ngroup=validation-source-06\n"
+      },
+      "instruction": "Inspect fixtures/validation-049/source.txt and fixtures/validation-049/index.txt; their shared lookup is validation-049. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "validation",
+      "task_id": "validation-049"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-050/index.txt": "lookup=validation-050\nlabel=ready\n",
+        "fixtures/validation-050/source.txt": "entry=validation-050\nlabel=ready\ngroup=validation-source-06\n"
+      },
+      "group_id": "validation-source-06",
+      "input_files": {
+        "fixtures/validation-050/index.txt": "lookup=validation-050\nlabel=old\n",
+        "fixtures/validation-050/source.txt": "entry=validation-050\nlabel=old\ngroup=validation-source-06\n"
+      },
+      "instruction": "Inspect fixtures/validation-050/source.txt and fixtures/validation-050/index.txt; their shared lookup is validation-050. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "validation",
+      "task_id": "validation-050"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-051/index.txt": "lookup=validation-051\nlabel=ready\n",
+        "fixtures/validation-051/source.txt": "entry=validation-051\nlabel=ready\ngroup=validation-source-06\n"
+      },
+      "group_id": "validation-source-06",
+      "input_files": {
+        "fixtures/validation-051/index.txt": "lookup=validation-051\nlabel=old\n",
+        "fixtures/validation-051/source.txt": "entry=validation-051\nlabel=old\ngroup=validation-source-06\n"
+      },
+      "instruction": "Inspect fixtures/validation-051/source.txt and fixtures/validation-051/index.txt; their shared lookup is validation-051. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "validation",
+      "task_id": "validation-051"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-052/metadata.yaml": "task: validation-052\ngroup: validation-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "validation-source-07",
+      "input_files": {
+        "fixtures/validation-052/metadata.yaml": "task: validation-052\ngroup: validation-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/validation-052/metadata.yaml using task validation-052 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "validation",
+      "task_id": "validation-052"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-053/metadata.yaml": "task: validation-053\ngroup: validation-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "validation-source-07",
+      "input_files": {
+        "fixtures/validation-053/metadata.yaml": "task: validation-053\ngroup: validation-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/validation-053/metadata.yaml using task validation-053 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "validation",
+      "task_id": "validation-053"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-054/metadata.yaml": "task: validation-054\ngroup: validation-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "validation-source-07",
+      "input_files": {
+        "fixtures/validation-054/metadata.yaml": "task: validation-054\ngroup: validation-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/validation-054/metadata.yaml using task validation-054 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "validation",
+      "task_id": "validation-054"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-055/summary.md": "# validation-055\nGroup: validation-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "validation-source-08",
+      "input_files": {
+        "fixtures/validation-055/summary.md": "# validation-055\nGroup: validation-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/validation-055/summary.md; confirm the heading names validation-055, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "validation",
+      "task_id": "validation-055"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-056/summary.md": "# validation-056\nGroup: validation-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "validation-source-08",
+      "input_files": {
+        "fixtures/validation-056/summary.md": "# validation-056\nGroup: validation-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/validation-056/summary.md; confirm the heading names validation-056, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "validation",
+      "task_id": "validation-056"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-057/summary.md": "# validation-057\nGroup: validation-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "validation-source-08",
+      "input_files": {
+        "fixtures/validation-057/summary.md": "# validation-057\nGroup: validation-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/validation-057/summary.md; confirm the heading names validation-057, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "validation",
+      "task_id": "validation-057"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-058/table.txt": "task | validation-058\ngroup | validation-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "validation-source-09",
+      "input_files": {
+        "fixtures/validation-058/table.txt": "task | validation-058\ngroup | validation-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/validation-058/table.txt, use the task row for validation-058 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "validation",
+      "task_id": "validation-058"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-059/table.txt": "task | validation-059\ngroup | validation-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "validation-source-09",
+      "input_files": {
+        "fixtures/validation-059/table.txt": "task | validation-059\ngroup | validation-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/validation-059/table.txt, use the task row for validation-059 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "validation",
+      "task_id": "validation-059"
+    },
+    {
+      "expected_files": {
+        "fixtures/validation-060/table.txt": "task | validation-060\ngroup | validation-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "validation-source-09",
+      "input_files": {
+        "fixtures/validation-060/table.txt": "task | validation-060\ngroup | validation-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/validation-060/table.txt, use the task row for validation-060 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "validation",
+      "task_id": "validation-060"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-061/status.txt": "Workspace: test/test-source-00\nEvidence: test-061\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "test-source-00",
+      "input_files": {
+        "fixtures/test-061/status.txt": "Workspace: test/test-source-00\nEvidence: test-061\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/test-061/status.txt and use the Evidence line for test-061. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "test",
+      "task_id": "test-061"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-062/status.txt": "Workspace: test/test-source-00\nEvidence: test-062\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "test-source-00",
+      "input_files": {
+        "fixtures/test-062/status.txt": "Workspace: test/test-source-00\nEvidence: test-062\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/test-062/status.txt and use the Evidence line for test-062. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "test",
+      "task_id": "test-062"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-063/status.txt": "Workspace: test/test-source-00\nEvidence: test-063\nStatus: ready\nOwner: local-runner\n"
+      },
+      "group_id": "test-source-00",
+      "input_files": {
+        "fixtures/test-063/status.txt": "Workspace: test/test-source-00\nEvidence: test-063\nStatus: draft\nOwner: local-runner\n"
+      },
+      "instruction": "Open fixtures/test-063/status.txt and use the Evidence line for test-063. Change only the value on the Status line from draft to ready; preserve every other line.",
+      "split": "test",
+      "task_id": "test-063"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-064/notes.md": "# Review test-064\nSource group: test-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "test-source-01",
+      "input_files": {
+        "fixtures/test-064/notes.md": "# Review test-064\nSource group: test-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/test-064/notes.md, confirm the Source group identifies test-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "test",
+      "task_id": "test-064"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-065/notes.md": "# Review test-065\nSource group: test-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "test-source-01",
+      "input_files": {
+        "fixtures/test-065/notes.md": "# Review test-065\nSource group: test-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/test-065/notes.md, confirm the Source group identifies test-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "test",
+      "task_id": "test-065"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-066/notes.md": "# Review test-066\nSource group: test-source-01\nDecision: pending\nEvidence checked: yes\n"
+      },
+      "group_id": "test-source-01",
+      "input_files": {
+        "fixtures/test-066/notes.md": "# Review test-066\nSource group: test-source-01\nDecision: pending\n"
+      },
+      "instruction": "Inspect fixtures/test-066/notes.md, confirm the Source group identifies test-source-01, then append exactly `Evidence checked: yes` as the final line. Do not alter the existing lines.",
+      "split": "test",
+      "task_id": "test-066"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-067/checklist.txt": "group=test-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "test-source-02",
+      "input_files": {
+        "fixtures/test-067/checklist.txt": "group=test-source-02\nkeep: source inspected\nremove: temporary note for test-067\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/test-067/checklist.txt, locate the line containing the task evidence `test-067` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "test",
+      "task_id": "test-067"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-068/checklist.txt": "group=test-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "test-source-02",
+      "input_files": {
+        "fixtures/test-068/checklist.txt": "group=test-source-02\nkeep: source inspected\nremove: temporary note for test-068\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/test-068/checklist.txt, locate the line containing the task evidence `test-068` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "test",
+      "task_id": "test-068"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-069/checklist.txt": "group=test-source-02\nkeep: source inspected\nkeep: final line retained\n"
+      },
+      "group_id": "test-source-02",
+      "input_files": {
+        "fixtures/test-069/checklist.txt": "group=test-source-02\nkeep: source inspected\nremove: temporary note for test-069\nkeep: final line retained\n"
+      },
+      "instruction": "In fixtures/test-069/checklist.txt, locate the line containing the task evidence `test-069` and remove that one temporary note. Keep both keep lines and their order unchanged.",
+      "split": "test",
+      "task_id": "test-069"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-070/record.txt": "Record: test-070\nAnchor: verified\nEvidence: test-070\nGroup: test-source-03\nEnd: true\n"
+      },
+      "group_id": "test-source-03",
+      "input_files": {
+        "fixtures/test-070/record.txt": "Record: test-070\nAnchor: verified\nGroup: test-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/test-070/record.txt and insert `Evidence: test-070` immediately before its Group line (test-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "test",
+      "task_id": "test-070"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-071/record.txt": "Record: test-071\nAnchor: verified\nEvidence: test-071\nGroup: test-source-03\nEnd: true\n"
+      },
+      "group_id": "test-source-03",
+      "input_files": {
+        "fixtures/test-071/record.txt": "Record: test-071\nAnchor: verified\nGroup: test-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/test-071/record.txt and insert `Evidence: test-071` immediately before its Group line (test-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "test",
+      "task_id": "test-071"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-072/record.txt": "Record: test-072\nAnchor: verified\nEvidence: test-072\nGroup: test-source-03\nEnd: true\n"
+      },
+      "group_id": "test-source-03",
+      "input_files": {
+        "fixtures/test-072/record.txt": "Record: test-072\nAnchor: verified\nGroup: test-source-03\nEnd: true\n"
+      },
+      "instruction": "Read fixtures/test-072/record.txt and insert `Evidence: test-072` immediately before its Group line (test-source-03). Use the Anchor line as evidence and leave all other text untouched.",
+      "split": "test",
+      "task_id": "test-072"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-073/settings.ini": "[task]\nid=test-073\ngroup=test-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "test-source-04",
+      "input_files": {
+        "fixtures/test-073/settings.ini": "[task]\nid=test-073\ngroup=test-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/test-073/settings.ini, verify the id is test-073 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "test",
+      "task_id": "test-073"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-074/settings.ini": "[task]\nid=test-074\ngroup=test-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "test-source-04",
+      "input_files": {
+        "fixtures/test-074/settings.ini": "[task]\nid=test-074\ngroup=test-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/test-074/settings.ini, verify the id is test-074 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "test",
+      "task_id": "test-074"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-075/settings.ini": "[task]\nid=test-075\ngroup=test-source-04\npriority=high\nmode=review\n"
+      },
+      "group_id": "test-source-04",
+      "input_files": {
+        "fixtures/test-075/settings.ini": "[task]\nid=test-075\ngroup=test-source-04\npriority=normal\nmode=review\n"
+      },
+      "instruction": "In fixtures/test-075/settings.ini, verify the id is test-075 and the mode is review. Change only priority from normal to high, retaining the INI layout.",
+      "split": "test",
+      "task_id": "test-075"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-076/sequence.txt": "start: test-076\nstep: publish\nstep: prepare\ngroup: test-source-05\n"
+      },
+      "group_id": "test-source-05",
+      "input_files": {
+        "fixtures/test-076/sequence.txt": "start: test-076\nstep: prepare\nstep: publish\ngroup: test-source-05\n"
+      },
+      "instruction": "In fixtures/test-076/sequence.txt, use the group line (test-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "test",
+      "task_id": "test-076"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-077/sequence.txt": "start: test-077\nstep: publish\nstep: prepare\ngroup: test-source-05\n"
+      },
+      "group_id": "test-source-05",
+      "input_files": {
+        "fixtures/test-077/sequence.txt": "start: test-077\nstep: prepare\nstep: publish\ngroup: test-source-05\n"
+      },
+      "instruction": "In fixtures/test-077/sequence.txt, use the group line (test-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "test",
+      "task_id": "test-077"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-078/sequence.txt": "start: test-078\nstep: publish\nstep: prepare\ngroup: test-source-05\n"
+      },
+      "group_id": "test-source-05",
+      "input_files": {
+        "fixtures/test-078/sequence.txt": "start: test-078\nstep: prepare\nstep: publish\ngroup: test-source-05\n"
+      },
+      "instruction": "In fixtures/test-078/sequence.txt, use the group line (test-source-05) to identify the record and swap the two step lines so publish precedes prepare. Preserve start and group.",
+      "split": "test",
+      "task_id": "test-078"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-079/index.txt": "lookup=test-079\nlabel=ready\n",
+        "fixtures/test-079/source.txt": "entry=test-079\nlabel=ready\ngroup=test-source-06\n"
+      },
+      "group_id": "test-source-06",
+      "input_files": {
+        "fixtures/test-079/index.txt": "lookup=test-079\nlabel=old\n",
+        "fixtures/test-079/source.txt": "entry=test-079\nlabel=old\ngroup=test-source-06\n"
+      },
+      "instruction": "Inspect fixtures/test-079/source.txt and fixtures/test-079/index.txt; their shared lookup is test-079. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "test",
+      "task_id": "test-079"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-080/index.txt": "lookup=test-080\nlabel=ready\n",
+        "fixtures/test-080/source.txt": "entry=test-080\nlabel=ready\ngroup=test-source-06\n"
+      },
+      "group_id": "test-source-06",
+      "input_files": {
+        "fixtures/test-080/index.txt": "lookup=test-080\nlabel=old\n",
+        "fixtures/test-080/source.txt": "entry=test-080\nlabel=old\ngroup=test-source-06\n"
+      },
+      "instruction": "Inspect fixtures/test-080/source.txt and fixtures/test-080/index.txt; their shared lookup is test-080. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "test",
+      "task_id": "test-080"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-081/index.txt": "lookup=test-081\nlabel=ready\n",
+        "fixtures/test-081/source.txt": "entry=test-081\nlabel=ready\ngroup=test-source-06\n"
+      },
+      "group_id": "test-source-06",
+      "input_files": {
+        "fixtures/test-081/index.txt": "lookup=test-081\nlabel=old\n",
+        "fixtures/test-081/source.txt": "entry=test-081\nlabel=old\ngroup=test-source-06\n"
+      },
+      "instruction": "Inspect fixtures/test-081/source.txt and fixtures/test-081/index.txt; their shared lookup is test-081. Update the label field from old to ready in both files and leave group data intact.",
+      "split": "test",
+      "task_id": "test-081"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-082/metadata.yaml": "task: test-082\ngroup: test-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "test-source-07",
+      "input_files": {
+        "fixtures/test-082/metadata.yaml": "task: test-082\ngroup: test-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/test-082/metadata.yaml using task test-082 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "test",
+      "task_id": "test-082"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-083/metadata.yaml": "task: test-083\ngroup: test-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "test-source-07",
+      "input_files": {
+        "fixtures/test-083/metadata.yaml": "task: test-083\ngroup: test-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/test-083/metadata.yaml using task test-083 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "test",
+      "task_id": "test-083"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-084/metadata.yaml": "task: test-084\ngroup: test-source-07\nlabels:\n  state: pending\n  reviewed: true\n"
+      },
+      "group_id": "test-source-07",
+      "input_files": {
+        "fixtures/test-084/metadata.yaml": "task: test-084\ngroup: test-source-07\nlabels:\n  state: pending\n  reviewed: false\n"
+      },
+      "instruction": "Review fixtures/test-084/metadata.yaml using task test-084 and change only labels.reviewed from false to true. Keep the YAML indentation and pending state unchanged.",
+      "split": "test",
+      "task_id": "test-084"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-085/summary.md": "# test-085\nGroup: test-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "test-source-08",
+      "input_files": {
+        "fixtures/test-085/summary.md": "# test-085\nGroup: test-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/test-085/summary.md; confirm the heading names test-085, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "test",
+      "task_id": "test-085"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-086/summary.md": "# test-086\nGroup: test-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "test-source-08",
+      "input_files": {
+        "fixtures/test-086/summary.md": "# test-086\nGroup: test-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/test-086/summary.md; confirm the heading names test-086, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "test",
+      "task_id": "test-086"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-087/summary.md": "# test-087\nGroup: test-source-08\n## Finding\nReady for review.\n"
+      },
+      "group_id": "test-source-08",
+      "input_files": {
+        "fixtures/test-087/summary.md": "# test-087\nGroup: test-source-08\n## Finding\nNeeds review.\n"
+      },
+      "instruction": "Open fixtures/test-087/summary.md; confirm the heading names test-087, then replace the sentence under Finding with `Ready for review.`. Keep headings and group text unchanged.",
+      "split": "test",
+      "task_id": "test-087"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-088/table.txt": "task | test-088\ngroup | test-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "test-source-09",
+      "input_files": {
+        "fixtures/test-088/table.txt": "task | test-088\ngroup | test-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/test-088/table.txt, use the task row for test-088 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "test",
+      "task_id": "test-088"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-089/table.txt": "task | test-089\ngroup | test-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "test-source-09",
+      "input_files": {
+        "fixtures/test-089/table.txt": "task | test-089\ngroup | test-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/test-089/table.txt, use the task row for test-089 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "test",
+      "task_id": "test-089"
+    },
+    {
+      "expected_files": {
+        "fixtures/test-090/table.txt": "task | test-090\ngroup | test-source-09\nstate | ready\nowner | local-runner\n"
+      },
+      "group_id": "test-source-09",
+      "input_files": {
+        "fixtures/test-090/table.txt": "task | test-090\ngroup | test-source-09\nstate | draft\nowner | local-runner\n"
+      },
+      "instruction": "In fixtures/test-090/table.txt, use the task row for test-090 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
+      "split": "test",
+      "task_id": "test-090"
+    }
+  ]
+}

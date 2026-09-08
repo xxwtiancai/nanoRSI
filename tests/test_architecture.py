@@ -17,6 +17,7 @@ FORBIDDEN_MODULES = {
 EXPECTED_MODULES = {
     "__init__.py",
     "cli.py",
+    "loop.py",
     "config.py",
     "paths.py",
     "hashing.py",
@@ -70,7 +71,7 @@ class ArchitectureTests(unittest.TestCase):
         allowed_stdlib = {
             "argparse", "ast", "contextlib", "dataclasses", "datetime", "difflib",
             "enum", "fnmatch", "hashlib", "hmac", "importlib", "json", "math",
-            "os", "pathlib", "re", "secrets", "shlex", "shutil", "stat", "subprocess", "sys",
+            "os", "pathlib", "random", "re", "secrets", "shlex", "shutil", "stat", "subprocess", "sys",
             "tempfile", "time", "tomllib", "typing", "unittest", "uuid",
         }
         for path in sorted(SRC.glob("*.py")):

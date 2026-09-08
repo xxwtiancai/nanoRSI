@@ -1,45 +1,35 @@
 # nanoRSI Charter
 
-nanoRSI is a nano-scale, evidence-gated kernel for Recursive Self-Improvement (RSI)
-experiments. It is intentionally not an agent platform, model-training framework,
-benchmark service, or distributed evolution system.
+nanoRSI is a minimal, hackable lab for improving agent skills and harnesses under a fixed model and a measurable budget.
+
+## Goal
+
+Make one complete experiment easy to read, run and inspect: execute training tasks, learn from their outcomes, propose a bounded skill patch, compare parent and candidate on validation tasks, retain the better version, freeze choices and evaluate unseen tasks.
+
+The primary audience is developers studying or improving their own agents. Success means a correct, traceable experiment; a negative or inconclusive empirical result is valid.
+
+## Three separate questions
+
+1. Do skills help a fixed agent? Compare no-skills and initial-skills conditions.
+2. Do evolved skills improve unseen tasks? Compare frozen initial and selected versions, with search and deployment costs disclosed.
+3. Does recursive reuse contribute? Compare frozen and self-use proposer harnesses under matching task/model/budget conditions.
+
+The implementation provides these protocols. Mocked tests do not establish live model performance or prove recursive improvement.
 
 ## Scope
 
-nanoRSI v0.1 implements one complete, auditable improvement generation:
-
-```text
-goal intake
-  -> target surface
-  -> baseline snapshot and evaluation
-  -> one external proposal
-  -> patch validation
-  -> child snapshot
-  -> canonical evaluation
-  -> accept/reject/inconclusive gate
-  -> append-only lineage
-  -> rollback/report/verify
-```
-
-The core uses one authoritative parent, one child candidate at a time, one external
-proposer command, one canonical evaluator command, and single-parent hill climbing.
+- One accepted parent and one candidate at a time.
+- Plain skill files, a small reference task/propose Runner and an external model bridge.
+- Exact Git snapshots, protected evaluation/configuration, explicit patch decisions and JSONL evidence.
+- Train/validation/final-test separation; finite attempts, episodes, time and output.
+- A standard-library core of at most 2,500 lines.
 
 ## Non-goals
 
-- populations, islands, MAP-Elites, or multi-parent archives;
-- distributed evaluation;
-- plugin systems or dynamic operator registries;
-- hosted services, dashboards, or marketplaces;
-- vendor-specific model adapters in core;
-- model-weight training in core;
-- concurrent candidates in one experiment;
-- indefinite background evolution.
+Populations or islands, distributed evaluation, plugin registries, hosted services, dashboards, marketplaces, weight training, background daemons, and universal Agent compatibility are outside this version. A hardened sandbox is an external execution concern, not something claimed by local worktrees.
 
-## Foundation rules
+Legacy artifact/harness demos and the external model-training contract remain compatible examples. They do not compete with the skills-first development focus.
 
-1. Candidate code never mutates the evaluator, configuration, or lineage.
-2. Evaluation runs against an exact Git tree.
-3. Scores enter lineage only through the nanoRSI mechanism.
-4. A rejected or inconclusive candidate never becomes the parent.
-5. Model-layer training is always an explicitly configured external command.
-6. The core remains small, standard-library-only, and test-enforced.
+## Rules
+
+Candidates cannot change experiment scoring or model settings. Test results never influence promotion. Failed/no-op attempts and unknown costs are retained. Skills must be useful procedural artifacts rather than benchmark answers. Live claims require real experiments, versioned tasks and matching comparison budgets.

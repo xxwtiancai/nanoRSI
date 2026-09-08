@@ -20,6 +20,10 @@ PROTECTED_PATTERNS = [
     "reports",
     "runs/**",
     "runs",
+    "tasks/**",
+    "tasks",
+    "adapters/**",
+    "adapters",
 ]
 
 

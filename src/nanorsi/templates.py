@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import shutil
+import json
 from importlib.resources import files
 from pathlib import Path
 
@@ -24,7 +25,7 @@ def _copy(source, destination: Path) -> None:
 
 
 def render_template(name: str, destination: Path, *, goal: str) -> list[str]:
-    if name not in {"artifact", "harness", "model"}:
+    if name not in {"artifact", "harness", "model", "skills"}:
         raise TemplateError(f"unknown template: {name}")
     root = files("nanorsi").joinpath("templates", name)
     if destination.exists():
@@ -32,6 +33,6 @@ def render_template(name: str, destination: Path, *, goal: str) -> list[str]:
     destination.mkdir(parents=True)
     _copy(root, destination)
     config_path = destination / "nanorsi.toml"
-    config = config_path.read_text(encoding="utf-8").replace("{{GOAL}}", goal)
+    config = config_path.read_text(encoding="utf-8").replace('"{{GOAL}}"', json.dumps(goal, ensure_ascii=False))
     config_path.write_text(config, encoding="utf-8")
     return sorted(path.relative_to(destination).as_posix() for path in destination.rglob("*") if path.is_file())

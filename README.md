@@ -1,168 +1,99 @@
 # nanoRSI
 
 [![CI](https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml/badge.svg)](https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml)
-[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Runtime dependencies](https://img.shields.io/badge/runtime_dependencies-0-4C1?logo=python&logoColor=white)](pyproject.toml)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-2596BE.svg)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue)](https://www.python.org/)
 
-**nanoRSI** is a nano-scale, evidence-gated experiment kernel for Recursive Self-Improvement (RSI). It creates small workspaces where an artifact, harness, or model-training recipe can be proposed, evaluated against a frozen contract, and accepted only when the evidence justifies it.
+**A minimal, hackable lab for improving agent skills and harnesses under a fixed model and a measurable budget.**
 
-It is deliberately **not** an autonomous superintelligence runtime. nanoRSI is the smallest complete control loop: one parent, one candidate, one evaluator, one decision, and one auditable lineage.
+nanoRSI runs a small experiment: execute training tasks, propose a skill patch, compare exact parent/candidate snapshots on validation tasks, keep or reject it, then freeze the experiment before final testing. Model weights stay fixed. The core uses Python's standard library and Git; no database, server, plugin registry or distributed scheduler.
 
-![nanoRSI evidence loop](docs/assets/nanorsi-loop.svg)
-
-## Why nanoRSI?
-
-Most RSI tools either provide a large research platform or a tiny improvement loop without trustworthy evaluation. nanoRSI takes a different position:
-
-- **Complete enough to be real**: baseline, proposal, patch validation, exact Git candidate, evaluator, gate, lineage, report, verification, and rollback boundary are all included.
-- **Small enough to understand**: one experiment, one authoritative parent, one child candidate, one proposer, one evaluator, single-parent hill climbing.
-- **Evidence before claims**: scores are bound to candidate, evaluator, split, and gate identities.
-- **No hidden execution**: external commands run as argv subprocesses with filtered environment and timeouts.
-- **Standard library only**: no runtime dependencies, no database, no service, no plugin loader.
-
-![RSI layers](docs/assets/nanorsi-layers.svg)
+[中文说明](README.zh-CN.md)
 
 ## Install
 
 ```bash
-git clone https://github.com/xxwtiancai/nanoRSI.git
-cd nanoRSI
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
 ```
 
-Requirements: Python 3.11 or newer and Git. Docker is not required for the bundled offline demos.
+Python 3.11+ and Git are required. The reference skills runner uses a configured model command; a small OpenAI-compatible HTTP bridge is included. A compatible local model server can use no key. Hosted endpoints may charge for calls.
 
-## 60-second demo
+## Run a skills experiment
 
 ```bash
-nanorsi new artifact ./artifact-demo --goal "Find the maximum value"
+nanorsi new skills ./skills-lab --goal "Improve reliable file editing"
+```
+
+Edit `skills-lab/nanorsi.toml` **before baseline**. Set `[agent].model`, `base_url`, and an absolute external `api_key_file` if authentication is needed. Alternatively replace `model_command` with your JSON-protocol bridge. The placeholder model intentionally requires configuration. Model settings, task data, evaluator and bridge files become fixed at baseline.
+
+```bash
+nanorsi doctor --workspace ./skills-lab
+nanorsi baseline --workspace ./skills-lab
+nanorsi run --workspace ./skills-lab
+nanorsi report --workspace ./skills-lab
+nanorsi freeze --workspace ./skills-lab --repeats 3
+nanorsi final-test --workspace ./skills-lab
+nanorsi verify --workspace ./skills-lab
+python examples/compare.py ./skills-lab/reports/final.json
+```
+
+The starter contains 90 deterministic local file-editing **protocol fixtures**, grouped into 30 train, 30 validation and 30 test tasks. They exercise inspection, constrained edits and verification; they are not a public benchmark. A proposal may improve, fail or make no change. We do not promise positive gains.
+
+The default allows changes only to `target/agent/skills/**`. The reference runner loads `inspect`, `edit` and `verify` skills, offers list/read/write/final actions, records actual skill hashes, and creates a fresh temporary task workspace for every execution. It never executes model-written shell commands. Editable skills are instructions in this starter; script execution and retrieval systems are not implemented.
+
+## Experiment controls
+
+- **One parent, one candidate:** rejected, failed and unchanged attempts consume the attempt budget; only strictly better valid candidates become parents.
+- **Three data roles:** train results provide feedback; validation selects candidates; final-test runs only after freeze and cannot promote a candidate.
+- **Two proposer modes:** `arm = "frozen"` uses the initial harness to propose changes; `arm = "self-use"` uses the latest accepted harness. Both edit the current parent. Separate workspaces are required for comparison arms.
+- **Recorded evidence:** exact commits, evaluator/experiment fingerprints, task outcomes, skill hashes, proposal/trace artifacts, nullable usage and decision reasons.
+- **Bounded execution:** attempts, reserved task episodes, timeouts, model turns and captured output. Missing dollar/token usage is unknown, never free. Dollar totals are observational, not a hard spending cap.
+- **Fixed final panel:** freeze pins repeats (1–10). Final testing compares initial skills, no skills and selected skills. Completed panels are reused on rerun; interrupted panels are retained and explicitly flagged instead of silently retrying for a better score.
+
+With 30 validation tasks, five attempts require up to 350 search episodes (30 baseline + five × [4 train + 30 parent + 30 candidate]); the default search cap is 400. Final testing with three repeats reserves 270 additional episodes. Proposal model calls are recorded separately. Configure smaller task panels and budgets for initial checks.
+
+To compare methods, copy the starter before baseline, change only arm/seed, configure the same model and task data, and freeze all choices before examining test results. `examples/compare.py` reports paired task-macro scores, per-arm results, observed costs and coverage. Independent evolution runs and repeated deployments are distinct units of evidence.
+
+## Offline compatibility demo
+
+```bash
+nanorsi new artifact ./artifact-demo
 nanorsi baseline --workspace ./artifact-demo
 nanorsi step --workspace ./artifact-demo
-nanorsi report --workspace ./artifact-demo
 nanorsi verify --workspace ./artifact-demo
 ```
 
-The artifact template starts with an intentionally weak `best()` function. A mock proposer submits a bounded diff, the frozen evaluator checks gate and heldout cases, and the candidate is accepted only after the evaluator improves.
-
-Example `nanorsi step` output:
-
-```json
-{
-  "candidate_tree": "b15855acdad1bbc48a51c1324d432c4dadc35d61",
-  "decision": "accepted",
-  "generation": 1
-}
-```
-
-The generated `reports/report.md` shows both generations, parent links, gate scores, heldout scores, candidate tree hashes, and the final decision.
+Legacy `artifact` and `harness` are explicitly scripted offline demos. The legacy `model` template remains an external training contract; it does not train weights in the core. Their historical `heldout` split participates in selection and is **not** a final-test set. Schema-v2 experiments require fresh workspaces.
 
 ## Commands
 
-| Command | Purpose |
-| --- | --- |
-| `nanorsi new artifact PATH` | Create an offline artifact-improvement experiment |
-| `nanorsi new harness PATH` | Create a prompt/policy experiment with private scoring |
-| `nanorsi new model PATH` | Create an external model-training experiment contract |
-| `nanorsi doctor` | Check config, Git, commands, and execution posture |
-| `nanorsi baseline` | Snapshot and evaluate generation zero |
-| `nanorsi step` | Propose, validate, evaluate, and gate one child |
-| `nanorsi evaluate` | Evaluate a selected ref and split |
-| `nanorsi report` | Write deterministic JSON and Markdown reports |
-| `nanorsi verify` | Verify sequence, HMAC receipts, and accepted parent chain |
-| `nanorsi recover` | Remove stale lock/worktree state after a dead process |
+`new`, `doctor`, `baseline`, `step`, `run`, `evaluate`, `report`, `freeze`, `final-test`, `verify`, `recover`.
 
-All commands accept `--workspace PATH`; the default is the current directory.
-
-## RSI surfaces
-
-| Surface | Included in v0.1 | Typical target |
-| --- | --- | --- |
-| Artifact | Fully runnable offline accepted/rejected cycle | algorithm, kernel, document, report |
-| Harness | Offline mock target, public statement/private rubric, accepted cycle | prompt, policy, skill, memory, tool config |
-| Model | External command contract, doctor, evaluator, safety fields | training recipe, dataset builder, adapter runner |
-
-Model training is intentionally outside the core. nanoRSI renders and validates the contract; the user supplies the training command and compute environment.
+Use `--workspace PATH` for experiment commands. For v2 manual evaluation, specify `--split train` or `--split validation`. `recover` reconciles interrupted attempts and stale local worktrees; it is not a sandbox or a remote job manager.
 
 ## Trust boundary
 
-The following are never valid candidate mutation targets:
-
-```text
-evaluator/
-proposer/
-nanorsi.toml
-lineage.jsonl
-.nanorsi/
-reports/
-accepted refs and score receipts
-```
-
-Every candidate is evaluated in a detached Git worktree. The evaluator fingerprint must match generation zero. Scores enter `lineage.jsonl` only through nanoRSI and are authenticated with a local HMAC receipt key.
-
-### Safety expectations
-
-- nanoRSI filters obvious credential-like environment variables from subprocesses.
-- Evaluation and proposal commands use argv arrays, never shell strings.
-- Commands have explicit timeouts.
-- One lock prevents concurrent candidates in one experiment.
-- A killed step leaves the accepted parent unchanged.
-- Host execution remains the caller's responsibility; use a container or sandbox for untrusted proposers, evaluators, and target runners.
-
-See [SECURITY.md](SECURITY.md) before connecting nanoRSI to untrusted models or external services.
-
-## Project layout
-
-```text
-src/nanorsi/
-  cli.py          command dispatch and one-step orchestration
-  config.py       strict TOML validation
-  surface.py      mutable-surface policy
-  gitops.py       worktrees, patches, commits, and tags
-  proposer.py     external proposal contract
-  evaluator.py    canonical evaluator subprocess and schema
-  gate.py         accepted / rejected / inconclusive decisions
-  lineage.py      append-only HMAC-protected JSONL
-  locking.py      one active operation per experiment
-  doctor.py       local preflight diagnostics
-  templates/      artifact, harness, and model starters
-```
+The default is **trusted local execution**. Worktrees, mutation allowlists and HMAC receipts protect version consistency, not filesystem secrecy against code running as the same OS user. Candidate Python can otherwise read local data or keys. Use a separately configured container/VM/service for untrusted harness code or genuine private-label evaluation. No hardened container adapter is bundled. See [SECURITY.md](SECURITY.md).
 
 ## Development
 
 ```bash
-python -m unittest discover -v
-python -m pip install -e .
-nanorsi doctor --workspace ./artifact-demo
+PYTHONPATH=src python -m unittest discover -v
+python -m compileall -q src examples tests
 ```
 
-CI runs the same standard-library test suite on Python 3.11. Architecture tests enforce the nano budget: no core file over 300 lines, no function over 50 lines, total core under 2,500 lines, and no runtime third-party imports.
-
-## Roadmap
-
-The core v0.1 surface is intentionally fixed. Likely post-v0.1 extensions include:
-
-- population and island search as separate examples rather than core modules;
-- additional evaluator examples;
-- optional container adapter;
-- richer statistical comparison and repeated evaluation;
-- a JSON export API for external dashboards.
-
-These will not compromise the frozen evaluator, protected lineage, or exact candidate identity.
+Tests include mocked model-command and local HTTP fixtures, the multi-round lifecycle and frozen/self-use hash checks. These prove protocol behavior, not live model performance. Architecture tests preserve the 2,500-line core budget, 300-line files and 50-line functions. There are no runtime third-party imports.
 
 ## Documentation
 
-- [Skills / Harness v0.2 design proposal — not yet implemented (Chinese)](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md)
-- [Skills / Harness evaluation research, 2026-09-08 (Chinese)](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md)
-- [RSI Research Dossier & Architecture Survey](docs/research/RSI_SURVEY.md)
 - [Kernel specification](docs/specification.md)
 - [Project charter](docs/PROJECT_CHARTER.md)
-- [Security policy](SECURITY.md)
-- [Contributing guide](CONTRIBUTING.md)
-- [Chinese README](README.zh-CN.md)
-
-## License
+- [v0.2 design and remaining research work (Chinese)](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md)
+- [Paper evaluation research, 2026-09-08 (Chinese)](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md)
+- [Implementation plan](docs/superpowers/plans/2026-09-09-skills-harness.md)
+- [Example protocol and comparison tools](examples/README.md)
+- [Changelog](CHANGELOG.md)
+- [Earlier RSI survey](docs/research/RSI_SURVEY.md)
 
 Apache-2.0. See [LICENSE](LICENSE).

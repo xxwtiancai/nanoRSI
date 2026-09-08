@@ -1,6 +1,6 @@
 # nanoRSI v0.2：最小 Skills / Harness 改进实验平台
 
-状态：设计提案，尚未实施；现行 v0.1 规范仍描述当前代码。
+状态：已按本设计实施 v0.2 的本地实验协议与参考 Runner；当前发布合同见 [内核规范](../specification.md)。真实模型收益、多 seed 外部 benchmark 复测和加固隔离适配器仍是后续实验。下文保留设计时的取舍与原始代码缺口，实施记录见 [计划](../superpowers/plans/2026-09-09-skills-harness.md)。
 日期：2026-09-08。代码基线：`5b719c644e6e0f6c62e0e9c23ebb9c91721f5c87`。
 依据：[论文评估调研](../research/HARNESS_EVALUATION_2026-09-08.zh-CN.md)。
 
@@ -264,10 +264,10 @@ task/propose 两种模式共用被研究的 skills 和工作流，只改变输�
 8. 最终报告同时显示全部配置/seed、原始逐题结果、搜索预算和部署预算；不根据 test 选择最佳组。
 9. 原有 artifact/harness/model 合同 smoke 测试保留；规范与 architecture inventory 一致。
 
-## 14. 本次验证和交付范围
+## 14. 设计调研阶段的验证（2026-09-08）
 
 代码检查及已有测试基线：Python 3.13，`PYTHONPATH=src PATH=/opt/miniconda3/bin:$PATH /opt/miniconda3/bin/python3.13 -m unittest discover -q`，31 tests 通过。系统默认 Python 3.9 不满足项目 Python 3.11+ 要求；使用合适解释器后通过。
 
 另在临时工作区验证两个现存问题：有效第二次 step 报 `candidate evaluator differs from baseline`；将主指标和 evaluator 同步设为 accuracy 后 step 报 `'accuracy'`。因此已有测试通过不等于多轮路径已经可用。这两个问题列入 M0，本次没有修改实现。
 
-本次交付为研究与设计文档；未运行付费模型实验、未复现论文结果、未改变现有执行行为。剩余最大不确定性是具体模型/任务上是否产生稳定收益，需要 M1/M2 的真实试验回答。
+该阶段只交付研究与设计文档；当时未运行付费模型实验、未复现论文结果、未改变执行行为。2026-09-09 的实现与验证记录见实施计划。具体模型/任务是否产生稳定收益，仍需真实试验回答。
