@@ -58,6 +58,12 @@ nanoRSI 将自进化体系严格划分为三层正交结构：
 
 ## 5. 持续前沿追踪雷达（每日跟踪维护）
 
+- **2026-09-10 跟踪（与 9 月 9 日默认分支基线比较）**：
+  - **Anton——仅文档依赖变更**：[9 月 9 日 `22f7414`](https://github.com/mindsdb/anton/commit/22f74142ad5dffc81b1f85232b0b7ce5a3df451d) 在 `docs/package.json` 及其锁文件中将 Docusaurus 相关包更新至 3.10.2。所查差异没有改变智能体学习机制，不足以支持移植 nanoRSI 运行时改动。
+  - **未变化的参考分支头**：[RSIHub `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1)、[SEAL `6d9c9f9`](https://github.com/Continual-Intelligence/SEAL/commit/6d9c9f9ee392c6cc618e771f399d436d190f6ca4)、[DGM `a565fd2`](https://github.com/jennyzzt/dgm/commit/a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2)、[OpenEvolve `411fb59`](https://github.com/algorithmicsuperintelligence/openevolve/commit/411fb59c886c18704caaffb611e17cf9e7d824d2) 和 [ACE `82709de`](https://github.com/ace-agent/ace/commit/82709de050e1db6e6ef2f07bcb0393560b94992a)。OpenEvolve 当前规范仓库地址为 `algorithmicsuperintelligence/openevolve`，原 `codelion` 地址会重定向至此。分支头未变化并不代表其他分支或论文中没有新工作。
+  - **对 nanoRSI v0.2 的适用性**：9 月 9 日讨论的独立最终测试边界已有具体本地对应：`run` 使用训练与验证数据，`freeze` 结束搜索，`final-test` 比较初始技能、无技能及选定候选。`tests/test_v2_lifecycle.py` 检查搜索期间不评测测试分区、最终测试必须先冻结、冻结后禁止继续迭代。这些确定性夹具验证的是协议，并非真实模型提升或针对恶意进程的安全边界。
+  - **决定**：保留现有评测控制，在实测实验支持前暂缓引入 ACE 式并行提案与归并编排。SEAL 仍作为外部模型训练参考，DGM 仍作为经验性自修改参考。所查变更没有提供足以支持今日运行时修改的新机制。
+
 - **2026-09-09 追踪（一手来源核验）**：
   - **RSIHub——较上次检查新增**：[9 月 8 日合并 `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1) 引入持续研究隔离。[生命周期变更](https://github.com/simple-agent-lab/RSIHub/commit/5dbf7a7d36483f576126336d37aa216022a7650d) 将研究统一为持续会话，允许结束前发布候选，显式结束后再进行密封评测。边界检查和评测阶段仍由框架控制。**启示**：未来 nanoRSI 长时实验应将开发反馈与最终保留集验收分离；目前不足以支持向最小内核加入控制器。
   - **Anton——仓库有新增活动，所查提交未发现 RSI 机制变化**：[9 月 8 日文档依赖修复](https://github.com/mindsdb/anton/commit/d63624618d8897f50b578dec1969870917465b88) 提高 React 声明版本下限，实际锁定版本保持不变。这属于文档依赖维护，不是智能体学习能力提升的证据，也不适用于 nanoRSI 的标准库运行时。
