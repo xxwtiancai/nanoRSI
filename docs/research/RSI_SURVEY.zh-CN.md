@@ -58,6 +58,12 @@ nanoRSI 将自进化体系严格划分为三层正交结构：
 
 ## 5. 持续前沿追踪雷达（每日跟踪维护）
 
+- **2026-09-12 跟踪（默认分支之外的发布与开放提案）**：
+  - **证据范围**：六个默认分支头均与下方 9 月 11 日快照一致。另查各仓库最新发布及最近更新的两条开放拉取请求；这只是有界活动抽样，不是对所有分支的全面审查。
+  - **Anton——预发布与未合并的可靠性工作**：[v2.26.9.11.1rc4](https://github.com/mindsdb/anton/releases/tag/v2.26.9.11.1rc4) 于 9 月 11 日发布并标为预发布，说明列出云端会话时间戳修正。另有开放的 [PR #471](https://github.com/mindsdb/anton/pull/471)，描述如何防止空工具调用 ID 破坏会话历史重放。其中测试结果属于作者报告，本次未独立复现。nanoRSI 内置适配器读取消息文本，技能运行器解析 JSON 动作，并未实现这种供应商原生工具调用重放路径。**决定**：不直接移植；未来引入此类传输时应验证重放标识符。
+  - **OpenEvolve——未合并的新颖性解析修复**：检查了开放的 [PR #486](https://github.com/algorithmicsuperintelligence/openevolve/pull/486) 的差异与回归用例，该提案最后更新于 9 月 10 日。它在子串分类前将 `NOT_NOVEL` 规范化为 `NOT NOVEL`，覆盖纯标签、带解释和 Markdown 包裹的响应。该工作仍是提案，并非已发布修复。nanoRSI 没有对应的自由文本新颖性判别器；其评测结果通过 JSON 解析及模式校验。**决定**：保留结构化决策契约；未来新增新颖性判别器时，应先测试否定标签与歧义响应，再将其用于门禁。
+  - **RSIHub、SEAL、DGM、ACE**：发布查询未返回条目，抽样的开放提案最后更新时间均早于 9 月 11 日。保留既有隔离、外部训练、经验评测及归并候选验证决定。本次检查不支持运行时修改。
+
 - **2026-09-11 跟踪（与 9 月 10 日比较）**：
   - **证据范围**：复查六个参考仓库默认分支最近两条提交。分支头仍为 [RSIHub `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1)、[Anton `22f7414`](https://github.com/mindsdb/anton/commit/22f74142ad5dffc81b1f85232b0b7ce5a3df451d)、[SEAL `6d9c9f9`](https://github.com/Continual-Intelligence/SEAL/commit/6d9c9f9ee392c6cc618e771f399d436d190f6ca4)、[DGM `a565fd2`](https://github.com/jennyzzt/dgm/commit/a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2)、[OpenEvolve `411fb59`](https://github.com/algorithmicsuperintelligence/openevolve/commit/411fb59c886c18704caaffb611e17cf9e7d824d2) 和 [ACE `82709de`](https://github.com/ace-agent/ace/commit/82709de050e1db6e6ef2f07bcb0393560b94992a)。本次比较覆盖默认分支已合并活动，不涵盖未公开实验或其他分支。
   - **决定**：没有新合并的机制足以支持运行时移植。保留 9 月 9–10 日的采纳决定：隔离搜索与最终评测、将模型训练置于外部、拒绝布尔适应度值，并在引入多提案编排前要求归并候选的实验证据。重复检查不构成能力提升的新增证据。
