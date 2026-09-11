@@ -1,5 +1,6 @@
 import os
 import math
+import subprocess
 import sys
 import tempfile
 import time
@@ -76,14 +77,31 @@ class ProcessTests(unittest.TestCase):
                 cwd=Path(tmp),
                 timeout_s=1,
             )
-            self.assertTrue(result.timed_out)
+            self.assertTrue(result.timed_out, result)
             deadline = time.monotonic() + 2
             while time.monotonic() < deadline and not marker.exists():
                 time.sleep(0.02)
             self.assertTrue(marker.exists())
             child_pid = int(marker.read_text())
-            with self.assertRaises(ProcessLookupError):
-                os.kill(child_pid, 0)
+            # A terminated orphan can retain its PID until the OS reaps it.
+            # Wait for termination, accepting an unreaped zombie as stopped.
+            deadline = time.monotonic() + 2
+            while True:
+                status = subprocess.run(
+                    ["ps", "-p", str(child_pid), "-o", "stat="],
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                    timeout=2,
+                )
+                state = status.stdout.strip()
+                if status.returncode == 1 and not state:
+                    break
+                self.assertEqual(status.returncode, 0, status.stderr)
+                if state.startswith("Z"):
+                    break
+                self.assertLess(time.monotonic(), deadline, f"descendant still running: {state}")
+                time.sleep(0.02)
 
 
 if __name__ == "__main__":
