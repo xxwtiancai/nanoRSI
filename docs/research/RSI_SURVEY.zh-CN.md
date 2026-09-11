@@ -58,6 +58,10 @@ nanoRSI 将自进化体系严格划分为三层正交结构：
 
 ## 5. 持续前沿追踪雷达（每日跟踪维护）
 
+- **2026-09-11 跟踪（与 9 月 10 日比较）**：
+  - **证据范围**：复查六个参考仓库默认分支最近两条提交。分支头仍为 [RSIHub `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1)、[Anton `22f7414`](https://github.com/mindsdb/anton/commit/22f74142ad5dffc81b1f85232b0b7ce5a3df451d)、[SEAL `6d9c9f9`](https://github.com/Continual-Intelligence/SEAL/commit/6d9c9f9ee392c6cc618e771f399d436d190f6ca4)、[DGM `a565fd2`](https://github.com/jennyzzt/dgm/commit/a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2)、[OpenEvolve `411fb59`](https://github.com/algorithmicsuperintelligence/openevolve/commit/411fb59c886c18704caaffb611e17cf9e7d824d2) 和 [ACE `82709de`](https://github.com/ace-agent/ace/commit/82709de050e1db6e6ef2f07bcb0393560b94992a)。本次比较覆盖默认分支已合并活动，不涵盖未公开实验或其他分支。
+  - **决定**：没有新合并的机制足以支持运行时移植。保留 9 月 9–10 日的采纳决定：隔离搜索与最终评测、将模型训练置于外部、拒绝布尔适应度值，并在引入多提案编排前要求归并候选的实验证据。重复检查不构成能力提升的新增证据。
+
 - **2026-09-10 跟踪（与 9 月 9 日默认分支基线比较）**：
   - **Anton——仅文档依赖变更**：[9 月 9 日 `22f7414`](https://github.com/mindsdb/anton/commit/22f74142ad5dffc81b1f85232b0b7ce5a3df451d) 在 `docs/package.json` 及其锁文件中将 Docusaurus 相关包更新至 3.10.2。所查差异没有改变智能体学习机制，不足以支持移植 nanoRSI 运行时改动。
   - **未变化的参考分支头**：[RSIHub `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1)、[SEAL `6d9c9f9`](https://github.com/Continual-Intelligence/SEAL/commit/6d9c9f9ee392c6cc618e771f399d436d190f6ca4)、[DGM `a565fd2`](https://github.com/jennyzzt/dgm/commit/a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2)、[OpenEvolve `411fb59`](https://github.com/algorithmicsuperintelligence/openevolve/commit/411fb59c886c18704caaffb611e17cf9e7d824d2) 和 [ACE `82709de`](https://github.com/ace-agent/ace/commit/82709de050e1db6e6ef2f07bcb0393560b94992a)。OpenEvolve 当前规范仓库地址为 `algorithmicsuperintelligence/openevolve`，原 `codelion` 地址会重定向至此。分支头未变化并不代表其他分支或论文中没有新工作。
