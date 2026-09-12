@@ -12,6 +12,7 @@
 - Add reproducible CPU and request-capped live-demo drivers that retain unsuccessful outcomes. Document the measured CPU panel, API onboarding and the limits of each experiment.
 - Publish all six live GLM experiments and 18 CPU trials with frozen results, source/checkpoint snapshots, failed and rejected attempts, and a descriptive result figure. Exported summaries are rebuilt from verified outcomes; provider receipts remain separately labelled unsigned records.
 - Exercise real parameter training and all canonical starter rendering from the installed wheel in CI.
+- Start numeric loopback HTTP workers without reverse DNS, preventing resolver stalls observed on macOS CI.
 - Expand the core ceiling to 5,000 lines while retaining the 300-line module and 50-line function limits and zero third-party core runtime dependencies.
 
 The verified CPU panel completed 18 runs and 54 training rounds, with 20 accepted and 34 rejected candidates. Held-out mean accuracy rose from 46.11% to 84.44–86.39% across method/control groups on overlapping synthetic clusters. Self-use comparisons were mixed: one positive, one negative and seven ties. These teaching-scale results are not LLM fine-tuning, general benchmark performance or proof of general recursive self-improvement.

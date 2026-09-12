@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 import shutil
 import signal
+from socketserver import TCPServer
 import subprocess
 import sys
 import tempfile
@@ -62,6 +63,14 @@ class JobError(ValueError):
     def __init__(self, status: int, reason: str):
         super().__init__(reason)
         self.status = status
+
+
+class LoopbackHTTPServer(HTTPServer):
+    def server_bind(self):
+        # The endpoint is numeric loopback. HTTPServer's reverse DNS lookup can
+        # block startup on macOS runners and supplies no identity used here.
+        TCPServer.server_bind(self)
+        self.server_name, self.server_port = self.server_address[:2]
 
 
 class Worker:
@@ -219,7 +228,7 @@ def main(argv=None) -> int:
         worker = Worker(Path(directory) / "snapshot", args.manifest,
                         worker_id=args.worker_id, token_file=args.token_file,
                         job_timeout=args.job_timeout)
-        with HTTPServer(("127.0.0.1", args.port), Handler) as server:
+        with LoopbackHTTPServer(("127.0.0.1", args.port), Handler) as server:
             server.worker = worker
             identity = {**worker.identity(), "url": f"http://127.0.0.1:{server.server_port}"}
             args.ready_file.write_text(json.dumps(identity), encoding="utf-8")

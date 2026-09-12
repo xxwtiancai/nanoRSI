@@ -74,6 +74,20 @@ class RemoteWorkerTests(unittest.TestCase):
             worker["url"], self.token, request or self.request(), self.manifest,
             **kwargs)
 
+    def test_numeric_loopback_worker_starts_without_hostname_resolution(self):
+        server = module("server")
+        ready = Path(self.tmp.name) / "ready.json"
+        with patch("socket.getfqdn", side_effect=AssertionError("loopback startup must not query DNS")), \
+                patch.object(server.signal, "signal"), \
+                patch.object(server.HTTPServer, "handle_request"):
+            self.assertEqual(server.main([
+                "--manifest", str(self.manifest), "--token-file", str(self.token),
+                "--ready-file", str(ready), "--max-requests", "1",
+            ]), 0)
+        identity = json.loads(ready.read_text())
+        self.assertEqual(urlsplit(identity["url"]).hostname, "127.0.0.1")
+        self.assertGreater(urlsplit(identity["url"]).port, 0)
+
     def test_two_real_worker_processes_return_standard_results(self):
         with self.demo.local_workers(self.manifest, self.token) as workers:
             self.assertEqual(len({worker["pid"] for worker in workers}), 2)
