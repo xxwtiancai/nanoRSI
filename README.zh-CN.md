@@ -222,7 +222,10 @@ Skills 比较工具输出配对任务宏平均差值、分组结果、单次任�
 <details>
 <summary><strong>开发检查与旧版模板</strong></summary>
 
+请先在虚拟环境中安装当前仓库，使评测子进程可以在临时工作区中导入 nanoRSI。
+
 ```bash
+python -m pip install -e .
 PYTHONPATH=src python -m unittest discover -v
 python -m compileall -q src examples tests
 ```

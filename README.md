@@ -225,7 +225,10 @@ Our [evaluation research notes](docs/research/HARNESS_EVALUATION_2026-09-08.zh-C
 <details>
 <summary><strong>Development checks and legacy templates</strong></summary>
 
+Install the checkout in your virtual environment first so evaluator subprocesses can import nanoRSI from temporary workspaces.
+
 ```bash
+python -m pip install -e .
 PYTHONPATH=src python -m unittest discover -v
 python -m compileall -q src examples tests
 ```

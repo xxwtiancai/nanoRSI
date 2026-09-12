@@ -13,13 +13,13 @@
 ## Local verification
 
 ```bash
-PYTHONPATH=src python -m unittest discover -v
 python -m pip install -e .
+PYTHONPATH=src python -m unittest discover -v
 python -m compileall -q src examples tests
 git diff --check
 ```
 
-Use Python 3.11 or newer. Git is required.
+Use Python 3.11 or newer in a virtual environment. Git is required. Install the checkout before testing: evaluator subprocesses run in temporary directories, where a relative `PYTHONPATH=src` does not locate this repository.
 
 ## Commit style
 
