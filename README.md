@@ -91,7 +91,27 @@ These are separate authored tasks, not one benchmark or RSI score. Recursive pla
 
 <p align="center"><img src="examples/results/v0.4.0/overview.png" alt="Separate live-demo test outcomes and CPU parameter-learning results; these panels are not a combined RSI score." width="100%"></p>
 
-## Measured CPU example
+## Measured recursive learning: handwritten digits
+
+**SFT self-use reduced mean test error by 35.95% relative to frozen priorities: 10.16% → 6.51%.** That is **+3.65 percentage points of accuracy**, with a positive paired difference in all 10 training seeds. This v0.4.1 study completed **120 runs and 720 training rounds**, with matched actual budgets and every workspace frozen before testing.
+
+Mean selected-checkpoint test accuracy on the same 364-image panel:
+
+| Method | Frozen priorities | Self-use priorities | Uniform | Random priorities | Self-use − frozen |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| SFT | 89.835% | 93.489% | 92.582% | 92.390% | +3.654 pp |
+| REINFORCE | 19.286% | 27.473% | 36.236% | 27.005% | +8.187 pp |
+| LoRA | 79.533% | 82.060% | 82.885% | 83.736% | +2.527 pp |
+
+The primary paired percentile bootstrap intervals use Bonferroni alpha allocation across the three methods (nominal 98.333% each): **[2.198, 5.192]**, **[1.071, 13.462]** and **[0.549, 4.423] pp**, respectively. Only REINFORCE met the predeclared target of an observed mean gain ≥5 pp with a positive adjusted lower bound; SFT and LoRA did not. This does not establish that REINFORCE's true gain is ≥5 pp. REINFORCE still trailed uniform by 8.764 pp, and LoRA by 0.824 pp. SFT exceeded uniform by 0.907 pp and random priorities by 1.099 pp; these secondary comparisons have descriptive 95% intervals in the full results.
+
+This is real CPU training of a small linear classifier on a custom **1,074/359/364 train/validation/test split** of the 1,797-image UCI/scikit-learn digits subset. Settings were chosen in validation-only pilots and locked before confirmation. It is not the official UCI benchmark, evidence of unseen-writer generalization, or LLM fine-tuning. The intervals describe training-seed variation on this one split.
+
+<p align="center"><img src="examples/results/recursive-digits-v0.4.1/recursive-gains.png" alt="Handwritten-digit results for all four curriculum policies, with paired self-use gains and uncertainty; REINFORCE loses to uniform despite improving over frozen." width="100%"></p>
+
+**[All results, controls and inspectable evidence](examples/results/recursive-digits-v0.4.1/README.md)** · [Reproduce the study](examples/recursive_learning/README.md) · [中文实验指南](examples/recursive_learning/README.zh-CN.md). The optional adapter uses an existing NumPy installation and makes no API calls; the core retains zero third-party runtime dependencies.
+
+## Historical CPU example (v0.4.0)
 
 The verified panel ran three methods × three seeds × frozen/self-use controls: **18 runs, 54 training rounds, 20 accepted and 34 rejected candidates**. Mean test accuracy on overlapping synthetic numeric clusters was:
 

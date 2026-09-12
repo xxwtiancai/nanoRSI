@@ -1,0 +1,53 @@
+{
+  "checkpoints": 699,
+  "files": {
+    "README.md": {
+      "bytes": 11836,
+      "sha256": "39d2a49917a6c10e1e4da16d4d9a6fcf850bb7f7dc18c1d1c781e9fc1834e05c"
+    },
+    "all-frozen.json": {
+      "bytes": 47406,
+      "sha256": "782be10a7ef67c97b9ed8d75106d21b6d64691e97f936fb4ec88923d65f7b669"
+    },
+    "attempts.jsonl": {
+      "bytes": 470968,
+      "sha256": "8806e57086c726e8957732c68a6d1f351a6567b2d06588c81b619d525eaa8f68"
+    },
+    "checkpoints.jsonl.gz": {
+      "bytes": 3640194,
+      "sha256": "f3d3402baab242e0318a01774daf7a12b64ac5252b396a6cb752f9cc1a97f152"
+    },
+    "curricula.jsonl.gz": {
+      "bytes": 10122451,
+      "sha256": "2a0a9694fb287d2e13f8b3f1da91623a19b8656290d837c3b1fa46fb060bd64b"
+    },
+    "journal-digests.json": {
+      "bytes": 22413,
+      "sha256": "85f71792d1bbacc0106b7ef8ff6b1a4acc4048574b372ec80e8fa005ac830832"
+    },
+    "outcomes.jsonl.gz": {
+      "bytes": 1474424,
+      "sha256": "c8917c3f1816e9b42bf2edb8fea8c3deeddfa6741c24eea4c9918950d5d9d9e5"
+    },
+    "plan.json": {
+      "bytes": 17153,
+      "sha256": "c4590fd4920b80586708e05c5e2ecff43325050a6f6448f9931ba73da49c8bdd"
+    },
+    "recursive-gains.png": {
+      "bytes": 212258,
+      "sha256": "d71a7c192236c6a357817acf31c30dee3d10eeae072e2a455a2b7875e84eef59"
+    },
+    "summary.json": {
+      "bytes": 601729,
+      "sha256": "aeffa7d43da73d9c3f5bea98fa7d86b42557397ddca70eaa44c85089be06af26"
+    },
+    "training.jsonl.gz": {
+      "bytes": 173299,
+      "sha256": "47f8a426ebbc848347a969627c99a05c725a77db87f4132fb61acf5983ffcaf3"
+    }
+  },
+  "original_implementation_commit": "7809e7924bf806272b721fb829ef689db0263718",
+  "public_extract_signed": false,
+  "runs": 120,
+  "schema_version": 1
+}

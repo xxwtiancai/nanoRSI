@@ -6,7 +6,7 @@ Run these commands from the repository with Python 3.11+, Git and nanoRSI instal
 
 ## Recursive checkpoint reuse on handwritten digits
 
-The optional [digits study](recursive_learning/README.md) uses existing NumPy tooling and a bundled attributed dataset to compare recursive checkpoint-based sampling with frozen, uniform and random controls. It separates all searches/freezes from final testing and checks actual training budgets. This is a classifier experiment, not LLM fine-tuning.
+The optional [digits study](recursive_learning/README.md) · [中文](recursive_learning/README.zh-CN.md) uses NumPy tooling and a bundled attributed dataset to compare recursive checkpoint-based sampling with frozen, uniform and random controls. It separates all searches/freezes from final testing and checks actual training budgets. [All 120 measured runs](results/recursive-digits-v0.4.1/README.md) retain the stronger and weaker control outcomes. This is a classifier experiment, not LLM fine-tuning.
 
 ## CPU parameter learning: no API required
 

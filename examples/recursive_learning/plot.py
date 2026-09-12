@@ -33,7 +33,7 @@ def plot(summary, output):
     axes[0].set_ylim(0, 107)
     axes[0].set_ylabel('Mean final test accuracy (%)')
     axes[0].set_title('All four policies · real saved checkpoints', loc='left', fontweight='bold')
-    axes[0].legend(ncol=4, frameon=False, loc='upper center', bbox_to_anchor=(.5, 1.16))
+    axes[0].legend(ncol=4, frameon=False, loc='lower left', bbox_to_anchor=(0, 1.10))
     references = ['frozen', 'uniform', 'random']
     for j, reference in enumerate(references):
         for i, method in enumerate(methods):
@@ -51,6 +51,8 @@ def plot(summary, output):
                 axes[1].scatter([x + v for v in jitter], [p['delta_pp'] for p in row['pairs']], s=14, alpha=.22, color='#ed6734')
     axes[1].axhline(0, color='#333d3d', linewidth=1)
     axes[1].axhline(5, color='#777e76', linestyle='--', linewidth=.8)
+    axes[1].text(.99, 5, '5 pp primary target', transform=axes[1].get_yaxis_transform(),
+                 ha='right', va='bottom', fontsize=9, color='#666e66')
     axes[1].set_ylabel('Paired extra accuracy (percentage points)')
     axes[1].set_title('Additional benefit · every matched training seed', loc='left', fontweight='bold')
     axes[1].legend(frameon=False, loc='upper left', fontsize=9)
@@ -60,7 +62,7 @@ def plot(summary, output):
     fig.text(.08, .931, f'{len(summary["runs"])} runs · {nseeds} training seeds · {next(iter(cases))} held-out digit images per condition', fontsize=11)
     confidence = 100 * next(r['family_adjusted_confidence'] for r in summary['comparisons'] if r['primary'])
     fig.text(.08, .035, f'Primary intervals: {confidence:.2f}% family-adjusted bootstrap; other controls: descriptive 95%.\n'
-             'Intervals cover training-seed variation on one fixed row split. Same update budgets within each method.\n'
+             'One fixed row split. Attempted updates matched within each method; retained updates can differ.\n'
              'This is a small classifier experiment, not pretrained LLM fine-tuning or evidence of general RSI.', fontsize=10, color='#59615f', linespacing=1.7)
     fig.subplots_adjust(left=.1, right=.97, top=.84, bottom=.16, hspace=.36)
     output.parent.mkdir(parents=True, exist_ok=True)

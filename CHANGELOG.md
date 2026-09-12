@@ -1,11 +1,15 @@
 # Changelog
 
-## 0.4.1 — 2026-09-12
+## 0.4.1 — 2026-09-13
 
 - Make the TRAIN feedback limit configurable while preserving the default-four comparison identity and correctly reserving larger population panels.
 - Add an optional NumPy handwritten-digit experiment with frozen/self-use, uniform and random-priority controls, full TRAIN feedback, per-attempt random streams and real SFT/REINFORCE/LoRA checkpoint updates.
 - Separate study-wide search/freeze from final testing, bind the complete study plan into immutable workspace contracts, and verify paired designs before testing.
 - Distinguish completed final outcomes from complete training budgets, retain failed-attempt work and report both all-measured and matched-budget paired effects with descriptive and family-adjusted uncertainty.
+- Publish the complete handwritten-digit confirmation panel: 120 runs, 720 completed training rounds, 676 accepted and 44 rejected candidates, no failed attempts, and verified matched actual budgets. Include all four controls, validation-only pilot records, per-case outcomes, curricula, training receipts and checkpoints in an unsigned public extract without HMAC keys.
+- Add bilingual study guides and paired results to both READMEs while preserving the v0.4.0 CPU and live-model history.
+
+On the custom UCI/scikit-learn digits split, mean self-use minus frozen test accuracy was +3.654 pp for SFT (10/10 seeds positive), +8.187 pp for REINFORCE (9/10), and +2.527 pp for LoRA (8/10). Only REINFORCE met the predeclared observed-mean ≥5 pp target with a positive nominal Bonferroni-adjusted bootstrap lower bound; SFT and LoRA did not. This does not establish a true gain ≥5 pp. REINFORCE nevertheless trailed uniform sampling by 8.764 pp, and LoRA by 0.824 pp. SFT's test error fell from 10.16% to 6.51%, a 35.95% relative error reduction, equivalent to +3.65 pp accuracy. These results concern one fixed split and small linear models, not official benchmark performance or LLM fine-tuning. See the [complete results and evidence limits](examples/results/recursive-digits-v0.4.1/README.md).
 
 ## 0.4.0 — 2026-09-12
 

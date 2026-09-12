@@ -1,0 +1,966 @@
+{
+  "created_at": "2026-09-12T15:29:26.973138+00:00",
+  "plan_sha256": "4534eb7961714d1192bb80e844e05c5d88a61d0d06084d23728b1886b7b735c8",
+  "runs": [
+    {
+      "baseline_commit": "792e27cccf35975c58c126e5196e26cea7bf795e",
+      "candidate_commit": "553e7d994335fb267774a1014408c44d9a2f98d0",
+      "comparison_hash": "ee92b7d550b4e964578d4ac41f35d02d96715c0f2cadbb559e824021fb900fd8",
+      "design_hash": "16e5051478a4703e9aa353a3ef4e608084e36df29df36f1071e6260fdcb9aa0d",
+      "freeze_seq": 65,
+      "name": "sft-seed-10-frozen"
+    },
+    {
+      "baseline_commit": "1bb8e7e4e75c8ec70b5c202d2a7b01d60c824fa6",
+      "candidate_commit": "684890891a4bf1a78a144cda3bebd386d3290d9a",
+      "comparison_hash": "ee92b7d550b4e964578d4ac41f35d02d96715c0f2cadbb559e824021fb900fd8",
+      "design_hash": "16e5051478a4703e9aa353a3ef4e608084e36df29df36f1071e6260fdcb9aa0d",
+      "freeze_seq": 65,
+      "name": "sft-seed-10-self-use"
+    },
+    {
+      "baseline_commit": "9001308649c792af1fe097b3dfac8c70971bfb45",
+      "candidate_commit": "9a5cf28dae8e3a1fa3f47a06d96d8dfe25de746e",
+      "comparison_hash": "b260960c3a22c4dae45655cbc44d3d7759e9e98cb9ea25a85bd1dd3ee41c4926",
+      "design_hash": "16e5051478a4703e9aa353a3ef4e608084e36df29df36f1071e6260fdcb9aa0d",
+      "freeze_seq": 65,
+      "name": "sft-seed-10-uniform"
+    },
+    {
+      "baseline_commit": "0e1965f61717d0b8972f3c3c3dd3b1057319e96c",
+      "candidate_commit": "d239e5eb47d0fd78ccdf9d48a05a7c1733dfa9b9",
+      "comparison_hash": "e0e4f6eff2de699a0911eec339c6c4905f3f30cac1bd4511f449ce6835deed34",
+      "design_hash": "16e5051478a4703e9aa353a3ef4e608084e36df29df36f1071e6260fdcb9aa0d",
+      "freeze_seq": 65,
+      "name": "sft-seed-10-random"
+    },
+    {
+      "baseline_commit": "17ff3f38b6f309bcf18e4d97c2fc58ab24556068",
+      "candidate_commit": "05db729e670a8174358f619e3033d95146605ade",
+      "comparison_hash": "e97f723fad769d2141a3b2bca27816a11eb7220c370c2ed7f93fe1cb69604b68",
+      "design_hash": "29ad37c13e7b6bce5efd8b7e185b9a6b0c4008cd832657102109b16f20cf3090",
+      "freeze_seq": 65,
+      "name": "sft-seed-11-frozen"
+    },
+    {
+      "baseline_commit": "624662623083cf0b1af53754f307d413801f516a",
+      "candidate_commit": "47bdcce02eecd67aad8443ede7ad501639aa734d",
+      "comparison_hash": "e97f723fad769d2141a3b2bca27816a11eb7220c370c2ed7f93fe1cb69604b68",
+      "design_hash": "29ad37c13e7b6bce5efd8b7e185b9a6b0c4008cd832657102109b16f20cf3090",
+      "freeze_seq": 65,
+      "name": "sft-seed-11-self-use"
+    },
+    {
+      "baseline_commit": "329d4be8611453f051befeb2511729db5cf203bc",
+      "candidate_commit": "d7f1b9a88c539235eb15d1b7a4c6ba6e30f98cea",
+      "comparison_hash": "3a266195f1ac0b78189fe509ef1b03112388885f1804b958c8f7a889160bc8f1",
+      "design_hash": "29ad37c13e7b6bce5efd8b7e185b9a6b0c4008cd832657102109b16f20cf3090",
+      "freeze_seq": 65,
+      "name": "sft-seed-11-uniform"
+    },
+    {
+      "baseline_commit": "565ecb8dbab8778f601a30ec49b5bb2ba72f0315",
+      "candidate_commit": "4e7e803a1960414ec62abb16466c405d88707d55",
+      "comparison_hash": "23a6ab3ac1ee6e58d4173e1a4c6698fd872ddafbcb4f9fe9000da34420d3e0d6",
+      "design_hash": "29ad37c13e7b6bce5efd8b7e185b9a6b0c4008cd832657102109b16f20cf3090",
+      "freeze_seq": 65,
+      "name": "sft-seed-11-random"
+    },
+    {
+      "baseline_commit": "d9ef5d977779cf942bcdee0455deb6081ae5564b",
+      "candidate_commit": "cb25a51dbfcfb7f279b884240f8627ecb93f5d52",
+      "comparison_hash": "cbca191faef3a256ec56fc2a6d29c89531fb45e77d098b02734cf67433c8267f",
+      "design_hash": "9f0b60d8779b734bc5fae4f018d473b14b55cbd9b11a537178db5f4af17533ea",
+      "freeze_seq": 65,
+      "name": "sft-seed-12-frozen"
+    },
+    {
+      "baseline_commit": "5a8e34833cc22df3ce2337ed63bd480aa158f902",
+      "candidate_commit": "fab7276befdc13fc61212b952a8a9aabb9608a3c",
+      "comparison_hash": "cbca191faef3a256ec56fc2a6d29c89531fb45e77d098b02734cf67433c8267f",
+      "design_hash": "9f0b60d8779b734bc5fae4f018d473b14b55cbd9b11a537178db5f4af17533ea",
+      "freeze_seq": 65,
+      "name": "sft-seed-12-self-use"
+    },
+    {
+      "baseline_commit": "b889ba70b0b957b2d2c5bca19754c6576027fd57",
+      "candidate_commit": "26bdd4f9e1fb88d6d4ee05bf0ff7f4db63c42558",
+      "comparison_hash": "515b972a7c2401dd0bfdbf7de802fa41a130b41883b2f2cb050861ea84c8c6b0",
+      "design_hash": "9f0b60d8779b734bc5fae4f018d473b14b55cbd9b11a537178db5f4af17533ea",
+      "freeze_seq": 65,
+      "name": "sft-seed-12-uniform"
+    },
+    {
+      "baseline_commit": "9f56c7e41578ce2b296a34c6d2766fe1ab6f6c5b",
+      "candidate_commit": "c1f6a72f0af88d5c71a918042f097cd613ea7eda",
+      "comparison_hash": "51637b598b456f9cac296e2cb02098749165a815fd4d394eda92f95475ae38d9",
+      "design_hash": "9f0b60d8779b734bc5fae4f018d473b14b55cbd9b11a537178db5f4af17533ea",
+      "freeze_seq": 65,
+      "name": "sft-seed-12-random"
+    },
+    {
+      "baseline_commit": "296e8371a4ce4d8adc6100d1b6cfa3dfd57ec321",
+      "candidate_commit": "76910cb8b1f0d560edeb712653513a4f4fabe7dd",
+      "comparison_hash": "ed7d24a67874a8ab5d8555467b21176a773a68112c36b1b8c5ff83a0f6d87196",
+      "design_hash": "755cc63ca079e2741f8e14a1ba6b3cf24df9b7a3d7bf968b4fe28c8d654623d6",
+      "freeze_seq": 65,
+      "name": "sft-seed-13-frozen"
+    },
+    {
+      "baseline_commit": "5a1099119273725d79eae54bec38e3e18c5e04f6",
+      "candidate_commit": "0b8fb09c3cc819598f12dd3bd92bbb82771afb57",
+      "comparison_hash": "ed7d24a67874a8ab5d8555467b21176a773a68112c36b1b8c5ff83a0f6d87196",
+      "design_hash": "755cc63ca079e2741f8e14a1ba6b3cf24df9b7a3d7bf968b4fe28c8d654623d6",
+      "freeze_seq": 65,
+      "name": "sft-seed-13-self-use"
+    },
+    {
+      "baseline_commit": "62193f26d37654398fdfa4b982a8f50f3a6c259a",
+      "candidate_commit": "710e67f66efc6ccee430802dc457986f8f1596ec",
+      "comparison_hash": "9f1f1c9f0a55c13b7cf5511b2bc98b836ec6a142fc09757d149f11959b33ef0e",
+      "design_hash": "755cc63ca079e2741f8e14a1ba6b3cf24df9b7a3d7bf968b4fe28c8d654623d6",
+      "freeze_seq": 65,
+      "name": "sft-seed-13-uniform"
+    },
+    {
+      "baseline_commit": "7875fc7bbc7cd7caca67a67057f7e02efd1ccde8",
+      "candidate_commit": "1fc630a8512f5fccac983ece07125901960f8b32",
+      "comparison_hash": "55680d678824c0c98fd17a0c4439106985e90aa59c653686e2b06e42490f0fef",
+      "design_hash": "755cc63ca079e2741f8e14a1ba6b3cf24df9b7a3d7bf968b4fe28c8d654623d6",
+      "freeze_seq": 65,
+      "name": "sft-seed-13-random"
+    },
+    {
+      "baseline_commit": "8a5f2e88faef01879e51a86ee7cef504f9b9a71d",
+      "candidate_commit": "d0fffa4dedc8f759f1a3559e546a5168766e5342",
+      "comparison_hash": "0fda363b093dc8e7c1b892e199100508fe2c7f5c641ad88487cada32f1494f6d",
+      "design_hash": "004ad3468125eda019002924d64aa82687eb4eb6f42f3f11c102ddcd39ead239",
+      "freeze_seq": 65,
+      "name": "sft-seed-14-frozen"
+    },
+    {
+      "baseline_commit": "017f82059a165bc38c0c8776b46460f25949d89b",
+      "candidate_commit": "efd1d2080929f7ab15594fe90fcc5df64560d29a",
+      "comparison_hash": "0fda363b093dc8e7c1b892e199100508fe2c7f5c641ad88487cada32f1494f6d",
+      "design_hash": "004ad3468125eda019002924d64aa82687eb4eb6f42f3f11c102ddcd39ead239",
+      "freeze_seq": 65,
+      "name": "sft-seed-14-self-use"
+    },
+    {
+      "baseline_commit": "1afa28490182495f81aafa324b6d9cc1796026be",
+      "candidate_commit": "31fffa4bedbd2651637bb93b578278fad04ea1f9",
+      "comparison_hash": "5e047ee1de25c96d9fcfb4170cc86c9eb8ece82fc8b8b498d05e70c8522d0f6a",
+      "design_hash": "004ad3468125eda019002924d64aa82687eb4eb6f42f3f11c102ddcd39ead239",
+      "freeze_seq": 65,
+      "name": "sft-seed-14-uniform"
+    },
+    {
+      "baseline_commit": "ce6177419187fef93839a5e41ce966e6c11e70fa",
+      "candidate_commit": "0a4eeb960f35dd7a9ee131b7d8cdf9a6b0b015b1",
+      "comparison_hash": "9a1a52cf78e7c21ad4607639b5ee6f2a7c128af5c3ba66c6deb5d8651689be99",
+      "design_hash": "004ad3468125eda019002924d64aa82687eb4eb6f42f3f11c102ddcd39ead239",
+      "freeze_seq": 65,
+      "name": "sft-seed-14-random"
+    },
+    {
+      "baseline_commit": "a292c48b0828615d16fed0013a92e26726f460d2",
+      "candidate_commit": "5b2e969c007604b15f9103791b08ee3e1a5fb1cf",
+      "comparison_hash": "88b30fe6841629a20699018a7e4668ee59d905fea14e53d7e7c25b8a24104f23",
+      "design_hash": "ab1a846b270741699fa70848befac86372ad47fdaf06a7cec969e5ec810e1a65",
+      "freeze_seq": 65,
+      "name": "sft-seed-15-frozen"
+    },
+    {
+      "baseline_commit": "37959a02f76555455d1ac4da707d7a11083f67b2",
+      "candidate_commit": "2a0b3b17ec47f051aa03a26def5a9fe65b76529d",
+      "comparison_hash": "88b30fe6841629a20699018a7e4668ee59d905fea14e53d7e7c25b8a24104f23",
+      "design_hash": "ab1a846b270741699fa70848befac86372ad47fdaf06a7cec969e5ec810e1a65",
+      "freeze_seq": 65,
+      "name": "sft-seed-15-self-use"
+    },
+    {
+      "baseline_commit": "ce3b20a3343b2ec033aa4495cebbd9324a44dd52",
+      "candidate_commit": "ac125eebe8c4f5cfaf66683330204d10eb1b17e6",
+      "comparison_hash": "f8bc2c741e48b5088487b14232676004dfea8822fca480fd881b8a09cf625e3e",
+      "design_hash": "ab1a846b270741699fa70848befac86372ad47fdaf06a7cec969e5ec810e1a65",
+      "freeze_seq": 65,
+      "name": "sft-seed-15-uniform"
+    },
+    {
+      "baseline_commit": "4375bf8bb01cf3fb0832622428281c21ef371298",
+      "candidate_commit": "d4170c45f89e7de91fe614c74ab77e4150025a1d",
+      "comparison_hash": "c157ad29b627a58213e41631d8026d4cc0b0f77f84f065ee3305bd41d1f874bc",
+      "design_hash": "ab1a846b270741699fa70848befac86372ad47fdaf06a7cec969e5ec810e1a65",
+      "freeze_seq": 65,
+      "name": "sft-seed-15-random"
+    },
+    {
+      "baseline_commit": "b8d8317b8aa00fe7533ebe1a12dfa1120398ae90",
+      "candidate_commit": "c8c916c6da0abca4a4aafd8de1d5d86db33e6b15",
+      "comparison_hash": "2ec8ea9a36cab12ad5306bff28fc6c7140d2b782915dd75844d3d81162966747",
+      "design_hash": "b99383ae3aa945d107391f514bd80029b7b96e964c27d81f903488e299daee02",
+      "freeze_seq": 65,
+      "name": "sft-seed-16-frozen"
+    },
+    {
+      "baseline_commit": "b964de377500055b379fd7ebdcf218b8f9b3a0db",
+      "candidate_commit": "f09cebc5a4d9e78c340cbf736071424556a44651",
+      "comparison_hash": "2ec8ea9a36cab12ad5306bff28fc6c7140d2b782915dd75844d3d81162966747",
+      "design_hash": "b99383ae3aa945d107391f514bd80029b7b96e964c27d81f903488e299daee02",
+      "freeze_seq": 65,
+      "name": "sft-seed-16-self-use"
+    },
+    {
+      "baseline_commit": "0c7d5201c24d6451c38bcec3c97df0402cb25c8c",
+      "candidate_commit": "aedaff9471e60baffc9bb086c8450bd639e76c39",
+      "comparison_hash": "d7160cfba2650aab346dc5811df40f29e201e6196b158b85b19b0ba0878a946d",
+      "design_hash": "b99383ae3aa945d107391f514bd80029b7b96e964c27d81f903488e299daee02",
+      "freeze_seq": 65,
+      "name": "sft-seed-16-uniform"
+    },
+    {
+      "baseline_commit": "346c139d6b3be0d31b0081400f3ceba7c2ddb398",
+      "candidate_commit": "77b06148a5682b5839636b243a20ac394b696f7f",
+      "comparison_hash": "50c9c90eace0bf431b632282344c521d33591eaf3c264bf30e3abfb08f2758e3",
+      "design_hash": "b99383ae3aa945d107391f514bd80029b7b96e964c27d81f903488e299daee02",
+      "freeze_seq": 65,
+      "name": "sft-seed-16-random"
+    },
+    {
+      "baseline_commit": "34245593046807d15d07d47936a5537f1cca46cc",
+      "candidate_commit": "fa5c11857abc132a9e2445cd305f84e08ecce5b2",
+      "comparison_hash": "3252b92ea9e82821d5ca0ce11511530be1f1eda031b12af2f4ddfe478e2ade66",
+      "design_hash": "821a2fabd35336b4830d2d68e8e30d75add735dd7aec74ab5a196a8114a1a098",
+      "freeze_seq": 65,
+      "name": "sft-seed-17-frozen"
+    },
+    {
+      "baseline_commit": "0d24cd9842cc07d2702a8f737582055bb0fa4237",
+      "candidate_commit": "24fbc68d0365a6b3b34674410d8288ceecb4de9a",
+      "comparison_hash": "3252b92ea9e82821d5ca0ce11511530be1f1eda031b12af2f4ddfe478e2ade66",
+      "design_hash": "821a2fabd35336b4830d2d68e8e30d75add735dd7aec74ab5a196a8114a1a098",
+      "freeze_seq": 65,
+      "name": "sft-seed-17-self-use"
+    },
+    {
+      "baseline_commit": "98373dbc75fd2640a5f79c767e19b59944cff42b",
+      "candidate_commit": "423cc317ae7c81ca85ab15baf9c6eae2e4b29d41",
+      "comparison_hash": "425767373bbd41c6a2830e825e17f410e0d0157bba9cbb78fd0ac31669cc0d79",
+      "design_hash": "821a2fabd35336b4830d2d68e8e30d75add735dd7aec74ab5a196a8114a1a098",
+      "freeze_seq": 65,
+      "name": "sft-seed-17-uniform"
+    },
+    {
+      "baseline_commit": "5db9559aa506e7b8ccbad15fb77c1dbfbe1bc77f",
+      "candidate_commit": "b673de193d077c026a16279b3dde2887e6a6fefb",
+      "comparison_hash": "f348fb58a168237205e814cdc2eb9d1068623aa6fa4a2374bcb45c8902fcb613",
+      "design_hash": "821a2fabd35336b4830d2d68e8e30d75add735dd7aec74ab5a196a8114a1a098",
+      "freeze_seq": 65,
+      "name": "sft-seed-17-random"
+    },
+    {
+      "baseline_commit": "428e80b768c600ed3cf8f6567aefdfabb434f471",
+      "candidate_commit": "4091ba952c89e0aef8ea600eb70b751417c96e82",
+      "comparison_hash": "c6e80d49df65bda84b899ac0a47bfbe7b78deecc86f74834a4ad9d6ada74cc24",
+      "design_hash": "16b7e089385a61d14b93d2419f63609786fa2c9a84e9c8b27ba58d098fa972a9",
+      "freeze_seq": 65,
+      "name": "sft-seed-18-frozen"
+    },
+    {
+      "baseline_commit": "1ea3e958bf4bd730d2bb4562fb729ccad3b6b2ad",
+      "candidate_commit": "bdf3261155e5d42a0393cb7b2ef7a604c5a4a44a",
+      "comparison_hash": "c6e80d49df65bda84b899ac0a47bfbe7b78deecc86f74834a4ad9d6ada74cc24",
+      "design_hash": "16b7e089385a61d14b93d2419f63609786fa2c9a84e9c8b27ba58d098fa972a9",
+      "freeze_seq": 65,
+      "name": "sft-seed-18-self-use"
+    },
+    {
+      "baseline_commit": "0271c94a1a0c063feaad81f66a13209e3b0b2b99",
+      "candidate_commit": "3989280e5c260b73a29b1bb517f7afefe0bec5c4",
+      "comparison_hash": "a70ef224c687be88e71496b354b9ac915fc96e5a9b1c4599166a2850d272dfc2",
+      "design_hash": "16b7e089385a61d14b93d2419f63609786fa2c9a84e9c8b27ba58d098fa972a9",
+      "freeze_seq": 65,
+      "name": "sft-seed-18-uniform"
+    },
+    {
+      "baseline_commit": "85d3c552f50820f9418af86befc37b42b56d2303",
+      "candidate_commit": "e1307460facb277d2391c76f338b723fd24d83e3",
+      "comparison_hash": "bfa174da61f1b6a27ad027384dc23c4a6f39d8869e8b7e4479a91de9354d6765",
+      "design_hash": "16b7e089385a61d14b93d2419f63609786fa2c9a84e9c8b27ba58d098fa972a9",
+      "freeze_seq": 65,
+      "name": "sft-seed-18-random"
+    },
+    {
+      "baseline_commit": "df853c4f91d8d9a11a97324ff218a6c6261a268b",
+      "candidate_commit": "d39ea5a83daf22eacf74a695f13d035d8119e683",
+      "comparison_hash": "0ff49ab1aea2138e1978864c29f1311fcab919edd860cddc0e2bd36e1c302c51",
+      "design_hash": "8e00b0ce4afbf1611d919dc8bbdb396795d36c391be01dd6dbf8d81c47b9ad39",
+      "freeze_seq": 65,
+      "name": "sft-seed-19-frozen"
+    },
+    {
+      "baseline_commit": "cfbd636edb15599c49d0fbc1ded31d7fb787a9e6",
+      "candidate_commit": "223f268436123c7ffce849a4d5ce15e844bcb6db",
+      "comparison_hash": "0ff49ab1aea2138e1978864c29f1311fcab919edd860cddc0e2bd36e1c302c51",
+      "design_hash": "8e00b0ce4afbf1611d919dc8bbdb396795d36c391be01dd6dbf8d81c47b9ad39",
+      "freeze_seq": 65,
+      "name": "sft-seed-19-self-use"
+    },
+    {
+      "baseline_commit": "fc528638156d4d7d873062c80d789031704456ea",
+      "candidate_commit": "9d8f0c3f2dff178afe3ba245a3f84c2299680f68",
+      "comparison_hash": "ddedb026fc1220f32018771ad35c9536e49af46d20b3a380b496e0692e9019db",
+      "design_hash": "8e00b0ce4afbf1611d919dc8bbdb396795d36c391be01dd6dbf8d81c47b9ad39",
+      "freeze_seq": 65,
+      "name": "sft-seed-19-uniform"
+    },
+    {
+      "baseline_commit": "7e83e4bf9f02ec60d68d294960edeab5a2c2938f",
+      "candidate_commit": "931c4312339915f8490dd2f55128076d302d3b79",
+      "comparison_hash": "d5827422714b1b731f6893c1225020b728109e947ff2daffad4ac3d4974e0799",
+      "design_hash": "8e00b0ce4afbf1611d919dc8bbdb396795d36c391be01dd6dbf8d81c47b9ad39",
+      "freeze_seq": 65,
+      "name": "sft-seed-19-random"
+    },
+    {
+      "baseline_commit": "727029997030fa4fb6b264176868c7cf40d4ad1d",
+      "candidate_commit": "7c50bf7c09902784c078e9dd26829c4c8e279eae",
+      "comparison_hash": "c5e00bf5100e898fc654de68a7a7d0ba0353e22c1a4efa2f60387d6b7316aa1a",
+      "design_hash": "b3e7e3a570cf4a7f632362e903548025b60a4075cee85844a2d1e89cfe90f438",
+      "freeze_seq": 65,
+      "name": "rl-seed-10-frozen"
+    },
+    {
+      "baseline_commit": "ab5fe1068e4605e35290f2fb62341044cb6ccfa8",
+      "candidate_commit": "34c0bc05827453c95a3a1ff3af0ea6e57b6c6ed8",
+      "comparison_hash": "c5e00bf5100e898fc654de68a7a7d0ba0353e22c1a4efa2f60387d6b7316aa1a",
+      "design_hash": "b3e7e3a570cf4a7f632362e903548025b60a4075cee85844a2d1e89cfe90f438",
+      "freeze_seq": 65,
+      "name": "rl-seed-10-self-use"
+    },
+    {
+      "baseline_commit": "630a0a5c82d7ecfbc90e582550058c4aff7baefa",
+      "candidate_commit": "fc5db7a664028ff05dfd6c01daf5c6e09ee6cd19",
+      "comparison_hash": "648c9dcbdad06f1d75043686c3d977a8095e91c2d95d0d2e739237d7d22639a9",
+      "design_hash": "b3e7e3a570cf4a7f632362e903548025b60a4075cee85844a2d1e89cfe90f438",
+      "freeze_seq": 65,
+      "name": "rl-seed-10-uniform"
+    },
+    {
+      "baseline_commit": "0e38d9c40199937d91577d904e238014640c2dde",
+      "candidate_commit": "2ab57c3c930b22fd71ee2e0b3d21917532acd39a",
+      "comparison_hash": "3f72edebef5cf10999a49474f2f2742bf0e2d73e17eeeee1c594bd9dfa27ce18",
+      "design_hash": "b3e7e3a570cf4a7f632362e903548025b60a4075cee85844a2d1e89cfe90f438",
+      "freeze_seq": 65,
+      "name": "rl-seed-10-random"
+    },
+    {
+      "baseline_commit": "3ccc3d5999b836ea4681ad026952b266eec9dbf0",
+      "candidate_commit": "7cce5f09bc3690704fe97f91aa3cd3344da710de",
+      "comparison_hash": "26b4e477134920ba25c0d6658a88e2951720382857715e6492674616f393ff76",
+      "design_hash": "38b9c9ced658cf48d074e1b080a70939b74f7923d2e8568c28ef946de9472cb6",
+      "freeze_seq": 65,
+      "name": "rl-seed-11-frozen"
+    },
+    {
+      "baseline_commit": "bdcd3909e43a16aa140a781f246d4c46fd08fc84",
+      "candidate_commit": "4b4cbaae7a618072c2491d52ecdf5a198ae6b853",
+      "comparison_hash": "26b4e477134920ba25c0d6658a88e2951720382857715e6492674616f393ff76",
+      "design_hash": "38b9c9ced658cf48d074e1b080a70939b74f7923d2e8568c28ef946de9472cb6",
+      "freeze_seq": 65,
+      "name": "rl-seed-11-self-use"
+    },
+    {
+      "baseline_commit": "d105e12411e2086870c760c4438dc5d91dbe5490",
+      "candidate_commit": "bacfc50c23ebb246650f530c1c889398ff00fd6f",
+      "comparison_hash": "d6e28f0c54cb0b643c328c93fc50f8d4009102569f3f6a07b0556c6a5cc9d318",
+      "design_hash": "38b9c9ced658cf48d074e1b080a70939b74f7923d2e8568c28ef946de9472cb6",
+      "freeze_seq": 65,
+      "name": "rl-seed-11-uniform"
+    },
+    {
+      "baseline_commit": "5e9b78039b5118c71d38eabcac98347f40e88094",
+      "candidate_commit": "71cc9ce338d247cb8d7035a8d4e890535c85dd18",
+      "comparison_hash": "2c0acedec53bdc8d572857cb7becfb00938344c10b90957593608c2c47088c16",
+      "design_hash": "38b9c9ced658cf48d074e1b080a70939b74f7923d2e8568c28ef946de9472cb6",
+      "freeze_seq": 65,
+      "name": "rl-seed-11-random"
+    },
+    {
+      "baseline_commit": "1b889bf3537e8805bea51190b73b572ba533ced2",
+      "candidate_commit": "ef5915403a975f2049627d64c5766513214898cd",
+      "comparison_hash": "2e1edb9def863e344fa0bbdd526f5bcbb8c25b2e04e3574e13f39857a7687cd0",
+      "design_hash": "5ba71ac0925ef6eda856cae11ef21297921c0c3ffc1773e83ba937b8951cfc84",
+      "freeze_seq": 65,
+      "name": "rl-seed-12-frozen"
+    },
+    {
+      "baseline_commit": "28e56b1480117f74cba456c7c647fbfa296b5792",
+      "candidate_commit": "47796d56681c5d3e0c495b82753db53fa692aa5b",
+      "comparison_hash": "2e1edb9def863e344fa0bbdd526f5bcbb8c25b2e04e3574e13f39857a7687cd0",
+      "design_hash": "5ba71ac0925ef6eda856cae11ef21297921c0c3ffc1773e83ba937b8951cfc84",
+      "freeze_seq": 65,
+      "name": "rl-seed-12-self-use"
+    },
+    {
+      "baseline_commit": "82f0d1556a8743c81a003d278a9f792a7bd0f6a8",
+      "candidate_commit": "af5969169ba8eb9e03b36f0a80cc3dad2230f2b0",
+      "comparison_hash": "0405479c2e1d4c3841eef08ec55c43836155384d17b282712bd6aea284e1bb28",
+      "design_hash": "5ba71ac0925ef6eda856cae11ef21297921c0c3ffc1773e83ba937b8951cfc84",
+      "freeze_seq": 65,
+      "name": "rl-seed-12-uniform"
+    },
+    {
+      "baseline_commit": "6e4c918b0b278b5390d54e49c090aca1ebc14145",
+      "candidate_commit": "a4bad0dd88ba3947ef538b4a3f1ea45a2c24d524",
+      "comparison_hash": "c60b6392dd4499177b51e19787d6bf23e05a8e64a1fd73c79b231c2e8ad28dd4",
+      "design_hash": "5ba71ac0925ef6eda856cae11ef21297921c0c3ffc1773e83ba937b8951cfc84",
+      "freeze_seq": 65,
+      "name": "rl-seed-12-random"
+    },
+    {
+      "baseline_commit": "39fe53efeb8bdb6582efc72eb8846cbe16aa2477",
+      "candidate_commit": "af1658327570a6b42592c6241a28325eae8cc45a",
+      "comparison_hash": "874289a905748a29c07d98a431c1210af8201957c60cbab793103a8e90160d72",
+      "design_hash": "9bb64334d334f9c9a3fada7364e29fda68da5d3f8543e20a4dbad4bef081cfd5",
+      "freeze_seq": 65,
+      "name": "rl-seed-13-frozen"
+    },
+    {
+      "baseline_commit": "76bde212e69158120d51f39bacfddcd102c4d1f7",
+      "candidate_commit": "2c073417375622f3c4c9a181ef6d656e9b33802b",
+      "comparison_hash": "874289a905748a29c07d98a431c1210af8201957c60cbab793103a8e90160d72",
+      "design_hash": "9bb64334d334f9c9a3fada7364e29fda68da5d3f8543e20a4dbad4bef081cfd5",
+      "freeze_seq": 65,
+      "name": "rl-seed-13-self-use"
+    },
+    {
+      "baseline_commit": "a080d20fafb866817fe1e28fc902df8d0593d50a",
+      "candidate_commit": "b32c669e7d267d44f7779bc97aa6684257a0dec4",
+      "comparison_hash": "22daa0cdf1899cfd6b2b77d9fb6c72c0064a9e263c990b9b7e154b2567a0b685",
+      "design_hash": "9bb64334d334f9c9a3fada7364e29fda68da5d3f8543e20a4dbad4bef081cfd5",
+      "freeze_seq": 65,
+      "name": "rl-seed-13-uniform"
+    },
+    {
+      "baseline_commit": "ee6d1de23eb158a2296586170b3664cf6c097081",
+      "candidate_commit": "73f35aa248ffabe360180b4703ebd1e165f90050",
+      "comparison_hash": "4b28a12dc98293eb365d392e88eec28a4425665783cb26a8d50f50c8559985c3",
+      "design_hash": "9bb64334d334f9c9a3fada7364e29fda68da5d3f8543e20a4dbad4bef081cfd5",
+      "freeze_seq": 65,
+      "name": "rl-seed-13-random"
+    },
+    {
+      "baseline_commit": "2ec7498114c8e666ffce6f6ba87aa0872355bdd0",
+      "candidate_commit": "9584fb0de655abe8fcb6bf252048c3726165821f",
+      "comparison_hash": "55ac42e909e50015dbb9ae6c79cb4f8ee5b1bec16dd7662f9a1a543bad670f6e",
+      "design_hash": "71e60c881acc3f6a47de57ec07d95014f1afe359794a4ec54bc669502b8cbb88",
+      "freeze_seq": 65,
+      "name": "rl-seed-14-frozen"
+    },
+    {
+      "baseline_commit": "3aee3cbd68d98c0f6ebff01dfdea071dc68c2df6",
+      "candidate_commit": "fcec0461edfd0b059d7842fbda72e5ec5b98c502",
+      "comparison_hash": "55ac42e909e50015dbb9ae6c79cb4f8ee5b1bec16dd7662f9a1a543bad670f6e",
+      "design_hash": "71e60c881acc3f6a47de57ec07d95014f1afe359794a4ec54bc669502b8cbb88",
+      "freeze_seq": 65,
+      "name": "rl-seed-14-self-use"
+    },
+    {
+      "baseline_commit": "505a17b515dc5f88d2340a2c07e0b0394c74e7e6",
+      "candidate_commit": "42aaba9f6970c3e1e91cd3f395f50a377a317b56",
+      "comparison_hash": "79bffdd8195cac9f7a75d8ed645647d37343faa90aaca174bb94bedf29bb8658",
+      "design_hash": "71e60c881acc3f6a47de57ec07d95014f1afe359794a4ec54bc669502b8cbb88",
+      "freeze_seq": 65,
+      "name": "rl-seed-14-uniform"
+    },
+    {
+      "baseline_commit": "7bb1347c9f929e1227d3c7dacb7b22bc93b06dd6",
+      "candidate_commit": "6fe2d0a8775e3228f78647a12e9de68d7d1c1c19",
+      "comparison_hash": "89d25ce803cfe055125a8604de8b637ed9a12d6f7889d6599745e4f63d3b0918",
+      "design_hash": "71e60c881acc3f6a47de57ec07d95014f1afe359794a4ec54bc669502b8cbb88",
+      "freeze_seq": 65,
+      "name": "rl-seed-14-random"
+    },
+    {
+      "baseline_commit": "3108a6bf22a92eaba020db3c409a2f6b31210572",
+      "candidate_commit": "ddbc5074e24eef6cb34f0264f57b165e743f6289",
+      "comparison_hash": "d55172452828030f3e6282fc1ee9c129413682ebc219fd04b0a501fd777ea252",
+      "design_hash": "862c4b74c00686ff8bf0867cdd7009a7b8bfb2bca2be5f7e3bce6b1be1b1ac4f",
+      "freeze_seq": 65,
+      "name": "rl-seed-15-frozen"
+    },
+    {
+      "baseline_commit": "f1d701b608657c23482e52606007a3542ae5370f",
+      "candidate_commit": "ad4deeee068aac879513c097adabe728f3f75f9d",
+      "comparison_hash": "d55172452828030f3e6282fc1ee9c129413682ebc219fd04b0a501fd777ea252",
+      "design_hash": "862c4b74c00686ff8bf0867cdd7009a7b8bfb2bca2be5f7e3bce6b1be1b1ac4f",
+      "freeze_seq": 65,
+      "name": "rl-seed-15-self-use"
+    },
+    {
+      "baseline_commit": "a00781961b680612db4f246c3b35b62c6be7b82f",
+      "candidate_commit": "4967ecbdd00d45827e440c9550968c2cbbf6c1d9",
+      "comparison_hash": "0a163e58c7e0101d2cc8dd80722a094e1e75234f8d65b43383a0c83542e8e1e1",
+      "design_hash": "862c4b74c00686ff8bf0867cdd7009a7b8bfb2bca2be5f7e3bce6b1be1b1ac4f",
+      "freeze_seq": 65,
+      "name": "rl-seed-15-uniform"
+    },
+    {
+      "baseline_commit": "c04c051add30dd819fb434f0ef09735a93599bad",
+      "candidate_commit": "c786fbb631fdf3a000395ea0f4825adef61bad62",
+      "comparison_hash": "5b5c3181d3bb61137235aa973a154b6f9e4615d495762a87deabf9d42da32eb6",
+      "design_hash": "862c4b74c00686ff8bf0867cdd7009a7b8bfb2bca2be5f7e3bce6b1be1b1ac4f",
+      "freeze_seq": 65,
+      "name": "rl-seed-15-random"
+    },
+    {
+      "baseline_commit": "908eb99bc960b903a1aa46d0d634c2a09f30e167",
+      "candidate_commit": "b80c77cbb4bbffd07c33ec7322281e5be97e550a",
+      "comparison_hash": "b61512dd9c9b81e339a235ac7822d0b72d6e5c314c661d8134244a1242119d02",
+      "design_hash": "7fb922b2b49822d381e8f1557c1b72f48b1b50c2676d6eab246f2e13704217e6",
+      "freeze_seq": 65,
+      "name": "rl-seed-16-frozen"
+    },
+    {
+      "baseline_commit": "e85bcdda1fa92dc8919adb991e130490d7656ddf",
+      "candidate_commit": "b3584f22a36691ae54e7f6caceaffe36dd2bb268",
+      "comparison_hash": "b61512dd9c9b81e339a235ac7822d0b72d6e5c314c661d8134244a1242119d02",
+      "design_hash": "7fb922b2b49822d381e8f1557c1b72f48b1b50c2676d6eab246f2e13704217e6",
+      "freeze_seq": 65,
+      "name": "rl-seed-16-self-use"
+    },
+    {
+      "baseline_commit": "baa00d82175e3f09fb6b0b53bfc204f5d52ca112",
+      "candidate_commit": "81ec367211b18d5cc641dbe2a797e858b0692d00",
+      "comparison_hash": "172839bc8f34be8bf6557b6929eec19fdcdbe59cfc294f1bceba36b3c911bdb7",
+      "design_hash": "7fb922b2b49822d381e8f1557c1b72f48b1b50c2676d6eab246f2e13704217e6",
+      "freeze_seq": 65,
+      "name": "rl-seed-16-uniform"
+    },
+    {
+      "baseline_commit": "545e04332f6325039f78ed33df709b0e72c1072b",
+      "candidate_commit": "f26960d8d54c64feac5983faf364981329ba913d",
+      "comparison_hash": "8f39414d16b572da2b5278d61d45d5c1ba16b12403dde4055ab058a462cc8428",
+      "design_hash": "7fb922b2b49822d381e8f1557c1b72f48b1b50c2676d6eab246f2e13704217e6",
+      "freeze_seq": 65,
+      "name": "rl-seed-16-random"
+    },
+    {
+      "baseline_commit": "9cc224d29f2fdaf87c1e0bf08350d57b5603bb01",
+      "candidate_commit": "e70d9f0153f0f6d3b1f3c232fa950c3680217776",
+      "comparison_hash": "0d0e2cad89a4d6a77e23f9584b64b202649d82e346aead78772a8c55c8e2cfe5",
+      "design_hash": "daa3680e53875ffd14782cc1d1586ebfb778ce98791d70593a723120df12329e",
+      "freeze_seq": 65,
+      "name": "rl-seed-17-frozen"
+    },
+    {
+      "baseline_commit": "b856644fd4efb092bef16c21a33cebe929cecdbf",
+      "candidate_commit": "c9a0d514ab5d191dbfa5cd716146b1919abf3993",
+      "comparison_hash": "0d0e2cad89a4d6a77e23f9584b64b202649d82e346aead78772a8c55c8e2cfe5",
+      "design_hash": "daa3680e53875ffd14782cc1d1586ebfb778ce98791d70593a723120df12329e",
+      "freeze_seq": 65,
+      "name": "rl-seed-17-self-use"
+    },
+    {
+      "baseline_commit": "da5ef2794380f422a77ab5e2a3701d3fa1244b3a",
+      "candidate_commit": "00a46108375ccec3daa3e67a54663eae27ed442d",
+      "comparison_hash": "d6111728241feaa314865d78c6971c1b2004f1bddf392f50dc9ba097aa58c3f6",
+      "design_hash": "daa3680e53875ffd14782cc1d1586ebfb778ce98791d70593a723120df12329e",
+      "freeze_seq": 65,
+      "name": "rl-seed-17-uniform"
+    },
+    {
+      "baseline_commit": "c9fc8fb6ce6a89b0d1effc9003a30d8e77b8fc83",
+      "candidate_commit": "39d88c46dbb3ff329ae096b034d0c3577caa1d30",
+      "comparison_hash": "babfd1994816842169fcf51b0f2f8079980451084187f95b886e3fe9708957a0",
+      "design_hash": "daa3680e53875ffd14782cc1d1586ebfb778ce98791d70593a723120df12329e",
+      "freeze_seq": 65,
+      "name": "rl-seed-17-random"
+    },
+    {
+      "baseline_commit": "a94be11b5a8441c50acaa5c5f272feaf80bed076",
+      "candidate_commit": "ccabe143f14b6f73e22b09287c472c9bd05cf7c3",
+      "comparison_hash": "fb603812ce34a89957ba6ddf449f72d3f0d08f43e7f29ff2985680d47d83df76",
+      "design_hash": "33b3ffdfdaae64975b86d5d653e51c8cbf6f4282a7865ecfec6f68eeeecad73b",
+      "freeze_seq": 65,
+      "name": "rl-seed-18-frozen"
+    },
+    {
+      "baseline_commit": "9622d4cafe21be82101a8456ea78436cdb38d266",
+      "candidate_commit": "ba5d4c59556299a692b8fb19233c2e96ef3cec5e",
+      "comparison_hash": "fb603812ce34a89957ba6ddf449f72d3f0d08f43e7f29ff2985680d47d83df76",
+      "design_hash": "33b3ffdfdaae64975b86d5d653e51c8cbf6f4282a7865ecfec6f68eeeecad73b",
+      "freeze_seq": 65,
+      "name": "rl-seed-18-self-use"
+    },
+    {
+      "baseline_commit": "6fb7bc826f4eac300b9b75e7418dd98433cb1cc2",
+      "candidate_commit": "a6d013d84fd297b466d6bf11774b06c1165a6393",
+      "comparison_hash": "e48f261de60ed0a493bc4966cc646b2556528153471e115925e25db232a52e81",
+      "design_hash": "33b3ffdfdaae64975b86d5d653e51c8cbf6f4282a7865ecfec6f68eeeecad73b",
+      "freeze_seq": 65,
+      "name": "rl-seed-18-uniform"
+    },
+    {
+      "baseline_commit": "8fa7046ad2f11987df6e3ed8c0bc1c2e5e744bd7",
+      "candidate_commit": "d5030efa9de5a252ac6516557bb64c0a0263cb97",
+      "comparison_hash": "6b261f84e949cfdc9f0c766c1daf0484ee00dbb7040f3bb1d36d1ef3d355616e",
+      "design_hash": "33b3ffdfdaae64975b86d5d653e51c8cbf6f4282a7865ecfec6f68eeeecad73b",
+      "freeze_seq": 65,
+      "name": "rl-seed-18-random"
+    },
+    {
+      "baseline_commit": "c7fc3e8e17b9a1bb7c89365a9ed94d031368d4fe",
+      "candidate_commit": "95b65b362efd119e39d250ff8d274741af5ec943",
+      "comparison_hash": "30e10c8a5665af2de3666eadf81dd880769b8839d9f695a35b54ebca77a9a1a4",
+      "design_hash": "4eadaaaee2a3efca8aa4a1907747ca2f02376963894d6bbfad5c1502deddbc6e",
+      "freeze_seq": 65,
+      "name": "rl-seed-19-frozen"
+    },
+    {
+      "baseline_commit": "fdec84def595d24df4339bf16273fc9a3d5e1fa9",
+      "candidate_commit": "4e8e34c7327391ea4dda7b7f8707243e86f9c33d",
+      "comparison_hash": "30e10c8a5665af2de3666eadf81dd880769b8839d9f695a35b54ebca77a9a1a4",
+      "design_hash": "4eadaaaee2a3efca8aa4a1907747ca2f02376963894d6bbfad5c1502deddbc6e",
+      "freeze_seq": 65,
+      "name": "rl-seed-19-self-use"
+    },
+    {
+      "baseline_commit": "00b6e57ae68870edfb4071e6a406277dee1e6046",
+      "candidate_commit": "9363e0cc4d7181e2ebdaf4bac8000ed797a58dad",
+      "comparison_hash": "692c4e090552915054923ef41d0003102df4c35df315cdc251eec999160179f7",
+      "design_hash": "4eadaaaee2a3efca8aa4a1907747ca2f02376963894d6bbfad5c1502deddbc6e",
+      "freeze_seq": 65,
+      "name": "rl-seed-19-uniform"
+    },
+    {
+      "baseline_commit": "f6f25cca17cb012c54b1d0a7e2c36238b9b5a534",
+      "candidate_commit": "ac8eb5d3c42ac2da31a331fd55eb0c0a5f639705",
+      "comparison_hash": "6dcc6523d0819274cedda45d51ef543d5bae5f5d24b5ebb2dd9bf77d1bb82853",
+      "design_hash": "4eadaaaee2a3efca8aa4a1907747ca2f02376963894d6bbfad5c1502deddbc6e",
+      "freeze_seq": 65,
+      "name": "rl-seed-19-random"
+    },
+    {
+      "baseline_commit": "a14d4e42575ace7ad5401b2403c4f1ad07f6cb0c",
+      "candidate_commit": "60709ad1bcf0389eb9003edc8572ca203f46c230",
+      "comparison_hash": "71053feb354bba498af7e5927b1a65b144185ceb808f5a7843558c769d8b8ef4",
+      "design_hash": "00e9a74be61ad0678cb6290bcafd28bc24bd5b10efe2a4d9b67a58875d7e532a",
+      "freeze_seq": 65,
+      "name": "lora-seed-10-frozen"
+    },
+    {
+      "baseline_commit": "0a3777629f3cfce36f3e9e1e0eec9f0fbe1cbd42",
+      "candidate_commit": "53395e0f30de103d3fc86358443e19783c49a9d6",
+      "comparison_hash": "71053feb354bba498af7e5927b1a65b144185ceb808f5a7843558c769d8b8ef4",
+      "design_hash": "00e9a74be61ad0678cb6290bcafd28bc24bd5b10efe2a4d9b67a58875d7e532a",
+      "freeze_seq": 65,
+      "name": "lora-seed-10-self-use"
+    },
+    {
+      "baseline_commit": "83991297d8a0503ed9658642aecd4b4579558f6d",
+      "candidate_commit": "36823bb8b19363e5ef12cb9c811a1f10ddcf2da7",
+      "comparison_hash": "6a14a63d9d1288a33356494f756dcd049c68516aee4714ad77a9616c5d4d2871",
+      "design_hash": "00e9a74be61ad0678cb6290bcafd28bc24bd5b10efe2a4d9b67a58875d7e532a",
+      "freeze_seq": 65,
+      "name": "lora-seed-10-uniform"
+    },
+    {
+      "baseline_commit": "a8529127a2662f16553c8f8ee35b0640cf71e6af",
+      "candidate_commit": "b57fefbdf40560c8209f03e981732a2e20e1d7a1",
+      "comparison_hash": "af5106a98fd94a77751a78ac8f9ef817ff92b88b151c94eb36010ef215cc42e1",
+      "design_hash": "00e9a74be61ad0678cb6290bcafd28bc24bd5b10efe2a4d9b67a58875d7e532a",
+      "freeze_seq": 65,
+      "name": "lora-seed-10-random"
+    },
+    {
+      "baseline_commit": "ebff019de09fb6ad37695c711105cbbbd2eaad67",
+      "candidate_commit": "e8f2723a478e4dc6ba588fe3c28615c567ef326d",
+      "comparison_hash": "585677bf7c99fe281fffe6d93b0dbbfe0bfb7588f870dfef9374c0935383c12c",
+      "design_hash": "19495a3b05b8fe65bff1b83ec63d7a42e1b5c0a663668ffb28fcf6fc5fb49da0",
+      "freeze_seq": 65,
+      "name": "lora-seed-11-frozen"
+    },
+    {
+      "baseline_commit": "8ff19d12d06261175aa1873ef44cd950c390d4e6",
+      "candidate_commit": "7aafac5ec541b06f8fc4df60f95aac785df616fe",
+      "comparison_hash": "585677bf7c99fe281fffe6d93b0dbbfe0bfb7588f870dfef9374c0935383c12c",
+      "design_hash": "19495a3b05b8fe65bff1b83ec63d7a42e1b5c0a663668ffb28fcf6fc5fb49da0",
+      "freeze_seq": 65,
+      "name": "lora-seed-11-self-use"
+    },
+    {
+      "baseline_commit": "e122ab9efc7bba3d40fc27719ab6c94f4437541c",
+      "candidate_commit": "4405e1babe36427995a8c4413fb447f5239cccfa",
+      "comparison_hash": "23b5bb11ede1fa9c289ec9e309eeeffb45f41ef463a49e201a33d574c8f55bd6",
+      "design_hash": "19495a3b05b8fe65bff1b83ec63d7a42e1b5c0a663668ffb28fcf6fc5fb49da0",
+      "freeze_seq": 65,
+      "name": "lora-seed-11-uniform"
+    },
+    {
+      "baseline_commit": "4d99ebd4aeed2330a24cfd9bc031ce69a0c6f3be",
+      "candidate_commit": "f9f8b3a7378066f35ad8ad9338a426d01c17aac9",
+      "comparison_hash": "3131863a8c2ad8d8af62c9ef3cbdf5b472f6797b1335efc11874b24624d05fa0",
+      "design_hash": "19495a3b05b8fe65bff1b83ec63d7a42e1b5c0a663668ffb28fcf6fc5fb49da0",
+      "freeze_seq": 65,
+      "name": "lora-seed-11-random"
+    },
+    {
+      "baseline_commit": "cd865f413015a97531261a4221ee862596dbf470",
+      "candidate_commit": "ca7af9a4a11c26c0570d34cce453cfdeb1835e55",
+      "comparison_hash": "25ce5094bff398089c06ea0c28817581e3cff4e5d2f0cbe3d1eb56b0ac40c928",
+      "design_hash": "82fc9bf8233e11e7fb1a4f720ff81e5059b65ef4792687299598ced83f19905e",
+      "freeze_seq": 65,
+      "name": "lora-seed-12-frozen"
+    },
+    {
+      "baseline_commit": "6ce6c044fc5fb41bf9989ccd74608f8087a91c97",
+      "candidate_commit": "b0d27dde0b22211d94854b7f3e7e2362c6e374b7",
+      "comparison_hash": "25ce5094bff398089c06ea0c28817581e3cff4e5d2f0cbe3d1eb56b0ac40c928",
+      "design_hash": "82fc9bf8233e11e7fb1a4f720ff81e5059b65ef4792687299598ced83f19905e",
+      "freeze_seq": 65,
+      "name": "lora-seed-12-self-use"
+    },
+    {
+      "baseline_commit": "3a5aab5481d090b836499acfc5aaab409e4eb460",
+      "candidate_commit": "09a190ff313837903d6262a73d7ebdbaa38e9813",
+      "comparison_hash": "5599df79c4983c3df4f8a860edd1942ee01ac7135121d6761dbbce8ad81a191d",
+      "design_hash": "82fc9bf8233e11e7fb1a4f720ff81e5059b65ef4792687299598ced83f19905e",
+      "freeze_seq": 65,
+      "name": "lora-seed-12-uniform"
+    },
+    {
+      "baseline_commit": "9683afb1fb388e485f6959574fc691f5168c82bb",
+      "candidate_commit": "48c2c682cc71438921194b3aa2c7023935fe7dda",
+      "comparison_hash": "fd6f6c76f28fb52d05fb8210dc5d3f7ab0ca2d58efb37fcdffb0d65f06415f39",
+      "design_hash": "82fc9bf8233e11e7fb1a4f720ff81e5059b65ef4792687299598ced83f19905e",
+      "freeze_seq": 65,
+      "name": "lora-seed-12-random"
+    },
+    {
+      "baseline_commit": "e254babd47efdd2b58471c24da8dc6d9c819e179",
+      "candidate_commit": "61d0cb3fbf4dd155f9601f35efcf6cea8988a7a0",
+      "comparison_hash": "80a20d5b062fc61e64ef535d1069b1bed86db3e78fbb80520c25bc07d22dc8f9",
+      "design_hash": "28b58993913a298955f52c68cb6b4514f7046f34730ebdad92f97726f7c1c47f",
+      "freeze_seq": 65,
+      "name": "lora-seed-13-frozen"
+    },
+    {
+      "baseline_commit": "60a01bbabc5988a72cda2bbfc737492f79f12a82",
+      "candidate_commit": "0eeff9f27992d73743540622915eaa72bcd90e25",
+      "comparison_hash": "80a20d5b062fc61e64ef535d1069b1bed86db3e78fbb80520c25bc07d22dc8f9",
+      "design_hash": "28b58993913a298955f52c68cb6b4514f7046f34730ebdad92f97726f7c1c47f",
+      "freeze_seq": 65,
+      "name": "lora-seed-13-self-use"
+    },
+    {
+      "baseline_commit": "e66449e8729247ad4e621a51de877574d6bcf64c",
+      "candidate_commit": "213c1a9bda56349e533048edd112aa4f7a90f8c4",
+      "comparison_hash": "50f37696125790ba0da69d033ec8bb2ecbc0d7b3f1aabc60d07f460f0dcca181",
+      "design_hash": "28b58993913a298955f52c68cb6b4514f7046f34730ebdad92f97726f7c1c47f",
+      "freeze_seq": 65,
+      "name": "lora-seed-13-uniform"
+    },
+    {
+      "baseline_commit": "1fc89093fec1c825c4edd0bcab91dadfbde9e16e",
+      "candidate_commit": "452822ba648cf0fcf3eadb63960615891f692708",
+      "comparison_hash": "cbc04709d38892f96cf5da22244562d04d1406a3e296cc9cd4c681df01b79f53",
+      "design_hash": "28b58993913a298955f52c68cb6b4514f7046f34730ebdad92f97726f7c1c47f",
+      "freeze_seq": 65,
+      "name": "lora-seed-13-random"
+    },
+    {
+      "baseline_commit": "f50a69ad7edd28cd2cebde33e900b4d0a6c6aa6f",
+      "candidate_commit": "5da91b1fc69b3227c44c947114c158f063504324",
+      "comparison_hash": "b7e0b7a7f43fdcac758c13557a21c154274af49691769f5e527acdfd94e9315e",
+      "design_hash": "978b87cc490f47e8951cefee8d7ea067d8be98460be98c26f3b170a063bd0ad4",
+      "freeze_seq": 65,
+      "name": "lora-seed-14-frozen"
+    },
+    {
+      "baseline_commit": "a1588c529818aac7be41999494e65a187621ae9c",
+      "candidate_commit": "e49580e1f2cd5fd52e74d7867259b533b219101d",
+      "comparison_hash": "b7e0b7a7f43fdcac758c13557a21c154274af49691769f5e527acdfd94e9315e",
+      "design_hash": "978b87cc490f47e8951cefee8d7ea067d8be98460be98c26f3b170a063bd0ad4",
+      "freeze_seq": 65,
+      "name": "lora-seed-14-self-use"
+    },
+    {
+      "baseline_commit": "d978bc1e3d928f289532247c70c254bef257dc3c",
+      "candidate_commit": "6687230708bfc23a5737511e43d353e43d1b2db5",
+      "comparison_hash": "ab795e59606f63637eba8b35dbc5fd21b51ac7629f8918ef3ba38c1b9b22277e",
+      "design_hash": "978b87cc490f47e8951cefee8d7ea067d8be98460be98c26f3b170a063bd0ad4",
+      "freeze_seq": 65,
+      "name": "lora-seed-14-uniform"
+    },
+    {
+      "baseline_commit": "c201e28f17f2993c606948a5d81f671052b6549e",
+      "candidate_commit": "3c326120e21e1da9914396db278e30f56d566856",
+      "comparison_hash": "65eecb84ac872abec0b665a44fe4bf13ed49ac686c2e59d0823ac2ac0fb0ac66",
+      "design_hash": "978b87cc490f47e8951cefee8d7ea067d8be98460be98c26f3b170a063bd0ad4",
+      "freeze_seq": 65,
+      "name": "lora-seed-14-random"
+    },
+    {
+      "baseline_commit": "6673e295a59ed4221d06ecde92ebe4296a8f826a",
+      "candidate_commit": "c19c2d7d7080900f5ddb491a39809128e50f34f9",
+      "comparison_hash": "8c3a22c989c6f9e9b9420f0fea91725ec07d1b5f6cb0c2b9a5d17b39debd4ce9",
+      "design_hash": "93c1dba4af7cfa0e35a694c54a3d4288f00b730e5dd15b8767f4bbe44fd7e215",
+      "freeze_seq": 65,
+      "name": "lora-seed-15-frozen"
+    },
+    {
+      "baseline_commit": "97760353ea1337288efc5332498f03bd41e74f84",
+      "candidate_commit": "87b7b4e77becd2ad157c891e202622263b924ec9",
+      "comparison_hash": "8c3a22c989c6f9e9b9420f0fea91725ec07d1b5f6cb0c2b9a5d17b39debd4ce9",
+      "design_hash": "93c1dba4af7cfa0e35a694c54a3d4288f00b730e5dd15b8767f4bbe44fd7e215",
+      "freeze_seq": 65,
+      "name": "lora-seed-15-self-use"
+    },
+    {
+      "baseline_commit": "1e45c63f3867d0eeda2d7d11c93dc859b2066e2a",
+      "candidate_commit": "75a31699d2ddc6ebd05484f9cb4b2aba84738af8",
+      "comparison_hash": "19d0a1665faed1fa3d5a7010fb2c85e77054ecbe63348a596c2db96edb80458a",
+      "design_hash": "93c1dba4af7cfa0e35a694c54a3d4288f00b730e5dd15b8767f4bbe44fd7e215",
+      "freeze_seq": 65,
+      "name": "lora-seed-15-uniform"
+    },
+    {
+      "baseline_commit": "bf889bedae34779e10b0d665b5d9b8d5ebd7824a",
+      "candidate_commit": "2fe72879c1917cc327200f98caa2233cec2fcc9e",
+      "comparison_hash": "201b060a97e9c668b2ae52cd0f51a07dfbbef051d3bbcd0b50ad2009e81f2fd3",
+      "design_hash": "93c1dba4af7cfa0e35a694c54a3d4288f00b730e5dd15b8767f4bbe44fd7e215",
+      "freeze_seq": 65,
+      "name": "lora-seed-15-random"
+    },
+    {
+      "baseline_commit": "7a341f01fcf073466a29b07ff856d1214f398eb6",
+      "candidate_commit": "ab01cec22387c36995fb6fb3e9da93e502d7b508",
+      "comparison_hash": "31d558f9122814a96b4e3b9263691361d16ac2ca9223175cf4101dfa422ab250",
+      "design_hash": "79d06379cd41da4b173292dc11162161c6fec842a076c9a02bbfc848ed13b884",
+      "freeze_seq": 65,
+      "name": "lora-seed-16-frozen"
+    },
+    {
+      "baseline_commit": "ca5e3bcd4eee4541a359c044cf30bb40565bbb1b",
+      "candidate_commit": "b867d857d34ec8c338ce0ab99b6afb4156f31f92",
+      "comparison_hash": "31d558f9122814a96b4e3b9263691361d16ac2ca9223175cf4101dfa422ab250",
+      "design_hash": "79d06379cd41da4b173292dc11162161c6fec842a076c9a02bbfc848ed13b884",
+      "freeze_seq": 65,
+      "name": "lora-seed-16-self-use"
+    },
+    {
+      "baseline_commit": "048b0831af16c340e448a946be7827ce70c23003",
+      "candidate_commit": "fcc52dfae4ce0425436ac75ce332705806e4660e",
+      "comparison_hash": "fc567d955b0a0c9b2449812fd5f772963fd3533b156372ff130a1c2348d080ac",
+      "design_hash": "79d06379cd41da4b173292dc11162161c6fec842a076c9a02bbfc848ed13b884",
+      "freeze_seq": 65,
+      "name": "lora-seed-16-uniform"
+    },
+    {
+      "baseline_commit": "5b16112735ada7b5de1c64a7b3ecbfdedaafd37d",
+      "candidate_commit": "f468ff8c23eeaf5cb5ea71fe9f56646e715f2e61",
+      "comparison_hash": "7fc036c4c30ae9aeb85760ca7af2d6209ba4ab8e14be79b616cdfc1c741f69fb",
+      "design_hash": "79d06379cd41da4b173292dc11162161c6fec842a076c9a02bbfc848ed13b884",
+      "freeze_seq": 65,
+      "name": "lora-seed-16-random"
+    },
+    {
+      "baseline_commit": "11400731efcaec8e92efde726c5a6a8b3afb96e3",
+      "candidate_commit": "124ea4c4cb067c7db80c89a2ff17ee2ebaa53cb6",
+      "comparison_hash": "b8bd15730a0ca9dd5a885327bb53eebbf9237d0d9cefc9088b2d2cde6381ff69",
+      "design_hash": "f0a819171f40f8ded6f54bab8900abe4c159c92f2cea2b0a315040e45b3b4726",
+      "freeze_seq": 65,
+      "name": "lora-seed-17-frozen"
+    },
+    {
+      "baseline_commit": "907720aa48223a93ad1ae9eb9ca9bf4d04bb9fe3",
+      "candidate_commit": "8f2d75a1b7d3c06eb0bf614cb5b5b06da71e8afa",
+      "comparison_hash": "b8bd15730a0ca9dd5a885327bb53eebbf9237d0d9cefc9088b2d2cde6381ff69",
+      "design_hash": "f0a819171f40f8ded6f54bab8900abe4c159c92f2cea2b0a315040e45b3b4726",
+      "freeze_seq": 65,
+      "name": "lora-seed-17-self-use"
+    },
+    {
+      "baseline_commit": "7d2ca50ed8e8a254b78623aedd48f4ec17f6878a",
+      "candidate_commit": "133dab4b214690926c9b662c9a78720916b9a60c",
+      "comparison_hash": "898b9cdf01c0bdb70935d5eeb4b220b0f5dae627f6099a25eaeb2549e6bcd784",
+      "design_hash": "f0a819171f40f8ded6f54bab8900abe4c159c92f2cea2b0a315040e45b3b4726",
+      "freeze_seq": 65,
+      "name": "lora-seed-17-uniform"
+    },
+    {
+      "baseline_commit": "61576f4ca84b385fbf4aba071aca50453b0ab0f4",
+      "candidate_commit": "9a3df82def7efe99eaf486ea4ea88afa1cb78a89",
+      "comparison_hash": "bf987e7beeb185988334601cbaac35835c790790c5d90841fc632f67cd4709df",
+      "design_hash": "f0a819171f40f8ded6f54bab8900abe4c159c92f2cea2b0a315040e45b3b4726",
+      "freeze_seq": 65,
+      "name": "lora-seed-17-random"
+    },
+    {
+      "baseline_commit": "52da623d799ded7a77c54e52cc1c46fb192acab8",
+      "candidate_commit": "93f85879502e3a1a14380c0065298ad68d44d67b",
+      "comparison_hash": "545f928b777eb51623fd251bf69e10d7af91108e381713b05843f3da9ea19ebb",
+      "design_hash": "8c1ff609209ed52cea5628f8d03bea6218f577ae66ccbdeda972136b4fa92e4a",
+      "freeze_seq": 65,
+      "name": "lora-seed-18-frozen"
+    },
+    {
+      "baseline_commit": "649949516e478745329224fc0b52e5a52f819987",
+      "candidate_commit": "e5d7faaa8e1eec08104fd081777166abe02ec17e",
+      "comparison_hash": "545f928b777eb51623fd251bf69e10d7af91108e381713b05843f3da9ea19ebb",
+      "design_hash": "8c1ff609209ed52cea5628f8d03bea6218f577ae66ccbdeda972136b4fa92e4a",
+      "freeze_seq": 65,
+      "name": "lora-seed-18-self-use"
+    },
+    {
+      "baseline_commit": "8075fc8b1e5175ca5a6cf4e2b8138fceb16ce5f9",
+      "candidate_commit": "ca73fcf9d646e352ee2b7202453650b451439db3",
+      "comparison_hash": "bc13bb6a05a151c2568387af7dd48be118ff63cf464a0e8e22fd8f2ec0fc9ff7",
+      "design_hash": "8c1ff609209ed52cea5628f8d03bea6218f577ae66ccbdeda972136b4fa92e4a",
+      "freeze_seq": 65,
+      "name": "lora-seed-18-uniform"
+    },
+    {
+      "baseline_commit": "535d5cda7f201fa42a38e9ca24eb592b17ad757f",
+      "candidate_commit": "22803c60c3f96fd20ec71dea39c32d9d17a4c4cc",
+      "comparison_hash": "f438b98a939cb0f9fdcd631f7dac032b42a298b0decc068ea8910c6e716af8e1",
+      "design_hash": "8c1ff609209ed52cea5628f8d03bea6218f577ae66ccbdeda972136b4fa92e4a",
+      "freeze_seq": 65,
+      "name": "lora-seed-18-random"
+    },
+    {
+      "baseline_commit": "efc94605ca1c1882635e5ec1461954d06dae8187",
+      "candidate_commit": "237b47288c0a7cfc51ffa1d1d8dc8e359ef55fc3",
+      "comparison_hash": "5c2dae7c226eb9bfaa245f11ac777733a391a43249d064ee3ea28c44534755aa",
+      "design_hash": "a6aee6b8198d3671f74abab60d6e2c45c3a3625bf9e6e83b7787baa63ee60753",
+      "freeze_seq": 65,
+      "name": "lora-seed-19-frozen"
+    },
+    {
+      "baseline_commit": "9006243ff2ccb824166af69466e7f645aeab2f40",
+      "candidate_commit": "59873b4345d8e027f7b4d3b5997eb7f87e945a20",
+      "comparison_hash": "5c2dae7c226eb9bfaa245f11ac777733a391a43249d064ee3ea28c44534755aa",
+      "design_hash": "a6aee6b8198d3671f74abab60d6e2c45c3a3625bf9e6e83b7787baa63ee60753",
+      "freeze_seq": 65,
+      "name": "lora-seed-19-self-use"
+    },
+    {
+      "baseline_commit": "b030083b6dab01caaccd884a3f3c8e7716e72890",
+      "candidate_commit": "b5053396db3121db94d20e17d40dcabea4962d46",
+      "comparison_hash": "c8dff158f8d9f0c0d4475f778ca5339d4e1c6a05be7586eee78d80167b05ea13",
+      "design_hash": "a6aee6b8198d3671f74abab60d6e2c45c3a3625bf9e6e83b7787baa63ee60753",
+      "freeze_seq": 65,
+      "name": "lora-seed-19-uniform"
+    },
+    {
+      "baseline_commit": "13ebced8bde450b8ff13124472174c1d17826d32",
+      "candidate_commit": "6fe4bf92d2371d8ba9ab36b5293703af85419348",
+      "comparison_hash": "893f402dfe85b353c6c31c87bf100f2a6d3dd368f8ddc39fc4ab5869d0b944a5",
+      "design_hash": "a6aee6b8198d3671f74abab60d6e2c45c3a3625bf9e6e83b7787baa63ee60753",
+      "freeze_seq": 65,
+      "name": "lora-seed-19-random"
+    }
+  ]
+}

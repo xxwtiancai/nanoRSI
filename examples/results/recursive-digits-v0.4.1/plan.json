@@ -1,0 +1,840 @@
+{
+  "batch_size": 32,
+  "budget_basis": "Same planned updates/batches/train rows/score panel and validation opportunities within method; report actual and retained work separately.",
+  "created_at": "2026-09-12T15:24:03.593450+00:00",
+  "dataset": {
+    "counts": {
+      "test": 364,
+      "train": 1074,
+      "validation": 359
+    },
+    "dataset": "UCI optical digits / scikit-learn 1797-row subset, resplit",
+    "manifest_sha256": "4e9ad72caec020c20b16d75f80f525e7d9c672c31193c6cee4b7965eacf3801c",
+    "numpy_version": "2.3.3",
+    "source_sha256": "09f66e6debdee2cd2b5ae59e0d6abbb73fc2b0e0185d2e1957e9ebb51e23aa22",
+    "split_seed": 20260912,
+    "split_sha256": "9b1fff5b7050aad8915b517a11d7336cfccc590c6f56e0d106196dddebdb320d"
+  },
+  "failure_handling": "Keep all runs and candidate failures; do not start any final test if a planned workspace is not frozen.",
+  "implementation_commit": "7809e7924bf806272b721fb829ef689db0263718",
+  "plan_sha256": "4534eb7961714d1192bb80e844e05c5d88a61d0d06084d23728b1886b7b735c8",
+  "primary_inference": {
+    "adjustment": "Bonferroni",
+    "contrast": "self-use minus frozen",
+    "family_size": 3,
+    "familywise_alpha": 0.05,
+    "methods": [
+      "lora",
+      "rl",
+      "sft"
+    ],
+    "minimum_gain_pp": 5,
+    "requires_complete_matched_budget_panel": true
+  },
+  "primary_outcome": "self-use minus frozen final accuracy in percentage points",
+  "rounds": 6,
+  "runs": [
+    {
+      "method": "sft",
+      "name": "sft-seed-10-frozen",
+      "policy": "frozen",
+      "seed": 10
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-10-self-use",
+      "policy": "self-use",
+      "seed": 10
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-10-uniform",
+      "policy": "uniform",
+      "seed": 10
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-10-random",
+      "policy": "random",
+      "seed": 10
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-11-frozen",
+      "policy": "frozen",
+      "seed": 11
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-11-self-use",
+      "policy": "self-use",
+      "seed": 11
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-11-uniform",
+      "policy": "uniform",
+      "seed": 11
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-11-random",
+      "policy": "random",
+      "seed": 11
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-12-frozen",
+      "policy": "frozen",
+      "seed": 12
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-12-self-use",
+      "policy": "self-use",
+      "seed": 12
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-12-uniform",
+      "policy": "uniform",
+      "seed": 12
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-12-random",
+      "policy": "random",
+      "seed": 12
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-13-frozen",
+      "policy": "frozen",
+      "seed": 13
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-13-self-use",
+      "policy": "self-use",
+      "seed": 13
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-13-uniform",
+      "policy": "uniform",
+      "seed": 13
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-13-random",
+      "policy": "random",
+      "seed": 13
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-14-frozen",
+      "policy": "frozen",
+      "seed": 14
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-14-self-use",
+      "policy": "self-use",
+      "seed": 14
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-14-uniform",
+      "policy": "uniform",
+      "seed": 14
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-14-random",
+      "policy": "random",
+      "seed": 14
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-15-frozen",
+      "policy": "frozen",
+      "seed": 15
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-15-self-use",
+      "policy": "self-use",
+      "seed": 15
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-15-uniform",
+      "policy": "uniform",
+      "seed": 15
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-15-random",
+      "policy": "random",
+      "seed": 15
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-16-frozen",
+      "policy": "frozen",
+      "seed": 16
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-16-self-use",
+      "policy": "self-use",
+      "seed": 16
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-16-uniform",
+      "policy": "uniform",
+      "seed": 16
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-16-random",
+      "policy": "random",
+      "seed": 16
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-17-frozen",
+      "policy": "frozen",
+      "seed": 17
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-17-self-use",
+      "policy": "self-use",
+      "seed": 17
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-17-uniform",
+      "policy": "uniform",
+      "seed": 17
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-17-random",
+      "policy": "random",
+      "seed": 17
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-18-frozen",
+      "policy": "frozen",
+      "seed": 18
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-18-self-use",
+      "policy": "self-use",
+      "seed": 18
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-18-uniform",
+      "policy": "uniform",
+      "seed": 18
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-18-random",
+      "policy": "random",
+      "seed": 18
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-19-frozen",
+      "policy": "frozen",
+      "seed": 19
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-19-self-use",
+      "policy": "self-use",
+      "seed": 19
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-19-uniform",
+      "policy": "uniform",
+      "seed": 19
+    },
+    {
+      "method": "sft",
+      "name": "sft-seed-19-random",
+      "policy": "random",
+      "seed": 19
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-10-frozen",
+      "policy": "frozen",
+      "seed": 10
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-10-self-use",
+      "policy": "self-use",
+      "seed": 10
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-10-uniform",
+      "policy": "uniform",
+      "seed": 10
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-10-random",
+      "policy": "random",
+      "seed": 10
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-11-frozen",
+      "policy": "frozen",
+      "seed": 11
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-11-self-use",
+      "policy": "self-use",
+      "seed": 11
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-11-uniform",
+      "policy": "uniform",
+      "seed": 11
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-11-random",
+      "policy": "random",
+      "seed": 11
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-12-frozen",
+      "policy": "frozen",
+      "seed": 12
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-12-self-use",
+      "policy": "self-use",
+      "seed": 12
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-12-uniform",
+      "policy": "uniform",
+      "seed": 12
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-12-random",
+      "policy": "random",
+      "seed": 12
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-13-frozen",
+      "policy": "frozen",
+      "seed": 13
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-13-self-use",
+      "policy": "self-use",
+      "seed": 13
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-13-uniform",
+      "policy": "uniform",
+      "seed": 13
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-13-random",
+      "policy": "random",
+      "seed": 13
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-14-frozen",
+      "policy": "frozen",
+      "seed": 14
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-14-self-use",
+      "policy": "self-use",
+      "seed": 14
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-14-uniform",
+      "policy": "uniform",
+      "seed": 14
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-14-random",
+      "policy": "random",
+      "seed": 14
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-15-frozen",
+      "policy": "frozen",
+      "seed": 15
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-15-self-use",
+      "policy": "self-use",
+      "seed": 15
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-15-uniform",
+      "policy": "uniform",
+      "seed": 15
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-15-random",
+      "policy": "random",
+      "seed": 15
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-16-frozen",
+      "policy": "frozen",
+      "seed": 16
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-16-self-use",
+      "policy": "self-use",
+      "seed": 16
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-16-uniform",
+      "policy": "uniform",
+      "seed": 16
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-16-random",
+      "policy": "random",
+      "seed": 16
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-17-frozen",
+      "policy": "frozen",
+      "seed": 17
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-17-self-use",
+      "policy": "self-use",
+      "seed": 17
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-17-uniform",
+      "policy": "uniform",
+      "seed": 17
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-17-random",
+      "policy": "random",
+      "seed": 17
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-18-frozen",
+      "policy": "frozen",
+      "seed": 18
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-18-self-use",
+      "policy": "self-use",
+      "seed": 18
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-18-uniform",
+      "policy": "uniform",
+      "seed": 18
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-18-random",
+      "policy": "random",
+      "seed": 18
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-19-frozen",
+      "policy": "frozen",
+      "seed": 19
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-19-self-use",
+      "policy": "self-use",
+      "seed": 19
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-19-uniform",
+      "policy": "uniform",
+      "seed": 19
+    },
+    {
+      "method": "rl",
+      "name": "rl-seed-19-random",
+      "policy": "random",
+      "seed": 19
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-10-frozen",
+      "policy": "frozen",
+      "seed": 10
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-10-self-use",
+      "policy": "self-use",
+      "seed": 10
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-10-uniform",
+      "policy": "uniform",
+      "seed": 10
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-10-random",
+      "policy": "random",
+      "seed": 10
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-11-frozen",
+      "policy": "frozen",
+      "seed": 11
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-11-self-use",
+      "policy": "self-use",
+      "seed": 11
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-11-uniform",
+      "policy": "uniform",
+      "seed": 11
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-11-random",
+      "policy": "random",
+      "seed": 11
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-12-frozen",
+      "policy": "frozen",
+      "seed": 12
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-12-self-use",
+      "policy": "self-use",
+      "seed": 12
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-12-uniform",
+      "policy": "uniform",
+      "seed": 12
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-12-random",
+      "policy": "random",
+      "seed": 12
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-13-frozen",
+      "policy": "frozen",
+      "seed": 13
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-13-self-use",
+      "policy": "self-use",
+      "seed": 13
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-13-uniform",
+      "policy": "uniform",
+      "seed": 13
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-13-random",
+      "policy": "random",
+      "seed": 13
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-14-frozen",
+      "policy": "frozen",
+      "seed": 14
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-14-self-use",
+      "policy": "self-use",
+      "seed": 14
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-14-uniform",
+      "policy": "uniform",
+      "seed": 14
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-14-random",
+      "policy": "random",
+      "seed": 14
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-15-frozen",
+      "policy": "frozen",
+      "seed": 15
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-15-self-use",
+      "policy": "self-use",
+      "seed": 15
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-15-uniform",
+      "policy": "uniform",
+      "seed": 15
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-15-random",
+      "policy": "random",
+      "seed": 15
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-16-frozen",
+      "policy": "frozen",
+      "seed": 16
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-16-self-use",
+      "policy": "self-use",
+      "seed": 16
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-16-uniform",
+      "policy": "uniform",
+      "seed": 16
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-16-random",
+      "policy": "random",
+      "seed": 16
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-17-frozen",
+      "policy": "frozen",
+      "seed": 17
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-17-self-use",
+      "policy": "self-use",
+      "seed": 17
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-17-uniform",
+      "policy": "uniform",
+      "seed": 17
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-17-random",
+      "policy": "random",
+      "seed": 17
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-18-frozen",
+      "policy": "frozen",
+      "seed": 18
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-18-self-use",
+      "policy": "self-use",
+      "seed": 18
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-18-uniform",
+      "policy": "uniform",
+      "seed": 18
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-18-random",
+      "policy": "random",
+      "seed": 18
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-19-frozen",
+      "policy": "frozen",
+      "seed": 19
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-19-self-use",
+      "policy": "self-use",
+      "seed": 19
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-19-uniform",
+      "policy": "uniform",
+      "seed": 19
+    },
+    {
+      "method": "lora",
+      "name": "lora-seed-19-random",
+      "policy": "random",
+      "seed": 19
+    }
+  ],
+  "schema_version": 1,
+  "selection": "Settings chosen on validation seeds0,1,2; final confirmation seeds fixed before test.",
+  "settings": {
+    "lora": {
+      "balanced": false,
+      "lr": 0.3,
+      "multiplier": 3,
+      "steps": 24
+    },
+    "rl": {
+      "balanced": false,
+      "lr": 0.3,
+      "multiplier": 3,
+      "steps": 8
+    },
+    "sft": {
+      "balanced": true,
+      "lr": 0.3,
+      "multiplier": 9,
+      "steps": 24
+    }
+  },
+  "workspace_config": {
+    "agent": {},
+    "budget": {
+      "max_episodes": 11111,
+      "max_output_bytes": 8000000,
+      "max_steps": 6
+    },
+    "data": {
+      "manifest": "tasks/manifest.json"
+    },
+    "evaluator": {
+      "command": [
+        "/opt/miniconda3/bin/python3.13",
+        "evaluator/evaluate.py"
+      ],
+      "direction": "minimize",
+      "heldout_enabled": false,
+      "primary_metric": "loss",
+      "timeout_s": 60,
+      "train_limit": 1074
+    },
+    "experiment": {
+      "final_conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "mode": "model",
+      "schema_version": 2
+    },
+    "gate": {
+      "max_heldout_regression": 0.0,
+      "minimum_improvement": 0.0,
+      "required_constraints": [
+        "checkpoint_valid"
+      ]
+    },
+    "proposer": {
+      "command": [
+        "/opt/miniconda3/bin/python3.13",
+        "proposer/propose.py"
+      ],
+      "timeout_s": 60
+    },
+    "safety": {},
+    "surface": {
+      "allow": [
+        "target/**"
+      ],
+      "deny": []
+    },
+    "training": {
+      "checkpoint": "target/model.json",
+      "command": [
+        "/opt/miniconda3/bin/python3.13",
+        "trainer/train.py"
+      ],
+      "compute_budget_s": 60.0,
+      "max_checkpoint_bytes": 100000
+    }
+  }
+}

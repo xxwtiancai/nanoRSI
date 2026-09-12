@@ -88,7 +88,27 @@ nanorsi verify --workspace ./learner-lab
 
 <p align="center"><img src="examples/results/v0.4.0/overview.png" alt="分别展示真实模型演示和 CPU 参数学习结果；两组面板不构成统一 RSI 总分。" width="100%"></p>
 
-## 已测量的 CPU 示例
+## 递归学习实测：手写数字
+
+**SFT 的 self-use 相比 frozen 优先级，平均测试错误率相对下降 35.95%：10.16% → 6.51%。** 对应的是**准确率提高 3.65 个百分点**，10 个训练种子的配对差值全部为正。本次 v0.4.1 研究完成了 **120 次实验、720 轮训练**，实际预算匹配，全部工作区冻结后才开始测试。
+
+在同一组 364 张测试图像上，选中检查点的平均准确率为：
+
+| 方法 | Frozen 优先级 | Self-use 优先级 | Uniform | Random 优先级 | Self-use − frozen |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| SFT | 89.835% | 93.489% | 92.582% | 92.390% | +3.654 个百分点 |
+| REINFORCE | 19.286% | 27.473% | 36.236% | 27.005% | +8.187 个百分点 |
+| LoRA | 79.533% | 82.060% | 82.885% | 83.736% | +2.527 个百分点 |
+
+三个主要比较采用 Bonferroni 显著性水平分配的配对百分位 bootstrap 区间（每个区间名义置信度 98.333%），依次为 **[2.198, 5.192]**、**[1.071, 13.462]**、**[0.549, 4.423] 个百分点**。只有 REINFORCE 达到了预先声明的“观测平均提升 ≥5 个百分点且校正区间下界为正”目标；SFT 和 LoRA 未达到。这不等于证明 REINFORCE 的真实增益至少有 5 个百分点。REINFORCE 仍比 uniform 低 8.764 个百分点，LoRA 低 0.824 个百分点。SFT 比 uniform 高 0.907 个百分点、比 random 高 1.099 个百分点；完整结果列出了这些次要比较的描述性 95% 区间。
+
+这里在 CPU 上真正训练了小型线性分类器，数据来自 UCI/scikit-learn 的 1,797 张手写数字子集，自定义划分为 **1,074/359/364 张训练/验证/测试图像**。设置经过仅使用验证集的预实验选择，并在确认实验前锁定。这不是官方 UCI 基准划分，不代表未见书写者泛化，也不是 LLM 微调；区间只描述这一固定划分上的训练种子波动。
+
+<p align="center"><img src="examples/results/recursive-digits-v0.4.1/recursive-gains.png" alt="四种课程策略的手写数字结果、self-use 配对增益及不确定性；REINFORCE 虽优于 frozen，仍落后于 uniform。" width="100%"></p>
+
+**[完整结果、对照与可检查证据](examples/results/recursive-digits-v0.4.1/README.md)** · [中文复现指南](examples/recursive_learning/README.zh-CN.md) · [English guide](examples/recursive_learning/README.md)。可选适配器使用已有 NumPy 安装，不调用模型 API；内核仍为零第三方运行时依赖。
+
+## 历史 CPU 示例（v0.4.0）
 
 已核验面板包含三种方法 × 三个种子 × frozen/self-use 对照：**18 次实验、54 轮训练、20 个接受候选和 34 个拒绝候选**。在相互重叠的合成数值簇上，平均测试准确率为：
 
