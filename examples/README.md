@@ -4,6 +4,10 @@
 
 Run these commands from the repository with Python 3.11+, Git and nanoRSI installed. Every output directory must be new so earlier outcomes are retained. The canonical starters are `artifact`, `harness` and `model`; `program`, `agent` and `learner` remain aliases. Each experiment uses the ordinary CLI and the same protected evaluation contract.
 
+## Recursive checkpoint reuse on handwritten digits
+
+The optional [digits study](recursive_learning/README.md) uses existing NumPy tooling and a bundled attributed dataset to compare recursive checkpoint-based sampling with frozen, uniform and random controls. It separates all searches/freezes from final testing and checks actual training budgets. This is a classifier experiment, not LLM fine-tuning.
+
 ## CPU parameter learning: no API required
 
 ```bash

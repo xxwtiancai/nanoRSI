@@ -24,6 +24,9 @@ def comparison_hash(root, config):
     from .loop import tasks
     agent = {key: value for key, value in config.agent.items()
              if key not in {"api_key_file", "api_key", "apikey", "authorization"}}
+    evaluator = asdict(config.evaluator)
+    if evaluator["train_limit"] == 4:  # Preserve historical default comparison hashes.
+        evaluator.pop("train_limit")
     return canonical_hash({
         "contract_version": 2,
         "mode": config.experiment.mode,
@@ -35,7 +38,7 @@ def comparison_hash(root, config):
         "initial_checkpoint": source_hash(contained_path(root, config.training["checkpoint"])) if config.training else None,
         "agent": agent, "training": config.training,
         "surface": asdict(config.surface), "proposer": asdict(config.proposer),
-        "evaluator": asdict(config.evaluator), "gate": asdict(config.gate),
+        "evaluator": evaluator, "gate": asdict(config.gate),
         "budget": asdict(config.budget), "safety": config.safety,
     })
 

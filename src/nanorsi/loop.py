@@ -119,8 +119,8 @@ def search_episode_count(events):
 
 def evaluate(root, config, checkout, split, output, store, *, repeat=0, agent=None):
     panel = [t for t in tasks(checkout, config) if t["split"] == split] if config.experiment.schema_version == 2 else []
-    if split == "train" and len(panel) > 4:
-        panel = random.Random(config.experiment.seed).sample(panel, 4)
+    if split == "train" and len(panel) > config.evaluator.train_limit:
+        panel = random.Random(config.experiment.seed).sample(panel, config.evaluator.train_limit)
     count = len(panel)
     phase = "test" if split == "test" else "search"
     spent = search_episode_count(store.events())
@@ -133,7 +133,7 @@ def evaluate(root, config, checkout, split, output, store, *, repeat=0, agent=No
     if config.experiment.schema_version == 2:
         env.update(NANORSI_AGENT_CONFIG=json.dumps(agent if agent is not None else config.agent),
                    NANORSI_TASK_MANIFEST=str(contained_path(checkout, config.data["manifest"])),
-                   NANORSI_TRAIN_LIMIT="4", NANORSI_SEED=str(config.experiment.seed))
+                   NANORSI_TRAIN_LIMIT=str(config.evaluator.train_limit), NANORSI_SEED=str(config.experiment.seed))
     try:
         from .training import checkpoint
         model = checkpoint(checkout, config) if config.experiment.schema_version == 2 and config.experiment.mode == "model" else None

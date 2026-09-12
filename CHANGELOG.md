@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.1 — 2026-09-12
+
+- Make the TRAIN feedback limit configurable while preserving the default-four comparison identity and correctly reserving larger population panels.
+- Add an optional NumPy handwritten-digit experiment with frozen/self-use, uniform and random-priority controls, full TRAIN feedback, per-attempt random streams and real SFT/REINFORCE/LoRA checkpoint updates.
+- Separate study-wide search/freeze from final testing, bind the complete study plan into immutable workspace contracts, and verify paired designs before testing.
+- Distinguish completed final outcomes from complete training budgets, retain failed-attempt work and report both all-measured and matched-budget paired effects with descriptive and family-adjusted uncertainty.
+
 ## 0.4.0 — 2026-09-12
 
 - Run schema-2 artifact, harness and model experiments through the same baseline, bounded search, freeze, final-test, report and verify commands. `program`, `agent` and `learner` remain descriptive aliases; legacy starters are available as `artifact-fixture`, `harness-fixture` and `model-contract`.

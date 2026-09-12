@@ -133,7 +133,7 @@ def _reserve(root, config, store, retained, size, search_id, round_id):
     legacy = sum(e.get('event_type') == 'generation' and e.get('decision') != 'baseline' and 'attempt_id' not in e for e in events)
     remaining = config.budget.max_steps - started - legacy
     panel = loop.tasks(root, config)
-    episodes = min(4, sum(t['split'] == 'train' for t in panel)) + 2 * sum(t['split'] == 'validation' for t in panel)
+    episodes = min(config.evaluator.train_limit, sum(t['split'] == 'train' for t in panel)) + 2 * sum(t['split'] == 'validation' for t in panel)
     available = config.budget.max_episodes - loop.search_episode_count(events)
     count = min(size, remaining, available // episodes)
     jobs = []
