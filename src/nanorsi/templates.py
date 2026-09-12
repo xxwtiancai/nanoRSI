@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import shutil
 import json
+import sys
 from importlib.resources import files
 from pathlib import Path
 
@@ -37,5 +38,7 @@ def render_template(name: str, destination: Path, *, goal: str) -> list[str]:
     _copy(root, destination)
     config_path = destination / "nanorsi.toml"
     config = config_path.read_text(encoding="utf-8").replace('"{{GOAL}}"', json.dumps(goal, ensure_ascii=False))
+    if name in {'coding', 'skills'}:
+        config = config.replace('["python3",', '[' + json.dumps(sys.executable) + ',')
     config_path.write_text(config, encoding="utf-8")
     return sorted(path.relative_to(destination).as_posix() for path in destination.rglob("*") if path.is_file())

@@ -15,29 +15,16 @@ The offline check executes all starters and references. It should report 0/12 st
 
 ## Run with your model
 
-Install nanoRSI from the repository, then create a fresh workspace:
+For Python/Git installation, provider consoles, API-key creation, endpoint selection and troubleshooting, follow the [complete first-run tutorial](QUICKSTART.md). A browser login and exported environment key do not configure nanoRSI. After installation, replace `YOUR_MODEL_ID` with an exact model ID available to your API account:
 
 ```bash
 nanorsi new coding ./coding-lab --goal "Improve reliable Python repair through reusable skills"
-```
-
-Before baseline, edit the existing `[agent]` section in `coding-lab/nanorsi.toml`. Keep the other fields unless you intentionally change the experiment:
-
-```toml
-[agent]
-model_command = ["python3", "adapters/model.py"]
-model = "your-model-id"
-base_url = "http://localhost:8000/v1"
-max_turns = 8
-max_tokens = 2048
-timeout_s = 60
-skills = ["inspect", "edit", "verify"]
-```
-
-For an authenticated compatible endpoint, set `api_key_file` to an absolute path outside the workspace. Do not commit credentials. A local compatible server can omit the key. Use a fixed model snapshot when available. [Model configuration and execution limits](QUICKSTART.md#choose-a-budget-before-running) apply to both coding and text-edit experiments.
-
-```bash
-nanorsi doctor --workspace ./coding-lab
+nanorsi configure --workspace ./coding-lab \
+  --model YOUR_MODEL_ID --base-url https://api.openai.com/v1 \
+  --prompt-key --token-parameter max_completion_tokens \
+  --max-steps 1 --max-episodes 40
+nanorsi doctor --workspace ./coding-lab --check-model
+nanorsi baseline --workspace ./coding-lab
 nanorsi run --workspace ./coding-lab
 nanorsi freeze --workspace ./coding-lab --repeats 1
 nanorsi final-test --workspace ./coding-lab
@@ -45,9 +32,21 @@ nanorsi report --workspace ./coding-lab --format html
 nanorsi verify --workspace ./coding-lab
 ```
 
-Open `coding-lab/reports/report.html`. Markdown and raw lineage are generated alongside it. Use `python examples/compare.py ./coding-lab/reports/final.json` for a machine-readable comparison. To compare frozen and self-use proposers, use separate identically configured workspaces, change only `experiment.arm` before baseline, and freeze both before examining either final panel. Repeat with independent seeds before interpreting a result as repeatable.
+`configure` works offline. Hidden key input writes a unique external file, and only its path enters TOML. An existing absolute external `--api-key-file` or a local server's `--no-api-key` are alternatives. Use the [provider table](QUICKSTART.md#2-get-api-access-and-choose-an-endpoint) to change endpoint and token parameter. Keep the generated model/proposer/evaluator commands: they pin the Python interpreter that created the workspace. Complete configuration before the experiment journal starts; subsequent changes require a new workspace.
 
-The coding defaults allow three proposal attempts and at most 100 search episodes. A full three-attempt run can use 40 task episodes (4 baseline, plus 3 × [4 training + 4 parent validation + 4 candidate validation]); a one-repeat final panel adds 12. Each task has up to eight model calls, and each proposal has an additional call. Incomplete, rejected and unchanged attempts count against the attempt budget. Final episodes are recorded separately from the search cap. Hosted calls may incur costs; unknown cost is not zero.
+Plain `doctor` checks files offline. `doctor --check-model` sends one bounded request and requires `{"tool":"final"}` without starting a baseline or changing lineage; a hosted probe can cost money outside experiment accounting. The authenticated local HTTP tests do not establish paid-provider compatibility.
+
+Open `coding-lab/reports/report.html`. Markdown and report data are generated alongside it. Use `python examples/compare.py ./coding-lab/reports/final.json` for a comparison summary. A successful `verify` reports `lineage: ok`; it checks evidence integrity, not whether skills improved.
+
+The one-attempt preset above uses at most 16 search episodes: 4 baseline + 4 training + 4 parent validation + 4 candidate validation. The one-repeat final panel adds 12 outside the search cap, for up to 28 task episodes. At eight calls per episode, that is up to 224 episode calls plus one proposal and separate connectivity probes. The untouched template permits three attempts and a 100-episode cap; its full search can use 40 episodes, with final testing additional. Failed, rejected and unchanged attempts consume the attempt budget. These are execution limits, not a dollar cap; unknown cost is not zero.
+
+## Follow a skill through the RSI loop
+
+`baseline` measures the initial skills on validation tasks. `run` executes training tasks, provides their feedback to the proposer, and requests a patch to `target/agent/skills/**`. The fixed gate compares parent and candidate on validation. An accepted candidate gets a recorded commit and `nanorsi/gen-N` tag; rejected, no-op and failed attempts remain visible in the report and `.nanorsi/runs/`.
+
+Within a task the model edits a fresh `solution.py`; this repair is task output. Across attempts, the durable change is a procedural Markdown skill, such as a better inspection or verification procedure. The model weights stay fixed. `freeze` fixes the selected version; `final-test` compares initial skills, no skills and selected skills on unseen tasks. The final score never promotes a candidate, and improvement is not guaranteed.
+
+For a recursive comparison, use separate identically configured workspaces. Before baseline, set `experiment.arm` to `"frozen"` in one and `"self-use"` in the other. Frozen always proposes using initial skills; self-use uses the latest accepted skills to propose the next patch. Both modify the current parent. Match tasks, model settings and budgets, freeze both before examining either final panel, and repeat independent evolution runs before claiming a repeatable benefit.
 
 ## What the agent can do
 

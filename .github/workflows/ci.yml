@@ -34,6 +34,8 @@ jobs:
           nanorsi new coding ./coding-contract
           test -f ./coding-contract/evaluator/_skills.py
           test -f ./coding-contract/adapters/python_tests.py
+          nanorsi configure --workspace ./coding-contract --model offline-ci --base-url http://127.0.0.1:8000/v1 --no-api-key --max-steps 1
+          nanorsi doctor --workspace ./coding-contract
           python examples/coding_tasks/prepare.py --check
 
   package:
@@ -53,4 +55,6 @@ jobs:
           .wheel-venv/bin/nanorsi new coding ./coding-wheel
           test -f ./coding-wheel/evaluator/_skills.py
           test -f ./coding-wheel/adapters/python_tests.py
+          .wheel-venv/bin/nanorsi configure --workspace ./coding-wheel --model offline-ci --base-url http://127.0.0.1:8000/v1 --no-api-key --max-steps 1
+          .wheel-venv/bin/nanorsi doctor --workspace ./coding-wheel
           .wheel-venv/bin/python -c 'import importlib.metadata; assert not importlib.metadata.requires("nanorsi")'

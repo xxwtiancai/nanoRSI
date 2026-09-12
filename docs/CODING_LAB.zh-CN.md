@@ -15,29 +15,16 @@ python examples/coding_tasks/prepare.py /tmp/coding-manifest.json
 
 ## 接入模型运行
 
-从仓库安装 nanoRSI，再创建新工作区：
+Python/Git 安装、服务商控制台、API key 创建、接口选择和排错，请先阅读[完整入门教程](QUICKSTART.zh-CN.md)。网页登录与导出的环境变量密钥都不会自动配置 nanoRSI。安装后，将 `YOUR_MODEL_ID` 替换为 API 账号可用的准确模型 ID：
 
 ```bash
 nanorsi new coding ./coding-lab --goal "通过可复用技能改进可靠的 Python 修复"
-```
-
-在 baseline 前编辑 `coding-lab/nanorsi.toml` 中已有的 `[agent]`，无意改变实验时保留其他字段：
-
-```toml
-[agent]
-model_command = ["python3", "adapters/model.py"]
-model = "your-model-id"
-base_url = "http://localhost:8000/v1"
-max_turns = 8
-max_tokens = 2048
-timeout_s = 60
-skills = ["inspect", "edit", "verify"]
-```
-
-需要鉴权的兼容接口通过 `api_key_file` 指向工作区外的绝对路径，不要提交凭据。本地兼容服务可不配置 key。有条件时固定模型快照。[模型设置与执行预算](QUICKSTART.md#choose-a-budget-before-running) 对代码和文本编辑实验都适用。
-
-```bash
-nanorsi doctor --workspace ./coding-lab
+nanorsi configure --workspace ./coding-lab \
+  --model YOUR_MODEL_ID --base-url https://api.openai.com/v1 \
+  --prompt-key --token-parameter max_completion_tokens \
+  --max-steps 1 --max-episodes 40
+nanorsi doctor --workspace ./coding-lab --check-model
+nanorsi baseline --workspace ./coding-lab
 nanorsi run --workspace ./coding-lab
 nanorsi freeze --workspace ./coding-lab --repeats 1
 nanorsi final-test --workspace ./coding-lab
@@ -45,9 +32,21 @@ nanorsi report --workspace ./coding-lab --format html
 nanorsi verify --workspace ./coding-lab
 ```
 
-打开 `coding-lab/reports/report.html`，同目录还会生成 Markdown 和原始谱系。运行 `python examples/compare.py ./coding-lab/reports/final.json` 可获得机器可读对照。如需比较 frozen 和 self-use 改进器，使用配置相同的独立工作区，在 baseline 前仅改变 `experiment.arm`，并在查看任一最终结果前冻结两组。使用独立种子重复实验后再讨论可重复性。
+`configure` 离线执行，隐藏输入的密钥写入唯一的外部文件，TOML 只记录路径。也可使用已有文件的绝对外部路径 `--api-key-file`，或本地服务的 `--no-api-key`。按照[服务商表格](QUICKSTART.zh-CN.md#2-获取-api-权限并选择接口)调整接口与 token 参数。保留生成的模型、提案与评测命令，它们固定使用创建工作区时的 Python 解释器。在实验日志开始前完成配置，此后更改需新建工作区。
 
-默认最多三次提案、100 个搜索任务执行。完整三轮最多使用 40 个任务执行：4 个 baseline，加上 3 ×〔4 个训练 + 4 个父代验证 + 4 个候选验证〕。单次重复的最终面板另加 12 个。每题最多八次模型调用，每次提案另需一次调用。失败、拒绝和无变化的尝试都计入预算，最终测试在搜索上限之外单独记账。托管模型可能收费，未知成本不能按零计算。
+普通 `doctor` 离线检查文件。`doctor --check-model` 发送一次有界请求，要求 `{"tool":"final"}`，不建立 baseline 或修改谱系；托管探测可能收费且不计入实验成本记录。带鉴权的本地 HTTP 测试不代表已验证付费服务兼容性。
+
+打开 `coding-lab/reports/report.html`，同目录生成 Markdown 与报告数据。运行 `python examples/compare.py ./coding-lab/reports/final.json` 查看对照摘要。`verify` 成功时输出 `lineage: ok`，它检查证据完整性，不判断技能是否提升。
+
+上述单次尝试配置最多使用 16 个搜索 episode：4 个 baseline + 4 个训练 + 4 个父代验证 + 4 个候选验证。最终面板单次重复另需 12 个，不在搜索上限内，合计最多 28 个任务 episode。每题最多八次调用，即最多 224 次任务调用，另加一次提案与独立连接探测。未修改的模板允许三次尝试、100 个搜索 episode 上限，完整搜索最多使用 40 个，最终测试另计。失败、拒绝和无变化的尝试消耗尝试预算。这些是执行上限，不是金额限额；未知成本不能按零计算。
+
+## 跟随一项技能走完 RSI 循环
+
+`baseline` 在验证任务上测量初始技能。`run` 执行训练任务，将反馈提供给提案器，请求修改 `target/agent/skills/**`。固定门槛对照父代与候选的验证表现。接受的候选有记录中的 commit 和 `nanorsi/gen-N` 标签；拒绝、无变化和失败尝试保留在报告与 `.nanorsi/runs/` 中。
+
+任务内模型修改全新的 `solution.py`，这份修复属于任务输出。跨尝试保留的是过程型 Markdown 技能，例如更好的检查或验证方法。模型权重固定不变。`freeze` 固定选中版本，`final-test` 在未见任务上比较初始技能、无技能和选中技能。最终分数不参与候选晋升，也不保证有提升。
+
+比较递归复用时，使用独立且配置相同的工作区。在 baseline 前，分别将 `experiment.arm` 设为 `"frozen"` 和 `"self-use"`。Frozen 始终用初始技能提案；self-use 使用最新接受的技能提出下一次补丁。两者都修改当前父代。匹配任务、模型设置和预算，在查看任一最终面板前冻结两组，重复独立演进实验后再讨论可重复的收益。
 
 ## Agent 可以做什么
 

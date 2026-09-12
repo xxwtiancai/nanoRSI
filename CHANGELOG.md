@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.1 — 2026-09-12
+
+- Add `configure` with masked terminal key input, external credential files, explicit no-key mode and a small-run budget preset via flags.
+- Validate endpoint and credential settings before experiments; preserve unrelated TOML and reject reconfiguration after a journal starts.
+- Add optional `doctor --check-model` to validate one authenticated JSON model action before baseline, with actionable redacted failures.
+- Support selectable completion-token field names, reject HTTP redirects, and prevent raw provider errors from leaking credentials.
+- Pin the creating Python interpreter in new coding/skills workspaces.
+- Rewrite bilingual first-run guides around API keys, model selection, budget, full RSI lifecycle and troubleshooting.
+- Test the complete authenticated HTTP path with a local fixture; no paid-provider or real-model performance claim.
+
 ## 0.3.0 — 2026-09-12
 
 - Add a coding starter with twelve independently authored Python repair tasks and behavioral unittest grading.

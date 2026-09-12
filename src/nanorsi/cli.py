@@ -21,9 +21,10 @@ from .templates import render_template
 
 
 def _baseline(root: Path) -> dict:
-    config, git = load_config(root / 'nanorsi.toml'), Git(root)
+    git = Git(root)
     git.ensure_repository()
     with Lock(root):
+        config = load_config(root / 'nanorsi.toml')
         store = LineageStore.initialize(root)
         loop.guard(root, config, store)
         existing = [e for e in store.events() if e.get('decision') == 'baseline' and 'gate_metrics' in e]
@@ -178,9 +179,24 @@ def _recover(root):
                 git.tag(event['candidate_commit'], f"nanorsi/gen-{event['generation']}")
 
 
+def _configure_parser(sub):
+    command = sub.add_parser('configure', allow_abbrev=False, help='Configure a model before baseline; never pass the API key as an argument')
+    command.add_argument('--workspace', type=Path, default=Path.cwd())
+    command.add_argument('--model', required=True, help='Exact provider model ID')
+    command.add_argument('--base-url', required=True, help='Compatible chat-completions API base URL')
+    auth = command.add_mutually_exclusive_group(required=True)
+    auth.add_argument('--prompt-key', action='store_true', help='Hidden terminal input; store key outside workspace')
+    auth.add_argument('--api-key-file', type=Path, help='Existing external key file')
+    auth.add_argument('--no-api-key', action='store_true', help='Endpoint accepts anonymous requests')
+    command.add_argument('--max-steps', type=int, help='Maximum search attempts')
+    command.add_argument('--max-episodes', type=int, help='Maximum search task episodes (final panel separate)')
+    command.add_argument('--token-parameter', choices=['max_tokens', 'max_completion_tokens'])
+
+
 def _parser():
     parser = argparse.ArgumentParser(prog='nanorsi')
     sub = parser.add_subparsers(dest='command', required=True)
+    _configure_parser(sub)
     new = sub.add_parser('new')
     new.add_argument('template', choices=['artifact', 'harness', 'model', 'skills', 'coding'])
     new.add_argument('destination', type=Path)
@@ -190,6 +206,8 @@ def _parser():
         command.add_argument('--workspace', type=Path, default=Path.cwd())
         if name == 'report':
             command.add_argument('--format', choices=['markdown', 'html'], default='markdown')
+        if name == 'doctor':
+            command.add_argument('--check-model', action='store_true', help='Send one model request; may incur API cost outside experiment accounting')
         if name in {'freeze', 'final-test'}:
             command.add_argument('--repeats', type=int, default=3 if name == 'freeze' else None)
         if name == 'evaluate':
@@ -200,6 +218,10 @@ def _parser():
 
 def _dispatch(args, root):
     command = args.command
+    if command == 'configure':
+        from .configure import configure
+        keys = ['model', 'base_url', 'api_key_file', 'prompt_key', 'no_api_key', 'max_steps', 'max_episodes', 'token_parameter']
+        return configure(root, **{key: getattr(args, key) for key in keys})
     if command == 'baseline':
         return _baseline(root)
     if command == 'step':
@@ -222,7 +244,7 @@ def _dispatch(args, root):
         _recover(root)
         return 'recovered stale nanoRSI state'
     from .doctor import doctor
-    ok, output = doctor(root)
+    ok, output = doctor(root, check_model=args.check_model)
     if not ok:
         raise RuntimeError(output.strip())
     return output
@@ -235,6 +257,8 @@ def main(argv=None):
             files = render_template(args.template, args.destination, goal=args.goal)
             Git(args.destination).init()
             print(f'created {args.template} workspace with {len(files)} files')
+            if args.template in {'coding', 'skills'}:
+                print('Next: nanorsi configure --help (set model, endpoint and authentication before baseline)')
             return 0
         result = _dispatch(args, args.workspace.resolve())
         print(json.dumps(result, sort_keys=True) if isinstance(result, (dict, list)) else str(result))

@@ -27,6 +27,7 @@ MAX_ACTION_BYTES = 256_000
 MAX_TRACE_ITEMS = 256
 MAX_TRACE_BYTES = 256_000
 SAFE_ENV_KEYS = ("PATH", "LANG", "LC_ALL", "PYTHONIOENCODING", "PYTHONDONTWRITEBYTECODE")
+MODEL_ERROR_CODES = frozenset({"authentication", "permission", "not_found", "rate_limit", "bad_request", "server_error", "redirect", "network", "configuration", "invalid_response"})
 
 
 class RunnerError(ValueError):
@@ -280,7 +281,7 @@ def _call_bridge(agent: dict[str, Any], messages: list[dict[str, str]], usage: _
         usage.errors.append("invalid_timeout")
         return None, "invalid model timeout"
     payload = {"messages": messages, "model": agent.get("model"), "max_tokens": agent.get("max_tokens")}
-    for key in ("base_url", "api_key_file", "timeout_s"):
+    for key in ("base_url", "api_key_file", "timeout_s", "token_parameter"):
         if key in agent:
             payload[key] = agent[key]
     returncode, stdout, _stderr, timed_out, output_limited, start_error = _stream_bridge(command, _json(payload).encode("utf-8"), timeout_value)
@@ -298,9 +299,13 @@ def _call_bridge(agent: dict[str, Any], messages: list[dict[str, str]], usage: _
         return None, "model bridge failed"
     try:
         envelope = json.loads(stdout.decode("utf-8"))
-    except (TypeError, json.JSONDecodeError):
+    except (TypeError, UnicodeError, json.JSONDecodeError):
         usage.record_call(None, "model_invalid_json")
         return None, "model bridge returned invalid JSON"
+    if isinstance(envelope, dict) and isinstance(envelope.get("error_code"), str) and envelope["error_code"] in MODEL_ERROR_CODES:
+        code = "model_" + envelope["error_code"]
+        usage.record_call(None, code)
+        return None, code
     if not isinstance(envelope, dict) or not isinstance(envelope.get("content"), str):
         usage.record_call(envelope.get("usage") if isinstance(envelope, dict) else None, "model_missing_content")
         return None, "model bridge response has no content"

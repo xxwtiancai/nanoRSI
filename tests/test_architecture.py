@@ -19,6 +19,7 @@ EXPECTED_MODULES = {
     "cli.py",
     "loop.py",
     "config.py",
+    "configure.py",
     "paths.py",
     "hashing.py",
     "surface.py",
@@ -70,9 +71,9 @@ class ArchitectureTests(unittest.TestCase):
         allowed_roots = {"nanorsi", "__future__"}
         allowed_stdlib = {
             "argparse", "ast", "contextlib", "dataclasses", "datetime", "difflib",
-            "enum", "fnmatch", "hashlib", "hmac", "html", "importlib", "json", "math",
+            "enum", "fnmatch", "getpass", "hashlib", "hmac", "html", "importlib", "json", "math",
             "os", "pathlib", "random", "re", "secrets", "shlex", "shutil", "stat", "subprocess", "sys",
-            "tempfile", "time", "tomllib", "typing", "unittest", "uuid",
+            "tempfile", "time", "tomllib", "typing", "unittest", "urllib", "uuid", "warnings",
         }
         for path in sorted(SRC.glob("*.py")):
             tree = ast.parse(path.read_text(encoding="utf-8"))

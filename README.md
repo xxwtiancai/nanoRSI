@@ -8,7 +8,7 @@
   <a href="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml"><img src="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&amp;logoColor=white" alt="Python 3.11+"></a>
   <a href="pyproject.toml"><img src="https://img.shields.io/badge/runtime_dependencies-0-f4512c" alt="Zero third-party runtime dependencies"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.3.0-f4512c" alt="Version 0.3.0"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.3.1-f4512c" alt="Version 0.3.1"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-171717" alt="Apache-2.0 license"></a>
 </p>
 
@@ -70,10 +70,16 @@ nanorsi verify --workspace ./artifact-demo
 
 ## Run a coding experiment
 
+**Configure API access before running.** A chat-app login or `export OPENAI_API_KEY=...` alone does not configure nanoRSI. Create an API key in your provider's console, then replace `YOUR_MODEL_ID` with an exact API model ID available to your account. This example uses the [OpenAI API-key console](https://platform.openai.com/api-keys); [other providers and local servers](docs/QUICKSTART.md#2-get-api-access-and-choose-an-endpoint) are supported through compatible chat-completions endpoints.
+
 ```bash
 nanorsi new coding ./coding-lab --goal "Learn reliable Python repair skills"
-# Configure model and base_url in coding-lab/nanorsi.toml before baseline.
-nanorsi doctor --workspace ./coding-lab
+nanorsi configure --workspace ./coding-lab \
+  --model YOUR_MODEL_ID --base-url https://api.openai.com/v1 \
+  --prompt-key --token-parameter max_completion_tokens \
+  --max-steps 1 --max-episodes 40
+nanorsi doctor --workspace ./coding-lab --check-model
+nanorsi baseline --workspace ./coding-lab
 nanorsi run --workspace ./coding-lab
 nanorsi freeze --workspace ./coding-lab --repeats 1
 nanorsi final-test --workspace ./coding-lab
@@ -81,21 +87,13 @@ nanorsi report --workspace ./coding-lab --format html
 nanorsi verify --workspace ./coding-lab
 ```
 
-Open `coding-lab/reports/report.html`. Compare **initial skills**, **no skills** and **evolved skills** on the same frozen task/repeat pairs. The report preserves negative results and unknown costs.
+`--prompt-key` reads a hidden terminal input and stores the key outside the workspace; TOML contains only its file path. Alternatively, use `--api-key-file /absolute/external/path` or `--no-api-key` for an unauthenticated local server. Plain `doctor` is offline; `--check-model` makes one bounded model request, which may incur a charge outside experiment accounting. Configure is offline and must run before the experiment journal starts.
 
-During each task, the agent can read/edit Python files and call the fixed `test` tool for public unittest feedback. Private grading tests and reference implementations stay out of model requests. Only reusable skills evolve between attempts; the scorer, task pack and model settings stay fixed. Equivalent correct implementations pass even when their source differs from the reference.
+Open `coding-lab/reports/report.html`. Compare **initial skills**, **no skills** and **selected skills** on the same frozen task/repeat pairs. During each task, the model repairs a fresh Python file and can run public tests. Across attempts, only persistent Markdown skills evolve; model weights, task data and the evaluator stay fixed. Task-code repairs and skill patches are separate outputs. A rejected patch or no final gain is a valid result.
 
-The starter covers twelve utility repairs across parsing, collections and configuration, split into four train, four validation and four final-test tasks. The default three-attempt search can consume 40 task episodes; the one-repeat final panel adds 12. Each episode allows up to eight model calls, with proposal calls additional. Configure a local endpoint or choose a hosted budget before running.
+This one-attempt preset uses up to **16 search episodes + 12 final-test episodes**, with up to eight model calls per episode and one additional proposal call. Final testing is outside the search cap; episode limits are not a dollar cap. No model yet? Run `python examples/coding_tasks/prepare.py --check` to validate the authored task pack offline.
 
-**No model available yet?** Validate the task pack offline:
-
-```bash
-python examples/coding_tasks/prepare.py --check
-```
-
-This checks broken starters and reference solutions; it does not simulate or claim learned model improvement.
-
-[Full coding walkthrough and task format](docs/CODING_LAB.md) · [中文指南](docs/CODING_LAB.zh-CN.md)
+**[Complete first-run tutorial: API key → connection check → RSI loop → report](docs/QUICKSTART.md)** · [中文入门](docs/QUICKSTART.zh-CN.md) · [Task format](docs/CODING_LAB.md)
 
 ## How it works
 
@@ -107,33 +105,11 @@ Failed, rejected and unchanged proposals still consume the attempt budget. Every
 
 ## Bring your model
 
-Create the skills workspace:
+The coding starter above is the smallest complete path. Follow the [provider/key setup guide](docs/QUICKSTART.md#2-get-api-access-and-choose-an-endpoint) to use OpenAI, OpenRouter, DeepSeek or a local compatible server. The bundled bridge uses `/chat/completions`; native Anthropic Messages and OpenAI Responses require a custom adapter. It does not automatically read API-key environment variables or `.env` files.
 
-```bash
-nanorsi new skills ./skills-lab --goal "Improve reliable file editing"
-```
+For text-edit protocol research, create `nanorsi new skills ./skills-lab`, then use the same `configure` → `doctor --check-model` → `baseline` → `run` → `freeze` → `final-test` → `report` → `verify` sequence with that workspace. Its 90-task manifest is larger: five attempts can use 350 search episodes, and a three-repeat final panel adds 270. [Choose a budget before running](docs/QUICKSTART.md#choose-a-budget-before-running).
 
-Edit the existing `[agent]` section in `skills-lab/nanorsi.toml` **before baseline**. Configure your model ID and compatible endpoint; the starter's model name is a placeholder. A compatible local server can run without a key. Authenticated endpoints use an explicitly configured external key file.
-
-```toml
-[agent]
-model_command = ["python3", "adapters/model.py"]
-model = "your-model-id"
-base_url = "http://localhost:8000/v1"
-max_turns = 8
-skills = ["inspect", "edit", "verify"]
-```
-
-The starter defaults to five proposal attempts and a 400-episode search cap. A full five-attempt search can use 350 episodes; the default final panel adds 270. Proposal calls are separate, and hosted model calls may cost money. [Choose your budget and configure the bridge](docs/QUICKSTART.md#choose-a-budget-before-running) before running:
-
-```bash
-nanorsi doctor --workspace ./skills-lab
-nanorsi run --workspace ./skills-lab
-nanorsi freeze --workspace ./skills-lab --repeats 3
-nanorsi final-test --workspace ./skills-lab
-python examples/compare.py ./skills-lab/reports/final.json
-nanorsi verify --workspace ./skills-lab
-```
+Generated model/proposer/evaluator commands use the Python interpreter that created the workspace. Preserve those commands. All settings become fixed once the experiment journal starts; to change the model or endpoint after that, create a fresh workspace.
 
 <details>
 <summary><strong>What is inside the workspace?</strong></summary>

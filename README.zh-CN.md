@@ -8,7 +8,7 @@
   <a href="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml"><img src="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&amp;logoColor=white" alt="Python 3.11+"></a>
   <a href="pyproject.toml"><img src="https://img.shields.io/badge/runtime_dependencies-0-f4512c" alt="零第三方运行时依赖"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.3.0-f4512c" alt="版本 0.3.0"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.3.1-f4512c" alt="版本 0.3.1"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-171717" alt="Apache-2.0"></a>
 </p>
 
@@ -67,10 +67,16 @@ nanorsi verify --workspace ./artifact-demo
 
 ## 运行代码改进实验
 
+**先配置 API 权限再运行。** 登录聊天产品或仅执行 `export OPENAI_API_KEY=...` 都不会配置 nanoRSI。请在服务商控制台创建 API key，并将 `YOUR_MODEL_ID` 替换为账号可用的准确 API 模型 ID。下面使用 [OpenAI API-key 控制台](https://platform.openai.com/api-keys)；也可通过兼容的 chat-completions 接口接入[其他服务商或本地服务器](docs/QUICKSTART.zh-CN.md#2-获取-api-权限并选择接口)。
+
 ```bash
 nanorsi new coding ./coding-lab --goal "学习可靠的 Python 修复技能"
-# 在 baseline 前配置 coding-lab/nanorsi.toml 的 model 和 base_url。
-nanorsi doctor --workspace ./coding-lab
+nanorsi configure --workspace ./coding-lab \
+  --model YOUR_MODEL_ID --base-url https://api.openai.com/v1 \
+  --prompt-key --token-parameter max_completion_tokens \
+  --max-steps 1 --max-episodes 40
+nanorsi doctor --workspace ./coding-lab --check-model
+nanorsi baseline --workspace ./coding-lab
 nanorsi run --workspace ./coding-lab
 nanorsi freeze --workspace ./coding-lab --repeats 1
 nanorsi final-test --workspace ./coding-lab
@@ -78,21 +84,13 @@ nanorsi report --workspace ./coding-lab --format html
 nanorsi verify --workspace ./coding-lab
 ```
 
-打开 `coding-lab/reports/report.html`，在相同的冻结任务与重复执行配对上比较**初始技能、无技能、演进后技能**。报告保留负结果和未知成本。
+`--prompt-key` 在终端隐藏输入密钥，将它保存在工作区外，TOML 只包含文件路径。也可用 `--api-key-file /absolute/external/path`，或用 `--no-api-key` 接入无需鉴权的本地服务。普通 `doctor` 离线执行；`--check-model` 发出一次有界模型请求，可能收费且不计入实验成本记录。Configure 本身离线执行，必须在实验日志开始前完成。
 
-每题中，Agent 可以读写 Python 文件，并调用固定的 `test` 工具获得公开 unittest 反馈。私有评分测试和参考实现不进入模型请求。跨尝试演进的只有可复用 skills；评分器、任务包和模型配置保持冻结。程序只要行为正确即可通过，无须与参考实现逐字一致。
+打开 `coding-lab/reports/report.html`，在相同的冻结任务与重复执行配对上比较**初始技能、无技能、选中技能**。每题中模型修复一份全新的 Python 文件，并可运行公开测试。跨尝试演进的是持久 Markdown 技能，模型权重、任务数据与评测器保持固定。任务代码修复与技能补丁是不同输出。补丁被拒绝或最终没有收益，都是有效结果。
 
-入门包包含解析、集合和配置等 12 个工具函数修复任务，训练、验证、最终测试各 4 题。默认三次搜索最多使用 40 个任务执行，单次重复的最终面板另需 12 个。每题最多调用模型八次，提案调用另计。运行前请配置本地接口或确定托管模型预算。
+这个单次尝试配置最多使用 **16 个搜索 episode + 12 个最终测试 episode**，每题最多八次模型调用，提案另需一次。最终测试在搜索上限之外，episode 上限不是金额上限。暂时没有模型？运行 `python examples/coding_tasks/prepare.py --check` 离线验证任务包。
 
-**暂时没有模型？** 可以先离线验证任务包：
-
-```bash
-python examples/coding_tasks/prepare.py --check
-```
-
-它检查错误初始实现和参考解，不模拟或声称模型通过学习获得提升。
-
-[代码实验完整指南和任务格式](docs/CODING_LAB.zh-CN.md) · [English guide](docs/CODING_LAB.md)
+**[完整入门教程：API key → 连接检查 → RSI 循环 → 报告](docs/QUICKSTART.zh-CN.md)** · [English tutorial](docs/QUICKSTART.md) · [任务格式](docs/CODING_LAB.zh-CN.md)
 
 ## 一次改进如何发生
 
@@ -104,33 +102,11 @@ python examples/coding_tasks/prepare.py --check
 
 ## 接入你的模型
 
-创建 skills 实验：
+上面的 coding 入门包是最小的完整路径。按照[服务商与密钥配置指南](docs/QUICKSTART.zh-CN.md#2-获取-api-权限并选择接口)，可接入 OpenAI、OpenRouter、DeepSeek 或本地兼容服务器。内置桥接使用 `/chat/completions`；原生 Anthropic Messages 和 OpenAI Responses 需要自定义适配器。它不自动读取 API-key 环境变量或 `.env` 文件。
 
-```bash
-nanorsi new skills ./skills-lab --goal "改进可靠的文件编辑能力"
-```
+研究文本编辑协议时，执行 `nanorsi new skills ./skills-lab`，再对这个工作区执行同样的 `configure` → `doctor --check-model` → `baseline` → `run` → `freeze` → `final-test` → `report` → `verify` 流程。其 90 题清单更大：五次尝试最多使用 350 个搜索 episode，三次重复的最终面板另需 270 个。[运行前确定预算](docs/QUICKSTART.zh-CN.md#运行前确定预算)。
 
-**建立 baseline 前**，修改 `skills-lab/nanorsi.toml` 中已有的 `[agent]` 配置。填写真实模型 ID 和兼容接口；默认模型名称是占位值。兼容的本地服务可以不使用 key，需要鉴权的接口通过工作区外的绝对路径配置 key 文件。
-
-```toml
-[agent]
-model_command = ["python3", "adapters/model.py"]
-model = "your-model-id"
-base_url = "http://localhost:8000/v1"
-max_turns = 8
-skills = ["inspect", "edit", "verify"]
-```
-
-默认最多五次提案，搜索上限为 400 个任务执行。完整五轮可能使用 350 个搜索任务执行，默认最终测试另需 270 个。提案调用单独记录，托管模型可能产生费用。运行前先按 [详细指南](docs/QUICKSTART.md#choose-a-budget-before-running) 选择预算和接口：
-
-```bash
-nanorsi doctor --workspace ./skills-lab
-nanorsi run --workspace ./skills-lab
-nanorsi freeze --workspace ./skills-lab --repeats 3
-nanorsi final-test --workspace ./skills-lab
-python examples/compare.py ./skills-lab/reports/final.json
-nanorsi verify --workspace ./skills-lab
-```
+生成的模型、提案和评测命令使用创建工作区时的 Python 解释器，请保留这些命令。实验日志一旦开始，设置就固定；之后要修改模型或接口，需要新建工作区。
 
 <details>
 <summary><strong>工作区里有什么？</strong></summary>
@@ -153,7 +129,7 @@ skills-lab/
 
 默认只允许修改 `target/agent/skills/**`。参考 Runner 加载 Markdown skills，在每题独立的临时目录中提供 list/read/write/final 操作。本例没有实现 skill 脚本执行或向量检索。
 
-[完整操作指南](docs/QUICKSTART.md) · [数据合同与状态](docs/specification.md)
+[完整操作指南](docs/QUICKSTART.zh-CN.md) · [数据合同与状态](docs/specification.md)
 
 </details>
 
@@ -177,7 +153,7 @@ skills-lab/
 
 | 想做什么 | 入口 |
 | --- | --- |
-| 运行自己的实验 | [操作与预算指南](docs/QUICKSTART.md) |
+| 运行自己的实验 | [操作与预算指南](docs/QUICKSTART.zh-CN.md) |
 | 看核心实现 | [实验循环](src/nanorsi/loop.py) · [参考 Runner](src/nanorsi/templates/skills/target/agent/run.py) |
 | 理解设计取舍 | [项目章程](docs/PROJECT_CHARTER.md) · [v0.2 设计](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md) |
 | 准备任务、比较结果 | [示例工具](examples/README.md) |

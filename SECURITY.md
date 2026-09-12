@@ -39,3 +39,11 @@ If an operation dies, `recover` reconciles local attempt/worktree state. It is n
 ## Reporting
 
 Please use a private GitHub security advisory for vulnerabilities. Include version, sanitized configuration and a minimal reproduction; do not publish credentials or private benchmark answers.
+
+## Configuring model credentials
+
+Use `nanorsi configure --prompt-key` in an interactive terminal or pass an existing external file with `--api-key-file`. The command never accepts a raw key argument. Prompted files are created with owner-only permissions under `~/.config/nanorsi/keys`; existing supplied files retain their permissions. TOML stores only the path. Symlinks resolving inside the experiment are rejected. Do not put keys in task input, skills, tracked files, URLs or custom command arguments.
+
+The bundled HTTP bridge refuses redirects rather than forwarding Authorization headers to another endpoint. It uses bounded key/response reads and fixed error messages instead of reflecting provider response bodies. Ambient key environment variables and .env files are deliberately not loaded. These controls do not hide credentials from arbitrary same-user programs; use an external execution boundary for untrusted generated code.
+
+`doctor` is offline. `doctor --check-model` sends one request to the configured endpoint, may incur API charges, and does not start an experiment. Its diagnostics do not include key contents or raw model replies. A successful probe checks connectivity and one JSON action only, not research quality, subsequent availability or spending limits.

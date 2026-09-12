@@ -2,12 +2,36 @@ from __future__ import annotations
 
 import math
 import tomllib
+from urllib.parse import urlsplit
 from dataclasses import dataclass, field
 from pathlib import Path
 
 
 class ConfigError(ValueError):
     pass
+
+
+def validate_endpoint(value: str) -> str:
+    try:
+        if not isinstance(value, str) or any(c.isspace() or ord(c) < 32 or 127 <= ord(c) <= 159 for c in value) or '?' in value or '#' in value:
+            raise ValueError
+        parsed = urlsplit(value)
+        if parsed.scheme not in {'http', 'https'} or not parsed.hostname or parsed.username is not None or parsed.password is not None or parsed.netloc.endswith(':'):
+            raise ValueError
+        if parsed.port is not None and not 1 <= parsed.port <= 65535:
+            raise ValueError
+    except ValueError as error:
+        raise ConfigError('agent.base_url must be an HTTP(S) URL without credentials, query or fragment') from error
+    return value.rstrip('/')
+
+
+def credential_path(root: Path, value: str) -> Path:
+    if not isinstance(value, str) or not value or not Path(value).is_absolute():
+        raise ConfigError('agent.api_key_file must be an absolute external path')
+    path = Path(value).resolve()
+    if path.is_relative_to(root.resolve()):
+        raise ConfigError('agent.api_key_file must be outside the experiment workspace')
+    return path
 
 
 SECTIONS = {
@@ -122,8 +146,12 @@ def _v2(raw: dict, experiment: dict) -> tuple[dict, dict]:
         raise ConfigError("agent.skills must be an array of simple names")
     if len(set(skills)) != len(skills):
         raise ConfigError("agent.skills contains duplicates")
-    if agent.get("api_key_file") and not Path(agent["api_key_file"]).is_absolute():
-        raise ConfigError("agent.api_key_file must be an absolute external path")
+    if any(key in agent for key in ['api_key', 'apikey', 'authorization']):
+        raise ConfigError('inline credentials are not supported; use agent.api_key_file')
+    if 'base_url' in agent:
+        validate_endpoint(agent['base_url'])
+    if agent.get('token_parameter', 'max_tokens') not in {'max_tokens', 'max_completion_tokens'}:
+        raise ConfigError('agent.token_parameter must be max_tokens or max_completion_tokens')
     if raw.get("evaluator", {}).get("heldout_enabled", False):
         raise ConfigError("schema 2 uses validation and frozen final-test, not legacy heldout")
     try:
@@ -156,6 +184,8 @@ def load_config(path: Path) -> Config:
     if type(version) is not int or version not in {1, 2}:
         raise ConfigError("experiment.schema_version must be 1 or 2")
     agent, data = _v2(raw, experiment)
+    if 'api_key_file' in agent:
+        credential_path(path.parent, agent['api_key_file'])
     mode = experiment.get("mode", "")
     if mode not in {"artifact", "harness", "model"}:
         raise ConfigError("experiment.mode must be artifact, harness, or model")
