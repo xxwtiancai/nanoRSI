@@ -6,6 +6,38 @@ on:
   pull_request:
 
 jobs:
+  worker-startup-diagnostic:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Isolate worker startup (no credentials or model calls)
+        run: |
+          PYTHONPATH=src python - <<'PY'
+          import os, subprocess, sys
+          from nanorsi.process import safe_environment
+          code = '''import faulthandler
+          faulthandler.dump_traceback_later(2, repeat=True)
+          print("interpreter ready", flush=True)
+          import http.server, socketserver
+          print("imports ready", flush=True)
+          cls = http.server.HTTPServer if __import__("sys").argv[1] == "http" else socketserver.TCPServer
+          with cls(("127.0.0.1", 0), http.server.BaseHTTPRequestHandler):
+              print("bind ready", flush=True)
+          '''
+          for env_name, env in [("full", dict(os.environ)), ("safe", safe_environment())]:
+              for session in [False, True]:
+                  for protocol in ["http", "tcp"]:
+                      print(env_name, session, protocol, flush=True)
+                      try:
+                          p = subprocess.run([sys.executable, "-u", "-c", code, protocol], env=env,
+                                             start_new_session=session, capture_output=True, text=True, timeout=5)
+                          print(p.returncode, p.stdout, p.stderr, flush=True)
+                      except subprocess.TimeoutExpired as error:
+                          print("TIMEOUT", error.stdout, error.stderr, flush=True)
+          PY
   test:
     runs-on: ${{ matrix.os }}
     strategy:
