@@ -2,6 +2,7 @@
 
 ## 0.4.1 — 2026-09-13
 
+- Serialize Git worktree administration across population threads while keeping candidate evaluation concurrent; avoid a create/remove metadata race observed on Linux CI.
 - Make the TRAIN feedback limit configurable while preserving the default-four comparison identity and correctly reserving larger population panels.
 - Add an optional NumPy handwritten-digit experiment with frozen/self-use, uniform and random-priority controls, full TRAIN feedback, per-attempt random streams and real SFT/REINFORCE/LoRA checkpoint updates.
 - Separate study-wide search/freeze from final testing, bind the complete study plan into immutable workspace contracts, and verify paired designs before testing.

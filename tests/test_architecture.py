@@ -76,7 +76,7 @@ class ArchitectureTests(unittest.TestCase):
             "argparse", "ast", "concurrent", "contextlib", "dataclasses", "datetime", "difflib",
             "enum", "fnmatch", "getpass", "hashlib", "hmac", "html", "importlib", "json", "math",
             "os", "pathlib", "random", "re", "secrets", "shlex", "shutil", "stat", "subprocess", "sys",
-            "tempfile", "time", "tomllib", "typing", "unittest", "urllib", "uuid", "warnings",
+            "tempfile", "threading", "time", "tomllib", "typing", "unittest", "urllib", "uuid", "warnings",
         }
         for path in sorted(SRC.glob("*.py")):
             tree = ast.parse(path.read_text(encoding="utf-8"))

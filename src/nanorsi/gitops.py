@@ -4,7 +4,14 @@ import os
 import subprocess
 from contextlib import contextmanager
 from pathlib import Path
+from threading import RLock
 from typing import Iterator
+
+
+# Git add/remove/prune inspect shared worktree administration files. Population
+# threads use distinct Git instances; only these short metadata operations lock.
+# The CLI's experiment lock separately coordinates supported process entry points.
+_WORKTREE_ADMIN_LOCK = RLock()
 
 
 class GitError(RuntimeError):
@@ -98,11 +105,14 @@ class Git:
     @contextmanager
     def worktree(self, ref: str, destination: Path) -> Iterator[Path]:
         destination.parent.mkdir(parents=True, exist_ok=True)
-        self._run("worktree", "add", "--detach", str(destination), ref)
+        with _WORKTREE_ADMIN_LOCK:
+            self._run("worktree", "add", "--detach", str(destination), ref)
         try:
             yield destination.resolve()
         finally:
-            self._run("worktree", "remove", "--force", str(destination), check=False)
+            with _WORKTREE_ADMIN_LOCK:
+                self._run("worktree", "remove", "--force", str(destination), check=False)
 
     def prune_worktrees(self) -> None:
-        self._run("worktree", "prune")
+        with _WORKTREE_ADMIN_LOCK:
+            self._run("worktree", "prune")
