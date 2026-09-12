@@ -1,0 +1,166 @@
+[
+  {
+    "candidate_commit": "86baa496d5806292fad6f52be6de16e492adbf2d",
+    "decision": "baseline",
+    "event_type": "generation",
+    "gate_metrics": {
+      "accuracy": 0.425,
+      "loss": 1.0729625026546117,
+      "score": 0.425
+    },
+    "generation": 0
+  },
+  {
+    "attempt_id": 1,
+    "candidate_commit": "e8c1b173cd7be6e904c480d6a533355f7e7ef53c",
+    "decision": "accepted",
+    "event_type": "generation",
+    "gate_metrics": {
+      "accuracy": 0.8666666666666667,
+      "loss": 0.3373503828907927,
+      "score": 0.8666666666666667
+    },
+    "generation": 1,
+    "parent_gate_metrics": {
+      "accuracy": 0.425,
+      "loss": 1.0729625026546117,
+      "score": 0.425
+    },
+    "proposer_harness_commit": "86baa496d5806292fad6f52be6de16e492adbf2d",
+    "reason": "improvement 0.441667",
+    "training": {
+      "checkpoint_bytes": 1221,
+      "checkpoint_sha256": "abd0aad0a061d45cf0cdcd19ea2c3589da5ae2ff4837bf6c9922c5b49707c01d",
+      "compute_budget_s": 10.0,
+      "data_sha256": "a6bb52964da3c1ca6960e451094ed55aa2e95c95cb9dd7d4fd622765ce117f4e",
+      "duration_ms": 66,
+      "initial_checkpoint_sha256": "7af030334b947f0ef1819eff08c5c515034a801b948cb5e395f5d3395eacfdac",
+      "method": "lora",
+      "result": {
+        "accuracy_after": 0.8583333333333333,
+        "accuracy_before": 0.4083333333333333,
+        "batch_size": 24,
+        "checkpoint_bytes": 1221,
+        "checkpoint_sha256": "abd0aad0a061d45cf0cdcd19ea2c3589da5ae2ff4837bf6c9922c5b49707c01d",
+        "data_sha256": "a6bb52964da3c1ca6960e451094ed55aa2e95c95cb9dd7d4fd622765ce117f4e",
+        "duration_ms": 37,
+        "examples_seen": 4800,
+        "initial_checkpoint_sha256": "7af030334b947f0ef1819eff08c5c515034a801b948cb5e395f5d3395eacfdac",
+        "loss_after": 0.345230803880226,
+        "loss_before": 1.0787562031947764,
+        "method": "lora",
+        "sampled_actions": 0,
+        "sampled_reward_mean": null,
+        "status": "completed",
+        "steps": 200,
+        "train_examples": 120
+      },
+      "source_sha256": "df4e58e4a21d33477c3d3efa60980b5e8f635eab01df1e4b25e4ca699ba01c60",
+      "status": "completed",
+      "steps": 200,
+      "trainer_sha256": "8015e7bd3bcf6dcfb5553607476cf7d6206e3e5059a13b24076e90b7c428881d"
+    }
+  },
+  {
+    "attempt_id": 2,
+    "candidate_commit": "2617daff1211cf6908310832dc53bc80f26222d6",
+    "decision": "rejected",
+    "event_type": "generation",
+    "gate_metrics": {
+      "accuracy": 0.8583333333333333,
+      "loss": 0.34783600797770825,
+      "score": 0.8583333333333333
+    },
+    "generation": 1,
+    "parent_gate_metrics": {
+      "accuracy": 0.8666666666666667,
+      "loss": 0.3373503828907927,
+      "score": 0.8666666666666667
+    },
+    "proposer_harness_commit": "e8c1b173cd7be6e904c480d6a533355f7e7ef53c",
+    "reason": "improvement below minimum: -0.008333",
+    "training": {
+      "checkpoint_bytes": 1215,
+      "checkpoint_sha256": "387ebbfdce66478a4ef88158daa6e1ff25c6b696556c97914928d2c019ff0f74",
+      "compute_budget_s": 10.0,
+      "data_sha256": "a6bb52964da3c1ca6960e451094ed55aa2e95c95cb9dd7d4fd622765ce117f4e",
+      "duration_ms": 67,
+      "initial_checkpoint_sha256": "abd0aad0a061d45cf0cdcd19ea2c3589da5ae2ff4837bf6c9922c5b49707c01d",
+      "method": "lora",
+      "result": {
+        "accuracy_after": 0.875,
+        "accuracy_before": 0.8583333333333333,
+        "batch_size": 24,
+        "checkpoint_bytes": 1215,
+        "checkpoint_sha256": "387ebbfdce66478a4ef88158daa6e1ff25c6b696556c97914928d2c019ff0f74",
+        "data_sha256": "a6bb52964da3c1ca6960e451094ed55aa2e95c95cb9dd7d4fd622765ce117f4e",
+        "duration_ms": 37,
+        "examples_seen": 4800,
+        "initial_checkpoint_sha256": "abd0aad0a061d45cf0cdcd19ea2c3589da5ae2ff4837bf6c9922c5b49707c01d",
+        "loss_after": 0.33892022994140664,
+        "loss_before": 0.345230803880226,
+        "method": "lora",
+        "sampled_actions": 0,
+        "sampled_reward_mean": null,
+        "status": "completed",
+        "steps": 200,
+        "train_examples": 120
+      },
+      "source_sha256": "5c2d0b648e8d7dbe3c5ddda1b6899f1ccd00fa93c135f9fbc6182252a0a9754c",
+      "status": "completed",
+      "steps": 200,
+      "trainer_sha256": "8015e7bd3bcf6dcfb5553607476cf7d6206e3e5059a13b24076e90b7c428881d"
+    }
+  },
+  {
+    "attempt_id": 3,
+    "candidate_commit": "a2ff5c425be06fd7aefc9942f55ee9e3f33963a2",
+    "decision": "rejected",
+    "event_type": "generation",
+    "gate_metrics": {
+      "accuracy": 0.8583333333333333,
+      "loss": 0.34783600797770825,
+      "score": 0.8583333333333333
+    },
+    "generation": 1,
+    "parent_gate_metrics": {
+      "accuracy": 0.8666666666666667,
+      "loss": 0.3373503828907927,
+      "score": 0.8666666666666667
+    },
+    "proposer_harness_commit": "e8c1b173cd7be6e904c480d6a533355f7e7ef53c",
+    "reason": "improvement below minimum: -0.008333",
+    "training": {
+      "checkpoint_bytes": 1215,
+      "checkpoint_sha256": "387ebbfdce66478a4ef88158daa6e1ff25c6b696556c97914928d2c019ff0f74",
+      "compute_budget_s": 10.0,
+      "data_sha256": "a6bb52964da3c1ca6960e451094ed55aa2e95c95cb9dd7d4fd622765ce117f4e",
+      "duration_ms": 66,
+      "initial_checkpoint_sha256": "abd0aad0a061d45cf0cdcd19ea2c3589da5ae2ff4837bf6c9922c5b49707c01d",
+      "method": "lora",
+      "result": {
+        "accuracy_after": 0.875,
+        "accuracy_before": 0.8583333333333333,
+        "batch_size": 24,
+        "checkpoint_bytes": 1215,
+        "checkpoint_sha256": "387ebbfdce66478a4ef88158daa6e1ff25c6b696556c97914928d2c019ff0f74",
+        "data_sha256": "a6bb52964da3c1ca6960e451094ed55aa2e95c95cb9dd7d4fd622765ce117f4e",
+        "duration_ms": 37,
+        "examples_seen": 4800,
+        "initial_checkpoint_sha256": "abd0aad0a061d45cf0cdcd19ea2c3589da5ae2ff4837bf6c9922c5b49707c01d",
+        "loss_after": 0.33892022994140664,
+        "loss_before": 0.345230803880226,
+        "method": "lora",
+        "sampled_actions": 0,
+        "sampled_reward_mean": null,
+        "status": "completed",
+        "steps": 200,
+        "train_examples": 120
+      },
+      "source_sha256": "5c2d0b648e8d7dbe3c5ddda1b6899f1ccd00fa93c135f9fbc6182252a0a9754c",
+      "status": "completed",
+      "steps": 200,
+      "trainer_sha256": "8015e7bd3bcf6dcfb5553607476cf7d6206e3e5059a13b24076e90b7c428881d"
+    }
+  }
+]

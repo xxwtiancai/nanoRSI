@@ -1,0 +1,495 @@
+{
+  "arm": "self-use",
+  "comparison_hash": "aafdd39a768e643c6a8977c63f64dc1fdbb0c0acff541cb7e1da26976969e960",
+  "conditions": [
+    "baseline",
+    "no-skills",
+    "candidate"
+  ],
+  "experiment_id": "demo-skills",
+  "manifest_hash": "48ec2192cc1c9c18f2738e07c5bfe402ce4ba2092e7ea46eecfbc34103cb0aff",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "harness",
+  "repeats": 1,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 11912,
+          "group_id": "test-independent-configs",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {
+            "edit": "8c8783a5ccd9b1d5cfb55275b8b5d46cf71722bbc1214bca1fc82b6125bbb8d8",
+            "inspect": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c",
+            "verify": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+          },
+          "status": "task_failure",
+          "task_id": "test-batch-migration",
+          "trace": [
+            {
+              "bytes": 31052,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "02cb348f3e1f85e8b210969962e250125c8b4d496727468c6fdb1c82076da56c"
+            },
+            {
+              "bytes": 274,
+              "event": "skill_loaded",
+              "name": "inspect",
+              "sha256": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c"
+            },
+            {
+              "bytes": 213,
+              "event": "skill_loaded",
+              "name": "edit",
+              "sha256": "8c8783a5ccd9b1d5cfb55275b8b5d46cf71722bbc1214bca1fc82b6125bbb8d8"
+            },
+            {
+              "bytes": 267,
+              "event": "skill_loaded",
+              "name": "verify",
+              "sha256": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+            },
+            {
+              "count": 3,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "test/config_0.txt",
+              "tool": "write",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "test/config_1.txt",
+              "tool": "write",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "tool",
+              "path": "test/config_2.txt",
+              "tool": "write",
+              "turn": 3
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 4
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 2782,
+            "model_calls": 4,
+            "output_tokens": 367
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 11956,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2782,
+        "model_calls": 4,
+        "output_tokens": 367
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 9726,
+          "group_id": "test-independent-configs",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-batch-migration",
+          "trace": [
+            {
+              "bytes": 31052,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "02cb348f3e1f85e8b210969962e250125c8b4d496727468c6fdb1c82076da56c"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "test/config_0.txt",
+              "tool": "write",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "test/config_1.txt",
+              "tool": "write",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "tool",
+              "path": "test/config_2.txt",
+              "tool": "write",
+              "turn": 3
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 4
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 1542,
+            "model_calls": 4,
+            "output_tokens": 299
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "no-skills",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 9770,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1542,
+        "model_calls": 4,
+        "output_tokens": 299
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 5565,
+          "group_id": "test-independent-configs",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "edit": "a234a38a570aeeaae826c89eb8bfa9298b379beabe9a9428e2eee122eb483ff4",
+            "edit/run.py": "7105ef99843913330df495eb2ba3f1e40bdc7acd329671f857a4640bcb340093",
+            "inspect": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c",
+            "verify": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+          },
+          "status": "ok",
+          "task_id": "test-batch-migration",
+          "trace": [
+            {
+              "bytes": 31052,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "02cb348f3e1f85e8b210969962e250125c8b4d496727468c6fdb1c82076da56c"
+            },
+            {
+              "bytes": 274,
+              "event": "skill_loaded",
+              "name": "inspect",
+              "sha256": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c"
+            },
+            {
+              "bytes": 810,
+              "event": "skill_loaded",
+              "name": "edit",
+              "sha256": "a234a38a570aeeaae826c89eb8bfa9298b379beabe9a9428e2eee122eb483ff4"
+            },
+            {
+              "bytes": 267,
+              "event": "skill_loaded",
+              "name": "verify",
+              "sha256": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+            },
+            {
+              "count": 3,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "bytes": 1160,
+              "event": "skill_script_invoked",
+              "name": "edit",
+              "sha256": "7105ef99843913330df495eb2ba3f1e40bdc7acd329671f857a4640bcb340093"
+            },
+            {
+              "event": "tool",
+              "path": null,
+              "tool": "skill",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "test/config_0.txt",
+              "tool": "read",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 2713,
+            "model_calls": 3,
+            "output_tokens": 95
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 5612,
+      "metrics": {
+        "score": 1.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2713,
+        "model_calls": 3,
+        "output_tokens": 95
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.0,
+    "known_count": 0,
+    "known_usd": null,
+    "total_count": 7,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "bd2c38b931554c5391f3162ac3af1c90",
+      "phase": "search",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 12391,
+      "event_type": "evaluation_finished",
+      "invocation_id": "bd2c38b931554c5391f3162ac3af1c90",
+      "phase": "search",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2744,
+        "model_calls": 4,
+        "output_tokens": 338
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "f10c4dd9e95f4de99b337074d032d7fb",
+      "phase": "search",
+      "seq": 6,
+      "split": "train"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 12463,
+      "event_type": "evaluation_finished",
+      "invocation_id": "f10c4dd9e95f4de99b337074d032d7fb",
+      "phase": "search",
+      "seq": 7,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action"
+        ],
+        "input_tokens": 2744,
+        "model_calls": 4,
+        "output_tokens": 349
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "3ef137d2c94b41db960f9fbc1327cdf3",
+      "phase": "search",
+      "seq": 10,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 11563,
+      "event_type": "evaluation_finished",
+      "invocation_id": "3ef137d2c94b41db960f9fbc1327cdf3",
+      "phase": "search",
+      "seq": 11,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2744,
+        "model_calls": 4,
+        "output_tokens": 235
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "db8fa8fac2a64e7e837d3a8aed219e77",
+      "phase": "search",
+      "seq": 12,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 4184,
+      "event_type": "evaluation_finished",
+      "invocation_id": "db8fa8fac2a64e7e837d3a8aed219e77",
+      "phase": "search",
+      "seq": 13,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2684,
+        "model_calls": 3,
+        "output_tokens": 50
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "9c86139931e942e8b46c5e23385cc7e5",
+      "phase": "search",
+      "seq": 16,
+      "split": "train"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 4906,
+      "event_type": "evaluation_finished",
+      "invocation_id": "9c86139931e942e8b46c5e23385cc7e5",
+      "phase": "search",
+      "seq": 17,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2684,
+        "model_calls": 3,
+        "output_tokens": 83
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 9,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1917,
+        "model_calls": 1,
+        "output_tokens": 673
+      }
+    },
+    {
+      "attempt_id": 2,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 19,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2697,
+        "model_calls": 1,
+        "output_tokens": 133
+      }
+    }
+  ],
+  "seed": 0,
+  "test_cost_usd": {
+    "coverage": 0.0,
+    "known_count": 0,
+    "known_usd": null,
+    "total_count": 3,
+    "total_usd": null
+  }
+}

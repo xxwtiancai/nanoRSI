@@ -1,0 +1,16 @@
+[
+  {
+    "evaluator_sha256": "bb2c1f187f43983f2d539287404d9eca41e7375633eeb14fa3be911160c53806",
+    "manifest_sha256": "8f1e39da95d2e2487874baf4cd996e3522de28d43bd94e34ba58bee6f2b1333b",
+    "pid": 65400,
+    "url": "http://127.0.0.1:51914",
+    "worker_id": "worker-0"
+  },
+  {
+    "evaluator_sha256": "bb2c1f187f43983f2d539287404d9eca41e7375633eeb14fa3be911160c53806",
+    "manifest_sha256": "8f1e39da95d2e2487874baf4cd996e3522de28d43bd94e34ba58bee6f2b1333b",
+    "pid": 65401,
+    "url": "http://127.0.0.1:51915",
+    "worker_id": "worker-1"
+  }
+]

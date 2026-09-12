@@ -1,0 +1,10 @@
+{
+  "artifact_references": 64,
+  "event_count": 62,
+  "final_complete": true,
+  "frozen_before_test": true,
+  "locally_verified": true,
+  "public_extract_signed": false,
+  "receipt_keys_published": false,
+  "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+}

@@ -1,0 +1,694 @@
+{
+  "arm": "self-use",
+  "comparison_hash": "2d3430d4348a8c84693e78e158a7e4b2d6cd36760418d0b002ec9acdbabdebb4",
+  "conditions": [
+    "baseline",
+    "candidate"
+  ],
+  "experiment_id": "demo-recursive",
+  "manifest_hash": "9255c6dc5949ff737d78fc954da7d0b032b8bcc11b4e61ce41f20ee55324ef49",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "harness",
+  "repeats": 1,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 2,
+          "group_id": "test-workflow-branches",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-branches",
+          "trace": [
+            {
+              "bytes": 7791,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "b40674b5e91fce776c7d03180c1705efb090c0df213cb890c2e49026bfafbedb"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "dependencies": [
+                "total_east"
+              ],
+              "event": "step_deferred",
+              "step": "save_east"
+            },
+            {
+              "dependencies": [
+                "select_west"
+              ],
+              "event": "step_deferred",
+              "step": "save_west"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "load_orders",
+              "tool": "load"
+            },
+            {
+              "dependencies": [
+                "select_east"
+              ],
+              "event": "step_deferred",
+              "step": "total_east"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_west",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_east",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_complete",
+              "executed": 3,
+              "unresolved": [
+                "save_east",
+                "save_west",
+                "total_east"
+              ]
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 1,
+          "group_id": "test-workflow-ordered",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-ordered",
+          "trace": [
+            {
+              "bytes": 7791,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "b40674b5e91fce776c7d03180c1705efb090c0df213cb890c2e49026bfafbedb"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "load_orders",
+              "tool": "load"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_east",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "total_east",
+              "tool": "sum"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "save_east",
+              "tool": "write"
+            },
+            {
+              "event": "workflow_complete",
+              "executed": 4,
+              "unresolved": []
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 1,
+          "group_id": "test-workflow-reverse",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-reverse",
+          "trace": [
+            {
+              "bytes": 7791,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "b40674b5e91fce776c7d03180c1705efb090c0df213cb890c2e49026bfafbedb"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "dependencies": [
+                "total_east"
+              ],
+              "event": "step_deferred",
+              "step": "save_east"
+            },
+            {
+              "dependencies": [
+                "select_east"
+              ],
+              "event": "step_deferred",
+              "step": "total_east"
+            },
+            {
+              "dependencies": [
+                "load_orders"
+              ],
+              "event": "step_deferred",
+              "step": "select_east"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "load_orders",
+              "tool": "load"
+            },
+            {
+              "event": "workflow_complete",
+              "executed": 1,
+              "unresolved": [
+                "save_east",
+                "select_east",
+                "total_east"
+              ]
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 1,
+          "group_id": "test-workflow-shuffled",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-shuffled",
+          "trace": [
+            {
+              "bytes": 7791,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "b40674b5e91fce776c7d03180c1705efb090c0df213cb890c2e49026bfafbedb"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "dependencies": [
+                "select_east"
+              ],
+              "event": "step_deferred",
+              "step": "total_east"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "load_orders",
+              "tool": "load"
+            },
+            {
+              "dependencies": [
+                "total_east"
+              ],
+              "event": "step_deferred",
+              "step": "save_east"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_east",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_complete",
+              "executed": 2,
+              "unresolved": [
+                "save_east",
+                "total_east"
+              ]
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 189,
+      "metrics": {
+        "score": 0.25
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 3,
+          "group_id": "test-workflow-branches",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-branches",
+          "trace": [
+            {
+              "bytes": 8398,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "adad369f313d1e2a81d142aa406024ed77c7fbb343502e82981bc6674242626f"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "load_orders",
+              "tool": "load"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_west",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_east",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "save_west",
+              "tool": "write"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "total_east",
+              "tool": "sum"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "save_east",
+              "tool": "write"
+            },
+            {
+              "event": "workflow_complete",
+              "executed": 6,
+              "unresolved": []
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 2,
+          "group_id": "test-workflow-ordered",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-ordered",
+          "trace": [
+            {
+              "bytes": 8398,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "adad369f313d1e2a81d142aa406024ed77c7fbb343502e82981bc6674242626f"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "load_orders",
+              "tool": "load"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_east",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "total_east",
+              "tool": "sum"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "save_east",
+              "tool": "write"
+            },
+            {
+              "event": "workflow_complete",
+              "executed": 4,
+              "unresolved": []
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 1,
+          "group_id": "test-workflow-reverse",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-reverse",
+          "trace": [
+            {
+              "bytes": 8398,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "adad369f313d1e2a81d142aa406024ed77c7fbb343502e82981bc6674242626f"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "load_orders",
+              "tool": "load"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_east",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "total_east",
+              "tool": "sum"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "save_east",
+              "tool": "write"
+            },
+            {
+              "event": "workflow_complete",
+              "executed": 4,
+              "unresolved": []
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 2,
+          "group_id": "test-workflow-shuffled",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-shuffled",
+          "trace": [
+            {
+              "bytes": 8398,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "adad369f313d1e2a81d142aa406024ed77c7fbb343502e82981bc6674242626f"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "load_orders",
+              "tool": "load"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "select_east",
+              "tool": "filter"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "total_east",
+              "tool": "sum"
+            },
+            {
+              "event": "workflow_tool",
+              "step": "save_east",
+              "tool": "write"
+            },
+            {
+              "event": "workflow_complete",
+              "executed": 4,
+              "unresolved": []
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 188,
+      "metrics": {
+        "score": 1.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.7142857142857143,
+    "known_count": 5,
+    "known_usd": 0.0,
+    "total_count": 7,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "ef684bda07834fe4a52a7a7f0ae35117",
+      "phase": "search",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 190,
+      "event_type": "evaluation_finished",
+      "invocation_id": "ef684bda07834fe4a52a7a7f0ae35117",
+      "phase": "search",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "a7eee7d628a5419a987086b30b5d8ae0",
+      "phase": "search",
+      "seq": 6,
+      "split": "train"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 191,
+      "event_type": "evaluation_finished",
+      "invocation_id": "a7eee7d628a5419a987086b30b5d8ae0",
+      "phase": "search",
+      "seq": 7,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "cd901265c8be43c5ae317a22b2a917db",
+      "phase": "search",
+      "seq": 10,
+      "split": "validation"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 191,
+      "event_type": "evaluation_finished",
+      "invocation_id": "cd901265c8be43c5ae317a22b2a917db",
+      "phase": "search",
+      "seq": 11,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "3b8b903000684289aec43a30d389c1d5",
+      "phase": "search",
+      "seq": 12,
+      "split": "validation"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 188,
+      "event_type": "evaluation_finished",
+      "invocation_id": "3b8b903000684289aec43a30d389c1d5",
+      "phase": "search",
+      "seq": 13,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "c3e3609dda47448483c9ca548f129e7b",
+      "phase": "search",
+      "seq": 16,
+      "split": "train"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 192,
+      "event_type": "evaluation_finished",
+      "invocation_id": "c3e3609dda47448483c9ca548f129e7b",
+      "phase": "search",
+      "seq": 17,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 9,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 6298,
+        "model_calls": 1,
+        "output_tokens": 2203
+      }
+    },
+    {
+      "attempt_id": 2,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 19,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 6382,
+        "model_calls": 1,
+        "output_tokens": 193
+      }
+    }
+  ],
+  "seed": 0,
+  "test_cost_usd": {
+    "coverage": 1.0,
+    "known_count": 2,
+    "known_usd": 0.0,
+    "total_count": 2,
+    "total_usd": 0.0
+  }
+}

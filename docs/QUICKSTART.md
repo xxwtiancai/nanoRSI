@@ -38,9 +38,12 @@ The bundled bridge sends **OpenAI-compatible `/chat/completions` requests**. Set
 | OpenAI | [API keys](https://platform.openai.com/api-keys) | `https://api.openai.com/v1` | Exact API model ID enabled for your account; use `--token-parameter max_completion_tokens` for models that require it ([API reference](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create)) |
 | OpenRouter | [Keys](https://openrouter.ai/settings/keys) | `https://openrouter.ai/api/v1` | Full provider/model slug from its catalog ([quickstart](https://openrouter.ai/docs/quickstart)) |
 | DeepSeek | [Platform](https://platform.deepseek.com/) | `https://api.deepseek.com` | A currently available model ID from the [official API guide](https://api-docs.deepseek.com/) |
+| Z.AI / GLM | [API keys](https://z.ai/manage-apikey/apikey-list) | `https://api.z.ai/api/paas/v4` (general API), or `https://api.z.ai/api/coding/paas/v4` for an eligible Coding Plan integration | Exact enabled model ID; the published demo used `glm-5.3-flash` with `--thinking disabled`. See [endpoint and integration eligibility](https://docs.z.ai/devpack/tool/others) and [general API](https://docs.z.ai/api-reference/introduction). |
 | Local compatible server | No key if your server allows unauthenticated requests | `http://localhost:8000/v1` | The exact model ID served by your running server |
 
 Provider catalogs change. **Replace `YOUR_MODEL_ID` in every command before running it**; it is a placeholder, not an available model. Prefer a fixed snapshot when available. Compatible HTTP syntax alone does not establish that a model follows nanoRSI's JSON action protocol. Automated integration tests use authenticated local HTTP fixtures; they do not establish paid-provider compatibility or model gains.
+
+The [separate live GLM study](../examples/results/v0.4.0/README.md) records the exact requested/returned model and measured outcomes. Endpoint compatibility and subscription eligibility are separate; use the endpoint authorized for your account and integration. nanoRSI does not switch billing endpoints automatically.
 
 ## 3. Configure the model and API key
 

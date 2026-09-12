@@ -58,3 +58,19 @@ jobs:
           .wheel-venv/bin/nanorsi configure --workspace ./coding-wheel --model offline-ci --base-url http://127.0.0.1:8000/v1 --no-api-key --max-steps 1
           .wheel-venv/bin/nanorsi doctor --workspace ./coding-wheel
           .wheel-venv/bin/python -c 'import importlib.metadata; assert not importlib.metadata.requires("nanorsi")'
+      - name: Installed parameter-learning lifecycle
+        run: |
+          .wheel-venv/bin/nanorsi new model ./model-wheel
+          .wheel-venv/bin/nanorsi baseline --workspace ./model-wheel
+          .wheel-venv/bin/nanorsi run --workspace ./model-wheel
+          .wheel-venv/bin/nanorsi freeze --workspace ./model-wheel --repeats 1
+          .wheel-venv/bin/nanorsi final-test --workspace ./model-wheel
+          .wheel-venv/bin/nanorsi report --workspace ./model-wheel --format html
+          .wheel-venv/bin/nanorsi verify --workspace ./model-wheel
+      - name: Installed live templates (offline)
+        run: |
+          for template in artifact harness; do
+            .wheel-venv/bin/nanorsi new "$template" "./$template-wheel"
+            .wheel-venv/bin/nanorsi configure --workspace "./$template-wheel" --model offline-ci --base-url http://127.0.0.1:8000/v1 --no-api-key --max-steps 1
+            .wheel-venv/bin/nanorsi doctor --workspace "./$template-wheel"
+          done

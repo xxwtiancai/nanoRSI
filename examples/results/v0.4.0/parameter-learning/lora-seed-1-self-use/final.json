@@ -1,0 +1,5883 @@
+{
+  "arm": "self-use",
+  "comparison_hash": "2339556881fb4d848e9c88e2920dcb85a3c44006d5e432d78ed4342aed7c3b6f",
+  "conditions": [
+    "baseline",
+    "candidate"
+  ],
+  "experiment_id": "learner-lora-1-self-use",
+  "manifest_hash": "b01d703d770955f15110be435355131613a1a297152abdaf0794ee1c84d518de",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "model",
+  "repeats": 1,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-000",
+          "loss": 1.1581363328977432,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-001",
+          "loss": 1.0914605564460917,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-002",
+          "loss": 1.096810632821391,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-003",
+          "loss": 0.9956962132737925,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-004",
+          "loss": 1.1440876062787273,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-004",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-005",
+          "loss": 1.0487480339159692,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-005",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-006",
+          "loss": 1.0139702648842244,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-006",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-007",
+          "loss": 1.097494483949955,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-007",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-008",
+          "loss": 1.0945563603719841,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-008",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-009",
+          "loss": 1.039027905440924,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-009",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-010",
+          "loss": 0.9859732600115343,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-010",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-011",
+          "loss": 1.088039007760505,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-011",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-012",
+          "loss": 1.0999478575969783,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-012",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-013",
+          "loss": 1.0899212095223592,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-013",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-014",
+          "loss": 1.1053893042524314,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-014",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-015",
+          "loss": 1.05552261333272,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-015",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-016",
+          "loss": 1.017775002750612,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-016",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-017",
+          "loss": 1.0579181426144058,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-017",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-018",
+          "loss": 1.0905451208192518,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-018",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-019",
+          "loss": 1.0979028016993704,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-019",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-020",
+          "loss": 1.0650010103839935,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-020",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-021",
+          "loss": 1.0774787979992821,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-021",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-022",
+          "loss": 1.0515926855897948,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-022",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-023",
+          "loss": 1.1514061324398506,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-023",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-024",
+          "loss": 1.0844496632254153,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-024",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-025",
+          "loss": 1.1468046955379012,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-025",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-026",
+          "loss": 1.016079223795432,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-026",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-027",
+          "loss": 1.1455548774664526,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-027",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-028",
+          "loss": 1.23971347531726,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-028",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-029",
+          "loss": 1.0792799251793428,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-029",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-030",
+          "loss": 1.052944494997891,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-030",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-031",
+          "loss": 1.0838016185637667,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-031",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-032",
+          "loss": 1.0506653603399334,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-032",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-033",
+          "loss": 1.0300589243985379,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-033",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-034",
+          "loss": 1.1107537876551346,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-034",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-035",
+          "loss": 1.0500112332568106,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-035",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-036",
+          "loss": 1.0511518022597355,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-036",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-037",
+          "loss": 1.0450631453077017,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-037",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-038",
+          "loss": 1.1074165045150874,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-038",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-039",
+          "loss": 1.090784967702405,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-039",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-040",
+          "loss": 1.0736401984123107,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-040",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-041",
+          "loss": 1.0966783658524348,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-041",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-042",
+          "loss": 0.9890620660193374,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-042",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-043",
+          "loss": 1.031227701997506,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-043",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-044",
+          "loss": 1.1179839503779505,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-044",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-045",
+          "loss": 1.0593519092049772,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-045",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-046",
+          "loss": 0.9733095875089312,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-046",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-047",
+          "loss": 1.134182219429063,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-047",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-048",
+          "loss": 1.04487632220282,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-048",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-049",
+          "loss": 1.1172199218965964,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-049",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-050",
+          "loss": 1.0855205476641145,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-050",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-051",
+          "loss": 1.034020204450956,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-051",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-052",
+          "loss": 1.155456759422406,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-052",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-053",
+          "loss": 1.0084163624050593,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-053",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-054",
+          "loss": 1.0284207079134084,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-054",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-055",
+          "loss": 1.2166828906202658,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-055",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-056",
+          "loss": 1.1247427586519825,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-056",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-057",
+          "loss": 0.9408638162094575,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-057",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-058",
+          "loss": 1.2186400372687292,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-058",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-059",
+          "loss": 1.0736174614111904,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-059",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-060",
+          "loss": 0.9706190101374246,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-060",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-061",
+          "loss": 1.0339555490984138,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-061",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-062",
+          "loss": 1.1245826533758734,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-062",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-063",
+          "loss": 1.0379072406396255,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-063",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-064",
+          "loss": 1.078834118485866,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-064",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-065",
+          "loss": 1.0834590914625213,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-065",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-066",
+          "loss": 1.274442908019418,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-066",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-067",
+          "loss": 1.0058321348062655,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-067",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-068",
+          "loss": 1.1074030608890375,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-068",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-069",
+          "loss": 1.0553044309759063,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-069",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-070",
+          "loss": 1.1287208644493851,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-070",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-071",
+          "loss": 1.1329041949722014,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-071",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-072",
+          "loss": 1.0610473114838663,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-072",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-073",
+          "loss": 1.039402304209538,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-073",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-074",
+          "loss": 1.1006216237327207,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-074",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-075",
+          "loss": 1.1881455643984478,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-075",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-076",
+          "loss": 1.1055866209314344,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-076",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-077",
+          "loss": 1.107167567541832,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-077",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-078",
+          "loss": 1.0005798894898386,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-078",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-079",
+          "loss": 1.0200704664507463,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-079",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-080",
+          "loss": 1.0708572145401192,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-080",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-081",
+          "loss": 1.0585444219955642,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-081",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-082",
+          "loss": 1.1311451625633164,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-082",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-083",
+          "loss": 1.0423914891952575,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-083",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-084",
+          "loss": 1.0489316346520112,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-084",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-085",
+          "loss": 1.0844291368743666,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-085",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-086",
+          "loss": 1.057050395238557,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-086",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-087",
+          "loss": 1.1222841793906255,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-087",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-088",
+          "loss": 1.0021025347250399,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-088",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-089",
+          "loss": 1.1119298999633123,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-089",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-090",
+          "loss": 1.095049008134329,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-090",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-091",
+          "loss": 0.9951761711428215,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-091",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-092",
+          "loss": 1.0796712386115703,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-092",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-093",
+          "loss": 1.1259232118037805,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-093",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-094",
+          "loss": 1.0712362159576994,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-094",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-095",
+          "loss": 1.0309547239151358,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-095",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-096",
+          "loss": 1.0873744519584334,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-096",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-097",
+          "loss": 1.1262855537918366,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-097",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-098",
+          "loss": 1.11522788060386,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-098",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-099",
+          "loss": 1.0145377360642944,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-099",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-100",
+          "loss": 1.1830091384951498,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-100",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-101",
+          "loss": 1.0960346948420299,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-101",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-102",
+          "loss": 1.0059256896387443,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-102",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-103",
+          "loss": 1.150303325207702,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-103",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-104",
+          "loss": 1.0206949266156469,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-104",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-105",
+          "loss": 1.0887742976359818,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-105",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-106",
+          "loss": 1.0633011847714398,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-106",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-107",
+          "loss": 1.0783229720882106,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-107",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-108",
+          "loss": 1.1613601279309405,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-108",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-109",
+          "loss": 1.1014195333934627,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-109",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-110",
+          "loss": 1.086647471682439,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-110",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-111",
+          "loss": 1.134189748263943,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-111",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-112",
+          "loss": 1.1387078438645828,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-112",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-113",
+          "loss": 1.0922772308619009,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-113",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-114",
+          "loss": 1.0839022495241573,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-114",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-115",
+          "loss": 1.0620262835972585,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-115",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-116",
+          "loss": 1.0786831717981509,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-116",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-117",
+          "loss": 0.9450958104366826,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-117",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-118",
+          "loss": 1.0620179431701289,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-118",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-119",
+          "loss": 1.1021654200175546,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-119",
+          "trace": [
+            {
+              "checkpoint_sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        }
+      ],
+      "checkpoint": {
+        "bytes": 1106,
+        "path": "target/model.json",
+        "sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6"
+      },
+      "condition": "baseline",
+      "constraints": {
+        "checkpoint_valid": true
+      },
+      "cost_usd": null,
+      "duration_ms": 1,
+      "metrics": {
+        "accuracy": 0.39166666666666666,
+        "loss": 1.079878306300005,
+        "score": 0.39166666666666666
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-000",
+          "loss": 0.20472988433707903,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-001",
+          "loss": 0.41575664106193105,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-002",
+          "loss": 2.0224139615084966,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-003",
+          "loss": 0.025809028703254366,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-004",
+          "loss": 8.431650524761107e-05,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-004",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-005",
+          "loss": 0.003891026590943891,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-005",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-006",
+          "loss": 0.18977744844243494,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-006",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-007",
+          "loss": 0.0028863696146325126,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-007",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-008",
+          "loss": 0.011630044937042422,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-008",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-009",
+          "loss": 0.009554991501233784,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-009",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-010",
+          "loss": 0.5388940066847987,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-010",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-011",
+          "loss": 0.01720079500050305,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-011",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-012",
+          "loss": 0.007719509346172036,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-012",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-013",
+          "loss": 0.04209894408274525,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-013",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-014",
+          "loss": 0.06973471601110617,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-014",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-015",
+          "loss": 0.018292878608664468,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-015",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-016",
+          "loss": 0.07512215666279763,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-016",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-017",
+          "loss": 6.353229632115897,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-017",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-018",
+          "loss": 0.0416387515538959,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-018",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-019",
+          "loss": 0.017092801853728756,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-019",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-020",
+          "loss": 0.5105931410810303,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-020",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-021",
+          "loss": 0.0558229239088129,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-021",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-022",
+          "loss": 1.0902568398984165,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-022",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-023",
+          "loss": 5.538773484820987,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-023",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-024",
+          "loss": 0.24854914360260766,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-024",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-025",
+          "loss": 0.003785288079591552,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-025",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-026",
+          "loss": 0.000716355650309406,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-026",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-027",
+          "loss": 0.05256833077926901,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-027",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-028",
+          "loss": 0.007417000412503775,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-028",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-029",
+          "loss": 0.09333830421905907,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-029",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-030",
+          "loss": 0.15904261867450945,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-030",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-031",
+          "loss": 0.0666826708891734,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-031",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-032",
+          "loss": 0.010715351078035085,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-032",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-033",
+          "loss": 0.22749643379056214,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-033",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-034",
+          "loss": 0.04736117006489319,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-034",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-035",
+          "loss": 0.006922066383627142,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-035",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-036",
+          "loss": 0.047531866237402534,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-036",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-037",
+          "loss": 0.045061750823668555,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-037",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-038",
+          "loss": 0.013052925249892365,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-038",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-039",
+          "loss": 0.10545428337256746,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-039",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-040",
+          "loss": 0.20708926937159391,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-040",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-041",
+          "loss": 0.3237217600028934,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-041",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-042",
+          "loss": 0.09447380007136302,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-042",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-043",
+          "loss": 2.2401024346932648,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-043",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-044",
+          "loss": 0.22575974738298912,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-044",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-045",
+          "loss": 0.02809825915210995,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-045",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-046",
+          "loss": 0.02799267783254599,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-046",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-047",
+          "loss": 0.3548741026025546,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-047",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-048",
+          "loss": 0.018019795511164755,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-048",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-049",
+          "loss": 0.1910242968252424,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-049",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-050",
+          "loss": 0.06660100041273878,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-050",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-051",
+          "loss": 0.03390185630979801,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-051",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-052",
+          "loss": 0.05832794814674311,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-052",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-053",
+          "loss": 0.004564894264146202,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-053",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-054",
+          "loss": 0.003076069013131876,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-054",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-055",
+          "loss": 1.3995609202620372,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-055",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-056",
+          "loss": 0.3518128252538589,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-056",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-057",
+          "loss": 0.4885534652329015,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-057",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-058",
+          "loss": 0.13129708645502225,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-058",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-059",
+          "loss": 0.0915911989894167,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-059",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-060",
+          "loss": 0.6524270138185768,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-060",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-061",
+          "loss": 0.07685875563372921,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-061",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-062",
+          "loss": 0.6592004312674408,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-062",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-063",
+          "loss": 0.09885423398983839,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-063",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-064",
+          "loss": 2.4744960948623005,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-064",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-065",
+          "loss": 0.9088371733787425,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-065",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-066",
+          "loss": 0.7336435671004616,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-066",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-067",
+          "loss": 3.1178351294604947,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-067",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-068",
+          "loss": 0.35114988303825384,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-068",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-069",
+          "loss": 0.018083672252933843,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-069",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-070",
+          "loss": 0.014276323690924107,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-070",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-071",
+          "loss": 3.619550933144666,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-071",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-072",
+          "loss": 2.269203953838898,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-072",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-073",
+          "loss": 1.8647674047720657,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-073",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-074",
+          "loss": 0.0010394450040009443,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-074",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-075",
+          "loss": 0.004530059391906248,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-075",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-076",
+          "loss": 0.3807325508170258,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-076",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-077",
+          "loss": 1.1299342412114803,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-077",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-078",
+          "loss": 0.045223994579925,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-078",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-079",
+          "loss": 0.00048046088460091047,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-079",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-080",
+          "loss": 0.7454718284162003,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-080",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-081",
+          "loss": 0.08121727613220021,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-081",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-082",
+          "loss": 1.5425691420221024,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-082",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-083",
+          "loss": 0.1503433414652648,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-083",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-084",
+          "loss": 0.00109667344567898,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-084",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-085",
+          "loss": 0.03362255969416583,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-085",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-086",
+          "loss": 0.06209557307842435,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-086",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-087",
+          "loss": 0.14934697050229195,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-087",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-088",
+          "loss": 0.0008413209027263971,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-088",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-089",
+          "loss": 0.021701825863586027,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-089",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-090",
+          "loss": 0.0031808806548513763,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-090",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-091",
+          "loss": 0.24501975691500755,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-091",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-092",
+          "loss": 0.5815653508272449,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-092",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-093",
+          "loss": 0.011965760802086764,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-093",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-094",
+          "loss": 0.001355526751117319,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-094",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-095",
+          "loss": 0.009553646212167366,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-095",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-096",
+          "loss": 0.03403940962841365,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-096",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-097",
+          "loss": 1.147814854515127,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-097",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-098",
+          "loss": 0.026629576983301886,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-098",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-099",
+          "loss": 0.00023542025022872253,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-099",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-100",
+          "loss": 0.00031725242704017966,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-100",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-101",
+          "loss": 0.05249650504142862,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-101",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-102",
+          "loss": 0.025970041486058415,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-102",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-103",
+          "loss": 0.0010058609009258321,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-103",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-104",
+          "loss": 0.019612203025761197,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-104",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-105",
+          "loss": 0.003518006857422625,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-105",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-106",
+          "loss": 0.008944508885605227,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-106",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-107",
+          "loss": 0.006149079323822017,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-107",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-108",
+          "loss": 0.00983852125316274,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-108",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-109",
+          "loss": 0.8393133239764218,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-109",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-110",
+          "loss": 0.43933883219498154,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-110",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-111",
+          "loss": 0.6456367443983688,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-111",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-112",
+          "loss": 0.004427525528852691,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-112",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-113",
+          "loss": 1.1678860337786905,
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-113",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-114",
+          "loss": 0.1373324249461735,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-114",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-115",
+          "loss": 0.018737491292826397,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-115",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-116",
+          "loss": 0.6538864183332666,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-116",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-117",
+          "loss": 0.00016481727463780565,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-117",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-118",
+          "loss": 0.004791482613325919,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-118",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        },
+        {
+          "duration_ms": 0,
+          "group_id": "seed-1-test-119",
+          "loss": 0.29036658855187797,
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-119",
+          "trace": [
+            {
+              "checkpoint_sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0",
+              "event": "checkpoint_inference"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": null,
+            "model_calls": 0,
+            "output_tokens": null
+          }
+        }
+      ],
+      "checkpoint": {
+        "bytes": 1220,
+        "path": "target/model.json",
+        "sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0"
+      },
+      "condition": "candidate",
+      "constraints": {
+        "checkpoint_valid": true
+      },
+      "cost_usd": null,
+      "duration_ms": 1,
+      "metrics": {
+        "accuracy": 0.85,
+        "loss": 0.43616390784346787,
+        "score": 0.85
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.0,
+    "known_count": 0,
+    "known_usd": null,
+    "total_count": 16,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "ab09dba02a8144fe84137aaa3f735282",
+      "phase": "search",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "ab09dba02a8144fe84137aaa3f735282",
+      "phase": "search",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "ad8f24afd98c4e0e88f50660f67206f8",
+      "phase": "search",
+      "seq": 6,
+      "split": "train"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "ad8f24afd98c4e0e88f50660f67206f8",
+      "phase": "search",
+      "seq": 7,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "2a31c2958a044244b8965579ac82546a",
+      "phase": "search",
+      "seq": 10,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "2a31c2958a044244b8965579ac82546a",
+      "phase": "search",
+      "seq": 11,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "27bfeb4082dc4c8ea1b64e966955cc09",
+      "phase": "search",
+      "seq": 12,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "27bfeb4082dc4c8ea1b64e966955cc09",
+      "phase": "search",
+      "seq": 13,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "157362e634e44b83882167363b5510f2",
+      "phase": "search",
+      "seq": 16,
+      "split": "train"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "157362e634e44b83882167363b5510f2",
+      "phase": "search",
+      "seq": 17,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "bf1878f625a744ef8858966e91c77910",
+      "phase": "search",
+      "seq": 20,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "bf1878f625a744ef8858966e91c77910",
+      "phase": "search",
+      "seq": 21,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "ee94e0d7d84e40aaa5052cc21ed97e34",
+      "phase": "search",
+      "seq": 22,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "ee94e0d7d84e40aaa5052cc21ed97e34",
+      "phase": "search",
+      "seq": 23,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "a94b372f06b24540b4eca13777e6c5ec",
+      "phase": "search",
+      "seq": 26,
+      "split": "train"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "a94b372f06b24540b4eca13777e6c5ec",
+      "phase": "search",
+      "seq": 27,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "b17b6d5368534b40882153beffa06f9c",
+      "phase": "search",
+      "seq": 30,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "b17b6d5368534b40882153beffa06f9c",
+      "phase": "search",
+      "seq": 31,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "b0eb765b1d754bc69e1029e8379986dd",
+      "phase": "search",
+      "seq": 32,
+      "split": "validation"
+    },
+    {
+      "cost_usd": null,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "b0eb765b1d754bc69e1029e8379986dd",
+      "phase": "search",
+      "seq": 33,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 9,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "attempt_id": 2,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 19,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    },
+    {
+      "attempt_id": 3,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 29,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": null,
+        "model_calls": 0,
+        "output_tokens": null
+      }
+    }
+  ],
+  "seed": 1,
+  "test_cost_usd": {
+    "coverage": 0.0,
+    "known_count": 0,
+    "known_usd": null,
+    "total_count": 2,
+    "total_usd": null
+  }
+}

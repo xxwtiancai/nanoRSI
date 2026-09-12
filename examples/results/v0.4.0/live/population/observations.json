@@ -1,0 +1,155 @@
+[
+  {
+    "candidate_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "decision": "baseline",
+    "event_type": "generation",
+    "gate_metrics": {
+      "score": 0.25
+    },
+    "generation": 0
+  },
+  {
+    "attempt_id": 1,
+    "candidate_commit": "769d6d4d25d6f311c95d36241c0c30d85b92b581",
+    "candidate_id": "candidate-000001",
+    "candidate_parents": [
+      "generation-000000"
+    ],
+    "crossover_parents": [],
+    "decision": "evaluated",
+    "event_type": "candidate_evaluated",
+    "gate_metrics": {
+      "score": 1.0
+    },
+    "generation": 1,
+    "kernel_decision": "accepted",
+    "operator": "draft",
+    "parent_candidate_id": "generation-000000",
+    "parent_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "parent_gate_metrics": {
+      "score": 0.25
+    },
+    "population_round": 0,
+    "proposer_harness_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "reason": "improvement 0.750000"
+  },
+  {
+    "attempt_id": 2,
+    "candidate_commit": "19e4d8a83db2594a18a77ef18b1e71078d224807",
+    "candidate_id": "candidate-000002",
+    "candidate_parents": [
+      "generation-000000"
+    ],
+    "crossover_parents": [],
+    "decision": "evaluated",
+    "event_type": "candidate_evaluated",
+    "gate_metrics": {
+      "score": 1.0
+    },
+    "generation": 1,
+    "kernel_decision": "accepted",
+    "operator": "draft",
+    "parent_candidate_id": "generation-000000",
+    "parent_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "parent_gate_metrics": {
+      "score": 0.25
+    },
+    "population_round": 0,
+    "proposer_harness_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "reason": "improvement 0.750000"
+  },
+  {
+    "candidate_commits": [
+      "769d6d4d25d6f311c95d36241c0c30d85b92b581",
+      "19e4d8a83db2594a18a77ef18b1e71078d224807"
+    ],
+    "candidate_ids": [
+      "candidate-000001",
+      "candidate-000002"
+    ],
+    "event_type": "population_retained",
+    "population_round": 0
+  },
+  {
+    "attempt_id": 3,
+    "candidate_id": "candidate-000003",
+    "candidate_parents": [
+      "candidate-000001"
+    ],
+    "crossover_parents": [],
+    "decision": "no-op",
+    "event_type": "attempt_failed",
+    "operator": "improve",
+    "parent_candidate_id": "candidate-000001",
+    "parent_commit": "769d6d4d25d6f311c95d36241c0c30d85b92b581",
+    "population_round": 1,
+    "proposer_harness_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "reason": "proposal and training change no files"
+  },
+  {
+    "attempt_id": 4,
+    "candidate_commit": "69fc7815358b79cf5307cb3502d143f8bc7e0179",
+    "candidate_id": "candidate-000004",
+    "candidate_parents": [
+      "candidate-000002",
+      "candidate-000001"
+    ],
+    "crossover_parents": [
+      "candidate-000002",
+      "candidate-000001"
+    ],
+    "decision": "evaluated",
+    "event_type": "candidate_evaluated",
+    "gate_metrics": {
+      "score": 1.0
+    },
+    "generation": 1,
+    "kernel_decision": "rejected",
+    "operator": "crossover",
+    "parent_candidate_id": "candidate-000002",
+    "parent_commit": "19e4d8a83db2594a18a77ef18b1e71078d224807",
+    "parent_gate_metrics": {
+      "score": 1.0
+    },
+    "population_round": 1,
+    "proposer_harness_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "reason": "improvement below minimum: 0.000000"
+  },
+  {
+    "candidate_commits": [
+      "769d6d4d25d6f311c95d36241c0c30d85b92b581",
+      "19e4d8a83db2594a18a77ef18b1e71078d224807"
+    ],
+    "candidate_ids": [
+      "candidate-000001",
+      "candidate-000002"
+    ],
+    "event_type": "population_retained",
+    "population_round": 1
+  },
+  {
+    "attempt_id": 1,
+    "candidate_commit": "769d6d4d25d6f311c95d36241c0c30d85b92b581",
+    "candidate_id": "candidate-000001",
+    "candidate_parents": [
+      "generation-000000"
+    ],
+    "crossover_parents": [],
+    "decision": "accepted",
+    "event_type": "generation",
+    "gate_metrics": {
+      "score": 1.0
+    },
+    "generation": 1,
+    "kernel_decision": "accepted",
+    "operator": "draft",
+    "parent_candidate_id": "generation-000000",
+    "parent_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "parent_gate_metrics": {
+      "score": 0.25
+    },
+    "population_round": 0,
+    "proposer_harness_commit": "ce34720ce3d2e03068a9d4cb7aafe59150a370cd",
+    "reason": "improvement 0.750000"
+  }
+]

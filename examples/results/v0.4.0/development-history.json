@@ -1,0 +1,491 @@
+{
+  "stage": "pre-release CPU protocol development, before implementation 50556ad",
+  "evidence_status": "unsigned development summary; not included in release measurements",
+  "notes": [
+    "The first 18-run development panel had 48 proposal failures across 16 runs: proposal diff changes no files. Its old summary incorrectly labelled those runs completed because final evaluation itself completed.",
+    "The proposal diff header and failure-status handling were fixed before the release study. An intermediate corrected 18-run panel and the final 50556ad panel produced the same reported CPU group means.",
+    "The final release panel retained all 54 attempts, including 34 rejections. Development runs were not used to choose a best seed; all three predefined seeds and both controls were rerun."
+  ],
+  "runs": [
+    {
+      "method": "sft",
+      "seed": 0,
+      "arm": "frozen",
+      "baseline_accuracy": 0.44166666666666665,
+      "candidate_accuracy": 0.44166666666666665,
+      "baseline_loss": 1.0764722489229348,
+      "candidate_loss": 1.0764722489229348,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "sft",
+      "seed": 0,
+      "arm": "self-use",
+      "baseline_accuracy": 0.44166666666666665,
+      "candidate_accuracy": 0.44166666666666665,
+      "baseline_loss": 1.0764722489229348,
+      "candidate_loss": 1.0764722489229348,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "sft",
+      "seed": 1,
+      "arm": "frozen",
+      "baseline_accuracy": 0.39166666666666666,
+      "candidate_accuracy": 0.39166666666666666,
+      "baseline_loss": 1.079878306300005,
+      "candidate_loss": 1.079878306300005,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "sft",
+      "seed": 1,
+      "arm": "self-use",
+      "baseline_accuracy": 0.39166666666666666,
+      "candidate_accuracy": 0.39166666666666666,
+      "baseline_loss": 1.079878306300005,
+      "candidate_loss": 1.079878306300005,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "sft",
+      "seed": 2,
+      "arm": "frozen",
+      "baseline_accuracy": 0.55,
+      "candidate_accuracy": 0.55,
+      "baseline_loss": 1.0406883016662878,
+      "candidate_loss": 1.0406883016662878,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "sft",
+      "seed": 2,
+      "arm": "self-use",
+      "baseline_accuracy": 0.55,
+      "candidate_accuracy": 0.55,
+      "baseline_loss": 1.0406883016662878,
+      "candidate_loss": 1.0406883016662878,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "rl",
+      "seed": 0,
+      "arm": "frozen",
+      "baseline_accuracy": 0.44166666666666665,
+      "candidate_accuracy": 0.44166666666666665,
+      "baseline_loss": 1.0764722489229348,
+      "candidate_loss": 1.0764722489229348,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "rl",
+      "seed": 0,
+      "arm": "self-use",
+      "baseline_accuracy": 0.44166666666666665,
+      "candidate_accuracy": 0.44166666666666665,
+      "baseline_loss": 1.0764722489229348,
+      "candidate_loss": 1.0764722489229348,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "rl",
+      "seed": 1,
+      "arm": "frozen",
+      "baseline_accuracy": 0.39166666666666666,
+      "candidate_accuracy": 0.39166666666666666,
+      "baseline_loss": 1.079878306300005,
+      "candidate_loss": 1.079878306300005,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "rl",
+      "seed": 1,
+      "arm": "self-use",
+      "baseline_accuracy": 0.39166666666666666,
+      "candidate_accuracy": 0.39166666666666666,
+      "baseline_loss": 1.079878306300005,
+      "candidate_loss": 1.079878306300005,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "rl",
+      "seed": 2,
+      "arm": "frozen",
+      "baseline_accuracy": 0.55,
+      "candidate_accuracy": 0.55,
+      "baseline_loss": 1.0406883016662878,
+      "candidate_loss": 1.0406883016662878,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "rl",
+      "seed": 2,
+      "arm": "self-use",
+      "baseline_accuracy": 0.55,
+      "candidate_accuracy": 0.55,
+      "baseline_loss": 1.0406883016662878,
+      "candidate_loss": 1.0406883016662878,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "lora",
+      "seed": 0,
+      "arm": "frozen",
+      "baseline_accuracy": 0.44166666666666665,
+      "candidate_accuracy": 0.44166666666666665,
+      "baseline_loss": 1.0764722489229348,
+      "candidate_loss": 1.0764722489229348,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "lora",
+      "seed": 0,
+      "arm": "self-use",
+      "baseline_accuracy": 0.44166666666666665,
+      "candidate_accuracy": 0.44166666666666665,
+      "baseline_loss": 1.0764722489229348,
+      "candidate_loss": 1.0764722489229348,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "lora",
+      "seed": 1,
+      "arm": "frozen",
+      "baseline_accuracy": 0.39166666666666666,
+      "candidate_accuracy": 0.39166666666666666,
+      "baseline_loss": 1.079878306300005,
+      "candidate_loss": 1.079878306300005,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "lora",
+      "seed": 1,
+      "arm": "self-use",
+      "baseline_accuracy": 0.39166666666666666,
+      "candidate_accuracy": 0.39166666666666666,
+      "baseline_loss": 1.079878306300005,
+      "candidate_loss": 1.079878306300005,
+      "decisions": {
+        "baseline": 1,
+        "failed": 3
+      },
+      "source_status": "completed",
+      "attempt_failures": [
+        {
+          "attempt_id": 1,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 2,
+          "reason": "proposal diff changes no files"
+        },
+        {
+          "attempt_id": 3,
+          "reason": "proposal diff changes no files"
+        }
+      ]
+    },
+    {
+      "method": "lora",
+      "seed": 2,
+      "arm": "frozen",
+      "baseline_accuracy": 0.55,
+      "candidate_accuracy": 0.8416666666666667,
+      "baseline_loss": 1.0406883016662878,
+      "candidate_loss": 0.4350796849936059,
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "source_status": "completed",
+      "attempt_failures": []
+    },
+    {
+      "method": "lora",
+      "seed": 2,
+      "arm": "self-use",
+      "baseline_accuracy": 0.55,
+      "candidate_accuracy": 0.8416666666666667,
+      "baseline_loss": 1.0406883016662878,
+      "candidate_loss": 0.4350796849936059,
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "source_status": "completed",
+      "attempt_failures": []
+    }
+  ]
+}

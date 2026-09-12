@@ -21,8 +21,11 @@ from unittest.mock import patch
 from urllib.parse import urlsplit
 
 from nanorsi.config import load_config
+from nanorsi.configure import _section
 from nanorsi.evaluator import parse_evaluation, run_evaluation
+from nanorsi.gitops import Git
 from nanorsi.templates import render_template
+from tests.test_end_to_end import run_cli
 
 EXAMPLE = Path(__file__).resolve().parents[1] / "examples/remote_workers"
 
@@ -160,6 +163,93 @@ class RemoteWorkerTests(unittest.TestCase):
             payload = json.loads(result_path.read_text())
             self.assertIn(payload["remote_worker"]["worker_pid"], {worker["pid"] for worker in workers})
             self.assertTrue(all(case["repeat_id"] == 3 for case in result.case_results))
+
+    def test_remote_population_freeze_final_verify_preserves_candidate_source_identity(self):
+        # A comment-only proposer exercises composition, without a benchmark gain.
+        proposer = self.root / "proposer/transport_fixture.py"
+        proposer.write_text('''import difflib,json,os
+from pathlib import Path
+context=json.loads(Path(os.environ["NANORSI_CONTEXT_PATH"]).read_text())
+path="target/program.py"
+old=Path(path).read_text()
+new=old+"\\n# Offline transport candidate "+str(context["attempt_id"])+"\\n"
+diff="diff --git a/"+path+" b/"+path+"\\n"+"".join(difflib.unified_diff(old.splitlines(True),new.splitlines(True),fromfile="a/"+path,tofile="b/"+path))
+output=Path(os.environ["NANORSI_PROPOSAL_DIR"])
+(output/"proposal.diff").write_text(diff)
+(output/"hypothesis.json").write_text(json.dumps({"hypothesis":"Comment-only offline transport composition fixture; no improvement claim"}))
+(output/"usage.json").write_text(json.dumps({"model_calls":0,"input_tokens":0,"output_tokens":0,"cost_usd":0}))
+''')
+        Git(self.root).init()
+
+        def call(*arguments):
+            completed = run_cli(*arguments, "--workspace", str(self.root))
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            return completed.stdout
+
+        def events():
+            return [json.loads(line) for line in (self.root / "lineage.jsonl").read_text().splitlines()]
+
+        def committed_source_hash(commit):
+            return self.client.sha256(Git(self.root)._run("show", f"{commit}:target/program.py").stdout)
+
+        with self.demo.local_workers(self.manifest, self.token, count=2) as workers:
+            probes = self.demo.probe_workers(workers, self.token, self.manifest, self.source)
+            worker_pids = {worker["pid"] for worker in workers}
+            self.assertEqual({probe["worker_pid"] for probe in probes}, worker_pids)
+            self.assertEqual(len(worker_pids), 2)
+            shutil.copyfile(EXAMPLE / "remote_evaluate.py", self.root / "adapters/remote_evaluate.py")
+            config_path = self.root / "nanorsi.toml"
+            command = [sys.executable, "adapters/remote_evaluate.py", "--urls",
+                       *[worker["url"] for worker in workers], "--token-file", str(self.token)]
+            config = _section(config_path.read_text(), "evaluator", {"command": command})
+            config = _section(config, "proposer", {"command": [sys.executable, "proposer/transport_fixture.py"]})
+            config_path.write_text(_section(config, "budget", {"max_steps": 2, "max_episodes": 40}))
+
+            call("baseline")
+            call("population", "--size", "2", "--generations", "1", "--workers", "2")
+            search_events = events()
+            baseline = next(event for event in search_events if event.get("decision") == "baseline" and "candidate_commit" in event)
+            baseline_hash = committed_source_hash(baseline["candidate_commit"])
+            population = next(event for event in search_events if event.get("event_type") == "population_started")
+            self.assertEqual((population["size"], population["generations"], population["workers"]), (2, 1, 2))
+            candidates = [event for event in search_events if event.get("event_type") == "candidate_evaluated"]
+            self.assertEqual(len(candidates), 2, search_events)
+            candidate_hashes = set()
+            for candidate in candidates:
+                source_hash = committed_source_hash(candidate["candidate_commit"])
+                candidate_hashes.add(source_hash)
+                self.assertNotEqual(source_hash, baseline_hash)
+                self.assertEqual(candidate["changed_paths"], ["target/program.py"])
+                self.assertEqual(candidate["gate_metrics"], baseline["gate_metrics"])
+                self.assertEqual(candidate["kernel_decision"], "rejected")
+                result_path = self.root / candidate["artifacts"]["gate.json"]["path"]
+                result = json.loads(result_path.read_text())
+                receipt = result["remote_worker"]
+                self.assertEqual(receipt["source_sha256"], source_hash)
+                self.assertEqual(receipt["request_id"], self.client.sha256(str(result_path.resolve()).encode()))
+                self.assertEqual(receipt["manifest_sha256"], workers[0]["manifest_sha256"])
+                self.assertEqual(receipt["evaluator_sha256"], workers[0]["evaluator_sha256"])
+                self.assertIn(receipt["worker_pid"], worker_pids)
+                self.assertTrue(all(case["trace"][0]["sha256"] == source_hash for case in result["case_results"]))
+            self.assertEqual(len(candidate_hashes), 2)
+            self.assertFalse(any(event.get("split") == "test" for event in search_events))
+            self.assertFalse(any(event.get("decision") == "accepted" for event in search_events))
+
+            call("freeze", "--repeats", "1")
+            call("final-test")
+            self.assertIn("lineage: ok", call("verify"))
+            final_events = events()
+            frozen = next(event for event in final_events if event.get("event_type") == "freeze")
+            self.assertEqual(frozen["candidate_commit"], baseline["candidate_commit"])
+            final_results = [event for event in final_events if event.get("event_type") == "final_result"]
+            self.assertEqual(len(final_results), len(frozen["conditions"]))
+            for event in final_results:
+                result = json.loads((self.root / event["artifacts"]["result"]["path"]).read_text())
+                self.assertEqual(result["remote_worker"]["source_sha256"], baseline_hash)
+                self.assertIn(result["remote_worker"]["worker_pid"], worker_pids)
+                self.assertEqual(result["usage"]["model_calls"], 0)
+            self.assertTrue(all(event["usage"]["model_calls"] == 0 for event in final_events
+                                if event.get("event_type") in {"evaluation_finished", "proposal_finished"}))
 
     def test_transport_limits_and_url_restrictions(self):
         for url in ("http://example.com", "http://0.0.0.0:123", "http://user:secret@127.0.0.1", "https://example.com/?token=x", "ftp://127.0.0.1"):

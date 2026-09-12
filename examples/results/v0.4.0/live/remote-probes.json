@@ -1,0 +1,30 @@
+[
+  {
+    "evaluator_sha256": "bb2c1f187f43983f2d539287404d9eca41e7375633eeb14fa3be911160c53806",
+    "manifest_sha256": "8f1e39da95d2e2487874baf4cd996e3522de28d43bd94e34ba58bee6f2b1333b",
+    "repeat_id": 0,
+    "request_id": "transport-probe-0",
+    "schema_version": 1,
+    "score": 0.25,
+    "seed": 0,
+    "source_sha256": "04724860648b2d30f188029fa488099dcfbcba70503d4fad39e8a71ede657862",
+    "split": "train",
+    "train_limit": 4,
+    "worker_id": "worker-0",
+    "worker_pid": 65400
+  },
+  {
+    "evaluator_sha256": "bb2c1f187f43983f2d539287404d9eca41e7375633eeb14fa3be911160c53806",
+    "manifest_sha256": "8f1e39da95d2e2487874baf4cd996e3522de28d43bd94e34ba58bee6f2b1333b",
+    "repeat_id": 0,
+    "request_id": "transport-probe-1",
+    "schema_version": 1,
+    "score": 0.25,
+    "seed": 0,
+    "source_sha256": "04724860648b2d30f188029fa488099dcfbcba70503d4fad39e8a71ede657862",
+    "split": "train",
+    "train_limit": 4,
+    "worker_id": "worker-1",
+    "worker_pid": 65401
+  }
+]

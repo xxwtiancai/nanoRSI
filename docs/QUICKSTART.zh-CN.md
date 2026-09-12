@@ -38,9 +38,12 @@ nanorsi new coding ./coding-lab --goal "通过可复用技能改进可靠的 Pyt
 | OpenAI | [API keys](https://platform.openai.com/api-keys) | `https://api.openai.com/v1` | 账号已开通的准确 API 模型 ID；要求新参数的模型使用 `--token-parameter max_completion_tokens`（[API 文档](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create)） |
 | OpenRouter | [Keys](https://openrouter.ai/settings/keys) | `https://openrouter.ai/api/v1` | 模型目录中的完整 provider/model 标识（[入门文档](https://openrouter.ai/docs/quickstart)） |
 | DeepSeek | [开放平台](https://platform.deepseek.com/) | `https://api.deepseek.com` | [官方 API 指南](https://api-docs.deepseek.com/)中当前可用的模型 ID |
+| Z.AI / GLM | [API keys](https://z.ai/manage-apikey/apikey-list) | `https://api.z.ai/api/paas/v4`（通用 API）；符合 Coding Plan 集成条件时使用 `https://api.z.ai/api/coding/paas/v4` | 账号已开通的准确模型 ID；公开演示使用 `glm-5.3-flash` 和 `--thinking disabled`。参见[端点及集成适用条件](https://docs.z.ai/devpack/tool/others)与[通用 API](https://docs.z.ai/api-reference/introduction)。 |
 | 本地兼容服务器 | 服务器允许无鉴权请求时不需要 key | `http://localhost:8000/v1` | 本地服务器实际提供的准确模型 ID |
 
 服务商的模型目录会变化。**执行前必须替换每条命令中的 `YOUR_MODEL_ID`**，它只是占位符，不是真实可用模型。有条件时选择固定快照。HTTP 格式兼容不代表模型一定遵守 nanoRSI 的 JSON 动作协议。自动集成测试使用带鉴权的本地 HTTP 测试服务，并不能证明付费服务兼容或模型获得提升。
+
+[独立 GLM 实测](../examples/results/v0.4.0/README.md)记录了请求与返回的准确模型及实际结果。接口兼容与订阅适用条件是两件事，请使用账号及集成获得授权的端点；nanoRSI 不会自动切换计费端点。
 
 ## 3. 配置模型与 API key
 

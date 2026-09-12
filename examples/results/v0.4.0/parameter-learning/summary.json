@@ -1,0 +1,1102 @@
+{
+  "demo": "tiny-softmax-teaching-demo",
+  "groups": [
+    {
+      "accuracy_delta_stdev": 0.09217033346131702,
+      "accuracy_regressions": 0,
+      "arm": "frozen",
+      "completed_runs": 3,
+      "failed_runs": 0,
+      "mean_accuracy_delta": 0.3888888888888889,
+      "mean_baseline_accuracy": 0.4611111111111111,
+      "mean_baseline_loss": 1.065679618963076,
+      "mean_candidate_accuracy": 0.85,
+      "mean_candidate_loss": 0.4188739871480554,
+      "method": "lora"
+    },
+    {
+      "accuracy_delta_stdev": 0.08457409637576851,
+      "accuracy_regressions": 0,
+      "arm": "self-use",
+      "completed_runs": 3,
+      "failed_runs": 0,
+      "mean_accuracy_delta": 0.3833333333333333,
+      "mean_baseline_accuracy": 0.4611111111111111,
+      "mean_baseline_loss": 1.065679618963076,
+      "mean_candidate_accuracy": 0.8444444444444444,
+      "mean_candidate_loss": 0.42838263980552815,
+      "method": "lora"
+    },
+    {
+      "accuracy_delta_stdev": 0.0965852147261873,
+      "accuracy_regressions": 0,
+      "arm": "frozen",
+      "completed_runs": 3,
+      "failed_runs": 0,
+      "mean_accuracy_delta": 0.39444444444444443,
+      "mean_baseline_accuracy": 0.4611111111111111,
+      "mean_baseline_loss": 1.065679618963076,
+      "mean_candidate_accuracy": 0.8555555555555555,
+      "mean_candidate_loss": 0.3880122770928868,
+      "method": "rl"
+    },
+    {
+      "accuracy_delta_stdev": 0.09941961204540714,
+      "accuracy_regressions": 0,
+      "arm": "self-use",
+      "completed_runs": 3,
+      "failed_runs": 0,
+      "mean_accuracy_delta": 0.40277777777777773,
+      "mean_baseline_accuracy": 0.4611111111111111,
+      "mean_baseline_loss": 1.065679618963076,
+      "mean_candidate_accuracy": 0.8638888888888889,
+      "mean_candidate_loss": 0.38393105616384654,
+      "method": "rl"
+    },
+    {
+      "accuracy_delta_stdev": 0.09217033346131702,
+      "accuracy_regressions": 0,
+      "arm": "frozen",
+      "completed_runs": 3,
+      "failed_runs": 0,
+      "mean_accuracy_delta": 0.3972222222222222,
+      "mean_baseline_accuracy": 0.4611111111111111,
+      "mean_baseline_loss": 1.065679618963076,
+      "mean_candidate_accuracy": 0.8583333333333334,
+      "mean_candidate_loss": 0.4009293696616527,
+      "method": "sft"
+    },
+    {
+      "accuracy_delta_stdev": 0.09217033346131702,
+      "accuracy_regressions": 0,
+      "arm": "self-use",
+      "completed_runs": 3,
+      "failed_runs": 0,
+      "mean_accuracy_delta": 0.3972222222222222,
+      "mean_baseline_accuracy": 0.4611111111111111,
+      "mean_baseline_loss": 1.065679618963076,
+      "mean_candidate_accuracy": 0.8583333333333334,
+      "mean_candidate_loss": 0.4009293696616527,
+      "method": "sft"
+    }
+  ],
+  "limitations": [
+    "Synthetic overlapping numeric clusters; no LLM fine-tuning claim.",
+    "Repeated rounds are gradient training; frozen versus self-use controls isolate checkpoint-guided curriculum only.",
+    "Small seed panel is descriptive; it does not establish recursive self-improvement.",
+    "CPU wall time is measured; API calls are zero and monetary cost remains unknown."
+  ],
+  "paired_proposer_controls": [
+    {
+      "method": "lora",
+      "seed": 0,
+      "self_use_minus_frozen_accuracy": 0.0,
+      "self_use_minus_frozen_loss": 0.0
+    },
+    {
+      "method": "lora",
+      "seed": 1,
+      "self_use_minus_frozen_accuracy": -0.01666666666666672,
+      "self_use_minus_frozen_loss": 0.028525957972418192
+    },
+    {
+      "method": "lora",
+      "seed": 2,
+      "self_use_minus_frozen_accuracy": 0.0,
+      "self_use_minus_frozen_loss": 0.0
+    },
+    {
+      "method": "rl",
+      "seed": 0,
+      "self_use_minus_frozen_accuracy": 0.025000000000000022,
+      "self_use_minus_frozen_loss": -0.012243662787120857
+    },
+    {
+      "method": "rl",
+      "seed": 1,
+      "self_use_minus_frozen_accuracy": 0.0,
+      "self_use_minus_frozen_loss": 0.0
+    },
+    {
+      "method": "rl",
+      "seed": 2,
+      "self_use_minus_frozen_accuracy": 0.0,
+      "self_use_minus_frozen_loss": 0.0
+    },
+    {
+      "method": "sft",
+      "seed": 0,
+      "self_use_minus_frozen_accuracy": 0.0,
+      "self_use_minus_frozen_loss": 0.0
+    },
+    {
+      "method": "sft",
+      "seed": 1,
+      "self_use_minus_frozen_accuracy": 0.0,
+      "self_use_minus_frozen_loss": 0.0
+    },
+    {
+      "method": "sft",
+      "seed": 2,
+      "self_use_minus_frozen_accuracy": 0.0,
+      "self_use_minus_frozen_loss": 0.0
+    }
+  ],
+  "runs": [
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.44166666666666665,
+      "baseline_checkpoint": {
+        "bytes": 1104,
+        "path": "target/model.json",
+        "sha256": "7af030334b947f0ef1819eff08c5c515034a801b948cb5e395f5d3395eacfdac"
+      },
+      "baseline_commit": "c2c65e5e78b19a516c6442435aa369d818c48ebb",
+      "baseline_loss": 1.0764722489229348,
+      "candidate_accuracy": 0.85,
+      "candidate_checkpoint": {
+        "bytes": 1113,
+        "path": "target/model.json",
+        "sha256": "4c988166c8deb658af288e1d20c62cc53bf162399a3cccb30982a8923f5fd9ea"
+      },
+      "candidate_commit": "cab8bbef9fa6678b1033f1893bc5860820692e0f",
+      "candidate_loss": 0.3930294055323511,
+      "comparison_hash": "c3d3a777472ab7b0cdd6a2679ba8de9e6a97fd146e93c829b0da2ba6b9a34551",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-sft-0-frozen",
+      "final_report": "sft-seed-0-frozen/final.json",
+      "manifest_hash": "59a822f172ea09b2cb7f722d9adba55ef8354a0879a1f195f9fd079643f959a5",
+      "method": "sft",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 0,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "sft-seed-0-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.44166666666666665,
+      "baseline_checkpoint": {
+        "bytes": 1104,
+        "path": "target/model.json",
+        "sha256": "7af030334b947f0ef1819eff08c5c515034a801b948cb5e395f5d3395eacfdac"
+      },
+      "baseline_commit": "9d4c0972c7c0b60d85064a40e093cafac5f14b93",
+      "baseline_loss": 1.0764722489229348,
+      "candidate_accuracy": 0.85,
+      "candidate_checkpoint": {
+        "bytes": 1113,
+        "path": "target/model.json",
+        "sha256": "4c988166c8deb658af288e1d20c62cc53bf162399a3cccb30982a8923f5fd9ea"
+      },
+      "candidate_commit": "2eb914c0ad745446c1579c1ff5aaea395e13cf09",
+      "candidate_loss": 0.3930294055323511,
+      "comparison_hash": "c3d3a777472ab7b0cdd6a2679ba8de9e6a97fd146e93c829b0da2ba6b9a34551",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-sft-0-self-use",
+      "final_report": "sft-seed-0-self-use/final.json",
+      "manifest_hash": "85d0592d9dae08806b06f4db41c8778be4d3cd19bd082c1fae4fbb1718ac6966",
+      "method": "sft",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 0,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "sft-seed-0-self-use"
+    },
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.39166666666666666,
+      "baseline_checkpoint": {
+        "bytes": 1106,
+        "path": "target/model.json",
+        "sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6"
+      },
+      "baseline_commit": "0abae3f80c5943b002c076f1b54369ae4915de5a",
+      "baseline_loss": 1.079878306300005,
+      "candidate_accuracy": 0.875,
+      "candidate_checkpoint": {
+        "bytes": 1114,
+        "path": "target/model.json",
+        "sha256": "67523fdac53bf99f609419f0c7d4fd276cfeb65771f2028d3f62538d4398f2e1"
+      },
+      "candidate_commit": "c13910bc95a66ecf3bf420568f312c4a5fbda94c",
+      "candidate_loss": 0.4002822532828329,
+      "comparison_hash": "e3eb06a24079b098c339d3b61ae9a795295470ab27b2d63b7059b116f33862d2",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-sft-1-frozen",
+      "final_report": "sft-seed-1-frozen/final.json",
+      "manifest_hash": "83585dec8107a60e25a54c735138d82421ff84dc7d84d6c713ac89c5964d9f9c",
+      "method": "sft",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 1,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "sft-seed-1-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.39166666666666666,
+      "baseline_checkpoint": {
+        "bytes": 1106,
+        "path": "target/model.json",
+        "sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6"
+      },
+      "baseline_commit": "a95224a6f3d00bf4e93c5e7e638d9d604c8b9aaa",
+      "baseline_loss": 1.079878306300005,
+      "candidate_accuracy": 0.875,
+      "candidate_checkpoint": {
+        "bytes": 1114,
+        "path": "target/model.json",
+        "sha256": "67523fdac53bf99f609419f0c7d4fd276cfeb65771f2028d3f62538d4398f2e1"
+      },
+      "candidate_commit": "36e0cf0d928cd5d929daacfb9ab5f2e68c91b9b0",
+      "candidate_loss": 0.4002822532828329,
+      "comparison_hash": "e3eb06a24079b098c339d3b61ae9a795295470ab27b2d63b7059b116f33862d2",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-sft-1-self-use",
+      "final_report": "sft-seed-1-self-use/final.json",
+      "manifest_hash": "40b66ef123d4c82405c8260326d06bc500703c73ee510c2d414bf6e002723008",
+      "method": "sft",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 1,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "sft-seed-1-self-use"
+    },
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.55,
+      "baseline_checkpoint": {
+        "bytes": 1102,
+        "path": "target/model.json",
+        "sha256": "9270e01c195f80f3ab801f6a0fd1004a15ff3c0fd16e16422976fedd99a71a6a"
+      },
+      "baseline_commit": "8f496d6a3672b09b614e3c8a7623ef52f186d88e",
+      "baseline_loss": 1.0406883016662878,
+      "candidate_accuracy": 0.85,
+      "candidate_checkpoint": {
+        "bytes": 1115,
+        "path": "target/model.json",
+        "sha256": "35ef7e6238ea256072816c3b7c8dd964b4e0f24b1b2a85a285181513ac79c371"
+      },
+      "candidate_commit": "c31b0501ca6e08297d94278d85d8a0975a66c8fd",
+      "candidate_loss": 0.4094764501697742,
+      "comparison_hash": "74433836fbc4bc9b193bd44cb598f5ac3d09e23900dba866b281920b05cf0639",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-sft-2-frozen",
+      "final_report": "sft-seed-2-frozen/final.json",
+      "manifest_hash": "c5adf21f9daa3ff4918e067bf75756a76a38231933d1dbd7dddba7cd867bc858",
+      "method": "sft",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 2,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "sft-seed-2-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.55,
+      "baseline_checkpoint": {
+        "bytes": 1102,
+        "path": "target/model.json",
+        "sha256": "9270e01c195f80f3ab801f6a0fd1004a15ff3c0fd16e16422976fedd99a71a6a"
+      },
+      "baseline_commit": "6dbcc97dc9d66438f1fd13607acb243deb8fc437",
+      "baseline_loss": 1.0406883016662878,
+      "candidate_accuracy": 0.85,
+      "candidate_checkpoint": {
+        "bytes": 1115,
+        "path": "target/model.json",
+        "sha256": "35ef7e6238ea256072816c3b7c8dd964b4e0f24b1b2a85a285181513ac79c371"
+      },
+      "candidate_commit": "0f9b5465cd3849534a51fa40986da99296c814e2",
+      "candidate_loss": 0.4094764501697742,
+      "comparison_hash": "74433836fbc4bc9b193bd44cb598f5ac3d09e23900dba866b281920b05cf0639",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-sft-2-self-use",
+      "final_report": "sft-seed-2-self-use/final.json",
+      "manifest_hash": "c1ae1288ff3912557d095bc41bcae65834403ba12f120dc75b878e85063d1133",
+      "method": "sft",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 2,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "sft-seed-2-self-use"
+    },
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.44166666666666665,
+      "baseline_checkpoint": {
+        "bytes": 1104,
+        "path": "target/model.json",
+        "sha256": "7af030334b947f0ef1819eff08c5c515034a801b948cb5e395f5d3395eacfdac"
+      },
+      "baseline_commit": "5a8d7fbb2a26f574447292cb50137e020bdda348",
+      "baseline_loss": 1.0764722489229348,
+      "candidate_accuracy": 0.85,
+      "candidate_checkpoint": {
+        "bytes": 1115,
+        "path": "target/model.json",
+        "sha256": "d5616546488c10bdb29e7078b8cb1841c8b2d984d35484b1ee9c0bc190be7f8b"
+      },
+      "candidate_commit": "52f94055b04b22d0d1f7590da7da314c67453524",
+      "candidate_loss": 0.38099224730946973,
+      "comparison_hash": "521b38a7cf807eff988f61368a3025515d27422a11d0be25154f88f82f3e3a35",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-rl-0-frozen",
+      "final_report": "rl-seed-0-frozen/final.json",
+      "manifest_hash": "0b77cdd590ef68218b1c84e63ac361c3f35721649763135ee4a22352f92c9af8",
+      "method": "rl",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 0,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "rl-seed-0-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.44166666666666665,
+      "baseline_checkpoint": {
+        "bytes": 1104,
+        "path": "target/model.json",
+        "sha256": "7af030334b947f0ef1819eff08c5c515034a801b948cb5e395f5d3395eacfdac"
+      },
+      "baseline_commit": "ec0ab58f05d92738840184139b792d12fc41e06b",
+      "baseline_loss": 1.0764722489229348,
+      "candidate_accuracy": 0.875,
+      "candidate_checkpoint": {
+        "bytes": 1111,
+        "path": "target/model.json",
+        "sha256": "e9a5aff0f738673178ad1a6978b758f2ae3b591a4ecf3a987c7ce5def8393d2d"
+      },
+      "candidate_commit": "014163fa79dcfc7cf47bb83c90c9f62e11731965",
+      "candidate_loss": 0.3687485845223489,
+      "comparison_hash": "521b38a7cf807eff988f61368a3025515d27422a11d0be25154f88f82f3e3a35",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 2,
+        "baseline": 1,
+        "rejected": 1
+      },
+      "experiment_id": "learner-rl-0-self-use",
+      "final_report": "rl-seed-0-self-use/final.json",
+      "manifest_hash": "8512675b79667761ec770495e3fc10b55d8adeecb4b7159f078aadb511d52a31",
+      "method": "rl",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 0,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "rl-seed-0-self-use"
+    },
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.39166666666666666,
+      "baseline_checkpoint": {
+        "bytes": 1106,
+        "path": "target/model.json",
+        "sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6"
+      },
+      "baseline_commit": "7fa4ee425bf9a5f120f7baa4b4181122ef629423",
+      "baseline_loss": 1.079878306300005,
+      "candidate_accuracy": 0.875,
+      "candidate_checkpoint": {
+        "bytes": 1107,
+        "path": "target/model.json",
+        "sha256": "3d8d6aefac6df937d4b4457d92bbb99415ea6caa88d21963139ace95cb0fca8c"
+      },
+      "candidate_commit": "d175cfc3a233939ed57b40e0ac20b8bf666b3b42",
+      "candidate_loss": 0.39045218401532344,
+      "comparison_hash": "0d4c76a618ee96c5319977edc1a8b215e6f6d13ca2d45488759274a6c87546a7",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-rl-1-frozen",
+      "final_report": "rl-seed-1-frozen/final.json",
+      "manifest_hash": "dc1ac2fd2952be6cfb4c5c9e91c593c399ef41c12d52a019b5ea5bbad2d0d60b",
+      "method": "rl",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 1,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "rl-seed-1-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.39166666666666666,
+      "baseline_checkpoint": {
+        "bytes": 1106,
+        "path": "target/model.json",
+        "sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6"
+      },
+      "baseline_commit": "ab5b859e400e88e19a2e7e849b4a366d0ddef145",
+      "baseline_loss": 1.079878306300005,
+      "candidate_accuracy": 0.875,
+      "candidate_checkpoint": {
+        "bytes": 1107,
+        "path": "target/model.json",
+        "sha256": "3d8d6aefac6df937d4b4457d92bbb99415ea6caa88d21963139ace95cb0fca8c"
+      },
+      "candidate_commit": "d23fad653c7e6b8620969fcfc0dbefcfb9dd5abf",
+      "candidate_loss": 0.39045218401532344,
+      "comparison_hash": "0d4c76a618ee96c5319977edc1a8b215e6f6d13ca2d45488759274a6c87546a7",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-rl-1-self-use",
+      "final_report": "rl-seed-1-self-use/final.json",
+      "manifest_hash": "383a8c68a8b143ee71af9a53a9789e81dcb5079012718ac6a862615c9c423412",
+      "method": "rl",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 1,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "rl-seed-1-self-use"
+    },
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.55,
+      "baseline_checkpoint": {
+        "bytes": 1102,
+        "path": "target/model.json",
+        "sha256": "9270e01c195f80f3ab801f6a0fd1004a15ff3c0fd16e16422976fedd99a71a6a"
+      },
+      "baseline_commit": "7d73525516a0a0da2e429778ed4e56ea5c323ab6",
+      "baseline_loss": 1.0406883016662878,
+      "candidate_accuracy": 0.8416666666666667,
+      "candidate_checkpoint": {
+        "bytes": 1119,
+        "path": "target/model.json",
+        "sha256": "5f14769718dfdcd4b7c6367a61f97ceee9d63dc62cb7291dff4a5196da2591fb"
+      },
+      "candidate_commit": "e5de96080f51b2a44830b5fa6a27150b98c87db5",
+      "candidate_loss": 0.3925923999538673,
+      "comparison_hash": "33ef24e67219aa32f16da3863a9808eb53a7b8798076b154dc8f844022b94f42",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-rl-2-frozen",
+      "final_report": "rl-seed-2-frozen/final.json",
+      "manifest_hash": "11adabc6d052fe028e71dffb36ba323c493743fb65c3eb2d0bb36230f32d32e4",
+      "method": "rl",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 2,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "rl-seed-2-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.55,
+      "baseline_checkpoint": {
+        "bytes": 1102,
+        "path": "target/model.json",
+        "sha256": "9270e01c195f80f3ab801f6a0fd1004a15ff3c0fd16e16422976fedd99a71a6a"
+      },
+      "baseline_commit": "91f715e6f2f1dd669d602ebcf397c2cdee4e042a",
+      "baseline_loss": 1.0406883016662878,
+      "candidate_accuracy": 0.8416666666666667,
+      "candidate_checkpoint": {
+        "bytes": 1119,
+        "path": "target/model.json",
+        "sha256": "5f14769718dfdcd4b7c6367a61f97ceee9d63dc62cb7291dff4a5196da2591fb"
+      },
+      "candidate_commit": "d59039670955509cb1fa81daccca7621f37aab51",
+      "candidate_loss": 0.3925923999538673,
+      "comparison_hash": "33ef24e67219aa32f16da3863a9808eb53a7b8798076b154dc8f844022b94f42",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-rl-2-self-use",
+      "final_report": "rl-seed-2-self-use/final.json",
+      "manifest_hash": "5fcb31bdb98613d5252a3864e37a812cc6749290e1121b2a20d540dae7f14d40",
+      "method": "rl",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 2,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "rl-seed-2-self-use"
+    },
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.44166666666666665,
+      "baseline_checkpoint": {
+        "bytes": 1104,
+        "path": "target/model.json",
+        "sha256": "7af030334b947f0ef1819eff08c5c515034a801b948cb5e395f5d3395eacfdac"
+      },
+      "baseline_commit": "5f196c65cf12a29f1d8f17cf6cc2430490690a25",
+      "baseline_loss": 1.0764722489229348,
+      "candidate_accuracy": 0.8416666666666667,
+      "candidate_checkpoint": {
+        "bytes": 1221,
+        "path": "target/model.json",
+        "sha256": "abd0aad0a061d45cf0cdcd19ea2c3589da5ae2ff4837bf6c9922c5b49707c01d"
+      },
+      "candidate_commit": "a886b332a85d9bd0d58f3afaa43a36f7d2a112c6",
+      "candidate_loss": 0.41390432657951065,
+      "comparison_hash": "ab66087c054e91295cd40c961e07863a2ec58b90f13b64542fb2bdda15777f9d",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-lora-0-frozen",
+      "final_report": "lora-seed-0-frozen/final.json",
+      "manifest_hash": "91695eeeda4d3a1f0f716efa230a6fae4968acf5d27e510930bc7852c0e4d2b8",
+      "method": "lora",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 0,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "lora-seed-0-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.44166666666666665,
+      "baseline_checkpoint": {
+        "bytes": 1104,
+        "path": "target/model.json",
+        "sha256": "7af030334b947f0ef1819eff08c5c515034a801b948cb5e395f5d3395eacfdac"
+      },
+      "baseline_commit": "86baa496d5806292fad6f52be6de16e492adbf2d",
+      "baseline_loss": 1.0764722489229348,
+      "candidate_accuracy": 0.8416666666666667,
+      "candidate_checkpoint": {
+        "bytes": 1221,
+        "path": "target/model.json",
+        "sha256": "abd0aad0a061d45cf0cdcd19ea2c3589da5ae2ff4837bf6c9922c5b49707c01d"
+      },
+      "candidate_commit": "e8c1b173cd7be6e904c480d6a533355f7e7ef53c",
+      "candidate_loss": 0.41390432657951065,
+      "comparison_hash": "ab66087c054e91295cd40c961e07863a2ec58b90f13b64542fb2bdda15777f9d",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-lora-0-self-use",
+      "final_report": "lora-seed-0-self-use/final.json",
+      "manifest_hash": "f609d628f3edc7839addc88bd89fedfef63c9836cea584d5ffb2fa8a442df4d8",
+      "method": "lora",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 0,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "lora-seed-0-self-use"
+    },
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.39166666666666666,
+      "baseline_checkpoint": {
+        "bytes": 1106,
+        "path": "target/model.json",
+        "sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6"
+      },
+      "baseline_commit": "3ecef9673dbb47125de408a3f981286f8dada4a0",
+      "baseline_loss": 1.079878306300005,
+      "candidate_accuracy": 0.8666666666666667,
+      "candidate_checkpoint": {
+        "bytes": 1222,
+        "path": "target/model.json",
+        "sha256": "31650d7855ea5bf9df6b8076c2c50ee500817dc96d3dbc741ee40ad76e69eaa6"
+      },
+      "candidate_commit": "b0d1a9d84be00dcc82b26e45236543bb2c258c2e",
+      "candidate_loss": 0.4076379498710497,
+      "comparison_hash": "2339556881fb4d848e9c88e2920dcb85a3c44006d5e432d78ed4342aed7c3b6f",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-lora-1-frozen",
+      "final_report": "lora-seed-1-frozen/final.json",
+      "manifest_hash": "509895c74330dfad3c904acbd1ce53bc52ef0920f7781ae61721b89cf80d8c2b",
+      "method": "lora",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 1,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "lora-seed-1-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.39166666666666666,
+      "baseline_checkpoint": {
+        "bytes": 1106,
+        "path": "target/model.json",
+        "sha256": "f139067e4b58bb3f635318ff6cbe5109c86ae0a46ae26d305e62840e08b305b6"
+      },
+      "baseline_commit": "f376e1c973c0f932d674ab291d3e922c99fd2b14",
+      "baseline_loss": 1.079878306300005,
+      "candidate_accuracy": 0.85,
+      "candidate_checkpoint": {
+        "bytes": 1220,
+        "path": "target/model.json",
+        "sha256": "f1a295a41730093912b5899b562af3e31db3e1523b1e5bca481fdcbbafaf65f0"
+      },
+      "candidate_commit": "00d1d91177814296eafa48430f7580d75515ddef",
+      "candidate_loss": 0.43616390784346787,
+      "comparison_hash": "2339556881fb4d848e9c88e2920dcb85a3c44006d5e432d78ed4342aed7c3b6f",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 2,
+        "baseline": 1,
+        "rejected": 1
+      },
+      "experiment_id": "learner-lora-1-self-use",
+      "final_report": "lora-seed-1-self-use/final.json",
+      "manifest_hash": "b01d703d770955f15110be435355131613a1a297152abdaf0794ee1c84d518de",
+      "method": "lora",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 1,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "lora-seed-1-self-use"
+    },
+    {
+      "arm": "frozen",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.55,
+      "baseline_checkpoint": {
+        "bytes": 1102,
+        "path": "target/model.json",
+        "sha256": "9270e01c195f80f3ab801f6a0fd1004a15ff3c0fd16e16422976fedd99a71a6a"
+      },
+      "baseline_commit": "6f03563d82a3fa362e00a7d2c8b1dd8ffce8c1b5",
+      "baseline_loss": 1.0406883016662878,
+      "candidate_accuracy": 0.8416666666666667,
+      "candidate_checkpoint": {
+        "bytes": 1211,
+        "path": "target/model.json",
+        "sha256": "250fc16091f00500c52340a9dde4815905f7c5d0691b05162e68fdc61c609861"
+      },
+      "candidate_commit": "0e8b33c3207076c98854af6b292e87d2a9eaa244",
+      "candidate_loss": 0.4350796849936059,
+      "comparison_hash": "e2c3f92657c0c3764c29779658be3f48114552d73a88ecc1fc9ce75d0a20b102",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-lora-2-frozen",
+      "final_report": "lora-seed-2-frozen/final.json",
+      "manifest_hash": "29bd18d2601514a26a60b6f5a99738e1fbb6d08ea43d9b144c0043e6ced689d3",
+      "method": "lora",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 2,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "lora-seed-2-frozen"
+    },
+    {
+      "arm": "self-use",
+      "audit": {
+        "artifact_references": 48,
+        "event_count": 43,
+        "final_complete": true,
+        "frozen_before_test": true,
+        "locally_verified": true,
+        "public_extract_signed": false,
+        "receipt_keys_published": false,
+        "scope": "workspace lineage, referenced artifacts, and recomputed measurements; excludes unsigned provider ledger"
+      },
+      "baseline_accuracy": 0.55,
+      "baseline_checkpoint": {
+        "bytes": 1102,
+        "path": "target/model.json",
+        "sha256": "9270e01c195f80f3ab801f6a0fd1004a15ff3c0fd16e16422976fedd99a71a6a"
+      },
+      "baseline_commit": "032713fd8e57e5baf67e4bed0c0a84f947988aba",
+      "baseline_loss": 1.0406883016662878,
+      "candidate_accuracy": 0.8416666666666667,
+      "candidate_checkpoint": {
+        "bytes": 1211,
+        "path": "target/model.json",
+        "sha256": "250fc16091f00500c52340a9dde4815905f7c5d0691b05162e68fdc61c609861"
+      },
+      "candidate_commit": "48487fd3519227e75b9a924c837d8e3c94c0e401",
+      "candidate_loss": 0.4350796849936059,
+      "comparison_hash": "e2c3f92657c0c3764c29779658be3f48114552d73a88ecc1fc9ce75d0a20b102",
+      "conditions": [
+        "baseline",
+        "candidate"
+      ],
+      "decisions": {
+        "accepted": 1,
+        "baseline": 1,
+        "rejected": 2
+      },
+      "experiment_id": "learner-lora-2-self-use",
+      "final_report": "lora-seed-2-self-use/final.json",
+      "manifest_hash": "043e2f14230d01f154d0655958d02601fda738b3b6de2bec4e7a24c271efd4d0",
+      "method": "lora",
+      "metric": {
+        "direction": "maximize",
+        "name": "score"
+      },
+      "mode": "model",
+      "repeats": 1,
+      "seed": 2,
+      "status": "completed",
+      "training_rounds": 3,
+      "workspace": "lora-seed-2-self-use"
+    }
+  ],
+  "schema_version": 1
+}

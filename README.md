@@ -72,6 +72,25 @@ Open `learner-lab/reports/report.html`. It compares the initial and selected sav
 
 **[First model run: API key → connection check → experiment → report](docs/QUICKSTART.md)** · [中文入门](docs/QUICKSTART.zh-CN.md)
 
+## Measured live-model demos
+
+On implementation `50556ad`, six small demos used **GLM-5.3-Flash**, seed 0 and one frozen test repeat per condition. The study made **43 API requests / 87,812 tokens** under a 59-request cap with thinking disabled; setup connection probes are excluded. Requested and returned model IDs were `glm-5.3-flash`. [Run settings and provider usage](examples/results/v0.4.0/live/summary.json).
+
+| Demo | Initial test cases passed | Selected test cases passed | Evidence |
+| --- | ---: | ---: | --- |
+| Program | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/program/final.json) |
+| Agent, frozen proposer | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/agent/final.json) |
+| Recursive agent, self-use | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/recursive/final.json) |
+| Executable skill | 0/1 | 1/1 | [Final](examples/results/v0.4.0/live/skills/final.json) |
+| Local population | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/population/final.json) |
+| HTTP evaluation, two localhost processes | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/remote/final.json) |
+
+These are separate authored tasks, not one benchmark or RSI score. Recursive planning was reused in the next proposal, but **did not outperform the frozen proposer** on the final panel. The skill demo deliberately batches six files within four actions; no-skills scored 0/1. Population retained two branches and rejected a crossover with no gain. HTTP execution was tested on localhost only.
+
+**The selected remote parser still fails on `(12.5)` despite its 4/4 final score.** [Counterexample, rejected attempts, source snapshots and evidence limits](examples/results/v0.4.0/README.md#known-counterexample).
+
+<p align="center"><img src="examples/results/v0.4.0/overview.png" alt="Separate live-demo test outcomes and CPU parameter-learning results; these panels are not a combined RSI score." width="100%"></p>
+
 ## Measured CPU example
 
 The verified panel ran three methods × three seeds × frozen/self-use controls: **18 runs, 54 training rounds, 20 accepted and 34 rejected candidates**. Mean test accuracy on overlapping synthetic numeric clusters was:
@@ -84,7 +103,7 @@ The verified panel ran three methods × three seeds × frozen/self-use controls:
 
 These are real updates to a four-feature, three-class softmax model. The nine paired self-use comparisons had one positive difference, one negative difference and seven ties: the data does not show a consistent recursive advantage. LoRA demonstrates frozen-base updates, not parameter efficiency at this tiny scale. No API calls were made; monetary cost was not measured.
 
-Reproduce all 18 trials with `python examples/parameter_learning/run.py ./parameter-results`. [Methods, checkpoint audit and interpretation](docs/MULTILEVEL.md#what-the-learning-demo-actually-trains) · [All demo commands](examples/README.md).
+Reproduce all 18 trials with `python examples/parameter_learning/run.py ./parameter-results`. [Published CPU results](examples/results/v0.4.0/parameter-learning/summary.json) · [Per-run evidence](examples/results/v0.4.0/README.md#cpu-parameter-learning) · [Methods and interpretation](docs/MULTILEVEL.md#what-the-learning-demo-actually-trains) · [All demo commands](examples/README.md).
 
 ## Run a coding experiment
 

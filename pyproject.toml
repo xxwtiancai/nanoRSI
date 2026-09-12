@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "nanorsi"
 version = "0.4.0"
-description = "A minimal lab for measured agent skills and harness improvement"
+description = "A minimal lab for measured program, agent and parameter improvement"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }

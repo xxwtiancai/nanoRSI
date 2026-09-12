@@ -1,0 +1,453 @@
+{
+  "arm": "frozen",
+  "comparison_hash": "ba3575729aaf60108b9570d8aeaaa629b0e98c0c442ae8d729683cdc7b280cb0",
+  "conditions": [
+    "baseline",
+    "candidate"
+  ],
+  "experiment_id": "demo-program",
+  "manifest_hash": "b7612e369cbe6c8a1baf59bd9ff325e02cce49fb5e8e1bf0b84e9d5278fa2a09",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "artifact",
+  "repeats": 1,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 23,
+          "group_id": "test-batch-accounting",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-accounting",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "04724860648b2d30f188029fa488099dcfbcba70503d4fad39e8a71ede657862"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 21,
+          "group_id": "test-batch-basic",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-basic",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "04724860648b2d30f188029fa488099dcfbcba70503d4fad39e8a71ede657862"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 23,
+          "group_id": "test-batch-currency",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-currency",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "04724860648b2d30f188029fa488099dcfbcba70503d4fad39e8a71ede657862"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 23,
+          "group_id": "test-batch-status",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-status",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "04724860648b2d30f188029fa488099dcfbcba70503d4fad39e8a71ede657862"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 92,
+      "metrics": {
+        "score": 0.25
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 24,
+          "group_id": "test-batch-accounting",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-accounting",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "cade999bc3678ac01ff93abb189a92b46767ac50abbef6f2200f569cfd288f71"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 22,
+          "group_id": "test-batch-basic",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-basic",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "cade999bc3678ac01ff93abb189a92b46767ac50abbef6f2200f569cfd288f71"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 22,
+          "group_id": "test-batch-currency",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-currency",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "cade999bc3678ac01ff93abb189a92b46767ac50abbef6f2200f569cfd288f71"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 23,
+          "group_id": "test-batch-status",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-status",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "cade999bc3678ac01ff93abb189a92b46767ac50abbef6f2200f569cfd288f71"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 93,
+      "metrics": {
+        "score": 1.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.7777777777777778,
+    "known_count": 7,
+    "known_usd": 0.0,
+    "total_count": 9,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "8df3ff0b0365440b973f400685f2dd71",
+      "phase": "search",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 89,
+      "event_type": "evaluation_finished",
+      "invocation_id": "8df3ff0b0365440b973f400685f2dd71",
+      "phase": "search",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "60213dc6428e43a1b0cda502ff593c17",
+      "phase": "search",
+      "seq": 6,
+      "split": "train"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 89,
+      "event_type": "evaluation_finished",
+      "invocation_id": "60213dc6428e43a1b0cda502ff593c17",
+      "phase": "search",
+      "seq": 7,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "b5d2d88ea1c04457be9b705aed1dcace",
+      "phase": "search",
+      "seq": 10,
+      "split": "validation"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 89,
+      "event_type": "evaluation_finished",
+      "invocation_id": "b5d2d88ea1c04457be9b705aed1dcace",
+      "phase": "search",
+      "seq": 11,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "e16296157afd4a738da178722877b31e",
+      "phase": "search",
+      "seq": 12,
+      "split": "validation"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 94,
+      "event_type": "evaluation_finished",
+      "invocation_id": "e16296157afd4a738da178722877b31e",
+      "phase": "search",
+      "seq": 13,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "51a4beb6cc134adea9dbe87a13c85b9e",
+      "phase": "search",
+      "seq": 16,
+      "split": "train"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 94,
+      "event_type": "evaluation_finished",
+      "invocation_id": "51a4beb6cc134adea9dbe87a13c85b9e",
+      "phase": "search",
+      "seq": 17,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "d2ff21608fd940519c8d3679181d2dc1",
+      "phase": "search",
+      "seq": 20,
+      "split": "validation"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 92,
+      "event_type": "evaluation_finished",
+      "invocation_id": "d2ff21608fd940519c8d3679181d2dc1",
+      "phase": "search",
+      "seq": 21,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "event_type": "evaluation_started",
+      "invocation_id": "ec52605815ba4ba69212f54f9b512bd9",
+      "phase": "search",
+      "seq": 22,
+      "split": "validation"
+    },
+    {
+      "cost_usd": 0.0,
+      "duration_ms": 92,
+      "event_type": "evaluation_finished",
+      "invocation_id": "ec52605815ba4ba69212f54f9b512bd9",
+      "phase": "search",
+      "seq": 23,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 9,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2633,
+        "model_calls": 1,
+        "output_tokens": 802
+      }
+    },
+    {
+      "attempt_id": 2,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "seq": 19,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2882,
+        "model_calls": 1,
+        "output_tokens": 749
+      }
+    }
+  ],
+  "seed": 0,
+  "test_cost_usd": {
+    "coverage": 1.0,
+    "known_count": 2,
+    "known_usd": 0.0,
+    "total_count": 2,
+    "total_usd": 0.0
+  }
+}

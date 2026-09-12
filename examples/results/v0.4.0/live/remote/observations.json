@@ -1,0 +1,41 @@
+[
+  {
+    "candidate_commit": "2fec9e39a6eb6407fce28c499019b5fb440d6ef9",
+    "decision": "baseline",
+    "event_type": "generation",
+    "gate_metrics": {
+      "score": 0.25
+    },
+    "generation": 0
+  },
+  {
+    "attempt_id": 1,
+    "candidate_commit": "9e0c9337f68b3a82ca4f4812a941e7906109e968",
+    "decision": "accepted",
+    "event_type": "generation",
+    "gate_metrics": {
+      "score": 0.75
+    },
+    "generation": 1,
+    "parent_gate_metrics": {
+      "score": 0.25
+    },
+    "proposer_harness_commit": "2fec9e39a6eb6407fce28c499019b5fb440d6ef9",
+    "reason": "improvement 0.500000"
+  },
+  {
+    "attempt_id": 2,
+    "candidate_commit": "bb3de4d422ce6e4c7ffee2a32b5cc49cede67993",
+    "decision": "rejected",
+    "event_type": "generation",
+    "gate_metrics": {
+      "score": 0.0
+    },
+    "generation": 1,
+    "parent_gate_metrics": {
+      "score": 0.75
+    },
+    "proposer_harness_commit": "2fec9e39a6eb6407fce28c499019b5fb440d6ef9",
+    "reason": "improvement below minimum: -0.750000"
+  }
+]

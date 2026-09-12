@@ -1,0 +1,33 @@
+[
+  {
+    "candidate_commit": "9b32bdc134b7541e57a54387e88b2a776f8e30d4",
+    "decision": "baseline",
+    "event_type": "generation",
+    "gate_metrics": {
+      "score": 0.25
+    },
+    "generation": 0
+  },
+  {
+    "attempt_id": 1,
+    "candidate_commit": "14ab02e10ca4fdce49a43f31ed701224ef532fc6",
+    "decision": "accepted",
+    "event_type": "generation",
+    "gate_metrics": {
+      "score": 1.0
+    },
+    "generation": 1,
+    "parent_gate_metrics": {
+      "score": 0.25
+    },
+    "proposer_harness_commit": "9b32bdc134b7541e57a54387e88b2a776f8e30d4",
+    "reason": "improvement 0.750000"
+  },
+  {
+    "attempt_id": 2,
+    "decision": "no-op",
+    "event_type": "attempt_failed",
+    "proposer_harness_commit": "14ab02e10ca4fdce49a43f31ed701224ef532fc6",
+    "reason": "proposal and training change no files"
+  }
+]

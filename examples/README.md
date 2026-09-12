@@ -37,7 +37,9 @@ Use the [onboarding guide](../docs/QUICKSTART.md) for other providers, exact mod
 | `population` | Local candidate branches, validation-ranked top K and crossover through the normal kernel |
 | `remote` | Optional authenticated HTTP evaluation with two localhost worker processes |
 
-The first five kinds run by default. Select a subset with, for example, `--kinds program agent`, or use `--kinds remote` for HTTP evaluation. Use `--ledger /absolute/path/requests.jsonl` to share a cumulative cap across invocations; each output directory must still be new. The driver writes `plan.json`, request receipts, per-workspace lineage/HTML/final reports and `summary.json`. It freezes all successful searches before inspecting their final results, and keeps failed, unchanged and negative outcomes.
+All six kinds run by default. Select a subset with, for example, `--kinds program agent`, or use `--kinds remote` for HTTP evaluation. Use `--ledger /absolute/path/requests.jsonl` to share a cumulative cap across invocations; each output directory must still be new. The driver writes `plan.json`, request receipts, per-workspace lineage/HTML/final reports and `summary.json`. It freezes all successful searches before inspecting their final results, and keeps failed, unchanged and negative outcomes.
+
+The [v0.4.0 measured bundle](results/v0.4.0/README.md) contains all six live experiments and all 18 CPU trials, including source snapshots and rejected attempts. `python examples/demos/plot_results.py examples/results/v0.4.0` regenerates its descriptive figure when optional matplotlib tooling is available; matplotlib is not a nanoRSI runtime dependency.
 
 Program and agent evaluation runs local Python; their model calls produce improvement proposals. Skills also uses the LLM while completing tasks. These authored tasks are not equivalent benchmarks and must not be averaged into a single RSI score. A successful provider probe is evidence of access only. A validation gain remains provisional until the frozen final panel is complete.
 

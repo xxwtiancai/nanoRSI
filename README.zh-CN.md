@@ -69,6 +69,25 @@ nanorsi verify --workspace ./learner-lab
 
 **[首次模型实验：API key → 连接检查 → 实验 → 报告](docs/QUICKSTART.zh-CN.md)** · [English tutorial](docs/QUICKSTART.md)
 
+## 真实模型实测
+
+在实现版本 `50556ad` 上，六项小型演示使用 **GLM-5.3-Flash**、种子 0，每个冻结测试条件运行一次。研究共使用 **43 次 API 请求 / 87,812 tokens**，请求上限为 59，关闭 thinking；不包含单独的连接配置探针。请求与返回的模型 ID 均为 `glm-5.3-flash`。[运行设置与服务商用量](examples/results/v0.4.0/live/summary.json)。
+
+| 演示 | 初始版本通过测试 | 选中版本通过测试 | 证据 |
+| --- | ---: | ---: | --- |
+| 程序改进 | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/program/final.json) |
+| Agent：frozen 改进器 | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/agent/final.json) |
+| 递归 Agent：self-use | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/recursive/final.json) |
+| 可执行技能 | 0/1 | 1/1 | [最终结果](examples/results/v0.4.0/live/skills/final.json) |
+| 本地种群 | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/population/final.json) |
+| HTTP 评估：两个 localhost 进程 | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/remote/final.json) |
+
+这些是不同的自编任务，不能合成一个基准或 RSI 总分。改进后的规划器确实参与了下一轮提案，但最终面板上**没有超过 frozen 改进器**。技能演示刻意要求在四个动作内批处理六个文件，no-skills 为 0/1。种群保留了两个分支，拒绝了一次没有额外收益的交叉提案。HTTP 执行仅验证了 localhost。
+
+**远程示例选中的解析器仍无法处理 `(12.5)`，尽管最终得分为 4/4。** [反例、被拒绝尝试、源码快照与证据边界](examples/results/v0.4.0/README.md#known-counterexample)。
+
+<p align="center"><img src="examples/results/v0.4.0/overview.png" alt="分别展示真实模型演示和 CPU 参数学习结果；两组面板不构成统一 RSI 总分。" width="100%"></p>
+
 ## 已测量的 CPU 示例
 
 已核验面板包含三种方法 × 三个种子 × frozen/self-use 对照：**18 次实验、54 轮训练、20 个接受候选和 34 个拒绝候选**。在相互重叠的合成数值簇上，平均测试准确率为：
@@ -81,7 +100,7 @@ nanorsi verify --workspace ./learner-lab
 
 这里真正更新了四维输入、三分类 softmax 模型的参数。九组匹配的 self-use 对照中，一组更好、一组更差、七组相同，尚未显示一致的递归优势。LoRA 展示冻结基础权重的更新机制，不宣称在这个小规模上的参数效率优势。API 调用为零，未测量货币成本。
 
-运行 `python examples/parameter_learning/run.py ./parameter-results` 可复现全部 18 次实验。[方法、检查点核验与解读](docs/MULTILEVEL.zh-CN.md#学习演示到底训练了什么) · [所有演示命令](examples/README.md)。
+运行 `python examples/parameter_learning/run.py ./parameter-results` 可复现全部 18 次实验。[公开 CPU 结果](examples/results/v0.4.0/parameter-learning/summary.json) · [逐次实验的证据](examples/results/v0.4.0/README.md#cpu-parameter-learning) · [方法与解读](docs/MULTILEVEL.zh-CN.md#学习演示到底训练了什么) · [所有演示命令](examples/README.md)。
 
 ## 运行代码改进实验
 

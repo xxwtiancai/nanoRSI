@@ -10,9 +10,13 @@
 - Add bounded population search with top-K branch retention, crossover ancestry, local concurrent candidate worktrees, serialized root journal writes and durable budget reservations/recovery.
 - Add optional authenticated HTTP evaluation workers and a two-process localhost demonstration; multi-host operation and hostile-code containment remain unverified.
 - Add reproducible CPU and request-capped live-demo drivers that retain unsuccessful outcomes. Document the measured CPU panel, API onboarding and the limits of each experiment.
+- Publish all six live GLM experiments and 18 CPU trials with frozen results, source/checkpoint snapshots, failed and rejected attempts, and a descriptive result figure. Exported summaries are rebuilt from verified outcomes; provider receipts remain separately labelled unsigned records.
+- Exercise real parameter training and all canonical starter rendering from the installed wheel in CI.
 - Expand the core ceiling to 5,000 lines while retaining the 300-line module and 50-line function limits and zero third-party core runtime dependencies.
 
 The verified CPU panel completed 18 runs and 54 training rounds, with 20 accepted and 34 rejected candidates. Held-out mean accuracy rose from 46.11% to 84.44–86.39% across method/control groups on overlapping synthetic clusters. Self-use comparisons were mixed: one positive, one negative and seven ties. These teaching-scale results are not LLM fine-tuning, general benchmark performance or proof of general recursive self-improvement.
+
+The live study used 43 GLM-5.3-Flash requests and 87,812 tokens. Five four-case demonstrations went from 1/4 to 4/4; the single batch-skill task went from 0/1 to 1/1. Recursive and frozen proposers tied on the final panel. A known parsing defect remains in the remote demo's measured generated candidate; see the [complete evidence and counterexample](examples/results/v0.4.0/README.md).
 
 ## 0.3.1 — 2026-09-12
 

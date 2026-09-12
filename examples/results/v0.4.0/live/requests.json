@@ -1,0 +1,1034 @@
+[
+  {
+    "event": "request_started",
+    "id": "eee3933f44c84c559d90c13335f5c70b",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:51:03.823222+00:00",
+    "request_number": 1,
+    "request_sha256": "0416db801a1204b99ee8aae7e1be0b6cd7bc460fdacd6f7d40f273a792e65926"
+  },
+  {
+    "duration_ms": 12133,
+    "event": "request_finished",
+    "id": "eee3933f44c84c559d90c13335f5c70b",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205104951293bf4d42439b"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 2633,
+      "model_calls": 1,
+      "output_tokens": 802
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "f6c5cea288024d36a81c41b65cec0ca3",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:51:16.921833+00:00",
+    "request_number": 2,
+    "request_sha256": "69d36896a4de87d470d1807f148aa2e598981587675809a3f29192365315433e"
+  },
+  {
+    "duration_ms": 17138,
+    "event": "request_finished",
+    "id": "f6c5cea288024d36a81c41b65cec0ca3",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220511738adcf1e7cc54062"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 2882,
+      "model_calls": 1,
+      "output_tokens": 749
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "4d1dfb2c4c09416680c7b5fd429ce4f2",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:51:35.996887+00:00",
+    "request_number": 3,
+    "request_sha256": "fb1ca342e4ee56fdd0ff01e0b3ece33dbf8fa4800cb27584352e5cb4a9271592"
+  },
+  {
+    "duration_ms": 27869,
+    "event": "request_finished",
+    "id": "4d1dfb2c4c09416680c7b5fd429ce4f2",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205136881243e98b5e46aa"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 6298,
+      "model_calls": 1,
+      "output_tokens": 2153
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "1d88021689bc48f8b05d3c4e35e1bd7d",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:52:05.088039+00:00",
+    "request_number": 4,
+    "request_sha256": "226e54a32a59efba93aa3e8ca4d032f2900282c97099b78fe67d777c9a447a57"
+  },
+  {
+    "duration_ms": 22420,
+    "event": "request_finished",
+    "id": "1d88021689bc48f8b05d3c4e35e1bd7d",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122052063b23948dfd8f4766"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 6413,
+      "model_calls": 1,
+      "output_tokens": 791
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "6c5a7761bd4b4cefb7ce2e3a108a7dd7",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:52:28.993894+00:00",
+    "request_number": 5,
+    "request_sha256": "dc203df5518e37a2d77ef5aa79bf5a167bba4d9bdb531c2e16bcce813a05b64e"
+  },
+  {
+    "duration_ms": 27164,
+    "event": "request_finished",
+    "id": "6c5a7761bd4b4cefb7ce2e3a108a7dd7",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205229fa2d150e6afc4ea1"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 6298,
+      "model_calls": 1,
+      "output_tokens": 2203
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "4963254038b54d40bc1dd437444f0006",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:52:57.369899+00:00",
+    "request_number": 6,
+    "request_sha256": "aa40354747d271387274be01b31998d13d06116b4cceb8f0317d4e9ee8c007ff"
+  },
+  {
+    "duration_ms": 6669,
+    "event": "request_finished",
+    "id": "4963254038b54d40bc1dd437444f0006",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122052588d1ec033a03847c7"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 6382,
+      "model_calls": 1,
+      "output_tokens": 193
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "9343819601874b838d15c2623cd090ba",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:04.874391+00:00",
+    "request_number": 7,
+    "request_sha256": "aeabfe3d70fb1570bd5df2fb63d7fd8a46e7b61cc55fc9186b942ea7c5b1c6f8"
+  },
+  {
+    "duration_ms": 3522,
+    "event": "request_finished",
+    "id": "9343819601874b838d15c2623cd090ba",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205305735ba8ff3e11454b"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 599,
+      "model_calls": 1,
+      "output_tokens": 108
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "1e76b9380b994978841cbb2e24b3ee20",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:08.477148+00:00",
+    "request_number": 8,
+    "request_sha256": "5795021a80f0245b1bd5d0b38823b05dc4f93a89ed5b568c6a1a69f55a6a10ad"
+  },
+  {
+    "duration_ms": 1544,
+    "event": "request_finished",
+    "id": "1e76b9380b994978841cbb2e24b3ee20",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220530907eb636de0f64121"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 657,
+      "model_calls": 1,
+      "output_tokens": 37
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "a313eff117484e6387da239cbd661184",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:10.084174+00:00",
+    "request_number": 9,
+    "request_sha256": "b61fbed8b9d446d1211dc758d834ab6458253ff333d3099a8e5021cb70902c70"
+  },
+  {
+    "duration_ms": 3162,
+    "event": "request_finished",
+    "id": "a313eff117484e6387da239cbd661184",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205311ac02dfb34da24813"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 715,
+      "model_calls": 1,
+      "output_tokens": 95
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "724abb57877d41ce96e6189098737fbe",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:13.317005+00:00",
+    "request_number": 10,
+    "request_sha256": "39e5f5ab78f843739bc32c51e8546e935e02f0beefaeadf799efc4de3e3e4f20"
+  },
+  {
+    "duration_ms": 3836,
+    "event": "request_finished",
+    "id": "724abb57877d41ce96e6189098737fbe",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220531441022b241204421f"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 773,
+      "model_calls": 1,
+      "output_tokens": 98
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "24076dde3698494db02b6aee97d9b9b0",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:17.469065+00:00",
+    "request_number": 11,
+    "request_sha256": "de260edbf9848e68aac288330a8f37c0f511ca8946c3de598b9bf00c456b6944"
+  },
+  {
+    "duration_ms": 3700,
+    "event": "request_finished",
+    "id": "24076dde3698494db02b6aee97d9b9b0",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205318f3da46531c9f4285"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 599,
+      "model_calls": 1,
+      "output_tokens": 101
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "fb58e6f845f647019a6772e1820bfbab",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:21.248294+00:00",
+    "request_number": 12,
+    "request_sha256": "07632e27671e467e89790f0ae711c8a0f3b3271aa802607c6b39f122805b4d5e"
+  },
+  {
+    "duration_ms": 1530,
+    "event": "request_finished",
+    "id": "fb58e6f845f647019a6772e1820bfbab",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205322cc56e2eccceb4221"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 657,
+      "model_calls": 1,
+      "output_tokens": 37
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "0da4d9313b54484781113cf06de88f04",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:22.851671+00:00",
+    "request_number": 13,
+    "request_sha256": "3d9d2c0d534f371a06c3d6eea8ed1a8a1411345b8000e34085481a4a10cdf52a"
+  },
+  {
+    "duration_ms": 4385,
+    "event": "request_finished",
+    "id": "0da4d9313b54484781113cf06de88f04",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122053231e6e27b9075a4765"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 715,
+      "model_calls": 1,
+      "output_tokens": 151
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "981174ec2daf4730890a5c8b1a0d03ac",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:27.313624+00:00",
+    "request_number": 14,
+    "request_sha256": "049d692cb13255f47898abaf174ec188a9b057902c13bf739d07e1aea9d28a7a"
+  },
+  {
+    "duration_ms": 2510,
+    "event": "request_finished",
+    "id": "981174ec2daf4730890a5c8b1a0d03ac",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205328c940585bda1949a7"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 773,
+      "model_calls": 1,
+      "output_tokens": 60
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "cdc0ddf61e6a46a982f47329e574047c",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:30.010808+00:00",
+    "request_number": 15,
+    "request_sha256": "c6921726cb51af2561eb8d673b10c7b168aa95360d94d52f2cbbbab321101204"
+  },
+  {
+    "duration_ms": 12728,
+    "event": "request_finished",
+    "id": "cdc0ddf61e6a46a982f47329e574047c",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205330281b4d802bc34dda"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 1917,
+      "model_calls": 1,
+      "output_tokens": 673
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "5a8579e4e0a046e1b91443e60683cda9",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:43.108494+00:00",
+    "request_number": 16,
+    "request_sha256": "aeabfe3d70fb1570bd5df2fb63d7fd8a46e7b61cc55fc9186b942ea7c5b1c6f8"
+  },
+  {
+    "duration_ms": 5428,
+    "event": "request_finished",
+    "id": "5a8579e4e0a046e1b91443e60683cda9",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205344d6984393b9d247a9"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 599,
+      "model_calls": 1,
+      "output_tokens": 105
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "17b99a1d07b145888dc8b63850ab8f59",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:48.609084+00:00",
+    "request_number": 17,
+    "request_sha256": "5795021a80f0245b1bd5d0b38823b05dc4f93a89ed5b568c6a1a69f55a6a10ad"
+  },
+  {
+    "duration_ms": 1484,
+    "event": "request_finished",
+    "id": "17b99a1d07b145888dc8b63850ab8f59",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220534965fa76d99e1c4625"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 657,
+      "model_calls": 1,
+      "output_tokens": 37
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "61556c8b33d84f9f99727a230f319200",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:50.169756+00:00",
+    "request_number": 18,
+    "request_sha256": "b61fbed8b9d446d1211dc758d834ab6458253ff333d3099a8e5021cb70902c70"
+  },
+  {
+    "duration_ms": 1505,
+    "event": "request_finished",
+    "id": "61556c8b33d84f9f99727a230f319200",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205351b85fd43d01074d7d"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 715,
+      "model_calls": 1,
+      "output_tokens": 37
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "c4062641784c4a07bc8b2c18cc68ac0d",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:51.740138+00:00",
+    "request_number": 19,
+    "request_sha256": "39e5f5ab78f843739bc32c51e8546e935e02f0beefaeadf799efc4de3e3e4f20"
+  },
+  {
+    "duration_ms": 2821,
+    "event": "request_finished",
+    "id": "c4062641784c4a07bc8b2c18cc68ac0d",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220535255db2010b7ef45e2"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 773,
+      "model_calls": 1,
+      "output_tokens": 56
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "98bb2d5d5c1549838682142f61a29f72",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:54.742949+00:00",
+    "request_number": 20,
+    "request_sha256": "cb99a710b248fa58e3c139378360a87294c2c8771e52f6265e8e5f9fa8915d57"
+  },
+  {
+    "duration_ms": 1436,
+    "event": "request_finished",
+    "id": "98bb2d5d5c1549838682142f61a29f72",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122053559053caf1ebdb43bb"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 826,
+      "model_calls": 1,
+      "output_tokens": 28
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "2ccf400253f64d8db7b97c1d105fd871",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:56.276290+00:00",
+    "request_number": 21,
+    "request_sha256": "71927ffbbad8ec07b74b9a678e2703f78c4df4a7b24afb35ffc8d9f8d8c217f8"
+  },
+  {
+    "duration_ms": 1320,
+    "event": "request_finished",
+    "id": "2ccf400253f64d8db7b97c1d105fd871",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220535759e6fc80ab704ffd"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 905,
+      "model_calls": 1,
+      "output_tokens": 15
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "88fd6fb4e22c4842b39fb064b8f90dd1",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:57.671187+00:00",
+    "request_number": 22,
+    "request_sha256": "948ea54f11c3a939fc2c8ff465f5882b2ccc942e281376da2cd6c8b1e6aa591d"
+  },
+  {
+    "duration_ms": 1146,
+    "event": "request_finished",
+    "id": "88fd6fb4e22c4842b39fb064b8f90dd1",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220535848eaa6230737468d"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 953,
+      "model_calls": 1,
+      "output_tokens": 7
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "d10a424fdf8b4b0ba08b74c2e151ec68",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:53:59.070123+00:00",
+    "request_number": 23,
+    "request_sha256": "60e96ba9574b0cbda1e29a0fa64553e416407d8d594b8603918c8ca1a30b1938"
+  },
+  {
+    "duration_ms": 1363,
+    "event": "request_finished",
+    "id": "d10a424fdf8b4b0ba08b74c2e151ec68",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122054005a43789dd4a74832"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 826,
+      "model_calls": 1,
+      "output_tokens": 28
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "aec8d51d807d4194895e533ade5e113c",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:54:00.531639+00:00",
+    "request_number": 24,
+    "request_sha256": "d27106bb1d3d07ad68872d26fc71a7064a74921a74c513fa40ac7fd6e2886c72"
+  },
+  {
+    "duration_ms": 1404,
+    "event": "request_finished",
+    "id": "aec8d51d807d4194895e533ade5e113c",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205401dafacf27d446454d"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 905,
+      "model_calls": 1,
+      "output_tokens": 15
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "bf9f936b3eab4052b15ed72f29f1571d",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:54:02.012326+00:00",
+    "request_number": 25,
+    "request_sha256": "df72c62a33aa463663759e2424741c85652a5575830f0a5658ce6d51e3f9adac"
+  },
+  {
+    "duration_ms": 1848,
+    "event": "request_finished",
+    "id": "bf9f936b3eab4052b15ed72f29f1571d",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122054025e796071a0374952"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 953,
+      "model_calls": 1,
+      "output_tokens": 40
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "95292ed1426d4678a9107bfac5bb5ef6",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:54:04.049930+00:00",
+    "request_number": 26,
+    "request_sha256": "43b61d4843fe4a24c4e6818be68522c29739194df91278d30bbabe2838bbd1dc"
+  },
+  {
+    "duration_ms": 3937,
+    "event": "request_finished",
+    "id": "95292ed1426d4678a9107bfac5bb5ef6",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220540581db414af14c4c4e"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 2697,
+      "model_calls": 1,
+      "output_tokens": 133
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "9cbab40a702442b399a6c6bcbad1c388",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:54:09.386349+00:00",
+    "request_number": 27,
+    "request_sha256": "908cc4ad40c31adbbdede5d62916a7f879df4f1c2ccd65986b5933a6f58915ea"
+  },
+  {
+    "duration_ms": 13159,
+    "event": "request_finished",
+    "id": "9cbab40a702442b399a6c6bcbad1c388",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205410828449c61f9946f7"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 2658,
+      "model_calls": 1,
+      "output_tokens": 862
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "aee1aa90bb314da8bd3c246f5deac35a",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:54:22.547048+00:00",
+    "request_number": 28,
+    "request_sha256": "11c23414ccb59fb74179b9f6e0d120cb443591740aeda738858638b917fa7768"
+  },
+  {
+    "duration_ms": 12206,
+    "event": "request_finished",
+    "id": "aee1aa90bb314da8bd3c246f5deac35a",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205423574bbff4d613430a"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 2658,
+      "model_calls": 1,
+      "output_tokens": 802
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "ef28f1a3d96349a4bf86ac6530bffa9a",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:54:35.826706+00:00",
+    "request_number": 29,
+    "request_sha256": "281ed52a25134917813ccb7e331ad79f3d860475a6583e264a82b3c16d51b84d"
+  },
+  {
+    "duration_ms": 1571,
+    "event": "request_finished",
+    "id": "ef28f1a3d96349a4bf86ac6530bffa9a",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205436988b73c2e67c4958"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 2917,
+      "model_calls": 1,
+      "output_tokens": 38
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "10bfc646c8e34b7e90b8dd28e45b0b02",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:54:37.398982+00:00",
+    "request_number": 30,
+    "request_sha256": "e3b69d546717ecd8429e470e14aaa4d9665b830e2eee613bc2dc1b8e2e53c7ae"
+  },
+  {
+    "duration_ms": 18637,
+    "event": "request_finished",
+    "id": "10bfc646c8e34b7e90b8dd28e45b0b02",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122054388a5d0ffe2848447e"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 3724,
+      "model_calls": 1,
+      "output_tokens": 1119
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "4744963b33844a3da871dee798abc1b6",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:54:58.649515+00:00",
+    "request_number": 31,
+    "request_sha256": "046fa271c4f0117660651bb3c7225aefb98960a248018c4496d3b43fd4e402ed"
+  },
+  {
+    "duration_ms": 12068,
+    "event": "request_finished",
+    "id": "4744963b33844a3da871dee798abc1b6",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122054596a50c74fc18b4c36"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 2633,
+      "model_calls": 1,
+      "output_tokens": 834
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "3287610c5c32454e8bcb199effe52489",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:12.001558+00:00",
+    "request_number": 32,
+    "request_sha256": "45dab61447f5ba268732a4cac94f538227b7a3a89d610802a769ad7655457a6f"
+  },
+  {
+    "duration_ms": 15217,
+    "event": "request_finished",
+    "id": "3287610c5c32454e8bcb199effe52489",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205512cc3205bb31ae40d0"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 2851,
+      "model_calls": 1,
+      "output_tokens": 1046
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "61051a1101864396b3d9e95334cd2dce",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:30.591077+00:00",
+    "request_number": 33,
+    "request_sha256": "a013a330b653aab1718d646df686c6237b8a52ea2d38db3eebce0e69b42cc6f4"
+  },
+  {
+    "duration_ms": 4424,
+    "event": "request_finished",
+    "id": "61051a1101864396b3d9e95334cd2dce",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122055312dc684ab73a843b9"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 607,
+      "model_calls": 1,
+      "output_tokens": 136
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "eb27e2a6bf3643fd85f255ef0159ea3b",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:35.091983+00:00",
+    "request_number": 34,
+    "request_sha256": "83fb93784882d495eb384e1d38651ca5ef05537d741924204c2eef804999a963"
+  },
+  {
+    "duration_ms": 1742,
+    "event": "request_finished",
+    "id": "eb27e2a6bf3643fd85f255ef0159ea3b",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122055369773144d36da401b"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 666,
+      "model_calls": 1,
+      "output_tokens": 38
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "716d935bc9ef43fb8001aa36a0536bec",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:36.908968+00:00",
+    "request_number": 35,
+    "request_sha256": "547520ae54911e77ffc3a90d1226750a41e7179d9a98064329f8045b707d16d0"
+  },
+  {
+    "duration_ms": 1498,
+    "event": "request_finished",
+    "id": "716d935bc9ef43fb8001aa36a0536bec",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122055371b6c3e1d60d14994"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 725,
+      "model_calls": 1,
+      "output_tokens": 38
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "866b01e448914c698879d38fe8f62dcd",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:38.468367+00:00",
+    "request_number": 36,
+    "request_sha256": "74bc37f78b5962287ec592e5c17f43dd97b3dec17c1bb9a22724df3133b7594a"
+  },
+  {
+    "duration_ms": 3963,
+    "event": "request_finished",
+    "id": "866b01e448914c698879d38fe8f62dcd",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220553951ceffdb3f954066"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 784,
+      "model_calls": 1,
+      "output_tokens": 155
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "740881a752134628afb293e090b0c264",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:42.644634+00:00",
+    "request_number": 37,
+    "request_sha256": "6191d4d47cc57ae919c87e8cce8d0f5d686a43f20c66347e943fcf9ca4232c28"
+  },
+  {
+    "duration_ms": 2601,
+    "event": "request_finished",
+    "id": "740881a752134628afb293e090b0c264",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220554368f9c95e7ed24d93"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 297,
+      "model_calls": 1,
+      "output_tokens": 92
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "432a578b0dfb43b7910a7692e70a0cb2",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:45.322855+00:00",
+    "request_number": 38,
+    "request_sha256": "81a303071f42b77d9edc6dad0dcfd449f953697b854d84ac073b0c625d43606d"
+  },
+  {
+    "duration_ms": 1426,
+    "event": "request_finished",
+    "id": "432a578b0dfb43b7910a7692e70a0cb2",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205546799dfbb285eb4457"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 356,
+      "model_calls": 1,
+      "output_tokens": 38
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "5d5e1c0300584ac5bfc106ee5ae8881f",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:46.824443+00:00",
+    "request_number": 39,
+    "request_sha256": "b1a3a79664cec3537388fc6b1adbd9d0ad81910ac07aa21a795263cdbfcacdce"
+  },
+  {
+    "duration_ms": 2936,
+    "event": "request_finished",
+    "id": "5d5e1c0300584ac5bfc106ee5ae8881f",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "2026091220554796b82f9e5f2940e6"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 415,
+      "model_calls": 1,
+      "output_tokens": 114
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "3f1ca7d661994199bf46606c13c76aa6",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:49.837754+00:00",
+    "request_number": 40,
+    "request_sha256": "f63bba15bf39c6665133dc94c5c3899abefc2933e426ee40b26907aceab42288"
+  },
+  {
+    "duration_ms": 2465,
+    "event": "request_finished",
+    "id": "3f1ca7d661994199bf46606c13c76aa6",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205550fe2b6dad07f14bca"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 474,
+      "model_calls": 1,
+      "output_tokens": 55
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "1e10d4d9a6664faa8ff291c8ffc95f99",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:52.508897+00:00",
+    "request_number": 41,
+    "request_sha256": "3613ac3a670073c235c8a50b2bdd7ff48b0a774f9df338a55d23bb89f3afb17a"
+  },
+  {
+    "duration_ms": 1857,
+    "event": "request_finished",
+    "id": "1e10d4d9a6664faa8ff291c8ffc95f99",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205553022ab2f06f0c4722"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 834,
+      "model_calls": 1,
+      "output_tokens": 39
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "2939e1a5af604f6a8f7a87ac5c38f0b7",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:54.463213+00:00",
+    "request_number": 42,
+    "request_sha256": "6a822ebf0694069ed0dacf189ee646af17ed1e8407f5bde115849a19eed19971"
+  },
+  {
+    "duration_ms": 1773,
+    "event": "request_finished",
+    "id": "2939e1a5af604f6a8f7a87ac5c38f0b7",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "20260912205555436c9fc1b5a74c71"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 915,
+      "model_calls": 1,
+      "output_tokens": 15
+    }
+  },
+  {
+    "event": "request_started",
+    "id": "f59d56b36e7049e19be70148310a075d",
+    "model": "glm-5.3-flash",
+    "recorded_at": "2026-09-12T12:55:56.314126+00:00",
+    "request_number": 43,
+    "request_sha256": "ea8010c6d1fe2f801d36e9ac5a143826ab593628ccc62c1078c8fa643cdddc14"
+  },
+  {
+    "duration_ms": 1694,
+    "event": "request_finished",
+    "id": "f59d56b36e7049e19be70148310a075d",
+    "provider": {
+      "model": "glm-5.3-flash",
+      "request_id": "202609122055577fd2ecf4ecdb4381"
+    },
+    "status": "ok",
+    "usage": {
+      "cost_usd": null,
+      "input_tokens": 964,
+      "model_calls": 1,
+      "output_tokens": 41
+    }
+  }
+]
