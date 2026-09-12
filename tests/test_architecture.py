@@ -70,7 +70,7 @@ class ArchitectureTests(unittest.TestCase):
         allowed_roots = {"nanorsi", "__future__"}
         allowed_stdlib = {
             "argparse", "ast", "contextlib", "dataclasses", "datetime", "difflib",
-            "enum", "fnmatch", "hashlib", "hmac", "importlib", "json", "math",
+            "enum", "fnmatch", "hashlib", "hmac", "html", "importlib", "json", "math",
             "os", "pathlib", "random", "re", "secrets", "shlex", "shutil", "stat", "subprocess", "sys",
             "tempfile", "time", "tomllib", "typing", "unittest", "uuid",
         }

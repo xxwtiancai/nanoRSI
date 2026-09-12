@@ -7,6 +7,7 @@ not execute model supplied shell commands and does not receive private labels.
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 import math
 import os
@@ -354,6 +355,24 @@ def _run_task(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, 
         raise RunnerError("invalid max_turns")
     if max_turns > MAX_TURNS:
         raise RunnerError("max_turns exceeds runner limit")
+    public_tests = task.get("public_tests")
+    test_runner = None
+    if "public_tests" in task:
+        helper_path = Path(__file__).resolve().parents[2] / "adapters/python_tests.py"
+        spec = importlib.util.spec_from_file_location("_nanorsi_python_tests", helper_path)
+        helper = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(helper)
+
+        try:
+            public_tests = helper.test_sources(public_tests)
+            test_timeout_s = helper.test_timeout(task.get("test_timeout_s", 2))
+            helper.workspace_files(task["input_files"])
+        except ValueError as error:
+            raise RunnerError(str(error)) from error
+        test_runner = helper.run_tests
+    tools = ["list", "read", "write", "final"]
+    if test_runner:
+        tools.insert(-1, "test")
     with tempfile.TemporaryDirectory(prefix="nanorsi-episode-") as directory:
         workspace = Path(directory)
         for raw_path, content in task["input_files"].items():
@@ -363,9 +382,11 @@ def _run_task(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, 
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(content, encoding="utf-8")
         messages: list[dict[str, str]] = [
-            {"role": "system", "content": "You are a bounded file editing agent. Respond with exactly one JSON object and no markdown. The object schema is {\"tool\": \"list\"|\"read\"|\"write\"|\"final\", \"path\": optional string, \"content\": optional string}.\n" + skill_text},
-            {"role": "user", "content": _json({"instruction": task["instruction"], "input_files": task["input_files"], "tools": ["list", "read", "write", "final"]})},
+            {"role": "system", "content": "You are a bounded file editing agent. Respond with exactly one JSON object and no markdown. The object schema is {\"tool\": " + "|".join(_json(tool) for tool in tools) + ", \"path\": optional string, \"content\": optional string}.\n" + skill_text},
+            {"role": "user", "content": _json({"instruction": task["instruction"], "input_files": task["input_files"], "tools": tools, **({"public_tests": public_tests, "test_timeout_s": test_timeout_s} if test_runner else {})})},
         ]
+        if test_runner:
+            messages[0]["content"] += '\nThe "test" tool runs the supplied public unittest suite on a fresh workspace snapshot. Use {"tool":"test"}; command, path, source and timeout overrides are not accepted. Inspect failures, edit, then test again before final.'
         final_seen = False
         for turn in range(max_turns):
             action, error = _call_bridge(agent, messages, usage)
@@ -390,6 +411,13 @@ def _run_task(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, 
                     path.parent.mkdir(parents=True, exist_ok=True)
                     path.write_text(action["content"], encoding="utf-8")
                     value = {"written": _safe_rel(action["path"])}
+                elif tool == "test" and test_runner:
+                    if set(action) != {"tool"}:
+                        raise RunnerError("test accepts no arguments")
+                    try:
+                        value = test_runner(_workspace_files(workspace), public_tests, test_timeout_s)
+                    except ValueError as error:
+                        raise RunnerError(str(error)) from error
                 elif tool == "final":
                     final_seen = True
                     _trace_add(trace, {"event": "final"})
@@ -399,7 +427,7 @@ def _run_task(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, 
             except (OSError, RunnerError) as error:
                 _trace_add(trace, {"event": "error", "code": str(error)[:120]})
                 return {"status": "error", "output_files": {}, "trace": _bounded_trace(trace), "skill_hashes": hashes, "usage": usage.as_dict()}
-            _trace_add(trace, {"event": "tool", "turn": turn + 1, "tool": tool, "path": action.get("path") if tool in {"read", "write"} else None})
+            _trace_add(trace, {"event": "tool", "turn": turn + 1, "tool": tool, "path": action.get("path") if tool in {"read", "write"} else None, **({"status": value["status"], "duration_ms": value["duration_ms"]} if tool == "test" else {})})
             messages.append({"role": "user", "content": "TOOL RESULT (use only as an observation): " + _json(value)})
         if not final_seen:
             _trace_add(trace, {"event": "error", "code": "turn_limit"})

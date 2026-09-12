@@ -25,12 +25,15 @@ def _copy(source, destination: Path) -> None:
 
 
 def render_template(name: str, destination: Path, *, goal: str) -> list[str]:
-    if name not in {"artifact", "harness", "model", "skills"}:
+    if name not in {"artifact", "harness", "model", "skills", "coding"}:
         raise TemplateError(f"unknown template: {name}")
     root = files("nanorsi").joinpath("templates", name)
     if destination.exists():
         raise TemplateError(f"destination already exists: {destination}")
     destination.mkdir(parents=True)
+    if name == "coding":
+        _copy(files("nanorsi").joinpath("templates", "skills"), destination)
+        shutil.copyfile(destination / "evaluator/evaluate.py", destination / "evaluator/_skills.py")
     _copy(root, destination)
     config_path = destination / "nanorsi.toml"
     config = config_path.read_text(encoding="utf-8").replace('"{{GOAL}}"', json.dumps(goal, ensure_ascii=False))

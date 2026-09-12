@@ -182,12 +182,14 @@ def _parser():
     parser = argparse.ArgumentParser(prog='nanorsi')
     sub = parser.add_subparsers(dest='command', required=True)
     new = sub.add_parser('new')
-    new.add_argument('template', choices=['artifact', 'harness', 'model', 'skills'])
+    new.add_argument('template', choices=['artifact', 'harness', 'model', 'skills', 'coding'])
     new.add_argument('destination', type=Path)
     new.add_argument('--goal', default='Improve the target')
     for name in ['baseline', 'step', 'run', 'report', 'verify', 'doctor', 'recover', 'freeze', 'final-test', 'evaluate']:
         command = sub.add_parser(name)
         command.add_argument('--workspace', type=Path, default=Path.cwd())
+        if name == 'report':
+            command.add_argument('--format', choices=['markdown', 'html'], default='markdown')
         if name in {'freeze', 'final-test'}:
             command.add_argument('--repeats', type=int, default=3 if name == 'freeze' else None)
         if name == 'evaluate':
@@ -212,7 +214,7 @@ def _dispatch(args, root):
         fn = loop.freeze if command == 'freeze' else loop.final_test
         return fn(root, load_config(root / 'nanorsi.toml'), args.repeats)
     if command == 'report':
-        return write_report(root, LineageStore.initialize(root).verify())
+        return write_report(root, LineageStore.initialize(root).verify(), format=args.format)
     if command == 'verify':
         LineageStore.initialize(root).verify()
         return 'lineage: ok'

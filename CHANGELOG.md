@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0 — 2026-09-12
+
+- Add a coding starter with twelve independently authored Python repair tasks and behavioral unittest grading.
+- Let coding agents run fixed public tests for debugging while private tests and reference solutions stay outside model requests.
+- Reuse the bounded skills loop, frozen final-test comparisons and versioned evaluation contract.
+- Generate standalone HTML and richer Markdown reports from verified lineage, with paired final comparisons, search decisions and cost coverage.
+- Document the executable-task and reproducible-evidence ideas learned from OpenRSI; independently implement them without importing upstream code.
+- Correct process termination tests to distinguish a running descendant from a terminated zombie awaiting reaping.
+
+The starter suite and offline checks do not establish real-model gains or reproduce OpenRSI benchmark results. Code execution is trusted local execution, not a hardened sandbox.
+
 ## 0.2.0 — 2026-09-09
 
 - Focus the repository on measured skills and Agent Harness improvement under a fixed model.

@@ -4,7 +4,7 @@
 
 nanoRSI's built-in execution is trusted local subprocess execution. Git worktrees separate candidate versions; they do not restrict what same-user Python processes can read. Local HMAC receipts detect accidental or unauthorized journal changes only while the receipt key remains outside an attacker's access.
 
-The reference skills Runner exposes only list/read/write/final actions inside an episode directory, rejects escaping paths and symlinks, and does not offer shell execution. This limits actions exposed by that reference implementation. It is not an OS sandbox for an arbitrary replacement Runner, proposer, bridge or evaluator.
+The text-edit skills Runner exposes list/read/write/final actions inside an episode directory and rejects escaping paths and symlinks. The coding template additionally exposes a fixed test action that executes supplied public Python unittests against candidate source in a fresh directory. It offers no arbitrary shell command, but generated Python still executes with host privileges. This limits actions exposed by that reference implementation. It is not an OS sandbox for an arbitrary replacement Runner, proposer, bridge or evaluator.
 
 ## Built-in controls
 

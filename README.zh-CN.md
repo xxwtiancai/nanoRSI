@@ -2,13 +2,13 @@
   <img src="docs/assets/brand/nanorsi-hero.png" alt="nanoRSI：小内核，让改进有据可查" width="100%">
 </p>
 
-<p align="center"><strong>让 Agent 改进 Skills，让每次改动有据可查。</strong><br>一个小而完整、读得懂的 Skills / Agent Harness 实验平台。</p>
+<p align="center"><strong>让编程 Agent 从测试失败中积累改进。</strong><br>演进可复用技能，再用未见任务检验效果。</p>
 
 <p align="center">
   <a href="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml"><img src="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&amp;logoColor=white" alt="Python 3.11+"></a>
   <a href="pyproject.toml"><img src="https://img.shields.io/badge/runtime_dependencies-0-f4512c" alt="零第三方运行时依赖"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.2.0-f4512c" alt="版本 0.2.0"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.3.0-f4512c" alt="版本 0.3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-171717" alt="Apache-2.0"></a>
 </p>
 
@@ -27,17 +27,17 @@ Skills 改了一版又一版，Agent 真的变好了吗？
 
 | 小到可以读懂 | 完整到可以运行 | 每一步可以检查 |
 | :---: | :---: | :---: |
-| **约 1,800 行** Python 内核 | **一个**父代、候选和循环 | **每次尝试**留下证据 |
+| **不到 2,500 行** Python 内核 | **一个**父代、候选和循环 | **每次尝试**留下证据 |
 | 标准库 + Git | 训练 → 验证 → 最终测试 | 修改、轨迹、决策和成本 |
 
 ## 为什么做 nanoRSI
 
-- **有具体的起点。** 参考 Agent、三个 skills、模型桥接和 90 个分组本地任务。
+- **可执行的 Python 任务。** 12 个修复任务，公开测试用于调试，独立私有测试用于行为评分；包含模型桥接和三个过程型 skills。
 - **主流程看得懂。** 顺序尝试、普通文件、精确 Git 快照；核心调度集中在 [loop.py](src/nanorsi/loop.py)。
 - **对照实验有位置。** 比较初始 skills、无 skills 和改进后 skills，也能比较固定与 self-use 改进器。
-- **结果可以追溯。** 打开 patch，查看失败轨迹、所选版本和成本记录；未知用量会明确保留。
+- **可以分享的实验报告。** 独立 HTML 和 Markdown 展示最终对照、搜索决策、失败尝试，以及已知和未知成本。
 
-90 个任务是开发夹具，81 项工程测试验证的是协议。真实模型上的收益，需要由实际实验回答。
+代码任务是独立编写的入门任务包，并非已发布的通用能力基准。原有 90 个文本编辑任务继续用于协议检查。工程测试和参考解验证实验室是否正确工作，真实模型收益仍需实际实验回答。
 
 ## 快速开始
 
@@ -64,6 +64,35 @@ nanorsi verify --workspace ./artifact-demo
 <p align="center"><img src="docs/assets/readme/terminal-demo.svg" alt="真实离线夹具运行的终端展示：创建实验、接受候选、写出报告并校验谱系。" width="100%"></p>
 
 <sub>基于实际离线运行输出绘制。<a href="docs/assets/readme/demo-transcript.txt">查看记录</a> · <a href="docs/assets/readme/demo-evidence.json">查看原始输出</a>。这里的分数用于展示实验协议。</sub>
+
+## 运行代码改进实验
+
+```bash
+nanorsi new coding ./coding-lab --goal "学习可靠的 Python 修复技能"
+# 在 baseline 前配置 coding-lab/nanorsi.toml 的 model 和 base_url。
+nanorsi doctor --workspace ./coding-lab
+nanorsi run --workspace ./coding-lab
+nanorsi freeze --workspace ./coding-lab --repeats 1
+nanorsi final-test --workspace ./coding-lab
+nanorsi report --workspace ./coding-lab --format html
+nanorsi verify --workspace ./coding-lab
+```
+
+打开 `coding-lab/reports/report.html`，在相同的冻结任务与重复执行配对上比较**初始技能、无技能、演进后技能**。报告保留负结果和未知成本。
+
+每题中，Agent 可以读写 Python 文件，并调用固定的 `test` 工具获得公开 unittest 反馈。私有评分测试和参考实现不进入模型请求。跨尝试演进的只有可复用 skills；评分器、任务包和模型配置保持冻结。程序只要行为正确即可通过，无须与参考实现逐字一致。
+
+入门包包含解析、集合和配置等 12 个工具函数修复任务，训练、验证、最终测试各 4 题。默认三次搜索最多使用 40 个任务执行，单次重复的最终面板另需 12 个。每题最多调用模型八次，提案调用另计。运行前请配置本地接口或确定托管模型预算。
+
+**暂时没有模型？** 可以先离线验证任务包：
+
+```bash
+python examples/coding_tasks/prepare.py --check
+```
+
+它检查错误初始实现和参考解，不模拟或声称模型通过学习获得提升。
+
+[代码实验完整指南和任务格式](docs/CODING_LAB.zh-CN.md) · [English guide](docs/CODING_LAB.md)
 
 ## 一次改进如何发生
 

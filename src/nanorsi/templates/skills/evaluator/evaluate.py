@@ -59,7 +59,7 @@ def _finish_usage(total: dict[str, Any]) -> dict[str, Any]:
     return {"model_calls": total["model_calls"], **{key: total[key] if total["_known"][key] else None for key in ("input_tokens", "output_tokens", "cost_usd")}, "errors": total["errors"]}
 
 
-def _manifest(path: Path) -> list[dict[str, Any]]:
+def _manifest(path: Path, *, file_validator=None) -> list[dict[str, Any]]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict) or payload.get("schema_version") != 1 or not isinstance(payload.get("tasks"), list):
         raise ValueError("manifest must have schema_version 1 and tasks")
@@ -78,6 +78,9 @@ def _manifest(path: Path) -> list[dict[str, Any]]:
         expected = task.get("expected_files")
         if not isinstance(inputs, dict) or not isinstance(expected, dict):
             raise ValueError("task files must be objects")
+        if file_validator is not None:
+            file_validator(inputs)
+            file_validator(expected)
         normalized_inputs: dict[str, str] = {}
         normalized_expected: dict[str, str] = {}
         for raw, content in inputs.items():
@@ -113,14 +116,18 @@ def _timeout(value: Any) -> float:
     return converted
 
 
-def _invoke(task: dict[str, Any], agent: dict[str, Any], repeat_id: str, runner: Path) -> tuple[dict[str, Any], dict[str, Any]]:
+def _invoke(task: dict[str, Any], agent: dict[str, Any], repeat_id: str, runner: Path, *, task_fields: dict[str, Any] | None = None) -> tuple[dict[str, Any], dict[str, Any]]:
     request = {"mode": "task", "task": {"task_id": task["task_id"], "instruction": task["instruction"], "input_files": task["input_files"]}, "agent": agent}
+    if task_fields:
+        request["task"].update(task_fields)
     timeout = agent.get("timeout_s", 60)
     try:
         max_turns = agent.get("max_turns", 8)
         if isinstance(max_turns, bool) or not isinstance(max_turns, int) or not 1 <= max_turns <= 8:
             raise ValueError("agent.max_turns must be an integer between 1 and 8")
         bounded_timeout = max(0.1, _timeout(timeout) * max_turns + 10.0)
+        if task_fields and "test_timeout_s" in task_fields:
+            bounded_timeout += _timeout(task_fields["test_timeout_s"]) * max_turns
         if not math.isfinite(bounded_timeout):
             raise ValueError("agent.timeout_s exceeds the platform timeout range")
     except (TypeError, ValueError, OverflowError) as error:
@@ -177,7 +184,7 @@ def _training_feedback(task: dict[str, Any], runner_result: dict[str, Any]) -> d
     }
 
 
-def evaluate() -> dict[str, Any]:
+def evaluate(*, manifest_loader=_manifest, invoke=_invoke, grade=_grade, training_feedback=_training_feedback) -> dict[str, Any]:
     started = time.monotonic()
     split = os.environ.get("NANORSI_SPLIT", "validation")
     manifest_path = Path(os.environ["NANORSI_TASK_MANIFEST"]).resolve()
@@ -188,13 +195,13 @@ def evaluate() -> dict[str, Any]:
     repeat_id = int(os.environ.get("NANORSI_REPEAT_ID", "0"))
     seed = int(os.environ.get("NANORSI_SEED", "0"))
     limit = int(os.environ.get("NANORSI_TRAIN_LIMIT", "4"))
-    tasks = _select(_manifest(manifest_path), split, limit, seed)
+    tasks = _select(manifest_loader(manifest_path), split, limit, seed)
     runner = Path.cwd() / "target" / "agent" / "run.py"
     cases: list[dict[str, Any]] = []
     total_usage = _usage_accumulator()
     for task in tasks:
-        runner_result, _ = _invoke(task, agent, repeat_id, runner)
-        score, status = _grade(task, runner_result)
+        runner_result, _ = invoke(task, agent, repeat_id, runner)
+        score, status = grade(task, runner_result)
         case_usage = runner_result.get("usage") if isinstance(runner_result.get("usage"), dict) else {"model_calls": 0, "input_tokens": None, "output_tokens": None, "cost_usd": None, "errors": ["missing_usage"]}
         case_trace = runner_result.get("trace") if isinstance(runner_result.get("trace"), list) else [{"event": "runner_error", "code": "invalid_trace"}]
         case_hashes = runner_result.get("skill_hashes") if isinstance(runner_result.get("skill_hashes"), dict) else {}
@@ -205,17 +212,17 @@ def evaluate() -> dict[str, Any]:
         case = {"task_id": task["task_id"], "group_id": task["group_id"], "repeat_id": repeat_id, "score": score, "status": status, "trace": case_trace, "skill_hashes": case_hashes, "usage": case_usage, "duration_ms": case_duration}
         if split == "train":
             case["task"] = {"task_id": task["task_id"], "instruction": task["instruction"], "input_files": task["input_files"]}
-            case["feedback"] = _training_feedback(task, runner_result)
+            case["feedback"] = training_feedback(task, runner_result)
         cases.append(case)
     score = sum(case["score"] for case in cases) / len(cases) if cases else 0.0
     elapsed = max(0, int((time.monotonic() - started) * 1000))
     return {"schema_version": 2, "status": "ok", "metrics": {"score": score}, "constraints": {"tests_passed": True}, "case_results": cases, "cost_usd": total_usage["cost_usd"] if total_usage["_known"]["cost_usd"] else None, "duration_ms": elapsed, "usage": _finish_usage(total_usage)}
 
 
-def main() -> None:
+def main(*, evaluator=evaluate) -> None:
     result_path = Path(os.environ.get("NANORSI_RESULT_PATH", "result.json"))
     try:
-        payload = evaluate()
+        payload = evaluator()
     except (OSError, ValueError, KeyError, json.JSONDecodeError) as error:
         payload = {"schema_version": 2, "status": "error", "metrics": {"score": 0.0}, "constraints": {"tests_passed": False}, "case_results": [], "cost_usd": None, "duration_ms": 0, "usage": {"model_calls": 0, "input_tokens": None, "output_tokens": None, "cost_usd": None, "errors": [str(error)[:120]]}}
     result_path.parent.mkdir(parents=True, exist_ok=True)

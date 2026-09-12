@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "expected_files": {
+        "solution.py": "def unique(items):\n    result = []\n    for item in items:\n        if item not in result:\n            result.append(item)\n    return result\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_unhashable_and_input(self):\n        values = [[2], [1], [2], {'a': 1}, {'a': 1}]\n        self.assertEqual(solution.unique(values), [[2], [1], {'a': 1}])\n        self.assertEqual(len(values), 5)\n    def test_generator(self):\n        self.assertEqual(solution.unique(x % 3 for x in range(8)), [0, 1, 2])\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_order(self):\n        self.assertEqual(solution.unique([3, 1, 3, 2]), [3, 1, 2])\n    def test_empty(self):\n        self.assertEqual(solution.unique([]), [])\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "stable-dedup",
+      "input_files": {
+        "solution.py": "def unique(items):\n    return sorted(set(items))\n"
+      },
+      "instruction": "Fix solution.py. unique(items) returns a list retaining the first occurrence of each equal value in input order. Accept any iterable and equality-comparable values, including unhashable lists and dictionaries. Do not mutate the input.",
+      "split": "train",
+      "task_id": "train-stable-dedup"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def chunks(items, size):\n    if size <= 0:\n        raise ValueError('size must be positive')\n    result, current = [], []\n    for item in items:\n        current.append(item)\n        if len(current) == size:\n            result.append(current)\n            current = []\n    if current:\n        result.append(current)\n    return result\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_generator_and_large_size(self):\n        self.assertEqual(solution.chunks(iter(range(5)), 3), [[0, 1, 2], [3, 4]])\n        self.assertEqual(solution.chunks([7], 10), [[7]])\n    def test_invalid_size(self):\n        for size in (0, -3):\n            with self.assertRaises(ValueError):\n                solution.chunks([], size)\n    def test_input(self):\n        values = [2, 4, 6]\n        solution.chunks(values, 1)\n        self.assertEqual(values, [2, 4, 6])\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_partial(self):\n        self.assertEqual(solution.chunks([1, 2, 3], 2), [[1, 2], [3]])\n    def test_empty(self):\n        self.assertEqual(solution.chunks([], 2), [])\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "iterable-chunks",
+      "input_files": {
+        "solution.py": "def chunks(items, size):\n    values = list(items)\n    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]\n"
+      },
+      "instruction": "Fix solution.py. chunks(items, size) returns a list of consecutive lists of at most size elements, including any final partial chunk. Accept finite iterables, including one-shot generators. size is an integer; raise ValueError when it is not positive. Empty input produces an empty list and input collections must remain unchanged.",
+      "split": "train",
+      "task_id": "train-iterable-chunks"
+    },
+    {
+      "expected_files": {
+        "solution.py": "from copy import deepcopy\n\ndef merge(base, override):\n    result = deepcopy(base)\n    for key, value in override.items():\n        if isinstance(result.get(key), dict) and isinstance(value, dict):\n            result[key] = merge(result[key], value)\n        else:\n            result[key] = deepcopy(value)\n    return result\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_independent_result(self):\n        base, override = {'left': {'x': [1]}}, {'right': [2]}\n        result = solution.merge(base, override)\n        result['left']['x'].append(9)\n        result['right'].append(8)\n        self.assertEqual(base, {'left': {'x': [1]}})\n        self.assertEqual(override, {'right': [2]})\n    def test_type_replacement(self):\n        self.assertEqual(solution.merge({'a': {'x': 1}, 'b': None},\n                                        {'a': None, 'b': {'y': 2}}),\n                         {'a': None, 'b': {'y': 2}})\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_nested(self):\n        self.assertEqual(solution.merge({'db': {'host': 'a', 'port': 9}},\n                                        {'db': {'port': 10}}),\n                         {'db': {'host': 'a', 'port': 10}})\n    def test_override(self):\n        self.assertEqual(solution.merge({'x': [1]}, {'x': [2]}), {'x': [2]})\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "nested-merge",
+      "input_files": {
+        "solution.py": "def merge(base, override):\n    return {**base, **override}\n"
+      },
+      "instruction": "Fix solution.py. merge(base, override) returns a recursively merged dictionary: recurse only when both values are dictionaries; otherwise the override replaces the base value. Retain keys absent from override. Neither input nor its nested mutable values may be changed or aliased by the result. Inputs contain acyclic built-in containers.",
+      "split": "train",
+      "task_id": "train-nested-merge"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def parse_bool(value, default=False):\n    if value is None:\n        return default\n    if isinstance(value, bool):\n        return value\n    if not isinstance(value, str):\n        raise TypeError('expected a string, boolean, or None')\n    token = value.strip().lower()\n    if token in {'true', 'yes', 'on', '1'}:\n        return True\n    if token in {'false', 'no', 'off', '0'}:\n        return False\n    raise ValueError('unknown boolean token')\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_vocabulary(self):\n        for value in ('OFF', ' no ', '0', False):\n            self.assertIs(solution.parse_bool(value), False)\n        for value in ('on', '1', 'True', True):\n            self.assertIs(solution.parse_bool(value), True)\n    def test_errors(self):\n        for value in ('', 'maybe'):\n            with self.assertRaises(ValueError):\n                solution.parse_bool(value)\n        for value in (0, 1, [], {}):\n            with self.assertRaises(TypeError):\n                solution.parse_bool(value)\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_false_string(self):\n        self.assertIs(solution.parse_bool('false'), False)\n    def test_true_and_default(self):\n        self.assertIs(solution.parse_bool(' YES '), True)\n        self.assertIs(solution.parse_bool(None, True), True)\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "boolean-setting",
+      "input_files": {
+        "solution.py": "def parse_bool(value, default=False):\n    if value is None:\n        return default\n    return bool(value)\n"
+      },
+      "instruction": "Fix solution.py. parse_bool(value, default=False) accepts None (return default), booleans (return unchanged), and strings. Strip surrounding whitespace and ignore case; true/yes/on/1 mean True and false/no/off/0 mean False. Other strings raise ValueError. Other input types raise TypeError; do not silently coerce numbers or containers.",
+      "split": "train",
+      "task_id": "train-boolean-setting"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def merge_intervals(intervals):\n    pairs = [tuple(pair) for pair in intervals]\n    if any(start > end for start, end in pairs):\n        raise ValueError('reversed interval')\n    result = []\n    for start, end in sorted(pairs):\n        if result and start <= result[-1][1]:\n            result[-1] = (result[-1][0], max(result[-1][1], end))\n        else:\n            result.append((start, end))\n    return result\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_touch_nested_and_points(self):\n        values = [(3, 3), (-4, 0), (0, 2), (-2, -1), (2, 3)]\n        self.assertEqual(solution.merge_intervals(iter(values)), [(-4, 3)])\n        self.assertEqual(values[0], (3, 3))\n    def test_gap_and_invalid(self):\n        self.assertEqual(solution.merge_intervals([(5, 5), (1, 2)]), [(1, 2), (5, 5)])\n        with self.assertRaises(ValueError):\n            solution.merge_intervals([(8, 2)])\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_overlap(self):\n        self.assertEqual(solution.merge_intervals([(4, 8), (1, 5)]), [(1, 8)])\n    def test_empty(self):\n        self.assertEqual(solution.merge_intervals([]), [])\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "interval-union",
+      "input_files": {
+        "solution.py": "def merge_intervals(intervals):\n    return sorted(tuple(pair) for pair in intervals)\n"
+      },
+      "instruction": "Fix solution.py. merge_intervals(intervals) returns sorted (start, end) tuples merging closed intervals that overlap or touch. Accept a finite iterable of numeric endpoint pairs. Reject reversed intervals with ValueError. Preserve the input, include zero-length intervals, and return [] for empty input.",
+      "split": "validation",
+      "task_id": "validation-interval-union"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def retry_call(operation, attempts, retry_on=(OSError,)):\n    if attempts <= 0:\n        raise ValueError('attempts must be positive')\n    for index in range(attempts):\n        try:\n            return operation()\n        except retry_on:\n            if index + 1 == attempts:\n                raise\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_exhaustion(self):\n        calls, failure = [], OSError('last')\n        def operation():\n            calls.append(1)\n            raise failure\n        with self.assertRaises(OSError) as caught:\n            solution.retry_call(operation, 3)\n        self.assertIs(caught.exception, failure)\n        self.assertEqual(len(calls), 3)\n    def test_other_exception_and_invalid(self):\n        calls = []\n        def operation():\n            calls.append(1)\n            raise ValueError('permanent')\n        with self.assertRaises(ValueError):\n            solution.retry_call(operation, 5)\n        self.assertEqual(len(calls), 1)\n        with self.assertRaises(ValueError):\n            solution.retry_call(operation, 0)\n        self.assertEqual(len(calls), 1)\n    def test_falsy_and_custom_exception(self):\n        self.assertIsNone(solution.retry_call(lambda: None, 3))\n        calls = []\n        def operation():\n            calls.append(1)\n            if len(calls) == 1:\n                raise LookupError('temporary')\n            return False\n        self.assertIs(solution.retry_call(operation, 2, (LookupError,)), False)\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_recovers(self):\n        calls = []\n        def operation():\n            calls.append(1)\n            if len(calls) < 2:\n                raise OSError('transient')\n            return 7\n        self.assertEqual(solution.retry_call(operation, 3), 7)\n        self.assertEqual(len(calls), 2)\n    def test_success(self):\n        self.assertEqual(solution.retry_call(lambda: 4, 1), 4)\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "bounded-retry",
+      "input_files": {
+        "solution.py": "def retry_call(operation, attempts, retry_on=(OSError,)):\n    return operation()\n"
+      },
+      "instruction": "Fix solution.py. retry_call(operation, attempts, retry_on=(OSError,)) invokes a zero-argument callable until success, retrying only the specified exception types. attempts is the total maximum number of calls, not extra retries; reject nonpositive integers with ValueError before calling. Return any successful value, even falsy. Propagate other exceptions immediately, and re-raise the final failure after exhaustion. No sleeps.",
+      "split": "validation",
+      "task_id": "validation-bounded-retry"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def get_path(data, path, default=None):\n    if path == '':\n        return data\n    value = data\n    for key in path.split('.'):\n        if not isinstance(value, dict) or key not in value:\n            return default\n        value = value[key]\n    return value\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_falsy_and_identity(self):\n        data = {'x': {'n': None, 'flag': False, 'count': 0}}\n        self.assertIs(solution.get_path(data, ''), data)\n        self.assertIsNone(solution.get_path(data, 'x.n', 99))\n        self.assertIs(solution.get_path(data, 'x.flag', True), False)\n        self.assertEqual(solution.get_path(data, 'x.count', 99), 0)\n    def test_scalar_and_numeric_keys(self):\n        self.assertEqual(solution.get_path({'a': [7]}, 'a.0', 'no'), 'no')\n        self.assertEqual(solution.get_path({'a': {'0': 7}}, 'a.0'), 7)\n        self.assertEqual(solution.get_path({'a': None}, 'a.x', 'no'), 'no')\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_nested(self):\n        self.assertEqual(solution.get_path({'app': {'port': 9}}, 'app.port'), 9)\n    def test_missing(self):\n        self.assertEqual(solution.get_path({}, 'x', 'fallback'), 'fallback')\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "nested-lookup",
+      "input_files": {
+        "solution.py": "def get_path(data, path, default=None):\n    return data.get(path, default)\n"
+      },
+      "instruction": "Fix solution.py. get_path(data, path, default=None) follows dot-separated keys through nested dictionaries. Return default only if a key is absent or traversal reaches a non-dictionary. Existing falsy values and None are valid results. An empty path returns data itself. Dots delimit literal string keys; do not interpret numeric segments as list indices. Do not modify data.",
+      "split": "validation",
+      "task_id": "validation-nested-lookup"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def compare_versions(left, right):\n    def parse(value):\n        parts = value.split('.')\n        if any(not part or any(c not in '0123456789' for c in part) for part in parts):\n            raise ValueError('invalid numeric version')\n        return [int(part) for part in parts]\n    a, b = parse(left), parse(right)\n    length = max(len(a), len(b))\n    a += [0] * (length - len(a))\n    b += [0] * (length - len(b))\n    return (a > b) - (a < b)\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_padding_and_leading_zeros(self):\n        self.assertEqual(solution.compare_versions('01.002', '1.2.0.0'), 0)\n        self.assertEqual(solution.compare_versions('0.0.1', '0.1'), -1)\n    def test_invalid(self):\n        for bad in ('', '1..2', '+1', '1. 2', '1.', '\u0661'):\n            with self.assertRaises(ValueError):\n                solution.compare_versions(bad, '1')\n            with self.assertRaises(ValueError):\n                solution.compare_versions('1', bad)\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_numeric_order(self):\n        self.assertEqual(solution.compare_versions('1.10', '1.9'), 1)\n    def test_equal(self):\n        self.assertEqual(solution.compare_versions('2.3', '2.3'), 0)\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "numeric-version",
+      "input_files": {
+        "solution.py": "def compare_versions(left, right):\n    return (left > right) - (left < right)\n"
+      },
+      "instruction": "Fix solution.py. compare_versions(left, right) compares nonempty strings of dot-separated ASCII nonnegative integer components. Return -1, 0, or 1. Compare numerically, treating missing trailing components as zeros; leading zeros are allowed. Empty components, signs, whitespace, and non-ASCII digits are invalid and raise ValueError. This is a numeric release version utility, not a semantic-version prerelease parser.",
+      "split": "validation",
+      "task_id": "validation-numeric-version"
+    },
+    {
+      "expected_files": {
+        "solution.py": "import csv\nimport io\n\ndef parse_record(text):\n    try:\n        rows = list(csv.reader(io.StringIO(text, newline=''), strict=True))\n    except csv.Error as exc:\n        raise ValueError('invalid CSV record') from exc\n    if not rows:\n        return []\n    if len(rows) != 1:\n        raise ValueError('expected one record')\n    return rows[0]\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_escapes_and_empty(self):\n        self.assertEqual(solution.parse_record('\"a\"\"b\",,\"x\\ny\"\\r\\n'), ['a\"b', '', 'x\\ny'])\n        self.assertEqual(solution.parse_record(''), [])\n        self.assertEqual(solution.parse_record(' a ,b,'), [' a ', 'b', ''])\n    def test_rejects_invalid_records(self):\n        for value in ('a\\nb\\n', '\"unterminated', '\"closed\"junk,x'):\n            with self.assertRaises(ValueError):\n                solution.parse_record(value)\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_quoted_comma(self):\n        self.assertEqual(solution.parse_record('a,\"b,c\",d'), ['a', 'b,c', 'd'])\n    def test_plain(self):\n        self.assertEqual(solution.parse_record('a,b'), ['a', 'b'])\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "csv-record",
+      "input_files": {
+        "solution.py": "def parse_record(text):\n    return text.split(',')\n"
+      },
+      "instruction": "Fix solution.py. parse_record(text) parses exactly one comma-separated CSV record into a list of strings, respecting double-quoted fields, embedded commas/newlines and doubled quote escapes. Use standard-library CSV semantics with strict parsing and no whitespace trimming. An empty string yields []. Allow a trailing record terminator; multiple records or malformed quoting raise ValueError.",
+      "split": "test",
+      "task_id": "test-csv-record"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def rolling_mean(values, window):\n    if window <= 0:\n        raise ValueError('window must be positive')\n    values = list(values)\n    return [sum(values[i:i + window]) / window\n            for i in range(len(values) - window + 1)]\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_short_and_generator(self):\n        self.assertEqual(solution.rolling_mean([1], 3), [])\n        self.assertEqual(solution.rolling_mean([], 2), [])\n        self.assertEqual(solution.rolling_mean(iter([-2, 0, 8, -2]), 3), [2, 2])\n    def test_invalid_and_input(self):\n        for window in (0, -2):\n            with self.assertRaises(ValueError):\n                solution.rolling_mean([], window)\n        values = [1.0, 3.0, 5.0]\n        solution.rolling_mean(values, 2)\n        self.assertEqual(values, [1.0, 3.0, 5.0])\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_sliding(self):\n        self.assertEqual(solution.rolling_mean([1, 2, 3, 4], 2), [1.5, 2.5, 3.5])\n    def test_single(self):\n        self.assertEqual(solution.rolling_mean([2, 4], 1), [2.0, 4.0])\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "rolling-mean",
+      "input_files": {
+        "solution.py": "def rolling_mean(values, window):\n    values = list(values)\n    return [sum(values[i:i + window]) / window for i in range(0, len(values), window)]\n"
+      },
+      "instruction": "Fix solution.py. rolling_mean(values, window) returns the arithmetic mean of each complete consecutive window in a finite iterable of real numbers, moving one position at a time. No partial windows; input shorter than window yields []. window is an integer and must be positive, otherwise raise ValueError. Do not mutate input collections.",
+      "split": "test",
+      "task_id": "test-rolling-mean"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def dependency_order(graph):\n    pending = {node: set(deps) for node, deps in graph.items()}\n    for deps in list(pending.values()):\n        for dependency in deps:\n            pending.setdefault(dependency, set())\n    result = []\n    while pending:\n        ready = sorted(node for node, deps in pending.items() if not deps)\n        if not ready:\n            raise ValueError('dependency cycle')\n        node = ready[0]\n        result.append(node)\n        del pending[node]\n        for deps in pending.values():\n            deps.discard(node)\n    return result\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_missing_nodes_duplicates_and_ready_order(self):\n        graph = {'b': ['z', 'z'], 'a': ['b'], 'y': []}\n        self.assertEqual(solution.dependency_order(graph), ['y', 'z', 'b', 'a'])\n        self.assertEqual(graph['b'], ['z', 'z'])\n        self.assertEqual(solution.dependency_order({'b': [], 'a': [], 'c': ['a']}), ['a', 'b', 'c'])\n    def test_cycles(self):\n        for graph in ({'a': ['a']}, {'a': ['b'], 'b': ['a'], 'c': []}):\n            with self.assertRaises(ValueError):\n                solution.dependency_order(graph)\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_dependency_first(self):\n        self.assertEqual(solution.dependency_order({'app': ['lib'], 'lib': []}), ['lib', 'app'])\n    def test_empty(self):\n        self.assertEqual(solution.dependency_order({}), [])\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "dependency-order",
+      "input_files": {
+        "solution.py": "def dependency_order(graph):\n    return sorted(graph)\n"
+      },
+      "instruction": "Fix solution.py. dependency_order(graph) returns all string node names in dependency-before-dependent order. graph maps each node to an iterable of dependencies; dependencies missing as keys are also nodes. At each step choose the lexicographically smallest currently ready node. Ignore duplicate dependency edges. Raise ValueError for any cycle, including a self-cycle. Empty input gives []; never mutate graph or its values.",
+      "split": "test",
+      "task_id": "test-dependency-order"
+    },
+    {
+      "expected_files": {
+        "solution.py": "def redact_headers(headers, sensitive=('authorization', 'cookie', 'x-api-key')):\n    names = {name.casefold() for name in sensitive}\n    return [(name, '[REDACTED]' if name.casefold() in names else value)\n            for name, value in headers]\n"
+      },
+      "grading": {
+        "kind": "python-unittest",
+        "private_tests": {
+          "test_private.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_duplicates_and_generators(self):\n        values = [('X-Token', 'one'), ('x-token', 'two'), ('Other', '')]\n        self.assertEqual(solution.redact_headers(iter(values), iter(['X-TOKEN'])),\n                         [('X-Token', '[REDACTED]'), ('x-token', '[REDACTED]'), ('Other', '')])\n        self.assertEqual(values[0][1], 'one')\n    def test_disabled_and_defaults(self):\n        values = [('Cookie', 'a=b'), ('X-API-KEY', 'key')]\n        self.assertEqual(solution.redact_headers(values, []), values)\n        self.assertEqual(solution.redact_headers(values),\n                         [('Cookie', '[REDACTED]'), ('X-API-KEY', '[REDACTED]')])\n\n"
+        },
+        "public_tests": {
+          "test_public.py": "import unittest\nimport solution\n\n\nclass Checks(unittest.TestCase):\n    def test_case_insensitive(self):\n        self.assertEqual(solution.redact_headers([('Authorization', 'secret'), ('Accept', '*/*')]),\n                         [('Authorization', '[REDACTED]'), ('Accept', '*/*')])\n    def test_empty(self):\n        self.assertEqual(solution.redact_headers([]), [])\n\n"
+        },
+        "timeout_s": 2
+      },
+      "group_id": "header-redaction",
+      "input_files": {
+        "solution.py": "def redact_headers(headers, sensitive=('authorization', 'cookie', 'x-api-key')):\n    return [(name, '[REDACTED]' if name in sensitive else value) for name, value in headers]\n"
+      },
+      "instruction": "Fix solution.py. redact_headers(headers, sensitive=('authorization', 'cookie', 'x-api-key')) returns a fresh list of (name, value) pairs in original order, replacing sensitive values with '[REDACTED]'. Match names case-insensitively, preserve original name spelling, retain duplicate headers, and leave nonsensitive values unchanged. Accept any finite iterable of pairs and any finite iterable of sensitive string names; do not mutate inputs. An empty sensitive collection disables redaction.",
+      "split": "test",
+      "task_id": "test-header-redaction"
+    }
+  ]
+}

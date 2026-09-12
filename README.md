@@ -2,13 +2,13 @@
   <img src="docs/assets/brand/nanorsi-hero.png" alt="nanoRSI — Small code. Measurable change." width="100%">
 </p>
 
-<p align="center"><strong>Improve agent skills. Measure every change.</strong><br>A tiny, readable experiment lab for skills and agent harnesses.</p>
+<p align="center"><strong>Make coding agents learn from test failures.</strong><br>Evolve reusable skills. Check the improvement on unseen tasks.</p>
 
 <p align="center">
   <a href="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml"><img src="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&amp;logoColor=white" alt="Python 3.11+"></a>
   <a href="pyproject.toml"><img src="https://img.shields.io/badge/runtime_dependencies-0-f4512c" alt="Zero third-party runtime dependencies"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.2.0-f4512c" alt="Version 0.2.0"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.3.0-f4512c" alt="Version 0.3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-171717" alt="Apache-2.0 license"></a>
 </p>
 
@@ -30,17 +30,17 @@ The model weights stay fixed. The skills and harness are what you study.
 
 | Small enough to read | Complete enough to run | Built for inspection |
 | :---: | :---: | :---: |
-| **~1.8k lines** of Python core | **One** parent, candidate and loop | **Every attempt** leaves evidence |
+| **<2.5k lines** of Python core | **One** parent, candidate and loop | **Every attempt** leaves evidence |
 | Standard library + Git | Training → validation → final test | Patches, traces, decisions and costs |
 
 ## Why nanoRSI
 
-- **A concrete place to start.** A reference agent, three skills, a configurable model bridge and 90 grouped local task fixtures.
+- **Executable Python tasks.** Twelve repair tasks with public tests for debugging and separate private tests for behavioral grading. A configurable model bridge and three procedural skills are included.
 - **A loop you can understand.** Sequential attempts, ordinary files, exact Git snapshots and a single readable [loop module](src/nanorsi/loop.py).
 - **Useful comparisons.** Compare initial skills, no skills and evolved skills. Switch between a frozen and a self-use proposer harness.
-- **An inspectable result.** Open the patch, trace a failure, check the selected version and see where usage data is unknown.
+- **A report you can share.** Standalone HTML and Markdown show final comparisons, search decisions, failed attempts and known/unknown costs.
 
-The 90 tasks are development fixtures. The 81 engineering tests exercise the protocol; real-model gains are an experiment to run, not an assumed outcome.
+The coding suite is an independently authored starter pack, not a published general-purpose benchmark. The existing 90 text-edit tasks remain protocol fixtures. Engineering tests and reference solutions establish correctness of the lab; model gains require actual model experiments.
 
 ## Quick start
 
@@ -67,6 +67,35 @@ nanorsi verify --workspace ./artifact-demo
 <p align="center"><img src="docs/assets/readme/terminal-demo.svg" alt="A recorded offline fixture run creates a candidate, accepts it, writes a report and verifies the lineage." width="100%"></p>
 
 <sub>Terminal visualization of an actual scripted fixture run. <a href="docs/assets/readme/demo-transcript.txt">Read the transcript</a> · <a href="docs/assets/readme/demo-evidence.json">Inspect the captured output</a>. Fixture scores demonstrate protocol behavior.</sub>
+
+## Run a coding experiment
+
+```bash
+nanorsi new coding ./coding-lab --goal "Learn reliable Python repair skills"
+# Configure model and base_url in coding-lab/nanorsi.toml before baseline.
+nanorsi doctor --workspace ./coding-lab
+nanorsi run --workspace ./coding-lab
+nanorsi freeze --workspace ./coding-lab --repeats 1
+nanorsi final-test --workspace ./coding-lab
+nanorsi report --workspace ./coding-lab --format html
+nanorsi verify --workspace ./coding-lab
+```
+
+Open `coding-lab/reports/report.html`. Compare **initial skills**, **no skills** and **evolved skills** on the same frozen task/repeat pairs. The report preserves negative results and unknown costs.
+
+During each task, the agent can read/edit Python files and call the fixed `test` tool for public unittest feedback. Private grading tests and reference implementations stay out of model requests. Only reusable skills evolve between attempts; the scorer, task pack and model settings stay fixed. Equivalent correct implementations pass even when their source differs from the reference.
+
+The starter covers twelve utility repairs across parsing, collections and configuration, split into four train, four validation and four final-test tasks. The default three-attempt search can consume 40 task episodes; the one-repeat final panel adds 12. Each episode allows up to eight model calls, with proposal calls additional. Configure a local endpoint or choose a hosted budget before running.
+
+**No model available yet?** Validate the task pack offline:
+
+```bash
+python examples/coding_tasks/prepare.py --check
+```
+
+This checks broken starters and reference solutions; it does not simulate or claim learned model improvement.
+
+[Full coding walkthrough and task format](docs/CODING_LAB.md) · [中文指南](docs/CODING_LAB.zh-CN.md)
 
 ## How it works
 

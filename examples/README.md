@@ -32,3 +32,7 @@ PYTHONPATH=src python examples/compare.py report-a.json report-b.json
 Repeated deployments inside one report are summarized separately from
 independent experiment identity. Reports with the same
 `experiment_id`/`arm`/`seed` triple are rejected as duplicates.
+
+## Executable coding tasks
+
+The coding starter adds twelve Python utility repairs with semantic unittest grading. Validate broken starters and reference solutions without a model using `python examples/coding_tasks/prepare.py --check`, or export a manifest with `python examples/coding_tasks/prepare.py /tmp/coding.json`. These are authored starter tasks, not externally validated benchmark results. See the [coding lab guide](../docs/CODING_LAB.md) and [Chinese guide](../docs/CODING_LAB.zh-CN.md).

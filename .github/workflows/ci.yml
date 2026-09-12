@@ -27,6 +27,30 @@ jobs:
           nanorsi baseline --workspace ./artifact-demo
           nanorsi step --workspace ./artifact-demo
           nanorsi verify --workspace ./artifact-demo
+          nanorsi report --workspace ./artifact-demo --format html
           nanorsi new skills ./skills-contract
           test -f ./skills-contract/tasks/manifest.json
           test -f ./skills-contract/adapters/model.py
+          nanorsi new coding ./coding-contract
+          test -f ./coding-contract/evaluator/_skills.py
+          test -f ./coding-contract/adapters/python_tests.py
+          python examples/coding_tasks/prepare.py --check
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Build and install wheel
+        run: |
+          python -m pip wheel --no-deps --wheel-dir dist .
+          python -m venv .wheel-venv
+          .wheel-venv/bin/python -m pip install --no-deps dist/*.whl
+      - name: Installed coding template
+        run: |
+          .wheel-venv/bin/nanorsi new coding ./coding-wheel
+          test -f ./coding-wheel/evaluator/_skills.py
+          test -f ./coding-wheel/adapters/python_tests.py
+          .wheel-venv/bin/python -c 'import importlib.metadata; assert not importlib.metadata.requires("nanorsi")'

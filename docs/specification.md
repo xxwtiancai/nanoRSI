@@ -85,3 +85,11 @@ The final report has schema 2, `manifest_hash`, `comparison_hash`, experiment/ar
 6. Legacy heldout remains selection data. V1 experiments are never relabelled as independent final tests; v2 starts from fresh workspaces.
 7. The model template remains an external command contract, without model training in the core.
 8. Provider failures and unknown cost stay visible. POSIX timeout cleanup covers process groups; external sandboxing, remote jobs and abrupt host death need their own operational controls.
+
+## Coding starter and evidence reports (v0.3)
+
+`nanorsi new coding PATH` layers the coding task pack, grader and procedural skills over the skills starter. It uses the existing schema-v2 lifecycle. Task manifests retain identity, split, `input_files` and `expected_files`; in coding tasks `expected_files` contains reference source for suite verification, not exact-match grading. `grading.kind` is `python-unittest`, with separate `public_tests`, `private_tests` and `timeout_s`. Public tests are supplied through the coding evaluator to the fixed `test` action. Private tests and references are excluded from model requests and training feedback. Candidate behavior is graded in bounded fresh subprocesses.
+
+The shared test helper lives under protected `adapters/`, included in the frozen experiment identity. The default mutable surface stays `target/agent/skills/**`. Source groups, comparison identity, final-test freezing and lineage requirements are unchanged. Local executable code remains trusted; this is not a hardened sandbox.
+
+`nanorsi report --format html` writes standalone `reports/report.html` alongside Markdown and raw lineage JSON. Final summaries require all frozen conditions and repeats, identical task/repeat pairs and finite bounded scores. Repeats are averaged within tasks, then tasks equally weighted. Incomplete final panels show pending evaluation instead of an improvement claim. All dynamic HTML is escaped. Search/test costs disclose coverage and preserve unknown values.
