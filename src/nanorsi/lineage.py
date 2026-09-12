@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import hmac
 import json
+import os
 import secrets
+import tempfile
 from hashlib import sha256
 from pathlib import Path
 
@@ -38,8 +40,20 @@ class LineageStore:
         path = root / "lineage.jsonl"
         key_path = control / "lineage.key"
         if not key_path.exists():
-            key_path.write_bytes(secrets.token_bytes(32))
-            key_path.chmod(0o600)
+            descriptor, temporary = tempfile.mkstemp(prefix=".lineage-key-", dir=control)
+            try:
+                with os.fdopen(descriptor, "wb") as handle:
+                    handle.write(secrets.token_bytes(32))
+                    handle.flush()
+                    os.fsync(handle.fileno())
+                try:
+                    os.link(temporary, key_path)
+                except FileExistsError:
+                    pass
+            finally:
+                Path(temporary).unlink(missing_ok=True)
+        if len(key_path.read_bytes()) != 32:
+            raise LineageError("lineage signing key must contain exactly 32 bytes")
         path.touch(exist_ok=True)
         return cls(path, key_path)
 
@@ -102,10 +116,16 @@ class LineageStore:
 
     def recover_attempts(self) -> None:
         events = self.verify()
-        done = {e.get("attempt_id") for e in events if e.get("event_type") in {"generation", "attempt_failed"}}
+        done = {e.get("attempt_id") for e in events if e.get("event_type") in {"generation", "attempt_failed", "candidate_evaluated"}}
         for event in events:
             if event.get("event_type") == "attempt_started" and event["attempt_id"] not in done:
+                artifacts = {}
+                if event.get("candidate_id") and event.get("run_dir"):
+                    directory = contained_path(self.path.parent, event["run_dir"])
+                    artifacts = {p.relative_to(directory).as_posix(): artifact(self.path.parent, p)
+                                 for p in directory.rglob("*") if p.is_file() and not p.is_symlink()}
                 self.append({"event_type": "attempt_failed", "attempt_id": event["attempt_id"],
+                             "candidate_id": event.get("candidate_id"), "artifacts": artifacts,
                              "decision": "interrupted", "reason": "previous process stopped before completion"})
 
 

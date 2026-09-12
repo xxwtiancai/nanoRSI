@@ -49,6 +49,7 @@ class ExperimentConfig:
     schema_version: int = 1
     seed: int = 0
     arm: str = "frozen"
+    final_conditions: list[str] = field(default_factory=lambda: ["baseline", "candidate"])
 
 
 @dataclass(frozen=True)
@@ -130,10 +131,20 @@ def _v2(raw: dict, experiment: dict) -> tuple[dict, dict]:
     if experiment.get("schema_version", 1) == 1:
         return agent, data
     from .paths import normalize_relative_path
-    if experiment.get("mode") != "harness":
-        raise ConfigError("schema_version 2 requires harness mode")
     if experiment.get("arm", "frozen") not in {"frozen", "self-use"}:
         raise ConfigError("experiment.arm must be frozen or self-use")
+    if agent or experiment.get("mode") == "harness":
+        _validate_agent(agent)
+    if raw.get("evaluator", {}).get("heldout_enabled", False):
+        raise ConfigError("schema 2 uses validation and frozen final-test, not legacy heldout")
+    try:
+        normalize_relative_path(data.get("manifest", ""))
+    except (ValueError, TypeError) as error:
+        raise ConfigError("data.manifest must be a contained relative path") from error
+    return agent, data
+
+
+def _validate_agent(agent):
     _command(agent.get("model_command"), "agent.model_command")
     if not isinstance(agent.get("model"), str) or not agent["model"]:
         raise ConfigError("agent.model must be configured")
@@ -152,13 +163,55 @@ def _v2(raw: dict, experiment: dict) -> tuple[dict, dict]:
         validate_endpoint(agent['base_url'])
     if agent.get('token_parameter', 'max_tokens') not in {'max_tokens', 'max_completion_tokens'}:
         raise ConfigError('agent.token_parameter must be max_tokens or max_completion_tokens')
-    if raw.get("evaluator", {}).get("heldout_enabled", False):
-        raise ConfigError("schema 2 uses validation and frozen final-test, not legacy heldout")
+    if agent.get('thinking', 'enabled') not in {'enabled', 'disabled'}:
+        raise ConfigError('agent.thinking must be enabled or disabled')
+
+
+def _final_conditions(experiment):
+    default = ["baseline", "no-skills", "candidate"] if experiment.get("mode") == "harness" else ["baseline", "candidate"]
+    value = experiment.get("final_conditions", default)
+    if (not isinstance(value, list) or any(not isinstance(x, str) for x in value)
+            or len(value) != len(set(value)) or not {"baseline", "candidate"} <= set(value)
+            or not set(value) <= {"baseline", "no-skills", "candidate"}):
+        raise ConfigError("experiment.final_conditions must be a unique subset of baseline/no-skills/candidate containing baseline and candidate")
+    return list(value)
+
+
+def _fixed_training_command(root, command, surface):
+    from .contracts import training_entrypoints
+    from .surface import check_paths
+    root = root.resolve()
     try:
-        normalize_relative_path(data.get("manifest", ""))
+        sources = training_entrypoints(root, command)
+    except (IndexError, ValueError) as error:
+        raise ConfigError(f"invalid training.command wrapper: {error}") from error
+    for path in sources:
+        for source in [path, path.resolve()]:
+            if source.is_relative_to(root) and not check_paths([source.relative_to(root).as_posix()], surface["allow"], surface.get("deny", [])):
+                raise ConfigError("training.command references a mutable local trainer; place it under protected trainer/")
+
+
+def _training(raw, mode, version, surface, root):
+    value = raw.get("training")
+    if mode == "model" and (not isinstance(value, dict) or not value.get("command")):
+        raise ConfigError("model mode requires training.command to be configured")
+    if value is None or version == 1:
+        return value
+    from .paths import normalize_relative_path
+    from .surface import SurfacePolicy
+    value = dict(_mapping(value, "training"))
+    value["command"] = _command(value.get("command"), "training").command
+    _fixed_training_command(root, value["command"], surface)
+    value["compute_budget_s"] = _number(value.get("compute_budget_s", 60), "training.compute_budget_s")
+    if value["compute_budget_s"] <= 0:
+        raise ConfigError("training.compute_budget_s must be positive")
+    value["max_checkpoint_bytes"] = _integer(value.get("max_checkpoint_bytes", 10_000_000), "training.max_checkpoint_bytes")
+    try:
+        value["checkpoint"] = normalize_relative_path(value.get("checkpoint", "target/model.json"))
+        SurfacePolicy(surface["allow"], surface.get("deny", [])).validate_paths([value["checkpoint"]])
     except (ValueError, TypeError) as error:
-        raise ConfigError("data.manifest must be a contained relative path") from error
-    return agent, data
+        raise ConfigError(f"training.checkpoint must be a mutable contained file: {error}") from error
+    return value
 
 
 def _read(path: Path) -> dict:
@@ -195,9 +248,7 @@ def load_config(path: Path) -> Config:
     direction = evaluator.get("direction", "maximize")
     if direction not in {"maximize", "minimize"}:
         raise ConfigError("evaluator.direction must be maximize or minimize")
-    training = raw.get("training")
-    if mode == "model" and (not isinstance(training, dict) or not training.get("command")):
-        raise ConfigError("model mode requires training.command to be configured")
+    training = _training(raw, mode, version, surface, path.parent)
     return _build(path, experiment, surface, proposer, evaluator, gate, budget, training, raw, agent, data)
 
 
@@ -206,7 +257,7 @@ def _build(path, experiment, surface, proposer, evaluator, gate, budget, trainin
     allow = surface["allow"]
     return Config(
         ExperimentConfig(str(experiment.get("id", path.parent.name)), str(experiment.get("goal", "")), mode,
-                         experiment.get("schema_version", 1), _integer(experiment.get("seed", 0), "seed", 0), experiment.get("arm", "frozen")),
+                         experiment.get("schema_version", 1), _integer(experiment.get("seed", 0), "seed", 0), experiment.get("arm", "frozen"), _final_conditions(experiment)),
         SurfaceConfig([str(x) for x in allow], [str(x) for x in surface.get("deny", [])]),
         _command(proposer.get("command"), "proposer", _integer(proposer.get("timeout_s", 60), "proposer.timeout_s")),
         EvaluatorConfig(

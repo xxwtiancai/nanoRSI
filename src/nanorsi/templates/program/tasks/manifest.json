@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "task_id": "train-basic",
+      "group_id": "train-batch-basic",
+      "split": "train",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"Travel\", \"amount\": 12}, {\"category\": \"travel\", \"amount\": 3.5}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"travel\": \"15.50\"}}\n"
+      }
+    },
+    {
+      "task_id": "train-currency",
+      "group_id": "train-batch-currency",
+      "split": "train",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \" Food \", \"amount\": \"$1,200.25\"}, {\"category\": \"food\", \"amount\": \"€3.75\"}, {\"category\": \"food\", \"amount\": \"invalid\"}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"food\": \"1204.00\"}}\n"
+      }
+    },
+    {
+      "task_id": "train-accounting",
+      "group_id": "train-batch-accounting",
+      "split": "train",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"sales\", \"amount\": \"(17.50)\"}, {\"category\": \"sales\", \"amount\": \"20.005\"}, {\"category\": \"sales\", \"amount\": true}, {\"category\": \"sales\", \"amount\": null}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"sales\": \"2.51\"}}\n"
+      }
+    },
+    {
+      "task_id": "train-status",
+      "group_id": "train-batch-status",
+      "split": "train",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"  \", \"amount\": \"£7.25\", \"status\": \" POSTED \"}, {\"category\": \"sales\", \"amount\": 80, \"status\": \"pending\"}, {\"amount\": 0}, {\"category\": \"x\", \"amount\": \"NaN\"}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"uncategorized\": \"7.25\"}}\n"
+      }
+    },
+    {
+      "task_id": "validation-basic",
+      "group_id": "validation-batch-basic",
+      "split": "validation",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"Books\", \"amount\": 19}, {\"category\": \"books\", \"amount\": 1.125}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"books\": \"20.13\"}}\n"
+      }
+    },
+    {
+      "task_id": "validation-currency",
+      "group_id": "validation-batch-currency",
+      "split": "validation",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \" Tools \", \"amount\": \"£2,001.10\"}, {\"category\": \"tools\", \"amount\": \"$8.90\"}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"tools\": \"2010.00\"}}\n"
+      }
+    },
+    {
+      "task_id": "validation-accounting",
+      "group_id": "validation-batch-accounting",
+      "split": "validation",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"returns\", \"amount\": \"(4.25)\"}, {\"category\": \"returns\", \"amount\": 5.5}, {\"category\": \"returns\", \"amount\": false}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"returns\": \"1.25\"}}\n"
+      }
+    },
+    {
+      "task_id": "validation-status",
+      "group_id": "validation-batch-status",
+      "split": "validation",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"\", \"amount\": \"18.005\", \"status\": \"Posted\"}, {\"category\": \"fee\", \"amount\": 40, \"status\": \"void\"}, {\"amount\": \"\", \"status\": \"posted\"}, {\"amount\": \"Infinity\"}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 1, \"totals\": {\"uncategorized\": \"18.01\"}}\n"
+      }
+    },
+    {
+      "task_id": "test-basic",
+      "group_id": "test-batch-basic",
+      "split": "test",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"Hardware\", \"amount\": 44}, {\"category\": \"hardware\", \"amount\": 2.015}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"hardware\": \"46.02\"}}\n"
+      }
+    },
+    {
+      "task_id": "test-currency",
+      "group_id": "test-batch-currency",
+      "split": "test",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"Shipping\", \"amount\": \"€9,800.05\"}, {\"category\": \"shipping\", \"amount\": \"£199.95\"}, {\"category\": \"shipping\", \"amount\": \"--\"}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"shipping\": \"10000.00\"}}\n"
+      }
+    },
+    {
+      "task_id": "test-accounting",
+      "group_id": "test-batch-accounting",
+      "split": "test",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"credit\", \"amount\": \"($123.45)\"}, {\"category\": \"credit\", \"amount\": \"125.00\"}, {\"category\": \"credit\", \"amount\": true}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"credit\": \"1.55\"}}\n"
+      }
+    },
+    {
+      "task_id": "test-status",
+      "group_id": "test-batch-status",
+      "split": "test",
+      "instruction": "Summarize records.json into summary.json. Include only rows with absent status or status equal to posted after strip/casefold. Normalize category using strip/casefold and use uncategorized for blank or missing categories. Parse finite numeric amounts, numeric strings with grouping commas, optional leading $, €, or £, and accounting parentheses for negatives. Skip null, booleans, empty, invalid, and nonfinite amounts. Count accepted rows including zero; sum exactly and round final category totals to two decimals using ROUND_HALF_UP. Output {\"count\": integer, \"totals\": {category: \"two-decimal amount\"}} as JSON.",
+      "input_files": {
+        "records.json": "{\"records\": [{\"category\": \"\\t\", \"amount\": \"$5.005\", \"status\": \" posted\\t\"}, {\"category\": \"ignored\", \"amount\": 100, \"status\": \"PENDING\"}, {\"amount\": 0, \"status\": \"POSTED\"}]}\n"
+      },
+      "expected_files": {
+        "summary.json": "{\"count\": 2, \"totals\": {\"uncategorized\": \"5.01\"}}\n"
+      }
+    }
+  ]
+}

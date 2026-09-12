@@ -20,6 +20,9 @@ EXPECTED_MODULES = {
     "loop.py",
     "config.py",
     "configure.py",
+    "contracts.py",
+    "training.py",
+    "population.py",
     "paths.py",
     "hashing.py",
     "surface.py",
@@ -47,7 +50,7 @@ class ArchitectureTests(unittest.TestCase):
             self.fail("nanorsi core source directory is missing")
         python_files = sorted(SRC.glob("*.py"))
         total = sum(len(path.read_text(encoding="utf-8").splitlines()) for path in python_files)
-        self.assertLessEqual(total, 2500)
+        self.assertLessEqual(total, 5000)
         for path in python_files:
             with self.subTest(path=path.name):
                 self.assertLessEqual(len(path.read_text(encoding="utf-8").splitlines()), 300)
@@ -70,7 +73,7 @@ class ArchitectureTests(unittest.TestCase):
             self.fail("nanorsi core source directory is missing")
         allowed_roots = {"nanorsi", "__future__"}
         allowed_stdlib = {
-            "argparse", "ast", "contextlib", "dataclasses", "datetime", "difflib",
+            "argparse", "ast", "concurrent", "contextlib", "dataclasses", "datetime", "difflib",
             "enum", "fnmatch", "getpass", "hashlib", "hmac", "html", "importlib", "json", "math",
             "os", "pathlib", "random", "re", "secrets", "shlex", "shutil", "stat", "subprocess", "sys",
             "tempfile", "time", "tomllib", "typing", "unittest", "urllib", "uuid", "warnings",

@@ -1,0 +1,42 @@
+[experiment]
+id = "program-lab"
+goal = "{{GOAL}}"
+mode = "artifact"
+schema_version = 2
+seed = 0
+arm = "frozen"
+
+[surface]
+allow = ["target/program.py"]
+
+[agent]
+model_command = ["python3", "adapters/model.py"]
+model = "configure-your-model"
+base_url = "http://localhost:8000/v1"
+max_turns = 8
+max_tokens = 8192
+timeout_s = 120
+skills = []
+
+[data]
+manifest = "tasks/manifest.json"
+
+[proposer]
+command = ["python3", "proposer/propose.py"]
+timeout_s = 150
+
+[evaluator]
+command = ["python3", "evaluator/evaluate.py"]
+timeout_s = 900
+primary_metric = "score"
+direction = "maximize"
+heldout_enabled = false
+
+[gate]
+minimum_improvement = 0.01
+required_constraints = ["tests_passed"]
+
+[budget]
+max_steps = 5
+max_episodes = 400
+max_output_bytes = 1000000

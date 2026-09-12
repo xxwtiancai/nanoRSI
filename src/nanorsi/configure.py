@@ -90,7 +90,7 @@ def _replace_config(path: Path, text: str, expected: dict) -> None:
 
 def configure(root: Path, *, model: str, base_url: str, api_key_file: Path | None = None,
               prompt_key: bool = False, no_api_key: bool = False, max_steps: int | None = None,
-              max_episodes: int | None = None, token_parameter: str | None = None) -> str:
+              max_episodes: int | None = None, token_parameter: str | None = None, thinking: str | None = None) -> str:
     root = root.resolve()
     if sum([api_key_file is not None, prompt_key, no_api_key]) != 1:
         raise ValueError('choose exactly one of --prompt-key, --api-key-file or --no-api-key')
@@ -101,6 +101,10 @@ def configure(root: Path, *, model: str, base_url: str, api_key_file: Path | Non
         if token_parameter not in {'max_tokens', 'max_completion_tokens'}:
             raise ValueError('token_parameter must be max_tokens or max_completion_tokens')
         updates['token_parameter'] = token_parameter
+    if thinking is not None:
+        if thinking not in {'enabled', 'disabled'}:
+            raise ValueError('thinking must be enabled or disabled')
+        updates['thinking'] = thinking
     budget = {key: value for key, value in [('max_steps', max_steps), ('max_episodes', max_episodes)] if value is not None}
     if any(type(value) is not int or value <= 0 for value in budget.values()):
         raise ValueError('attempt and episode budgets must be positive integers')
@@ -117,7 +121,7 @@ def _configure_locked(root: Path, updates: dict, budget: dict, api_key_file: Pat
     expected = _read(path)
     experiment = expected.get('experiment')
     if not isinstance(experiment, dict) or experiment.get('schema_version') != 2:
-        raise ValueError('configure requires a coding or skills schema-v2 workspace')
+        raise ValueError('configure requires a schema-v2 workspace with an agent table')
     text, created = path.read_text(encoding='utf-8'), None
     if api_key_file is not None:
         key = credential_path(root, str(api_key_file.expanduser().absolute()))

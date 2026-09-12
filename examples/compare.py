@@ -93,8 +93,8 @@ def _timing_summary(values: list[float | None]) -> dict[str, float | int | None]
     }
 
 
-def _delta_pp(left: float, right: float) -> float:
-    return round((left - right) * 100, 12)
+def _delta_pp(left: float | None, right: float) -> float | None:
+    return None if left is None else round((left - right) * 100, 12)
 
 
 def _condition_summary(records: list[dict[str, Any]]) -> dict[str, Any]:
@@ -146,14 +146,22 @@ def _validate_report(report: dict[str, Any]) -> tuple[dict[str, Any], dict[str, 
     if not isinstance(results, list) or not results:
         raise ValueError("report results must be a non-empty list")
 
-    by_condition: dict[str, list[dict[str, Any]]] = {condition: [] for condition in CONDITIONS}
+    condition_names = report.get("conditions", list(CONDITIONS))
+    if not isinstance(condition_names, list) or not all(isinstance(c, str) for c in condition_names) or len(set(condition_names)) != len(condition_names):
+        raise ValueError("invalid condition declaration")
+    if not {"baseline", "candidate"} <= set(condition_names) <= set(CONDITIONS):
+        raise ValueError("conditions require baseline and candidate")
+    metric = report.get("metric", {"name": "score", "direction": "maximize"})
+    if metric != {"name": "score", "direction": "maximize"}:
+        raise ValueError("comparison supports normalized score/maximize only; use the per-experiment report for other metrics")
+    by_condition: dict[str, list[dict[str, Any]]] = {condition: [] for condition in condition_names}
     seen_result_keys: set[tuple[str, tuple[str, Any]]] = set()
     task_groups: dict[str, str] = {}
     for index, record in enumerate(results):
         if not isinstance(record, dict):
             raise ValueError(f"results[{index}] must be an object")
         condition = record.get("condition")
-        if condition not in CONDITIONS:
+        if condition not in condition_names:
             raise ValueError(f"results[{index}] has unknown condition")
         if "repeat_id" not in record:
             raise ValueError(f"results[{index}] is missing repeat_id")
@@ -199,10 +207,10 @@ def _validate_report(report: dict[str, Any]) -> tuple[dict[str, Any], dict[str, 
             "pairs": pairs,
         })
 
-    if any(not by_condition[condition] for condition in CONDITIONS):
-        raise ValueError("report must contain baseline, no-skills, and candidate results")
+    if any(not by_condition[condition] for condition in condition_names):
+        raise ValueError("report must contain every declared final condition")
     expected_pairs = {pair for record in by_condition["baseline"] for pair in record["pairs"]}
-    for condition in CONDITIONS[1:]:
+    for condition in condition_names[1:]:
         pairs = {pair for record in by_condition[condition] for pair in record["pairs"]}
         if pairs != expected_pairs:
             raise ValueError(f"{condition} task/repeat pairs do not match baseline")
@@ -216,16 +224,18 @@ def _validate_report(report: dict[str, Any]) -> tuple[dict[str, Any], dict[str, 
         "arm": arm,
         "seed": report["seed"],
         "seed_identity": seed_identity,
+        "conditions": condition_names,
+        "mode": report.get("mode", "harness"),
     }
     return {"metadata": metadata, "records": clean, "task_groups": task_groups}, task_groups
 
 
 def _report_summary(validated: dict[str, Any]) -> dict[str, Any]:
     metadata = validated["metadata"]
-    conditions = {condition: _condition_summary(validated["records"][condition]) for condition in CONDITIONS}
+    conditions = {condition: _condition_summary(validated["records"][condition]) for condition in metadata["conditions"]}
     baseline = conditions["baseline"]["task_macro"]
     candidate = conditions["candidate"]["task_macro"]
-    no_skills = conditions["no-skills"]["task_macro"]
+    no_skills = conditions.get("no-skills", {}).get("task_macro")
     return {
         **{key: metadata[key] for key in
            ("experiment_id", "arm", "seed", "manifest_hash", "comparison_hash")},
@@ -242,13 +252,13 @@ def _arm_summaries(reports: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     summaries = {}
     for arm, arm_reports in sorted(grouped.items()):
         candidate_deltas = [report["candidate_baseline_delta_pp"] for report in arm_reports]
-        no_skills_deltas = [report["no_skills_delta_pp"] for report in arm_reports]
+        no_skills_deltas = [report["no_skills_delta_pp"] for report in arm_reports if report["no_skills_delta_pp"] is not None]
         summaries[arm] = {
             "run_count": len(arm_reports),
             "mean_candidate_baseline_delta_pp": statistics.fmean(candidate_deltas),
             "candidate_baseline_delta_pp_range": [min(candidate_deltas), max(candidate_deltas)],
-            "mean_no_skills_delta_pp": statistics.fmean(no_skills_deltas),
-            "no_skills_delta_pp_range": [min(no_skills_deltas), max(no_skills_deltas)],
+            "mean_no_skills_delta_pp": statistics.fmean(no_skills_deltas) if no_skills_deltas else None,
+            "no_skills_delta_pp_range": [min(no_skills_deltas), max(no_skills_deltas)] if no_skills_deltas else None,
         }
     return summaries
 
@@ -260,9 +270,15 @@ def summarize(reports: list[dict[str, Any]]) -> dict[str, Any]:
     seen_runs: set[tuple[str, str, tuple[str, Any]]] = set()
     expected_tasks: dict[str, str] | None = None
     comparison_hash: str | None = None
+    comparison_shape = None
     for report in reports:
         validated, task_groups = _validate_report(report)
         metadata = validated["metadata"]
+        shape = (metadata["mode"], tuple(metadata["conditions"]))
+        if comparison_shape is None:
+            comparison_shape = shape
+        elif shape != comparison_shape:
+            raise ValueError("reports must use the same mode and final conditions")
         run_key = (metadata["experiment_id"], metadata["arm"], metadata["seed_identity"])
         if run_key in seen_runs:
             raise ValueError("duplicate experiment_id/arm/seed report")
@@ -279,10 +295,10 @@ def summarize(reports: list[dict[str, Any]]) -> dict[str, Any]:
         validated_reports.append(validated)
 
     conditions = {condition: _equal_run_condition_summary(validated_reports, condition)
-                  for condition in CONDITIONS}
+                  for condition in validated_reports[0]["metadata"]["conditions"]}
     baseline = conditions["baseline"]["task_macro"]
     candidate = conditions["candidate"]["task_macro"]
-    no_skills = conditions["no-skills"]["task_macro"]
+    no_skills = conditions.get("no-skills", {}).get("task_macro")
     individual = [_report_summary(report) for report in validated_reports]
     arms = _arm_summaries(individual)
     overall = {

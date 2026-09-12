@@ -32,6 +32,22 @@ class TemplateTests(unittest.TestCase):
                 for command in [config.agent['model_command'], config.proposer.command, config.evaluator.command]:
                     self.assertEqual(command[0], sys.executable)
 
+    def test_canonical_types_are_live_and_legacy_fixtures_are_explicit(self):
+        for template in ['artifact', 'harness', 'model']:
+            with self.subTest(template=template), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp) / 'lab'
+                render_template(template, root, goal='real implementation')
+                config = load_config(root / 'nanorsi.toml')
+                self.assertEqual(config.experiment.schema_version, 2)
+                self.assertEqual(config.experiment.mode, template)
+                if template == 'model':
+                    self.assertTrue((root / config.training['checkpoint']).is_file())
+        for template in ['artifact-fixture', 'harness-fixture', 'model-contract']:
+            with self.subTest(template=template), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp) / 'lab'
+                render_template(template, root, goal='legacy compatibility')
+                self.assertEqual(load_config(root / 'nanorsi.toml').experiment.schema_version, 1)
+
 
 if __name__ == "__main__":
     unittest.main()

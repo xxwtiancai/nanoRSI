@@ -13,7 +13,7 @@ from .gate import decide
 from .gitops import Git, GitError
 from .lineage import LineageStore, artifact
 from .locking import Lock
-from . import loop
+from . import loop, training
 from .proposer import ProposalError, run_proposer
 from .report import write_report
 from .surface import SurfacePolicy
@@ -39,13 +39,14 @@ def _baseline(root: Path) -> dict:
         contract = loop.identity(root, config)
         store.append({'event_type': 'baseline_started', 'decision': 'baseline', 'manifest_hash': contract})
         with git.worktree(commit, root / '.nanorsi/worktrees/baseline') as checkout:
+            checkpoint = training.checkpoint(checkout, config) if config.experiment.mode == 'model' and config.experiment.schema_version == 2 else None
             split = 'validation' if config.experiment.schema_version == 2 else 'gate'
             gate = loop.evaluate(root, config, checkout, split, run_dir / 'gate.json', store)
             heldout = loop.evaluate(root, config, checkout, 'heldout', run_dir / 'heldout.json', store) if config.evaluator.heldout_enabled and config.experiment.schema_version == 1 else None
         event = store.append({'event_type': 'generation', 'experiment_id': config.experiment.id,
                               'generation': 0, 'parent_generation': None, 'decision': 'baseline',
                               'candidate_commit': commit, 'candidate_tree': git.tree_hash(commit),
-                              'gate_metrics': gate.metrics, 'gate_constraints': gate.constraints,
+                              'gate_metrics': gate.metrics, 'gate_constraints': gate.constraints, 'checkpoint': checkpoint,
                               'heldout_metrics': heldout.metrics if heldout else None,
                               'evaluator_fingerprint': loop.fingerprint(root), 'manifest_hash': contract,
                               'artifacts': _artifacts(root, run_dir)})
@@ -77,26 +78,29 @@ def _step(root: Path) -> dict:
         return event
 
 
-def _attempt(root, config, git, store, parent, attempt, run_dir):
+def _attempt(root, config, git, store, parent, attempt, run_dir, *, promote=True, proposal_context=None):
     ref = parent['candidate_commit']
     with git.worktree(ref, root / '.nanorsi/worktrees' / run_dir.name) as checkout:
         feedback = loop.train_feedback(root, config, checkout, run_dir, store)
         store.append({'event_type': 'proposal_started', 'attempt_id': attempt})
-        proposal, proposer_commit = _propose(root, config, git, checkout, parent, attempt, feedback, run_dir)
+        proposal, proposer_commit = _propose(root, config, git, checkout, parent, attempt, feedback, run_dir, proposal_context)
         loop.record_proposal(store, run_dir, attempt)
         if git.changed_paths(checkout, ref):
             raise ProposalError('proposer modified the parent checkout directly')
-        if not proposal.diff.strip():
-            return store.append({'event_type': 'attempt_failed', 'attempt_id': attempt, 'decision': 'no-op',
-                                 'reason': 'proposal changes no files', 'proposer_harness_commit': proposer_commit,
-                                 'artifacts': _artifacts(root, run_dir)})
-        git.apply_diff(checkout, proposal.diff)
+        if proposal.diff.strip():
+            git.apply_diff(checkout, proposal.diff)
+        trained = training.run_training(root, config, checkout, run_dir, git, ref, parent) if config.experiment.mode == 'model' and config.experiment.schema_version == 2 else None
         changed = git.changed_paths(checkout, ref)
         SurfacePolicy(config.surface.allow, config.surface.deny).validate_paths(changed)
         if loop.fingerprint(checkout) != parent.get('evaluator_fingerprint'):
             raise RuntimeError('candidate evaluator differs from baseline')
         if loop.identity(checkout, config) != parent['manifest_hash']:
             raise RuntimeError('candidate changed frozen experiment contract')
+        if not changed:
+            event = {'event_type': 'attempt_failed', 'attempt_id': attempt, 'decision': 'no-op',
+                     'reason': 'proposal and training change no files', 'proposer_harness_commit': proposer_commit,
+                     'training': trained, 'artifacts': _artifacts(root, run_dir)}
+            return store.append(event) if promote else event
         commit = git.commit_paths(checkout, changed, 'Measure a proposed improvement before adoption')
         split = 'validation' if config.experiment.schema_version == 2 else 'gate'
         if config.experiment.schema_version == 2:
@@ -107,15 +111,20 @@ def _attempt(root, config, git, store, parent, attempt, run_dir):
         gate = loop.evaluate(root, config, checkout, split, run_dir / 'gate.json', store)
         heldout = loop.evaluate(root, config, checkout, 'heldout', run_dir / 'heldout.json', store) if config.evaluator.heldout_enabled and config.experiment.schema_version == 1 else None
         return _record(root, config, git, store, parent, proposal, changed, commit, gate, heldout,
-                       attempt, proposer_commit, measured_parent, run_dir)
+                       attempt, proposer_commit, measured_parent, run_dir, promote=promote, trained=trained)
 
 
-def _propose(root, config, git, checkout, parent, attempt, feedback, run_dir):
+def _propose(root, config, git, checkout, parent, attempt, feedback, run_dir, proposal_context=None):
     proposer_commit = git.resolve_ref('nanorsi/gen-0') if config.experiment.arm == 'frozen' else parent['candidate_commit']
-    context = {'goal': config.experiment.goal, 'surface': config.surface.allow, 'attempt_id': attempt,
+    context = {'goal': config.experiment.goal, 'surface': {'allow': config.surface.allow, 'deny': config.surface.deny}, 'attempt_id': attempt,
                'parent_generation': parent['generation'], 'parent_commit': parent['candidate_commit'],
                'proposer_harness_commit': proposer_commit, 'agent': config.agent, 'train_results': feedback}
+    if proposal_context:
+        if set(proposal_context) & set(context):
+            raise ValueError('proposal context cannot replace fixed parent or agent fields')
+        context.update(proposal_context)
     if config.experiment.schema_version == 1:
+        context['surface'] = config.surface.allow
         context['gate_metrics'] = parent['gate_metrics']
         return run_proposer(config, checkout, run_dir / 'proposal', context), proposer_commit
     with git.worktree(proposer_commit, root / '.nanorsi/worktrees' / (run_dir.name + '-proposer')) as source:
@@ -124,20 +133,25 @@ def _propose(root, config, git, checkout, parent, attempt, feedback, run_dir):
 
 
 def _record(root, config, git, store, parent, proposal, changed, commit, gate, heldout,
-            attempt, proposer_commit, measured_parent, run_dir):
+            attempt, proposer_commit, measured_parent, run_dir, *, promote=True, trained=None):
     decision = decide(config.gate, parent=measured_parent.metrics if measured_parent else parent['gate_metrics'],
                       child={**gate.metrics, 'constraints': gate.constraints},
                       parent_heldout=parent.get('heldout_metrics'), child_heldout=heldout.metrics if heldout else None,
                       metric=config.evaluator.primary_metric, direction=config.evaluator.direction)
     generation = parent['generation'] + (decision.decision == 'accepted')
-    event = store.append({'event_type': 'generation', 'experiment_id': config.experiment.id,
+    event = {'event_type': 'generation', 'experiment_id': config.experiment.id,
                           'attempt_id': attempt, 'generation': generation, 'parent_generation': parent['generation'],
                           'decision': decision.decision, 'reason': decision.reason, 'candidate_commit': commit,
                           'candidate_tree': git.tree_hash(commit), 'changed_paths': changed, 'hypothesis': proposal.hypothesis,
                           'gate_metrics': gate.metrics, 'gate_constraints': gate.constraints,
                           'heldout_metrics': heldout.metrics if heldout else None,
                           'evaluator_fingerprint': parent['evaluator_fingerprint'], 'manifest_hash': parent['manifest_hash'],
-                          'proposer_harness_commit': proposer_commit, 'artifacts': _artifacts(root, run_dir)})
+                          'proposer_harness_commit': proposer_commit, 'artifacts': _artifacts(root, run_dir),
+                          'parent_gate_metrics': measured_parent.metrics if measured_parent else parent['gate_metrics'],
+                          'training': trained}
+    if not promote:
+        return event
+    event = store.append(event)
     if decision.decision == 'accepted':
         git.tag(commit, f'nanorsi/gen-{generation}')
     return event
@@ -191,14 +205,17 @@ def _configure_parser(sub):
     command.add_argument('--max-steps', type=int, help='Maximum search attempts')
     command.add_argument('--max-episodes', type=int, help='Maximum search task episodes (final panel separate)')
     command.add_argument('--token-parameter', choices=['max_tokens', 'max_completion_tokens'])
+    command.add_argument('--thinking', choices=['enabled', 'disabled'])
 
 
 def _parser():
     parser = argparse.ArgumentParser(prog='nanorsi')
     sub = parser.add_subparsers(dest='command', required=True)
     _configure_parser(sub)
+    from .population import add_parser
+    add_parser(sub)
     new = sub.add_parser('new')
-    new.add_argument('template', choices=['artifact', 'harness', 'model', 'skills', 'coding'])
+    new.add_argument('template', choices=['artifact', 'harness', 'model', 'skills', 'coding', 'program', 'agent', 'learner', 'artifact-fixture', 'harness-fixture', 'model-contract'])
     new.add_argument('destination', type=Path)
     new.add_argument('--goal', default='Improve the target')
     for name in ['baseline', 'step', 'run', 'report', 'verify', 'doctor', 'recover', 'freeze', 'final-test', 'evaluate']:
@@ -218,9 +235,12 @@ def _parser():
 
 def _dispatch(args, root):
     command = args.command
+    if command == 'population':
+        from .population import run_population
+        return run_population(root, size=args.size, generations=args.generations, workers=args.workers)
     if command == 'configure':
         from .configure import configure
-        keys = ['model', 'base_url', 'api_key_file', 'prompt_key', 'no_api_key', 'max_steps', 'max_episodes', 'token_parameter']
+        keys = ['model', 'base_url', 'api_key_file', 'prompt_key', 'no_api_key', 'max_steps', 'max_episodes', 'token_parameter', 'thinking']
         return configure(root, **{key: getattr(args, key) for key in keys})
     if command == 'baseline':
         return _baseline(root)

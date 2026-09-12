@@ -20,7 +20,7 @@ class V2ConfigTests(unittest.TestCase):
     def test_bad_attempt_budget_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)/'demo'
-            render_template('artifact',root,goal='test')
+            render_template('artifact-fixture',root,goal='test')
             path = root/'nanorsi.toml'
             path.write_text(path.read_text().replace('max_steps = 10','max_steps = -1'))
             with self.assertRaises(ConfigError):

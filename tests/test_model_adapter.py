@@ -86,6 +86,14 @@ class ModelAdapterTests(unittest.TestCase):
             self.assertEqual(payload["max_tokens"], 12)
             self.assertNotIn("max_completion_tokens", payload)
 
+    def test_thinking_mode_and_provider_identity_are_recorded(self):
+        body = json.dumps({'id': 'response-fixture', 'model': 'actual-fixture', 'choices': [{'message': {'content': '{"tool":"final"}'}}]}).encode()
+        with server(body=body) as (url, received):
+            result = invoke(self.request(url, thinking='disabled'))
+            self.assertEqual(json.loads(received[0]['body'])['thinking'], {'type': 'disabled'})
+            self.assertEqual(result['provider']['model'], 'actual-fixture')
+            self.assertEqual(result['provider']['request_id'], 'response-fixture')
+
     def test_status_errors_are_structured_and_redacted(self):
         for status, code in ((401, "authentication"), (403, "permission"), (404, "not_found"), (429, "rate_limit"), (400, "bad_request"), (422, "bad_request"), (500, "server_error"), (503, "server_error")):
             with self.subTest(status=status), server(status=status, body=SECRET.encode()) as (url, _):

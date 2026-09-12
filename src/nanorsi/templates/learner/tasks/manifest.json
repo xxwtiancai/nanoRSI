@@ -1,0 +1,4325 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-000",
+      "input_files": {
+        "features.json": "[2.3946296344466313, -1.3267491994660923, -0.6797144480784211, 0.3705035674606598]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-000"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-001",
+      "input_files": {
+        "features.json": "[-1.715531449478667, 1.2305240840308402, 0.17919648727485687, -0.8310992152709882]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-001"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-002",
+      "input_files": {
+        "features.json": "[-1.9935854962363915, -1.1148447514900086, 0.9932497035351971, -0.6469816305475048]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-002"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-003",
+      "input_files": {
+        "features.json": "[1.183015415394114, 1.5633881725535437, -0.5588897658482705, -0.514156663052727]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-003"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-004",
+      "input_files": {
+        "features.json": "[1.5339133656836414, -0.15549035755329088, 0.796465840293551, -2.0036485171514045]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-004"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-005",
+      "input_files": {
+        "features.json": "[-1.3171146106814176, 0.12945873268118246, 1.221436413076672, -0.9011201503953835]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-005"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-006",
+      "input_files": {
+        "features.json": "[1.0689862063816147, 0.07622139029008083, -1.2581032977244673, 0.5522200050609998]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-006"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-007",
+      "input_files": {
+        "features.json": "[1.366198427466707, 0.011558686802954243, -1.9815330795532842, 0.2882437455810757]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-007"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-008",
+      "input_files": {
+        "features.json": "[-0.863167145530345, 0.4150753296469061, -0.16036217905701025, -0.05065971364872301]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-008"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-009",
+      "input_files": {
+        "features.json": "[1.3186698048788026, -0.9410759264308859, 0.6730299840253856, -1.324082464472022]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-009"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-010",
+      "input_files": {
+        "features.json": "[0.3581656313266075, 1.3069954762036007, 0.5036300563785048, -0.5527646971207058]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-010"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-011",
+      "input_files": {
+        "features.json": "[-1.624183984441864, 0.4112120867425768, 0.46854978225277916, 1.2070031793653448]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-011"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-012",
+      "input_files": {
+        "features.json": "[1.677766752909819, 2.481027150893245, 0.35750004836441207, -1.029804804536397]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-012"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-013",
+      "input_files": {
+        "features.json": "[-0.019916357893520087, 1.703072265741422, -2.321149973492559, -0.11590422906128793]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-013"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-014",
+      "input_files": {
+        "features.json": "[0.18118907012481866, -0.537931317565724, -0.33943540831298874, -1.2126242150471978]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-014"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-015",
+      "input_files": {
+        "features.json": "[1.9667288718420566, -1.088536548546779, 1.3246786624104563, -0.3062675465966934]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-015"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-016",
+      "input_files": {
+        "features.json": "[-1.6285780533004837, 0.7597554816826749, -0.8108888130650165, -0.5607173124842788]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-016"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-017",
+      "input_files": {
+        "features.json": "[-1.4495648986138683, -1.6590962028753578, 0.23896969923651049, 0.5968890727968448]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-017"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-018",
+      "input_files": {
+        "features.json": "[0.4452688891987606, -0.903961042587674, -0.4291525093014532, 0.06374559279155836]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-018"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-019",
+      "input_files": {
+        "features.json": "[-0.6571570968574492, -0.6427443467493077, 1.7040273506937484, -0.8901940183523208]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-019"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-020",
+      "input_files": {
+        "features.json": "[0.9761394185490635, -2.583680372213059, -0.9641716511135761, -0.2514349547849742]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-020"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-021",
+      "input_files": {
+        "features.json": "[1.2884586423603535, -0.7329994064046692, 0.734895191239904, -1.802034113723568]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-021"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-022",
+      "input_files": {
+        "features.json": "[0.2523048433147743, 0.5219637584329376, 1.251599654525502, -0.408714616179274]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-022"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-023",
+      "input_files": {
+        "features.json": "[-2.07910372423166, -0.8723791422051022, 2.230171007514493, -0.0524469822501738]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-023"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-024",
+      "input_files": {
+        "features.json": "[1.6059106885167331, -0.3794053828171407, -0.8765282350783203, -0.7513264535331379]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-024"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-025",
+      "input_files": {
+        "features.json": "[-2.0046803969681877, -0.039541982078849625, 0.07093801699363188, 1.6200914287046837]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-025"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-026",
+      "input_files": {
+        "features.json": "[-0.2530591498921043, -0.8489396838633994, 0.2486021956535268, -0.864139480022371]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-026"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-027",
+      "input_files": {
+        "features.json": "[1.6760475215941693, -0.400501969859718, 0.9375555831982871, 1.2302300798533612]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-027"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-028",
+      "input_files": {
+        "features.json": "[0.44105414440606183, 1.646971660820509, 1.0437560701105737, -0.6622404287983599]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-028"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-029",
+      "input_files": {
+        "features.json": "[-0.843357931081688, -1.4993551597491714, -0.9030066966722933, -1.0242588734955478]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-029"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-030",
+      "input_files": {
+        "features.json": "[0.6592855642478632, -0.434725560208263, -1.9229732027924273, 2.0441536577240424]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-030"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-031",
+      "input_files": {
+        "features.json": "[-0.5564696601076524, 1.344078062683982, 0.6205062520904999, -0.15504021516362218]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-031"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-032",
+      "input_files": {
+        "features.json": "[-0.2848538594699384, -0.8403055295042556, 0.737050359450244, -2.232715615958218]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-032"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-033",
+      "input_files": {
+        "features.json": "[2.490169736795642, 0.14271610843872895, 0.6233755006131368, 0.4619487725370396]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-033"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-034",
+      "input_files": {
+        "features.json": "[-0.5001537498384598, 2.646895853807081, -0.3716088797436327, 0.5094940999327849]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-034"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-035",
+      "input_files": {
+        "features.json": "[-1.0192175070212401, -1.3051904830640535, 2.401350705914395, 1.7660103576035409]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-035"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-036",
+      "input_files": {
+        "features.json": "[1.7800925293205438, 0.8503096408696665, -0.22023171661272564, -1.8962730859794341]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-036"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-037",
+      "input_files": {
+        "features.json": "[-0.2454275233605, 1.0153470244656755, -1.217758467987486, -2.3048656602250075]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-037"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-038",
+      "input_files": {
+        "features.json": "[0.5828140937204231, -0.7901301452600622, 0.516577998036976, -0.7557764655138255]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-038"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-039",
+      "input_files": {
+        "features.json": "[1.4944702787878021, 1.2804113083971242, -0.579648109966902, 0.21980511441970402]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-039"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-040",
+      "input_files": {
+        "features.json": "[-1.7102838623826604, 1.4720774109180597, -1.0814159868291584, -0.501531285739933]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-040"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-041",
+      "input_files": {
+        "features.json": "[-1.0862828393529198, -0.4717251359453678, 0.3978419675500281, -0.6477457585035892]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-041"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-042",
+      "input_files": {
+        "features.json": "[1.3604697588642094, -0.05585354006710734, -0.04787844558516866, -0.903549991591067]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-042"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-043",
+      "input_files": {
+        "features.json": "[-0.010111670570502218, 1.5175112241430926, 0.15332119173860387, 2.4692548220273265]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-043"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-044",
+      "input_files": {
+        "features.json": "[-1.2189411964579757, -0.6722188895514399, -1.5351471304165925, 1.8747532638487598]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-044"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-045",
+      "input_files": {
+        "features.json": "[0.6169805892240916, -0.985843884944862, -0.21241703728731115, -0.9679779545803219]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-045"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-046",
+      "input_files": {
+        "features.json": "[-1.933637017240544, 2.0048940784945413, 0.6535392890887346, 0.0062591164631657335]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-046"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-047",
+      "input_files": {
+        "features.json": "[-1.1054935505498455, -0.6927409176982174, -0.6340436277277474, -0.7414202346631844]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-047"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-048",
+      "input_files": {
+        "features.json": "[2.372836383549653, -0.8682047703482877, -0.8712957816680225, 0.5196788799411841]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-048"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-049",
+      "input_files": {
+        "features.json": "[-1.0447247495893777, 0.35518472416170455, -0.1622411235808244, -0.2636214387211636]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-049"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-050",
+      "input_files": {
+        "features.json": "[-1.4429832260741833, -1.0512796644834954, 0.6711552891907827, 1.0243511173069737]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-050"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-051",
+      "input_files": {
+        "features.json": "[0.28421264046725336, 0.09748641873452382, 0.07149869845798522, -2.0739013371938633]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-051"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-052",
+      "input_files": {
+        "features.json": "[-1.5712066181537252, 1.3270012071916435, -1.780506137067395, 0.37582154963908276]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-052"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-053",
+      "input_files": {
+        "features.json": "[0.4790908556384521, -2.527876744033007, 1.466243150384346, 3.571601296083779]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-053"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-054",
+      "input_files": {
+        "features.json": "[1.2341471373811936, -0.29434862107457654, -0.4501834744408657, -2.9078632989874094]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-054"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-055",
+      "input_files": {
+        "features.json": "[-1.9173892977686477, 2.127001985139272, -0.2799603675651017, 0.6340426010883786]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-055"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-056",
+      "input_files": {
+        "features.json": "[-0.7633069387153837, -1.362939230815211, 0.5409554394846149, -1.1001755952950112]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-056"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-057",
+      "input_files": {
+        "features.json": "[1.8905910540738258, 0.2755558052624987, -1.2031815059709434, -1.6400651461441627]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-057"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-058",
+      "input_files": {
+        "features.json": "[-1.2430678645001443, 3.885313853689472, 1.585570164007632, 1.1547367385978433]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-058"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-059",
+      "input_files": {
+        "features.json": "[-1.0617562450872504, -1.0624933340268135, -0.16988032293037988, 1.085206831708166]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-059"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-060",
+      "input_files": {
+        "features.json": "[1.9965117010893374, -1.8220671199781893, 0.811210627419813, 0.9019341948841163]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-060"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-061",
+      "input_files": {
+        "features.json": "[-1.2620793474403804, 0.5868774150919244, 0.5598587089685675, -0.5823693421540902]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-061"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-062",
+      "input_files": {
+        "features.json": "[-0.4781263805785351, -1.2671639958658354, -0.5370931035897856, -1.1601862374577057]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-062"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-063",
+      "input_files": {
+        "features.json": "[3.617641082113827, -0.7398899347875394, 0.2472058343286591, -0.1572060394148174]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-063"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-064",
+      "input_files": {
+        "features.json": "[-0.758028348497822, -0.1778149998993377, -0.8843511580648867, -1.307668868031229]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-064"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-065",
+      "input_files": {
+        "features.json": "[0.3622657121596098, -2.0785594885126955, -0.8644616938022376, 0.8926244921439311]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-065"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-066",
+      "input_files": {
+        "features.json": "[1.8307980901278171, 1.219547700359189, 0.5713357680025488, 0.031972132412958806]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-066"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-067",
+      "input_files": {
+        "features.json": "[-1.5893942522212212, 2.751329515457738, -0.1786834076453335, -0.8909686632041264]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-067"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-068",
+      "input_files": {
+        "features.json": "[-0.9502536020899127, -1.4883669437522051, 1.4594764671515759, 2.42799720712856]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-068"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-069",
+      "input_files": {
+        "features.json": "[1.2659487198648272, 0.9228544869126872, -0.7950530909437585, -0.2499829756363271]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-069"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-070",
+      "input_files": {
+        "features.json": "[-1.4466517538714752, 1.395665865175851, 0.6005003109978074, 0.187866501662418]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-070"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-071",
+      "input_files": {
+        "features.json": "[-1.110419619911754, -1.35160532908784, -0.732344278243599, 0.5101137794243484]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-071"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-072",
+      "input_files": {
+        "features.json": "[1.126213789634421, 0.22193995856358972, 0.9519271053547523, -0.6154352960227845]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-072"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-073",
+      "input_files": {
+        "features.json": "[0.6537345029998956, -0.8870498871207886, -0.6339173891986983, 0.9499954594481658]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-073"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-074",
+      "input_files": {
+        "features.json": "[-1.0620079019101336, -2.2510556742430157, -0.5219301261264698, 1.5432956360581318]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-074"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-075",
+      "input_files": {
+        "features.json": "[3.1808727610504315, -1.3140015731139134, -0.6786825897033999, -0.6937047969876738]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-075"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-076",
+      "input_files": {
+        "features.json": "[0.588616338355783, 1.0832313584686353, 0.38516538332840683, 0.16907966166988675]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-076"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-077",
+      "input_files": {
+        "features.json": "[-0.750276583138548, -1.6365384170573631, 0.9993411526502227, 0.049336845808053476]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-077"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-078",
+      "input_files": {
+        "features.json": "[0.4708836852485727, -0.1234678834059152, -1.3226641701478503, 0.09474548266739556]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-078"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-079",
+      "input_files": {
+        "features.json": "[-1.1781714154299885, 0.3993818747266771, -2.021977045953606, 2.19893556683189]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-079"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-080",
+      "input_files": {
+        "features.json": "[-0.8628126479387762, 0.34310603760074176, -0.8556842186123811, 0.3946647358539827]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-080"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-081",
+      "input_files": {
+        "features.json": "[3.2456058192159505, 0.7405652507164951, -0.6416048099955981, -2.0626809387236666]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-081"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-082",
+      "input_files": {
+        "features.json": "[-2.112578108420105, 1.726560188848659, 0.7390626161040279, 0.684564076813515]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-082"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-083",
+      "input_files": {
+        "features.json": "[-0.6760224248489617, -1.0303999261203707, 0.6604902146475233, -0.22399942760943564]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-083"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-084",
+      "input_files": {
+        "features.json": "[1.8825058060499038, 0.5018855748975247, -0.9058876428441585, 0.8720138221972349]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-084"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-085",
+      "input_files": {
+        "features.json": "[0.9024939582202969, 3.6140713064940355, 0.5635824209399176, -0.06046721348376794]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-085"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-086",
+      "input_files": {
+        "features.json": "[-1.9405854377584726, -0.4997962893034412, 0.840732515379232, -0.8131241029929038]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-086"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-087",
+      "input_files": {
+        "features.json": "[2.22694457558429, -0.4173905768105925, -1.1750555432377787, 0.011511409364846525]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-087"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-088",
+      "input_files": {
+        "features.json": "[-1.0572056413500808, 0.7396658722509292, -0.5420802816990905, -0.4471333726337726]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-088"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-089",
+      "input_files": {
+        "features.json": "[-2.0576425135138785, 0.7551858080445077, 1.4868897345871477, -1.094512409001517]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-089"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-090",
+      "input_files": {
+        "features.json": "[2.025092515579434, 0.11899526029973055, -0.0756963415656196, 1.7495047011923013]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-090"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-091",
+      "input_files": {
+        "features.json": "[-0.061305117093619965, 0.24820381013818582, -0.3608094107167264, -1.7777853406406525]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-091"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-092",
+      "input_files": {
+        "features.json": "[-0.3846838063887158, -1.1372339626629748, 0.19269600998634875, -0.20807591110533064]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-092"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-093",
+      "input_files": {
+        "features.json": "[1.5426509478588222, 0.27028379506193556, 1.9186076641133656, 0.18483048008751046]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-093"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-094",
+      "input_files": {
+        "features.json": "[-1.0227326809485682, 1.790778043042824, 0.8675368357355943, 1.1756247473824493]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-094"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-095",
+      "input_files": {
+        "features.json": "[0.3547613043308664, -1.5198838814507347, 0.9606203974452765, -0.6879250525949496]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-095"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-096",
+      "input_files": {
+        "features.json": "[0.2201251260813224, -0.6407485331936875, 0.5715808843119281, -1.5841910342609213]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-096"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-097",
+      "input_files": {
+        "features.json": "[0.8221693259598681, 1.2054061047397382, 0.5637993185423925, -0.37912800204320335]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-097"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-098",
+      "input_files": {
+        "features.json": "[-2.0019627682628816, -1.5823253614091919, 0.525350131485716, -1.0199961032474958]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-098"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-099",
+      "input_files": {
+        "features.json": "[1.7403068746962709, -0.9111683428635947, -1.6717800209230147, -1.0084759759628121]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-099"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-100",
+      "input_files": {
+        "features.json": "[-0.33670041875285467, -0.027799105660700985, 0.6338051613447723, 0.0009585301801589598]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-100"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-101",
+      "input_files": {
+        "features.json": "[-1.4773561665248027, -1.3303983811340394, 1.8164222405413102, 0.7944628698377804]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-101"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-102",
+      "input_files": {
+        "features.json": "[2.255583405296584, -0.2830885008066938, -1.526933227566299, 0.9951544925490394]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-102"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-103",
+      "input_files": {
+        "features.json": "[0.5070682438238099, 1.817501885001971, 0.5731754231132711, 0.5901402077895643]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-103"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-104",
+      "input_files": {
+        "features.json": "[-0.5954053441179401, -1.580493152129103, 1.0138434818453892, 0.23287503650598254]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-104"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-105",
+      "input_files": {
+        "features.json": "[-0.392819765735851, 0.0972392996419228, -0.30629587448195644, -1.4646166285556723]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-105"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-106",
+      "input_files": {
+        "features.json": "[0.8718634621348547, 3.572350069616491, -1.1667216456696017, 0.7287521644120174]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-106"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-107",
+      "input_files": {
+        "features.json": "[-0.9732444163525109, -1.1063786852468613, -0.5633813595564356, 0.10421199169805094]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-107"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-108",
+      "input_files": {
+        "features.json": "[2.789580681250502, 0.26676748494140834, -0.32298580736665927, -0.34379900159442256]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-108"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-109",
+      "input_files": {
+        "features.json": "[-1.5850905652971594, 1.032659101747894, -1.2868873762567148, 1.1575370183907765]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-109"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-110",
+      "input_files": {
+        "features.json": "[-2.7075926415714306, -1.1798238935364949, -0.8640773228865682, -0.7159226305708883]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-110"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-111",
+      "input_files": {
+        "features.json": "[0.9186703902874693, -0.6373639610110181, 1.0756953042948731, 1.066593229287006]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-111"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-112",
+      "input_files": {
+        "features.json": "[-1.956043165401661, 0.13707873262055048, 1.537405603313284, 1.5787027601486483]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-112"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-113",
+      "input_files": {
+        "features.json": "[-0.10354885560090221, -3.3169937602341713, 1.0522325023667671, -1.08534581115773]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-113"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-114",
+      "input_files": {
+        "features.json": "[1.9248005857283257, -1.0680026906369544, 0.14319475105859927, -0.6314935352602911]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-114"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-115",
+      "input_files": {
+        "features.json": "[-0.5435271234351735, 0.2897001699995634, 0.04582176530538886, -1.101619589071659]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-115"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-116",
+      "input_files": {
+        "features.json": "[-0.6575002975183163, -1.6634927107159028, 2.2422618264425234, 0.6459547248872864]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-116"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-train-117",
+      "input_files": {
+        "features.json": "[-0.5357151698646083, 0.17740616501194084, 1.3936900905025789, -0.5039043969834819]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-117"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-train-118",
+      "input_files": {
+        "features.json": "[-1.3464195940858152, 1.0101156223734804, 1.5400694143261175, 1.025213837578524]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-118"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-train-119",
+      "input_files": {
+        "features.json": "[0.514481267620519, -2.361646480784602, -0.3319270435661926, -0.9897787551866393]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "train",
+      "task_id": "train-119"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-000",
+      "input_files": {
+        "features.json": "[0.6010908964355397, 0.951569435307719, 1.4393362300710446, -1.3598330292192529]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-000"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-001",
+      "input_files": {
+        "features.json": "[1.0769853803190899, 1.4948305589780926, 1.1213401344852978, 0.36115698701951005]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-001"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-002",
+      "input_files": {
+        "features.json": "[-0.17096472928657214, -1.3960807110121578, -0.09071300387990491, -0.9533381596957422]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-002"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-003",
+      "input_files": {
+        "features.json": "[0.1892615598568108, -0.018897401452298155, -1.0182738678502243, -0.7863429219210804]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-003"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-004",
+      "input_files": {
+        "features.json": "[-0.40198938470334444, 1.000061152981179, -2.027555700778305, -0.7503435195533206]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-004"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-005",
+      "input_files": {
+        "features.json": "[-2.298290570949727, -1.0515687974595729, -0.47353074435794407, -0.49498408672599714]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-005"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-006",
+      "input_files": {
+        "features.json": "[-0.20373157594278912, -0.014405254991959207, 0.622902285615117, -1.4949843291646392]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-006"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-007",
+      "input_files": {
+        "features.json": "[-0.8074729833251647, 1.0740719286231255, 0.0011512244345414642, -1.998174801424681]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-007"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-008",
+      "input_files": {
+        "features.json": "[0.05222385287303766, -1.9981984259040606, -0.381226894561365, 1.4589089914598123]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-008"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-009",
+      "input_files": {
+        "features.json": "[0.8153965698292014, 1.301503944259888, 0.25799515424463776, -1.0550021317982237]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-009"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-010",
+      "input_files": {
+        "features.json": "[0.9704739733780163, 1.5005274308428547, -0.5693199551395415, 0.47560267542397294]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-010"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-011",
+      "input_files": {
+        "features.json": "[-0.6266121344779281, -0.7805664529988195, 0.8843149661732472, 1.0935102113595188]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-011"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-012",
+      "input_files": {
+        "features.json": "[0.5227225696640444, -0.015971958527282, -1.5799605467325937, -0.6625557497883487]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-012"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-013",
+      "input_files": {
+        "features.json": "[-3.2816968487643825, 1.180200297949198, -1.2553372913114071, 0.14219153095268605]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-013"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-014",
+      "input_files": {
+        "features.json": "[-0.5127383408268177, -1.331120757799122, 0.5057485574256594, 0.3128809371352247]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-014"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-015",
+      "input_files": {
+        "features.json": "[0.14989938017180626, 0.1483613335779772, -0.9972308858278839, 0.5087219739532961]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-015"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-016",
+      "input_files": {
+        "features.json": "[-2.2881030548299766, 1.7075403270287046, -0.25401386864037717, -0.014333830219571006]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-016"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-017",
+      "input_files": {
+        "features.json": "[-0.12544049487475128, -1.4124132959241373, 0.13037134538393108, -0.6061278919944959]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-017"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-018",
+      "input_files": {
+        "features.json": "[1.3565278533245102, -0.18248755173642325, 0.21872367223944852, 1.177983458403684]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-018"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-019",
+      "input_files": {
+        "features.json": "[-1.4190217984600517, 1.7671867830741976, 0.15863511426335364, -1.0630603315472738]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-019"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-020",
+      "input_files": {
+        "features.json": "[0.19853964792138012, -0.7020164359998528, 1.7095779763792405, -2.25973585459313]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-020"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-021",
+      "input_files": {
+        "features.json": "[2.554205625344828, 1.180983694186044, -1.1239293895259568, -0.44074903340111077]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-021"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-022",
+      "input_files": {
+        "features.json": "[-1.918267809878007, 2.263649632693686, -1.0654064973205044, -2.599222025769396]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-022"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-023",
+      "input_files": {
+        "features.json": "[-0.24826424045572681, -0.3239149476635037, 0.874925564473599, -0.2992203536441592]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-023"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-024",
+      "input_files": {
+        "features.json": "[3.592158380761317, 0.2985157633011574, -1.2374489738702188, -0.7735500616425192]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-024"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-025",
+      "input_files": {
+        "features.json": "[-1.8122989157639924, 0.8486580133917635, 0.4406225558580742, -0.31235244878316526]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-025"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-026",
+      "input_files": {
+        "features.json": "[-0.8739650035118885, -1.7489457868626848, 0.9470848325275398, 0.4002175021120094]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-026"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-027",
+      "input_files": {
+        "features.json": "[1.7805957007793063, 0.6356319771883325, 1.449277155851961, 1.674517233273474]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-027"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-028",
+      "input_files": {
+        "features.json": "[-0.3072568793790368, 2.2708191860205873, 0.07093541286021436, 0.586159474431483]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-028"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-029",
+      "input_files": {
+        "features.json": "[1.2557476311355906, -1.5202523882978534, 0.2204436638060859, 1.8778224629201627]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-029"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-030",
+      "input_files": {
+        "features.json": "[1.0199340942704125, 1.0165540543009957, 0.311891415779799, 1.3534366605166692]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-030"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-031",
+      "input_files": {
+        "features.json": "[-2.0739139101112642, 0.7576149738453769, -1.7730120379767056, 1.3094360730083825]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-031"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-032",
+      "input_files": {
+        "features.json": "[-1.704649637206184, -0.9023264631363351, -0.14699286297026254, 0.7245965958742858]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-032"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-033",
+      "input_files": {
+        "features.json": "[1.7791201835443728, 1.1639614759831196, -1.6728054330485238, 1.8354541562108493]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-033"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-034",
+      "input_files": {
+        "features.json": "[-1.9285530159912492, 3.6445969108065186, -0.04079613392428346, 0.5458452428381971]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-034"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-035",
+      "input_files": {
+        "features.json": "[-0.22166848359954483, 0.8803964383257266, 0.6478048654459718, 0.24391859588270334]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-035"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-036",
+      "input_files": {
+        "features.json": "[2.609184955487522, 1.396917416624854, 0.21985525114163035, 0.8667760248033696]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-036"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-037",
+      "input_files": {
+        "features.json": "[-0.40455702427637497, 1.750369537709307, 1.594964923262893, 0.45138074938010325]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-037"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-038",
+      "input_files": {
+        "features.json": "[-0.6254158674664714, -2.2263069516651584, -0.7496974722450734, -0.3672316272350701]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-038"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-039",
+      "input_files": {
+        "features.json": "[1.4667056967390224, -1.726620588571236, -0.152746815344781, 0.5114585238352067]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-039"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-040",
+      "input_files": {
+        "features.json": "[-0.9973525006056712, 0.4752892670436346, -0.30338983578052325, 0.5572833784020229]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-040"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-041",
+      "input_files": {
+        "features.json": "[-0.5939627783847387, -3.8385700979652833, 0.0007751436877113348, -0.14318059702044833]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-041"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-042",
+      "input_files": {
+        "features.json": "[1.4943603615014058, -0.27878121880191686, 0.22448133034031628, 0.23629360855484302]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-042"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-043",
+      "input_files": {
+        "features.json": "[0.9245439615899012, 0.16247261667330948, -1.772375325378668, 0.08740711148088877]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-043"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-044",
+      "input_files": {
+        "features.json": "[-1.1242696215293644, -1.5785659941562473, 0.4604300010452799, 0.5124184548553905]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-044"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-045",
+      "input_files": {
+        "features.json": "[1.9729183580907992, 0.06141720231502564, -1.8814399783055265, 2.336699347992235]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-045"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-046",
+      "input_files": {
+        "features.json": "[-1.9348741771903553, 0.014568477900472221, 0.4847860772520674, -0.9778915581891217]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-046"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-047",
+      "input_files": {
+        "features.json": "[-1.927062646472165, -2.140703542580904, 0.3046309768768377, -1.1384659898861282]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-047"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-048",
+      "input_files": {
+        "features.json": "[3.200835870388146, 0.6117134802236202, -2.207602978177395, 1.1575306715322555]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-048"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-049",
+      "input_files": {
+        "features.json": "[-0.3263997715259776, 2.8855861132862968, -0.5119056044769844, 0.8801165648453562]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-049"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-050",
+      "input_files": {
+        "features.json": "[-0.0468396242152852, -0.14464478215901777, 0.38825516517270964, 1.232533852659718]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-050"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-051",
+      "input_files": {
+        "features.json": "[1.1029040551354206, -0.45211985257716286, -0.15207158747667815, 0.022082536010811428]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-051"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-052",
+      "input_files": {
+        "features.json": "[-1.927312827958756, 0.463725212555105, -0.0473639801849265, -0.1605449835494474]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-052"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-053",
+      "input_files": {
+        "features.json": "[-0.03454891648107461, -0.5387359751773255, 0.24421842830992285, 0.8158415236412478]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-053"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-054",
+      "input_files": {
+        "features.json": "[1.2837419996754647, -0.08029442669916477, -2.0668606965910534, -0.11623732377808613]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-054"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-055",
+      "input_files": {
+        "features.json": "[-2.11097940245899, 1.2794396346679053, -2.126302658834884, 1.3631684898785077]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-055"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-056",
+      "input_files": {
+        "features.json": "[-1.7008004395641105, -1.1797081463385226, -0.0934370867887448, 0.5602027633599758]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-056"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-057",
+      "input_files": {
+        "features.json": "[0.5979731291490641, -0.9973419762039918, 0.4170855370223137, -0.45241028421279816]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-057"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-058",
+      "input_files": {
+        "features.json": "[-1.1334511108785468, 2.835578868338387, -1.6250059119048097, 0.26567711859583987]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-058"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-059",
+      "input_files": {
+        "features.json": "[0.16575724655450885, -1.437897903056552, -0.6951888103440634, 0.1574749807735223]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-059"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-060",
+      "input_files": {
+        "features.json": "[-0.43724829139863286, 0.8077589014581655, 1.2340634239715014, -0.5569033263385238]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-060"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-061",
+      "input_files": {
+        "features.json": "[0.33203068810263403, 1.999528706304265, 0.6384883229564859, -0.11962952876410575]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-061"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-062",
+      "input_files": {
+        "features.json": "[-0.8007708076421447, -2.2863536190181026, -0.4231377749181732, -0.4823351517374403]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-062"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-063",
+      "input_files": {
+        "features.json": "[2.2298339827832723, 0.9460785496861933, 1.004549035573856, -0.3432632613683961]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-063"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-064",
+      "input_files": {
+        "features.json": "[-1.797056660152808, 1.3446522380788064, -1.1443875181481458, 1.4234289064227152]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-064"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-065",
+      "input_files": {
+        "features.json": "[-1.1609432495426342, -1.3114452642957057, -0.49832710223454946, 0.385766041678201]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-065"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-066",
+      "input_files": {
+        "features.json": "[0.3776741474354446, 0.37153827186131144, -1.49374879560191, 0.9948682892242734]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-066"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-067",
+      "input_files": {
+        "features.json": "[-2.453918906182266, 2.3893350707929955, 1.5314803311188896, -0.5622223561914602]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-067"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-068",
+      "input_files": {
+        "features.json": "[-1.527173082706365, -0.9367593683193893, -0.8342925937865032, 0.12771779505656922]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-068"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-069",
+      "input_files": {
+        "features.json": "[2.4951906674233415, 1.4338486467122393, -1.3830686225679576, -0.8141214772551701]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-069"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-070",
+      "input_files": {
+        "features.json": "[0.06853473006106614, 2.7647982109080487, -0.8762170987437171, -0.22015154878568793]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-070"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-071",
+      "input_files": {
+        "features.json": "[-1.5970577250223497, -2.1198840043653244, -1.0149423804151751, -0.27239041500143907]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-071"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-072",
+      "input_files": {
+        "features.json": "[1.4909917883698993, -0.8121267503922768, -1.531767925182705, 0.920309489631844]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-072"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-073",
+      "input_files": {
+        "features.json": "[-0.8625577303534012, 1.2473581271198917, 0.17587436819000968, 0.3725313251035529]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-073"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-074",
+      "input_files": {
+        "features.json": "[-0.21359458667813336, -0.19548098300247974, -1.1516629646114658, 1.012832181569948]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-074"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-075",
+      "input_files": {
+        "features.json": "[1.3835172533766367, 1.0617313515654496, 1.1537635670542463, 0.10693353709094554]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-075"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-076",
+      "input_files": {
+        "features.json": "[-2.3347474572209332, -0.29461362663478474, -1.2062353892689088, -0.9967487755858568]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-076"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-077",
+      "input_files": {
+        "features.json": "[-0.9630919614111766, -2.8383276616093225, 0.23456595004496078, -1.5405028211762677]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-077"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-078",
+      "input_files": {
+        "features.json": "[2.521574317868265, 1.6218381073775219, 2.4913440383576866, -0.08820353406261028]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-078"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-079",
+      "input_files": {
+        "features.json": "[-2.485133676243678, 1.5243243195375562, 0.24686689224343045, -0.18443604423648358]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-079"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-080",
+      "input_files": {
+        "features.json": "[-2.071889151098355, -1.5040700575112604, -0.5388772015620141, -0.2863926547096866]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-080"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-081",
+      "input_files": {
+        "features.json": "[1.1118313173921432, 0.5075731939835373, 0.312981281416955, -1.4550041081676692]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-081"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-082",
+      "input_files": {
+        "features.json": "[-0.5292964544047106, 1.0929681517884497, -0.8285197236603462, -1.6084353928185566]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-082"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-083",
+      "input_files": {
+        "features.json": "[-1.4211835417474172, -1.892794332127632, -0.4217708774603781, 0.43624330789610677]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-083"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-084",
+      "input_files": {
+        "features.json": "[1.5603743445322862, 0.813349294412922, 0.8430390206127993, -0.44630694037080076]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-084"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-085",
+      "input_files": {
+        "features.json": "[-1.4536718482981104, 1.4480085414007475, -1.0056810029483956, 0.3987195262514561]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-085"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-086",
+      "input_files": {
+        "features.json": "[-0.09547781542665856, -1.4763920033577136, -0.7803344456942826, -1.2665371765644746]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-086"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-087",
+      "input_files": {
+        "features.json": "[0.9332425910871046, 0.7778506565132075, -0.025736829124880182, 0.06646520637760792]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-087"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-088",
+      "input_files": {
+        "features.json": "[-1.0510813345335615, 3.716102022547549, -1.2442533496740003, -0.5687225377454297]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-088"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-089",
+      "input_files": {
+        "features.json": "[0.4665637675808134, -1.9233310356915607, -1.635830035190309, -0.5868610782125098]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-089"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-090",
+      "input_files": {
+        "features.json": "[2.158111732086816, 0.25664212512495005, 0.10033109061129838, -1.0912212494475737]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-090"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-091",
+      "input_files": {
+        "features.json": "[-1.6592696248338923, 1.4157655323973901, 0.02603006864550042, -1.422383498343981]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-091"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-092",
+      "input_files": {
+        "features.json": "[-1.186664427147687, -1.8632481810366794, 0.1129662635943302, -0.6387597372991466]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-092"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-093",
+      "input_files": {
+        "features.json": "[2.3158712437890197, 0.5470127216197457, -0.228171827446889, -0.17143142389015942]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-093"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-094",
+      "input_files": {
+        "features.json": "[0.2967944701814693, 1.4589099777821803, 1.4716736809479611, 0.5762145129988081]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-094"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-095",
+      "input_files": {
+        "features.json": "[-0.9916880210554311, -0.8050502320320918, -1.395720101959792, -0.009427553887322635]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-095"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-096",
+      "input_files": {
+        "features.json": "[1.758611467012823, -1.9896295359579559, -1.754413026203001, -0.6895096669506121]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-096"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-097",
+      "input_files": {
+        "features.json": "[-0.11126661488792189, 0.8456758452410822, 2.211657410107398, 1.3177713200997552]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-097"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-098",
+      "input_files": {
+        "features.json": "[0.16757862131455015, -2.129308532517823, -0.9223158246961319, 0.9403937579429419]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-098"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-099",
+      "input_files": {
+        "features.json": "[1.5760584897008545, 0.05492501511064223, -0.3066131791855955, 0.5606988080198366]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-099"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-100",
+      "input_files": {
+        "features.json": "[-0.7025479040112604, 2.479093564002416, 0.8829749970420384, 0.3527360968956426]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-100"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-101",
+      "input_files": {
+        "features.json": "[-0.08644060855224167, -0.8471222905556532, 1.6170396436427847, 0.7675201586396465]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-101"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-102",
+      "input_files": {
+        "features.json": "[1.742623362886527, 0.4467661256856091, -0.37420182265824603, 1.4519111151201305]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-102"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-103",
+      "input_files": {
+        "features.json": "[0.9479516571679001, 0.6200203791662363, -0.5852676080320931, -1.5366383110204338]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-103"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-104",
+      "input_files": {
+        "features.json": "[-0.3279106149314244, -2.5003270779098883, -1.0496682571675087, -0.5865536249641244]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-104"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-105",
+      "input_files": {
+        "features.json": "[1.953342745915177, 0.19536251084142822, -1.1939970840231038, -0.6321535042229114]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-105"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-106",
+      "input_files": {
+        "features.json": "[-0.4996011136000372, 1.261913778809937, -0.2849177033671934, -0.5496880589236149]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-106"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-107",
+      "input_files": {
+        "features.json": "[-0.8152246595995937, -1.3812919971584172, 0.11126931356709205, -1.4465414553576423]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-107"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-108",
+      "input_files": {
+        "features.json": "[-0.035592153306614804, 0.6415171098030192, 0.5745029659045635, -0.5942414896253806]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-108"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-109",
+      "input_files": {
+        "features.json": "[-1.1736334662812755, 2.2326721182782006, -0.13951623238030297, 1.101928791259864]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-109"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-110",
+      "input_files": {
+        "features.json": "[-1.4025309680133398, -0.6944196882247726, -1.9605977165493886, -1.028232303636513]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-110"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-111",
+      "input_files": {
+        "features.json": "[1.107344999220165, -1.365994635557731, -0.7098299190602655, 1.391609464923242]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-111"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-112",
+      "input_files": {
+        "features.json": "[0.4159701024302238, 0.2181714792309446, 1.0593741390060734, 0.32995277677400375]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-112"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-113",
+      "input_files": {
+        "features.json": "[-1.5582238535950734, -1.2114357369793236, -0.3111527598043559, 1.9923552483080125]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-113"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-114",
+      "input_files": {
+        "features.json": "[1.1341065739146485, 0.8744185262804742, -0.4421559423976322, 1.09099825493279]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-114"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-115",
+      "input_files": {
+        "features.json": "[-0.8326565924941288, 1.027286277313054, 0.5001942351380964, 1.0398236868494468]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-115"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-116",
+      "input_files": {
+        "features.json": "[0.6557586514420111, -2.8772893431943056, -0.7896468542600212, -0.3048064955710373]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-116"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-validation-117",
+      "input_files": {
+        "features.json": "[1.0130540293856425, -1.4169154434637248, 0.933995775009796, 0.2967519511388579]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-117"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-validation-118",
+      "input_files": {
+        "features.json": "[-1.496787338572107, 2.598419467193233, -0.9131134561112928, -0.04141355212613171]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-118"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-validation-119",
+      "input_files": {
+        "features.json": "[0.10721568066770004, -0.8471946551092882, 0.4022274688638951, 2.11632234285533]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "validation",
+      "task_id": "validation-119"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-000",
+      "input_files": {
+        "features.json": "[-0.027395921327647788, -0.49582856753620264, -1.2100768833032833, -0.12733869238333662]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-000"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-001",
+      "input_files": {
+        "features.json": "[1.1853238694532982, 1.850970400122762, 1.4588394008548133, -0.8491546650357279]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-001"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-002",
+      "input_files": {
+        "features.json": "[-1.769398144286608, -0.859411887829562, -1.2416646144265369, 0.9173128239109166]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-002"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-003",
+      "input_files": {
+        "features.json": "[1.242357719835562, -0.4895527228669409, 1.9557847356266929, 3.044556326485314]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-003"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-004",
+      "input_files": {
+        "features.json": "[-1.1019741347804062, 2.4667161145053207, 0.2646033957469822, 1.1173095667412638]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-004"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-005",
+      "input_files": {
+        "features.json": "[-1.5853445631711023, -0.6388392430935562, 0.48965806545929563, -2.067906842027212]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-005"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-006",
+      "input_files": {
+        "features.json": "[1.6026152385806773, -0.935284298507411, 0.28708285818896406, 0.07667384757263561]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-006"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-007",
+      "input_files": {
+        "features.json": "[0.07453985728335655, 0.03692099397732451, 0.03657339253432238, 1.0301428488087678]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-007"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-008",
+      "input_files": {
+        "features.json": "[0.12009299722227063, -2.9010454446077416, -0.13502806722169802, 0.0049421914088131624]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-008"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-009",
+      "input_files": {
+        "features.json": "[1.1261683308597832, -1.2514934674315707, 0.06716437678841222, 0.059722908249140116]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-009"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-010",
+      "input_files": {
+        "features.json": "[-1.2322214311955249, 0.502475903904183, 0.3178407970870121, -0.07420775229931305]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-010"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-011",
+      "input_files": {
+        "features.json": "[-0.1650081067016126, -1.0955771341712215, -0.7222112834168355, -0.5014445203868648]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-011"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-012",
+      "input_files": {
+        "features.json": "[0.2870300379242705, -0.9986547290667521, -0.4408142330893998, -0.09047358353371546]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-012"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-013",
+      "input_files": {
+        "features.json": "[-0.5622451942037818, 0.822180163742959, 0.5807176601419036, -0.878025291417781]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-013"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-014",
+      "input_files": {
+        "features.json": "[-0.8401988003158168, -0.3076701709171633, -1.0869999619034367, -0.8644334075194888]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-014"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-015",
+      "input_files": {
+        "features.json": "[0.18728591816015538, 0.7647106096014066, 0.38350515432273846, -0.23186169493562006]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-015"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-016",
+      "input_files": {
+        "features.json": "[-1.0016225245817176, -1.7909715597700742, -1.1953807936509329, -0.6677992557922444]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-016"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-017",
+      "input_files": {
+        "features.json": "[-1.0659554035132928, -0.9409013007767247, -0.46298009402532414, -0.03603707253096623]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-017"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-018",
+      "input_files": {
+        "features.json": "[4.184765007818466, 0.8271816749025119, 0.17488865511008883, -0.6073691662775009]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-018"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-019",
+      "input_files": {
+        "features.json": "[-2.2195312808607586, 2.4040904313541307, -0.8041350192734591, 1.5280180190555332]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-019"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-020",
+      "input_files": {
+        "features.json": "[-1.3670810583820887, -1.5081628234056288, -0.520247386287737, 1.611307049310936]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-020"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-021",
+      "input_files": {
+        "features.json": "[3.0846082074608203, 0.1521311018655237, 1.1601122833325526, 1.372533222264391]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-021"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-022",
+      "input_files": {
+        "features.json": "[-1.0047758231768966, 0.2738503830435137, -0.7967899485998057, 0.39959941728817544]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-022"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-023",
+      "input_files": {
+        "features.json": "[-1.3384086100401975, -2.9871777294207824, -1.2340395322408617, -0.014098087538051644]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-023"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-024",
+      "input_files": {
+        "features.json": "[1.1907599012147836, -0.4085186663261638, -1.3413360971604447, -1.7793736986798605]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-024"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-025",
+      "input_files": {
+        "features.json": "[-2.1297549659637545, 0.4361289655114692, -0.12329865729568688, -0.37594188869567274]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-025"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-026",
+      "input_files": {
+        "features.json": "[-1.714514408784495, -2.329181704172058, 0.34306787934907584, -0.9359598712246797]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-026"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-027",
+      "input_files": {
+        "features.json": "[1.3285707461635736, -0.1773492073261014, -1.2652003211034883, 1.2458757751263299]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-027"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-028",
+      "input_files": {
+        "features.json": "[-1.3196883853047168, 0.74998655291206, 0.16058730039521693, 0.28721742200230693]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-028"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-029",
+      "input_files": {
+        "features.json": "[-2.127998353108751, -0.6731200614284276, -0.7398081416464543, 1.1405973195364751]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-029"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-030",
+      "input_files": {
+        "features.json": "[0.4688766884206277, 0.1414268408114191, -0.3056100326571369, -0.18357655009888393]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-030"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-031",
+      "input_files": {
+        "features.json": "[0.7118533084886052, 0.4322545830281429, -0.04884832553539222, -0.2077591901090389]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-031"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-032",
+      "input_files": {
+        "features.json": "[0.10129593985047458, -0.4423646363279622, -1.005379554757944, -0.4811905715329597]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-032"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-033",
+      "input_files": {
+        "features.json": "[0.7164389790490346, -2.020608761960174, 1.225757534120492, -0.2030827038233705]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-033"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-034",
+      "input_files": {
+        "features.json": "[-2.0716003365188924, 0.5423977864010793, -2.40848420542247, -0.5642202928551865]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-034"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-035",
+      "input_files": {
+        "features.json": "[-0.4058935227940166, -0.6961275945478739, 0.05200732547072295, 1.2809883075031352]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-035"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-036",
+      "input_files": {
+        "features.json": "[1.9889039010691272, -0.1533801246661928, 1.2564899982972868, 0.06303010718856296]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-036"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-037",
+      "input_files": {
+        "features.json": "[0.8682733720090874, 1.4898838873221143, 0.09929832647122835, 0.438969017053267]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-037"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-038",
+      "input_files": {
+        "features.json": "[-1.2541255184393232, -1.5927273513188664, 1.0915539680596638, 0.6850234331596687]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-038"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-039",
+      "input_files": {
+        "features.json": "[0.38659847122158886, -0.21210937159697557, -0.9711121168153616, 1.0416385493970435]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-039"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-040",
+      "input_files": {
+        "features.json": "[-1.8633422355852396, 0.00025822443955836327, 1.240212312896017, 1.9147645644117344]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-040"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-041",
+      "input_files": {
+        "features.json": "[-2.903421848782502, -0.1791739825778107, -1.096847314929443, 0.19139850782144044]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-041"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-042",
+      "input_files": {
+        "features.json": "[3.0011170623352346, 0.4129422916336166, 0.7134561310882885, -0.413739601147948]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-042"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-043",
+      "input_files": {
+        "features.json": "[-0.50884524215772, -0.7960981063198163, -1.067371063209824, 0.3313146112682864]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-043"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-044",
+      "input_files": {
+        "features.json": "[0.4400611659527198, -1.8736033174214237, -0.5336577747086526, 0.21231729341692088]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-044"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-045",
+      "input_files": {
+        "features.json": "[1.6549198823638291, -0.8535438803956993, 0.38083079690141625, -0.8244341907050524]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-045"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-046",
+      "input_files": {
+        "features.json": "[-0.8732420910420285, 1.2122305429016733, -0.41468853611574397, -0.4820942441141431]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-046"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-047",
+      "input_files": {
+        "features.json": "[-0.5058038650946873, 0.24881739255791002, -0.814362398644501, 0.3991761457627497]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-047"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-048",
+      "input_files": {
+        "features.json": "[0.4528671185088493, -0.41472807507581266, -0.5990656658503868, 0.16485539202256574]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-048"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-049",
+      "input_files": {
+        "features.json": "[-0.9114751108897989, -0.11401263573731724, -0.3371018567481179, -0.045529111277752485]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-049"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-050",
+      "input_files": {
+        "features.json": "[-1.5501621882667953, -1.3747758493163265, 0.9383827355610017, -0.4928022713023832]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-050"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-051",
+      "input_files": {
+        "features.json": "[1.3463911199610301, -0.3326419447009369, 0.7848022927797097, 0.23138467216676717]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-051"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-052",
+      "input_files": {
+        "features.json": "[-1.2037532043719346, 0.07802720096813509, 0.6116227112364886, 0.3690284066735031]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-052"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-053",
+      "input_files": {
+        "features.json": "[-2.0951362665702975, -1.7607550820151214, 1.2763916832528568, 0.8417944535552043]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-053"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-054",
+      "input_files": {
+        "features.json": "[2.1630744993662807, -0.6706556727425712, -1.365340816439308, -0.05707056857888529]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-054"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-055",
+      "input_files": {
+        "features.json": "[-0.18371106148200278, 0.19173815312918574, -0.656273066221252, -0.6703031819504162]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-055"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-056",
+      "input_files": {
+        "features.json": "[0.21709092799472784, -0.42530044235445974, -0.9947750170696584, 2.280489041649775]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-056"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-057",
+      "input_files": {
+        "features.json": "[1.5779061717702327, -1.7333425697978135, 0.7073530722746755, -2.0068866963710774]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-057"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-058",
+      "input_files": {
+        "features.json": "[0.5137050113731598, -0.6521226993053812, 0.0802274579292362, 1.0546501737677314]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-058"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-059",
+      "input_files": {
+        "features.json": "[-2.46061205280098, -4.055535834645302, -0.7114186734077801, -0.7042521858082267]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-059"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-060",
+      "input_files": {
+        "features.json": "[1.7833734414895428, -0.3573042569833237, 0.8293086149854161, 0.3705543729619469]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-060"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-061",
+      "input_files": {
+        "features.json": "[0.8410123514275178, 3.661139527989909, 2.3710716805147696, -0.8192251184733753]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-061"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-062",
+      "input_files": {
+        "features.json": "[-0.4092633040708462, -0.41007412916328034, -0.4056093594383052, 0.337196615537916]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-062"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-063",
+      "input_files": {
+        "features.json": "[1.8982469483145255, 1.1835748014181893, 0.5829508833051297, 1.4739875604778083]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-063"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-064",
+      "input_files": {
+        "features.json": "[-1.949771716042832, 0.6887932597643652, 1.2054209557974567, -0.8464170216782116]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-064"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-065",
+      "input_files": {
+        "features.json": "[0.4830581385071113, -2.423733698319965, 0.41367965062613193, -0.9174763381322747]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-065"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-066",
+      "input_files": {
+        "features.json": "[1.6546593834546, -0.49656784941821774, 0.7493786162973513, 0.6767060514506111]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-066"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-067",
+      "input_files": {
+        "features.json": "[-1.9685838913059077, 2.4294256224703568, -0.40254021428800024, -1.0435727577124823]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-067"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-068",
+      "input_files": {
+        "features.json": "[-0.8882629636271855, -2.940154765975578, 1.195592966890612, 1.6587532345337481]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-068"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-069",
+      "input_files": {
+        "features.json": "[1.2930626814511492, 1.1398538699133065, 0.7806865085374757, -0.5194269183918999]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-069"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-070",
+      "input_files": {
+        "features.json": "[-1.8547204136515736, 2.665852896293261, -1.063201996341887, -0.6610259169104703]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-070"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-071",
+      "input_files": {
+        "features.json": "[0.8176502928409632, 0.5532173519629813, -1.356909840313429, 1.407735532182425]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-071"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-072",
+      "input_files": {
+        "features.json": "[-0.04264864084050801, 0.21395639002947656, 0.46889076471604174, -0.4198318959176019]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-072"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-073",
+      "input_files": {
+        "features.json": "[-0.12454341881603548, 0.7306546884616911, -0.23271187797409149, 1.3851949633842122]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-073"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-074",
+      "input_files": {
+        "features.json": "[0.04512942639316231, -2.1960175857593285, -0.026680963523234198, -1.781104632956841]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-074"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-075",
+      "input_files": {
+        "features.json": "[1.551188505026887, 1.483827697076538, 0.7498887212652608, -0.4437052370001591]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-075"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-076",
+      "input_files": {
+        "features.json": "[-1.4186323695026255, 1.6564115322029445, -1.2227001978453966, 0.1991294297128445]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-076"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-077",
+      "input_files": {
+        "features.json": "[-0.870626269212693, -2.191878338160592, 0.5331696987835879, -0.051358382750687846]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-077"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-078",
+      "input_files": {
+        "features.json": "[3.589598636076245, 0.9211231795895193, -0.2302452850775379, 1.3036445397517082]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-078"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-079",
+      "input_files": {
+        "features.json": "[-1.0758683022544926, 0.26563933224821534, 0.1720722857474357, 1.7424622951695787]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-079"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-080",
+      "input_files": {
+        "features.json": "[-1.3982067804398892, -1.7917243764897677, 0.9454975205052363, -0.08239603758534808]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-080"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-081",
+      "input_files": {
+        "features.json": "[1.4719643310757464, -0.6227810408153195, -1.1115649611382425, 0.08734258949819071]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-081"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-082",
+      "input_files": {
+        "features.json": "[-0.42696426595010584, -0.05743267262354701, 0.9640201093889608, 0.40153010747617063]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-082"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-083",
+      "input_files": {
+        "features.json": "[0.19139702029898165, -0.5385637388414581, 1.8044388359854213, 1.9417306084990427]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-083"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-084",
+      "input_files": {
+        "features.json": "[2.8523660442430616, 1.6514982809974175, -0.05396421522520408, -1.4181462193655856]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-084"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-085",
+      "input_files": {
+        "features.json": "[0.5899870121012547, 2.32167081741409, -0.9587858398756354, 0.1469522598123738]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-085"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-086",
+      "input_files": {
+        "features.json": "[-1.1600166034345407, -0.8014579690771696, -0.27525686730740045, -0.14002412625471072]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-086"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-087",
+      "input_files": {
+        "features.json": "[0.3055162824815554, -1.3485772209479583, -1.2085299688140472, 0.8122832759437456]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-087"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-088",
+      "input_files": {
+        "features.json": "[-0.6523340395604447, 1.324567930419371, -0.715238822510401, 0.4378434223517502]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-088"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-089",
+      "input_files": {
+        "features.json": "[-1.3399103373956116, -0.24211565238217658, -0.3128915280640992, 1.4691997919805972]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-089"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-090",
+      "input_files": {
+        "features.json": "[1.588297087950468, 0.21131208118419464, -1.924970038761007, 0.8002471221698031]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-090"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-091",
+      "input_files": {
+        "features.json": "[-0.09425471562525578, 0.7618008902748905, 0.021242551249395846, 0.0356193997316857]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-091"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-092",
+      "input_files": {
+        "features.json": "[-0.5155415770717446, -1.0445407590875881, -0.9246924343763808, -0.7666979318635748]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-092"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-093",
+      "input_files": {
+        "features.json": "[0.7833077626516064, -0.20294958172040442, 1.6220172516476254, -1.2144868648217952]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-093"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-094",
+      "input_files": {
+        "features.json": "[-1.9307680915422551, 1.8092425684263926, 1.0405352656661153, 0.5502658691863324]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-094"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-095",
+      "input_files": {
+        "features.json": "[-0.5559297138399, -2.016239878622883, 0.6188234044139356, 1.6195481367787679]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-095"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-096",
+      "input_files": {
+        "features.json": "[3.392373597186393, 0.8436389497740995, -0.49220026698350045, 0.8280559582013857]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-096"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-097",
+      "input_files": {
+        "features.json": "[-1.118355217930317, 0.3663044037184999, -0.938880240514808, 0.027199583398793418]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-097"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-098",
+      "input_files": {
+        "features.json": "[-2.511655846562043, -1.422054798236655, -0.3566947010057637, -1.6122405411102523]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-098"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-099",
+      "input_files": {
+        "features.json": "[1.9175708668856857, -0.22714406112830812, -0.19197072898719614, 1.1141852520650761]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-099"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-100",
+      "input_files": {
+        "features.json": "[-2.148544558460973, 2.165523598637486, 0.5400458983200094, -1.2275656077107662]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-100"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-101",
+      "input_files": {
+        "features.json": "[-0.715108067613771, -1.7097270380084248, -0.47639421330092635, 0.564347636731831]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-101"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-102",
+      "input_files": {
+        "features.json": "[1.1956547901462289, -0.9013258250183516, -0.40395243137204145, -0.15941218444549704]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-102"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-103",
+      "input_files": {
+        "features.json": "[-0.5649565822946466, 0.8690070380024102, 0.5041978562372433, -0.5537250912468623]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-103"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-104",
+      "input_files": {
+        "features.json": "[0.7312645941703646, -1.7717866083389666, -0.34430685545647494, 1.110089617186836]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-104"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-105",
+      "input_files": {
+        "features.json": "[2.978134456621029, -0.7519451043526966, 0.7090345918330558, 1.5851086762045365]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-105"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-106",
+      "input_files": {
+        "features.json": "[-0.4663013695484534, 1.4322058375424966, -0.3475353413045333, 0.7843327460439737]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-106"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-107",
+      "input_files": {
+        "features.json": "[-2.145586350837084, -3.389653436427571, -1.392340426837381, 0.11687242060832466]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-107"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-108",
+      "input_files": {
+        "features.json": "[1.9891429693284381, 0.5401699517318035, 0.5859875396581217, -0.11862411729652454]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-108"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-109",
+      "input_files": {
+        "features.json": "[-1.0592503138284142, 1.285444815162739, 0.4313814956150039, -0.8602019227151445]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-109"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-110",
+      "input_files": {
+        "features.json": "[-0.614381083565683, -2.4096160619377307, -0.8461920605067468, 0.1337186567522895]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-110"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-111",
+      "input_files": {
+        "features.json": "[2.4973172493866453, 1.0151139697862936, 1.1855621422609472, 0.8653536514262243]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-111"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-112",
+      "input_files": {
+        "features.json": "[-1.7484235799885615, 2.294771688734465, 0.5575367290671815, -0.12301099196716334]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-112"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-113",
+      "input_files": {
+        "features.json": "[-2.0075533901739586, -1.9606243495529407, 0.08073601235244407, -0.6887628307886379]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-113"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-114",
+      "input_files": {
+        "features.json": "[2.2264368918313435, 1.5234600347943883, 0.40770545422466486, 0.3755629815081381]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-114"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-115",
+      "input_files": {
+        "features.json": "[-1.6044592634200514, 2.478880112340353, 0.7093030103428208, -0.9904353928673462]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-115"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-116",
+      "input_files": {
+        "features.json": "[0.8244359575848883, -1.4535961740383168, 0.615126644570531, -0.0403910268925853]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-116"
+    },
+    {
+      "expected_files": {
+        "label.txt": "0"
+      },
+      "group_id": "seed-0-test-117",
+      "input_files": {
+        "features.json": "[0.5338534757266146, -1.479383187541468, 0.24874463081936066, 0.6303592209519571]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-117"
+    },
+    {
+      "expected_files": {
+        "label.txt": "1"
+      },
+      "group_id": "seed-0-test-118",
+      "input_files": {
+        "features.json": "[-1.9150401049745733, 1.2904012279884773, 0.3126515861748406, 0.3783427144958863]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-118"
+    },
+    {
+      "expected_files": {
+        "label.txt": "2"
+      },
+      "group_id": "seed-0-test-119",
+      "input_files": {
+        "features.json": "[-1.5973103357855405, -1.765354576996124, 0.9660618102983628, -0.9150633741757213]"
+      },
+      "instruction": "Predict class 0, 1, or 2 from the four numeric features.",
+      "split": "test",
+      "task_id": "test-119"
+    }
+  ]
+}

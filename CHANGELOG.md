@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.4.0 — 2026-09-12
+
+- Run schema-2 artifact, harness and model experiments through the same baseline, bounded search, freeze, final-test, report and verify commands. `program`, `agent` and `learner` remain descriptive aliases; legacy starters are available as `artifact-fixture`, `harness-fixture` and `model-contract`.
+- Add live model proposals for an executable JSON-processing program and an agent workflow runner; retain coding and skills experiments and allow declared skills to execute `run.py` with bounded JSON input/output.
+- Dispatch actual training before candidate evaluation, protect trainer entry points, pass train-only data, validate checkpoint bytes and commit trained checkpoints. Final evaluation reads the frozen checkpoint without retraining.
+- Add inspectable CPU SFT, REINFORCE and LoRA implementations for a tiny softmax classifier, with checkpoint-guided curriculum and frozen/self-use controls.
+- Support mode-specific final conditions and preserve primary-metric direction in frozen reports and comparison identities.
+- Add bounded population search with top-K branch retention, crossover ancestry, local concurrent candidate worktrees, serialized root journal writes and durable budget reservations/recovery.
+- Add optional authenticated HTTP evaluation workers and a two-process localhost demonstration; multi-host operation and hostile-code containment remain unverified.
+- Add reproducible CPU and request-capped live-demo drivers that retain unsuccessful outcomes. Document the measured CPU panel, API onboarding and the limits of each experiment.
+- Expand the core ceiling to 5,000 lines while retaining the 300-line module and 50-line function limits and zero third-party core runtime dependencies.
+
+The verified CPU panel completed 18 runs and 54 training rounds, with 20 accepted and 34 rejected candidates. Held-out mean accuracy rose from 46.11% to 84.44–86.39% across method/control groups on overlapping synthetic clusters. Self-use comparisons were mixed: one positive, one negative and seven ties. These teaching-scale results are not LLM fine-tuning, general benchmark performance or proof of general recursive self-improvement.
+
 ## 0.3.1 — 2026-09-12
 
 - Handle macOS zombie-only process-group permission errors without losing timeout outcomes; verify terminal group state and preserve genuine permission failures.

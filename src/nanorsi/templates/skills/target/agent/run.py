@@ -7,6 +7,8 @@ not execute model supplied shell commands and does not receive private labels.
 from __future__ import annotations
 
 import hashlib
+import difflib
+import fnmatch
 import importlib.util
 import json
 import math
@@ -157,10 +159,10 @@ def _bridge_cwd(command: list[str]) -> Path:
     return Path(__file__).resolve().parents[2]
 
 
-def _stream_bridge(command: list[str], payload: bytes, timeout: float) -> tuple[int | None, bytes, bytes, bool, bool, bool]:
+def _stream_bridge(command: list[str], payload: bytes, timeout: float, *, cwd: Path | None = None) -> tuple[int | None, bytes, bytes, bool, bool, bool]:
     """Run a bridge with capped pipe draining and process-group cleanup."""
     try:
-        process = subprocess.Popen(command, cwd=_bridge_cwd(command), env=_safe_environment(), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=(os.name == "posix"))
+        process = subprocess.Popen(command, cwd=_bridge_cwd(command) if cwd is None else cwd, env=_safe_environment(), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=(os.name == "posix"))
     except OSError:
         return None, b"", b"", False, False, True
     selector = selectors.DefaultSelector()
@@ -281,7 +283,7 @@ def _call_bridge(agent: dict[str, Any], messages: list[dict[str, str]], usage: _
         usage.errors.append("invalid_timeout")
         return None, "invalid model timeout"
     payload = {"messages": messages, "model": agent.get("model"), "max_tokens": agent.get("max_tokens")}
-    for key in ("base_url", "api_key_file", "timeout_s", "token_parameter"):
+    for key in ("base_url", "api_key_file", "timeout_s", "token_parameter", "thinking"):
         if key in agent:
             payload[key] = agent[key]
     returncode, stdout, _stderr, timed_out, output_limited, start_error = _stream_bridge(command, _json(payload).encode("utf-8"), timeout_value)
@@ -376,6 +378,13 @@ def _run_task(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, 
             raise RunnerError(str(error)) from error
         test_runner = helper.run_tests
     tools = ["list", "read", "write", "final"]
+    scripts: dict[str, Path] = {}
+    for name in agent.get("skills", []):
+        path = _safe_path(_skill_root(), name + "/run.py", allow_missing=True)
+        if path.is_file():
+            scripts[name] = path
+    if scripts:
+        tools.insert(-1, "skill")
     if test_runner:
         tools.insert(-1, "test")
     with tempfile.TemporaryDirectory(prefix="nanorsi-episode-") as directory:
@@ -387,11 +396,13 @@ def _run_task(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, 
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(content, encoding="utf-8")
         messages: list[dict[str, str]] = [
-            {"role": "system", "content": "You are a bounded file editing agent. Respond with exactly one JSON object and no markdown. The object schema is {\"tool\": " + "|".join(_json(tool) for tool in tools) + ", \"path\": optional string, \"content\": optional string}.\n" + skill_text},
-            {"role": "user", "content": _json({"instruction": task["instruction"], "input_files": task["input_files"], "tools": tools, **({"public_tests": public_tests, "test_timeout_s": test_timeout_s} if test_runner else {})})},
+            {"role": "system", "content": "You are a bounded file editing agent. Respond with exactly one JSON object and no markdown. The object schema is {\"tool\": " + "|".join(_json(tool) for tool in tools) + ", \"path\": optional string, \"content\": optional string}. You have at most " + str(max_turns) + " tool actions, including final; plan within that budget.\n" + skill_text},
+            {"role": "user", "content": _json({"instruction": task["instruction"], "input_files": task["input_files"], "tools": tools, "max_turns": max_turns, **({"public_tests": public_tests, "test_timeout_s": test_timeout_s} if test_runner else {})})},
         ]
         if test_runner:
             messages[0]["content"] += '\nThe "test" tool runs the supplied public unittest suite on a fresh workspace snapshot. Use {"tool":"test"}; command, path, source and timeout overrides are not accepted. Inspect failures, edit, then test again before final.'
+        if scripts:
+            messages[0]["content"] += '\nAvailable executable skills: ' + _json(sorted(scripts)) + '. Invoke {"tool":"skill","name":"declared-name","arguments":{...}}. The fixed skills/<name>/run.py receives JSON stdin {"workspace": "absolute episode directory", "arguments": {...}} and must print one JSON object. Scripts have a 2 second time limit and 1000000 byte combined output limit; no argv or command overrides are allowed.'
         final_seen = False
         for turn in range(max_turns):
             action, error = _call_bridge(agent, messages, usage)
@@ -423,6 +434,28 @@ def _run_task(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, 
                         value = test_runner(_workspace_files(workspace), public_tests, test_timeout_s)
                     except ValueError as error:
                         raise RunnerError(str(error)) from error
+                elif tool == "skill":
+                    name = action.get("name")
+                    if not isinstance(name, str) or name not in scripts:
+                        raise RunnerError("undeclared executable skill")
+                    if set(action) != {"tool", "name", "arguments"} or not isinstance(action.get("arguments"), dict):
+                        raise RunnerError("skill accepts only name and arguments object")
+                    script = _safe_path(_skill_root(), name + "/run.py")
+                    source = script.read_bytes()
+                    digest = hashlib.sha256(source).hexdigest()
+                    hashes[name + "/run.py"] = digest
+                    _trace_add(trace, {"event": "skill_script_invoked", "name": name, "sha256": digest, "bytes": len(source)})
+                    code, output, _stderr, timed_out, limited, start_error = _stream_bridge([sys.executable, str(script)], _json({"workspace": str(workspace), "arguments": action["arguments"]}).encode("utf-8"), 2.0, cwd=workspace)
+                    if timed_out or limited or start_error or code != 0:
+                        reason = "timeout" if timed_out else "output limit" if limited else "start error" if start_error else "exit error"
+                        raise RunnerError("skill script " + reason)
+                    try:
+                        value = json.loads(output)
+                    except (UnicodeError, json.JSONDecodeError) as error:
+                        raise RunnerError("skill script returned invalid JSON") from error
+                    if not isinstance(value, dict):
+                        raise RunnerError("skill script must return an object")
+                    _workspace_files(workspace)
                 elif tool == "final":
                     final_seen = True
                     _trace_add(trace, {"event": "final"})
@@ -440,32 +473,88 @@ def _run_task(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, 
         return {"status": "ok", "output_files": _workspace_files(workspace), "trace": _bounded_trace(trace), "skill_hashes": hashes, "usage": usage.as_dict()}
 
 
+def _replacement_diff(files: Any, context: dict[str, Any]) -> str:
+    """Encode model-provided complete sources; never supply replacement content."""
+    if not isinstance(files, dict) or len(files) > 64:
+        raise RunnerError("proposal files must be an object with at most 64 paths")
+    parents = context.get("parent_files", {})
+    if not isinstance(parents, dict):
+        raise RunnerError("proposal parent_files must be an object")
+    surface = context.get("surface")
+    allow = surface.get("allow", []) if isinstance(surface, dict) else [surface] if isinstance(surface, str) else surface if isinstance(surface, list) else ["target/**"]
+    deny = surface.get("deny", []) if isinstance(surface, dict) else []
+    private = {".git", ".nanorsi", "__pycache__", "evaluator", "proposer", "tasks", "adapters", "reports", "runs", "trainer", "nanorsi.toml", "lineage.jsonl", ".env", "credentials", "secrets"}
+    output: list[str] = []
+    for path, source in sorted(files.items()):
+        if not isinstance(path, str) or not path.startswith("target/") or "\\" in path or any(ord(character) < 32 for character in path) or any(part in {"", ".", ".."} for part in path.split("/")):
+            raise RunnerError("invalid proposal file path")
+        if any(part.lower() in private or part.lower().startswith(".env.") or part.lower().endswith((".pem", ".key")) for part in path.split("/")):
+            raise RunnerError("protected proposal file path")
+        if not isinstance(allow, list) or not any(isinstance(pattern, str) and fnmatch.fnmatch(path, pattern) for pattern in allow) or not isinstance(deny, list) or any(isinstance(pattern, str) and fnmatch.fnmatch(path, pattern) for pattern in deny):
+            raise RunnerError("proposal file outside mutable surface")
+        if not isinstance(source, str) or "\x00" in source:
+            raise RunnerError("proposal file contents must be text")
+        old = parents.get(path, "")
+        if not isinstance(old, str):
+            raise RunnerError("proposal parent file contents must be text")
+        is_new = path not in parents
+        if old == source and not is_new:
+            continue
+        left, right = "a/" + path, "b/" + path
+        if any(character.isspace() or character == '"' for character in path):
+            left, right = json.dumps(left, ensure_ascii=False), json.dumps(right, ensure_ascii=False)
+        output.append(f"diff --git {left} {right}\n")
+        if is_new:
+            output.append("new file mode 100644\n")
+            if not source:
+                digest = hashlib.sha1(b"blob 0\x00").hexdigest()[:7]
+                output.append(f"index 0000000..{digest}\n")
+                continue
+        lines = difflib.unified_diff(old.splitlines(keepends=True), source.splitlines(keepends=True), fromfile="/dev/null" if is_new else left, tofile=right)
+        for line in lines:
+            output.append(line if line.endswith("\n") else line + "\n\\ No newline at end of file\n")
+    return "".join(output)
+
+
 def _run_propose(request: dict[str, Any], agent: dict[str, Any], hashes: dict[str, str], skill_text: str, trace: list[dict[str, Any]], usage: _Usage) -> dict[str, Any]:
     context = request.get("context")
     if not isinstance(context, dict):
         raise RunnerError("invalid proposal context")
+    if "operator" in context and context["operator"] not in {"draft", "improve", "debug", "crossover"}:
+        raise RunnerError("invalid proposal operator")
+    visible = {key: context.get(key) for key in ("goal", "parent_files", "train_results", "surface")}
+    for key in ("operator", "extra_parents", "candidate_id", "parent_candidate_id", "round"):
+        if key in context:
+            visible[key] = context[key]
     messages = [
-        {"role": "system", "content": "You are a bounded proposal agent. Return exactly one JSON object with a string diff and a JSON hypothesis, with no markdown.\n" + skill_text},
-        {"role": "user", "content": _json({"goal": context.get("goal"), "parent_files": context.get("parent_files", {}), "train_results": context.get("train_results"), "surface": context.get("surface")})},
+        {"role": "system", "content": 'You are a bounded proposal agent. Return exactly one JSON object with no markdown. Prefer {"files":{"target/path":"complete new source text"},"hypothesis":{"reason":"why this should improve"}}. Include only changed or new files, preserving every required function and complete file content; the driver computes an accurate git diff. Alternatively return {"diff":"valid git unified diff","hypothesis":{...}} with diff --git headers and correct hunk counts. Do not return both files and diff. Modify only the allowed surface; never modify private or protected files. Use the current source and training feedback to implement a general solution; do not embed task IDs, expected examples, or data-specific shortcuts. Preserve the runner task/propose protocol when modifying a harness. If allowed, a declared skill may contain SKILL.md plus run.py: the task agent invokes {"tool":"skill","name":"declared-name","arguments":{...}}; the fixed run.py receives JSON stdin {"workspace":"absolute episode directory","arguments":{...}} and must print a JSON object within 2 seconds and 1000000 output bytes. Document its arguments in SKILL.md, operate only on the supplied workspace, and do not access the network or external files. If an operator is provided, follow it: draft creates an initial improvement, improve develops a working parent, debug repairs observed failures, crossover combines useful mechanisms from the supplied parent sources. Return {"files":{},"hypothesis":{"reason":"..."}} if no justified improvement remains.\n' + skill_text},
+        {"role": "user", "content": _json(visible)},
     ]
     result, error = _call_bridge(agent, messages, usage)
     _trace_add(trace, {"event": "model_call", "turn": 1, "ok": error is None})
     if error:
         _trace_add(trace, {"event": "error", "code": error})
         return {"status": "error", "trace": _bounded_trace(trace), "skill_hashes": hashes, "usage": usage.as_dict()}
-    if not isinstance(result, dict) or not isinstance(result.get("diff"), str) or "hypothesis" not in result:
+    if not isinstance(result, dict) or not isinstance(result.get("hypothesis"), dict) or ("files" in result) == ("diff" in result):
         _trace_add(trace, {"event": "error", "code": "invalid_proposal"})
         return {"status": "error", "trace": _bounded_trace(trace), "skill_hashes": hashes, "usage": usage.as_dict()}
+    if "files" in result:
+        result["diff"] = _replacement_diff(result["files"], context)
+    elif not isinstance(result["diff"], str):
+        raise RunnerError("proposal diff must be text")
     _trace_add(trace, {"event": "proposal"})
     return {"status": "ok", "diff": result["diff"], "hypothesis": result["hypothesis"], "trace": _bounded_trace(trace), "skill_hashes": hashes, "usage": usage.as_dict()}
 
 
-def main() -> None:
+def main(*, task_runner=_run_task, proposal_runner=_run_propose, runner_path: Path | None = None) -> None:
     started = time.monotonic()
     trace: list[dict[str, Any]] = []
     usage = _Usage()
     hashes: dict[str, str] = {}
     try:
+        source_path = runner_path if runner_path is not None else Path(__file__)
+        source = source_path.read_bytes()
+        _trace_add(trace, {"event": "runner_loaded", "path": "target/agent/" + source_path.name, "sha256": hashlib.sha256(source).hexdigest(), "bytes": len(source)})
         request = json.load(sys.stdin)
         if not isinstance(request, dict) or request.get("mode") not in {"task", "propose"}:
             raise RunnerError("mode must be task or propose")
@@ -476,9 +565,9 @@ def main() -> None:
         trace.extend(skill_trace)
         _trace_add(trace, {"event": "skills_loaded", "count": len(hashes)})
         if request["mode"] == "task":
-            result = _run_task(request, agent, hashes, skill_text, trace, usage)
+            result = task_runner(request, agent, hashes, skill_text, trace, usage)
         else:
-            result = _run_propose(request, agent, hashes, skill_text, trace, usage)
+            result = proposal_runner(request, agent, hashes, skill_text, trace, usage)
     except (OSError, UnicodeError, RunnerError, json.JSONDecodeError, TypeError, OverflowError) as error:
         _trace_add(trace, {"event": "error", "code": str(error)[:120]})
         result = {"status": "error", "trace": _bounded_trace(trace), "skill_hashes": hashes, "usage": usage.as_dict()}

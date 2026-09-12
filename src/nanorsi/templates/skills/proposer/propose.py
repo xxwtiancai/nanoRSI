@@ -13,6 +13,12 @@ import time
 from typing import Any
 
 
+MAX_SOURCE_FILE_BYTES = 64_000
+MAX_SOURCE_TOTAL_BYTES = 192_000
+MAX_SOURCE_FILES = 64
+PRIVATE_COMPONENTS = frozenset({".git", ".nanorsi", "__pycache__", "evaluator", "proposer", "tasks", "adapters", "reports", "runs", "nanorsi.toml", "lineage.jsonl", ".env", "credentials", "secrets"})
+
+
 def _patterns(surface: Any) -> list[str]:
     if isinstance(surface, str):
         return [surface]
@@ -24,24 +30,51 @@ def _patterns(surface: Any) -> list[str]:
     return ["target/**"]
 
 
-def _gather_parent_files(context: dict[str, Any]) -> dict[str, str]:
-    cwd = Path.cwd()
-    patterns = _patterns(context.get("surface"))
+def _source_allowed(relative: str, context: dict[str, Any]) -> bool:
+    path = Path(relative)
+    if path.is_absolute() or "\\" in relative or "\x00" in relative or not path.parts or path.parts[0] != "target" or ".." in path.parts:
+        return False
+    if any(part.lower() in PRIVATE_COMPONENTS or part.lower().startswith(".env.") or part.lower().endswith((".pem", ".key")) for part in path.parts):
+        return False
+    surface = context.get("surface")
+    deny = surface.get("deny", []) if isinstance(surface, dict) else []
+    if isinstance(deny, list) and any(isinstance(pattern, str) and fnmatch.fnmatch(relative, pattern) for pattern in deny):
+        return False
+    return any(fnmatch.fnmatch(relative, pattern) for pattern in _patterns(surface))
+
+
+def _bounded_source(files: dict[str, Any], context: dict[str, Any]) -> dict[str, str]:
+    result: dict[str, str] = {}
+    total = 0
+    for relative, source in sorted(files.items()):
+        if not isinstance(relative, str) or not isinstance(source, str) or not _source_allowed(relative, context) or "\x00" in source:
+            continue
+        size = len(source.encode("utf-8"))
+        if size > MAX_SOURCE_FILE_BYTES or total + size > MAX_SOURCE_TOTAL_BYTES or len(result) >= MAX_SOURCE_FILES:
+            continue
+        result[relative] = source
+        total += size
+    return result
+
+
+def _gather_parent_files(context: dict[str, Any], *, root: Path | None = None) -> dict[str, str]:
+    cwd = (Path.cwd() if root is None else root).resolve()
     files: dict[str, str] = {}
-    target = cwd / "target" / "agent"
-    if not target.is_dir():
+    target = cwd / "target"
+    if not target.is_dir() or target.is_symlink():
         return files
     for path in sorted(target.rglob("*")):
-        if path.is_symlink() or not path.is_file():
+        if any(parent.is_symlink() for parent in (path, *path.parents)) or not path.is_file():
             continue
         relative = path.relative_to(cwd).as_posix()
-        if not any(fnmatch.fnmatch(relative, pattern) or fnmatch.fnmatch(relative, pattern.rstrip("/") + "/*") for pattern in patterns):
+        if not _source_allowed(relative, context):
             continue
         try:
-            files[relative] = path.read_text(encoding="utf-8")
+            if path.stat().st_size <= MAX_SOURCE_FILE_BYTES:
+                files[relative] = path.read_text(encoding="utf-8")
         except (OSError, UnicodeError):
             continue
-    return files
+    return _bounded_source(files, context)
 
 
 def _write_json(path: Path, value: Any) -> None:
@@ -68,6 +101,21 @@ def propose() -> dict[str, Any]:
         raise ValueError("proposal context agent must be an object")
     proposal_context = dict(context)
     proposal_context["parent_files"] = _gather_parent_files(context)
+    if "extra_parents" in context:
+        parents = context["extra_parents"]
+        if not isinstance(parents, list) or len(parents) > 8:
+            raise ValueError("extra_parents must be a list of at most 8 parents")
+        proposal_context["extra_parents"] = []
+        for parent in parents:
+            if not isinstance(parent, dict) or not isinstance(parent.get("candidate_id"), str):
+                raise ValueError("extra parent requires candidate_id")
+            selected = {key: parent[key] for key in ("candidate_id", "candidate_commit") if key in parent}
+            for key in ("parent_files", "source"):
+                if key in parent:
+                    if not isinstance(parent[key], dict):
+                        raise ValueError("extra parent source must be an object")
+                    selected[key] = _bounded_source(parent[key], context)
+            proposal_context["extra_parents"].append(selected)
     request = {"mode": "propose", "context": proposal_context, "agent": agent}
     timeout = agent.get("timeout_s", 60)
     if isinstance(timeout, bool) or not isinstance(timeout, (int, float)):

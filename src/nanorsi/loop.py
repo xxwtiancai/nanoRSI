@@ -53,6 +53,8 @@ def identity(root, config):
     if config.experiment.schema_version == 2:
         tasks(root, config)
         fixed.append(config.data["manifest"])
+        if config.training or (root / "trainer").exists():
+            fixed.append("trainer")
     hashes = {}
     for name in fixed:
         path = contained_path(root, name)
@@ -86,7 +88,7 @@ def prepare_parent(root, config, git, store):
 
 
 def require_settled(events):
-    done = {e.get("attempt_id") for e in events if e.get("event_type") in {"generation", "attempt_failed"}}
+    done = {e.get("attempt_id") for e in events if e.get("event_type") in {"generation", "attempt_failed", "candidate_evaluated"}}
     if any(e["attempt_id"] not in done for e in events if e.get("event_type") == "attempt_started"):
         raise RuntimeError("interrupted attempt; run recover first")
 
@@ -104,13 +106,24 @@ def begin_attempt(root, config, store):
     return attempt
 
 
+def search_episode_count(events):
+    starts = [e for e in events if e.get("event_type") == "evaluation_started" and e.get("phase") == "search"]
+    spent = sum(e.get("episodes", 0) for e in starts)
+    settled = {e.get("reservation_id") for e in events if e.get("event_type") == "episode_reservation_settled"}
+    for event in events:
+        if event.get("event_type") == "episode_reservation" and event["reservation_id"] not in settled:
+            actual = sum(e.get("episodes", 0) for e in starts if e.get("reservation_id") == event["reservation_id"])
+            spent += max(0, event["episodes"] - actual)
+    return spent
+
+
 def evaluate(root, config, checkout, split, output, store, *, repeat=0, agent=None):
     panel = [t for t in tasks(checkout, config) if t["split"] == split] if config.experiment.schema_version == 2 else []
     if split == "train" and len(panel) > 4:
         panel = random.Random(config.experiment.seed).sample(panel, 4)
     count = len(panel)
     phase = "test" if split == "test" else "search"
-    spent = sum(e.get("episodes", 0) for e in store.events() if e.get("event_type") == "evaluation_started" and e.get("phase") == "search")
+    spent = search_episode_count(store.events())
     if phase == "search" and spent + count > config.budget.max_episodes:
         raise RuntimeError("episode budget reached")
     invocation = uuid.uuid4().hex
@@ -122,7 +135,11 @@ def evaluate(root, config, checkout, split, output, store, *, repeat=0, agent=No
                    NANORSI_TASK_MANIFEST=str(contained_path(checkout, config.data["manifest"])),
                    NANORSI_TRAIN_LIMIT="4", NANORSI_SEED=str(config.experiment.seed))
     try:
+        from .training import checkpoint
+        model = checkpoint(checkout, config) if config.experiment.schema_version == 2 and config.experiment.mode == "model" else None
         result = run_evaluation(config, checkout, split, output, extra_env=env)
+        if model and checkpoint(checkout, config) != model:
+            raise RuntimeError("evaluation mutated the saved checkpoint")
         if config.experiment.schema_version == 2:
             expected = {(t["task_id"], t["group_id"], repeat) for t in panel}
             actual = result.case_results
@@ -178,7 +195,7 @@ def bounded_run(root, config, step):
 
 def freeze(root, config, repeats=3):
     if config.experiment.schema_version != 2:
-        raise RuntimeError("freeze requires a schema-v2 skills experiment")
+        raise RuntimeError("freeze requires a schema-v2 experiment")
     if type(repeats) is not int or not 1 <= repeats <= 10:
         raise ValueError("test repeats must be between 1 and 10")
     with Lock(root):
@@ -193,10 +210,12 @@ def freeze(root, config, repeats=3):
         parent = store.latest_accepted()
         baseline = next(e for e in store.events() if e.get("generation") == 0)
         with Git(root).worktree(baseline["candidate_commit"], root / ".nanorsi/worktrees/comparison") as original:
-            comparison = canonical_hash({"tasks": tasks(original, config), "evaluator": fingerprint(original),
-                                         "agent": config.agent, "initial_target": tree_hash(original / "target")})
+            from .contracts import comparison_hash
+            comparison = comparison_hash(original, config)
         return store.append({"event_type": "freeze", "decision": "frozen", "repeats": repeats,
-                             "comparison_hash": comparison,
+                             "comparison_hash": comparison, "mode": config.experiment.mode,
+                             "conditions": config.experiment.final_conditions,
+                             "metric": {"name": config.evaluator.primary_metric, "direction": config.evaluator.direction},
                              "manifest_hash": identity(root, config), "baseline_commit": baseline["candidate_commit"],
                              "candidate_commit": parent["candidate_commit"], "experiment_id": config.experiment.id,
                              "arm": config.experiment.arm, "seed": config.experiment.seed})
@@ -211,7 +230,7 @@ def final_test(root, config, repeats=None):
             raise RuntimeError("freeze all experiment choices before final-test")
         if repeats is not None and repeats != frozen["repeats"]:
             raise RuntimeError("test repeats differ from frozen plan")
-        for condition in ["baseline", "no-skills", "candidate"]:
+        for condition in frozen.get("conditions", ["baseline", "no-skills", "candidate"]):
             for repeat in range(frozen["repeats"]):
                 _final_episode(root, config, store, frozen, condition, repeat)
         return final_report(root, store, frozen)
@@ -226,13 +245,20 @@ def _final_episode(root, config, store, frozen, condition, repeat):
     store.append({"event_type": "final_started", "key": key})
     commit = frozen["candidate_commit"] if condition == "candidate" else frozen["baseline_commit"]
     output = root / ".nanorsi" / "final" / f"{key}.json"
-    agent = dict(config.agent)
-    if condition == "no-skills":
-        agent["skills"] = []
+    from .config import load_config
+    from .training import checkpoint
     with Git(root).worktree(commit, root / ".nanorsi" / "worktrees" / f"test-{key}") as checkout:
-        result = evaluate(root, config, checkout, "test", output, store, repeat=repeat, agent=agent)
+        saved = load_config(checkout / "nanorsi.toml")
+        agent = dict(saved.agent)
+        if condition == "no-skills":
+            agent["skills"] = []
+        model = checkpoint(checkout, saved) if saved.experiment.mode == "model" else None
+        result = evaluate(root, saved, checkout, "test", output, store, repeat=repeat, agent=agent)
+        if model and checkpoint(checkout, saved) != model:
+            raise RuntimeError("final evaluation mutated the frozen checkpoint")
     record = {"condition": condition, "repeat_id": repeat, "case_results": result.case_results,
-              "cost_usd": result.cost_usd, "duration_ms": result.duration_ms}
+              "cost_usd": result.cost_usd, "duration_ms": result.duration_ms, "metrics": result.metrics,
+              "constraints": result.constraints, "usage": result.usage, "checkpoint": model}
     store.append({"event_type": "final_result", "key": key, "result": record,
                   "artifacts": {"result": artifact(root, output)}})
 
@@ -240,6 +266,7 @@ def _final_episode(root, config, store, frozen, condition, repeat):
 def final_report(root, store, frozen):
     from .report import cost_summary
     result = {key: frozen[key] for key in ["manifest_hash", "comparison_hash", "experiment_id", "arm", "seed"]}
+    result.update({key: frozen[key] for key in ["mode", "conditions", "metric", "repeats"] if key in frozen})
     result.update(schema_version=2, results=[e["result"] for e in store.events() if e.get("event_type") == "final_result"])
     result["search_evaluations"] = [e for e in store.events() if e.get("phase") == "search"]
     result["search_proposals"] = [e for e in store.events() if e.get("event_type") == "proposal_finished"]

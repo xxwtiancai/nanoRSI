@@ -30,7 +30,7 @@ def cli(*args: str) -> subprocess.CompletedProcess[str]:
 
 def make_workspace(kind: str) -> Path:
     destination = Path(tempfile.mkdtemp(prefix=f"nanorsi-{kind}-")) / "workspace"
-    created = cli("new", kind, str(destination))
+    created = cli("new", {"artifact": "artifact-fixture", "harness": "harness-fixture", "model": "model-contract"}.get(kind, kind), str(destination))
     assert created.returncode == 0, created.stderr
     return destination
 

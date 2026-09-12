@@ -72,6 +72,16 @@ def _endpoint(base_url: str) -> str:
     return base_url + "/chat/completions"
 
 
+def _provider_identity(payload: dict, secret: str | None) -> dict:
+    result = {}
+    for key, source in [('model', 'model'), ('request_id', 'id')]:
+        value = payload.get(source)
+        if isinstance(value, str) and len(value) <= 200 and not any(c.isspace() or ord(c) < 32 for c in value):
+            if not secret or secret not in value:
+                result[key] = value
+    return result
+
+
 def call(request: dict) -> dict:
     if not isinstance(request, dict):
         raise AdapterError("configuration")
@@ -100,6 +110,10 @@ def call(request: dict) -> dict:
             raise AdapterError("configuration")
         headers["Authorization"] = "Bearer " + api_key
     payload = {"model": model, "messages": request.get("messages", [])}
+    if 'thinking' in request:
+        if request['thinking'] not in ('enabled', 'disabled'):
+            raise AdapterError('configuration')
+        payload['thinking'] = {'type': request['thinking']}
     token_parameter = request.get("token_parameter", "max_tokens")
     if token_parameter not in ("max_tokens", "max_completion_tokens"):
         raise AdapterError("configuration")
@@ -144,7 +158,8 @@ def call(request: dict) -> dict:
     upstream_usage = response_payload.get("usage", {})
     if not isinstance(upstream_usage, dict):
         upstream_usage = {}
-    return {"content": message["content"], "usage": {"model_calls": 1, "input_tokens": upstream_usage.get("prompt_tokens"), "output_tokens": upstream_usage.get("completion_tokens"), "cost_usd": upstream_usage.get("cost_usd")}}
+    provider = _provider_identity(response_payload, headers.get('Authorization', '').removeprefix('Bearer ') or None)
+    return {"content": message["content"], "provider": provider, "usage": {"model_calls": 1, "input_tokens": upstream_usage.get("prompt_tokens"), "output_tokens": upstream_usage.get("completion_tokens"), "cost_usd": upstream_usage.get("cost_usd")}}
 
 
 def main() -> None:

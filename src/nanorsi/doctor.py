@@ -50,7 +50,7 @@ def _model_status(root: Path, config: Config) -> tuple[bool, list[str]]:
 
 
 def _check_model(root: Path, config: Config) -> tuple[bool, str]:
-    request = {key: config.agent[key] for key in ['model', 'base_url', 'api_key_file', 'max_tokens', 'token_parameter', 'timeout_s'] if key in config.agent}
+    request = {key: config.agent[key] for key in ['model', 'base_url', 'api_key_file', 'max_tokens', 'token_parameter', 'timeout_s', 'thinking'] if key in config.agent}
     request['messages'] = [{'role': 'system', 'content': 'Return exactly one JSON object: {"tool":"final"}. No Markdown or explanation.'},
                            {'role': 'user', 'content': 'Check the JSON action protocol.'}]
     result = run_argv(config.agent['model_command'], cwd=root, timeout_s=min(config.agent['timeout_s'], 60),
@@ -115,21 +115,35 @@ def doctor(root: Path, *, check_model: bool = False) -> tuple[bool, str]:
         except (OSError, ValueError, KeyError) as error:
             lines.append(f"task manifest: invalid ({error})")
             ready = False
-        model_ready, model_lines = _model_status(root, config)
+        model_ready, model_lines = _model_status(root, config) if config.agent else (True, ['agent: none (local execution)'])
         lines.extend(model_lines + [f"proposer harness: {config.experiment.arm}",
                       "budget: attempts/episodes/time/output bounded; dollar usage reported, not a hard cap"])
         ready = ready and model_ready
+        if config.experiment.mode == 'model':
+            ready = _training_status(root, config, lines) and ready
     if check_model:
-        if config.experiment.schema_version != 2:
-            return False, '\n'.join(lines + ['model check requires a coding or skills schema-v2 workspace']) + '\n'
+        if config.experiment.schema_version != 2 or not config.agent:
+            return False, '\n'.join(lines + ['model check requires a configured agent in a schema-v2 workspace']) + '\n'
         if ready:
             ready, result = _check_model(root, config)
             lines.append(result)
         else:
             lines.append('model check: skipped; fix offline checks first')
-    elif config.experiment.schema_version == 2:
+    elif config.experiment.schema_version == 2 and config.agent:
         lines.append('model connection: not checked; use --check-model (one request, may incur API cost)')
     return ready, "\n".join(lines) + "\n"
+
+
+def _training_status(root, config, lines):
+    from .training import checkpoint
+    command_ok = _command_status(root, config.training['command']) == 'ok'
+    try:
+        saved = checkpoint(root, config)
+        lines.append(f"checkpoint: {saved['path']} ({saved['bytes']} bytes; {saved['sha256']})")
+    except ValueError as error:
+        lines.append(f"checkpoint: invalid ({error})")
+        return False
+    return command_ok
 
 
 def _git_ok(root: Path) -> bool:

@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "task_id": "train-ordered",
+      "group_id": "train-workflow-ordered",
+      "split": "train",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/train-orders-0.json": "[{\"region\": \"east\", \"value\": 10}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 1}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"batches/train-orders-0.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"path\": \"out/train-total-0.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}]}\n"
+      },
+      "expected_files": {
+        "out/train-total-0.json": "11\n"
+      }
+    },
+    {
+      "task_id": "train-reverse",
+      "group_id": "train-workflow-reverse",
+      "split": "train",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/train-orders-1.json": "[{\"region\": \"east\", \"value\": 11}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 3}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"out/train-total-1.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}, {\"arguments\": {\"path\": \"batches/train-orders-1.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}]}\n"
+      },
+      "expected_files": {
+        "out/train-total-1.json": "14\n"
+      }
+    },
+    {
+      "task_id": "train-branches",
+      "group_id": "train-workflow-branches",
+      "split": "train",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/train-orders-2.json": "[{\"region\": \"east\", \"value\": 12}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 5}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"out/train-total-2.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"path\": \"out/train-west.json\", \"source\": \"select_west\"}, \"depends_on\": [\"select_west\"], \"id\": \"save_west\", \"tool\": \"write\"}, {\"arguments\": {\"path\": \"batches/train-orders-2.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"equals\": \"west\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_west\", \"tool\": \"filter\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}]}\n"
+      },
+      "expected_files": {
+        "out/train-total-2.json": "17\n",
+        "out/train-west.json": "[{\"region\": \"west\", \"value\": 3}]\n"
+      }
+    },
+    {
+      "task_id": "train-shuffled",
+      "group_id": "train-workflow-shuffled",
+      "split": "train",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/train-orders-3.json": "[{\"region\": \"east\", \"value\": 13}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 7}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"path\": \"batches/train-orders-3.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"path\": \"out/train-total-3.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}]}\n"
+      },
+      "expected_files": {
+        "out/train-total-3.json": "20\n"
+      }
+    },
+    {
+      "task_id": "validation-ordered",
+      "group_id": "validation-workflow-ordered",
+      "split": "validation",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/validation-orders-0.json": "[{\"region\": \"east\", \"value\": 37}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 1}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"batches/validation-orders-0.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"path\": \"out/validation-total-0.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}]}\n"
+      },
+      "expected_files": {
+        "out/validation-total-0.json": "38\n"
+      }
+    },
+    {
+      "task_id": "validation-reverse",
+      "group_id": "validation-workflow-reverse",
+      "split": "validation",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/validation-orders-1.json": "[{\"region\": \"east\", \"value\": 38}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 3}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"out/validation-total-1.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}, {\"arguments\": {\"path\": \"batches/validation-orders-1.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}]}\n"
+      },
+      "expected_files": {
+        "out/validation-total-1.json": "41\n"
+      }
+    },
+    {
+      "task_id": "validation-branches",
+      "group_id": "validation-workflow-branches",
+      "split": "validation",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/validation-orders-2.json": "[{\"region\": \"east\", \"value\": 39}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 5}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"out/validation-total-2.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"path\": \"out/validation-west.json\", \"source\": \"select_west\"}, \"depends_on\": [\"select_west\"], \"id\": \"save_west\", \"tool\": \"write\"}, {\"arguments\": {\"path\": \"batches/validation-orders-2.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"equals\": \"west\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_west\", \"tool\": \"filter\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}]}\n"
+      },
+      "expected_files": {
+        "out/validation-total-2.json": "44\n",
+        "out/validation-west.json": "[{\"region\": \"west\", \"value\": 3}]\n"
+      }
+    },
+    {
+      "task_id": "validation-shuffled",
+      "group_id": "validation-workflow-shuffled",
+      "split": "validation",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/validation-orders-3.json": "[{\"region\": \"east\", \"value\": 40}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 7}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"path\": \"batches/validation-orders-3.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"path\": \"out/validation-total-3.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}]}\n"
+      },
+      "expected_files": {
+        "out/validation-total-3.json": "47\n"
+      }
+    },
+    {
+      "task_id": "test-ordered",
+      "group_id": "test-workflow-ordered",
+      "split": "test",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/test-orders-0.json": "[{\"region\": \"east\", \"value\": 81}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 1}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"batches/test-orders-0.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"path\": \"out/test-total-0.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}]}\n"
+      },
+      "expected_files": {
+        "out/test-total-0.json": "82\n"
+      }
+    },
+    {
+      "task_id": "test-reverse",
+      "group_id": "test-workflow-reverse",
+      "split": "test",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/test-orders-1.json": "[{\"region\": \"east\", \"value\": 82}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 3}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"out/test-total-1.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}, {\"arguments\": {\"path\": \"batches/test-orders-1.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}]}\n"
+      },
+      "expected_files": {
+        "out/test-total-1.json": "85\n"
+      }
+    },
+    {
+      "task_id": "test-branches",
+      "group_id": "test-workflow-branches",
+      "split": "test",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/test-orders-2.json": "[{\"region\": \"east\", \"value\": 83}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 5}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"path\": \"out/test-total-2.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"path\": \"out/test-west.json\", \"source\": \"select_west\"}, \"depends_on\": [\"select_west\"], \"id\": \"save_west\", \"tool\": \"write\"}, {\"arguments\": {\"path\": \"batches/test-orders-2.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"equals\": \"west\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_west\", \"tool\": \"filter\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}]}\n"
+      },
+      "expected_files": {
+        "out/test-total-2.json": "88\n",
+        "out/test-west.json": "[{\"region\": \"west\", \"value\": 3}]\n"
+      }
+    },
+    {
+      "task_id": "test-shuffled",
+      "group_id": "test-workflow-shuffled",
+      "split": "test",
+      "instruction": "Execute the local workflow in workflow.json using load, filter, sum and write tools. Step IDs are dependency references, not priorities: steps may appear in any acyclic order. Execute every step once after all depends_on IDs are complete. A source argument names a dependency result. Preserve every input file; write only requested output paths, encoded as sorted JSON with one final newline. Detect missing or cyclic dependencies without looping forever. Tools: load(path) parses a JSON file; filter(source,field,equals) keeps matching rows; sum(source,field) sums that field; write(source,path) writes that result.",
+      "input_files": {
+        "batches/test-orders-3.json": "[{\"region\": \"east\", \"value\": 84}, {\"region\": \"west\", \"value\": 3}, {\"region\": \"east\", \"value\": 7}]\n",
+        "workflow.json": "{\"steps\": [{\"arguments\": {\"field\": \"value\", \"source\": \"select_east\"}, \"depends_on\": [\"select_east\"], \"id\": \"total_east\", \"tool\": \"sum\"}, {\"arguments\": {\"path\": \"batches/test-orders-3.json\"}, \"depends_on\": [], \"id\": \"load_orders\", \"tool\": \"load\"}, {\"arguments\": {\"path\": \"out/test-total-3.json\", \"source\": \"total_east\"}, \"depends_on\": [\"total_east\"], \"id\": \"save_east\", \"tool\": \"write\"}, {\"arguments\": {\"equals\": \"east\", \"field\": \"region\", \"source\": \"load_orders\"}, \"depends_on\": [\"load_orders\"], \"id\": \"select_east\", \"tool\": \"filter\"}]}\n"
+      },
+      "expected_files": {
+        "out/test-total-3.json": "91\n"
+      }
+    }
+  ]
+}

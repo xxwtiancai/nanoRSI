@@ -1,0 +1,39 @@
+[experiment]
+id = "learner-lab"
+goal = "{{GOAL}}"
+mode = "model"
+schema_version = 2
+seed = 0
+arm = "self-use"
+
+[surface]
+allow = ["target/**"]
+
+[data]
+manifest = "tasks/manifest.json"
+
+[training]
+command = ["python3", "trainer/train.py"]
+compute_budget_s = 10
+checkpoint = "target/model.json"
+max_checkpoint_bytes = 100000
+
+[proposer]
+command = ["python3", "proposer/propose.py"]
+timeout_s = 20
+
+[evaluator]
+command = ["python3", "evaluator/evaluate.py"]
+timeout_s = 20
+primary_metric = "score"
+direction = "maximize"
+heldout_enabled = false
+
+[gate]
+minimum_improvement = 0.0
+required_constraints = ["checkpoint_valid"]
+
+[budget]
+max_steps = 3
+max_episodes = 1000
+max_output_bytes = 1000000

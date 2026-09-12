@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from nanorsi.report import write_report
+from nanorsi.report import write_report, cost_summary
 
 
 def final_events():
@@ -70,6 +70,36 @@ class ReportTests(unittest.TestCase):
     def test_html_format_returns_html_path(self):
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(write_report(Path(tmp), [], format="html").name, "report.html")
+
+    def test_two_condition_model_final_report(self):
+        events = [e for e in final_events() if e.get('result', {}).get('condition') != 'no-skills']
+        events[0].update(mode='model', conditions=['baseline', 'candidate'], metric={'name': 'score', 'direction': 'maximize'})
+        markdown, html, _ = self.render(events)
+        self.assertIn('+50.0 pp', html)
+        self.assertNotIn('Final evaluation pending', html)
+        self.assertNotIn('Candidate − initial skills', markdown)
+
+    def test_loss_is_not_reported_as_percentage_points(self):
+        events = [e for e in final_events() if e.get('result', {}).get('condition') != 'no-skills']
+        events[0].update(mode='model', conditions=['baseline', 'candidate'], metric={'name': 'loss', 'direction': 'minimize'})
+        for event in events[1:]:
+            event['result']['metrics'] = {'loss': 1.0 if event['result']['condition'] == 'baseline' else 0.5}
+        markdown, html, _ = self.render(events)
+        self.assertIn('-0.5 loss', html)
+        self.assertNotIn(' pp', html)
+        self.assertIn('minimize', markdown)
+
+    def test_training_cost_and_population_evidence_are_not_hidden(self):
+        training = {'method': 'sft', 'steps': 10, 'status': 'completed', 'checkpoint_sha256': 'abc', 'result': {'cost_usd': 0.2}}
+        events = [{'event_type': 'candidate_evaluated', 'attempt_id': 1, 'candidate_id': 'c1', 'candidate_parents': ['base'],
+                   'operator': 'improve', 'gate_metrics': {'score': 0.8}, 'training': training},
+                  {'event_type': 'generation', 'attempt_id': 1, 'decision': 'accepted', 'training': training},
+                  {'event_type': 'population_retained', 'candidate_ids': ['c1']}]
+        self.assertEqual(cost_summary(events, 'search')['total_usd'], 0.2)
+        markdown, html, _ = self.render(events)
+        self.assertIn('Population candidates', html)
+        self.assertIn('sft', html)
+        self.assertIn('c1', markdown)
 
 
 if __name__ == "__main__":

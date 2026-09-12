@@ -10,7 +10,7 @@ from nanorsi.lineage import LineageStore
 class LifecycleTests(unittest.TestCase):
     def workspace(self, root):
         path = Path(root) / 'experiment'
-        self.assertEqual(run_cli('new', 'harness', str(path)).returncode, 0)
+        self.assertEqual(run_cli('new', 'harness-fixture', str(path)).returncode, 0)
         (path / 'proposer/propose.py').write_text('''import difflib, json, os
 from pathlib import Path
 p = Path('target/agent/policy.txt')

@@ -104,6 +104,21 @@ class PrepareManifestTests(unittest.TestCase):
 
 
 class CompareReportsTests(unittest.TestCase):
+    def test_two_condition_model_reports_are_supported(self):
+        report = make_report()
+        report.update(mode='model', conditions=['baseline', 'candidate'], metric={'name': 'score', 'direction': 'maximize'})
+        report['results'] = [r for r in report['results'] if r['condition'] != 'no-skills']
+        summary = COMPARE.summarize([report])
+        self.assertEqual(set(summary['conditions']), {'baseline', 'candidate'})
+        self.assertIsNone(summary['no_skills_delta_pp'])
+        self.assertGreater(summary['candidate_baseline_delta_pp'], 0)
+
+    def test_non_score_metric_cannot_be_mislabeled_as_percentage_points(self):
+        report = make_report()
+        report['metric'] = {'name': 'loss', 'direction': 'minimize'}
+        with self.assertRaisesRegex(ValueError, 'score'):
+            COMPARE.summarize([report])
+
     def test_task_macro_averages_repeats_before_tasks_and_reports_deltas(self):
         summary = COMPARE.summarize([make_report()])
         self.assertAlmostEqual(summary["conditions"]["baseline"]["task_macro"], 0.75)

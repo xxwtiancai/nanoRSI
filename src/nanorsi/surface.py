@@ -24,6 +24,8 @@ PROTECTED_PATTERNS = [
     "tasks",
     "adapters/**",
     "adapters",
+    "trainer/**",
+    "trainer",
 ]
 
 

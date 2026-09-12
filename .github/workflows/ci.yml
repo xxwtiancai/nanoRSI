@@ -23,7 +23,7 @@ jobs:
         run: python -m unittest discover -v
       - name: CLI smoke
         run: |
-          nanorsi new artifact ./artifact-demo
+          nanorsi new artifact-fixture ./artifact-demo
           nanorsi baseline --workspace ./artifact-demo
           nanorsi step --workspace ./artifact-demo
           nanorsi verify --workspace ./artifact-demo
