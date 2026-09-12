@@ -2,6 +2,8 @@
 
 ## 0.3.1 — 2026-09-12
 
+- Handle macOS zombie-only process-group permission errors without losing timeout outcomes; verify terminal group state and preserve genuine permission failures.
+
 - Add `configure` with masked terminal key input, external credential files, explicit no-key mode and a small-run budget preset via flags.
 - Validate endpoint and credential settings before experiments; preserve unrelated TOML and reject reconfiguration after a journal starts.
 - Add optional `doctor --check-model` to validate one authenticated JSON model action before baseline, with actionable redacted failures.

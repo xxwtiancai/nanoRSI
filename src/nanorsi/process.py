@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import math
 import subprocess
+import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -42,26 +43,49 @@ def _close_channel(stream) -> None:
         pass
 
 
+def _terminal_group(pgid: int) -> bool:
+    try:
+        result = subprocess.run(['/bin/ps', '-A', '-o', 'pgid=,stat='],
+                                capture_output=True, text=True, timeout=1, check=False)
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    rows = result.stdout.splitlines()
+    if result.returncode != 0 or not rows:
+        return False
+    for row in rows:
+        fields = row.split()
+        if len(fields) != 2 or not fields[0].isdigit():
+            return False
+        if int(fields[0]) == pgid and not fields[1].startswith('Z'):
+            return False
+    return True
+
+
+def _signal_group(pgid: int, sig: int) -> None:
+    try:
+        os.killpg(pgid, sig)
+    except ProcessLookupError:
+        pass
+    except PermissionError:
+        # Darwin can return EPERM when a group contains only zombies. Accept
+        # only a verified terminal group; real permission failures still fail.
+        if sys.platform != 'darwin' or not _terminal_group(pgid):
+            raise
+
+
 def _stop_process_group(process: subprocess.Popen) -> None:
     if os.name == "posix":
         try:
-            os.killpg(process.pid, 15)
-        except ProcessLookupError:
-            pass
-        except OSError:
-            process.terminate()
-        try:
-            process.wait(timeout=0.1)
-        except subprocess.TimeoutExpired:
-            pass
-        try:
-            os.killpg(process.pid, 9)
-        except ProcessLookupError:
-            pass
-        try:
-            process.wait(timeout=0.5)
-        except subprocess.TimeoutExpired:
-            pass
+            _signal_group(process.pid, 15)
+            # Keep the leader unreaped so its group identity cannot be reused
+            # before escalation, even when descendants exit immediately.
+            time.sleep(0.1)
+            _signal_group(process.pid, 9)
+        finally:
+            try:
+                process.wait(timeout=0.5)
+            except subprocess.TimeoutExpired:
+                pass
         return
     try:
         process.terminate()
