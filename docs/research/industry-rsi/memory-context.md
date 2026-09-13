@@ -22,7 +22,7 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI skills ablation: compare raw-history, summary-memory and frozen-state runs, with verifier scores hidden from memory construction.
 
-![Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training.](assets/paper-figures/s3gym.png)
+![Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training.](assets/paper-figures/s3gym-figure.png)
 
 **Source figure / official image** — Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training. · Figure 2, PDF p.7 · [source](https://arxiv.org/html/2608.31100v1)
 
@@ -52,7 +52,7 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: separate immutable evaluator/base policy from versioned memory updates, with provenance and rollback.
 
-![Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop.](assets/paper-figures/prime-agent.png)
+![Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop.](assets/paper-figures/prime-agent-figure.png)
 
 **Source figure / official image** — Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop. · Figure 1, PDF p.3 · [source](https://arxiv.org/html/2608.23552v1)
 

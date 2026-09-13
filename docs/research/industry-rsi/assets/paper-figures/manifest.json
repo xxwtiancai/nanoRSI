@@ -1,8 +1,8 @@
 [
   {
     "id": "bytedance-harnessdev",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/harnessdev.png",
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/harnessdev-figure.png",
     "source_url": "https://arxiv.org/html/2609.01437v1",
     "locator": "Figure 1, PDF p.2",
     "caption": {
@@ -12,8 +12,8 @@
   },
   {
     "id": "bytedance-s3gym",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/s3gym.png",
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/s3gym-figure.png",
     "source_url": "https://arxiv.org/html/2608.31100v1",
     "locator": "Figure 2, PDF p.7",
     "caption": {
@@ -23,8 +23,8 @@
   },
   {
     "id": "bytedance-aspire",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/aspire.png",
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/aspire-figure.png",
     "source_url": "https://arxiv.org/html/2608.31111v1",
     "locator": "Figure 1, PDF p.2",
     "caption": {
@@ -34,8 +34,8 @@
   },
   {
     "id": "taste",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/taste.png",
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/taste-figure.png",
     "source_url": "https://www-cdn.anthropic.com/files/4zrzovbb/website/dd5feddcb3b7d20aadda6af4093ac1fb0c9d419e.pdf",
     "locator": "Figure 2, PDF p.3",
     "caption": {
@@ -56,8 +56,8 @@
   },
   {
     "id": "prime-agent",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/prime-agent.png",
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/prime-agent-figure.png",
     "source_url": "https://arxiv.org/html/2608.23552v1",
     "locator": "Figure 1, PDF p.3",
     "caption": {
@@ -89,8 +89,8 @@
   },
   {
     "id": "gpt-red",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/gpt-red.png",
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/gpt-red-figure.png",
     "source_url": "https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf",
     "locator": "Figure 1, PDF p.1",
     "caption": {
@@ -177,8 +177,8 @@
   },
   {
     "id": "codex-builds-codex",
-    "kind": "official-report-screenshot",
-    "asset": "assets/paper-figures/codex-builds-codex.png",
+    "kind": "official-report-screenshot-crop",
+    "asset": "assets/paper-figures/codex-builds-codex-figure.png",
     "source_url": "https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf",
     "locator": "Cover page, PDF p.1",
     "caption": {

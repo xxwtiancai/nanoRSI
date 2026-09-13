@@ -22,7 +22,7 @@
 | `availability` | Separately address code, weights, data and licenses; “not verified” is not “does not exist” / 分开说明代码、权重、数据和许可；未核验不等于不存在 |
 | `application` | A concrete proposed nanoRSI experiment, not a promise or an implemented capability / 具体拟议实验，不是已实现能力或交付承诺 |
 | `sources` | Opened primary URLs with `label`, `url`, `kind`; kinds: `paper`, `official-report`, `repository`, `license`, `project-page` / 已实际打开的一手来源 |
-| `visual` | `{kind, asset, source_url, locator, caption:{en,zh}}`; `kind` identifies an original paper figure, official report/project image, or source-page screenshot. The file must explain the cited research, not be an unrelated concept illustration / `{kind, asset, source_url, locator, caption:{en,zh}}`；`kind` 说明论文原图、官方报告/项目图片或原文页截图。图片必须解释所引研究，不能使用无关概念插画 |
+| `visual` | `{kind, asset, source_url, locator, caption:{en,zh}}`; `kind` identifies an original paper figure, cropped paper figure (`paper-figure-crop`), official report/project image, or cropped source-page screenshot. The file must explain the cited research, not be an unrelated concept illustration / `{kind, asset, source_url, locator, caption:{en,zh}}`；`kind` 说明论文原图、论文裁剪图、官方报告/项目图片或裁剪后的原文页截图。图片必须解释所引研究，不能使用无关概念插画 |
 | `last_verified` | Date these claims and release states were checked / 最近核验日期 |
 | `local_reproduction` | `not-run`, `partial`, `reproduced`; the latter two require `reproduction_evidence` / 后两种必须提供本地复现依据链接 |
 

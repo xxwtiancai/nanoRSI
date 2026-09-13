@@ -80,7 +80,7 @@ def validate(data):
             if event["kind"] not in {"paper", "report", "release"}:
                 raise ValueError(f"Unknown subsequent event type: {identity}")
         visual = row.get("visual")
-        if not isinstance(visual, dict) or visual.get("kind") not in {"paper-figure", "official-report-figure", "official-project-figure", "official-report-image", "official-report-screenshot"}:
+        if not isinstance(visual, dict) or visual.get("kind") not in {"paper-figure", "paper-figure-crop", "official-report-figure", "official-project-figure", "official-report-image", "official-report-screenshot", "official-report-screenshot-crop"}:
             raise ValueError(f"Missing visual provenance: {identity}")
         asset = visual.get("asset", "")
         if not re.fullmatch(r"assets/[a-z0-9._/-]+\.(?:png|jpe?g|svg|webp)", asset) or ".." in asset:

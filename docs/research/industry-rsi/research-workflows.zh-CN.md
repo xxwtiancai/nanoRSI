@@ -22,7 +22,7 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可把提案选择能力与实验执行能力分别评测，并保留不确定或并列判断。
 
-![图 2：TASTE 构建流程：提案生成、研究者偏好收集和基准构建。](assets/paper-figures/taste.png)
+![图 2：TASTE 构建流程：提案生成、研究者偏好收集和基准构建。](assets/paper-figures/taste-figure.png)
 
 **原文图／官方图片** — 图 2：TASTE 构建流程：提案生成、研究者偏好收集和基准构建。 · Figure 2, PDF p.3 · [source](https://www-cdn.anthropic.com/files/4zrzovbb/website/dd5feddcb3b7d20aadda6af4093ac1fb0c9d419e.pdf)
 
@@ -232,7 +232,7 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可记录研发建议、代码改动与实测结果之间的对应关系，衡量辅助研发贡献。
 
-![GPT-5.3-Codex 官方系统卡首页；发布报告描述研发辅助，但没有独立 RSI pipeline 图。](assets/paper-figures/codex-builds-codex.png)
+![GPT-5.3-Codex 官方系统卡首页；发布报告描述研发辅助，但没有独立 RSI pipeline 图。](assets/paper-figures/codex-builds-codex-figure.png)
 
 **原文图／官方图片** — GPT-5.3-Codex 官方系统卡首页；发布报告描述研发辅助，但没有独立 RSI pipeline 图。 · Cover page, PDF p.1 · [source](https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf)
 

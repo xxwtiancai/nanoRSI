@@ -22,7 +22,7 @@
 
 **Possible nanoRSI experiment — not implemented here** — Evaluate proposal selection separately from executing a selected experiment; retain uncertain or tied judgments.
 
-![Figure 2: TASTE construction pipeline: proposal generation, researcher preference collection and benchmark construction.](assets/paper-figures/taste.png)
+![Figure 2: TASTE construction pipeline: proposal generation, researcher preference collection and benchmark construction.](assets/paper-figures/taste-figure.png)
 
 **Source figure / official image** — Figure 2: TASTE construction pipeline: proposal generation, researcher preference collection and benchmark construction. · Figure 2, PDF p.3 · [source](https://www-cdn.anthropic.com/files/4zrzovbb/website/dd5feddcb3b7d20aadda6af4093ac1fb0c9d419e.pdf)
 
@@ -232,7 +232,7 @@
 
 **Possible nanoRSI experiment — not implemented here** — Log which research proposal, code change and measured outcome each assistant contribution connects to.
 
-![Official GPT-5.3-Codex system-card cover; the launch report describes assisted training/deployment work but has no standalone RSI pipeline figure.](assets/paper-figures/codex-builds-codex.png)
+![Official GPT-5.3-Codex system-card cover; the launch report describes assisted training/deployment work but has no standalone RSI pipeline figure.](assets/paper-figures/codex-builds-codex-figure.png)
 
 **Source figure / official image** — Official GPT-5.3-Codex system-card cover; the launch report describes assisted training/deployment work but has no standalone RSI pipeline figure. · Cover page, PDF p.1 · [source](https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf)
 

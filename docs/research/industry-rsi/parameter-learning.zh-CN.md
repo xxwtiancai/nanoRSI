@@ -22,7 +22,7 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 报告：分开记录候选原始变化与保留状态变化，导出失败尝试，并对比模糊目标与明确目标。
 
-![图 1：从明确任务优化走向模糊目标驱动的自进化。](assets/paper-figures/aspire.png)
+![图 1：从明确任务优化走向模糊目标驱动的自进化。](assets/paper-figures/aspire-figure.png)
 
 **原文图／官方图片** — 图 1：从明确任务优化走向模糊目标驱动的自进化。 · Figure 1, PDF p.2 · [source](https://arxiv.org/html/2608.31111v1)
 
@@ -52,7 +52,7 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可探索无害对抗样例，并分别衡量样例有效性、任务完成率和误拒率。
 
-![图 1：随着测试时计算量增加，GPT-Red 的红队攻击表现变化。](assets/paper-figures/gpt-red.png)
+![图 1：随着测试时计算量增加，GPT-Red 的红队攻击表现变化。](assets/paper-figures/gpt-red-figure.png)
 
 **原文图／官方图片** — 图 1：随着测试时计算量增加，GPT-Red 的红队攻击表现变化。 · Figure 1, PDF p.1 · [source](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf)
 

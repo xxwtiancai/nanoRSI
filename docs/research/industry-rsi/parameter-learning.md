@@ -22,7 +22,7 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner reporting: separate raw candidate delta from retained-state delta, export failed attempts, and test vague versus explicit goals.
 
-![Figure 1: From explicit-task optimization to vague-goal-driven self-evolution.](assets/paper-figures/aspire.png)
+![Figure 1: From explicit-task optimization to vague-goal-driven self-evolution.](assets/paper-figures/aspire-figure.png)
 
 **Source figure / official image** — Figure 1: From explicit-task optimization to vague-goal-driven self-evolution. · Figure 1, PDF p.2 · [source](https://arxiv.org/html/2608.31111v1)
 
@@ -52,7 +52,7 @@
 
 **Possible nanoRSI experiment — not implemented here** — Explore benign adversarial fixtures with separate attack-validity, task-success and over-refusal scores.
 
-![Figure 1: GPT-Red red-teaming performance as test-time compute increases.](assets/paper-figures/gpt-red.png)
+![Figure 1: GPT-Red red-teaming performance as test-time compute increases.](assets/paper-figures/gpt-red-figure.png)
 
 **Source figure / official image** — Figure 1: GPT-Red red-teaming performance as test-time compute increases. · Figure 1, PDF p.1 · [source](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf)
 
