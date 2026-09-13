@@ -214,7 +214,7 @@ Skills 比较工具输出配对任务宏平均差值、分组结果、单次任�
 
 整理 OpenAI、Google DeepMind、Anthropic、Meta、Microsoft、Sakana AI、阿里、字节、DeepSeek、Frontis／清华等机构近一年的论文与成果，按参数与训练数据、Agent 与代码、记忆与上下文、自动化研发分类。每条说明反馈闭环、作者报告结果、对照条件、代码／权重／数据许可和证据边界，并附纳入仓库的论文原图、官方研究图片或原文页截图，以及已核验的开源材料直链。
 
-直接有界闭环、支撑技术与辅助研发分别标注，保留原始发布日期及负结果。这是研究资料库，不代表本地复现，也不构成 RSI 综合排行榜。[可落地的实验方向](docs/research/industry-rsi/ADOPTION.md)将研究发现对应到具体 nanoRSI 工作。
+直接有界闭环、支撑技术与辅助研发分别标注，保留原始发布日期及负结果。这是研究资料库，不代表本地复现，也不构成 RSI 综合排行榜。建议先阅读[五分钟快速开始](docs/research/industry-rsi/QUICKSTART.zh-CN.md)、[研究全景与分类](docs/research/industry-rsi/LANDSCAPE.zh-CN.md)和[开放材料索引](docs/research/industry-rsi/OPEN_MATERIALS.zh-CN.md)，再进入具体案例。[可落地的实验方向](docs/research/industry-rsi/ADOPTION.md)将研究发现对应到具体 nanoRSI 工作。
 
 ## 接下来可以看
 

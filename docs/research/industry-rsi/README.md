@@ -6,7 +6,7 @@ A selective, primary-source catalogue of company and company–university papers
 
 **Direct bounded loop**: updated code, memory, data policy, parameters or learning rules affect later iterations; this does not necessarily improve the improvement algorithm itself. **Enabling**: useful adaptation, memory or evaluation without a demonstrated recursive deployment loop. **Automated / assisted R&D**: evidence focuses on a research workflow or a separate target model, with varying human involvement. Labels describe the emphasis of an entry, can overlap, and are not levels of proven RSI.
 
-[Coverage, dates and older foundations](COVERAGE.md) · [Experiments to build next](ADOPTION.md) · [Source-image manifest](assets/paper-figures/README.md) · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)
+[Quickstart](QUICKSTART.md) · [Landscape and taxonomy](LANDSCAPE.md) · [Open materials](OPEN_MATERIALS.md) · [Coverage and dates](COVERAGE.md) · [Experiments to build next](ADOPTION.md) · [Source-image manifest](assets/paper-figures/README.md) · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)
 
 ## Browse by what changes
 

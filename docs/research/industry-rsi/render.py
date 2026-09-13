@@ -139,6 +139,31 @@ def table(rows, lang):
     return "\n".join(lines)
 
 
+def materials(rows, lang):
+    title = tr(("Open materials index", "开放材料索引"), lang)
+    intro = tr((
+        "This table answers a practical question before a reader opens a paper: is there a public implementation, checkpoint or dataset to inspect? Repository and license links are copied from the record's audited sources. A missing link means not verified in this audit, not that an artifact cannot exist.",
+        "这张表先回答一个实际问题：打开论文前，是否有可检查的公开实现、检查点或数据集？仓库和许可链接来自条目已核验的一手来源。没有链接表示本轮未核实，不表示资产一定不存在。",
+    ), lang)
+    links = tr(("[← Research map](README.md) · [Quickstart](QUICKSTART.md) · [Landscape](LANDSCAPE.md) · [Format](FORMAT.md)",
+                "[← 研究地图](README.zh-CN.md) · [快速开始](QUICKSTART.zh-CN.md) · [研究全景](LANDSCAPE.zh-CN.md) · [记录格式](FORMAT.md)"), lang)
+    heading = tr(("Date | Work | Verified code / weights / data | License and evidence note", "日期 | 工作 | 已核验代码／权重／数据 | 许可与证据说明"), lang)
+    lines = [f"# {title}", "", links, "", intro, "", f"| {heading} |", "| --- | --- | --- | --- |"]
+    for row in rows:
+        releases = [source for source in row["sources"] if source["kind"] in {"repository", "license"}]
+        if releases:
+            asset_links = " · ".join(f"[{source['label']}]({source['url']})" for source in releases)
+        else:
+            asset_links = tr(("No verified public asset link", "未核验到公开资产链接"), lang)
+        note = cell(row["availability"][lang])
+        lines.append(f"| {row['published']} | {row_link(row, lang)} | {asset_links} | {note} |")
+    lines.extend(["", tr((
+        "Read the category pages for mechanism and result details. Do not infer that an open repository provides released weights or redistributable data; the fields are intentionally separated.",
+        "机制与结果详情请看四个分类页面。不要因为仓库公开就推断权重或数据也能再分发；资料库刻意把几类资产分开记录。",
+    ), lang), ""])
+    return "\n".join(lines)
+
+
 def overview(data, rows, lang):
     start, end = data["window_start"], data["as_of"]
     active = [r for r in rows if r["published"] >= start]
@@ -153,8 +178,8 @@ def overview(data, rows, lang):
         "**Direct bounded loop**: updated code, memory, data policy, parameters or learning rules affect later iterations; this does not necessarily improve the improvement algorithm itself. **Enabling**: useful adaptation, memory or evaluation without a demonstrated recursive deployment loop. **Automated / assisted R&D**: evidence focuses on a research workflow or a separate target model, with varying human involvement. Labels describe the emphasis of an entry, can overlap, and are not levels of proven RSI.",
         "**直接有界闭环**：更新后的代码、记忆、数据策略、参数或学习规则影响后续迭代，但不一定改进了改进算法自身。**支撑技术／评测**：有用的适配、记忆或评测机制，尚未展示递归部署闭环。**自动化／辅助研发**：证据主要针对研究流程或独立目标模型，人类参与程度各异。这些标签表示条目的侧重点，可以有交集，不是已证明 RSI 的等级。",
     ), lang)
-    links = tr(("[Coverage, dates and older foundations](COVERAGE.md) · [Experiments to build next](ADOPTION.md) · [Source-image manifest](assets/paper-figures/README.md)",
-                "[检索覆盖、日期与早期基础](COVERAGE.md) · [下一步可实现的实验](ADOPTION.md) · [原文图片清单](assets/paper-figures/README.md)"), lang)
+    links = tr(("[Quickstart](QUICKSTART.md) · [Landscape and taxonomy](LANDSCAPE.md) · [Open materials](OPEN_MATERIALS.md) · [Coverage and dates](COVERAGE.md) · [Experiments to build next](ADOPTION.md) · [Source-image manifest](assets/paper-figures/README.md)",
+                "[快速开始](QUICKSTART.zh-CN.md) · [研究全景与分类](LANDSCAPE.zh-CN.md) · [开放材料](OPEN_MATERIALS.zh-CN.md) · [检索覆盖与日期](COVERAGE.md) · [下一步可实现的实验](ADOPTION.md) · [原文图片清单](assets/paper-figures/README.md)"), lang)
     lines = [f"# {title}", "", f"**{start} → {end}** · **{len(active)}** " + tr(("in-window records", "条窗口内记录"), lang), "", intro, "", terms, "", links + " · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)", "", "## " + tr(("Browse by what changes", "按改变对象浏览"), lang), "", "| " + tr(("Category | Records", "分类 | 条目数"), lang) + " |", "| --- | ---: |"]
     for category, label in CATEGORIES.items():
         lines.append(f"| [{tr(label, lang)}]({name(category, lang)}) | {counts[category]} |")
@@ -216,6 +241,7 @@ def main():
     output = {}
     for lang in ("en", "zh"):
         output[name("README", lang)] = overview(data, rows, lang)
+        output[name("OPEN_MATERIALS", lang)] = materials(rows, lang)
         for category in CATEGORIES:
             output[name(category, lang)] = details(category, rows, lang)
     stale = []

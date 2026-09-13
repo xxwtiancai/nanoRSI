@@ -217,7 +217,7 @@ Our [evaluation research notes](docs/research/HARNESS_EVALUATION_2026-09-08.zh-C
 
 Explore recent papers and results from OpenAI, Google DeepMind, Anthropic, Meta, Microsoft, Sakana AI, Alibaba, ByteDance, DeepSeek, Frontis/Tsinghua and other contributors. The collection separates parameter/data learning, agent/code evolution, memory/context updates and automated research. Each entry explains the feedback loop, author-reported results, comparison conditions, code/weights/data licenses and evidence limits, with a locally stored source figure, official research image or source-page screenshot and direct links to verified open materials where available.
 
-Direct bounded loops, enabling techniques and assisted R&D are labeled separately. The catalogue preserves original publication dates and negative findings; it does not represent local reproduction or a combined RSI leaderboard. [Research-informed experiment priorities](docs/research/industry-rsi/ADOPTION.md) connect the findings to concrete nanoRSI work.
+Direct bounded loops, enabling techniques and assisted R&D are labeled separately. The catalogue preserves original publication dates and negative findings; it does not represent local reproduction or a combined RSI leaderboard. Use the [five-minute research quickstart](docs/research/industry-rsi/QUICKSTART.md), [landscape and taxonomy](docs/research/industry-rsi/LANDSCAPE.md), and [open-materials index](docs/research/industry-rsi/OPEN_MATERIALS.md) before diving into the case pages. [Research-informed experiment priorities](docs/research/industry-rsi/ADOPTION.md) connect the findings to concrete nanoRSI work.
 
 ## Where to look next
 
