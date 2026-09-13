@@ -5,6 +5,7 @@
 - Refocus the project mission on two tracks under one name: a minimal, runnable RSI implementation validated on minimal tasks with frozen/uniform/random controls, and a daily RSI research radar; update the charter and both READMEs accordingly.
 - Add the radar log `docs/research/industry-rsi/RADAR.md` with a fixed daily-entry format, and document it in `FORMAT.md`. Days without qualified findings are logged with their searched scope and gaps.
 - The daily research sweep now explicitly covers arXiv listings, company research pages, domestic and international university labs, conference and journal outputs, high-star GitHub RSI projects, and authoritative media leads that must trace back to original sources before catalogue inclusion.
+- Add a per-revision evidence ledger (`src/nanorsi/evidence.py`): every `baseline`, `step`, `final-test` and `report` writes `reports/evidence.jsonl` and `reports/evidence.md`, combining each proposal's hypothesis, the candidate diff with per-file line stats, redacted per-case evaluator outcomes for the parent and candidate panels (task/group/repeat/score/status only), the gate decision with reason, and a sha256 integrity flag for every referenced run artifact. Failed and no-op attempts are included; the ledger is a derived read-only view and does not feed selection. The architecture inventory and specification gain the new core module; core size remains far below the 5,000-line ceiling.
 
 ## 0.4.1 — 2026-09-13
 

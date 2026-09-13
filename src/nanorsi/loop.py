@@ -274,4 +274,6 @@ def final_report(root, store, frozen):
     result["test_cost_usd"] = cost_summary(store.events(), "test")
     path = root / "reports" / "final.json"
     write_json(path, result)
+    from .evidence import write_ledger
+    write_ledger(root)
     return path

@@ -33,6 +33,7 @@ EXPECTED_MODULES = {
     "lineage.py",
     "process.py",
     "report.py",
+    "evidence.py",
     "templates.py",
     "doctor.py",
     "locking.py",

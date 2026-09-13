@@ -9,6 +9,7 @@ import uuid
 from pathlib import Path
 
 from .config import load_config
+from .evidence import write_ledger
 from .gate import decide
 from .gitops import Git, GitError
 from .lineage import LineageStore, artifact
@@ -51,6 +52,7 @@ def _baseline(root: Path) -> dict:
                               'evaluator_fingerprint': loop.fingerprint(root), 'manifest_hash': contract,
                               'artifacts': _artifacts(root, run_dir)})
         write_report(root, store.events())
+        write_ledger(root)
         return event
 
 
@@ -75,6 +77,7 @@ def _step(root: Path) -> dict:
             raise
         finally:
             write_report(root, store.events())
+            write_ledger(root)
         return event
 
 
@@ -256,7 +259,9 @@ def _dispatch(args, root):
         fn = loop.freeze if command == 'freeze' else loop.final_test
         return fn(root, load_config(root / 'nanorsi.toml'), args.repeats)
     if command == 'report':
-        return write_report(root, LineageStore.initialize(root).verify(), format=args.format)
+        path = write_report(root, LineageStore.initialize(root).verify(), format=args.format)
+        write_ledger(root)
+        return path
     if command == 'verify':
         LineageStore.initialize(root).verify()
         return 'lineage: ok'
