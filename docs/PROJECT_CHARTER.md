@@ -2,6 +2,15 @@
 
 nanoRSI is a small, hackable lab for improving executable artifacts, agent harnesses, reusable skills and model parameters under a fixed evaluation contract and a measurable budget.
 
+## Mission
+
+nanoRSI carries two tracks under one name:
+
+1. **A minimal, runnable RSI implementation.** The experiment framework must stay runnable end to end, stay aligned with the mechanisms current enterprise and university RSI frameworks actually use — high-star open projects such as OpenRSI, SEAL, DGM and OpenEvolve are tracked as references, with licenses checked before anything is borrowed — and validate every mechanism on minimal tasks against frozen, uniform and random controls.
+2. **A daily RSI research radar.** An automated midnight sweep verifies and files new RSI results from authoritative sources worldwide — arXiv, company research pages, domestic and international university labs, conference and journal outputs, high-star GitHub projects, and authoritative media leads traced back to original sources — in one unified catalogue format, logged daily in `docs/research/industry-rsi/RADAR.md`.
+
+`ADOPTION.md` connects the tracks: radar findings become prioritized experiments, and experimental evidence shapes what the radar watches next. Neither track claims general RSI is solved; evidence limits remain part of every record.
+
 ## Goal
 
 Make one complete experiment easy to read, run and inspect: execute training tasks, use their outcomes to propose a change, train parameters when appropriate, compare parent and candidate on validation tasks, retain a qualifying version, freeze choices and evaluate separate test tasks.

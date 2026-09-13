@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Refocus the project mission on two tracks under one name: a minimal, runnable RSI implementation validated on minimal tasks with frozen/uniform/random controls, and a daily RSI research radar; update the charter and both READMEs accordingly.
+- Add the radar log `docs/research/industry-rsi/RADAR.md` with a fixed daily-entry format, and document it in `FORMAT.md`. Days without qualified findings are logged with their searched scope and gaps.
+- The daily research sweep now explicitly covers arXiv listings, company research pages, domestic and international university labs, conference and journal outputs, high-star GitHub RSI projects, and authoritative media leads that must trace back to original sources before catalogue inclusion.
+
 ## 0.4.1 — 2026-09-13
 
 - Serialize Git worktree administration across population threads while keeping candidate evaluation concurrent; avoid a create/remove metadata race observed on Linux CI.

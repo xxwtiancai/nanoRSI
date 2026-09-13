@@ -2,7 +2,7 @@
   <img src="docs/assets/brand/nanorsi-hero.png" alt="nanoRSI — Small code. Measurable change." width="100%">
 </p>
 
-<p align="center"><strong>Improve programs, agents and model parameters.</strong><br>Run the change. Measure it on unseen tasks.</p>
+<p align="center"><strong>A minimal recursive self-improvement (RSI) lab you can read.</strong><br>Run the change. Measure it on unseen tasks.<br>Paired with a daily RSI research radar.</p>
 
 <p align="center">
   <a href="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml"><img src="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
@@ -17,7 +17,8 @@
   <a href="#how-it-works">How it works</a> ·
   <a href="#bring-your-model">Bring your model</a> ·
   <a href="#research-with-it">Research</a> ·
-  <a href="docs/research/industry-rsi/README.md">Industry research map</a> ·
+  <a href="docs/research/industry-rsi/RADAR.md">Daily radar</a> ·
+  <a href="docs/research/industry-rsi/README.md">Research map</a> ·
   <a href="README.zh-CN.md">简体中文</a>
 </p>
 
@@ -31,6 +32,15 @@ You changed the program, the agent, or its weights. Did it actually get better?
 | :---: | :---: | :---: |
 | **5,000-line core ceiling** | **Artifacts · harnesses · parameters** | **Every attempt** leaves evidence |
 | Standard library + Git | Serial or population search | Patches, checkpoints, traces and costs |
+
+## Mission
+
+nanoRSI is two things under one name:
+
+1. **A minimal, runnable RSI implementation.** Improve a program, an agent harness, reusable skills or model parameters, then validate every change on minimal tasks against frozen, uniform and random controls. The framework must stay runnable end to end and stay aligned with the mechanisms current enterprise and university RSI frameworks actually use — high-star open projects such as OpenRSI, SEAL, DGM and OpenEvolve are tracked as references, with licenses checked before anything is borrowed.
+2. **A daily RSI research radar.** Every day at midnight an automated sweep verifies and files new RSI results from authoritative sources worldwide — arXiv, company research pages, domestic and international university labs, conference and journal outputs, and high-star GitHub projects — into one unified catalogue format, logged in the [daily radar](docs/research/industry-rsi/RADAR.md).
+
+[Radar findings become prioritized experiments](docs/research/industry-rsi/ADOPTION.md); experiment results feed back into what the radar watches. Neither track claims general RSI is solved; evidence limits stay part of every record.
 
 ## What can improve?
 
@@ -211,11 +221,13 @@ The skills comparison tool reports paired task-macro deltas, per-arm results, ep
 
 Our [evaluation research notes](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md) cover DGM, SICA, GEPA, ACE, Memento-Skills and recent skills benchmarks. The small, readable project philosophy draws inspiration from [nanoGPT](https://github.com/karpathy/nanoGPT) and [nanochat](https://github.com/karpathy/nanochat).
 
-## Industry RSI research
+## RSI research radar (updated daily)
 
-**[Browse the industry RSI research map](docs/research/industry-rsi/README.md)** · [中文](docs/research/industry-rsi/README.zh-CN.md)
+**[Read the daily radar log](docs/research/industry-rsi/RADAR.md)** · [Browse the research map](docs/research/industry-rsi/README.md) · [中文](docs/research/industry-rsi/README.zh-CN.md)
 
-Explore recent papers and results from OpenAI, Google DeepMind, Anthropic, Meta, Microsoft, Sakana AI, Alibaba, ByteDance, DeepSeek, Frontis/Tsinghua and other contributors. The collection separates parameter/data learning, agent/code evolution, memory/context updates and automated research. Each entry explains the feedback loop, author-reported results, comparison conditions, code/weights/data licenses and evidence limits, with a locally stored source figure, official research image or source-page screenshot and direct links to verified open materials where available.
+Each day at midnight an automated sweep covers arXiv preprints (cs.AI/cs.LG/cs.CL/cs.MA), official results from OpenAI, Google DeepMind, Anthropic, Meta, Microsoft, Salesforce, Sakana AI, Alibaba, ByteDance, Tencent, DeepSeek, Frontis/Tsinghua and other companies, labs at Tsinghua, Peking, SJTU, Zhejiang, USTC, HKUST, MIT, Stanford, CMU and Berkeley, NeurIPS/ICML/ICLR/ACL/CVPR and other venues, high-star GitHub RSI projects, and authoritative media reports used strictly as leads that must trace back to an original source. Verified findings enter the catalogue in one unified format; the day's sweep and its coverage gaps are logged in the radar log, including honest "no qualified new findings" days.
+
+The collection separates parameter/data learning, agent/code evolution, memory/context updates and automated research. Each entry explains the feedback loop, author-reported results, comparison conditions, code/weights/data licenses and evidence limits, with a locally stored source figure, official research image or source-page screenshot and direct links to verified open materials where available.
 
 Direct bounded loops, enabling techniques and assisted R&D are labeled separately. The catalogue preserves original publication dates and negative findings; it does not represent local reproduction or a combined RSI leaderboard. Use the [five-minute research quickstart](docs/research/industry-rsi/QUICKSTART.md), [landscape and taxonomy](docs/research/industry-rsi/LANDSCAPE.md), and [open-materials index](docs/research/industry-rsi/OPEN_MATERIALS.md) before diving into the case pages. [Research-informed experiment priorities](docs/research/industry-rsi/ADOPTION.md) connect the findings to concrete nanoRSI work.
 

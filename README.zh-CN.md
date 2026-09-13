@@ -2,7 +2,7 @@
   <img src="docs/assets/brand/nanorsi-hero.png" alt="nanoRSI：小内核，让改进有据可查" width="100%">
 </p>
 
-<p align="center"><strong>改进程序、Agent 与模型参数。</strong><br>让修改真正执行，再用未见任务衡量效果。</p>
+<p align="center"><strong>一个读得懂的最小递归自改进（RSI）实验框架。</strong><br>让修改真正执行，再用未见任务衡量效果。<br>配套一部每日更新的 RSI 技术雷达。</p>
 
 <p align="center">
   <a href="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml"><img src="https://github.com/xxwtiancai/nanoRSI/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
@@ -15,7 +15,8 @@
 <p align="center">
   <a href="#快速开始">快速开始</a> · <a href="#一次改进如何发生">工作流程</a> ·
   <a href="#接入你的模型">接入模型</a> · <a href="#可以研究什么">研究方向</a> ·
-  <a href="docs/research/industry-rsi/README.zh-CN.md">企业 RSI 研究地图</a> · <a href="README.md">English</a>
+  <a href="docs/research/industry-rsi/RADAR.md">每日雷达</a> ·
+  <a href="docs/research/industry-rsi/README.zh-CN.md">RSI 研究地图</a> · <a href="README.md">English</a>
 </p>
 
 ---
@@ -28,6 +29,15 @@
 | :---: | :---: | :---: |
 | **5,000 行内核上限** | **产物 · 执行器 · 参数** | **每次尝试**留下证据 |
 | 标准库 + Git | 顺序或种群搜索 | 修改、检查点、轨迹和成本 |
+
+## 宗旨
+
+nanoRSI 这个名字下有两件事：
+
+1. **一个最小、可运行的 RSI 实现。** 改进程序、Agent 执行器、可复用技能或模型参数，并在最小任务上以 frozen、uniform、random 等对照验证每次改动是否有效。框架必须始终端到端可运行，并持续对齐企业与高校当前最新的 RSI 框架做法——OpenRSI、SEAL、DGM、OpenEvolve 等高星开源项目作为参考持续跟踪，借鉴前核对许可证。
+2. **一部每日更新的 RSI 技术雷达。** 每天零点自动检索全球权威来源——arXiv、企业研究主页、国内外高校实验室、会议期刊成果、高星 GitHub 项目——核验后以统一格式进入资料库，并记录在[每日雷达日志](docs/research/industry-rsi/RADAR.md)中。
+
+[雷达发现会转化为排好序的实验方向](docs/research/industry-rsi/ADOPTION.md)，实验结果又反过来决定雷达盯什么。任何一条都不宣称通用 RSI 已解决，证据边界始终是记录的一部分。
 
 ## 可以改进什么？
 
@@ -208,11 +218,13 @@ Skills 比较工具输出配对任务宏平均差值、分组结果、单次任�
 
 [评估调研](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md) 涵盖 DGM、SICA、GEPA、ACE、Memento-Skills 和近期 skills 基准。项目的小型、可读实现风格受到 [nanoGPT](https://github.com/karpathy/nanoGPT) 与 [nanochat](https://github.com/karpathy/nanochat) 的启发。
 
-## 企业 RSI 研究地图
+## RSI 研究雷达（每日更新）
 
-**[浏览企业 RSI 研究地图](docs/research/industry-rsi/README.zh-CN.md)** · [English](docs/research/industry-rsi/README.md)
+**[阅读每日雷达日志](docs/research/industry-rsi/RADAR.md)** · [浏览研究地图](docs/research/industry-rsi/README.zh-CN.md) · [English](docs/research/industry-rsi/README.md)
 
-整理 OpenAI、Google DeepMind、Anthropic、Meta、Microsoft、Sakana AI、阿里、字节、DeepSeek、Frontis／清华等机构近一年的论文与成果，按参数与训练数据、Agent 与代码、记忆与上下文、自动化研发分类。每条说明反馈闭环、作者报告结果、对照条件、代码／权重／数据许可和证据边界，并附纳入仓库的论文原图、官方研究图片或原文页截图，以及已核验的开源材料直链。
+每天零点自动检索一轮：arXiv（cs.AI/cs.LG/cs.CL/cs.MA）前沿预印本；OpenAI、Google DeepMind、Anthropic、Meta、Microsoft、Salesforce、Sakana AI、阿里、字节、腾讯、DeepSeek、Frontis／清华等企业的官方成果；清华、北大、上交、浙大、中科大、港科大、MIT、Stanford、CMU、Berkeley 等国内外高校实验室；NeurIPS、ICML、ICLR、ACL、CVPR 等会议期刊；GitHub 高星 RSI 项目；权威媒体报告只作为线索，收录前必须回溯到论文原文或机构官方来源。核验后的发现以统一格式进入资料库；每天的检索范围与缺口如实记录在雷达日志中，"无合格新发现"的日子也会记录。
+
+资料库按参数与训练数据、Agent 与代码、记忆与上下文、自动化研发分类。每条说明反馈闭环、作者报告结果、对照条件、代码／权重／数据许可和证据边界，并附纳入仓库的论文原图、官方研究图片或原文页截图，以及已核验的开源材料直链。
 
 直接有界闭环、支撑技术与辅助研发分别标注，保留原始发布日期及负结果。这是研究资料库，不代表本地复现，也不构成 RSI 综合排行榜。建议先阅读[五分钟快速开始](docs/research/industry-rsi/QUICKSTART.zh-CN.md)、[研究全景与分类](docs/research/industry-rsi/LANDSCAPE.zh-CN.md)和[开放材料索引](docs/research/industry-rsi/OPEN_MATERIALS.zh-CN.md)，再进入具体案例。[可落地的实验方向](docs/research/industry-rsi/ADOPTION.md)将研究发现对应到具体 nanoRSI 工作。
 
