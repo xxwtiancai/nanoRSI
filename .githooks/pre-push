@@ -1,0 +1,26 @@
+#!/bin/sh
+# Repo-managed push guard for nanoRSI. Activate once per clone:
+#   git config core.hooksPath .githooks
+# Refuses pushes whose outgoing commits (origin/main..HEAD) introduce the local
+# API key value or the local-only AGENTS.md file. Catches commits made while the
+# guard was not wired (for example on another machine).
+set -u
+
+BASE=$(git rev-parse --verify origin/main 2>/dev/null || git rev-parse --verify HEAD)
+blocked=0
+
+if git diff --name-only --diff-filter=ACMR "$BASE..HEAD" 2>/dev/null | grep -qx "AGENTS.md"; then
+  echo "pre-push: outgoing commits add AGENTS.md, which is local-only. Push blocked." >&2
+  blocked=1
+fi
+
+KEY_FILE="$HOME/.nanorsi/keys/glm-coding-plan.key"
+if [ -s "$KEY_FILE" ]; then
+  KEY=$(cat "$KEY_FILE")
+  if [ -n "$KEY" ] && git diff --no-color "$BASE..HEAD" 2>/dev/null | grep '^+' | grep -qF -- "$KEY"; then
+    echo "pre-push: outgoing commits contain the local API key value. Push blocked." >&2
+    blocked=1
+  fi
+fi
+
+exit "$blocked"
