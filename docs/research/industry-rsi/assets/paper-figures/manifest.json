@@ -99,6 +99,17 @@
     }
   },
   {
+    "id": "tencent-skillhone",
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/tencent-skillhone.png",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2606.08671/assets/framework.png",
+    "locator": "Figure 2, framework.png",
+    "caption": {
+      "en": "Figure 2: SkillHone separates persistent decision history, skill optimization and skill evaluation so accepted revisions can be reused.",
+      "zh": "图 2：SkillHone 将持久决策历史、技能优化和技能评测分开，使通过的修订可在后续迭代复用。"
+    }
+  },
+  {
     "id": "automated-w2s",
     "kind": "official-report-figure",
     "asset": "assets/paper-figures/automated-w2s.png",
@@ -253,6 +264,28 @@
     }
   },
   {
+    "id": "tencent-webaggregator",
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/tencent-webaggregator.png",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2510.14438/assets/illus.png",
+    "locator": "Figure 2, illus.png",
+    "caption": {
+      "en": "Figure 2: Explore-to-Evolve turns web exploration and executable aggregation logic into verified QA and model-training data.",
+      "zh": "图 2：Explore-to-Evolve 将网页探索与可执行聚合逻辑转成可验证 QA 和模型训练数据。"
+    }
+  },
+  {
+    "id": "tencent-training-free-grpo",
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/tencent-training-free-grpo.png",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2510.08191/assets/figures/training-free_GRPO.png",
+    "locator": "Figure 2, training-free_GRPO.png",
+    "caption": {
+      "en": "Figure 2: Training-Free GRPO updates an experience library from grouped rollouts while keeping the base model frozen.",
+      "zh": "图 2：Training-Free GRPO 在冻结基础模型的同时，用分组 rollout 更新经验库。"
+    }
+  },
+  {
     "id": "sambanova-stanford-ace",
     "kind": "paper-figure",
     "asset": "assets/paper-figures/sambanova-stanford-ace.png",
@@ -283,6 +316,17 @@
     "caption": {
       "en": "Figure 3: Compression guideline optimization uses successful versus failed trajectory feedback.",
       "zh": "图 3：压缩指导优化使用成功与失败轨迹的对比反馈。"
+    }
+  },
+  {
+    "id": "tencent-spear",
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/tencent-spear.png",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2509.22601/assets/figures/overview.png",
+    "locator": "Figure 2, overview.png",
+    "caption": {
+      "en": "Figure 2: SPEAR couples progressive exploration with self-imitation replay and stabilized policy updates.",
+      "zh": "图 2：SPEAR 将渐进探索、自模仿回放与稳定化策略更新结合。"
     }
   },
   {

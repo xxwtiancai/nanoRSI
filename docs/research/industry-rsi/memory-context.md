@@ -62,6 +62,36 @@
 
 **Primary sources** — [arXiv record](https://arxiv.org/abs/2608.23552) · [Paper first-publication statement and Factorio evidence](https://arxiv.org/html/2608.23552v1) · [Official launch and update mechanism](https://www.primeintellect.ai/blog/prime-agent) · [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
+<a id="tencent-training-free-grpo"></a>
+
+## Training-Free Group Relative Policy Optimization
+
+**2025-10-09** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2025-10-09. The corresponding Youtu-Agent branch was announced in October 2025 and later integrated into the main repository; the paper date anchors inclusion.
+
+**Institutional relationship** — The paper lists Tencent Youtu Lab, Fudan University and Xiamen University. The official implementation is released in TencentCloudADP/youtu-agent.
+
+**What changes and how feedback is reused** — A frozen base model produces grouped rollouts. Semantic advantages are distilled into an evolving experience library and token prior, which are fed back through context rather than gradient updates. Multiple epochs share the accumulated experience, shifting later output distributions while keeping parameters fixed.
+
+**Author-reported result** — With DeepSeek-V3.1-Terminus, direct prompting improves AIME24 from 68.6 to 72.6 (+4.0) and AIME25 from 52.9 to 54.0 (+1.1); ReAct+CI improves AIME24 80.0→82.7 (+2.7) and AIME25 67.9→73.3 (+5.4) at a reported $18 cost. WebWalkerQA rises 63.2→67.8 (+4.6) in the paper setting.
+
+**Evidence limits** — This is context-space experience evolution, not parameter training: the base model remains frozen and the experience library is the mutable artifact. Results use bounded groups, retries and task-specific prompts; the paper does not show an autonomous improver redesigning its own algorithm.
+
+**Code / weights / data / license** — TencentCloudADP/youtu-agent publishes the training_free_GRPO branch and examples; its LICENSE states MIT, while GitHub API metadata reports NOASSERTION. The paper’s base models and benchmark data retain their own terms; no parameter update should be inferred from the release.
+
+**Possible nanoRSI experiment — not implemented here** — Add a frozen-model control to nanoRSI memory experiments: compare no experience, a fixed library and recursively refreshed experience at equal group counts, while logging token cost, stale advice and held-out transfer.
+
+![Figure 2: Training-Free GRPO updates an experience library from grouped rollouts while keeping the base model frozen.](assets/paper-figures/tencent-training-free-grpo.png)
+
+**Source figure / official image** — Figure 2: Training-Free GRPO updates an experience library from grouped rollouts while keeping the base model frozen. · Figure 2, training-free_GRPO.png · [source](https://ar5iv.labs.arxiv.org/html/2510.08191/assets/figures/training-free_GRPO.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official Youtu-Agent implementation](https://github.com/TencentCloudADP/youtu-agent/tree/training_free_GRPO) · [Youtu-Agent MIT license](https://github.com/TencentCloudADP/youtu-agent/blob/main/LICENSE)
+
+**Primary sources** — [arXiv first submission and history](https://arxiv.org/abs/2510.08191) · [Paper v1 and Training-Free GRPO figure](https://arxiv.org/html/2510.08191v1) · [Official Youtu-Agent implementation](https://github.com/TencentCloudADP/youtu-agent/tree/training_free_GRPO) · [Youtu-Agent MIT license](https://github.com/TencentCloudADP/youtu-agent/blob/main/LICENSE)
+
 <a id="sambanova-stanford-ace"></a>
 
 ## Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models

@@ -24,6 +24,9 @@ The university and collaborator relationships appear in each record. A company n
 | Cognition | [Devin builds Devin](research-workflows.zh-CN.md#cognition-devin-builds-devin) |
 | Alibaba / Tongyi Lab | [AgentEvolver](parameter-learning.zh-CN.md#alibaba-agentevolver) |
 | ByteDance Seed + collaborators | [HarnessDev](agent-code.zh-CN.md#bytedance-harnessdev), [S3Gym](memory-context.zh-CN.md#bytedance-s3gym), [Aspire](parameter-learning.zh-CN.md#bytedance-aspire) |
+| Tencent / WeChat AI | [SkillHone](agent-code.zh-CN.md#tencent-skillhone) — persistent decision history and skill revision loop; the paper's enterprise harness and the public implementation are recorded separately |
+| Tencent Youtu Lab + collaborators | [SPEAR](parameter-learning.zh-CN.md#tencent-spear) — self-imitation replay and progressive exploration; [Training-Free GRPO](memory-context.zh-CN.md#tencent-training-free-grpo) — frozen-model experience evolution |
+| Tencent AI Lab + CUHK | [WebAggregator / Explore-to-Evolve](agent-code.zh-CN.md#tencent-webaggregator) — executable web aggregation programs and verified training data |
 | Tencent AI Lab + BUPT | [MoE-CL](parameter-learning.zh-CN.md#tencent-moe-cl), classified as enabling / 持续学习支撑技术 |
 | DeepSeek | [DeepSeekMath-V2](parameter-learning.zh-CN.md#deepseek-math-v2) |
 | MiniMax | [M2.7 self-evolution report](agent-code.zh-CN.md#minimax-m27-self-evolution) |
@@ -53,6 +56,8 @@ These remain useful reading, but are excluded from the current new-work count. A
 | [Text-to-LoRA](https://arxiv.org/abs/2506.06105) | 2025-06-06 | Generated adapters; distinguish from 2026 Doc-to-LoRA / 生成适配器，区别于 2026 年 Doc-to-LoRA |
 | [Agent Lightning](https://arxiv.org/abs/2508.03680) | 2025-08-05 | Agent-training infrastructure; later publicity does not redate it / Agent 训练基础设施，后续宣传不重置日期 |
 | [WebEvolver](https://arxiv.org/abs/2504.21024) | 2025-04-23 | Earlier self-evolving web-agent work / 早期 Web Agent 自进化工作 |
+| [WebCoT](https://arxiv.org/abs/2505.15478) | 2025-05-26 | Tencent SelfEvolvingAgent archive entry; outside the current one-year window / Tencent SelfEvolvingAgent 档案中的条目，超出当前一年窗口 |
+| [Cognitive Kernel-Pro](https://arxiv.org/abs/2508.00414) | 2025-08-01 | Tencent research lead and public repository, but outside the current window / 腾讯研究与公开仓库，首发日期超出当前窗口 |
 | [WebRL](https://arxiv.org/abs/2411.02337) | 2024-11-04 | Earlier Tsinghua/Zhipu web-agent curriculum RL; [paper affiliations](https://openreview.net/pdf?id=oVKEAFjEqv) / 早期清华、智谱课程强化学习，机构关系见论文 |
 
 ## How to read the evidence / 如何理解证据

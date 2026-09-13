@@ -1,20 +1,20 @@
 # Industry RSI research map
 
-**2025-09-13 → 2026-09-13** · **28** in-window records
+**2025-09-13 → 2026-09-13** · **32** in-window records
 
 A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a locally stored paper figure, official research image or source-page screenshot, with its locator and source URL, plus an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.
 
 **Direct bounded loop**: updated code, memory, data policy, parameters or learning rules affect later iterations; this does not necessarily improve the improvement algorithm itself. **Enabling**: useful adaptation, memory or evaluation without a demonstrated recursive deployment loop. **Automated / assisted R&D**: evidence focuses on a research workflow or a separate target model, with varying human involvement. Labels describe the emphasis of an entry, can overlap, and are not levels of proven RSI.
 
-[Quickstart](QUICKSTART.md) · [Landscape and taxonomy](LANDSCAPE.md) · [Open materials](OPEN_MATERIALS.md) · [Coverage and dates](COVERAGE.md) · [Experiments to build next](ADOPTION.md) · [Source-image manifest](assets/paper-figures/README.md) · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)
+[Quickstart](QUICKSTART.md) · [Landscape and taxonomy](LANDSCAPE.md) · [Open materials](OPEN_MATERIALS.md) · [Tencent coverage audit](TENCENT.md) · [Coverage and dates](COVERAGE.md) · [Experiments to build next](ADOPTION.md) · [Source-image manifest](assets/paper-figures/README.md) · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)
 
 ## Browse by what changes
 
 | Category | Records |
 | --- | ---: |
-| [Parameters and training data](parameter-learning.md) | 11 |
-| [Agents and code](agent-code.md) | 4 |
-| [Memory and context](memory-context.md) | 5 |
+| [Parameters and training data](parameter-learning.md) | 12 |
+| [Agents and code](agent-code.md) | 6 |
+| [Memory and context](memory-context.md) | 6 |
 | [Automated research and evaluation](research-workflows.md) | 8 |
 
 ## Timeline
@@ -30,6 +30,7 @@ A selective, primary-source catalogue of company and company–university papers
 | 2026-08 | [Automated Researchers Can Mitigate Well-Characterized Alignment Failures](research-workflows.md#automated-alignment-researchers) | Anthropic Fellows Program | Automated / assisted R&D |
 | 2026-07-30 | [Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering](research-workflows.md#frontis-ma1-openmle) | Frontis.AI — Horizon Research / Tsinghua University | Direct bounded loop |
 | 2026-07-15 | [GPT-Red: Automated Red Teaming via Self-Play at Scale](parameter-learning.md#gpt-red) | OpenAI | Direct bounded loop |
+| 2026-06-07 | [SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History](agent-code.md#tencent-skillhone) | WeChat, Tencent Inc. | Direct bounded loop |
 | 2026-04 | [Automated Weak-to-Strong Researcher](research-workflows.md#automated-w2s) | Anthropic / Anthropic Fellows Program | Automated / assisted R&D |
 | 2026-03-19 | [Hyperagents](agent-code.md#meta-hyperagents-2026) | Meta / University of British Columbia | Direct bounded loop |
 | 2026-03-18 | [MiniMax M2.7: Early Echoes of Self-Evolution](agent-code.md#minimax-m27-self-evolution) | MiniMax | Direct bounded loop |
@@ -44,9 +45,12 @@ A selective, primary-source catalogue of company and company–university papers
 | 2025-11-13 | [SIMA 2: A Generalist Embodied Agent for Virtual Worlds](parameter-learning.md#google-sima2-2025) | Google DeepMind | Direct bounded loop |
 | 2025-11-13 | [AgentEvolver: Towards Efficient Self-Evolving Agent System](parameter-learning.md#alibaba-agentevolver) | Alibaba Group — Tongyi Lab | Direct bounded loop |
 | 2025-10-22 | [Discovering state-of-the-art reinforcement learning algorithms](parameter-learning.md#google-discorl-2025) | Google DeepMind | Enabling technique / evaluation |
+| 2025-10-16 | [WebAggregator: Enhancing Compositional Reasoning Capabilities of Deep Research Agent Foundation Models](agent-code.md#tencent-webaggregator) | Tencent AI Lab / The Chinese University of Hong Kong | Direct bounded loop |
+| 2025-10-09 | [Training-Free Group Relative Policy Optimization](memory-context.md#tencent-training-free-grpo) | Tencent Youtu Lab / Fudan University / Xiamen University | Direct bounded loop |
 | 2025-10-06 | [Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models](memory-context.md#sambanova-stanford-ace) | Stanford University / SambaNova Systems / UC Berkeley | Direct bounded loop |
 | 2025-10-06 | [LEGOMem: Modular Procedural Memory for Multi-agent LLM Systems for Workflow Automation](memory-context.md#microsoft-legomem-2025) | Microsoft | Enabling technique / evaluation |
 | 2025-10-01 | [ACON: Optimizing Context Compression for Long-horizon LLM Agents](memory-context.md#microsoft-acon-2025) | Microsoft / KAIST / University of Cambridge | Direct bounded loop |
+| 2025-09-26 | [Learn the Ropes, Then Trust the Wins: Self-imitation with Progressive Exploration for Agentic Reinforcement Learning](parameter-learning.md#tencent-spear) | Tencent Youtu Lab / Shanghai Jiao Tong University / Peking University / Fudan University / Xiamen University | Direct bounded loop |
 | 2025-09-17 | [ShinkaEvolve: Towards Open-Ended And Sample-Efficient Program Evolution](agent-code.md#sakana-shinkaevolve) | Sakana AI | Direct bounded loop |
 | 2025-09-14 | [Self-Evolving LLMs via Continual Instruction Tuning](parameter-learning.md#tencent-moe-cl) | Beijing University of Posts and Telecommunications / Tencent AI Lab | Enabling technique / evaluation |
 

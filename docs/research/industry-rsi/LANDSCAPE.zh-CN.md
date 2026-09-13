@@ -9,8 +9,8 @@
 | 改变面 | 要回答的问题 | 本地图中的代表成果 |
 | --- | --- | --- |
 | 参数与训练数据 | 生成任务、标签、奖励或更新规则是否改变目标模型参数，并进入下一轮？ | AgentEvolver、Agent0、SIMA 2、GPT-Red、A3 |
-| Agent 与代码 | 持久化程序、scaffold 或 harness 是否被修改、评测并复用？ | HarnessDev、Hyperagents、ShinkaEvolve、MiniMax M2.7 |
-| 记忆与上下文 | 经验是否变成可检索上下文、playbook、适配器或记忆状态？ | ACE、ACON、LEGOMem、S3Gym、Prime Agent |
+| Agent 与代码 | 持久化程序、scaffold 或 harness 是否被修改、评测并复用？ | HarnessDev、SkillHone、WebAggregator、Hyperagents、ShinkaEvolve、MiniMax M2.7 |
+| 记忆与上下文 | 经验是否变成可检索上下文、playbook、适配器或记忆状态？ | ACE、ACON、LEGOMem、S3Gym、Prime Agent、Training-Free GRPO |
 | 自动化研发与评测 | Agent 是否改进独立研究产物，或让评测闭环更可扩展？ | AAR、弱监督强模型研究器、TASTE、AlphaEvolve MARL、Prime 研发评测 |
 
 ## 证据类别

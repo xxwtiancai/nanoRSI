@@ -302,6 +302,36 @@
 
 **Primary sources** — [Primary Nature article at PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12695655/) · [Publication metadata](https://pubmed.ncbi.nlm.nih.gov/41125136/) · [Author project and artifact availability](https://google-deepmind.github.io/disco_rl/) · [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
 
+<a id="tencent-spear"></a>
+
+## Learn the Ropes, Then Trust the Wins: Self-imitation with Progressive Exploration for Agentic Reinforcement Learning
+
+**2025-09-26** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2025-09-26; the public repository was released around the same research release. Inclusion uses the first paper submission.
+
+**Institutional relationship** — The paper lists Tencent Youtu Lab and four university collaborators. Tencent Youtu Lab is the industrial research lead; collaborators and ownership are kept explicit.
+
+**What changes and how feedback is reused** — SPEAR combines a curriculum that schedules intrinsic tool-use rewards for progressive exploration with self-imitation replay for exploitation. Advantage recalibration corrects replay drift, while covariance-based clipping and entropy control stabilize updates. The replay buffer is reused across policy updates, creating a bounded policy-training loop.
+
+**Author-reported result** — The abstract reports up to +16.1/+5.1/+8.6% on ALFWorld and +20.7/+11.8/+13.9% on WebShop over GRPO/GiGPO/Dr.BoT. In a controlled 32K Qwen2.5-32B-Instruct row, AIME24 rises from 67.2 with Dr.BoT to 71.0 (+3.8), and AIME25 from 55.1 to 61.0 (+5.9).
+
+**Evidence limits** — Gains vary by model, task and ablation: self-imitation alone can reduce AIME24 in some rows. The task stream, verifier and reward design remain externally supplied, so this is policy self-improvement under a fixed training harness rather than an autonomous improver redesigning itself.
+
+**Code / weights / data / license** — TencentYoutuResearch/SPEAR code is public and includes SPEAR_LICENSE.txt. The custom terms state that SPEAR is not intended for use within the European Union; GitHub API metadata reports NOASSERTION. Check third-party component terms before reuse; no released checkpoint is assumed beyond what the repository explicitly documents.
+
+**Possible nanoRSI experiment — not implemented here** — Expose replay provenance in nanoRSI learner experiments: compare uniform, frozen-replay and recursively refreshed replay with matched rollout budgets, and report both held-out gains and replay-induced regressions.
+
+![Figure 2: SPEAR couples progressive exploration with self-imitation replay and stabilized policy updates.](assets/paper-figures/tencent-spear.png)
+
+**Source figure / official image** — Figure 2: SPEAR couples progressive exploration with self-imitation replay and stabilized policy updates. · Figure 2, overview.png · [source](https://ar5iv.labs.arxiv.org/html/2509.22601/assets/figures/overview.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Tencent YoutuResearch SPEAR repository](https://github.com/TencentYoutuResearch/SPEAR) · [SPEAR custom license terms](https://github.com/TencentYoutuResearch/SPEAR/blob/main/SPEAR_LICENSE.txt)
+
+**Primary sources** — [arXiv first submission and history](https://arxiv.org/abs/2509.22601) · [Paper v1 and overview figure](https://arxiv.org/html/2509.22601v1) · [Tencent YoutuResearch SPEAR repository](https://github.com/TencentYoutuResearch/SPEAR) · [SPEAR custom license terms](https://github.com/TencentYoutuResearch/SPEAR/blob/main/SPEAR_LICENSE.txt)
+
 <a id="tencent-moe-cl"></a>
 
 ## Self-Evolving LLMs via Continual Instruction Tuning

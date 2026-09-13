@@ -9,8 +9,8 @@ The collection organizes work by the persistent surface that changes. This preve
 | Surface | The question | Typical evidence in this map |
 | --- | --- | --- |
 | Parameters and training data | Do generated tasks, labels, rewards or update rules change a target model's parameters and feed a later round? | AgentEvolver, Agent0, SIMA 2, GPT-Red, A3 |
-| Agents and code | Does a persistent program, scaffold or harness get edited, evaluated and reused? | HarnessDev, Hyperagents, ShinkaEvolve, MiniMax M2.7 |
-| Memory and context | Does experience become a retrievable context, playbook, adapter or memory state? | ACE, ACON, LEGOMem, S3Gym, Prime Agent |
+| Agents and code | Does a persistent program, scaffold or harness get edited, evaluated and reused? | HarnessDev, SkillHone, WebAggregator, Hyperagents, ShinkaEvolve, MiniMax M2.7 |
+| Memory and context | Does experience become a retrievable context, playbook, adapter or memory state? | ACE, ACON, LEGOMem, S3Gym, Prime Agent, Training-Free GRPO |
 | Automated research and evaluation | Does an agent improve a separate research artifact or make the evaluation loop scalable? | AAR, weak-to-strong researcher, TASTE, AlphaEvolve MARL, Prime research evaluation |
 
 ## Evidence classes

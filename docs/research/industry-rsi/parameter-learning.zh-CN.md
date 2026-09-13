@@ -302,6 +302,36 @@
 
 **一手来源** — [Primary Nature article at PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12695655/) · [Publication metadata](https://pubmed.ncbi.nlm.nih.gov/41125136/) · [Author project and artifact availability](https://google-deepmind.github.io/disco_rl/) · [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
 
+<a id="tencent-spear"></a>
+
+## Learn the Ropes, Then Trust the Wins: Self-imitation with Progressive Exploration for Agentic Reinforcement Learning
+
+**2025-09-26** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 首次提交于 2025-09-26；公开仓库在同一研究发布期开放。按论文首发日期纳入。
+
+**机构关系** — 论文列出腾讯 Youtu Lab 及四所高校合作方。腾讯 Youtu Lab 为产业研究方；合作关系和成果归属保持明确区分。
+
+**改变对象与反馈复用** — SPEAR 将按课程调度工具使用内在奖励的渐进探索，与自模仿回放的利用阶段结合。优势重校准修正回放分布漂移，协方差裁剪和熵控制稳定更新；回放缓冲区跨策略更新复用，形成有界的策略训练闭环。
+
+**作者报告结果** — 摘要报告 ALFWorld 相比 GRPO/GiGPO/Dr.BoT 最高提升 +16.1/+5.1/+8.6%，WebShop 最高提升 +20.7/+11.8/+13.9%。在 32K Qwen2.5-32B-Instruct 对照行中，AIME24 从 Dr.BoT 的 67.2 升至 71.0（+3.8），AIME25 从 55.1 升至 61.0（+5.9）。
+
+**证据边界** — 收益依赖模型、任务和消融设置：部分行中单独加入自模仿会降低 AIME24。任务流、验证器和奖励设计仍由外部提供，因此这是固定训练框架内的策略改进，不是改进器自主重设计。
+
+**代码／权重／数据／许可** — TencentYoutuResearch/SPEAR 代码公开，并包含 SPEAR_LICENSE.txt。自定义条款写明 SPEAR 不适用于欧盟境内；GitHub API 元数据为 NOASSERTION。复用前需检查第三方组件条款；除仓库明确说明外，不假定存在可自由使用的检查点。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 在 nanoRSI 学习器实验中公开回放来源：在匹配 rollout 预算下比较均匀采样、冻结回放和递归刷新回放，同时报告隐藏集收益与回放造成的退化。
+
+![图 2：SPEAR 将渐进探索、自模仿回放与稳定化策略更新结合。](assets/paper-figures/tencent-spear.png)
+
+**原文图／官方图片** — 图 2：SPEAR 将渐进探索、自模仿回放与稳定化策略更新结合。 · Figure 2, overview.png · [source](https://ar5iv.labs.arxiv.org/html/2509.22601/assets/figures/overview.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Tencent YoutuResearch SPEAR repository](https://github.com/TencentYoutuResearch/SPEAR) · [SPEAR custom license terms](https://github.com/TencentYoutuResearch/SPEAR/blob/main/SPEAR_LICENSE.txt)
+
+**一手来源** — [arXiv first submission and history](https://arxiv.org/abs/2509.22601) · [Paper v1 and overview figure](https://arxiv.org/html/2509.22601v1) · [Tencent YoutuResearch SPEAR repository](https://github.com/TencentYoutuResearch/SPEAR) · [SPEAR custom license terms](https://github.com/TencentYoutuResearch/SPEAR/blob/main/SPEAR_LICENSE.txt)
+
 <a id="tencent-moe-cl"></a>
 
 ## Self-Evolving LLMs via Continual Instruction Tuning
