@@ -2,6 +2,36 @@
 
 [← Research map](README.md)
 
+<a id="tokenrhythm-neohorse-1"></a>
+
+## NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness
+
+**2026-09-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: September 8, 2026, submitted by the NeoHorse Team. Models were released on Hugging Face around the same date; the GitHub repository was created September 4, 2026.
+
+**Institutional relationship** — Corporate–university joint team: TokenRhythm Technologies and Infinigence AI lead, with Tsinghua, Peking University, CUHK and Alibaba Group authors; two investment firms (Visionplus Capital, WX Capital) also appear in the affiliation list.
+
+**What changes and how feedback is reused** — A routing harness backed by a heterogeneous model pool logs capability-demand signals from real agentic traffic. Those records become training examples (structural validation, six-dimension semantic scoring, subscene labeling), routing scores order a three-stage SFT curriculum and routing-guided on-policy distillation, and a capability-guided allocation step turns evaluation feedback into the next training mixture; updated checkpoints return to the harness, 'closing an evaluation–selection–update loop'.
+
+**Author-reported result** — Post-training lifts the macro-average over ten benchmarks (six agentic, two coding, two instruction-following) from 58.94 to 64.87 at 4B and from 65.60 to 69.04 at 9B, with Qwen3.5-4B/9B bases; the post-trained 4B narrows the gap to the untrained 9B base. Comparators per track include Gemma-4, Granite-4.2, Spark-X2.5 and others.
+
+**Evidence limits** — The authors state this is 'an initial attempt at recursive self-improvement rather than a definitive demonstration': results cover one pass of the evaluation–selection–update loop, so accumulation across successive iterations is untested; validation is limited to agentic/coding/tool-use/instruction-following capabilities.
+
+**Code / weights / data / license** — Code verified at github.com/TokenRhythm/NeoHorse (Apache-2.0, created 2026-09-04) and model weights on the Hugging Face TokenRhythm NeoHorse-1 collection; training data sources and their redistribution terms are not documented in the audited sources.
+
+**Possible nanoRSI experiment — not implemented here** — Proposed: on a fixed task stream, compare capability-guided training-data allocation against uniform sampling and a frozen data mixture with matched token budgets, logging whether the allocator's choices transfer to held-out tasks.
+
+![Figure 2: the routing-guided agentic training loop — diverse tasks run through a routing harness over a model pool, interaction records become a training mixture, capability feedback steers the next distribution, and updated models return to the harness.](assets/paper-figures/tokenrhythm-neohorse-1.svg)
+
+**Source figure / official image** — Figure 2: the routing-guided agentic training loop — diverse tasks run through a routing harness over a model pool, interaction records become a training mixture, capability feedback steers the next distribution, and updated models return to the harness. · Figure 2 · [source](https://arxiv.org/html/2609.08183v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-14.
+
+**Open code / weights / data links** — [Official implementation (Apache-2.0)](https://github.com/TokenRhythm/NeoHorse)
+
+**Primary sources** — [arXiv abstract (v1 date)](https://arxiv.org/abs/2609.08183) · [Paper HTML (loop description, scores, limitations)](https://arxiv.org/html/2609.08183v1) · [Official implementation (Apache-2.0)](https://github.com/TokenRhythm/NeoHorse)
+
 <a id="bytedance-aspire"></a>
 
 ## Aspire: Can Models Self-Evolve from Vague Goals?

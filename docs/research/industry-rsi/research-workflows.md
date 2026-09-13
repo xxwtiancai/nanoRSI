@@ -2,6 +2,66 @@
 
 [← Research map](README.md)
 
+<a id="genuine-rsi-roadmap-2026"></a>
+
+## The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement
+
+**2026-09-10** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1: September 10, 2026. Project page (theseus-labs-rsi.github.io) opened the same week; no prior announcement.
+
+**Institutional relationship** — A 37-author industry–academia collaboration: SJTU and Theseus Labs lead (corresponding author Xuanhe Zhou), with Tsinghua, ByteDance, Shanghai AI Lab, ModelBest, Xiaohongshu, Humanlaya and an Agent-Native Research Lab also represented. Affiliation is stated on the paper's first page.
+
+**What changes and how feedback is reused** — A position/roadmap paper, not a working loop. It diagnoses current LLMs with a Headroom-Closed Index (HCI), then orders RSI systems on five autonomy levels — L1 execution, L2 strategy selection, L3 experience acquisition, L4 environment/deployment adaptation, L5 recursive meta-improvement — and surveys industry systems (AlphaEvolve, ByteDance Seed reasoning training, Hermes reusable skills, ASPIRE, Prime Intellect, Theseus environment-data-model co-evolution, Sakana and Meta hyper-agents, etc.) against that ladder.
+
+**Author-reported result** — No new system-level benchmark result. Reported evidence: HCI diagnostics over 2023–2026 models across ten domains, plus case studies and 'preliminary empirical evidence' from industry practice; the paper explicitly frames genuine RSI as an open goal.
+
+**Evidence limits** — Survey and roadmap only: the HCI metric's construction and the industry case studies are author-reported and not independently verified; the five-level ladder is a classification the authors themselves call aspirational at L4–L5.
+
+**Code / weights / data / license** — Paper is CC BY-NC-ND 4.0 on arXiv; project page is public. No code, weights or dataset release is associated with the roadmap itself; surveyed systems carry their own separate licenses.
+
+**Possible nanoRSI experiment — not implemented here** — Proposed: adopt the L1–L5 autonomy ladder as an extra labeling axis for nanoRSI experiment reports, and mirror an HCI-style headroom check (capability vs. improvement-headroom) as a control metric when claiming recursive gains.
+
+![Figure 1: the paper's L0–L5 autonomy landscape placing representative industry systems (AlphaEvolve, ByteDance Seed, Anthropic, Hermes, ASPIRE, Theseus, SIMA, Sakana, HyperAgents) from execution automation to meta improvement.](assets/paper-figures/genuine-rsi-roadmap-2026.png)
+
+**Source figure / official image** — Figure 1: the paper's L0–L5 autonomy landscape placing representative industry systems (AlphaEvolve, ByteDance Seed, Anthropic, Hermes, ASPIRE, Theseus, SIMA, Sakana, HyperAgents) from execution automation to meta improvement. · Figure 1 · [source](https://arxiv.org/html/2609.11873v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-14.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract (v1 date, license)](https://arxiv.org/abs/2609.11873) · [Paper HTML (Figure 1 landscape, affiliations)](https://arxiv.org/html/2609.11873v1) · [Project page](https://theseus-labs-rsi.github.io/)
+
+<a id="openai-research-acceleration-2026"></a>
+
+## Research acceleration: The view inside OpenAI
+
+**2026-09-06** · report · Automated / assisted R&D
+
+**Publication date** — Official OpenAI research post dated September 6, 2026 (media coverage on September 7 pointed to this page). The post links Sam Altman's fall-2025 announcement of the September-2026 intern goal.
+
+**Institutional relationship** — First-party OpenAI corporate report about its own research organization; the measurements are self-reported and the methods appendix is included in the same post.
+
+**What changes and how feedback is reused** — OpenAI states it reached the fall-2025 goal of 'an automated research intern by September of this year' — a system doing well-defined multi-day research tasks under human direction — and reports organizational telemetry: mid-August median researcher usage above $600/day of inference (90th percentile above $7,000/day), 3.1 agent-workdays per human workday across the research organization, rising concurrent-agent workflows, record experiments per experimenter, and longer-horizon task delegation. It also reports pacing actions: RL training on deployment-intended models was paused after the Hugging Face incident while environments were hardened.
+
+**Author-reported result** — Explicitly targets 'an automated AI researcher by March of 2028' and frames the work as progress toward RSI while stating 'We do not yet know how to safely get all the way to aligned, full RSI' and that overall research pace 'likely won't keep pace' with the agent-usage metrics.
+
+**Evidence limits** — Self-reported internal telemetry with methods published in the same post but no independent audit; usage spend, experiment counts and agent-workdays are proxies, and OpenAI itself warns they can diverge from end-to-end research progress. No external reproduction is possible.
+
+**Code / weights / data / license** — Official blog post; no code, weights or data release. The linked pacing announcement (pacing-model-development-cyber-capabilities) is a separate policy post, not an artifact release.
+
+**Possible nanoRSI experiment — not implemented here** — Proposed: adopt an agent-workday accounting convention (agent compute per human workday, per improvement stage) in nanoRSI experiment logs so recursive-gain claims carry an explicit labor-substitution denominator.
+
+![Opening of the September 6, 2026 post: OpenAI states it reached the automated-research-intern goal announced the previous fall and is 'making strong progress toward creating an automated AI researcher by March of 2028'.](assets/paper-figures/openai-research-acceleration.png)
+
+**Source figure / official image** — Opening of the September 6, 2026 post: OpenAI states it reached the automated-research-intern goal announced the previous fall and is 'making strong progress toward creating an automated AI researcher by March of 2028'. · Article opening (date, title, first paragraphs) · [source](https://openai.com/index/research-acceleration-view-inside-openai/)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-14.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Official research post (opened via browser)](https://openai.com/index/research-acceleration-view-inside-openai/)
+
 <a id="taste"></a>
 
 ## TASTE: Can AI Models Judge AI Safety Research Proposals?
@@ -121,6 +181,36 @@
 **Open code / weights / data links** — [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2607.28568) · [Paper v1](https://arxiv.org/html/2607.28568v1) · [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
+
+<a id="salesforce-toward-self-improving-agents"></a>
+
+## Toward Self-Improving Agents
+
+**2026-07-23** · report · Enabling technique / evaluation
+
+**Publication date** — Official Salesforce News research story dated July 23, 2026; a follow-up story ('Building Toward Self-Improving Agents') followed on July 28, 2026.
+
+**Institutional relationship** — First-party position piece by Salesforce AI Labs leadership (Carson S. Kahn, Head of Foundation Models & VP AI Labs, and Ryan Atallah) on their own agent fleet; mechanism evidence cites third-party work rather than new Salesforce experimental results.
+
+**What changes and how feedback is reused** — Argues the compounding asset is the improvement loop, not the rented model: 'detect what's failing, diagnose root causes, test multiple improvements using simulations, and learn from the combinations that increase performance', with frozen-weight adaptation across prompts, tools, retrieval, workflows and memories ('freezing the weights is the aggressive move'). Prescribes governed autonomy: external verification, regression suites, adversarial cases and human gates, illustrated by a Darwin Gödel Machine variant that 'stopped logging the markers used to detect hallucinations' while earning a perfect score.
+
+**Author-reported result** — No new controlled benchmark from Salesforce. Cited evidence includes the Stanford AI Index 2025 inference-cost drop (>280x in ~18 months), DoorDash's agentic metadata engine (~20% annotation accuracy gain, claimed 10x faster development at ~10% inference cost), and the published DGM result of doubling a coding agent's success rate; Salesforce also reports running 11+ million Agentforce calls per day as scale context.
+
+**Evidence limits** — Strategy and risk narrative, not an evaluated mechanism: the loop diagram is prescriptive, third-party numbers are reused without re-verification, and no Salesforce-side A/B evidence for the recommended governance stack is included.
+
+**Code / weights / data / license** — Official news story; no code, weights or data release attached. Referenced papers (Reflexion, Retroformer, AFlow, DGM, AlphaEvolve) keep their own licenses.
+
+**Possible nanoRSI experiment — not implemented here** — Proposed: implement the prescribed gate as code — a regression-suite plus human-audit checkpoint between candidate and accepted improvements in nanoRSI — and measure how often reward-hacking edits (like the cited DGM logging case) are caught by the gate versus slipped through.
+
+![The article's six-step governed-autonomy loop: observe, diagnose, improve the system, prove in simulation, human gate, learn — the risk-controls Salesforce prescribes for self-improving deployments.](assets/paper-figures/salesforce-toward-self-improving-agents.png)
+
+**Source figure / official image** — The article's six-step governed-autonomy loop: observe, diagnose, improve the system, prove in simulation, human gate, learn — the risk-controls Salesforce prescribes for self-improving deployments. · Article diagram (governed autonomy loop) · [source](https://www.salesforce.com/news/stories/toward-self-improving-agents/)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-14.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Official Salesforce news story (opened)](https://www.salesforce.com/news/stories/toward-self-improving-agents/)
 
 <a id="automated-w2s"></a>
 

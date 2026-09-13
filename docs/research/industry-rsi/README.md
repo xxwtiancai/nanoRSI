@@ -1,6 +1,6 @@
 # Industry RSI research map
 
-**2025-09-13 → 2026-09-13** · **32** in-window records
+**2025-09-14 → 2026-09-14** · **39** in-window records
 
 A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a locally stored paper figure, official research image or source-page screenshot, with its locator and source URL, plus an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.
 
@@ -12,24 +12,31 @@ A selective, primary-source catalogue of company and company–university papers
 
 | Category | Records |
 | --- | ---: |
-| [Parameters and training data](parameter-learning.md) | 12 |
-| [Agents and code](agent-code.md) | 6 |
-| [Memory and context](memory-context.md) | 6 |
-| [Automated research and evaluation](research-workflows.md) | 8 |
+| [Parameters and training data](parameter-learning.md) | 13 |
+| [Agents and code](agent-code.md) | 8 |
+| [Memory and context](memory-context.md) | 7 |
+| [Automated research and evaluation](research-workflows.md) | 11 |
 
 ## Timeline
 
 | Date | Work | Organizations | Evidence class |
 | --- | --- | --- | --- |
+| 2026-09-10 | [The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement](research-workflows.md#genuine-rsi-roadmap-2026) | Shanghai Jiao Tong University / Theseus Labs / Tsinghua University / ByteDance / Shanghai AI Lab / ModelBest / Xiaohongshu Inc. / Humanlaya | Enabling technique / evaluation |
+| 2026-09-08 | [NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness](parameter-learning.md#tokenrhythm-neohorse-1) | TokenRhythm Technologies / Infinigence AI / Tsinghua University / Peking University / The Chinese University of Hong Kong / Alibaba Group | Direct bounded loop |
+| 2026-09-06 | [Research acceleration: The view inside OpenAI](research-workflows.md#openai-research-acceleration-2026) | OpenAI | Automated / assisted R&D |
 | 2026-09-01 | [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](agent-code.md#bytedance-harnessdev) | ByteDance Seed / Singapore University of Technology and Design / Georgia Institute of Technology / M-A-P / TokenWave.AI | Direct bounded loop |
 | 2026-08-31 | [S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?](memory-context.md#bytedance-s3gym) | ByteDance Seed / M-A-P / TokenWave.AI | Direct bounded loop |
 | 2026-08-31 | [Aspire: Can Models Self-Evolve from Vague Goals?](parameter-learning.md#bytedance-aspire) | ByteDance Seed / Singapore University of Technology and Design / M-A-P / TokenWave.AI | Direct bounded loop |
 | 2026-08-28 | [TASTE: Can AI Models Judge AI Safety Research Proposals?](research-workflows.md#taste) | Anthropic / Anthropic Fellows Program | Enabling technique / evaluation |
+| 2026-08-18 | [Chain-of-Experience for Continual LLM Improvement](memory-context.md#bytedance-chain-of-experience) | ByteDance Seed / UC Santa Cruz | Direct bounded loop |
 | 2026-08-14 | [Measuring Autonomous AI Research](research-workflows.md#prime-measuring-autonomous-ai-research) | Prime Intellect | Automated / assisted R&D |
 | 2026-08-05 | [Prime Agent: A Self-Improving RLM Harness](memory-context.md#prime-agent) | Prime Intellect / Princeton University / MIT | Direct bounded loop |
+| 2026-08-03 | [Qwen3.8-Max: A New Bar for Coding and Cowork (self-evolving harness demonstrations)](agent-code.md#qwen38-max-self-evolving-harness) | Alibaba (Qwen team) | Direct bounded loop |
 | 2026-08 | [Automated Researchers Can Mitigate Well-Characterized Alignment Failures](research-workflows.md#automated-alignment-researchers) | Anthropic Fellows Program | Automated / assisted R&D |
 | 2026-07-30 | [Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering](research-workflows.md#frontis-ma1-openmle) | Frontis.AI — Horizon Research / Tsinghua University | Direct bounded loop |
+| 2026-07-23 | [Toward Self-Improving Agents](research-workflows.md#salesforce-toward-self-improving-agents) | Salesforce (AI Labs) | Enabling technique / evaluation |
 | 2026-07-15 | [GPT-Red: Automated Red Teaming via Self-Play at Scale](parameter-learning.md#gpt-red) | OpenAI | Direct bounded loop |
+| 2026-06-30 | [SkillOpt: Executive Strategy for Self-Evolving Agent Skills](agent-code.md#microsoft-skillopt) | Microsoft Research | Direct bounded loop |
 | 2026-06-07 | [SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History](agent-code.md#tencent-skillhone) | WeChat, Tencent Inc. | Direct bounded loop |
 | 2026-04 | [Automated Weak-to-Strong Researcher](research-workflows.md#automated-w2s) | Anthropic / Anthropic Fellows Program | Automated / assisted R&D |
 | 2026-03-19 | [Hyperagents](agent-code.md#meta-hyperagents-2026) | Meta / University of British Columbia | Direct bounded loop |

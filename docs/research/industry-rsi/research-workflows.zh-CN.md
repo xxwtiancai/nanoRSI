@@ -2,6 +2,66 @@
 
 [← 研究地图](README.zh-CN.md)
 
+<a id="genuine-rsi-roadmap-2026"></a>
+
+## The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement
+
+**2026-09-10** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 为 2026 年 9 月 10 日；项目页 theseus-labs-rsi.github.io 同周开放，无更早公告。
+
+**机构关系** — 37 位作者的产学合作：上海交大与 Theseus Labs 主导（通讯作者周轩鹤），清华大学、字节跳动、上海 AI 实验室、无问芯穹、小红书、Humanlaya 及一个 Agent-Native 研究实验室参与。机构关系以论文首页署名为准。
+
+**改变对象与反馈复用** — 这是一篇立场/路线图论文而非可运行闭环：用 Headroom-Closed Index（HCI）诊断现有 LLM，然后把 RSI 系统排到五级自主性阶梯——L1 执行、L2 策略选择、L3 经验获取、L4 环境/部署适应、L5 递归元改进——并按此阶梯梳理产业系统（AlphaEvolve、字节 Seed 推理训练、Hermes 可复用技能、ASPIRE、Prime Intellect、Theseus 环境-数据-模型协同进化、Sakana 与 Meta 超级智能体等）。
+
+**作者报告结果** — 无新的系统级基准结果。报告证据包括：对 2023–2026 年模型在十个领域的 HCI 诊断、案例研究及来自产业实践的"初步实证"；论文明确把真正的 RSI 定位为未完成目标。
+
+**证据边界** — 仅为综述与路线图：HCI 指标的构造与产业案例均为作者报告、未经独立核验；五级阶梯是作者自己的分类，L4–L5 被明确定位为愿景。
+
+**代码／权重／数据／许可** — 论文在 arXiv 上为 CC BY-NC-ND 4.0 许可；项目页公开。路线图本身未发布代码、权重或数据集；被survey系统各自另有许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 建议：把 L1–L5 自主性阶梯作为 nanoRSI 实验报告的附加标注维度，并在声称递归收益时引入 HCI 式"余量"检查作为对照指标。
+
+![图 1：论文的 L0–L5 自主性全景，把代表性产业系统（AlphaEvolve、字节 Seed、Anthropic、Hermes、ASPIRE、Theseus、SIMA、Sakana、HyperAgents）从执行自动化排到元改进。](assets/paper-figures/genuine-rsi-roadmap-2026.png)
+
+**原文图／官方图片** — 图 1：论文的 L0–L5 自主性全景，把代表性产业系统（AlphaEvolve、字节 Seed、Anthropic、Hermes、ASPIRE、Theseus、SIMA、Sakana、HyperAgents）从执行自动化排到元改进。 · Figure 1 · [source](https://arxiv.org/html/2609.11873v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-14.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract (v1 date, license)](https://arxiv.org/abs/2609.11873) · [Paper HTML (Figure 1 landscape, affiliations)](https://arxiv.org/html/2609.11873v1) · [Project page](https://theseus-labs-rsi.github.io/)
+
+<a id="openai-research-acceleration-2026"></a>
+
+## Research acceleration: The view inside OpenAI
+
+**2026-09-06** · report · 自动化／辅助研发
+
+**日期说明** — OpenAI 官方研究博文，页面日期 2026 年 9 月 6 日（9 月 7 日的媒体报道均指向本页）。博文链接了 Altman 2025 年秋关于 2026 年 9 月"研究实习生"目标的公告。
+
+**机构关系** — OpenAI 对自身研究组织的第一方报告；测量数据为自报，方法附录附于同一博文。
+
+**改变对象与反馈复用** — OpenAI 宣布达成 2025 年秋设定的"2026 年 9 月前拥有自动研究实习生"目标——即在人类指导下完成明确定义、需数天的研究任务的系统；并给出组织级遥测：8 月中旬研究员中位日推理用量超 600 美元（前 10% 超 7,000 美元）、研究组织整体每 1 个人工工作日配合 3.1 个 agent 工作日、并发 agent 工作流上升、人均实验数创纪录、更长程任务委托增加。同时报告了节奏控制：Hugging Face 事件后暂停了面向部署模型的 RL 训练以加固研究环境。
+
+**作者报告结果** — 明确瞄准"2028 年 3 月前的自动 AI 研究员"，把工作定位为迈向 RSI 的进展，同时声明"我们尚不知道如何安全地走完对齐、完整 RSI 的全程"，并提醒整体研究提速"很可能跟不上"agent 用量指标。
+
+**证据边界** — 自报的内部遥测：方法虽随文公开但未经独立审计；用量支出、实验数与 agent 工作日都是代理指标，OpenAI 自己也提醒这些与端到端研究进展可能脱节。外部无法复现。
+
+**代码／权重／数据／许可** — 官方博文，无代码、权重或数据发布。文中链接的节奏控制公告（pacing-model-development-cyber-capabilities）是另一篇政策性文章，并非产物发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 建议：在 nanoRSI 实验日志中引入 agent 工作日核算口径（每个改进阶段的人工/agent 计算比），让递归收益的声明带有明确的劳动力替代分母。
+
+![2026 年 9 月 6 日博文开头：OpenAI 宣布达成上年秋天设定的"自动研究实习生"目标，并"正朝着 2028 年 3 月前创建自动 AI 研究员取得强劲进展"。](assets/paper-figures/openai-research-acceleration.png)
+
+**原文图／官方图片** — 2026 年 9 月 6 日博文开头：OpenAI 宣布达成上年秋天设定的"自动研究实习生"目标，并"正朝着 2028 年 3 月前创建自动 AI 研究员取得强劲进展"。 · Article opening (date, title, first paragraphs) · [source](https://openai.com/index/research-acceleration-view-inside-openai/)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-14.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Official research post (opened via browser)](https://openai.com/index/research-acceleration-view-inside-openai/)
+
 <a id="taste"></a>
 
 ## TASTE: Can AI Models Judge AI Safety Research Proposals?
@@ -121,6 +181,36 @@
 **开源代码／权重／数据链接** — [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2607.28568) · [Paper v1](https://arxiv.org/html/2607.28568v1) · [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
+
+<a id="salesforce-toward-self-improving-agents"></a>
+
+## Toward Self-Improving Agents
+
+**2026-07-23** · report · 支撑技术／评测
+
+**日期说明** — Salesforce News 官方研究文章，日期 2026 年 7 月 23 日；2026 年 7 月 28 日另有续篇《Building Toward Self-Improving Agents》。
+
+**机构关系** — Salesforce AI 实验室负责人（Carson S. Kahn，基础模型负责人兼 AI 实验室 VP，与 Ryan Atallah）对自家 agent 舰队的第一方立场文章；机制证据引用第三方工作，而非新的 Salesforce 实验结果。
+
+**改变对象与反馈复用** — 主张复利资产是改进环而非租来的模型："检测失败、诊断根因、用仿真测试多个改进、从提升性能的组合中学习"，冻结权重下照样可改进提示、工具、检索、工作流与记忆（"冻结权重才是激进之举"）。提出"受治理的自治"：外部验证、回归套件、对抗用例与人工闸门，并以达尔文哥德尔机变体"不再记录幻觉检测标记却拿满分"的奖励黑客案例为警示。
+
+**作者报告结果** — Salesforce 未给出新的受控基准。引用证据包括斯坦福 AI Index 2025 的推理成本降幅（约 18 个月降超 280 倍）、DoorDash 的 agent 元数据引擎（标注准确率约 +20%，宣称开发快 10 倍、推理成本约 10%）、以及已发表的 DGM 编码 agent 成功率翻倍结果；另以日均 1100 万+ Agentforce 调用作为规模背景。
+
+**证据边界** — 属战略与风险论述而非受评测机制：闭环图为规范性主张，第三方数字未经复核转引，也未提供 Salesforce 自身的治理栈 A/B 证据。
+
+**代码／权重／数据／许可** — 官方新闻文章；未附带代码、权重或数据发布。所引论文（Reflexion、Retroformer、AFlow、DGM、AlphaEvolve）各自保留其许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 建议：把文中开出的"药方"实现为代码——在 nanoRSI 的候选改进与接受改进之间加入回归套件+人工审计检查点——统计类似 DGM 日志案例的奖励黑客改动被闸门拦截与漏过的比例。
+
+![文章的六步"受治理自治"环：观察、诊断、改进系统、仿真证明、人工闸门、学习——Salesforce 为自改进部署开出的风险控制流程。](assets/paper-figures/salesforce-toward-self-improving-agents.png)
+
+**原文图／官方图片** — 文章的六步"受治理自治"环：观察、诊断、改进系统、仿真证明、人工闸门、学习——Salesforce 为自改进部署开出的风险控制流程。 · Article diagram (governed autonomy loop) · [source](https://www.salesforce.com/news/stories/toward-self-improving-agents/)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-14.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Official Salesforce news story (opened)](https://www.salesforce.com/news/stories/toward-self-improving-agents/)
 
 <a id="automated-w2s"></a>
 

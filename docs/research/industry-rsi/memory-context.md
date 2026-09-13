@@ -32,6 +32,36 @@
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2608.31100) · [Paper v1 methods and Table 6](https://arxiv.org/html/2608.31100v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
+<a id="bytedance-chain-of-experience"></a>
+
+## Chain-of-Experience for Continual LLM Improvement
+
+**2026-08-18** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: August 18, 2026; the same paper is listed on ByteDance Seed's official publications page dated 2026.08.18.
+
+**Institutional relationship** — Authors from UC Santa Cruz and ByteDance Seed (Haoqin Tu and Yunhao Fang equal contribution; senior authors Cihang Xie and Shen Yan).
+
+**What changes and how feedback is reused** — Test-time experiential learning: instead of single-shot inference, the model iteratively solves tasks while accumulating its own experience traces (queries, attempts, correctness or test-pass feedback); those traces feed subsequent attempts, forming a Chain-of-Experience. The study compares feedback sources (self-feedback vs. environment feedback), channel combinations, and retention strategies including deliberately keeping 'messy' failed traces.
+
+**Author-reported result** — Across eight LLMs (including GPT-5, Gemini-2.5 Pro, Claude-4.5 Sonnet) on math, coding and knowledge tasks, iterative experience beats feedback-free baselines with a 5.6% overall gain at 19% lower API cost; combining complementary feedback channels adds gains, accuracy-per-token exceeds other test-time methods, and results are robust to weak or spurious feedback.
+
+**Evidence limits** — Gains are bounded test-time adaptation on fixed models: no weight updates, and the paper's own framing (per ByteDance's page) is 'continual improvement beyond zero-shot inference', not cross-task transfer of a learned updater. Percentages are the authors' aggregate over their benchmark suite.
+
+**Code / weights / data / license** — arXiv (CC BY 4.0); listed on ByteDance Seed's official publications page. No code or data release is linked in the audited sources; benchmark prompts and traces are not published per the checked pages.
+
+**Possible nanoRSI experiment — not implemented here** — Proposed: on nanoRSI's digits/programming tasks, compare single-channel execution feedback against combined self+environment feedback channels under a fixed token budget, and test whether retaining failed traces (not only successes) changes held-out accuracy.
+
+![Figure 2: the study's progression from iterative improvement with world feedback to iterative evolution and finally experience-based loops where the model learns from accumulated experience while the environment provides varied feedback.](assets/paper-figures/bytedance-chain-of-experience.png)
+
+**Source figure / official image** — Figure 2: the study's progression from iterative improvement with world feedback to iterative evolution and finally experience-based loops where the model learns from accumulated experience while the environment provides varied feedback. · Figure 2 · [source](https://arxiv.org/html/2608.18027v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-14.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract (v1 date, license)](https://arxiv.org/abs/2608.18027) · [Paper HTML (loop figures, results)](https://arxiv.org/html/2608.18027v1) · [ByteDance Seed official publications page (2026.08.18)](https://seed.bytedance.com/zh/public_papers)
+
 <a id="prime-agent"></a>
 
 ## Prime Agent: A Self-Improving RLM Harness

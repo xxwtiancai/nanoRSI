@@ -1,354 +1,431 @@
 [
-  {
-    "id": "bytedance-harnessdev",
-    "kind": "paper-figure-crop",
-    "asset": "assets/paper-figures/harnessdev-figure.png",
-    "source_url": "https://arxiv.org/html/2609.01437v1",
-    "locator": "Figure 1, PDF p.2",
-    "caption": {
-      "en": "Figure 1: Creation builds a runnable harness from a weak seed, then Evolution repeatedly edits the persistent harness with execution feedback.",
-      "zh": "图 1：从弱种子创建可运行框架，再用执行反馈持续演化持久化框架。"
-    }
-  },
-  {
-    "id": "bytedance-s3gym",
-    "kind": "paper-figure-crop",
-    "asset": "assets/paper-figures/s3gym-figure.png",
-    "source_url": "https://arxiv.org/html/2608.31100v1",
-    "locator": "Figure 2, PDF p.7",
-    "caption": {
-      "en": "Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training.",
-      "zh": "图 2：S3Gym 通过历史 ICL、摘要记忆和参数训练展示经验驱动的改进路径。"
-    }
-  },
-  {
-    "id": "bytedance-aspire",
-    "kind": "paper-figure-crop",
-    "asset": "assets/paper-figures/aspire-figure.png",
-    "source_url": "https://arxiv.org/html/2608.31111v1",
-    "locator": "Figure 1, PDF p.2",
-    "caption": {
-      "en": "Figure 1: From explicit-task optimization to vague-goal-driven self-evolution.",
-      "zh": "图 1：从明确任务优化走向模糊目标驱动的自进化。"
-    }
-  },
-  {
-    "id": "taste",
-    "kind": "paper-figure-crop",
-    "asset": "assets/paper-figures/taste-figure.png",
-    "source_url": "https://www-cdn.anthropic.com/files/4zrzovbb/website/dd5feddcb3b7d20aadda6af4093ac1fb0c9d419e.pdf",
-    "locator": "Figure 2, PDF p.3",
-    "caption": {
-      "en": "Figure 2: TASTE construction pipeline: proposal generation, researcher preference collection and benchmark construction.",
-      "zh": "图 2：TASTE 构建流程：提案生成、研究者偏好收集和基准构建。"
-    }
-  },
-  {
-    "id": "prime-measuring-autonomous-ai-research",
-    "kind": "official-report-image",
-    "asset": "assets/paper-figures/prime-measuring-autonomous-ai-research.png",
-    "source_url": "https://www.primeintellect.ai/blog/measuring-autonomous-research",
-    "locator": "Official report hero image",
-    "caption": {
-      "en": "Official research-page image for the autonomous-research speedrun; no architecture figure was identified on the report page.",
-      "zh": "官方研究页面的自主研发 speedrun 宣传图；报告页未识别到独立架构图。"
-    }
-  },
-  {
-    "id": "prime-agent",
-    "kind": "paper-figure-crop",
-    "asset": "assets/paper-figures/prime-agent-figure.png",
-    "source_url": "https://arxiv.org/html/2608.23552v1",
-    "locator": "Figure 1, PDF p.3",
-    "caption": {
-      "en": "Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop.",
-      "zh": "图 1：Prime Agent 将持久根会话、子智能体会话连接到守护进程和持续改进闭环。"
-    }
-  },
-  {
-    "id": "automated-alignment-researchers",
-    "kind": "official-report-figure",
-    "asset": "assets/paper-figures/automated-alignment-researchers.png",
-    "source_url": "https://alignment.anthropic.com/2026/automated-alignment-researchers/",
-    "locator": "Figure 2: harness overview",
-    "caption": {
-      "en": "The automated alignment researcher harness: literature review, parallel agents, training/evaluation and shared findings.",
-      "zh": "自动化对齐研究器框架：文献综述、并行 Agent、训练/评测和共享发现。"
-    }
-  },
-  {
-    "id": "frontis-ma1-openmle",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/frontis-ma1-openmle.png",
-    "source_url": "https://arxiv.org/html/2607.28568v1",
-    "locator": "Figure 5",
-    "caption": {
-      "en": "Figure 5: OpenMLE training and inference workflow with executable SFT rollouts and online RL from execution feedback.",
-      "zh": "图 5：OpenMLE 训练与推理流程，包含可执行 SFT rollout 和基于执行反馈的在线 RL。"
-    }
-  },
-  {
-    "id": "gpt-red",
-    "kind": "paper-figure-crop",
-    "asset": "assets/paper-figures/gpt-red-figure.png",
-    "source_url": "https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf",
-    "locator": "Figure 1, PDF p.1",
-    "caption": {
-      "en": "Figure 1: GPT-Red red-teaming performance as test-time compute increases.",
-      "zh": "图 1：随着测试时计算量增加，GPT-Red 的红队攻击表现变化。"
-    }
-  },
-  {
-    "id": "tencent-skillhone",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/tencent-skillhone.png",
-    "source_url": "https://ar5iv.labs.arxiv.org/html/2606.08671/assets/framework.png",
-    "locator": "Figure 2, framework.png",
-    "caption": {
-      "en": "Figure 2: SkillHone separates persistent decision history, skill optimization and skill evaluation so accepted revisions can be reused.",
-      "zh": "图 2：SkillHone 将持久决策历史、技能优化和技能评测分开，使通过的修订可在后续迭代复用。"
-    }
-  },
-  {
-    "id": "automated-w2s",
-    "kind": "official-report-figure",
-    "asset": "assets/paper-figures/automated-w2s.png",
-    "source_url": "https://alignment.anthropic.com/2026/automated-w2s-researcher/",
-    "locator": "Schematic overview figure",
-    "caption": {
-      "en": "Schematic overview: parallel AAR agents work in independent sandboxes, share findings/code and submit experiments to evaluation.",
-      "zh": "流程示意：并行 AAR Agent 在独立沙盒中工作，共享发现/代码并提交实验评测。"
-    }
-  },
-  {
-    "id": "meta-hyperagents-2026",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/meta-hyperagents-2026.png",
-    "source_url": "https://arxiv.org/html/2603.19461v1",
-    "locator": "Figure 1",
-    "caption": {
-      "en": "Figure 1: DGM-Hyperagents combines a modifiable task agent and meta agent with an archive of stepping stones.",
-      "zh": "图 1：DGM-Hyperagents 将可修改的任务 Agent 与元 Agent 结合，并用 stepping-stone 档案持续搜索。"
-    }
-  },
-  {
-    "id": "minimax-m27-self-evolution",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/minimax-m27-self-evolution.svg",
-    "source_url": "https://arxiv.org/html/2605.26494v1",
-    "locator": "Figure 8",
-    "caption": {
-      "en": "Figure 8: Model Iteration System and the dual-loop workflow used in M2.7 self-evolution.",
-      "zh": "图 8：M2.7 自进化使用的模型迭代系统与双循环流程。"
-    }
-  },
-  {
-    "id": "a3",
-    "kind": "official-report-figure",
-    "asset": "assets/paper-figures/a3.png",
-    "source_url": "https://alignment.anthropic.com/2026/automated-alignment-agent/",
-    "locator": "A3 Pipeline figure",
-    "caption": {
-      "en": "A3 pipeline: data-generation agent, fine-tuning agent and experiment log adapt to safety failures.",
-      "zh": "A3 流程：数据生成 Agent、微调 Agent 和实验日志围绕安全问题进行适应。"
-    }
-  },
-  {
-    "id": "cognition-devin-builds-devin",
-    "kind": "official-report-image",
-    "asset": "assets/paper-figures/cognition-devin-builds-devin.png",
-    "source_url": "https://cognition.com/blog/how-cognition-uses-devin-to-build-devin",
-    "locator": "Official report hero image",
-    "caption": {
-      "en": "Official Cognition report image; the report describes review/CI feedback but does not publish a separate system pipeline figure.",
-      "zh": "Cognition 官方报告配图；报告描述评审/CI 反馈，但未单独发布系统 pipeline 图。"
-    }
-  },
-  {
-    "id": "google-alphaevolve-marl-2026",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/google-alphaevolve-marl-2026.svg",
-    "source_url": "https://arxiv.org/html/2602.16928v1",
-    "locator": "Figure 1",
-    "caption": {
-      "en": "Figure 1: CFR variants discovered and evaluated by the AlphaEvolve-assisted search.",
-      "zh": "图 1：AlphaEvolve 辅助搜索发现并评估的 CFR 变体。"
-    }
-  },
-  {
-    "id": "sakana-doc-to-lora",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/sakana-doc-to-lora.svg",
-    "source_url": "https://arxiv.org/html/2602.15902v1",
-    "locator": "Overview figure",
-    "caption": {
-      "en": "Overview of Doc-to-LoRA: a hypernetwork maps document activations to LoRA weights for fast internalization.",
-      "zh": "Doc-to-LoRA 总览：超网络将文档激活映射到 LoRA 权重，实现快速内化。"
-    }
-  },
-  {
-    "id": "codex-builds-codex",
-    "kind": "official-report-screenshot-crop",
-    "asset": "assets/paper-figures/codex-builds-codex-figure.png",
-    "source_url": "https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf",
-    "locator": "Cover page, PDF p.1",
-    "caption": {
-      "en": "Official GPT-5.3-Codex system-card cover; the launch report describes assisted training/deployment work but has no standalone RSI pipeline figure.",
-      "zh": "GPT-5.3-Codex 官方系统卡首页；发布报告描述研发辅助，但没有独立 RSI pipeline 图。"
-    }
-  },
-  {
-    "id": "sakana-trinity",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/sakana-trinity.svg",
-    "source_url": "https://arxiv.org/html/2512.04695v1",
-    "locator": "Figure 1",
-    "caption": {
-      "en": "Figure 1: Cyclical coordination architecture with a compact coordinator selecting model and role each turn.",
-      "zh": "图 1：循环协调架构，每轮由紧凑协调器选择模型和角色。"
-    }
-  },
-  {
-    "id": "deepseek-math-v2",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/deepseek-math-v2.svg",
-    "source_url": "https://arxiv.org/html/2511.22570v1",
-    "locator": "Figure 2",
-    "caption": {
-      "en": "Figure 2: Proof quality improves as the maximum number of sequential self-verification refinements increases.",
-      "zh": "图 2：随着连续自验证改进次数上限增加，证明质量的变化。"
-    }
-  },
-  {
-    "id": "salesforce-unc-agent0",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/salesforce-unc-agent0.png",
-    "source_url": "https://arxiv.org/html/2511.16043v1",
-    "locator": "Figure 2",
-    "caption": {
-      "en": "Figure 2: Agent0 co-evolutionary loop between curriculum generation and executor training.",
-      "zh": "图 2：Agent0 在课程生成与执行器训练之间的共同进化闭环。"
-    }
-  },
-  {
-    "id": "google-sima2-2025",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/google-sima2-2025.png",
-    "source_url": "https://arxiv.org/html/2512.04797v1",
-    "locator": "Figure 16",
-    "caption": {
-      "en": "Figure 16: Self-improvement setup with task setter, reward model, experience dataset and retrained SIMA 2 agent.",
-      "zh": "图 16：自进化设置包含任务设置器、奖励模型、经验数据集和重新训练的 SIMA 2 Agent。"
-    }
-  },
-  {
-    "id": "alibaba-agentevolver",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/alibaba-agentevolver.png",
-    "source_url": "https://arxiv.org/html/2511.10395v1",
-    "locator": "Figure 2",
-    "caption": {
-      "en": "Figure 2: AgentEvolver combines self-questioning, self-navigating and self-attributing mechanisms.",
-      "zh": "图 2：AgentEvolver 结合自我提问、自我导航和自我归因机制。"
-    }
-  },
-  {
-    "id": "google-discorl-2025",
-    "kind": "official-project-figure",
-    "asset": "assets/paper-figures/google-discorl-2025.png",
-    "source_url": "https://google-deepmind.github.io/disco_rl/",
-    "locator": "Official project method figure",
-    "caption": {
-      "en": "Official DiscoRL method diagram: a meta-network learns update targets from population experience.",
-      "zh": "DiscoRL 官方项目方法图：元网络从 Agent 群体经验中学习更新目标。"
-    }
-  },
-  {
-    "id": "tencent-webaggregator",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/tencent-webaggregator.png",
-    "source_url": "https://ar5iv.labs.arxiv.org/html/2510.14438/assets/illus.png",
-    "locator": "Figure 2, illus.png",
-    "caption": {
-      "en": "Figure 2: Explore-to-Evolve turns web exploration and executable aggregation logic into verified QA and model-training data.",
-      "zh": "图 2：Explore-to-Evolve 将网页探索与可执行聚合逻辑转成可验证 QA 和模型训练数据。"
-    }
-  },
-  {
-    "id": "tencent-training-free-grpo",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/tencent-training-free-grpo.png",
-    "source_url": "https://ar5iv.labs.arxiv.org/html/2510.08191/assets/figures/training-free_GRPO.png",
-    "locator": "Figure 2, training-free_GRPO.png",
-    "caption": {
-      "en": "Figure 2: Training-Free GRPO updates an experience library from grouped rollouts while keeping the base model frozen.",
-      "zh": "图 2：Training-Free GRPO 在冻结基础模型的同时，用分组 rollout 更新经验库。"
-    }
-  },
-  {
-    "id": "sambanova-stanford-ace",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/sambanova-stanford-ace.png",
-    "source_url": "https://arxiv.org/html/2510.04618v1",
-    "locator": "Figure 4",
-    "caption": {
-      "en": "Figure 4: ACE Generator, Reflector and Curator architecture for evolving context playbooks.",
-      "zh": "图 4：ACE 由 Generator、Reflector 和 Curator 组成，用于演化上下文 playbook。"
-    }
-  },
-  {
-    "id": "microsoft-legomem-2025",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/microsoft-legomem-2025.png",
-    "source_url": "https://arxiv.org/html/2510.04851v1",
-    "locator": "Figure 1",
-    "caption": {
-      "en": "Figure 1: LEGOMem orchestrator, task agents and modular procedural memories.",
-      "zh": "图 1：LEGOMem 的协调器、任务 Agent 和模块化程序记忆。"
-    }
-  },
-  {
-    "id": "microsoft-acon-2025",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/microsoft-acon-2025.png",
-    "source_url": "https://arxiv.org/html/2510.00615v1",
-    "locator": "Figure 3",
-    "caption": {
-      "en": "Figure 3: Compression guideline optimization uses successful versus failed trajectory feedback.",
-      "zh": "图 3：压缩指导优化使用成功与失败轨迹的对比反馈。"
-    }
-  },
-  {
-    "id": "tencent-spear",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/tencent-spear.png",
-    "source_url": "https://ar5iv.labs.arxiv.org/html/2509.22601/assets/figures/overview.png",
-    "locator": "Figure 2, overview.png",
-    "caption": {
-      "en": "Figure 2: SPEAR couples progressive exploration with self-imitation replay and stabilized policy updates.",
-      "zh": "图 2：SPEAR 将渐进探索、自模仿回放与稳定化策略更新结合。"
-    }
-  },
-  {
-    "id": "sakana-shinkaevolve",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/sakana-shinkaevolve.png",
-    "source_url": "https://arxiv.org/html/2509.19349v1",
-    "locator": "Figure 1",
-    "caption": {
-      "en": "Figure 1: ShinkaEvolve archive, rejection sampling, program mutation and fitness evaluation loop.",
-      "zh": "图 1：ShinkaEvolve 的档案、拒绝采样、程序变异和适应度评估闭环。"
-    }
-  },
-  {
-    "id": "tencent-moe-cl",
-    "kind": "paper-figure",
-    "asset": "assets/paper-figures/tencent-moe-cl.png",
-    "source_url": "https://arxiv.org/html/2509.18133v1",
-    "locator": "Figure 1",
-    "caption": {
-      "en": "Figure 1: MoE-CL combines task-specific LoRA experts, a shared expert and a task-aware discriminator.",
-      "zh": "图 1：MoE-CL 结合任务专属 LoRA 专家、共享专家和任务感知判别器。"
-    }
+ {
+  "id": "bytedance-harnessdev",
+  "kind": "paper-figure-crop",
+  "asset": "assets/paper-figures/harnessdev-figure.png",
+  "source_url": "https://arxiv.org/html/2609.01437v1",
+  "locator": "Figure 1, PDF p.2",
+  "caption": {
+   "en": "Figure 1: Creation builds a runnable harness from a weak seed, then Evolution repeatedly edits the persistent harness with execution feedback.",
+   "zh": "图 1：从弱种子创建可运行框架，再用执行反馈持续演化持久化框架。"
   }
+ },
+ {
+  "id": "bytedance-s3gym",
+  "kind": "paper-figure-crop",
+  "asset": "assets/paper-figures/s3gym-figure.png",
+  "source_url": "https://arxiv.org/html/2608.31100v1",
+  "locator": "Figure 2, PDF p.7",
+  "caption": {
+   "en": "Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training.",
+   "zh": "图 2：S3Gym 通过历史 ICL、摘要记忆和参数训练展示经验驱动的改进路径。"
+  }
+ },
+ {
+  "id": "bytedance-aspire",
+  "kind": "paper-figure-crop",
+  "asset": "assets/paper-figures/aspire-figure.png",
+  "source_url": "https://arxiv.org/html/2608.31111v1",
+  "locator": "Figure 1, PDF p.2",
+  "caption": {
+   "en": "Figure 1: From explicit-task optimization to vague-goal-driven self-evolution.",
+   "zh": "图 1：从明确任务优化走向模糊目标驱动的自进化。"
+  }
+ },
+ {
+  "id": "taste",
+  "kind": "paper-figure-crop",
+  "asset": "assets/paper-figures/taste-figure.png",
+  "source_url": "https://www-cdn.anthropic.com/files/4zrzovbb/website/dd5feddcb3b7d20aadda6af4093ac1fb0c9d419e.pdf",
+  "locator": "Figure 2, PDF p.3",
+  "caption": {
+   "en": "Figure 2: TASTE construction pipeline: proposal generation, researcher preference collection and benchmark construction.",
+   "zh": "图 2：TASTE 构建流程：提案生成、研究者偏好收集和基准构建。"
+  }
+ },
+ {
+  "id": "prime-measuring-autonomous-ai-research",
+  "kind": "official-report-image",
+  "asset": "assets/paper-figures/prime-measuring-autonomous-ai-research.png",
+  "source_url": "https://www.primeintellect.ai/blog/measuring-autonomous-research",
+  "locator": "Official report hero image",
+  "caption": {
+   "en": "Official research-page image for the autonomous-research speedrun; no architecture figure was identified on the report page.",
+   "zh": "官方研究页面的自主研发 speedrun 宣传图；报告页未识别到独立架构图。"
+  }
+ },
+ {
+  "id": "prime-agent",
+  "kind": "paper-figure-crop",
+  "asset": "assets/paper-figures/prime-agent-figure.png",
+  "source_url": "https://arxiv.org/html/2608.23552v1",
+  "locator": "Figure 1, PDF p.3",
+  "caption": {
+   "en": "Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop.",
+   "zh": "图 1：Prime Agent 将持久根会话、子智能体会话连接到守护进程和持续改进闭环。"
+  }
+ },
+ {
+  "id": "automated-alignment-researchers",
+  "kind": "official-report-figure",
+  "asset": "assets/paper-figures/automated-alignment-researchers.png",
+  "source_url": "https://alignment.anthropic.com/2026/automated-alignment-researchers/",
+  "locator": "Figure 2: harness overview",
+  "caption": {
+   "en": "The automated alignment researcher harness: literature review, parallel agents, training/evaluation and shared findings.",
+   "zh": "自动化对齐研究器框架：文献综述、并行 Agent、训练/评测和共享发现。"
+  }
+ },
+ {
+  "id": "frontis-ma1-openmle",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/frontis-ma1-openmle.png",
+  "source_url": "https://arxiv.org/html/2607.28568v1",
+  "locator": "Figure 5",
+  "caption": {
+   "en": "Figure 5: OpenMLE training and inference workflow with executable SFT rollouts and online RL from execution feedback.",
+   "zh": "图 5：OpenMLE 训练与推理流程，包含可执行 SFT rollout 和基于执行反馈的在线 RL。"
+  }
+ },
+ {
+  "id": "gpt-red",
+  "kind": "paper-figure-crop",
+  "asset": "assets/paper-figures/gpt-red-figure.png",
+  "source_url": "https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf",
+  "locator": "Figure 1, PDF p.1",
+  "caption": {
+   "en": "Figure 1: GPT-Red red-teaming performance as test-time compute increases.",
+   "zh": "图 1：随着测试时计算量增加，GPT-Red 的红队攻击表现变化。"
+  }
+ },
+ {
+  "id": "tencent-skillhone",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/tencent-skillhone.png",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2606.08671/assets/framework.png",
+  "locator": "Figure 2, framework.png",
+  "caption": {
+   "en": "Figure 2: SkillHone separates persistent decision history, skill optimization and skill evaluation so accepted revisions can be reused.",
+   "zh": "图 2：SkillHone 将持久决策历史、技能优化和技能评测分开，使通过的修订可在后续迭代复用。"
+  }
+ },
+ {
+  "id": "automated-w2s",
+  "kind": "official-report-figure",
+  "asset": "assets/paper-figures/automated-w2s.png",
+  "source_url": "https://alignment.anthropic.com/2026/automated-w2s-researcher/",
+  "locator": "Schematic overview figure",
+  "caption": {
+   "en": "Schematic overview: parallel AAR agents work in independent sandboxes, share findings/code and submit experiments to evaluation.",
+   "zh": "流程示意：并行 AAR Agent 在独立沙盒中工作，共享发现/代码并提交实验评测。"
+  }
+ },
+ {
+  "id": "meta-hyperagents-2026",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/meta-hyperagents-2026.png",
+  "source_url": "https://arxiv.org/html/2603.19461v1",
+  "locator": "Figure 1",
+  "caption": {
+   "en": "Figure 1: DGM-Hyperagents combines a modifiable task agent and meta agent with an archive of stepping stones.",
+   "zh": "图 1：DGM-Hyperagents 将可修改的任务 Agent 与元 Agent 结合，并用 stepping-stone 档案持续搜索。"
+  }
+ },
+ {
+  "id": "minimax-m27-self-evolution",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/minimax-m27-self-evolution.svg",
+  "source_url": "https://arxiv.org/html/2605.26494v1",
+  "locator": "Figure 8",
+  "caption": {
+   "en": "Figure 8: Model Iteration System and the dual-loop workflow used in M2.7 self-evolution.",
+   "zh": "图 8：M2.7 自进化使用的模型迭代系统与双循环流程。"
+  }
+ },
+ {
+  "id": "a3",
+  "kind": "official-report-figure",
+  "asset": "assets/paper-figures/a3.png",
+  "source_url": "https://alignment.anthropic.com/2026/automated-alignment-agent/",
+  "locator": "A3 Pipeline figure",
+  "caption": {
+   "en": "A3 pipeline: data-generation agent, fine-tuning agent and experiment log adapt to safety failures.",
+   "zh": "A3 流程：数据生成 Agent、微调 Agent 和实验日志围绕安全问题进行适应。"
+  }
+ },
+ {
+  "id": "cognition-devin-builds-devin",
+  "kind": "official-report-image",
+  "asset": "assets/paper-figures/cognition-devin-builds-devin.png",
+  "source_url": "https://cognition.com/blog/how-cognition-uses-devin-to-build-devin",
+  "locator": "Official report hero image",
+  "caption": {
+   "en": "Official Cognition report image; the report describes review/CI feedback but does not publish a separate system pipeline figure.",
+   "zh": "Cognition 官方报告配图；报告描述评审/CI 反馈，但未单独发布系统 pipeline 图。"
+  }
+ },
+ {
+  "id": "google-alphaevolve-marl-2026",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/google-alphaevolve-marl-2026.svg",
+  "source_url": "https://arxiv.org/html/2602.16928v1",
+  "locator": "Figure 1",
+  "caption": {
+   "en": "Figure 1: CFR variants discovered and evaluated by the AlphaEvolve-assisted search.",
+   "zh": "图 1：AlphaEvolve 辅助搜索发现并评估的 CFR 变体。"
+  }
+ },
+ {
+  "id": "sakana-doc-to-lora",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/sakana-doc-to-lora.svg",
+  "source_url": "https://arxiv.org/html/2602.15902v1",
+  "locator": "Overview figure",
+  "caption": {
+   "en": "Overview of Doc-to-LoRA: a hypernetwork maps document activations to LoRA weights for fast internalization.",
+   "zh": "Doc-to-LoRA 总览：超网络将文档激活映射到 LoRA 权重，实现快速内化。"
+  }
+ },
+ {
+  "id": "codex-builds-codex",
+  "kind": "official-report-screenshot-crop",
+  "asset": "assets/paper-figures/codex-builds-codex-figure.png",
+  "source_url": "https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf",
+  "locator": "Cover page, PDF p.1",
+  "caption": {
+   "en": "Official GPT-5.3-Codex system-card cover; the launch report describes assisted training/deployment work but has no standalone RSI pipeline figure.",
+   "zh": "GPT-5.3-Codex 官方系统卡首页；发布报告描述研发辅助，但没有独立 RSI pipeline 图。"
+  }
+ },
+ {
+  "id": "sakana-trinity",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/sakana-trinity.svg",
+  "source_url": "https://arxiv.org/html/2512.04695v1",
+  "locator": "Figure 1",
+  "caption": {
+   "en": "Figure 1: Cyclical coordination architecture with a compact coordinator selecting model and role each turn.",
+   "zh": "图 1：循环协调架构，每轮由紧凑协调器选择模型和角色。"
+  }
+ },
+ {
+  "id": "deepseek-math-v2",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/deepseek-math-v2.svg",
+  "source_url": "https://arxiv.org/html/2511.22570v1",
+  "locator": "Figure 2",
+  "caption": {
+   "en": "Figure 2: Proof quality improves as the maximum number of sequential self-verification refinements increases.",
+   "zh": "图 2：随着连续自验证改进次数上限增加，证明质量的变化。"
+  }
+ },
+ {
+  "id": "salesforce-unc-agent0",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/salesforce-unc-agent0.png",
+  "source_url": "https://arxiv.org/html/2511.16043v1",
+  "locator": "Figure 2",
+  "caption": {
+   "en": "Figure 2: Agent0 co-evolutionary loop between curriculum generation and executor training.",
+   "zh": "图 2：Agent0 在课程生成与执行器训练之间的共同进化闭环。"
+  }
+ },
+ {
+  "id": "google-sima2-2025",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/google-sima2-2025.png",
+  "source_url": "https://arxiv.org/html/2512.04797v1",
+  "locator": "Figure 16",
+  "caption": {
+   "en": "Figure 16: Self-improvement setup with task setter, reward model, experience dataset and retrained SIMA 2 agent.",
+   "zh": "图 16：自进化设置包含任务设置器、奖励模型、经验数据集和重新训练的 SIMA 2 Agent。"
+  }
+ },
+ {
+  "id": "alibaba-agentevolver",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/alibaba-agentevolver.png",
+  "source_url": "https://arxiv.org/html/2511.10395v1",
+  "locator": "Figure 2",
+  "caption": {
+   "en": "Figure 2: AgentEvolver combines self-questioning, self-navigating and self-attributing mechanisms.",
+   "zh": "图 2：AgentEvolver 结合自我提问、自我导航和自我归因机制。"
+  }
+ },
+ {
+  "id": "google-discorl-2025",
+  "kind": "official-project-figure",
+  "asset": "assets/paper-figures/google-discorl-2025.png",
+  "source_url": "https://google-deepmind.github.io/disco_rl/",
+  "locator": "Official project method figure",
+  "caption": {
+   "en": "Official DiscoRL method diagram: a meta-network learns update targets from population experience.",
+   "zh": "DiscoRL 官方项目方法图：元网络从 Agent 群体经验中学习更新目标。"
+  }
+ },
+ {
+  "id": "tencent-webaggregator",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/tencent-webaggregator.png",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2510.14438/assets/illus.png",
+  "locator": "Figure 2, illus.png",
+  "caption": {
+   "en": "Figure 2: Explore-to-Evolve turns web exploration and executable aggregation logic into verified QA and model-training data.",
+   "zh": "图 2：Explore-to-Evolve 将网页探索与可执行聚合逻辑转成可验证 QA 和模型训练数据。"
+  }
+ },
+ {
+  "id": "tencent-training-free-grpo",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/tencent-training-free-grpo.png",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2510.08191/assets/figures/training-free_GRPO.png",
+  "locator": "Figure 2, training-free_GRPO.png",
+  "caption": {
+   "en": "Figure 2: Training-Free GRPO updates an experience library from grouped rollouts while keeping the base model frozen.",
+   "zh": "图 2：Training-Free GRPO 在冻结基础模型的同时，用分组 rollout 更新经验库。"
+  }
+ },
+ {
+  "id": "sambanova-stanford-ace",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/sambanova-stanford-ace.png",
+  "source_url": "https://arxiv.org/html/2510.04618v1",
+  "locator": "Figure 4",
+  "caption": {
+   "en": "Figure 4: ACE Generator, Reflector and Curator architecture for evolving context playbooks.",
+   "zh": "图 4：ACE 由 Generator、Reflector 和 Curator 组成，用于演化上下文 playbook。"
+  }
+ },
+ {
+  "id": "microsoft-legomem-2025",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/microsoft-legomem-2025.png",
+  "source_url": "https://arxiv.org/html/2510.04851v1",
+  "locator": "Figure 1",
+  "caption": {
+   "en": "Figure 1: LEGOMem orchestrator, task agents and modular procedural memories.",
+   "zh": "图 1：LEGOMem 的协调器、任务 Agent 和模块化程序记忆。"
+  }
+ },
+ {
+  "id": "microsoft-acon-2025",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/microsoft-acon-2025.png",
+  "source_url": "https://arxiv.org/html/2510.00615v1",
+  "locator": "Figure 3",
+  "caption": {
+   "en": "Figure 3: Compression guideline optimization uses successful versus failed trajectory feedback.",
+   "zh": "图 3：压缩指导优化使用成功与失败轨迹的对比反馈。"
+  }
+ },
+ {
+  "id": "tencent-spear",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/tencent-spear.png",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2509.22601/assets/figures/overview.png",
+  "locator": "Figure 2, overview.png",
+  "caption": {
+   "en": "Figure 2: SPEAR couples progressive exploration with self-imitation replay and stabilized policy updates.",
+   "zh": "图 2：SPEAR 将渐进探索、自模仿回放与稳定化策略更新结合。"
+  }
+ },
+ {
+  "id": "sakana-shinkaevolve",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/sakana-shinkaevolve.png",
+  "source_url": "https://arxiv.org/html/2509.19349v1",
+  "locator": "Figure 1",
+  "caption": {
+   "en": "Figure 1: ShinkaEvolve archive, rejection sampling, program mutation and fitness evaluation loop.",
+   "zh": "图 1：ShinkaEvolve 的档案、拒绝采样、程序变异和适应度评估闭环。"
+  }
+ },
+ {
+  "id": "tencent-moe-cl",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/tencent-moe-cl.png",
+  "source_url": "https://arxiv.org/html/2509.18133v1",
+  "locator": "Figure 1",
+  "caption": {
+   "en": "Figure 1: MoE-CL combines task-specific LoRA experts, a shared expert and a task-aware discriminator.",
+   "zh": "图 1：MoE-CL 结合任务专属 LoRA 专家、共享专家和任务感知判别器。"
+  }
+ },
+ {
+  "id": "genuine-rsi-roadmap-2026",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/genuine-rsi-roadmap-2026.png",
+  "source_url": "https://arxiv.org/html/2609.11873v1",
+  "locator": "Figure 1",
+  "caption": {
+   "en": "Figure 1: the paper's L0–L5 autonomy landscape placing representative industry systems (AlphaEvolve, ByteDance Seed, Anthropic, Hermes, ASPIRE, Theseus, SIMA, Sakana, HyperAgents) from execution automation to meta improvement.",
+   "zh": "图 1：论文的 L0–L5 自主性全景，把代表性产业系统（AlphaEvolve、字节 Seed、Anthropic、Hermes、ASPIRE、Theseus、SIMA、Sakana、HyperAgents）从执行自动化排到元改进。"
+  }
+ },
+ {
+  "id": "tokenrhythm-neohorse-1",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/tokenrhythm-neohorse-1.svg",
+  "source_url": "https://arxiv.org/html/2609.08183v1",
+  "locator": "Figure 2",
+  "caption": {
+   "en": "Figure 2: the routing-guided agentic training loop — diverse tasks run through a routing harness over a model pool, interaction records become a training mixture, capability feedback steers the next distribution, and updated models return to the harness.",
+   "zh": "图 2：路由引导的智能体训练环——多样任务经模型池上的路由 harness 执行，交互记录成为训练配比，能力反馈引导下一轮分布，更新后的模型回到 harness。"
+  }
+ },
+ {
+  "id": "openai-research-acceleration-2026",
+  "kind": "official-report-screenshot-crop",
+  "asset": "assets/paper-figures/openai-research-acceleration.png",
+  "source_url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+  "locator": "Article opening (date, title, first paragraphs)",
+  "caption": {
+   "en": "Opening of the September 6, 2026 post: OpenAI states it reached the automated-research-intern goal announced the previous fall and is 'making strong progress toward creating an automated AI researcher by March of 2028'.",
+   "zh": "2026 年 9 月 6 日博文开头：OpenAI 宣布达成上年秋天设定的\"自动研究实习生\"目标，并\"正朝着 2028 年 3 月前创建自动 AI 研究员取得强劲进展\"。"
+  }
+ },
+ {
+  "id": "bytedance-chain-of-experience",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/bytedance-chain-of-experience.png",
+  "source_url": "https://arxiv.org/html/2608.18027v1",
+  "locator": "Figure 2",
+  "caption": {
+   "en": "Figure 2: the study's progression from iterative improvement with world feedback to iterative evolution and finally experience-based loops where the model learns from accumulated experience while the environment provides varied feedback.",
+   "zh": "图 2：研究的问题设定演进——从依赖世界反馈的迭代改进，到迭代演化，再到以累积经验为核心的闭环（环境提供多样化反馈，模型从经验中学习）。"
+  }
+ },
+ {
+  "id": "qwen38-max-self-evolving-harness",
+  "kind": "official-report-screenshot-crop",
+  "asset": "assets/paper-figures/qwen38-max-self-evolving-harness.png",
+  "source_url": "https://qwen.ai/blog?id=qwen3.8",
+  "locator": "Section '10+ Days of Autonomous Coding: Building a Self-Evolving Harness'",
+  "caption": {
+   "en": "The blog section describing the 10+ day autonomous run: 'it self-evolves through feedback loops', with the oh-my-cli issue-claiming loop (state machine, dispatcher, monitor, watchdog) and self-testing details.",
+   "zh": "博客中描述 10+ 天自主运行的章节：\"通过反馈回路自我演化\"，含 oh-my-cli 的 issue 认领环路（状态机、调度器、监控、看门狗）与自测细节。"
+  }
+ },
+ {
+  "id": "salesforce-toward-self-improving-agents",
+  "kind": "official-report-image",
+  "asset": "assets/paper-figures/salesforce-toward-self-improving-agents.png",
+  "source_url": "https://www.salesforce.com/news/stories/toward-self-improving-agents/",
+  "locator": "Article diagram (governed autonomy loop)",
+  "caption": {
+   "en": "The article's six-step governed-autonomy loop: observe, diagnose, improve the system, prove in simulation, human gate, learn — the risk-controls Salesforce prescribes for self-improving deployments.",
+   "zh": "文章的六步\"受治理自治\"环：观察、诊断、改进系统、仿真证明、人工闸门、学习——Salesforce 为自改进部署开出的风险控制流程。"
+  }
+ },
+ {
+  "id": "microsoft-skillopt",
+  "kind": "official-report-figure",
+  "asset": "assets/paper-figures/microsoft-skillopt.png",
+  "source_url": "https://www.microsoft.com/en-us/research/blog/skillopt-agent-skills-as-trainable-parameters/",
+  "locator": "Blog Figure 1",
+  "caption": {
+   "en": "Figure 1: skill-space optimization analogy — bounded edits with a held-out selection gate descend the validation-error surface where ad-hoc unguarded updates jump; the table maps classic training hyperparameters to their text-space counterparts.",
+   "zh": "图 1：技能空间优化类比——带留出选择闸门的有界编辑沿验证误差面下降，而无约束的临时更新会跳变；右侧表格把经典训练超参数映射到文本空间对应物。"
+  }
+ }
 ]
