@@ -14,7 +14,8 @@
 
 <p align="center">
   <a href="#快速开始">快速开始</a> · <a href="#一次改进如何发生">工作流程</a> ·
-  <a href="#接入你的模型">接入模型</a> · <a href="#可以研究什么">研究方向</a> · <a href="README.md">English</a>
+  <a href="#接入你的模型">接入模型</a> · <a href="#可以研究什么">研究方向</a> ·
+  <a href="docs/research/industry-rsi/README.zh-CN.md">企业 RSI 研究地图</a> · <a href="README.md">English</a>
 </p>
 
 ---
@@ -206,6 +207,14 @@ Skills/coding 工作区允许修改 `target/agent/skills/**`。执行器加载 M
 Skills 比较工具输出配对任务宏平均差值、分组结果、单次任务耗时和成本覆盖率，并区分独立进化与重复部署。其他模式各自生成冻结报告；不同任务的演示不应合并为一个 RSI 总分。负结果也值得留下。
 
 [评估调研](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md) 涵盖 DGM、SICA、GEPA、ACE、Memento-Skills 和近期 skills 基准。项目的小型、可读实现风格受到 [nanoGPT](https://github.com/karpathy/nanoGPT) 与 [nanochat](https://github.com/karpathy/nanochat) 的启发。
+
+## 企业 RSI 研究地图
+
+**[浏览企业 RSI 研究地图](docs/research/industry-rsi/README.zh-CN.md)** · [English](docs/research/industry-rsi/README.md)
+
+整理 OpenAI、Google DeepMind、Anthropic、Meta、Microsoft、Sakana AI、阿里、字节、DeepSeek、Frontis／清华等机构近一年的论文与成果，按参数与训练数据、Agent 与代码、记忆与上下文、自动化研发分类。每条说明反馈闭环、作者报告结果、对照条件、代码／权重／数据许可和证据边界。
+
+直接有界闭环、支撑技术与辅助研发分别标注，保留原始发布日期及负结果。这是研究资料库，不代表本地复现，也不构成 RSI 综合排行榜。[可落地的实验方向](docs/research/industry-rsi/ADOPTION.md)将研究发现对应到具体 nanoRSI 工作。
 
 ## 接下来可以看
 

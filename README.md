@@ -17,6 +17,7 @@
   <a href="#how-it-works">How it works</a> ·
   <a href="#bring-your-model">Bring your model</a> ·
   <a href="#research-with-it">Research</a> ·
+  <a href="docs/research/industry-rsi/README.md">Industry research map</a> ·
   <a href="README.zh-CN.md">简体中文</a>
 </p>
 
@@ -209,6 +210,14 @@ Different questions need separate comparisons:
 The skills comparison tool reports paired task-macro deltas, per-arm results, episode timing and cost coverage. Each other mode has its own frozen report; heterogeneous demos are not one RSI score. Independent evolution runs and repeated deployments are kept distinct. A negative result is still useful evidence.
 
 Our [evaluation research notes](docs/research/HARNESS_EVALUATION_2026-09-08.zh-CN.md) cover DGM, SICA, GEPA, ACE, Memento-Skills and recent skills benchmarks. The small, readable project philosophy draws inspiration from [nanoGPT](https://github.com/karpathy/nanoGPT) and [nanochat](https://github.com/karpathy/nanochat).
+
+## Industry RSI research
+
+**[Browse the industry RSI research map](docs/research/industry-rsi/README.md)** · [中文](docs/research/industry-rsi/README.zh-CN.md)
+
+Explore recent papers and results from OpenAI, Google DeepMind, Anthropic, Meta, Microsoft, Sakana AI, Alibaba, ByteDance, DeepSeek, Frontis/Tsinghua and other contributors. The collection separates parameter/data learning, agent/code evolution, memory/context updates and automated research. Each entry explains the feedback loop, author-reported results, comparison conditions, code/weights/data licenses and evidence limits.
+
+Direct bounded loops, enabling techniques and assisted R&D are labeled separately. The catalogue preserves original publication dates and negative findings; it does not represent local reproduction or a combined RSI leaderboard. [Research-informed experiment priorities](docs/research/industry-rsi/ADOPTION.md) connect the findings to concrete nanoRSI work.
 
 ## Where to look next
 

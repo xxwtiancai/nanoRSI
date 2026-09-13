@@ -1,5 +1,7 @@
 # Recursive Self-Improvement (RSI) Research Dossier & Architecture Survey
 
+For date-verified recent company papers and results, use the [industry RSI research map](industry-rsi/README.md). This dossier contains historical architecture proposals and research notes; current executable behavior and execution boundaries are defined by the [multilevel guide](../MULTILEVEL.md) and [security model](../../SECURITY.md).
+
 ## 1. Executive Summary
 
 This dossier tracks foundational and frontier research in Recursive Self-Improvement (RSI) for language models and autonomous agents. It establishes the theoretical taxonomy, analyzes leading open-source frameworks, and maps research advancements into the minimal primitives maintained by **nanoRSI**.

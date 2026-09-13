@@ -45,6 +45,8 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
+      - name: Research catalogue consistency
+        run: python docs/research/industry-rsi/render.py --check
       - name: Build and install wheel
         run: |
           python -m pip wheel --no-deps --wheel-dir dist .

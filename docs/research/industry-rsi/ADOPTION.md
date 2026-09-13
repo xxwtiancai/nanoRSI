@@ -1,0 +1,20 @@
+# From research to experiments / 从研究到可运行实验
+
+[Research map](README.md) · [中文入口](README.zh-CN.md)
+
+These are **proposed experiments**, prioritized for nanoRSI's small inspectable core. This catalogue update does not implement them or reproduce the cited systems. Existing behavior is documented in the [multilevel guide](../../MULTILEVEL.md) / [中文指南](../../MULTILEVEL.zh-CN.md); existing [digits results](../../../examples/results/recursive-digits-v0.4.1/README.md) remain a separate local study.
+
+以下是面向 nanoRSI 小型、可检查内核的**拟议实验**，按实现价值排序。本次资料库更新未实现这些功能，也没有复现所引系统。当前能力以多层级指南为准，已有手写数字结果仍属于独立本地实验。
+
+| Priority / 优先级 | Experiment and source / 实验与来源 | A useful completion criterion / 有价值的完成标准 |
+| --- | --- | --- |
+| 1 | **Selection generalization / 选择泛化** — [HarnessDev](agent-code.zh-CN.md#bytedance-harnessdev), [Aspire](parameter-learning.zh-CN.md#bytedance-aspire), [S3Gym](memory-context.zh-CN.md#bytedance-s3gym) | Freeze all arms before final testing; compare fixed versus recursive reuse with matched calls, tokens and training compute. Retain raw candidate gains, rollback-selected gains and every seed. / 所有组先冻结再测试，匹配调用、token 和训练计算；分别记录候选原始收益、回滚后的保留收益及所有种子。 |
+| 2 | **Reusable execution evidence / 可复用执行证据** — [OpenRSI](research-workflows.zh-CN.md#frontis-ma1-openmle), [ShinkaEvolve](agent-code.zh-CN.md#sakana-shinkaevolve) | Attach compact source-linked experience cards to existing lineage; compare no archive, fixed archive and updated archive on identical tasks. / 为现有谱系附加精简、可追溯经验卡片，在相同任务上比较无档案、固定档案与更新档案。 |
+| 3 | **Delta memory and context cost / 增量记忆与上下文成本** — [ACE](memory-context.zh-CN.md#sambanova-stanford-ace), [ACON](memory-context.zh-CN.md#microsoft-acon-2025), [LEGOMem](memory-context.zh-CN.md#microsoft-legomem-2025) | Compare local memory deltas with whole-file rewrites and frozen-memory controls; report success, peak tokens, retrieval cost and regressions. / 对比局部记忆增量、整文件重写与冻结记忆，报告成功率、峰值 token、检索成本及退化。 |
+| 4 | **Improving the proposer / 改进提案器** — [Hyperagents](agent-code.zh-CN.md#meta-hyperagents-2026) | Independently implement a narrow editable meta-planner; hold the task agent, evaluator and budget constant when isolating its benefit. Do not copy noncommercial source. / 独立实现可编辑的窄范围元规划器；隔离其收益时固定任务 Agent、评测器与预算，不复制非商业许可源码。 |
+| 5 | **Learner–curriculum / verifier controls / 学习器、课程与验证器对照** — [Agent0](parameter-learning.zh-CN.md#salesforce-unc-agent0), [AgentEvolver](parameter-learning.zh-CN.md#alibaba-agentevolver), [DeepSeekMath-V2](parameter-learning.zh-CN.md#deepseek-math-v2), [A3](parameter-learning.zh-CN.md#a3) | Start with a small verifiable domain; version generated data and learner/verifier states separately. Compare fixed data/judge, uniform sampling and co-adaptation, including forgetting checks. / 从小型可验证领域开始，分别版本化数据、学习器和验证器；对比固定数据/裁判、均匀采样与共同适应，并检查遗忘。 |
+| 6 | **Research quality beyond a winning run / 超越单次最优的研究质量** — [Prime research evaluation](research-workflows.zh-CN.md#prime-measuring-autonomous-ai-research), [TASTE](research-workflows.zh-CN.md#taste), [automated alignment researchers](research-workflows.zh-CN.md#automated-alignment-researchers) | Evaluate proposal choice separately from execution; replay selected recipes across fresh seeds and keep final audit results out of method selection. / 分开评测提案选择与执行能力，用新种子重放选中配方，最终审计不参与方法选择。 |
+
+Implementation should reuse existing program, harness, learner and skills surfaces, keeping model/provider and GPU stacks in optional adapters. Each experiment needs its own success measure; a faster coding workflow, a memory gain and a parameter-training gain are not interchangeable. A negative result with a strong control is a valid contribution.
+
+实现时应复用现有程序、执行器、学习器和技能改进面，把服务商及 GPU 依赖放在可选适配器中。每项实验需要独立指标；代码工作流加速、记忆收益和参数训练收益不能混为一谈。有可靠对照的负结果也是有效贡献。

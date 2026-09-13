@@ -1,5 +1,7 @@
 # 递归自进化 (RSI) 研究档案与架构全景调研
 
+近期企业论文与成果请查看经过日期核验的[企业 RSI 研究地图](industry-rsi/README.zh-CN.md)。本档案包含历史架构设想与研究笔记；当前可执行能力与运行边界以[多层级指南](../MULTILEVEL.zh-CN.md)和[安全模型](../../SECURITY.md)为准。
+
 ## 1. 概述与核心定位
 
 本文档系统性追踪语言模型与自主智能体（Autonomous Agents）在递归自进化（Recursive Self-Improvement, RSI）方向的前沿研究进展与开源参考实践，并明确各项技术方案在 **nanoRSI** 中的最小原语映射。
