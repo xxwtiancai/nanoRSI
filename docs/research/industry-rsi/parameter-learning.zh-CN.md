@@ -22,7 +22,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 报告：分开记录候选原始变化与保留状态变化，导出失败尝试，并对比模糊目标与明确目标。
 
+![可视化证据卡](assets/bytedance-aspire.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2608.31111) · [Paper v1 retention protocol and Table 1](https://arxiv.org/html/2608.31111v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
@@ -46,7 +52,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可探索无害对抗样例，并分别衡量样例有效性、任务完成率和误拒率。
 
+![可视化证据卡](assets/gpt-red.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Paper](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf) · [Official report](https://openai.com/index/unlocking-self-improvement-gpt-red/)
 
@@ -70,7 +82,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可为课程实验加入能力保持约束，并保留真正冻结的最终测试集。
 
+![可视化证据卡](assets/a3.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Repository](https://github.com/safety-research/A3) · [Code license](https://github.com/safety-research/A3/blob/main/LICENSE)
 
 **一手来源** — [Research report](https://alignment.anthropic.com/2026/automated-alignment-agent/) · [Repository](https://github.com/safety-research/A3) · [Code license](https://github.com/safety-research/A3/blob/main/LICENSE)
 
@@ -94,7 +112,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：后续探索版本化文档适配器作为记忆后端，并与检索方案比较事实保留能力。
 
+![可视化证据卡](assets/sakana-doc-to-lora.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Official code](https://github.com/SakanaAI/doc-to-lora) · [Official checkpoint inventory](https://huggingface.co/SakanaAI/doc-to-lora/tree/main)
 
 **一手来源** — [Original paper date](https://arxiv.org/abs/2602.15902) · [Paper Table 1](https://arxiv.org/html/2602.15902v1) · [Official project and affiliations](https://pub.sakana.ai/doc-to-lora/) · [Official code](https://github.com/SakanaAI/doc-to-lora) · [Official checkpoint inventory](https://huggingface.co/SakanaAI/doc-to-lora/tree/main)
 
@@ -118,7 +142,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：在相同 token 预算下比较小型可进化角色/模型路由器与静态路由。
 
+![可视化证据卡](assets/sakana-trinity.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Original paper date](https://arxiv.org/abs/2512.04695) · [Original paper methods and experimental conditions](https://arxiv.org/html/2512.04695v1) · [Official Sakana announcement](https://sakana.ai/trinity/)
 
@@ -142,7 +172,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 适配器：分别版本化生成器、验证器、标签及专家审计，对比共同训练与冻结验证器。
 
+![可视化证据卡](assets/deepseek-math-v2.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Official DeepSeek-Math-V2 repository](https://github.com/deepseek-ai/DeepSeek-Math-V2) · [Official weights and Apache-2.0 statement](https://huggingface.co/deepseek-ai/DeepSeek-Math-V2)
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2511.22570) · [Paper v1 methods and high-compute evaluation](https://arxiv.org/html/2511.22570v1) · [Official DeepSeek-Math-V2 repository](https://github.com/deepseek-ai/DeepSeek-Math-V2) · [Official weights and Apache-2.0 statement](https://huggingface.co/deepseek-ai/DeepSeek-Math-V2)
 
@@ -166,7 +202,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：先用不可修改的答案验证器检验难度自适应任务生成，再考虑昂贵的策略训练。
 
+![可视化证据卡](assets/salesforce-unc-agent0.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Official series repository and release date](https://github.com/aiming-lab/Agent0) · [Agent0 training implementation](https://github.com/aiming-lab/Agent0/blob/main/Agent0/README.md)
 
 **一手来源** — [Paper dates](https://arxiv.org/abs/2511.16043) · [Original paper and numerical tables](https://arxiv.org/html/2511.16043v1) · [Official series repository and release date](https://github.com/aiming-lab/Agent0) · [Agent0 training implementation](https://github.com/aiming-lab/Agent0/blob/main/Agent0/README.md)
 
@@ -190,7 +232,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议实验：分别记录学习器世代和评分轨迹，并用独立保留任务集验证迁移。
 
+![可视化证据卡](assets/google-sima2-2025.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Google DeepMind announcement](https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/) · [Paper version history](https://arxiv.org/abs/2512.04797) · [Paper v1, section 4.5](https://arxiv.org/html/2512.04797v1)
 
@@ -214,7 +262,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 实验：为每个策略检查点记录生成任务清单版本，并以固定数据对照组评估经验复用。
 
+![可视化证据卡](assets/alibaba-agentevolver.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Official AgentEvolver repository](https://github.com/modelscope/AgentEvolver)
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2511.10395) · [Paper v1: affiliation, methods, Table 1](https://arxiv.org/html/2511.10395v1) · [Official AgentEvolver repository](https://github.com/modelscope/AgentEvolver)
 
@@ -238,7 +292,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议实验：区分学习器权重与更新规则参数，先在小型环境中验证外层目标，再扩大规模。
 
+![可视化证据卡](assets/google-discorl-2025.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
 
 **一手来源** — [Primary Nature article at PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12695655/) · [Publication metadata](https://pubmed.ncbi.nlm.nih.gov/41125136/) · [Author project and artifact availability](https://google-deepmind.github.io/disco_rl/) · [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
 
@@ -262,6 +322,12 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 对照：固定外部任务流，保留各任务退化分数，区分持续学习与直接自我改进。
 
+![可视化证据卡](assets/tencent-moe-cl.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Author implementation](https://github.com/BAI-LAB/MoE-CL)
 
 **一手来源** — [arXiv submission and revision history](https://arxiv.org/abs/2509.18133) · [Paper v1 affiliations and experiments](https://arxiv.org/html/2509.18133v1) · [Author implementation](https://github.com/BAI-LAB/MoE-CL)

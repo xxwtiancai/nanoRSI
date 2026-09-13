@@ -8,6 +8,7 @@ import argparse
 import calendar
 from collections import Counter
 from datetime import date
+from html import escape
 import json
 from pathlib import Path
 import re
@@ -109,8 +110,91 @@ def cell(text):
     return text.replace("|", "\\|").replace("\n", " ")
 
 
+def wrap(text, width, limit):
+    """Wrap deterministic card copy without adding a text-layout dependency."""
+    words = text.split() or [text]
+    lines, current = [], ""
+    for word in words:
+        while len(word) > width:
+            if current:
+                lines.append(current)
+                current = ""
+            lines.append(word[:width])
+            word = word[width:]
+        candidate = f"{current} {word}".strip()
+        if current and len(candidate) > width:
+            lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    if len(lines) > limit:
+        lines = lines[:limit]
+        lines[-1] = lines[-1].rstrip(" .,;，。；") + "…"
+    return lines
+
+
+def svg_lines(lines, x, y, size, fill="#e8eef8", line_height=1.25, weight="400"):
+    spans = []
+    for index, line in enumerate(lines):
+        dy = "0" if index == 0 else f"{size * line_height:g}"
+        spans.append(f'<tspan x="{x}" dy="{dy}">{escape(line)}</tspan>')
+    return f'<text x="{x}" y="{y}" fill="{fill}" font-size="{size}px" font-weight="{weight}">' + "".join(spans) + "</text>"
+
+
+def visual_asset(row, lang):
+    """Create one source-linked, exact-text summary card for a catalogue record."""
+    accent = {
+        "parameter-learning": "#9ef01a",
+        "agent-code": "#6ee7f9",
+        "memory-context": "#c4b5fd",
+        "research-workflows": "#fbbf24",
+    }[row["category"]]
+    category = CATEGORIES[row["category"]][lang == "zh"]
+    relation = RELATIONS[row["relationship"]][lang == "zh"]
+    title_lines = wrap(row["title"], 38, 3)
+    org_lines = wrap(" · ".join(row["organizations"]), 52, 2)
+    result_lines = wrap(row["result"][lang], 64, 4)
+    limit_lines = wrap(row["limits"][lang], 64, 3)
+    availability_lines = wrap(row["availability"][lang], 64, 3)
+    source = next((s["url"] for s in row["sources"] if s["kind"] in {"paper", "official-report"}), row["sources"][0]["url"])
+    title = svg_lines(title_lines, 70, 150, 34, "#f8fafc", 1.16, "700")
+    orgs = svg_lines(org_lines, 70, 285, 16, "#b6c2d9", 1.3)
+    result = svg_lines(result_lines, 70, 400, 17, "#edf2f7", 1.35)
+    limits = svg_lines(limit_lines, 675, 400, 17, "#edf2f7", 1.35)
+    availability = svg_lines(availability_lines, 675, 555, 15, "#cbd5e1", 1.35)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">{escape(row["title"])}</title>
+<desc id="desc">Industry RSI evidence card for {escape(" / ".join(row["organizations"]))}, {escape(row["published"])}.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1020"/><stop offset="1" stop-color="#16213b"/></linearGradient><filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".25"/></filter></defs>
+<rect width="1200" height="675" rx="28" fill="url(#bg)"/>
+<rect x="28" y="28" width="1144" height="619" rx="22" fill="none" stroke="#2b3a58"/>
+<circle cx="1085" cy="100" r="56" fill="{accent}" opacity=".13"/><circle cx="1085" cy="100" r="25" fill="{accent}" opacity=".35"/>
+<text x="70" y="78" fill="{accent}" font-size="18px" font-weight="700" letter-spacing="2">{escape("NANORSI · 企业 RSI 证据" if lang == "zh" else "NANORSI · INDUSTRY RSI EVIDENCE")}</text>
+<rect x="70" y="98" width="300" height="34" rx="17" fill="{accent}" opacity=".18"/><text x="88" y="121" fill="{accent}" font-size="16px" font-weight="700">{escape(category)}</text>
+<text x="395" y="121" fill="#a8b5ca" font-size="16px">{escape(relation)} · {escape(row["published"])}</text>
+{title}
+{orgs}
+<line x1="70" y1="330" x2="1130" y2="330" stroke="#2b3a58"/>
+<text x="70" y="365" fill="{accent}" font-size="14px" font-weight="700" letter-spacing="1.4">{escape("作者报告结果" if lang == "zh" else "AUTHOR-REPORTED RESULT")}</text>
+<text x="675" y="365" fill="{accent}" font-size="14px" font-weight="700" letter-spacing="1.4">{escape("证据边界" if lang == "zh" else "EVIDENCE LIMIT")}</text>
+{result}
+{limits}
+<text x="675" y="530" fill="{accent}" font-size="14px" font-weight="700" letter-spacing="1.4">{escape("开放材料 / 许可" if lang == "zh" else "OPEN MATERIALS / LICENSE")}</text>
+{availability}
+<text x="70" y="612" fill="#7f8da6" font-size="13px">{escape("来源：" if lang == "zh" else "Source: ")}{escape(source)} · {escape("nanoRSI 本地复现：未运行" if lang == "zh" else "Local nanoRSI reproduction: not run")}</text>
+</svg>
+'''
+
+
 def row_link(row, lang):
     return f"[{cell(row['title'])}]({name(row['category'], lang)}#{row['id']})"
+
+
+def asset_link(row, lang):
+    suffix = ".zh-CN" if lang == "zh" else ""
+    return f"assets/{row['id']}{suffix}.svg"
 
 
 def table(rows, lang):
@@ -130,8 +214,8 @@ def overview(data, rows, lang):
     counts = Counter(r["category"] for r in active)
     title = tr(("Industry RSI research map", "企业 RSI 研究地图"), lang)
     intro = tr((
-        "A selective, primary-source catalogue of company and company–university papers, systems and results. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.",
-        "按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。",
+        "A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a local visual evidence card and an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.",
+        "按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。每条详情都带一张本地可视化证据卡，并在有核验结果时单独列出代码、权重或数据链接。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。",
     ), lang)
     terms = tr((
         "**Direct bounded loop**: updated code, memory, data policy, parameters or learning rules affect later iterations; this does not necessarily improve the improvement algorithm itself. **Enabling**: useful adaptation, memory or evaluation without a demonstrated recursive deployment loop. **Automated / assisted R&D**: evidence focuses on a research workflow or a separate target model, with varying human involvement. Labels describe the emphasis of an entry, can overlap, and are not levels of proven RSI.",
@@ -163,13 +247,32 @@ def details(category, rows, lang):
         lines.extend([f'<a id="{row["id"]}"></a>', "", f"## {row['title']}", "", f"**{row['published']}** · {row['kind']} · {tr(RELATIONS[row['relationship']], lang)}", ""])
         for key, label in FIELDS.items():
             lines.extend([f"**{tr(label, lang)}** — {row[key][lang]}", ""])
+        lines.extend([
+            f"![{tr(('Visual evidence card', '可视化证据卡'), lang)}]({asset_link(row, lang)})",
+            "",
+            tr((
+                "This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.",
+                "这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。",
+            ), lang),
+            "",
+        ])
         status = row["local_reproduction"]
         evidence = row.get("reproduction_evidence")
         if evidence:
             status += f" · [Evidence]({evidence})"
         lines.extend([f"**{tr(('nanoRSI reproduction', 'nanoRSI 复现状态'), lang)}** — {status}. " + tr(("Last source check: ", "来源最近核验："), lang) + row["last_verified"] + ".", ""])
         sources = " · ".join(f"[{s['label']}]({s['url']})" for s in row["sources"])
-        lines.extend([f"**{tr(('Primary sources', '一手来源'), lang)}** — {sources}", ""])
+        released = [s for s in row["sources"] if s["kind"] in {"repository", "license"}]
+        if released:
+            open_assets = " · ".join(f"[{s['label']}]({s['url']})" for s in released)
+        else:
+            open_assets = tr(("No verified public code/asset link in the audited sources.", "核验来源中没有确认的公开代码／资产链接。"), lang)
+        lines.extend([
+            f"**{tr(('Open code / weights / data links', '开源代码／权重／数据链接'), lang)}** — {open_assets}",
+            "",
+            f"**{tr(('Primary sources', '一手来源'), lang)}** — {sources}",
+            "",
+        ])
     return "\n".join(lines)
 
 
@@ -185,14 +288,34 @@ def main():
         output[name("README", lang)] = overview(data, rows, lang)
         for category in CATEGORIES:
             output[name(category, lang)] = details(category, rows, lang)
+    assets = {
+        f"assets/{row['id']}{suffix}.svg": visual_asset(row, lang)
+        for row in rows
+        for lang, suffix in (("en", ""), ("zh", ".zh-CN"))
+    }
     stale = []
-    for filename, content in output.items():
-        path = ROOT / filename
-        if args.check:
+    if args.check:
+        for filename, content in output.items():
+            path = ROOT / filename
             if not path.exists() or path.read_text(encoding="utf-8") != content:
                 stale.append(filename)
-        else:
-            path.write_text(content, encoding="utf-8")
+    else:
+        for filename, content in output.items():
+            (ROOT / filename).write_text(content, encoding="utf-8")
+    asset_dir = ROOT / "assets"
+    if args.check:
+        expected = set(assets)
+        actual = {f"assets/{path.name}" for path in asset_dir.glob("*.svg")} if asset_dir.exists() else set()
+        stale.extend(sorted(expected - actual))
+        stale.extend(sorted(actual - expected))
+        for filename, content in assets.items():
+            path = ROOT / filename
+            if path.exists() and path.read_text(encoding="utf-8") != content:
+                stale.append(filename)
+    else:
+        asset_dir.mkdir(exist_ok=True)
+        for filename, content in assets.items():
+            (ROOT / filename).write_text(content, encoding="utf-8")
     if stale:
         raise SystemExit("Stale generated pages: " + ", ".join(stale))
     print(f"Validated {len(rows)} records; {len(output)} pages {'match' if args.check else 'written'}.")

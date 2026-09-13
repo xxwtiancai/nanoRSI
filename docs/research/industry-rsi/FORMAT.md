@@ -2,9 +2,9 @@
 
 [Research map](README.md) · [中文入口](README.zh-CN.md)
 
-`catalog.json` is the canonical data. `render.py` generates the two indexes and eight category pages using only Python's standard library. Edit the JSON, regenerate, then run `--check`; do not edit generated Markdown directly. `COVERAGE.md` and `ADOPTION.md` are maintained prose.
+`catalog.json` is the canonical data. `render.py` generates the two indexes, eight category pages and one local SVG evidence card per record using only Python's standard library. Edit the JSON, regenerate, then run `--check`; do not edit generated Markdown or SVG cards directly. `COVERAGE.md` and `ADOPTION.md` are maintained prose.
 
-`catalog.json` 是唯一数据源。`render.py` 仅使用 Python 标准库，生成中英文索引及八个分类页面。修改 JSON 后重新生成并运行 `--check`，不要直接修改生成的 Markdown。`COVERAGE.md` 与 `ADOPTION.md` 单独维护。
+`catalog.json` 是唯一数据源。`render.py` 仅使用 Python 标准库，生成中英文索引、八个分类页面及每条记录一张本地 SVG 证据卡。修改 JSON 后重新生成并运行 `--check`，不要直接修改生成的 Markdown 或 SVG 卡片。`COVERAGE.md` 与 `ADOPTION.md` 单独维护。
 
 | Field | Meaning / 含义 |
 | --- | --- |
@@ -22,6 +22,7 @@
 | `availability` | Separately address code, weights, data and licenses; “not verified” is not “does not exist” / 分开说明代码、权重、数据和许可；未核验不等于不存在 |
 | `application` | A concrete proposed nanoRSI experiment, not a promise or an implemented capability / 具体拟议实验，不是已实现能力或交付承诺 |
 | `sources` | Opened primary URLs with `label`, `url`, `kind`; kinds: `paper`, `official-report`, `repository`, `license`, `project-page` / 已实际打开的一手来源 |
+| generated `assets/<id>.svg` | Deterministic visual summary card generated from the record; it is not an original paper figure and carries a source URL in the footer / 根据条目确定性生成的视觉摘要卡，不是论文原图，底部带来源 URL |
 | `last_verified` | Date these claims and release states were checked / 最近核验日期 |
 | `local_reproduction` | `not-run`, `partial`, `reproduced`; the latter two require `reproduction_evidence` / 后两种必须提供本地复现依据链接 |
 
@@ -29,9 +30,9 @@ All prose fields from `date_note` through `application` use an object with `en` 
 
 上述说明字段均使用包含 `en`、`zh` 的对象，两个语言版本应一致。指标应引用实际提供该结果的论文版本，而非只链接最新摘要；不要复制整段摘要或专有材料。
 
-`--check` validates dates, required bilingual content, stable IDs, classifications, source URL shape and generated-page consistency. It makes no network calls and cannot establish scientific validity, source reachability or licensing completeness. Source reading and review remain necessary. Month-only dates crossing a window boundary must be clarified before inclusion.
+`--check` validates dates, required bilingual content, stable IDs, classifications, source URL shape, generated-page consistency and one exact SVG card per record. It makes no network calls and cannot establish scientific validity, source reachability or licensing completeness. Source reading and review remain necessary. Month-only dates crossing a window boundary must be clarified before inclusion.
 
-`--check` 检查日期、必需双语字段、稳定 ID、分类、来源 URL 形式及生成页面一致性。它不联网，不能证明科学有效性、来源可访问性或许可完整性，仍需阅读来源及复核。月份精度跨越窗口边界时，应先澄清日期。
+`--check` 检查日期、必需双语字段、稳定 ID、分类、来源 URL 形式、生成页面一致性及每条记录对应的一张 SVG 卡片。它不联网，不能证明科学有效性、来源可访问性或许可完整性，仍需阅读来源及复核。月份精度跨越窗口边界时，应先澄清日期。
 
 ```bash
 python docs/research/industry-rsi/render.py

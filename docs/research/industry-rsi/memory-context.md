@@ -22,7 +22,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI skills ablation: compare raw-history, summary-memory and frozen-state runs, with verifier scores hidden from memory construction.
 
+![Visual evidence card](assets/bytedance-s3gym.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2608.31100) · [Paper v1 methods and Table 6](https://arxiv.org/html/2608.31100v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
@@ -46,7 +52,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: separate immutable evaluator/base policy from versioned memory updates, with provenance and rollback.
 
+![Visual evidence card](assets/prime-agent.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
 **Primary sources** — [arXiv record](https://arxiv.org/abs/2608.23552) · [Paper first-publication statement and Factorio evidence](https://arxiv.org/html/2608.23552v1) · [Official launch and update mechanism](https://www.primeintellect.ai/blog/prime-agent) · [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
@@ -70,7 +82,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: compare versioned delta memories against whole-file rewrites on a fixed task stream.
 
+![Visual evidence card](assets/sambanova-stanford-ace.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official implementation](https://github.com/ace-agent/ace)
 
 **Primary sources** — [arXiv dates](https://arxiv.org/abs/2510.04618) · [Original paper affiliations, protocol and Table 1](https://arxiv.org/html/2510.04618v1) · [Official implementation](https://github.com/ace-agent/ace)
 
@@ -94,7 +112,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: compare success-filtered procedure memory against no memory, separating planner/subtask retrieval and freezing test memory.
 
+![Visual evidence card](assets/microsoft-legomem-2025.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [Paper history](https://arxiv.org/abs/2510.04851) · [Paper v1, method and Table 1](https://arxiv.org/html/2510.04851v1) · [Microsoft Research publication](https://www.microsoft.com/en-us/research/publication/legomem-modular-procedural-memory-for-multi-agent-llm-systems-for-workflow-automation/)
 
@@ -118,6 +142,12 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: optimize compressor prompts from paired failures, retain held-out validation, and track success alongside peak context.
 
+![Visual evidence card](assets/microsoft-acon-2025.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official Microsoft code](https://github.com/microsoft/acon) · [MIT licence](https://github.com/microsoft/acon/blob/main/LICENSE)
 
 **Primary sources** — [Paper history](https://arxiv.org/abs/2510.00615) · [Paper v1](https://arxiv.org/html/2510.00615v1) · [Official Microsoft code](https://github.com/microsoft/acon) · [MIT licence](https://github.com/microsoft/acon/blob/main/LICENSE)

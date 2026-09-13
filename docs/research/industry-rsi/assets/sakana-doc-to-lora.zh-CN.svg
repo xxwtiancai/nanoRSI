@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Doc-to-LoRA: Learning to Instantly Internalize Contexts</title>
+<desc id="desc">Industry RSI evidence card for Sakana AI / Minerva University, 2026-02-13.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1020"/><stop offset="1" stop-color="#16213b"/></linearGradient><filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".25"/></filter></defs>
+<rect width="1200" height="675" rx="28" fill="url(#bg)"/>
+<rect x="28" y="28" width="1144" height="619" rx="22" fill="none" stroke="#2b3a58"/>
+<circle cx="1085" cy="100" r="56" fill="#9ef01a" opacity=".13"/><circle cx="1085" cy="100" r="25" fill="#9ef01a" opacity=".35"/>
+<text x="70" y="78" fill="#9ef01a" font-size="18px" font-weight="700" letter-spacing="2">NANORSI · 企业 RSI 证据</text>
+<rect x="70" y="98" width="300" height="34" rx="17" fill="#9ef01a" opacity=".18"/><text x="88" y="121" fill="#9ef01a" font-size="16px" font-weight="700">参数与训练数据</text>
+<text x="395" y="121" fill="#a8b5ca" font-size="16px">支撑技术／评测 · 2026-02-13</text>
+<text x="70" y="150" fill="#f8fafc" font-size="34px" font-weight="700"><tspan x="70" dy="0">Doc-to-LoRA: Learning to Instantly</tspan><tspan x="70" dy="39.44">Internalize Contexts</tspan></text>
+<text x="70" y="285" fill="#b6c2d9" font-size="16px" font-weight="400"><tspan x="70" dy="0">Sakana AI · Minerva University</tspan></text>
+<line x1="70" y1="330" x2="1130" y2="330" stroke="#2b3a58"/>
+<text x="70" y="365" fill="#9ef01a" font-size="14px" font-weight="700" letter-spacing="1.4">作者报告结果</text>
+<text x="675" y="365" fill="#9ef01a" font-size="14px" font-weight="700" letter-spacing="1.4">证据边界</text>
+<text x="70" y="400" fill="#edf2f7" font-size="17px" font-weight="400"><tspan x="70" dy="0">在 2WikiMultihopQA 上，迭代式 D2L 报告归一化 ROUGE-L 为 0.844、额外更新显存 3.791</tspan><tspan x="70" dy="22.95">GB、延迟 0.551 秒；使用真实问题的理想上下文蒸馏分别为 0.901、7.820 GB、40.171</tspan><tspan x="70" dy="22.95">秒。归一化表现以携带上下文推理为参照。</tspan></text>
+<text x="675" y="400" fill="#edf2f7" font-size="17px" font-weight="400"><tspan x="675" dy="0">这是摊销更新成本的适应机制，而非递归循环；部署不会改进超网络本身，准确率和适配器容量仍构成限制。</tspan></text>
+<text x="675" y="530" fill="#9ef01a" font-size="14px" font-weight="700" letter-spacing="1.4">开放材料 / 许可</text>
+<text x="675" y="555" fill="#cbd5e1" font-size="15px" font-weight="400"><tspan x="675" dy="0">官方代码为 MIT；已确认 Hugging Face</tspan><tspan x="675" dy="20.25">检查点文件，但模型卡缺少许可。存在数据生成及评测脚本，未完整审计数据集再分发。</tspan></text>
+<text x="70" y="612" fill="#7f8da6" font-size="13px">来源：https://arxiv.org/abs/2602.15902 · nanoRSI 本地复现：未运行</text>
+</svg>

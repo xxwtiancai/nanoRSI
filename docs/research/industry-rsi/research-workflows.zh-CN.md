@@ -22,7 +22,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可把提案选择能力与实验执行能力分别评测，并保留不确定或并列判断。
 
+![可视化证据卡](assets/taste.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Official report](https://alignment.anthropic.com/2026/taste/) · [Paper](https://www-cdn.anthropic.com/files/4zrzovbb/website/dd5feddcb3b7d20aadda6af4093ac1fb0c9d419e.pdf)
 
@@ -46,7 +52,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：在 nanoRSI 优化任务中采用不可修改的多种子接受标准、配对比较和完整实验台账。
 
+![可视化证据卡](assets/prime-measuring-autonomous-ai-research.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Official research repository](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun) · [Research repository README](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun/blob/main/README.md)
 
 **一手来源** — [Official report, live results and verification conditions](https://www.primeintellect.ai/blog/measuring-autonomous-research) · [Official research repository](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun) · [Research repository README](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun/blob/main/README.md)
 
@@ -70,7 +82,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可区分排行榜、选择验证与最终审计，并在汇总中保留被拒绝及作弊尝试的计数。
 
+![可视化证据卡](assets/automated-alignment-researchers.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Author repository](https://github.com/YuehHanChen/automated_alignment_researcher)
 
 **一手来源** — [Research report](https://alignment.anthropic.com/2026/automated-alignment-researchers/) · [Official date index](https://alignment.anthropic.com/) · [Author repository](https://github.com/YuehHanChen/automated_alignment_researcher)
 
@@ -94,7 +112,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI program/learner 实验：为谱系节点附加不可变执行卡片，对比父代选择与固定父代搜索。
 
+![可视化证据卡](assets/frontis-ma1-openmle.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2607.28568) · [Paper v1](https://arxiv.org/html/2607.28568v1) · [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
 
@@ -118,7 +142,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可在等计算预算下比较独立与共享研究档案，并将最终测试与选择彻底分离。
 
+![可视化证据卡](assets/automated-w2s.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — [Repository](https://github.com/safety-research/automated-w2s-research)
 
 **一手来源** — [Research report](https://alignment.anthropic.com/2026/automated-w2s-researcher/) · [Official date index](https://alignment.anthropic.com/) · [Repository](https://github.com/safety-research/automated-w2s-research)
 
@@ -142,7 +172,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：由评测失败触发有界修复迭代，同时保留补丁来源与可读验证证据。
 
+![可视化证据卡](assets/cognition-devin-builds-devin.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Official internal-use report](https://cognition.com/blog/how-cognition-uses-devin-to-build-devin) · [Official feedback-loop release](https://cognition.com/blog/closing-the-agent-loop-devin-autofixes-review-comments)
 
@@ -166,7 +202,13 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议实验：修改小型学习规则函数，缓存评分候选，并在保留游戏评价前冻结选择。
 
+![可视化证据卡](assets/google-alphaevolve-marl-2026.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Paper history](https://arxiv.org/abs/2602.16928) · [Paper v1, results and source appendix](https://arxiv.org/html/2602.16928v1) · [Original AlphaEvolve date](https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/)
 
@@ -190,6 +232,12 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可记录研发建议、代码改动与实测结果之间的对应关系，衡量辅助研发贡献。
 
+![可视化证据卡](assets/codex-builds-codex.zh-CN.svg)
+
+这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Development report](https://openai.com/index/introducing-gpt-5-3-codex/) · [System card](https://openai.com/index/gpt-5-3-codex-system-card/)

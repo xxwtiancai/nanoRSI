@@ -22,7 +22,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner reporting: separate raw candidate delta from retained-state delta, export failed attempts, and test vague versus explicit goals.
 
+![Visual evidence card](assets/bytedance-aspire.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2608.31111) · [Paper v1 retention protocol and Table 1](https://arxiv.org/html/2608.31111v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
@@ -46,7 +52,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Explore benign adversarial fixtures with separate attack-validity, task-success and over-refusal scores.
 
+![Visual evidence card](assets/gpt-red.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [Paper](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf) · [Official report](https://openai.com/index/unlocking-self-improvement-gpt-red/)
 
@@ -70,7 +82,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Extend curriculum experiments with capability-retention constraints and a truly frozen final panel.
 
+![Visual evidence card](assets/a3.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Repository](https://github.com/safety-research/A3) · [Code license](https://github.com/safety-research/A3/blob/main/LICENSE)
 
 **Primary sources** — [Research report](https://alignment.anthropic.com/2026/automated-alignment-agent/) · [Repository](https://github.com/safety-research/A3) · [Code license](https://github.com/safety-research/A3/blob/main/LICENSE)
 
@@ -94,7 +112,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: explore versioned document adapters as a later memory backend, benchmarking factual retention against retrieval.
 
+![Visual evidence card](assets/sakana-doc-to-lora.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official code](https://github.com/SakanaAI/doc-to-lora) · [Official checkpoint inventory](https://huggingface.co/SakanaAI/doc-to-lora/tree/main)
 
 **Primary sources** — [Original paper date](https://arxiv.org/abs/2602.15902) · [Paper Table 1](https://arxiv.org/html/2602.15902v1) · [Official project and affiliations](https://pub.sakana.ai/doc-to-lora/) · [Official code](https://github.com/SakanaAI/doc-to-lora) · [Official checkpoint inventory](https://huggingface.co/SakanaAI/doc-to-lora/tree/main)
 
@@ -118,7 +142,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: evaluate a tiny evolvable role/model router against static routing at equal token budgets.
 
+![Visual evidence card](assets/sakana-trinity.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [Original paper date](https://arxiv.org/abs/2512.04695) · [Original paper methods and experimental conditions](https://arxiv.org/html/2512.04695v1) · [Official Sakana announcement](https://sakana.ai/trinity/)
 
@@ -142,7 +172,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner adapter: version generator, verifier, labels and expert audit separately; compare verifier co-training against a frozen verifier.
 
+![Visual evidence card](assets/deepseek-math-v2.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official DeepSeek-Math-V2 repository](https://github.com/deepseek-ai/DeepSeek-Math-V2) · [Official weights and Apache-2.0 statement](https://huggingface.co/deepseek-ai/DeepSeek-Math-V2)
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2511.22570) · [Paper v1 methods and high-compute evaluation](https://arxiv.org/html/2511.22570v1) · [Official DeepSeek-Math-V2 repository](https://github.com/deepseek-ai/DeepSeek-Math-V2) · [Official weights and Apache-2.0 statement](https://huggingface.co/deepseek-ai/DeepSeek-Math-V2)
 
@@ -166,7 +202,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: test difficulty-adaptive task generation with immutable answer verifiers before attempting costly policy training.
 
+![Visual evidence card](assets/salesforce-unc-agent0.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official series repository and release date](https://github.com/aiming-lab/Agent0) · [Agent0 training implementation](https://github.com/aiming-lab/Agent0/blob/main/Agent0/README.md)
 
 **Primary sources** — [Paper dates](https://arxiv.org/abs/2511.16043) · [Original paper and numerical tables](https://arxiv.org/html/2511.16043v1) · [Official series repository and release date](https://github.com/aiming-lab/Agent0) · [Agent0 training implementation](https://github.com/aiming-lab/Agent0/blob/main/Agent0/README.md)
 
@@ -190,7 +232,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: version learner generations and scored trajectories; evaluate transfer with an independent held-out task set.
 
+![Visual evidence card](assets/google-sima2-2025.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [Google DeepMind announcement](https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/) · [Paper version history](https://arxiv.org/abs/2512.04797) · [Paper v1, section 4.5](https://arxiv.org/html/2512.04797v1)
 
@@ -214,7 +262,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner experiment: version generated task manifests with each policy checkpoint and compare experience reuse against a frozen-data control.
 
+![Visual evidence card](assets/alibaba-agentevolver.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official AgentEvolver repository](https://github.com/modelscope/AgentEvolver)
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2511.10395) · [Paper v1: affiliation, methods, Table 1](https://arxiv.org/html/2511.10395v1) · [Official AgentEvolver repository](https://github.com/modelscope/AgentEvolver)
 
@@ -238,7 +292,13 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: separate learner weights from update-rule parameters and test an outer objective in tiny environments before scaling.
 
+![Visual evidence card](assets/google-discorl-2025.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
 
 **Primary sources** — [Primary Nature article at PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12695655/) · [Publication metadata](https://pubmed.ncbi.nlm.nih.gov/41125136/) · [Author project and artifact availability](https://google-deepmind.github.io/disco_rl/) · [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
 
@@ -262,6 +322,12 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner control: evaluate a fixed externally supplied task stream, retaining per-task regression scores to distinguish continual learning from direct self-improvement.
 
+![Visual evidence card](assets/tencent-moe-cl.svg)
+
+This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — [Author implementation](https://github.com/BAI-LAB/MoE-CL)
 
 **Primary sources** — [arXiv submission and revision history](https://arxiv.org/abs/2509.18133) · [Paper v1 affiliations and experiments](https://arxiv.org/html/2509.18133v1) · [Author implementation](https://github.com/BAI-LAB/MoE-CL)

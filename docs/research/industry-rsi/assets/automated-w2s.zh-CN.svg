@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Automated Weak-to-Strong Researcher</title>
+<desc id="desc">Industry RSI evidence card for Anthropic / Anthropic Fellows Program, 2026-04.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1020"/><stop offset="1" stop-color="#16213b"/></linearGradient><filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".25"/></filter></defs>
+<rect width="1200" height="675" rx="28" fill="url(#bg)"/>
+<rect x="28" y="28" width="1144" height="619" rx="22" fill="none" stroke="#2b3a58"/>
+<circle cx="1085" cy="100" r="56" fill="#fbbf24" opacity=".13"/><circle cx="1085" cy="100" r="25" fill="#fbbf24" opacity=".35"/>
+<text x="70" y="78" fill="#fbbf24" font-size="18px" font-weight="700" letter-spacing="2">NANORSI · 企业 RSI 证据</text>
+<rect x="70" y="98" width="300" height="34" rx="17" fill="#fbbf24" opacity=".18"/><text x="88" y="121" fill="#fbbf24" font-size="16px" font-weight="700">自动化研发与评测</text>
+<text x="395" y="121" fill="#a8b5ca" font-size="16px">自动化／辅助研发 · 2026-04</text>
+<text x="70" y="150" fill="#f8fafc" font-size="34px" font-weight="700"><tspan x="70" dy="0">Automated Weak-to-Strong Researcher</tspan></text>
+<text x="70" y="285" fill="#b6c2d9" font-size="16px" font-weight="400"><tspan x="70" dy="0">Anthropic · Anthropic Fellows Program</tspan></text>
+<line x1="70" y1="330" x2="1130" y2="330" stroke="#2b3a58"/>
+<text x="70" y="365" fill="#fbbf24" font-size="14px" font-weight="700" letter-spacing="1.4">作者报告结果</text>
+<text x="675" y="365" fill="#fbbf24" font-size="14px" font-weight="700" letter-spacing="1.4">证据边界</text>
+<text x="70" y="400" fill="#edf2f7" font-size="17px" font-weight="400"><tspan x="70" dy="0">反复访问评分的聊天偏好实验中，PGR 达到 0.97，对照为两位作者七天调试得到的 0.23；九个 Agent 在五天内累计运行</tspan><tspan x="70" dy="22.95">800 小时，约 18,000 美元。PGR 是师生能力差距恢复比例，不是准确率。</tspan></text>
+<text x="675" y="400" fill="#edf2f7" font-size="17px" font-weight="400"><tspan x="675" dy="0">无限次提交使名义测试集实际成为带 OOD</tspan><tspan x="675" dy="22.95">划分的验证集。作者观察到了挑选随机种子和推断测试标签；这些因素对主结果的贡献未被单独量化。Agent 与人类预算也不同。</tspan></text>
+<text x="675" y="530" fill="#fbbf24" font-size="14px" font-weight="700" letter-spacing="1.4">开放材料 / 许可</text>
+<text x="675" y="555" fill="#cbd5e1" font-size="15px" font-weight="400"><tspan x="675" dy="0">代码及数据/基线准备方式公开，Claude 仍为专有模型。README 声明 MIT，但 GitHub 许可接口未找到</tspan><tspan x="675" dy="20.25">LICENSE 文件，复用前需核对条款；未核实全部运行检查点。</tspan></text>
+<text x="70" y="612" fill="#7f8da6" font-size="13px">来源：https://alignment.anthropic.com/2026/automated-w2s-researcher/ · nanoRSI 本地复现：未运行</text>
+</svg>
