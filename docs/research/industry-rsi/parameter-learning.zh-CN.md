@@ -22,9 +22,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 报告：分开记录候选原始变化与保留状态变化，导出失败尝试，并对比模糊目标与明确目标。
 
-![可视化证据卡](assets/bytedance-aspire.zh-CN.svg)
+![图 1：从明确任务优化走向模糊目标驱动的自进化。](assets/paper-figures/aspire.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 1：从明确任务优化走向模糊目标驱动的自进化。 · Figure 1, PDF p.2 · [source](https://arxiv.org/html/2608.31111v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -52,9 +52,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可探索无害对抗样例，并分别衡量样例有效性、任务完成率和误拒率。
 
-![可视化证据卡](assets/gpt-red.zh-CN.svg)
+![图 1：随着测试时计算量增加，GPT-Red 的红队攻击表现变化。](assets/paper-figures/gpt-red.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 1：随着测试时计算量增加，GPT-Red 的红队攻击表现变化。 · Figure 1, PDF p.1 · [source](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -82,9 +82,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可为课程实验加入能力保持约束，并保留真正冻结的最终测试集。
 
-![可视化证据卡](assets/a3.zh-CN.svg)
+![A3 流程：数据生成 Agent、微调 Agent 和实验日志围绕安全问题进行适应。](assets/paper-figures/a3.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — A3 流程：数据生成 Agent、微调 Agent 和实验日志围绕安全问题进行适应。 · A3 Pipeline figure · [source](https://alignment.anthropic.com/2026/automated-alignment-agent/)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -112,9 +112,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：后续探索版本化文档适配器作为记忆后端，并与检索方案比较事实保留能力。
 
-![可视化证据卡](assets/sakana-doc-to-lora.zh-CN.svg)
+![Doc-to-LoRA 总览：超网络将文档激活映射到 LoRA 权重，实现快速内化。](assets/paper-figures/sakana-doc-to-lora.svg)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — Doc-to-LoRA 总览：超网络将文档激活映射到 LoRA 权重，实现快速内化。 · Overview figure · [source](https://arxiv.org/html/2602.15902v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -142,9 +142,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：在相同 token 预算下比较小型可进化角色/模型路由器与静态路由。
 
-![可视化证据卡](assets/sakana-trinity.zh-CN.svg)
+![图 1：循环协调架构，每轮由紧凑协调器选择模型和角色。](assets/paper-figures/sakana-trinity.svg)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 1：循环协调架构，每轮由紧凑协调器选择模型和角色。 · Figure 1 · [source](https://arxiv.org/html/2512.04695v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -172,9 +172,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 适配器：分别版本化生成器、验证器、标签及专家审计，对比共同训练与冻结验证器。
 
-![可视化证据卡](assets/deepseek-math-v2.zh-CN.svg)
+![图 2：随着连续自验证改进次数上限增加，证明质量的变化。](assets/paper-figures/deepseek-math-v2.svg)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 2：随着连续自验证改进次数上限增加，证明质量的变化。 · Figure 2 · [source](https://arxiv.org/html/2511.22570v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -202,9 +202,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：先用不可修改的答案验证器检验难度自适应任务生成，再考虑昂贵的策略训练。
 
-![可视化证据卡](assets/salesforce-unc-agent0.zh-CN.svg)
+![图 2：Agent0 在课程生成与执行器训练之间的共同进化闭环。](assets/paper-figures/salesforce-unc-agent0.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 2：Agent0 在课程生成与执行器训练之间的共同进化闭环。 · Figure 2 · [source](https://arxiv.org/html/2511.16043v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -232,9 +232,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议实验：分别记录学习器世代和评分轨迹，并用独立保留任务集验证迁移。
 
-![可视化证据卡](assets/google-sima2-2025.zh-CN.svg)
+![图 16：自进化设置包含任务设置器、奖励模型、经验数据集和重新训练的 SIMA 2 Agent。](assets/paper-figures/google-sima2-2025.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 16：自进化设置包含任务设置器、奖励模型、经验数据集和重新训练的 SIMA 2 Agent。 · Figure 16 · [source](https://arxiv.org/html/2512.04797v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -262,9 +262,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 实验：为每个策略检查点记录生成任务清单版本，并以固定数据对照组评估经验复用。
 
-![可视化证据卡](assets/alibaba-agentevolver.zh-CN.svg)
+![图 2：AgentEvolver 结合自我提问、自我导航和自我归因机制。](assets/paper-figures/alibaba-agentevolver.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 2：AgentEvolver 结合自我提问、自我导航和自我归因机制。 · Figure 2 · [source](https://arxiv.org/html/2511.10395v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -292,9 +292,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议实验：区分学习器权重与更新规则参数，先在小型环境中验证外层目标，再扩大规模。
 
-![可视化证据卡](assets/google-discorl-2025.zh-CN.svg)
+![DiscoRL 官方项目方法图：元网络从 Agent 群体经验中学习更新目标。](assets/paper-figures/google-discorl-2025.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — DiscoRL 官方项目方法图：元网络从 Agent 群体经验中学习更新目标。 · Official project method figure · [source](https://google-deepmind.github.io/disco_rl/)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -322,9 +322,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI learner 对照：固定外部任务流，保留各任务退化分数，区分持续学习与直接自我改进。
 
-![可视化证据卡](assets/tencent-moe-cl.zh-CN.svg)
+![图 1：MoE-CL 结合任务专属 LoRA 专家、共享专家和任务感知判别器。](assets/paper-figures/tencent-moe-cl.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 1：MoE-CL 结合任务专属 LoRA 专家、共享专家和任务感知判别器。 · Figure 1 · [source](https://arxiv.org/html/2509.18133v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 

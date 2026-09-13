@@ -22,9 +22,9 @@
 
 **Possible nanoRSI experiment — not implemented here** — Evaluate proposal selection separately from executing a selected experiment; retain uncertain or tied judgments.
 
-![Visual evidence card](assets/taste.svg)
+![Figure 2: TASTE construction pipeline: proposal generation, researcher preference collection and benchmark construction.](assets/paper-figures/taste.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 2: TASTE construction pipeline: proposal generation, researcher preference collection and benchmark construction. · Figure 2, PDF p.3 · [source](https://www-cdn.anthropic.com/files/4zrzovbb/website/dd5feddcb3b7d20aadda6af4093ac1fb0c9d419e.pdf)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -52,9 +52,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: use immutable multi-seed acceptance, paired comparisons and a complete experiment ledger for nanoRSI optimization tasks.
 
-![Visual evidence card](assets/prime-measuring-autonomous-ai-research.svg)
+![Official research-page image for the autonomous-research speedrun; no architecture figure was identified on the report page.](assets/paper-figures/prime-measuring-autonomous-ai-research.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Official research-page image for the autonomous-research speedrun; no architecture figure was identified on the report page. · Official report hero image · [source](https://www.primeintellect.ai/blog/measuring-autonomous-research)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -82,9 +82,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Separate leaderboards, selection validation and final audits; retain rejected and cheating attempts in aggregate counts.
 
-![Visual evidence card](assets/automated-alignment-researchers.svg)
+![The automated alignment researcher harness: literature review, parallel agents, training/evaluation and shared findings.](assets/paper-figures/automated-alignment-researchers.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — The automated alignment researcher harness: literature review, parallel agents, training/evaluation and shared findings. · Figure 2: harness overview · [source](https://alignment.anthropic.com/2026/automated-alignment-researchers/)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -112,9 +112,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI program/learner study: attach immutable execution cards to lineage nodes and ablate parent selection versus fixed-parent search.
 
-![Visual evidence card](assets/frontis-ma1-openmle.svg)
+![Figure 5: OpenMLE training and inference workflow with executable SFT rollouts and online RL from execution feedback.](assets/paper-figures/frontis-ma1-openmle.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 5: OpenMLE training and inference workflow with executable SFT rollouts and online RL from execution feedback. · Figure 5 · [source](https://arxiv.org/html/2607.28568v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -142,9 +142,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Compare isolated versus shared research archives under equal compute, with final tests hidden from selection.
 
-![Visual evidence card](assets/automated-w2s.svg)
+![Schematic overview: parallel AAR agents work in independent sandboxes, share findings/code and submit experiments to evaluation.](assets/paper-figures/automated-w2s.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Schematic overview: parallel AAR agents work in independent sandboxes, share findings/code and submit experiments to evaluation. · Schematic overview figure · [source](https://alignment.anthropic.com/2026/automated-w2s-researcher/)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -172,9 +172,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: make evaluator failures trigger bounded repair iterations, retaining patch provenance and human-readable evidence.
 
-![Visual evidence card](assets/cognition-devin-builds-devin.svg)
+![Official Cognition report image; the report describes review/CI feedback but does not publish a separate system pipeline figure.](assets/paper-figures/cognition-devin-builds-devin.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Official Cognition report image; the report describes review/CI feedback but does not publish a separate system pipeline figure. · Official report hero image · [source](https://cognition.com/blog/how-cognition-uses-devin-to-build-devin)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -202,9 +202,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: mutate small learning-rule functions, cache scored candidates, and freeze selection before held-out game evaluation.
 
-![Visual evidence card](assets/google-alphaevolve-marl-2026.svg)
+![Figure 1: CFR variants discovered and evaluated by the AlphaEvolve-assisted search.](assets/paper-figures/google-alphaevolve-marl-2026.svg)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: CFR variants discovered and evaluated by the AlphaEvolve-assisted search. · Figure 1 · [source](https://arxiv.org/html/2602.16928v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -232,9 +232,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Log which research proposal, code change and measured outcome each assistant contribution connects to.
 
-![Visual evidence card](assets/codex-builds-codex.svg)
+![Official GPT-5.3-Codex system-card cover; the launch report describes assisted training/deployment work but has no standalone RSI pipeline figure.](assets/paper-figures/codex-builds-codex.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Official GPT-5.3-Codex system-card cover; the launch report describes assisted training/deployment work but has no standalone RSI pipeline figure. · Cover page, PDF p.1 · [source](https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 

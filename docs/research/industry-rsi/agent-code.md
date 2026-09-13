@@ -22,9 +22,9 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI coding study: freeze every candidate, retain the complete score trajectory, and measure development/held-out direction agreement under a fixed executor.
 
-![Visual evidence card](assets/bytedance-harnessdev.svg)
+![Figure 1: Creation builds a runnable harness from a weak seed, then Evolution repeatedly edits the persistent harness with execution feedback.](assets/paper-figures/harnessdev.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: Creation builds a runnable harness from a weak seed, then Evolution repeatedly edits the persistent harness with execution feedback. · Figure 1, PDF p.2 · [source](https://arxiv.org/html/2609.01437v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -52,9 +52,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: separately version task/meta code, preserve evaluated stepping stones, and keep immutable evaluation records.
 
-![Visual evidence card](assets/meta-hyperagents-2026.svg)
+![Figure 1: DGM-Hyperagents combines a modifiable task agent and meta agent with an archive of stepping stones.](assets/paper-figures/meta-hyperagents-2026.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: DGM-Hyperagents combines a modifiable task agent and meta agent with an archive of stepping stones. · Figure 1 · [source](https://arxiv.org/html/2603.19461v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -82,9 +82,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI coding experiment: constrain mutations to scaffold files, freeze the executor, and audit keep/revert decisions on a hidden test split.
 
-![Visual evidence card](assets/minimax-m27-self-evolution.svg)
+![Figure 8: Model Iteration System and the dual-loop workflow used in M2.7 self-evolution.](assets/paper-figures/minimax-m27-self-evolution.svg)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 8: Model Iteration System and the dual-loop workflow used in M2.7 self-evolution. · Figure 8 · [source](https://arxiv.org/html/2605.26494v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -112,9 +112,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: add an archive-based scaffold-search example with fixed held-out tests and cost-aware parent selection.
 
-![Visual evidence card](assets/sakana-shinkaevolve.svg)
+![Figure 1: ShinkaEvolve archive, rejection sampling, program mutation and fitness evaluation loop.](assets/paper-figures/sakana-shinkaevolve.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: ShinkaEvolve archive, rejection sampling, program mutation and fitness evaluation loop. · Figure 1 · [source](https://arxiv.org/html/2509.19349v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 

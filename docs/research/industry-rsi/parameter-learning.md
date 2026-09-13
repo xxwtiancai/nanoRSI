@@ -22,9 +22,9 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner reporting: separate raw candidate delta from retained-state delta, export failed attempts, and test vague versus explicit goals.
 
-![Visual evidence card](assets/bytedance-aspire.svg)
+![Figure 1: From explicit-task optimization to vague-goal-driven self-evolution.](assets/paper-figures/aspire.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: From explicit-task optimization to vague-goal-driven self-evolution. · Figure 1, PDF p.2 · [source](https://arxiv.org/html/2608.31111v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -52,9 +52,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Explore benign adversarial fixtures with separate attack-validity, task-success and over-refusal scores.
 
-![Visual evidence card](assets/gpt-red.svg)
+![Figure 1: GPT-Red red-teaming performance as test-time compute increases.](assets/paper-figures/gpt-red.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: GPT-Red red-teaming performance as test-time compute increases. · Figure 1, PDF p.1 · [source](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -82,9 +82,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Extend curriculum experiments with capability-retention constraints and a truly frozen final panel.
 
-![Visual evidence card](assets/a3.svg)
+![A3 pipeline: data-generation agent, fine-tuning agent and experiment log adapt to safety failures.](assets/paper-figures/a3.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — A3 pipeline: data-generation agent, fine-tuning agent and experiment log adapt to safety failures. · A3 Pipeline figure · [source](https://alignment.anthropic.com/2026/automated-alignment-agent/)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -112,9 +112,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: explore versioned document adapters as a later memory backend, benchmarking factual retention against retrieval.
 
-![Visual evidence card](assets/sakana-doc-to-lora.svg)
+![Overview of Doc-to-LoRA: a hypernetwork maps document activations to LoRA weights for fast internalization.](assets/paper-figures/sakana-doc-to-lora.svg)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Overview of Doc-to-LoRA: a hypernetwork maps document activations to LoRA weights for fast internalization. · Overview figure · [source](https://arxiv.org/html/2602.15902v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -142,9 +142,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: evaluate a tiny evolvable role/model router against static routing at equal token budgets.
 
-![Visual evidence card](assets/sakana-trinity.svg)
+![Figure 1: Cyclical coordination architecture with a compact coordinator selecting model and role each turn.](assets/paper-figures/sakana-trinity.svg)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: Cyclical coordination architecture with a compact coordinator selecting model and role each turn. · Figure 1 · [source](https://arxiv.org/html/2512.04695v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -172,9 +172,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner adapter: version generator, verifier, labels and expert audit separately; compare verifier co-training against a frozen verifier.
 
-![Visual evidence card](assets/deepseek-math-v2.svg)
+![Figure 2: Proof quality improves as the maximum number of sequential self-verification refinements increases.](assets/paper-figures/deepseek-math-v2.svg)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 2: Proof quality improves as the maximum number of sequential self-verification refinements increases. · Figure 2 · [source](https://arxiv.org/html/2511.22570v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -202,9 +202,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: test difficulty-adaptive task generation with immutable answer verifiers before attempting costly policy training.
 
-![Visual evidence card](assets/salesforce-unc-agent0.svg)
+![Figure 2: Agent0 co-evolutionary loop between curriculum generation and executor training.](assets/paper-figures/salesforce-unc-agent0.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 2: Agent0 co-evolutionary loop between curriculum generation and executor training. · Figure 2 · [source](https://arxiv.org/html/2511.16043v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -232,9 +232,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: version learner generations and scored trajectories; evaluate transfer with an independent held-out task set.
 
-![Visual evidence card](assets/google-sima2-2025.svg)
+![Figure 16: Self-improvement setup with task setter, reward model, experience dataset and retrained SIMA 2 agent.](assets/paper-figures/google-sima2-2025.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 16: Self-improvement setup with task setter, reward model, experience dataset and retrained SIMA 2 agent. · Figure 16 · [source](https://arxiv.org/html/2512.04797v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -262,9 +262,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner experiment: version generated task manifests with each policy checkpoint and compare experience reuse against a frozen-data control.
 
-![Visual evidence card](assets/alibaba-agentevolver.svg)
+![Figure 2: AgentEvolver combines self-questioning, self-navigating and self-attributing mechanisms.](assets/paper-figures/alibaba-agentevolver.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 2: AgentEvolver combines self-questioning, self-navigating and self-attributing mechanisms. · Figure 2 · [source](https://arxiv.org/html/2511.10395v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -292,9 +292,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: separate learner weights from update-rule parameters and test an outer objective in tiny environments before scaling.
 
-![Visual evidence card](assets/google-discorl-2025.svg)
+![Official DiscoRL method diagram: a meta-network learns update targets from population experience.](assets/paper-figures/google-discorl-2025.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Official DiscoRL method diagram: a meta-network learns update targets from population experience. · Official project method figure · [source](https://google-deepmind.github.io/disco_rl/)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -322,9 +322,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI learner control: evaluate a fixed externally supplied task stream, retaining per-task regression scores to distinguish continual learning from direct self-improvement.
 
-![Visual evidence card](assets/tencent-moe-cl.svg)
+![Figure 1: MoE-CL combines task-specific LoRA experts, a shared expert and a task-aware discriminator.](assets/paper-figures/tencent-moe-cl.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: MoE-CL combines task-specific LoRA experts, a shared expert and a task-aware discriminator. · Figure 1 · [source](https://arxiv.org/html/2509.18133v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 

@@ -22,9 +22,9 @@
 
 **Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI skills ablation: compare raw-history, summary-memory and frozen-state runs, with verifier scores hidden from memory construction.
 
-![Visual evidence card](assets/bytedance-s3gym.svg)
+![Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training.](assets/paper-figures/s3gym.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training. · Figure 2, PDF p.7 · [source](https://arxiv.org/html/2608.31100v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -52,9 +52,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: separate immutable evaluator/base policy from versioned memory updates, with provenance and rollback.
 
-![Visual evidence card](assets/prime-agent.svg)
+![Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop.](assets/paper-figures/prime-agent.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop. · Figure 1, PDF p.3 · [source](https://arxiv.org/html/2608.23552v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -82,9 +82,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: compare versioned delta memories against whole-file rewrites on a fixed task stream.
 
-![Visual evidence card](assets/sambanova-stanford-ace.svg)
+![Figure 4: ACE Generator, Reflector and Curator architecture for evolving context playbooks.](assets/paper-figures/sambanova-stanford-ace.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 4: ACE Generator, Reflector and Curator architecture for evolving context playbooks. · Figure 4 · [source](https://arxiv.org/html/2510.04618v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -112,9 +112,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: compare success-filtered procedure memory against no memory, separating planner/subtask retrieval and freezing test memory.
 
-![Visual evidence card](assets/microsoft-legomem-2025.svg)
+![Figure 1: LEGOMem orchestrator, task agents and modular procedural memories.](assets/paper-figures/microsoft-legomem-2025.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 1: LEGOMem orchestrator, task agents and modular procedural memories. · Figure 1 · [source](https://arxiv.org/html/2510.04851v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 
@@ -142,9 +142,9 @@ This local card is a visual summary generated from the audited catalogue text; i
 
 **Possible nanoRSI experiment — not implemented here** — Proposed: optimize compressor prompts from paired failures, retain held-out validation, and track success alongside peak context.
 
-![Visual evidence card](assets/microsoft-acon-2025.svg)
+![Figure 3: Compression guideline optimization uses successful versus failed trajectory feedback.](assets/paper-figures/microsoft-acon-2025.png)
 
-This local card is a visual summary generated from the audited catalogue text; it is not the paper's original figure. Open the primary-source links below for the original charts, screenshots or demos.
+**Source figure / official image** — Figure 3: Compression guideline optimization uses successful versus failed trajectory feedback. · Figure 3 · [source](https://arxiv.org/html/2510.00615v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
 

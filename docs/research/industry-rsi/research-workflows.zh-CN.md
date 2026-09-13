@@ -22,9 +22,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可把提案选择能力与实验执行能力分别评测，并保留不确定或并列判断。
 
-![可视化证据卡](assets/taste.zh-CN.svg)
+![图 2：TASTE 构建流程：提案生成、研究者偏好收集和基准构建。](assets/paper-figures/taste.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 2：TASTE 构建流程：提案生成、研究者偏好收集和基准构建。 · Figure 2, PDF p.3 · [source](https://www-cdn.anthropic.com/files/4zrzovbb/website/dd5feddcb3b7d20aadda6af4093ac1fb0c9d419e.pdf)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -52,9 +52,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：在 nanoRSI 优化任务中采用不可修改的多种子接受标准、配对比较和完整实验台账。
 
-![可视化证据卡](assets/prime-measuring-autonomous-ai-research.zh-CN.svg)
+![官方研究页面的自主研发 speedrun 宣传图；报告页未识别到独立架构图。](assets/paper-figures/prime-measuring-autonomous-ai-research.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 官方研究页面的自主研发 speedrun 宣传图；报告页未识别到独立架构图。 · Official report hero image · [source](https://www.primeintellect.ai/blog/measuring-autonomous-research)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -82,9 +82,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可区分排行榜、选择验证与最终审计，并在汇总中保留被拒绝及作弊尝试的计数。
 
-![可视化证据卡](assets/automated-alignment-researchers.zh-CN.svg)
+![自动化对齐研究器框架：文献综述、并行 Agent、训练/评测和共享发现。](assets/paper-figures/automated-alignment-researchers.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 自动化对齐研究器框架：文献综述、并行 Agent、训练/评测和共享发现。 · Figure 2: harness overview · [source](https://alignment.anthropic.com/2026/automated-alignment-researchers/)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -112,9 +112,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI program/learner 实验：为谱系节点附加不可变执行卡片，对比父代选择与固定父代搜索。
 
-![可视化证据卡](assets/frontis-ma1-openmle.zh-CN.svg)
+![图 5：OpenMLE 训练与推理流程，包含可执行 SFT rollout 和基于执行反馈的在线 RL。](assets/paper-figures/frontis-ma1-openmle.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 5：OpenMLE 训练与推理流程，包含可执行 SFT rollout 和基于执行反馈的在线 RL。 · Figure 5 · [source](https://arxiv.org/html/2607.28568v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -142,9 +142,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可在等计算预算下比较独立与共享研究档案，并将最终测试与选择彻底分离。
 
-![可视化证据卡](assets/automated-w2s.zh-CN.svg)
+![流程示意：并行 AAR Agent 在独立沙盒中工作，共享发现/代码并提交实验评测。](assets/paper-figures/automated-w2s.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 流程示意：并行 AAR Agent 在独立沙盒中工作，共享发现/代码并提交实验评测。 · Schematic overview figure · [source](https://alignment.anthropic.com/2026/automated-w2s-researcher/)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -172,9 +172,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议：由评测失败触发有界修复迭代，同时保留补丁来源与可读验证证据。
 
-![可视化证据卡](assets/cognition-devin-builds-devin.zh-CN.svg)
+![Cognition 官方报告配图；报告描述评审/CI 反馈，但未单独发布系统 pipeline 图。](assets/paper-figures/cognition-devin-builds-devin.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — Cognition 官方报告配图；报告描述评审/CI 反馈，但未单独发布系统 pipeline 图。 · Official report hero image · [source](https://cognition.com/blog/how-cognition-uses-devin-to-build-devin)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -202,9 +202,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 建议实验：修改小型学习规则函数，缓存评分候选，并在保留游戏评价前冻结选择。
 
-![可视化证据卡](assets/google-alphaevolve-marl-2026.zh-CN.svg)
+![图 1：AlphaEvolve 辅助搜索发现并评估的 CFR 变体。](assets/paper-figures/google-alphaevolve-marl-2026.svg)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — 图 1：AlphaEvolve 辅助搜索发现并评估的 CFR 变体。 · Figure 1 · [source](https://arxiv.org/html/2602.16928v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
@@ -232,9 +232,9 @@
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 可记录研发建议、代码改动与实测结果之间的对应关系，衡量辅助研发贡献。
 
-![可视化证据卡](assets/codex-builds-codex.zh-CN.svg)
+![GPT-5.3-Codex 官方系统卡首页；发布报告描述研发辅助，但没有独立 RSI pipeline 图。](assets/paper-figures/codex-builds-codex.png)
 
-这张本地卡片由已核验的资料库文字生成，是信息摘要，不是论文原图。原始图表、截图或演示请打开下方一手来源。
+**原文图／官方图片** — GPT-5.3-Codex 官方系统卡首页；发布报告描述研发辅助，但没有独立 RSI pipeline 图。 · Cover page, PDF p.1 · [source](https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
 
