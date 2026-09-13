@@ -16,3 +16,6 @@ htmlcov/
 # Local orchestration state and social publishing bundles
 .omx/
 marketing/
+
+# Local agent instructions and memory (repo-specific, never publish)
+AGENTS.md
