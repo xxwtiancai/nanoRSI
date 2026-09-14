@@ -133,6 +133,8 @@ def _markdown(records: list[dict]) -> str:
 
 
 def write_ledger(root: Path) -> dict:
+    if not (root / "nanorsi.toml").is_file():
+        return {"jsonl": None, "markdown": None, "revisions": 0, "skipped": "no nanorsi.toml in workspace"}
     records = revisions(root)
     reports = root / "reports"
     reports.mkdir(parents=True, exist_ok=True)

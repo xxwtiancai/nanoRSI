@@ -8,8 +8,8 @@ import sys
 import uuid
 from pathlib import Path
 
+from . import audit, loop, training
 from .config import load_config
-from .evidence import write_ledger
 from .gate import decide
 from .gitops import Git, GitError
 from .lineage import LineageStore, artifact
@@ -52,7 +52,6 @@ def _baseline(root: Path) -> dict:
                               'evaluator_fingerprint': loop.fingerprint(root), 'manifest_hash': contract,
                               'artifacts': _artifacts(root, run_dir)})
         write_report(root, store.events())
-        write_ledger(root)
         return event
 
 
@@ -77,7 +76,6 @@ def _step(root: Path) -> dict:
             raise
         finally:
             write_report(root, store.events())
-            write_ledger(root)
         return event
 
 
@@ -221,11 +219,13 @@ def _parser():
     new.add_argument('template', choices=['artifact', 'harness', 'model', 'skills', 'coding', 'program', 'agent', 'learner', 'artifact-fixture', 'harness-fixture', 'model-contract'])
     new.add_argument('destination', type=Path)
     new.add_argument('--goal', default='Improve the target')
-    for name in ['baseline', 'step', 'run', 'report', 'verify', 'doctor', 'recover', 'freeze', 'final-test', 'evaluate']:
+    for name in ['baseline', 'step', 'run', 'report', 'verify', 'doctor', 'recover', 'freeze', 'final-test', 'evaluate', 'audit']:
         command = sub.add_parser(name)
         command.add_argument('--workspace', type=Path, default=Path.cwd())
         if name == 'report':
             command.add_argument('--format', choices=['markdown', 'html'], default='markdown')
+        if name == 'audit':
+            command.add_argument('--generation', type=int, help='Generation to audit; default: latest accepted')
         if name == 'doctor':
             command.add_argument('--check-model', action='store_true', help='Send one model request; may incur API cost outside experiment accounting')
         if name in {'freeze', 'final-test'}:
@@ -259,12 +259,12 @@ def _dispatch(args, root):
         fn = loop.freeze if command == 'freeze' else loop.final_test
         return fn(root, load_config(root / 'nanorsi.toml'), args.repeats)
     if command == 'report':
-        path = write_report(root, LineageStore.initialize(root).verify(), format=args.format)
-        write_ledger(root)
-        return path
+        return write_report(root, LineageStore.initialize(root).verify(), format=args.format)
     if command == 'verify':
         LineageStore.initialize(root).verify()
         return 'lineage: ok'
+    if command == 'audit':
+        return audit.audit(root, args.generation)
     if command == 'recover':
         _recover(root)
         return 'recovered stale nanoRSI state'

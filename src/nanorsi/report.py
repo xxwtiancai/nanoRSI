@@ -5,6 +5,7 @@ import html
 import math
 from pathlib import Path
 
+from .evidence import write_ledger
 from .lineage import write_json
 
 
@@ -218,4 +219,5 @@ def write_report(root: Path, events: list[dict], *, format: str = 'markdown') ->
         lines += ['| ' + ' | '.join(str(v).replace('|', '\\|').replace('\n', ' ') for v in row) + ' |' for row in rows]
     markdown.write_text('\n'.join(lines), encoding='utf-8')
     _write_html(reports / 'report.html', events, summary)
+    write_ledger(root)
     return reports / 'report.html' if format == 'html' else markdown

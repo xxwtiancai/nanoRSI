@@ -25,6 +25,7 @@ One workspace has one accepted incumbent and a bounded proposal budget. Serial s
 | `src/nanorsi/process.py` | Filtered argv execution, finite timeout, raw output bound and POSIX process-group cleanup |
 | `src/nanorsi/report.py` | Traceable search report and nullable cost coverage |
 | `src/nanorsi/evidence.py` | Per-revision evidence ledger: diagnosis, diff, redacted case outcomes, decision, artifact integrity flags |
+| `src/nanorsi/audit.py` | Fresh-session skill audit: expected-answer leakage and silent-bypass detection on accepted generations |
 | `src/nanorsi/templates.py` | Exportable workspace starters |
 | `src/nanorsi/doctor.py` | Local preflight, model configuration and manifest checks |
 | `src/nanorsi/locking.py` | One mutation operation per workspace |
@@ -124,6 +125,8 @@ Final report rendering follows the frozen condition list and primary-metric dire
 The shared test helper lives under protected `adapters/`, included in the frozen experiment identity. The default mutable surface stays `target/agent/skills/**`. Source groups, comparison identity, final-test freezing and lineage requirements are unchanged. Local executable code remains trusted; this is not a hardened sandbox.
 
 `nanorsi report --format html` writes standalone `reports/report.html` alongside Markdown and raw lineage JSON. Every `report`, `baseline`, `step` and `final-test` also writes `reports/evidence.jsonl` and `reports/evidence.md`: one record per proposal revision (accepted, rejected, no-op or failed) combining the proposer's hypothesis, the candidate diff with per-file line stats, redacted per-case evaluator outcomes for parent and candidate panels (task/group/repeat/score/status only; traces and skill hashes are dropped), the gate decision with reason, and a sha256 integrity flag for each referenced run artifact. The ledger is a derived read-only view of the journal; it does not enlarge the mutable surface or feed selection. Final summaries require all frozen conditions and repeats, identical task/repeat pairs and finite bounded scores. Repeats are averaged within tasks, then tasks equally weighted. Incomplete final panels show pending evaluation instead of an improvement claim. All dynamic HTML is escaped. Search/test costs disclose coverage and preserve unknown values.
+
+`nanorsi audit [--generation N]` writes `reports/audit.json` for the chosen accepted generation (default: latest). It checks every file under `target/agent/skills/**` at that generation's commit for expected-answer leakage (whitespace-normalized task `expected_files` content of at least eight characters appearing in skill text) and reports silent bypass: executable skills whose `run.py` never appears in a `skill_script_invoked` trace event across the generation's evaluation panel, plus declared-but-unloaded names. Markdown-only skills are always loaded into context and cannot be attribution-checked; they are reported separately instead of being guessed at. The audit is a read-only measurement: it feeds no gate, selection or contract, and a missing evaluation panel degrades to a leakage-plus-inventory report with an explicit note.
 
 ## Model onboarding and credential contract (v0.3.1)
 

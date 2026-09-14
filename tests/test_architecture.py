@@ -34,6 +34,7 @@ EXPECTED_MODULES = {
     "process.py",
     "report.py",
     "evidence.py",
+    "audit.py",
     "templates.py",
     "doctor.py",
     "locking.py",
