@@ -1,6 +1,6 @@
 # Industry RSI research map
 
-**2025-09-15 → 2026-09-15** · **44** in-window records
+**2025-09-15 → 2026-09-15** · **45** in-window records
 
 A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a locally stored paper figure, official research image or source-page screenshot, with its locator and source URL, plus an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.
 
@@ -13,7 +13,7 @@ A selective, primary-source catalogue of company and company–university papers
 | Category | Records |
 | --- | ---: |
 | [Parameters and training data](parameter-learning.md) | 12 |
-| [Agents and code](agent-code.md) | 12 |
+| [Agents and code](agent-code.md) | 13 |
 | [Memory and context](memory-context.md) | 9 |
 | [Automated research and evaluation](research-workflows.md) | 11 |
 
@@ -38,6 +38,7 @@ A selective, primary-source catalogue of company and company–university papers
 | 2026-08-05 | [Prime Agent: A Self-Improving RLM Harness](memory-context.md#prime-agent) | Prime Intellect / Princeton University / MIT | Direct bounded loop |
 | 2026-08-03 | [Qwen3.8-Max: A New Bar for Coding and Cowork (self-evolving harness demonstrations)](agent-code.md#qwen38-max-self-evolving-harness) | Alibaba (Qwen team) | Direct bounded loop |
 | 2026-08 | [Automated Researchers Can Mitigate Well-Characterized Alignment Failures](research-workflows.md#automated-alignment-researchers) | Anthropic Fellows Program | Automated / assisted R&D |
+| 2026-07-31 | [Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection](agent-code.md#salesforce-beagle-darwinx) | Salesforce AI Research | Direct bounded loop |
 | 2026-07-30 | [Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering](research-workflows.md#frontis-ma1-openmle) | Frontis.AI — Horizon Research / Tsinghua University | Direct bounded loop |
 | 2026-07-23 | [Toward Self-Improving Agents](research-workflows.md#salesforce-toward-self-improving-agents) | Salesforce (AI Labs) | Enabling technique / evaluation |
 | 2026-07-15 | [GPT-Red: Automated Red Teaming via Self-Play at Scale](parameter-learning.md#gpt-red) | OpenAI | Direct bounded loop |

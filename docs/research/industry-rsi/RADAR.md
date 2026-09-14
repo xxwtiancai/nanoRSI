@@ -17,11 +17,13 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 - [simskill-traffic](agent-code.zh-CN.md#simskill-traffic) — Jilin × Tongji (arXiv 2609.03753) runs a gap-driven Propose→Act→Evaluate→Distill loop over the SUMO traffic simulator into episodic/procedural/semantic memory, up to +25 points verified success with a stated caveat that memory does not help every backbone; Apache-2.0 code.
 
 **Updated entries**
-- None; the rolling window advanced to 2025-09-15 → 2026-09-15 with all 45 records retained — tencent-moe-cl (2025-09-14) moved into the renderer's archive section.
+- [salesforce-beagle-darwinx](agent-code.zh-CN.md#salesforce-beagle-darwinx) — added after verifying the Apache-2.0 Beagle repository, DarwinX v1 paper and official architecture figure; the 2026-09-02 release is recorded separately from the 2026-07-31 paper date.
+
+The rolling window advanced to 2025-09-15 → 2026-09-15 with all 46 records retained — tencent-moe-cl (2025-09-14) moved into the renderer's archive section.
 
 **Signals for engineering**
 - ByteDance "Seed-Evolving" re-check: seed.bytedance.com/zh/public_papers still ends at Chain-of-Experience (2026.08.18); no official page or paper for the self-evolving model reported by Tencent News on Sept 11 — still a media lead only; re-check next run.
-- Four of today's six entries converge on the same control: changes commit only after an independent check (SkillGLoW's verifier-grounded gate, Procedural Graphs' held-out validation, SkillEvolver's fresh-session auditor, SimSkill's action–critic loop) — tracked as ADOPTION items 14–15.
+- Four of today's six entries converge on the same control: changes commit only after an independent check (SkillGLoW's verifier-grounded gate, Procedural Graphs' held-out validation, SkillEvolver's fresh-session auditor, SimSkill's action–critic loop) — tracked as ADOPTION items 14–15. Beagle/DarwinX adds a population-level preserve-and-extend selection boundary — tracked as ADOPTION item 18.
 - prime-rl shipped v0.9.0 (Aug 25): adaptive concurrency sized from live vLLM pressure plus soft/hard KV-cache caps — an infrastructure signal for running self-improvement populations cheaply, not a new mechanism (supersedes the stale v0.6.0 note).
 - hermes-agent v0.21.3 (Sept 14) rolls up ~338 PRs, mostly remote-gateway session reliability — same infrastructure-reliability category as v0.21.0–2.
 - EmbodiSkill (NJU × Microsoft × Tsinghua AIR, per a May media story alongside SkillEvolver) targets embodied skill-aware reflection; not yet verified against its original paper — candidate for the next sweep.

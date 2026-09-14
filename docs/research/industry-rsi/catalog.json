@@ -3225,6 +3225,62 @@
      "zh": "图 1：SimSkill 架构及其在 SUMO 上的自进化环——提议任务、规划检索、执行、评估反思，再蒸馏进情景、程序与语义三种记忆。"
     }
    }
+  },
+  {
+   "id": "salesforce-beagle-darwinx",
+   "title": "Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection",
+   "organizations": ["Salesforce AI Research"],
+   "category": "agent-code",
+   "relationship": "direct-loop",
+   "published": "2026-07-31",
+   "kind": "paper",
+   "date_note": {
+    "en": "DarwinX was first submitted on 2026-07-31; the official Beagle implementation was open-sourced on 2026-09-02. The catalogue uses the paper's first-public date and records the later repository release separately.",
+    "zh": "DarwinX 于 2026-07-31 首次提交；官方 Beagle 实现于 2026-09-02 开源。资料库使用论文首发日期，并单独记录后续仓库发布。"
+   },
+   "additional_events": [{"date": "2026-09-02", "kind": "release", "label": "Official Beagle release"}],
+   "affiliation": {
+    "en": "The paper and official implementation are from Salesforce AI Research; Beagle is maintained in the SalesforceAIResearch GitHub organization.",
+    "zh": "论文与官方实现来自 Salesforce AI Research；Beagle 由 SalesforceAIResearch GitHub 组织维护。"
+   },
+   "mechanism": {
+    "en": "Beagle treats an agent harness as the evolvable object and provides evaluation/evolution backends, benchmark-native rollout engines and an agent factory. DarwinX freezes model weights, proposes harness variants through an evolver, scores them with each benchmark's verifier, admits preserve-and-extend candidates without regression, and retains alternative lineages for recombination.",
+    "zh": "Beagle 将 agent harness 作为可进化对象，提供评测／进化后端、基准原生 rollout 引擎与 agent 工厂。DarwinX 冻结模型权重，由 evolver 提议 harness 变体，经各基准验证器评分，仅接受不退化且扩展覆盖的候选，并保留替代谱系供重组。"
+   },
+   "result": {
+    "en": "Authors report on GPT-5.5 high with Monet: Terminal-Bench 2.1 pass@5 rises 75.5 to 83.2 (+7.7 points), TerminalWorld pass@1 48.8 to 56.1 (+7.3), WebArena-Infinity pass@1 43.5 to 93.0 (+49.5), and SWE-bench Verified pass@1 80.8 to 84.2 (+3.4). TerminalWorld uses a train/test split and the evolved harness transfers unchanged to SWE-bench.",
+    "zh": "作者报告 GPT-5.5 high 与 Monet 上的结果：Terminal-Bench 2.1 pass@5 从 75.5 升至 83.2（+7.7 分），TerminalWorld pass@1 从 48.8 升至 56.1（+7.3），WebArena-Infinity pass@1 从 43.5 升至 93.0（+49.5），SWE-bench Verified pass@1 从 80.8 升至 84.2（+3.4）。TerminalWorld 使用训练／测试划分，进化后的 harness 原样迁移到 SWE-bench。"
+   },
+   "limits": {
+    "en": "These are author-reported results, not a local reproduction. The largest WebArena delta includes a browser_execute action addition. The release requires Docker, uv, provider credentials and benchmark infrastructure. Weights do not evolve; the demonstrated recursive surface is bounded harness revision and population selection, not open-ended improvement.",
+    "zh": "这些是作者报告结果，不是本地复现。WebArena 最大增益包含新增 browser_execute action。首发版本需要 Docker、uv、服务商凭据与基准基础设施。权重不变；展示的递归面是有界 harness 修订与种群选择，而非开放式持续提升。"
+   },
+   "availability": {
+    "en": "Beagle and the official DarwinX implementation are public under Apache-2.0. No model weights or benchmark datasets are released; the system expects benchmark-native task caches and user-provided harness repositories.",
+    "zh": "Beagle 与官方 DarwinX 实现以 Apache-2.0 公开。未发布模型权重或基准数据集；系统依赖基准原生任务缓存及用户提供的 harness 仓库。"
+   },
+   "application": {
+    "en": "Proposed: add a small population mode around nanoRSI's frozen evaluator, preserving raw candidate deltas, rollback-selected deltas and alternative lineage metadata; compare single-lineage reuse with preserve-and-extend selection under the same task stream and budget. Do not vendor Beagle or its dependency stack into the stdlib core.",
+    "zh": "建议：围绕 nanoRSI 冻结评测器增加小型 population 模式，保留候选原始增量、回滚后选中增量及替代谱系元数据；在相同任务流与预算下比较单谱系复用和 preserve-and-extend 选择。不要将 Beagle 或其依赖栈引入标准库核心。"
+   },
+   "sources": [
+    {"label": "DarwinX paper v1", "url": "https://arxiv.org/abs/2608.07545", "kind": "paper"},
+    {"label": "Official Beagle repository", "url": "https://github.com/SalesforceAIResearch/Beagle", "kind": "repository"},
+    {"label": "Beagle Apache-2.0 license", "url": "https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt", "kind": "license"},
+    {"label": "Official Beagle architecture figure", "url": "https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg", "kind": "project-page"}
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-15",
+   "visual": {
+    "kind": "official-project-figure",
+    "asset": "assets/paper-figures/beagle-architecture.svg",
+    "source_url": "https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg",
+    "locator": "Official project architecture figure",
+    "caption": {
+     "en": "Official Beagle architecture: benchmark data and agent factories feed evaluation/evolution backends, rollout engines and the DarwinX evolution algorithm.",
+     "zh": "Beagle 官方架构图：基准数据与 agent 工厂进入评测／进化后端、rollout 引擎及 DarwinX 进化算法。"
+    }
+   }
   }
  ]
 }

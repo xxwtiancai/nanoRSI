@@ -1,6 +1,6 @@
 # 企业 RSI 研究地图
 
-**2025-09-15 → 2026-09-15** · **44** 条窗口内记录
+**2025-09-15 → 2026-09-15** · **45** 条窗口内记录
 
 按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。每条详情都带一张纳入仓库的论文原图、官方研究图片或原文页截图，并注明定位信息和来源链接；有核验结果时还会单独列出代码、权重或数据链接。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。
 
@@ -13,7 +13,7 @@
 | 分类 | 条目数 |
 | --- | ---: |
 | [参数与训练数据](parameter-learning.zh-CN.md) | 12 |
-| [Agent 与代码](agent-code.zh-CN.md) | 12 |
+| [Agent 与代码](agent-code.zh-CN.md) | 13 |
 | [记忆与上下文](memory-context.zh-CN.md) | 9 |
 | [自动化研发与评测](research-workflows.zh-CN.md) | 11 |
 
@@ -38,6 +38,7 @@
 | 2026-08-05 | [Prime Agent: A Self-Improving RLM Harness](memory-context.zh-CN.md#prime-agent) | Prime Intellect / Princeton University / MIT | 直接有界闭环 |
 | 2026-08-03 | [Qwen3.8-Max: A New Bar for Coding and Cowork (self-evolving harness demonstrations)](agent-code.zh-CN.md#qwen38-max-self-evolving-harness) | Alibaba (Qwen team) | 直接有界闭环 |
 | 2026-08 | [Automated Researchers Can Mitigate Well-Characterized Alignment Failures](research-workflows.zh-CN.md#automated-alignment-researchers) | Anthropic Fellows Program | 自动化／辅助研发 |
+| 2026-07-31 | [Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection](agent-code.zh-CN.md#salesforce-beagle-darwinx) | Salesforce AI Research | 直接有界闭环 |
 | 2026-07-30 | [Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering](research-workflows.zh-CN.md#frontis-ma1-openmle) | Frontis.AI — Horizon Research / Tsinghua University | 直接有界闭环 |
 | 2026-07-23 | [Toward Self-Improving Agents](research-workflows.zh-CN.md#salesforce-toward-self-improving-agents) | Salesforce (AI Labs) | 支撑技术／评测 |
 | 2026-07-15 | [GPT-Red: Automated Red Teaming via Self-Play at Scale](parameter-learning.zh-CN.md#gpt-red) | OpenAI | 直接有界闭环 |
