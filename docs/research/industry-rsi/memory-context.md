@@ -2,6 +2,66 @@
 
 [← Research map](README.md)
 
+<a id="se-gos-skill-graph"></a>
+
+## SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale
+
+**2026-09-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-08. No later revision recorded at verification time.
+
+**Institutional relationship** — Paper v1 lists Dawei Fu (Peking University and Tencent), Cheng Jiang (University of Edinburgh), Sitian Qian (Northwestern University), Huainan Wang (Tencent) and Zhongkai Hao (Tsinghua University). Tencent appears as a direct employer of two authors.
+
+**What changes and how feedback is reused** — Training-free evolution of an existing Graph-of-Skills retrieval graph from real execution traces. Three updates merge into one offline round: topology evolution (induce workflow/dependency/avoid edges from co-occurrence, prune never-used skills), Hebbian edge-weight evolution (reinforce frequently co-used paths), and node-description evolution (a single-round 'text gradient' refresh of retrieval-facing descriptions). The retrieval algorithm, the skill contents and the model weights are untouched — only the retrieval state changes with execution, and the same retrieval interface serves the evolved graph.
+
+**Author-reported result** — On SkillsBench across three LLMs, one evolution round lifts average task reward from 52.4% to 59.4% while cutting average input tokens by roughly one third versus loading the full 1,000-skill library. The evolved graph transfers to a disjoint held-out 37-task split with a +5.4-point gain over the static GoS baseline. Gains vary across model families, and multi-round evolution (Table 4, n=174 attempts per round) continues to help with diminishing returns.
+
+**Evidence limits** — Evolution is offline and requires a pool of training-task runs; metrics are averages over scored attempts on one benchmark (SkillsBench); no code release; the cold-start substrate is a fixed 1,000-skill library whose construction the method takes as given.
+
+**Code / weights / data / license** — No code or data release located; paper only. Evaluation uses three commercial LLM APIs named in the paper.
+
+**Possible nanoRSI experiment — not implemented here** — Give nanoRSI a training-free retrieval-upkeep pass: after each evaluation batch, mine run logs for co-used and never-used primitives, adjust the retrieval graph (edges, weights, descriptions) instead of rewriting skill contents, and verify on a held-out task split before adoption.
+
+![Figure 1: SE-GoS — real agent runs produce execution traces that drive topology, edge-weight and node-description updates; the evolved graph keeps the unchanged GoS retrieval interface.](assets/paper-figures/se-gos-skill-graph.png)
+
+**Source figure / official image** — Figure 1: SE-GoS — real agent runs produce execution traces that drive topology, edge-weight and node-description updates; the evolved graph keeps the unchanged GoS retrieval interface. · Figure 1 · [source](https://arxiv.org/html/2609.08228v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-15.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.08228) · [Paper v1 (affiliations, Figure 1, Tables 2-4)](https://arxiv.org/html/2609.08228v1)
+
+<a id="procedural-graphs-google"></a>
+
+## Procedural Graphs: Self-Evolving Execution Structures for LLM Agents
+
+**2026-09-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-08. No later revision recorded at verification time.
+
+**Institutional relationship** — Paper v1 lists first author Yuxing Lu with Google, Georgia Institute of Technology and Peking University; co-authors Yicheng Chen, Shanchan Wu and Sercan O. Arik list Google. Industry-led work with university collaborators.
+
+**What changes and how feedback is reused** — Procedural knowledge is stored as (procedure, relation, procedure) triplets with edge attributes — a Procedural Graph analogous to a knowledge graph for how-to knowledge. At run time the agent localizes its active node, extracts a 2-hop subgraph, and a guidance model turns it into step-level guidance that biases rather than dictates the next action. In offline self-evolution an LLM refiner contrasts failed against successful trajectories and proposes graph edits (add, delete, update); an edit commits only if held-out validation performance is preserved or improved, and rejected edits are kept in a rejected-memory so the refiner stops re-proposing them.
+
+**Author-reported result** — On EnterpriseArena (liquidity management through successive macro crises, Gemini 3.5 Flash), self-evolution Round 1 adds an audit-cash/forecast-runway node lifting validation survival from 0.0% to 45.0%; Round 2 adds note reuse and lifts survival to 80.0% while tool calls fall from 17.23 to 3.08 per month versus the unguided baseline; Rounds 3-6 commit nothing (one candidate fails structural verification) — no-op rounds are reported. Across HotpotQA, MultiChallenge and ALFWorld-style suites the learned graph matches or surpasses hand-designed guidance and memory-based baselines.
+
+**Evidence limits** — The self-evolution case study is single-model (Gemini 3.5 Flash); no code release; matching hand-designed graphs rests on the authors' own baselines; guidance quality inherits the guidance model's limits.
+
+**Code / weights / data / license** — No code or data release located; paper only. Experiments use Gemini 3.5 Flash (commercial API).
+
+**Possible nanoRSI experiment — not implemented here** — Keep a small procedural graph of nanoRSI's own improvement loop (propose, evaluate, commit), let a refiner read failed versus successful episodes, and add an explicit rejected-edit memory so the loop stops re-proposing known-bad changes; gate every edit on the frozen validation score.
+
+![Figure 2: the Procedural Graph framework — a read-and-guide pass online, then offline self-evolution where an LLM refiner's edits commit only on validation improvement and rejected edits are remembered.](assets/paper-figures/procedural-graphs-google.png)
+
+**Source figure / official image** — Figure 2: the Procedural Graph framework — a read-and-guide pass online, then offline self-evolution where an LLM refiner's edits commit only on validation improvement and rejected edits are remembered. · Figure 2 · [source](https://arxiv.org/html/2609.09153v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-15.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.09153) · [Paper v1 (affiliations, Figure 2, Section 5.4)](https://arxiv.org/html/2609.09153v1)
+
 <a id="bytedance-s3gym"></a>
 
 ## S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?

@@ -1,6 +1,6 @@
 # Industry RSI research map
 
-**2025-09-14 → 2026-09-14** · **39** in-window records
+**2025-09-15 → 2026-09-15** · **44** in-window records
 
 A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a locally stored paper figure, official research image or source-page screenshot, with its locator and source URL, plus an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.
 
@@ -12,9 +12,9 @@ A selective, primary-source catalogue of company and company–university papers
 
 | Category | Records |
 | --- | ---: |
-| [Parameters and training data](parameter-learning.md) | 13 |
-| [Agents and code](agent-code.md) | 8 |
-| [Memory and context](memory-context.md) | 7 |
+| [Parameters and training data](parameter-learning.md) | 12 |
+| [Agents and code](agent-code.md) | 12 |
+| [Memory and context](memory-context.md) | 9 |
 | [Automated research and evaluation](research-workflows.md) | 11 |
 
 ## Timeline
@@ -23,7 +23,12 @@ A selective, primary-source catalogue of company and company–university papers
 | --- | --- | --- | --- |
 | 2026-09-10 | [The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement](research-workflows.md#genuine-rsi-roadmap-2026) | Shanghai Jiao Tong University / Theseus Labs / Tsinghua University / ByteDance / Shanghai AI Lab / ModelBest / Xiaohongshu Inc. / Humanlaya | Enabling technique / evaluation |
 | 2026-09-08 | [NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness](parameter-learning.md#tokenrhythm-neohorse-1) | TokenRhythm Technologies / Infinigence AI / Tsinghua University / Peking University / The Chinese University of Hong Kong / Alibaba Group | Direct bounded loop |
+| 2026-09-08 | [SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale](memory-context.md#se-gos-skill-graph) | Peking University / Tencent / University of Edinburgh / Northwestern University / Tsinghua University | Direct bounded loop |
+| 2026-09-08 | [Procedural Graphs: Self-Evolving Execution Structures for LLM Agents](memory-context.md#procedural-graphs-google) | Google / Georgia Institute of Technology / Peking University | Direct bounded loop |
 | 2026-09-06 | [Research acceleration: The view inside OpenAI](research-workflows.md#openai-research-acceleration-2026) | OpenAI | Automated / assisted R&D |
+| 2026-09-04 | [From Interaction Traces to Persistent Skills: Online Evolution for Computer-Use Agents](agent-code.md#persistent-skills-osworld) | University of Electronic Science and Technology of China / Zhejiang University | Direct bounded loop |
+| 2026-09-03 | [SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation in Traffic Simulation](agent-code.md#simskill-traffic) | Jilin University / Tongji University | Direct bounded loop |
+| 2026-09-02 | [SkillGLoW: Procedural-Family Skill Consolidation for Self-Improving Agents on Long-Horizon Task Streams](agent-code.md#skillglow-procedural-families) | National University of Singapore / Institute of Advanced Intelligence and Computing (IAIC), Singapore | Direct bounded loop |
 | 2026-09-01 | [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](agent-code.md#bytedance-harnessdev) | ByteDance Seed / Singapore University of Technology and Design / Georgia Institute of Technology / M-A-P / TokenWave.AI | Direct bounded loop |
 | 2026-08-31 | [S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?](memory-context.md#bytedance-s3gym) | ByteDance Seed / M-A-P / TokenWave.AI | Direct bounded loop |
 | 2026-08-31 | [Aspire: Can Models Self-Evolve from Vague Goals?](parameter-learning.md#bytedance-aspire) | ByteDance Seed / Singapore University of Technology and Design / M-A-P / TokenWave.AI | Direct bounded loop |
@@ -38,6 +43,7 @@ A selective, primary-source catalogue of company and company–university papers
 | 2026-07-15 | [GPT-Red: Automated Red Teaming via Self-Play at Scale](parameter-learning.md#gpt-red) | OpenAI | Direct bounded loop |
 | 2026-06-30 | [SkillOpt: Executive Strategy for Self-Evolving Agent Skills](agent-code.md#microsoft-skillopt) | Microsoft Research | Direct bounded loop |
 | 2026-06-07 | [SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History](agent-code.md#tencent-skillhone) | WeChat, Tencent Inc. | Direct bounded loop |
+| 2026-05-11 | [SkillEvolver: Skill Learning as a Meta-Skill](agent-code.md#skillevolver-meta-skill) | Tsinghua University / Beijing Jiaotong University | Direct bounded loop |
 | 2026-04 | [Automated Weak-to-Strong Researcher](research-workflows.md#automated-w2s) | Anthropic / Anthropic Fellows Program | Automated / assisted R&D |
 | 2026-03-19 | [Hyperagents](agent-code.md#meta-hyperagents-2026) | Meta / University of British Columbia | Direct bounded loop |
 | 2026-03-18 | [MiniMax M2.7: Early Echoes of Self-Evolution](agent-code.md#minimax-m27-self-evolution) | MiniMax | Direct bounded loop |
@@ -59,6 +65,11 @@ A selective, primary-source catalogue of company and company–university papers
 | 2025-10-01 | [ACON: Optimizing Context Compression for Long-horizon LLM Agents](memory-context.md#microsoft-acon-2025) | Microsoft / KAIST / University of Cambridge | Direct bounded loop |
 | 2025-09-26 | [Learn the Ropes, Then Trust the Wins: Self-imitation with Progressive Exploration for Agentic Reinforcement Learning](parameter-learning.md#tencent-spear) | Tencent Youtu Lab / Shanghai Jiao Tong University / Peking University / Fudan University / Xiamen University | Direct bounded loop |
 | 2025-09-17 | [ShinkaEvolve: Towards Open-Ended And Sample-Efficient Program Evolution](agent-code.md#sakana-shinkaevolve) | Sakana AI | Direct bounded loop |
+
+## Archive — outside the current window
+
+| Date | Work | Organizations | Evidence class |
+| --- | --- | --- | --- |
 | 2025-09-14 | [Self-Evolving LLMs via Continual Instruction Tuning](parameter-learning.md#tencent-moe-cl) | Beijing University of Posts and Telecommunications / Tencent AI Lab | Enabling technique / evaluation |
 
 ## Dates, reuse and updates

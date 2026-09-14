@@ -11,7 +11,7 @@ The university and collaborator relationships appear in each record. A company n
 | Organization / 机构 | Representative entry / 代表条目 |
 | --- | --- |
 | OpenAI | [GPT-Red](parameter-learning.zh-CN.md#gpt-red), [Codex development assistance](research-workflows.zh-CN.md#codex-builds-codex), [research acceleration report](research-workflows.zh-CN.md#openai-research-acceleration-2026) |
-| Google DeepMind | [SIMA 2](parameter-learning.zh-CN.md#google-sima2-2025), [DiscoRL](parameter-learning.zh-CN.md#google-discorl-2025), [AlphaEvolve MARL](research-workflows.zh-CN.md#google-alphaevolve-marl-2026) |
+| Google DeepMind / Google | [SIMA 2](parameter-learning.zh-CN.md#google-sima2-2025), [DiscoRL](parameter-learning.zh-CN.md#google-discorl-2025), [AlphaEvolve MARL](research-workflows.zh-CN.md#google-alphaevolve-marl-2026), [Procedural Graphs](memory-context.zh-CN.md#procedural-graphs-google) |
 | Anthropic / Fellows Program | [A3](parameter-learning.zh-CN.md#a3), [weak-to-strong researcher](research-workflows.zh-CN.md#automated-w2s), [alignment researchers](research-workflows.zh-CN.md#automated-alignment-researchers), [TASTE](research-workflows.zh-CN.md#taste) |
 | Meta + universities | [Hyperagents](agent-code.zh-CN.md#meta-hyperagents-2026) |
 | Microsoft + collaborators | [ACON](memory-context.zh-CN.md#microsoft-acon-2025), [LEGOMem](memory-context.zh-CN.md#microsoft-legomem-2025), [SkillOpt](agent-code.zh-CN.md#microsoft-skillopt) |
@@ -31,6 +31,11 @@ The university and collaborator relationships appear in each record. A company n
 | Frontis.AI / Horizon Research + Tsinghua | [Frontis-MA1 / OpenRSI](research-workflows.zh-CN.md#frontis-ma1-openmle) |
 | TokenRhythm + Infinigence + Tsinghua / PKU / CUHK / Alibaba | [NeoHorse-1](parameter-learning.zh-CN.md#tokenrhythm-neohorse-1) |
 | SJTU Theseus Labs + Tsinghua / ByteDance / Shanghai AI Lab et al. | [genuine RSI roadmap](research-workflows.zh-CN.md#genuine-rsi-roadmap-2026) |
+| NUS + IAIC (Singapore) | [SkillGLoW](agent-code.zh-CN.md#skillglow-procedural-families) — procedural-family skill consolidation behind a verifier-grounded commit gate |
+| Tsinghua + Beijing Jiaotong | [SkillEvolver](agent-code.zh-CN.md#skillevolver-meta-skill) — skill learning as a portable meta-skill with a fresh-session auditor |
+| UESTC + Zhejiang | [Persistent skills on OSWorld](agent-code.zh-CN.md#persistent-skills-osworld) — online evolution of a versioned GUI skill library |
+| PKU + Edinburgh + Northwestern (+ Tencent / Tsinghua) | [SE-GoS](memory-context.zh-CN.md#se-gos-skill-graph) — training-free self-evolution of a skill-retrieval graph |
+| Jilin + Tongji | [SimSkill](agent-code.zh-CN.md#simskill-traffic) — gap-driven self-evolving agent for SUMO traffic simulation |
 
 ## Checked but not promoted to a dated main entry / 已检索但未强行收录
 
@@ -38,13 +43,13 @@ These are gaps in this audit, not evidence that an institution has no relevant w
 
 | Institution / lead | Decision and primary source / 决定与一手来源 |
 | --- | --- |
-| Nous Research / Hermes | [Hermes Agent](https://github.com/NousResearch/hermes-agent) documents persistent skills and memory. The [self-evolution repository](https://github.com/NousResearch/hermes-agent-self-evolution) marks skill evolution implemented, with code/system-prompt/continuous evolution still planned. A dated primary first-public announcement was not established; commit timestamps do not establish when a repository became public. Re-checked 2026-09-14: v0.21.0–v0.21.2 releases (Aug 31–Sept 11) are session-store reliability work, not a new mechanism. / 已见持久技能和记忆；独立进化仓库仅确认技能进化，其他目标仍在计划中。尚未核实第一方公开首发日，不能用提交时间代替。2026-09-14 复查：v0.21.0–v0.21.2（8 月 31 日–9 月 11 日）为会话存储可靠性修复，非新机制。 |
+| Nous Research / Hermes | [Hermes Agent](https://github.com/NousResearch/hermes-agent) documents persistent skills and memory. The [self-evolution repository](https://github.com/NousResearch/hermes-agent-self-evolution) marks skill evolution implemented, with code/system-prompt/continuous evolution still planned. A dated primary first-public announcement was not established; commit timestamps do not establish when a repository became public. Re-checked 2026-09-14: v0.21.0–v0.21.2 releases (Aug 31–Sept 11) are session-store reliability work, not a new mechanism. Re-checked 2026-09-15: v0.21.3 (Sept 14) rolls up ~338 PRs, still remote-gateway/session reliability. / 已见持久技能和记忆；独立进化仓库仅确认技能进化，其他目标仍在计划中。尚未核实第一方公开首发日，不能用提交时间代替。2026-09-14 复查：v0.21.0–v0.21.2（8 月 31 日–9 月 11 日）为会话存储可靠性修复，非新机制。2026-09-15 复查：v0.21.3（9 月 14 日）合入约 338 个 PR，仍为远程网关/会话可靠性工作。 |
 | Moonshot AI | [Kimi K2.5](https://www.kimi.com/en/blog/kimi-k2-5) describes PARL orchestrator training with frozen subagents. No separate persistent self-modification or successor-training demonstration was verified in this pass. / PARL 编排器训练与并行任务执行不自动等于持久自修改或后继模型训练，本轮未核实独立直接闭环成果。 |
 | Zhipu / Z.AI | [GLM-5 documentation](https://docs.z.ai/guides/llm/glm-5) describes planning, tools and self-checks; retained improvement was not established from this source. / 规划、工具和自检本身不足以证明持续保留的自改进。早期 WebRL 另列下表。 |
 | Mistral | [Remote agents / Medium 3.5](https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/) describes agent execution and model capabilities; an autonomous persistent improvement mechanism was not verified. / 已检索产品能力，未核实自主持久改进机制。 |
 | Reflection | [Company news](https://reflection.ai/news) provides organizational and infrastructure updates; no sufficiently specified mutation/feedback/reuse result was verified. / 已检索公司及基础设施动态，未核实足够明确的修改、反馈与复用实验。 |
 | Alibaba CuES | [Paper](https://arxiv.org/abs/2512.01311) is a relevant follow-up lead; the full affiliation, mechanism and release audit is pending. / 是相关后续线索，完整机构、机制和资产核验待完成。 |
-| ByteDance Seed-Evolving | Reported 2026-09-11 by [Tencent News](https://news.qq.com/rain/a/20260911A0F8DU00) as a self-evolving model; no official Seed page or paper existed when checked on 2026-09-14 (official list ends 2026.08.18). Media lead only; revisit when ByteDance publishes. / 腾讯新闻 2026-09-11 报道的自进化模型；2026-09-14 核验时 Seed 官方页无论文或公告（官方列表止于 2026.08.18）。仅作媒体线索，官方发布后再议。 |
+| ByteDance Seed-Evolving | Reported 2026-09-11 by [Tencent News](https://news.qq.com/rain/a/20260911A0F8DU00) as a self-evolving model; no official Seed page or paper existed when checked on 2026-09-14 (official list ends 2026.08.18). Re-checked 2026-09-15: the official list is unchanged. Media lead only; revisit when ByteDance publishes. / 腾讯新闻 2026-09-11 报道的自进化模型；2026-09-14 核验时 Seed 官方页无论文或公告（官方列表止于 2026.08.18）。2026-09-15 复查：官方列表无变化。仅作媒体线索，官方发布后再议。 |
 
 ## Earlier foundations / 窗口之前的基础工作
 

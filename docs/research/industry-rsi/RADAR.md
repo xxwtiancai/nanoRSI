@@ -6,6 +6,33 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ---
 
+## 2026-09-15
+
+**New entries**
+- [persistent-skills-osworld](agent-code.zh-CN.md#persistent-skills-osworld) — UESTC × Zhejiang (arXiv 2609.04869) evolves a persistent, versioned GUI skill library from interaction traces under a frozen-snapshot discipline, beating a configuration-matched empty-library control by +5.7 to +18.6 points across four OSWorld domains while honestly recording "revision churn".
+- [skillglow-procedural-families](agent-code.zh-CN.md#skillglow-procedural-families) — NUS × IAIC Singapore (arXiv 2609.02217) clusters per-task skill cards into procedural families, compresses them into de-instantiated priors, and admits a prior only through a verifier-grounded commit gate: +17.2 points over no-skill in 12/12 runs and 73.9%→83.9% on unseen ALFWorld.
+- [procedural-graphs-google](memory-context.zh-CN.md#procedural-graphs-google) — Google × Georgia Tech × PKU (arXiv 2609.09153) stores procedural knowledge as a graph whose edits commit only on held-out validation improvement with a rejected-edit memory; on EnterpriseArena self-evolution lifts validation survival 0.0%→80.0% in two rounds and reports its no-op rounds.
+- [se-gos-skill-graph](memory-context.zh-CN.md#se-gos-skill-graph) — PKU × Tencent × Edinburgh × Northwestern × Tsinghua (arXiv 2609.08228) evolves only the retrieval graph of a 1,000-skill library from execution traces — topology, Hebbian edge weights, one-round description refresh — lifting SkillsBench reward 52.4%→59.4% at one-third the input tokens.
+- [skillevolver-meta-skill](agent-code.zh-CN.md#skillevolver-meta-skill) — Tsinghua × BJTU (arXiv 2605.10500, May 11; surfaced via a media lead, verified today against the original) packages skill self-evolution as a portable meta-skill with a fresh-session overfit audit that catches leakage and silent-bypass skills: 56.8% avg@5 vs 43.6% human-curated on SkillsBench; MIT code.
+- [simskill-traffic](agent-code.zh-CN.md#simskill-traffic) — Jilin × Tongji (arXiv 2609.03753) runs a gap-driven Propose→Act→Evaluate→Distill loop over the SUMO traffic simulator into episodic/procedural/semantic memory, up to +25 points verified success with a stated caveat that memory does not help every backbone; Apache-2.0 code.
+
+**Updated entries**
+- None; the rolling window advanced to 2025-09-15 → 2026-09-15 with all 45 records retained — tencent-moe-cl (2025-09-14) moved into the renderer's archive section.
+
+**Signals for engineering**
+- ByteDance "Seed-Evolving" re-check: seed.bytedance.com/zh/public_papers still ends at Chain-of-Experience (2026.08.18); no official page or paper for the self-evolving model reported by Tencent News on Sept 11 — still a media lead only; re-check next run.
+- Four of today's six entries converge on the same control: changes commit only after an independent check (SkillGLoW's verifier-grounded gate, Procedural Graphs' held-out validation, SkillEvolver's fresh-session auditor, SimSkill's action–critic loop) — tracked as ADOPTION items 14–15.
+- prime-rl shipped v0.9.0 (Aug 25): adaptive concurrency sized from live vLLM pressure plus soft/hard KV-cache caps — an infrastructure signal for running self-improvement populations cheaply, not a new mechanism (supersedes the stale v0.6.0 note).
+- hermes-agent v0.21.3 (Sept 14) rolls up ~338 PRs, mostly remote-gateway session reliability — same infrastructure-reliability category as v0.21.0–2.
+- EmbodiSkill (NJU × Microsoft × Tsinghua AIR, per a May media story alongside SkillEvolver) targets embodied skill-aware reflection; not yet verified against its original paper — candidate for the next sweep.
+
+**Coverage & gaps**
+- Searched: arXiv via WebSearch plus direct abs/html opens of seven September skill/self-evolution preprints (the export API was not retried after its Sept 14 rate-limiting; same-day listings may have been missed); ByteDance Seed official publications page; Anthropic research index (Sept 4 Fermat formalization is an autonomous-research capability result, not a self-improvement mechanism; Sept 9–10 items are cybersecurity/eval work); OpenAI news sweep (Sept 10 items are product launches; the Sept 3 GPT-6 Astra rollout is a model release, no RSI mechanism); DeepMind site (WeatherNext 3 and science posts, no RSI); Microsoft/Sakana/domestic-vendor sweeps in English and Chinese (no new RSI announcements); GitHub tracked repos including prime-rl and hermes-agent release notes; Chinese-language media keyword sweeps (no new traceable RSI leads beyond those logged).
+- Not covered: dedicated per-lab homepage visits (institutions were reached through paper affiliation pages today: UESTC, ZJU, NUS, IAIC, PKU, Tsinghua, BJTU, Edinburgh, Northwestern, Georgia Tech, Tongji, Jilin); OpenReview/NeurIPS 2026 listings; Nature / Nature Machine Intelligence; Qwen3.8-Max open-weights follow-through; OpenAI pacing-model post deep-read; EmbodiSkill original-paper verification.
+- Process note: arXiv HTML figure assets mix PNG and SVG; qlmanage renders SVG for eyeballing but its thumbnail aspect can drift — the catalog keeps the original SVG (skillglow-procedural-families) per established practice.
+
+---
+
 ## 2026-09-14
 
 **New entries**

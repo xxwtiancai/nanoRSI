@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
- "as_of": "2026-09-14",
- "window_start": "2025-09-14",
+ "as_of": "2026-09-15",
+ "window_start": "2025-09-15",
  "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
  "records": [
   {
@@ -2814,6 +2814,415 @@
     "caption": {
      "en": "Figure 1: MoE-CL combines task-specific LoRA experts, a shared expert and a task-aware discriminator.",
      "zh": "图 1：MoE-CL 结合任务专属 LoRA 专家、共享专家和任务感知判别器。"
+    }
+   }
+  },
+  {
+   "id": "persistent-skills-osworld",
+   "title": "From Interaction Traces to Persistent Skills: Online Evolution for Computer-Use Agents",
+   "organizations": [
+    "University of Electronic Science and Technology of China",
+    "Zhejiang University"
+   ],
+   "category": "agent-code",
+   "relationship": "direct-loop",
+   "published": "2026-09-04",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-04. No later revision recorded at verification time.",
+    "zh": "arXiv v1：2026-09-04。核验时无更新的修订版本。"
+   },
+   "affiliation": {
+    "en": "Paper v1 lists first author Longtao Hu (UESTC) and Xiao Liang plus corresponding author Linchao Zhu (Zhejiang University). Independent academic work; no company affiliation is stated.",
+    "zh": "论文 v1 列明第一作者 Longtao Hu（电子科技大学）与 Xiao Liang、通讯作者林超（Linchao Zhu，浙江大学）。独立学术工作，未标注企业隶属。"
+   },
+   "mechanism": {
+    "en": "Each iteration executes GUI tasks against a frozen snapshot of a persistent skill library. An extractor turns the rollout trajectory into structured facts; a proposer diagnoses them into candidate edits (create, edit, delete, or explicit no-op); a builder materializes accepted skills as versioned SKILL.md files with edit history. Evaluator outcomes and trace evidence are the feedback; the skill library is the only thing that mutates — model weights stay frozen.",
+    "zh": "每轮迭代在持久技能库的冻结快照上执行 GUI 任务；抽取器把轨迹转为结构化事实，提案者诊断并起草候选修改（新建/编辑/删除/显式 no-op），构建者把通过的材料化为带编辑历史的版本化 SKILL.md。反馈来自评测结果与轨迹证据；唯一被修改的对象是技能库，模型权重保持冻结。"
+   },
+   "result": {
+    "en": "Against a configuration-matched empty-library control (identical action-generation and GUI-grounding stack, task sets and iteration horizons) on four OSWorld application domains, the full system posts a higher post-warm-up (t>=5) mean evaluator score in all four domains, with mean differences from +5.7 to +18.6 percentage points. A GIMP provenance analysis records cross-origin skill retrieval and 'revision churn': repeatedly accepted edits can still fail to recover the originating task — the negative observation is kept.",
+    "zh": "在与配置完全对齐的空技能库对照（同一动作生成与 GUI 定位栈、同一任务集与迭代轮数）下，系统在 OSWorld 四个应用域的预热后（t>=5）平均评测分全部更高，平均差 +5.7 至 +18.6 个百分点。GIMP 域的来源分析记录了跨任务复用与“修订抖动”：反复被接受的编辑仍可能无法恢复其来源任务——该负结果被保留。"
+   },
+   "limits": {
+    "en": "Evidence covers four OSWorld domains with the authors' own evaluator; gains depend on evaluator signal quality, and absolute scores remain far from saturation. No third-party replication yet.",
+    "zh": "证据限于 OSWorld 四个域和作者自建评测器；收益依赖评测信号质量，绝对分数距离饱和仍远。尚无第三方复现。"
+   },
+   "application": {
+    "en": "Port the frozen-snapshot + versioned-SKILL.md + explicit no-op discipline into nanoRSI's skills loop: candidate edits land in a versioned store, each episode runs against a frozen snapshot, and provenance logs reveal which skills are actually retrieved and whether they still solve their origin task.",
+    "zh": "把“冻结快照 + 版本化 SKILL.md + 显式 no-op”纪律移植进 nanoRSI 技能环：候选修改进入版本库，每个 episode 在冻结快照上运行，来源日志揭示哪些技能真的被检索、是否仍能解出来源任务。"
+   },
+   "availability": {
+    "en": "Code public at github.com/LongtaoHu/Skill-Evo4GUI (live 2026-09-15); no license file was located on the repository page, so reuse permission is not established. No trained weights; OSWorld task sets are used, not re-released.",
+    "zh": "代码公开于 github.com/LongtaoHu/Skill-Evo4GUI（2026-09-15 可访问）；仓库页未见许可证文件，不能假定可复用。无训练权重；使用 OSWorld 任务集但未随附发布数据。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.04869",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 (affiliations, Figures 1-2, Tables 1-2)",
+     "url": "https://arxiv.org/html/2609.04869v1",
+     "kind": "paper"
+    },
+    {
+     "label": "Author code repository",
+     "url": "https://github.com/LongtaoHu/Skill-Evo4GUI",
+     "kind": "repository"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-15",
+   "additional_events": [],
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/persistent-skills-osworld.png",
+    "source_url": "https://arxiv.org/html/2609.04869v1",
+    "locator": "Figure 1",
+    "caption": {
+     "en": "Figure 1: the online skill-evolution loop — runtime execution and trace abstraction feed a proposer/builder pair that commits versioned skills into a persistent library shared across iterations.",
+     "zh": "图 1：在线技能进化闭环——运行时执行与轨迹抽象驱动提案/构建两端，把版本化技能提交进跨迭代共享的持久技能库。"
+    }
+   }
+  },
+  {
+   "id": "skillglow-procedural-families",
+   "title": "SkillGLoW: Procedural-Family Skill Consolidation for Self-Improving Agents on Long-Horizon Task Streams",
+   "organizations": [
+    "National University of Singapore",
+    "Institute of Advanced Intelligence and Computing (IAIC), Singapore"
+   ],
+   "category": "agent-code",
+   "relationship": "direct-loop",
+   "published": "2026-09-02",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-02. No later revision recorded at verification time.",
+    "zh": "arXiv v1：2026-09-02。核验时无更新的修订版本。"
+   },
+   "affiliation": {
+    "en": "Paper v1 lists affiliation 1 as the National University of Singapore and affiliation 2 as the Institute of Advanced Intelligence and Computing (IAIC), Singapore; the corresponding author is Joey Tianyi Zhou.",
+    "zh": "论文 v1 标注机构 1 为新加坡国立大学，机构 2 为新加坡先进智能计算研究所（IAIC）；通讯作者为 Joey Tianyi Zhou。"
+   },
+   "mechanism": {
+    "en": "Each task's execution yields a local skill card. Embedding-based clustering groups cards into procedural families; a compressor condenses each family into a de-instantiated global prior. A verifier-grounded commit gate admits a prior only when real downstream execution shows it does not degrade the deployed library (measured against the history-best value). At execution time the frozen prior is woven with a freshly regenerated local skill, so instance detail is regenerated per task instead of being stored.",
+    "zh": "每个任务的执行产出本地技能卡；基于嵌入的聚类把卡片聚成程序性家族，压缩器把每个家族压成去实例化的全局先验。验证器锚定的提交闸门只在真实下游执行证明先验不会降低已部署技能库表现时才准入（与历史最优值比较）。执行时把冻结先验与即时再生成本地技能编织使用，实例细节按任务再生而非存储。"
+   },
+   "result": {
+    "en": "Across 12 continual-improvement runs spanning 4 benchmarks (math reasoning, terminal automation, software repair, embodied ALFWorld) and 3 models, consolidated priors add +17.2 hard points over the no-skill baseline on average (+18.0 with local regeneration); gains are positive in 12/12 runs. The prior library is 3.6x more compact than the per-task pool and leads a published single-document optimizer on 15 of 21 cells. Unmodified priors lift unseen ALFWorld success from 73.9% to 83.9%.",
+    "zh": "在跨 4 个基准（数学推理、终端自动化、软件修复、具身 ALFWorld）、3 个模型的 12 次持续改进运行中，整合先验相对无技能基线平均 +17.2 hard 分（本地再生后 +18.0），12/12 次运行全部为正。先验库比逐任务池紧凑 3.6 倍，并在 21 格中的 15 格领先一个已发表的单文档优化器。不加修改的先验把未见 ALFWorld 成功率从 73.9% 提到 83.9%。"
+   },
+   "limits": {
+    "en": "No code or data release; the single-document-optimizer comparison is a re-run aligned in the appendix (task sets, models, prompts), and all numbers come from the authors' own runs. Model-family-dependent variance is reported.",
+    "zh": "未发布代码与数据；与单文档优化器的对比是附录中对齐任务集、模型与提示后的重跑，所有数字来自作者自测。作者也报告了随模型家族变化的波动。"
+   },
+   "application": {
+    "en": "For nanoRSI's skill library: consolidate related tasks into families and compress per-family priors instead of one global document, and require a real-execution commit gate — a candidate prior is admitted only if current library scores do not degrade.",
+    "zh": "对 nanoRSI 技能库：把相关任务聚成家族并按家族压缩先验，而非维护单一全局文档；并要求真实执行提交闸门——只有当前技能库分数不退化时才准入候选先验。"
+   },
+   "availability": {
+    "en": "No code or data release located; paper plus appendix only. Experiments call commercial models (MiniMax-M3 and GPT-5.4-mini are named in the tables).",
+    "zh": "未找到代码或数据发布，仅有论文与附录。实验调用商业模型（表格中点名 MiniMax-M3 与 GPT-5.4-mini）。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.02217",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 (affiliations, Figure 2, Tables 1-4)",
+     "url": "https://arxiv.org/html/2609.02217v1",
+     "kind": "paper"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-15",
+   "additional_events": [],
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/skillglow-procedural-families.svg",
+    "source_url": "https://arxiv.org/html/2609.02217v1",
+    "locator": "Figure 2",
+    "caption": {
+     "en": "Figure 2: GLoW overview — local evidence becomes skill cards, cards are clustered into procedural families and compressed into candidate priors, and only the verifier-grounded commit gate admits them; execution weaves the frozen prior with a regenerated local skill.",
+     "zh": "图 2：GLoW 总览——本地证据生成技能卡，聚类为程序性家族并压缩成候选先验，只有验证器锚定的提交闸门准入；执行时冻结先验与再生本地技能编织。"
+    }
+   }
+  },
+  {
+   "id": "procedural-graphs-google",
+   "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+   "organizations": [
+    "Google",
+    "Georgia Institute of Technology",
+    "Peking University"
+   ],
+   "category": "memory-context",
+   "relationship": "direct-loop",
+   "published": "2026-09-08",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-08. No later revision recorded at verification time.",
+    "zh": "arXiv v1：2026-09-08。核验时无更新的修订版本。"
+   },
+   "affiliation": {
+    "en": "Paper v1 lists first author Yuxing Lu with Google, Georgia Institute of Technology and Peking University; co-authors Yicheng Chen, Shanchan Wu and Sercan O. Arik list Google. Industry-led work with university collaborators.",
+    "zh": "论文 v1 列明第一作者 Yuxing Lu 隶属 Google、佐治亚理工学院与北京大学；合作者 Yicheng Chen、Shanchan Wu、Sercan Ö. Arık 隶属 Google。企业主导、高校参与的工作。"
+   },
+   "mechanism": {
+    "en": "Procedural knowledge is stored as (procedure, relation, procedure) triplets with edge attributes — a Procedural Graph analogous to a knowledge graph for how-to knowledge. At run time the agent localizes its active node, extracts a 2-hop subgraph, and a guidance model turns it into step-level guidance that biases rather than dictates the next action. In offline self-evolution an LLM refiner contrasts failed against successful trajectories and proposes graph edits (add, delete, update); an edit commits only if held-out validation performance is preserved or improved, and rejected edits are kept in a rejected-memory so the refiner stops re-proposing them.",
+    "zh": "程序性知识以（程序，关系，程序）三元组及边属性存储，构成类比知识图谱的“程序图”。运行时智能体定位活跃节点、抽取 2 跳子图，引导模型将其转为只引导不代做的步骤级建议。离线自进化中，LLM 精炼器对比失败与成功轨迹并提出图编辑（增/删/改）；编辑只有在留出验证性能保持或提升时才提交，被拒编辑留在“拒绝记忆”中以防重复提议。"
+   },
+   "result": {
+    "en": "On EnterpriseArena (liquidity management through successive macro crises, Gemini 3.5 Flash), self-evolution Round 1 adds an audit-cash/forecast-runway node lifting validation survival from 0.0% to 45.0%; Round 2 adds note reuse and lifts survival to 80.0% while tool calls fall from 17.23 to 3.08 per month versus the unguided baseline; Rounds 3-6 commit nothing (one candidate fails structural verification) — no-op rounds are reported. Across HotpotQA, MultiChallenge and ALFWorld-style suites the learned graph matches or surpasses hand-designed guidance and memory-based baselines.",
+    "zh": "在 EnterpriseArena（跨连续宏观危机的流动性管理，Gemini 3.5 Flash）上，自进化第 1 轮新增“核对现金/预测资金跑道”节点，把验证存活率从 0.0% 提到 45.0%；第 2 轮新增笔记复用，存活率提至 80.0%，且相对无引导基线每月工具调用从 17.23 降到 3.08；第 3-6 轮无任何提交（一个候选未过结构校验）——空转轮次被如实报告。在 HotpotQA、MultiChallenge 及 ALFWorld 类任务上，学到的图持平或超过手工引导与记忆基线。"
+   },
+   "limits": {
+    "en": "The self-evolution case study is single-model (Gemini 3.5 Flash); no code release; matching hand-designed graphs rests on the authors' own baselines; guidance quality inherits the guidance model's limits.",
+    "zh": "自进化案例为单模型（Gemini 3.5 Flash）；未发布代码；“持平或超过手工图”依赖作者自建基线；引导质量受引导模型能力上限约束。"
+   },
+   "application": {
+    "en": "Keep a small procedural graph of nanoRSI's own improvement loop (propose, evaluate, commit), let a refiner read failed versus successful episodes, and add an explicit rejected-edit memory so the loop stops re-proposing known-bad changes; gate every edit on the frozen validation score.",
+    "zh": "给 nanoRSI 自身改进环维护一张小程序图（提案、评测、提交），让精炼器阅读失败与成功 episode 的对比，并加显式“拒绝编辑”记忆避免重复提议；每次编辑都以冻结验证分为闸门。"
+   },
+   "availability": {
+    "en": "No code or data release located; paper only. Experiments use Gemini 3.5 Flash (commercial API).",
+    "zh": "未找到代码或数据发布，仅论文。实验使用 Gemini 3.5 Flash（商业 API）。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.09153",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 (affiliations, Figure 2, Section 5.4)",
+     "url": "https://arxiv.org/html/2609.09153v1",
+     "kind": "paper"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-15",
+   "additional_events": [],
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/procedural-graphs-google.png",
+    "source_url": "https://arxiv.org/html/2609.09153v1",
+    "locator": "Figure 2",
+    "caption": {
+     "en": "Figure 2: the Procedural Graph framework — a read-and-guide pass online, then offline self-evolution where an LLM refiner's edits commit only on validation improvement and rejected edits are remembered.",
+     "zh": "图 2：程序图框架——在线“读取并引导”，离线自进化中 LLM 精炼器的编辑只在验证提升时提交，被拒编辑进入拒绝记忆。"
+    }
+   }
+  },
+  {
+   "id": "se-gos-skill-graph",
+   "title": "SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale",
+   "organizations": [
+    "Peking University",
+    "Tencent",
+    "University of Edinburgh",
+    "Northwestern University",
+    "Tsinghua University"
+   ],
+   "category": "memory-context",
+   "relationship": "direct-loop",
+   "published": "2026-09-08",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-08. No later revision recorded at verification time.",
+    "zh": "arXiv v1：2026-09-08。核验时无更新的修订版本。"
+   },
+   "affiliation": {
+    "en": "Paper v1 lists Dawei Fu (Peking University and Tencent), Cheng Jiang (University of Edinburgh), Sitian Qian (Northwestern University), Huainan Wang (Tencent) and Zhongkai Hao (Tsinghua University). Tencent appears as a direct employer of two authors.",
+    "zh": "论文 v1 列明 Dawei Fu（北京大学、腾讯）、Cheng Jiang（爱丁堡大学）、Sitian Qian（西北大学）、Huainan Wang（腾讯）、郝中锴（Zhongkai Hao，清华大学）。两位作者直接受雇于腾讯。"
+   },
+   "mechanism": {
+    "en": "Training-free evolution of an existing Graph-of-Skills retrieval graph from real execution traces. Three updates merge into one offline round: topology evolution (induce workflow/dependency/avoid edges from co-occurrence, prune never-used skills), Hebbian edge-weight evolution (reinforce frequently co-used paths), and node-description evolution (a single-round 'text gradient' refresh of retrieval-facing descriptions). The retrieval algorithm, the skill contents and the model weights are untouched — only the retrieval state changes with execution, and the same retrieval interface serves the evolved graph.",
+    "zh": "对既有 Graph-of-Skills 检索图做免训练进化：真实执行轨迹驱动三类更新合并为一轮离线进化——拓扑进化（按共现诱导工作流/依赖/回避边、剪除从未使用的技能）、赫布式边权进化（强化频繁共用的路径）、节点描述进化（单轮“文本梯度”刷新面向检索的描述）。检索算法、技能内容与模型权重均不动——只有检索状态随执行改变，且进化后沿用同一检索接口。"
+   },
+   "result": {
+    "en": "On SkillsBench across three LLMs, one evolution round lifts average task reward from 52.4% to 59.4% while cutting average input tokens by roughly one third versus loading the full 1,000-skill library. The evolved graph transfers to a disjoint held-out 37-task split with a +5.4-point gain over the static GoS baseline. Gains vary across model families, and multi-round evolution (Table 4, n=174 attempts per round) continues to help with diminishing returns.",
+    "zh": "在 SkillsBench、三个 LLM 上，一轮进化把平均任务奖励从 52.4% 提到 59.4%，同时相对整库加载 1,000 技能把平均输入 token 削减约三分之一。进化图可迁移到不相交的 37 任务留出集，比静态 GoS 基线 +5.4 分。收益随模型家族波动；多轮进化（表 4，每轮 n=174 次尝试）继续有效但边际递减。"
+   },
+   "limits": {
+    "en": "Evolution is offline and requires a pool of training-task runs; metrics are averages over scored attempts on one benchmark (SkillsBench); no code release; the cold-start substrate is a fixed 1,000-skill library whose construction the method takes as given.",
+    "zh": "进化是离线的，需要训练任务的真实运行池；指标是单一基准（SkillsBench）上计分尝试的平均；未发布代码；冷启动基座是给定的 1,000 技能库，其构建方式不在方法范围内。"
+   },
+   "application": {
+    "en": "Give nanoRSI a training-free retrieval-upkeep pass: after each evaluation batch, mine run logs for co-used and never-used primitives, adjust the retrieval graph (edges, weights, descriptions) instead of rewriting skill contents, and verify on a held-out task split before adoption.",
+    "zh": "给 nanoRSI 加一道免训练的检索保养工序：每批评测后从运行日志挖掘共用与从未使用的原语，只调整检索图（边、权、描述）而不改技能内容，并在留出任务集上验证后再采用。"
+   },
+   "availability": {
+    "en": "No code or data release located; paper only. Evaluation uses three commercial LLM APIs named in the paper.",
+    "zh": "未找到代码或数据发布，仅论文。评测使用论文点名的三个商业 LLM API。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.08228",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 (affiliations, Figure 1, Tables 2-4)",
+     "url": "https://arxiv.org/html/2609.08228v1",
+     "kind": "paper"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-15",
+   "additional_events": [],
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/se-gos-skill-graph.png",
+    "source_url": "https://arxiv.org/html/2609.08228v1",
+    "locator": "Figure 1",
+    "caption": {
+     "en": "Figure 1: SE-GoS — real agent runs produce execution traces that drive topology, edge-weight and node-description updates; the evolved graph keeps the unchanged GoS retrieval interface.",
+     "zh": "图 1：SE-GoS——真实智能体运行产生执行轨迹，驱动拓扑、边权与节点描述三类更新；进化图沿用不变的 GoS 检索接口。"
+    }
+   }
+  },
+  {
+   "id": "skillevolver-meta-skill",
+   "title": "SkillEvolver: Skill Learning as a Meta-Skill",
+   "organizations": [
+    "Tsinghua University",
+    "Beijing Jiaotong University"
+   ],
+   "category": "agent-code",
+   "relationship": "direct-loop",
+   "published": "2026-05-11",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-05-11. The work surfaced through a May 2026 media story and was verified against the arXiv original and the official repository on 2026-09-15; recorded under its first-publication date.",
+    "zh": "arXiv v1：2026-05-11。该工作经 2026 年 5 月媒体报道进入视野，2026-09-15 对照 arXiv 原文与官方仓库完成核验；按首次公开日期收录。"
+   },
+   "affiliation": {
+    "en": "Paper v1 lists Erle Zhu, Jinfeng Zhou and Hongning Wang at Tsinghua University, and Genrui Zhang and Caiyan Jia at Beijing Jiaotong University.",
+    "zh": "论文 v1 列明 Erle Zhu、Jinfeng Zhou、Hongning Wang 隶属清华大学，Genrui Zhang、Caiyan Jia 隶属北京交通大学。"
+   },
+   "mechanism": {
+    "en": "Skill self-evolution is packaged as a portable meta-skill any protocol-compliant CLI agent can load; it updates a skill's prose and code, never model weights. One iteration: strategize and spawn K strategy-diverse domain-skill agents to collect success/failure trajectories; analyze the contrast and synthesize a targeted skill patch; then an independent auditor in a fresh session verifies the patched skill before acceptance — a fresh-agent overfit audit that catches leakage and a silent-bypass mode where a skill looks valid but is never invoked at run time. Refinement triggers only after deployment, so the learning signal comes from failures real downstream agents hit, not exploratory traces alone.",
+    "zh": "技能自进化被封装为任何遵循协议的 CLI 智能体都能加载的“元技能”；只更新技能的文本与代码，不动模型权重。单轮迭代：构思并派生 K 个策略多样的领域技能智能体收集成败轨迹；对比分析并合成针对性技能补丁；随后由全新会话中的独立审计员验证补丁——新鲜智能体过拟合审计，可发现数据泄漏与“静默旁路”（技能看似有效但运行时从未被调用）。只有部署后才触发精炼，学习信号来自真实下游智能体踩到的失败，而非仅探索轨迹。"
+   },
+   "result": {
+    "en": "SkillsBench (83 tasks, 15+ domains): 56.8% avg@5 versus 43.6% for human-curated skills and 29.9% no-skill; per the official repository README, the R=2 configuration reaches 56.9% and the evolved skill beats or matches human-curated on 74.7% of tasks. KernelBench GPU-kernel optimization: mean speedup 1.16 to 1.51 on H100. Downstream runs use -19% tokens, -15% turns and -24% wall-clock; end-to-end cost about $4 per task (repository README).",
+    "zh": "SkillsBench（83 任务、15+ 领域）：56.8% avg@5，对比人工精选技能 43.6%、无技能 29.9%；官方仓库 README 载明 R=2 配置达 56.9%，进化技能在 74.7% 的任务上持平或超过人工精选。KernelBench GPU 核优化：H100 上平均加速比 1.16 提至 1.51。下游运行 token -19%、轮次 -15%、墙钟 -24%；端到端成本约每任务 4 美元（仓库 README）。"
+   },
+   "limits": {
+    "en": "Benchmarks use the authors' own task scopes; the deploy-then-refine signal presumes other agents reuse the skill library, leaving cold-start unclear; cost and per-task figures come from the repository README rather than the paper body.",
+    "zh": "基准采用作者自定任务范围；“先部署后精炼”的信号假定其他智能体会复用技能库，冷启动情形不明；成本与逐任务数字来自仓库 README 而非论文正文。"
+   },
+   "application": {
+    "en": "Adopt the fresh-agent overfit audit plus silent-bypass check as a nanoRSI skill-acceptance gate: audit each candidate skill with an agent that has no prior session state, testing both leakage and whether the skill is actually invoked at run time.",
+    "zh": "把“新鲜智能体过拟合审计 + 静默旁路检查”采纳为 nanoRSI 的技能验收闸门：用无任何先前会话状态的智能体审计候选技能，同时检验泄漏与运行时是否真的调用该技能。"
+   },
+   "availability": {
+    "en": "Official code at THU-AICosmos/skillevolver under the MIT license (verified 2026-09-15); README names Claude Opus 4.6 as the working model. No separate dataset release located.",
+    "zh": "官方代码位于 THU-AICosmos/skillevolver，MIT 许可（2026-09-15 核验）；README 写明工作模型为 Claude Opus 4.6。未找到单独的数据发布。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2605.10500",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 (affiliations, Figure 2, Tables 1-2)",
+     "url": "https://arxiv.org/html/2605.10500v1",
+     "kind": "paper"
+    },
+    {
+     "label": "Official code repository (MIT)",
+     "url": "https://github.com/THU-AICosmos/skillevolver",
+     "kind": "repository"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-15",
+   "additional_events": [],
+   "visual": {
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/skillevolver-meta-skill.png",
+    "source_url": "https://arxiv.org/html/2605.10500v1",
+    "locator": "Figure 2",
+    "caption": {
+     "en": "Figure 2: one SkillEvolver iteration — strategy-diverse exploration collects success/failure trajectories, a targeted patch is synthesized, and an independent fresh-session auditor gates acceptance.",
+     "zh": "图 2：SkillEvolver 单轮迭代——策略多样的探索收集成败轨迹，合成针对性补丁，由全新会话的独立审计员把守接受关口。"
+    }
+   }
+  },
+  {
+   "id": "simskill-traffic",
+   "title": "SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation in Traffic Simulation",
+   "organizations": [
+    "Jilin University",
+    "Tongji University"
+   ],
+   "category": "agent-code",
+   "relationship": "direct-loop",
+   "published": "2026-09-03",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-03; latest recorded revision v3: 2026-09-11. Figures are cited from v3; the mechanism description follows v1/v3 abstracts.",
+    "zh": "arXiv v1：2026-09-03；记录的最新修订 v3：2026-09-11。配图引自 v3，机制描述依据 v1/v3 摘要。"
+   },
+   "affiliation": {
+    "en": "Paper v3 lists Qi Liu, Qinzheng Wang and Yiming Bie at the School of Transportation, Jilin University, and Can Li and Wanjing Ma at the Key Laboratory of Road and Traffic Engineering (Ministry of Education), College of Transportation, Tongji University.",
+    "zh": "论文 v3 列明 Qi Liu、Qinzheng Wang、Yiming Bie 隶属吉林大学交通学院，Can Li、Wanjing Ma 隶属同济大学交通运输工程学院（道路交通工程教育部重点实验室）。"
+   },
+   "mechanism": {
+    "en": "Built on the SUMO traffic simulator with a Claude-style skill runtime. In Learn mode the agent identifies its own capability gaps, generates and solves environment-grounded tasks, verifies solutions through an action-critic loop, and distills outcomes into three memory stores: episodic (dated task experiences), procedural (.claude/skills-style executable skills) and semantic (curated knowledge pages). In Infer mode it retrieves from those stores; dedicated memory-management skills handle retrieval, ingestion and linting. Its self-evolving loop is Propose Task, Plan & Retrieve, Act in SUMO, Evaluate & Reflect, Distill & Ingest.",
+    "zh": "基于 SUMO 交通仿真与 Claude 式技能运行时。学习模式下，智能体识别自身能力缺口、自生成环境锚定任务并求解，经行动-批评环验证后，把结果蒸馏进三种记忆：情景记忆（带日期的任务经验）、程序记忆（.claude/skills 风格可执行技能）、语义记忆（策展知识页）。推理模式从记忆库检索；专门的记忆管理技能负责检索、摄取与 lint。其自进化环为：提议任务、规划检索、SUMO 执行、评估反思、蒸馏入库。"
+   },
+   "result": {
+    "en": "Evaluated on two held-out benchmarks across three backbone LLMs with independently verified results (the authors' stated verification protocol): verified success improves by up to +25 percentage points over the no-memory baseline. Ablations show procedural and semantic memory contribute in complementary ways; benefits depend on the backbone and compute budget — memory does not help every model and does not always lower inference cost, which the authors keep as a caveat.",
+    "zh": "在两个留出基准、三个骨干 LLM 上评测，结果经作者所述的独立验证协议核验：验证成功率相对无记忆基线最多 +25 个百分点。消融显示程序记忆与语义记忆互补贡献；收益依赖骨干与算力预算——记忆并非对每个模型都有效、也不总降低推理成本，作者将其保留为警示。"
+   },
+   "limits": {
+    "en": "Domain-specific to SUMO traffic simulation; 'independently verified' refers to the authors' in-paper verification protocol, not an external audit; v3 revised twice within eight days, so numbers should be re-checked against any later version.",
+    "zh": "限于 SUMO 交通仿真领域；“独立验证”指论文内自述的验证协议而非外部审计；v3 在八天内两次修订，若有更新版本应复读数字。"
+   },
+   "application": {
+    "en": "Gap-driven task generation at nano scale: let nanoRSI's proposer maintain an explicit capability-gap list, generate environment-grounded probe tasks against it, and store verified solutions as reusable skills — the same Propose, Act, Evaluate, Distill circuit on the minimal task.",
+    "zh": "缺口驱动的任务生成小型化：让 nanoRSI 提案者维护显式“能力缺口”清单，按缺口生成环境锚定的探针任务，把验证通过的解存为可复用技能——在最小任务上复刻提议、执行、评估、蒸馏回路。"
+   },
+   "availability": {
+    "en": "Code and experimental data public at github.com/qiliuchn/SimSkill-V1 under the Apache-2.0 license (verified 2026-09-15).",
+    "zh": "代码与实验数据公开于 github.com/qiliuchn/SimSkill-V1，Apache-2.0 许可（2026-09-15 核验）。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.03753",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v3 (affiliations, Figure 1, memory listings)",
+     "url": "https://arxiv.org/html/2609.03753v3",
+     "kind": "paper"
+    },
+    {
+     "label": "Author code repository (Apache-2.0)",
+     "url": "https://github.com/qiliuchn/SimSkill-V1",
+     "kind": "repository"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-15",
+   "additional_events": [],
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/simskill-traffic.png",
+    "source_url": "https://arxiv.org/html/2609.03753v3",
+    "locator": "Figure 1",
+    "caption": {
+     "en": "Figure 1: SimSkill architecture and its self-evolving loop over SUMO — propose task, plan and retrieve, act, evaluate and reflect, then distill into episodic, procedural and semantic memory.",
+     "zh": "图 1：SimSkill 架构及其在 SUMO 上的自进化环——提议任务、规划检索、执行、评估反思，再蒸馏进情景、程序与语义三种记忆。"
     }
    }
   }
