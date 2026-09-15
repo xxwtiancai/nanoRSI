@@ -6,6 +6,37 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ---
 
+## 2026-09-16
+
+**New entries**
+- [embodiskill-skill-aware-reflection](agent-code.zh-CN.md#embodiskill-skill-aware-reflection) — HUST × USTC × Microsoft Research × AIR Tsinghua × NJU (arXiv 2605.10332, May 11; verified today against v2) splits reflection evidence into skill-body edits versus appendix-only re-emphasis of ignored guidance, letting a frozen Qwen3.5-27B executor reach 93.28% on ALFWorld, +31.58 over direct GPT-5.2; MIT code. The May media lead is now closed against the original.
+- [rsiagent-autonomous-exploration](memory-context.zh-CN.md#rsiagent-autonomous-exploration) — Aether AI × UCSD × UIC (arXiv 2609.15364) runs curriculum/actor/verifier agents through broad-then-deep exploration and freezes the resulting causal memory: GLM-5.3 actor with a Kimi-K3 verifier scores 78.98 partial on OSWorld 2.0 versus GPT-6 Astra's reported 72.60, and the paper honestly flags verifier-error propagation and compute cost; Apache-2.0 code.
+- [experience-funnel-state-policy](parameter-learning.zh-CN.md#experience-funnel-state-policy) — HK PolyU × Huawei × Renmin University (arXiv 2609.08919) alternates fast held-out-validated textual-state edits with slow transition-aware policy distillation, averaging 57.6% over three benchmarks versus SkillRL's 56.2, and reports that only 2 of 5 evolution rounds were accepted.
+- [skilllift-dense-rubrics](agent-code.zh-CN.md#skilllift-dense-rubrics) — Kang (independent) × Fudan (arXiv 2609.15396) decouples skill search from oracle rollouts with a bilevel rubric surrogate re-aligned by Kendall's τ, beating SkillOpt and CoEvoSkills at 40–70% less token cost; MIT code.
+- [evoontology-self-evolving](memory-context.zh-CN.md#evoontology-self-evolving) — Renmin University (arXiv 2609.15779) evolves an MCP-served ontology layer through diagnose→attribute→typed-patch→paired-gate, +17.8 average on DDR-Bench, with the gate itself worth −11.2 in ablation and cross-backbone transfer dropping ≥6.6 points; MIT code.
+- [economics-of-rsi-2026](research-workflows.zh-CN.md#economics-of-rsi-2026) — Nine economists across METR/Stanford/CMU/Columbia/MIT/Yale (arXiv 2609.15802) model RSI as feedback-loop elasticities and calibrate a ~9% observed AI-R&D return against a ≥15% self-sustaining-acceleration threshold — evidence for the radar's honesty stance, not against it.
+- [sakana-rsi-lab](research-workflows.zh-CN.md#sakana-rsi-lab) — Sakana AI's dedicated RSI Lab (announced June 5 on an undated page; pinned via the HN submission timestamp and verified today) commits to the "most sample-efficient" self-improvement engine with responsibility as a stated design constraint; it surfaced three months late, the same way SkillEvolver did.
+
+**Updated entries**
+- None; the rolling window advanced to 2025-09-16 → 2026-09-16 with all 53 records retained (tencent-moe-cl remains the sole archive entry).
+
+**Signals for engineering**
+- ByteDance "Seed-Evolving" re-check: the official Seed publications page still ends at Chain-of-Experience (2026.08.18) — third consecutive day with no official trace; it stays a media lead only.
+- The admission-gate convergence now spans four more systems: EvoOntology's paired gate (−11.2 without it), SkillLift's rank-correlation re-alignment, RSIAgent's verifier-routed memory and Experience Funnel's held-out state validation all refuse to commit without an independent check — extends ADOPTION items 14–15/18.
+- SkillLift's rubric surrogate is directly implementable in nanoRSI: a learned scorer replaces per-candidate full rollouts and is periodically re-aligned against a few real ones (new ADOPTION item 19).
+- EmbodiSkill's two-channel evidence split — content defects edit the skill, ignored-good-guidance lapses only re-emphasize it — protects good skills from execution noise (new ADOPTION item 20).
+- Experience Funnel gates weight distillation on a counterfactual state comparison (no-state vs previous-state vs updated-state rollouts), the first parameter-track acceptance gate we have catalogued (new ADOPTION item 21).
+- OpenAI4S (PKU-YuanGroup, arXiv 2609.15096, MIT) and Stellar Colosseum (Google-authored, arXiv 2609.15983) are automated-research harnesses without self-improvement loops — handled like Anthropic's Fermat formalization: capability signals, not catalogue entries.
+- Kimi K3's reported 3T-parameter open-weights release (media lead via tmtpost, no Moonshot page verified) matters downstream: RSIAgent's result runs on Kimi-K3 — open-weight backbones now host RSI-harness results — but the release itself is not an RSI mechanism.
+- hermes-agent v0.21.3 and prime-rl v0.9.0 are unchanged since yesterday's note; no new tracked-repo releases today.
+
+**Coverage & gaps**
+- Searched: arXiv via WebSearch plus direct abs/html opens of six preprints and the cs.AI Sept 15 listing (the export API stayed unreachable from this machine — empty reply, same as Sept 14); Sakana AI RSI Lab page plus the HN API for date pinning; ByteDance Seed publications page; GitHub API checks on tracked repos (ShinkaEvolve, OpenRSI, hermes-agent, prime-rl) and four new repos (EmbodiSkill, RSIAgent, EvoOntology, SkillLift); English and Chinese media keyword sweeps (domestic-vendor news this week is commercial — Kimi K3 weights, IPOs, funding); OpenReview and Nature keyword sweeps (nothing new; the ICLR 2026 RSI workshop remains a lead).
+- Not covered: per-lab homepages; NeurIPS 2026 decisions; a full Nature Machine Intelligence sweep; the OpenAI pacing-model post deep-read; MemSkill (arXiv 2602.02474, February, in-window but unverified) surfaced in search — candidate backfill; the two survey leads (2607.13104, 2607.07663) unchanged.
+- Process note: the arXiv listing page (list/cs.AI/recent) works as an export-API fallback, but its titles can render garbled — one entry ("AlgoEvo") resolved to an unrelated XAI paper on the abs page; always verify against the abstract before cataloguing.
+
+---
+
 ## 2026-09-15
 
 **New entries**

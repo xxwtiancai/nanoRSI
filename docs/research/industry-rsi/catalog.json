@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
- "as_of": "2026-09-15",
- "window_start": "2025-09-15",
+ "as_of": "2026-09-16",
+ "window_start": "2025-09-16",
  "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
  "records": [
   {
@@ -3229,7 +3229,9 @@
   {
    "id": "salesforce-beagle-darwinx",
    "title": "Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection",
-   "organizations": ["Salesforce AI Research"],
+   "organizations": [
+    "Salesforce AI Research"
+   ],
    "category": "agent-code",
    "relationship": "direct-loop",
    "published": "2026-07-31",
@@ -3238,7 +3240,13 @@
     "en": "DarwinX was first submitted on 2026-07-31; the official Beagle implementation was open-sourced on 2026-09-02. The catalogue uses the paper's first-public date and records the later repository release separately.",
     "zh": "DarwinX 于 2026-07-31 首次提交；官方 Beagle 实现于 2026-09-02 开源。资料库使用论文首发日期，并单独记录后续仓库发布。"
    },
-   "additional_events": [{"date": "2026-09-02", "kind": "release", "label": "Official Beagle release"}],
+   "additional_events": [
+    {
+     "date": "2026-09-02",
+     "kind": "release",
+     "label": "Official Beagle release"
+    }
+   ],
    "affiliation": {
     "en": "The paper and official implementation are from Salesforce AI Research; Beagle is maintained in the SalesforceAIResearch GitHub organization.",
     "zh": "论文与官方实现来自 Salesforce AI Research；Beagle 由 SalesforceAIResearch GitHub 组织维护。"
@@ -3264,10 +3272,26 @@
     "zh": "建议：围绕 nanoRSI 冻结评测器增加小型 population 模式，保留候选原始增量、回滚后选中增量及替代谱系元数据；在相同任务流与预算下比较单谱系复用和 preserve-and-extend 选择。不要将 Beagle 或其依赖栈引入标准库核心。"
    },
    "sources": [
-    {"label": "DarwinX paper v1", "url": "https://arxiv.org/abs/2608.07545", "kind": "paper"},
-    {"label": "Official Beagle repository", "url": "https://github.com/SalesforceAIResearch/Beagle", "kind": "repository"},
-    {"label": "Beagle Apache-2.0 license", "url": "https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt", "kind": "license"},
-    {"label": "Official Beagle architecture figure", "url": "https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg", "kind": "project-page"}
+    {
+     "label": "DarwinX paper v1",
+     "url": "https://arxiv.org/abs/2608.07545",
+     "kind": "paper"
+    },
+    {
+     "label": "Official Beagle repository",
+     "url": "https://github.com/SalesforceAIResearch/Beagle",
+     "kind": "repository"
+    },
+    {
+     "label": "Beagle Apache-2.0 license",
+     "url": "https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt",
+     "kind": "license"
+    },
+    {
+     "label": "Official Beagle architecture figure",
+     "url": "https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg",
+     "kind": "project-page"
+    }
    ],
    "local_reproduction": "not-run",
    "last_verified": "2026-09-15",
@@ -3279,6 +3303,492 @@
     "caption": {
      "en": "Official Beagle architecture: benchmark data and agent factories feed evaluation/evolution backends, rollout engines and the DarwinX evolution algorithm.",
      "zh": "Beagle 官方架构图：基准数据与 agent 工厂进入评测／进化后端、rollout 引擎及 DarwinX 进化算法。"
+    }
+   }
+  },
+  {
+   "id": "embodiskill-skill-aware-reflection",
+   "title": "EmbodiSkill: Skill-Aware Reflection for Self-Evolving Embodied Agents",
+   "organizations": [
+    "Huazhong University of Science and Technology",
+    "University of Science and Technology of China",
+    "Microsoft Research",
+    "Institute for AI Industry Research (AIR), Tsinghua University",
+    "Nanjing University"
+   ],
+   "category": "agent-code",
+   "relationship": "direct-loop",
+   "published": "2026-05-11",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-05-11; v2: 2026-07-11. The metrics and figures cited here come from v2. Surfaced in May via a media lead alongside SkillEvolver; first verified against the original paper on 2026-09-16.",
+    "zh": "arXiv v1：2026-05-11；v2：2026-07-11。本文引用的指标与配图取自 v2。5 月经媒体线索与 SkillEvolver 一同浮出，2026-09-16 才首次对照原文核验。"
+   },
+   "additional_events": [
+    {
+     "date": "2026-07-11",
+     "kind": "paper",
+     "label": "arXiv v2 (metrics and Figure 2 cited from this version)"
+    }
+   ],
+   "affiliation": {
+    "en": "Paper v2 lists five affiliations: Huazhong University of Science and Technology, University of Science and Technology of China, Microsoft Research, Institute for AI Industry Research (AIR) Tsinghua University, and Nanjing University; Ting Cao (Microsoft Research) is among the authors. Media coverage in May named only NJU x Microsoft x Tsinghua AIR - the full list is broader.",
+    "zh": "论文 v2 标注五个机构：华中科技大学、中国科学技术大学、微软研究院、清华大学人工智能产业研究院（AIR）、南京大学；Ting Cao（微软研究院）在作者之列。5 月的媒体报道只提南大 x 微软 x 清华 AIR，完整名单更广。"
+   },
+   "mechanism": {
+    "en": "A training-free loop that evolves a two-part procedural skill S = (S_body, S_app) for a frozen executor. Each trajectory is interpreted relative to the current skill and split by evidence type: skill-changing evidence (Discovery, Optimization, SkillDefect reflections) is consolidated and applied as targeted edits to the skill body, with the model acting as a constrained editor rather than a free-form rewriter; execution-lapse evidence (the agent failed to follow valid guidance) updates only the appendix, which re-highlights existing valid body content instead of rewriting it. Revision sets larger than a budget trigger no-op.",
+    "zh": "免训练闭环，为冻结执行器进化二段式程序技能 S = (S_body, S_app)。每条轨迹相对当前技能解读并按证据类型拆分：技能变更类证据（Discovery、Optimization、SkillDefect 反思）整合后对技能主体做定向编辑，模型扮演受限编辑者而非自由重写者；执行失察类证据（智能体没有遵循有效指引）只更新附录，重新强调既有有效内容而非改写。修订集超过预算则本轮空转。"
+   },
+   "result": {
+    "en": "On ALFWorld (3,553 train / 134 test tasks, K=1, 10 revision stages), a frozen Qwen3.5-27B executor reaches 93.28% task success, 31.58 points above GPT-5.2 used as a direct skill-less agent; on Puttwo it hits 100.00% vs G-Memory's 52.94%. Ablation: no-skill 61.19 -> static skill 73.13 -> skill-unaware reflection 78.36 -> EmbodiSkill 93.28 (awareness delta +14.92). EmbodiedBench: EB-Habitat best average 52.33% (+16.29 over the strongest memory baseline), EB-Navigation 61.33% (+17.94). Gains vary by backbone pairing: with Gemini the Qwen3.5-27B awareness delta shrinks to +1.49.",
+    "zh": "ALFWorld（3,553 训练 / 134 测试任务，K=1，10 个修订阶段）上，冻结的 Qwen3.5-27B 执行器达 93.28% 成功率，比无技能直用 GPT-5.2 高 31.58 分；Puttwo 子任务 100.00% 对 G-Memory 的 52.94%。消融：无技能 61.19 -> 静态技能 73.13 -> 无技能感知反思 78.36 -> EmbodiSkill 93.28（感知增量 +14.92）。EmbodiedBench：EB-Habitat 最高均值 52.33%（比最强记忆基线 +16.29），EB-Navigation 61.33%（+17.94）。收益随骨干组合变化：配 Gemini 时 Qwen3.5-27B 的感知增量缩到 +1.49。"
+   },
+   "limits": {
+    "en": "No dedicated limitations section in v2. The awareness delta is unstable across model pairings (+14.92 with GPT-5.2 vs +1.49 with Gemini on the same backbone), so the reflection channel's value is configuration-dependent. All numbers are authors' own runs; EmbodiedBench training uses 1,000 tasks per environment, which the authors curate themselves.",
+    "zh": "v2 无专门局限性章节。感知增量在不同模型组合下不稳（同一骨干配 GPT-5.2 为 +14.92，配 Gemini 仅 +1.49），反思通道的价值依赖配置。全部数字为作者自测；EmbodiedBench 每环境 1,000 条训练任务由作者自行整理。"
+   },
+   "application": {
+    "en": "For nanoRSI's skill evolution: split update evidence into two channels - defects in skill content trigger edits, while failures to follow valid guidance only re-emphasize that guidance (appendix-style), preventing good skills from being rewritten because of execution noise.",
+    "zh": "对 nanoRSI 技能进化：把更新证据拆成两条通道——技能内容缺陷触发编辑；未遵循有效指引的失败只做重新强调（附录式），避免好技能因执行噪声被改写。"
+   },
+   "availability": {
+    "en": "Code released under MIT at github.com/air-embodied-brain/EmbodiSkill (repo created 2026-07-03, 25 stars at verification). No weights or data release located; experiments call commercial models (Qwen3.5-27B, GPT-5.2, Gemini are named).",
+    "zh": "代码以 MIT 发布于 github.com/air-embodied-brain/EmbodiSkill（仓库创建于 2026-07-03，核验时 25 星）。未找到权重或数据发布；实验调用商业模型（点名 Qwen3.5-27B、GPT-5.2、Gemini）。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2605.10332",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v2 (affiliations, Figure 2, Tables, ablations)",
+     "url": "https://arxiv.org/html/2605.10332v2",
+     "kind": "paper"
+    },
+    {
+     "label": "Code repository (MIT)",
+     "url": "https://github.com/air-embodied-brain/EmbodiSkill",
+     "kind": "repository"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-16",
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/embodiskill-skill-aware-reflection.png",
+    "source_url": "https://arxiv.org/html/2605.10332v2",
+    "locator": "Figure 2",
+    "caption": {
+     "en": "Figure 2: EmbodiSkill overview - the executor runs the current skill on an embodied task, reflection splits evidence into a Revision Set (Discovery/Optimization/SkillDefect -> skill body) and an Appendix Set (ExecutionLapse -> appendix), and only budget-fitting revision sets are applied.",
+     "zh": "图 2：EmbodiSkill 总览——执行器带当前技能跑具身任务，反思把证据拆为修订集（Discovery/Optimization/SkillDefect -> 技能主体）与附录集（ExecutionLapse -> 附录），只有符合预算的修订集会被应用。"
+    }
+   }
+  },
+  {
+   "id": "rsiagent-autonomous-exploration",
+   "title": "RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments",
+   "organizations": [
+    "Aether AI",
+    "University of California San Diego",
+    "University of Illinois Chicago"
+   ],
+   "category": "memory-context",
+   "relationship": "direct-loop",
+   "published": "2026-09-14",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-14. Code repository created 2026-09-13, one day before the paper listing.",
+    "zh": "arXiv v1：2026-09-14。代码仓库创建于 2026-09-13，比论文挂网早一天。"
+   },
+   "additional_events": [],
+   "affiliation": {
+    "en": "Paper v1 lists Aether AI (corresponding author Kun Zhou) and UC San Diego; first author Sibo Zhu's work was done during an Aether AI internship, with coauthors from UCSD and UIC.",
+    "zh": "论文 v1 标注 Aether AI（通讯作者 Kun Zhou）与加州大学圣迭戈分校；第一作者 Sibo Zhu 的工作完成于 Aether AI 实习期间，合作者来自 UCSD 与伊利诺伊大学芝加哥分校。"
+   },
+   "mechanism": {
+    "en": "Training-free multi-agent self-improvement for an unfamiliar environment: curriculum, actor and verifier agents explore with no gold labels. Broad Recursive Self-exploration (BRS) runs parallel curriculum-organized task groups to map the environment and bank per-group experience memories of reusable (action, condition, consequence) causal patterns; Deep Recursive Self-exploration (DRS) then iterates on the target task, with the verifier judging each attempt and successful memories routed back into later rounds. The progressively refined memory is frozen and reused for downstream tasks; no model parameter is updated at any point.",
+    "zh": "面向陌生环境的免训练多智能体自改进：课程、执行、验证三类智能体在无金标条件下探索。广度递归自探索（BRS）并行跑课程组织的任务组，绘制环境结构并存下按组分组的经验记忆——可复用的（动作、条件、后果）因果模式；深度递归自探索（DRS）再在目标任务上迭代，验证器裁决每次尝试，成功记忆回流到后续轮次。逐步精炼的记忆最终冻结供下游复用；全程不改模型参数。"
+   },
+   "result": {
+    "en": "With GLM-5.3 as actor and Kimi-K3 as verifier/curriculum: OSWorld 2.0 partial 78.98 vs GPT-6 Astra's reported 72.60 (+6.38) and binary 42.68; Agents' Last Exam partial 84.82 vs GPT-6 Astra 82.26 (+2.56), binary 50.75 vs GPT-6 Astra's 52.24 (GPT-6 leads). Ablation over four tasks: full RSI 74.54% vs BRS-only 65.52% vs DRS-only 56.50%. Claude Opus 5 is also reported (70.19/34.72 OSWorld).",
+    "zh": "以 GLM-5.3 为执行、Kimi-K3 为验证/课程：OSWorld 2.0 partial 78.98，高于 GPT-6 Astra 报告的 72.60（+6.38），binary 42.68；Agents' Last Exam partial 84.82 对 GPT-6 Astra 82.26（+2.56），binary 50.75 低于 GPT-6 Astra 的 52.24（该项 GPT-6 领先）。四任务消融：完整 RSI 74.54% 对仅 BRS 65.52%、仅 DRS 56.50%。论文同时报告 Claude Opus 5（OSWorld 70.19/34.72）。"
+   },
+   "limits": {
+    "en": "The authors state substantial test-time compute cost; performance depends on exploration budgets, stopping policies and memory quality; the model-based verifier may misjudge and propagate errors into later memory; components are not fully isolated; experiments run in controlled environments and do not cover unauthorized-access or privacy risks. GPT-6 Astra numbers are cited from its report, not re-run.",
+    "zh": "作者自述测试时算力开销大；表现取决于探索预算、停止策略与记忆质量；模型验证器可能误判并把错误传导进后续记忆；组件贡献未完全隔离；实验在受控环境进行，不覆盖越权访问与隐私风险。GPT-6 Astra 数字引用自其报告，未复跑。"
+   },
+   "application": {
+    "en": "For nanoRSI: split the improvement budget into a broad mapping phase (many cheap probe tasks banking causal patterns) and a deep exploitation phase on the target task, then freeze the memory before final testing - a two-phase schedule that matches nanoRSI's freeze discipline.",
+    "zh": "对 nanoRSI：把改进预算拆成广度测绘阶段（大量廉价探针任务沉淀因果模式）与目标任务上的深度利用阶段，随后在最终测试前冻结记忆——与 nanoRSI 的冻结纪律天然对齐的两段式调度。"
+   },
+   "availability": {
+    "en": "Code released under Apache-2.0 at github.com/AetherLabsAI/RSIAgent (repo created 2026-09-13, 143 stars at verification); project page aetherlabsai.github.io/RSIAgent. No weights or data release located.",
+    "zh": "代码以 Apache-2.0 发布于 github.com/AetherLabsAI/RSIAgent（仓库创建于 2026-09-13，核验时 143 星）；项目页 aetherlabsai.github.io/RSIAgent。未找到权重或数据发布。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.15364",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 (affiliations, Figure 2, Table 1, limitations)",
+     "url": "https://arxiv.org/html/2609.15364v1",
+     "kind": "paper"
+    },
+    {
+     "label": "Code repository (Apache-2.0)",
+     "url": "https://github.com/AetherLabsAI/RSIAgent",
+     "kind": "repository"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-16",
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/rsiagent-autonomous-exploration.png",
+    "source_url": "https://arxiv.org/html/2609.15364v1",
+    "locator": "Figure 2",
+    "caption": {
+     "en": "Figure 2: RSIAgent method overview - broad recursive self-exploration banks per-group experience memories, deep recursive self-exploration refines them on the target task with verifier feedback, and the frozen memory is reused at test time.",
+     "zh": "图 2：RSIAgent 方法总览——广度递归自探索按任务组沉淀经验记忆，深度递归自探索在目标任务上借验证器反馈精炼，冻结后的记忆供测试期复用。"
+    }
+   }
+  },
+  {
+   "id": "experience-funnel-state-policy",
+   "title": "Experience Funnel: A State-Policy Alternating Loop for Self-Evolving Agents",
+   "organizations": [
+    "The Hong Kong Polytechnic University",
+    "Huawei",
+    "Renmin University of China"
+   ],
+   "category": "parameter-learning",
+   "relationship": "direct-loop",
+   "published": "2026-09-08",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-08. No later revision recorded at verification time. Surfaced as a lead on 2026-09-15 (abstract lacked affiliation and numbers); verified against the HTML full text on 2026-09-16.",
+    "zh": "arXiv v1：2026-09-08。核验时无更新版本。2026-09-15 作为线索记录（摘要缺机构与数字），2026-09-16 对照 HTML 全文核验后收录。"
+   },
+   "additional_events": [],
+   "affiliation": {
+    "en": "Paper v1: Wenbo Gao and James Chung-wai Cheung are at The Hong Kong Polytechnic University; the Huawei group includes Zhaomou Song, Renxi Liu, Xing Li, Xianzhi Yu, Xiaoguang Li, Weizhe Lin (corresponding), Yaoyuan Wang; Zhiyuan Ji is affiliated with both Huawei and Renmin University of China.",
+    "zh": "论文 v1：Wenbo Gao 与 James Chung-wai Cheung 隶属香港理工大学；华为团队包括 Zhaomou Song、Renxi Liu、Xing Li、Xianzhi Yu、Xiaoguang Li、Weizhe Lin（通讯）、Yaoyuan Wang；Zhiyuan Ji 同时隶属华为与中国人民大学。"
+   },
+   "mechanism": {
+    "en": "A two-timescale loop over a deployed (textual state, policy) pair. Fast: trajectories are aggregated into a task-specific textual state summarizing recurring procedures, failure modes and corrective strategies, and candidate state edits must pass validation on held-out interactions before acceptance. Slow: Transition-Aware Skill Distillation compares rollouts under no state, the previous state and the updated state, labeling each experience newly-useful (0,1), persistently-useful (1,1), regressive (1,0) or inactive (0,0); token-level Jensen-Shannon divergence localizes state-responsive decisions, and a state-conditioned teacher distills only the useful rollouts into the state-free student policy, combined with a state-free RL reward. The updated pair redeploys for the next round.",
+    "zh": "对已部署的（文本状态、策略）对做双时间尺度循环。快：把轨迹聚合成总结复现流程、失败模式与纠偏策略的任务级文本状态，候选状态编辑必须先在留出交互上通过验证。慢：转换感知技能蒸馏在无状态、旧状态、新状态三种条件下对比 rollout，把每条经验标注为新有用 (0,1)、持续有用 (1,1)、退化 (1,0)、失活 (0,0)；token 级 Jensen-Shannon 散度定位状态敏感决策，状态条件化教师只把有用 rollout 蒸馏进无状态学生策略，并叠加无状态 RL 奖励。更新后的对重新部署进入下一轮。"
+   },
+   "result": {
+    "en": "Three benchmarks (SearchQA, ALFWorld, WebShop) with a Qwen3.5-4B student and frozen Qwen3.5-27B teacher on Ascend 910B3 NPUs: average 57.6% vs SkillRL 56.2, OPID 55.4, SkillOpt 53.9 and base 33.7. The state-free policy itself rises 58.1% -> 61.3% on SearchQA over five rounds (residual state contributes nothing after consolidation: 61.3 with full state vs 61.3 with residual). Ablation: state-only 61.1, policy-only 62.8, full loop 63.6; experience selection (0,1)+(1,1) reaches 63.0 vs 58.9 unfiltered. Honest no-op accounting: of five evolution rounds only rounds 1 and 4 were accepted; rounds 2, 3 and 5 were rejected.",
+    "zh": "三个基准（SearchQA、ALFWorld、WebShop），Qwen3.5-4B 学生、冻结 Qwen3.5-27B 教师，昇腾 910B3：平均 57.6% 对 SkillRL 56.2、OPID 55.4、SkillOpt 53.9、基座 33.7。无状态策略本身在 SearchQA 五轮内 58.1% -> 61.3%（巩固后残余状态无增益：全状态 61.3 = 残余状态 61.3）。消融：仅状态 61.1、仅策略 62.8、完整环 63.6；经验选择 (0,1)+(1,1) 达 63.0 对未过滤 58.9。诚实空转记录：五轮进化只有第 1、4 轮被接受，第 2、3、5 轮被拒绝。"
+   },
+   "limits": {
+    "en": "No code release; the margin over SkillRL is +1.4 points; per-benchmark numbers show SearchQA carries most of the gain (WebShop 42.4 remains low). Rejected rounds are reported but not analyzed in depth.",
+    "zh": "无代码发布；对 SkillRL 的领先仅 +1.4 分；分基准数字显示增量主要来自 SearchQA（WebShop 42.4 仍低）。被拒绝的轮次如实报告但未深入分析。"
+   },
+   "application": {
+    "en": "For nanoRSI's parameter track: adopt the counterfactual state comparison (rollouts under no-state vs previous-state vs updated-state) as the acceptance test for whether a context change deserves distillation, keeping weight updates gated the same way skill commits are.",
+    "zh": "对 nanoRSI 参数轨：用反事实状态对比（无状态 / 旧状态 / 新状态三种 rollout）作为上下文变更是否值得蒸馏的验收测试，让权重更新像技能提交一样过闸门。"
+   },
+   "availability": {
+    "en": "No code, weights or data release located; paper only. Experiments run on Huawei Ascend 910B3 NPUs with Qwen3.5-4B/27B checkpoints.",
+    "zh": "未找到代码、权重或数据发布，仅有论文。实验在华为昇腾 910B3 上用 Qwen3.5-4B/27B 权重进行。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.08919",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 (affiliations, Figure 1, Tables, ablations)",
+     "url": "https://arxiv.org/html/2609.08919v1",
+     "kind": "paper"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-16",
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/experience-funnel-state-policy.svg",
+    "source_url": "https://arxiv.org/html/2609.08919v1",
+    "locator": "Figure 1",
+    "caption": {
+     "en": "Figure 1: the state-policy consolidation loop - Phase I aggregates trajectories into a validated textual state; Phase II labels matched rollouts by transition type and distills state-responsive behavior into the state-free policy.",
+     "zh": "图 1：状态-策略巩固环——阶段一将轨迹聚合为经验证文本状态；阶段二按转换类型标注配对 rollout，并把状态敏感行为蒸馏进无状态策略。"
+    }
+   }
+  },
+  {
+   "id": "skilllift-dense-rubrics",
+   "title": "SkillLift: Learning Dense Rubrics from Sparse Oracles for Efficient Skill Evolution",
+   "organizations": [
+    "Independent Researcher (Haoxiang Kang)",
+    "Fudan University (Ming Wen)"
+   ],
+   "category": "agent-code",
+   "relationship": "direct-loop",
+   "published": "2026-09-14",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-14. Code repository created 2026-08-08. No later revision recorded at verification time.",
+    "zh": "arXiv v1：2026-09-14。代码仓库创建于 2026-08-08。核验时无更新版本。"
+   },
+   "additional_events": [],
+   "affiliation": {
+    "en": "Paper v1: Haoxiang Kang is an independent researcher; Ming Wen is at Fudan University (corresponding).",
+    "zh": "论文 v1：Haoxiang Kang 为独立研究者；Ming Wen 隶属复旦大学（通讯）。"
+   },
+   "mechanism": {
+    "en": "Reframes skill self-evolution as bilevel optimization to escape the oracle-rollout bottleneck (every candidate edit normally needs a full agent rollout). A structured rubric R - M binary criteria with signed weights over the skill's behavior - is learned as a cheap oracle-aligned surrogate. Inner loop: R is frozen and guides skill revision, scoring candidates with one LLM call instead of a rollout. Outer loop: a few oracle rollouts on frozen skills re-align R via Kendall's tau rank correlation, so only relative order matters, not score calibration. The alternating loop amortizes oracle cost while keeping the surrogate honest.",
+    "zh": "把技能自进化重构为双层优化，以摆脱 oracle-rollout 瓶颈（通常每个候选编辑都要跑一整次智能体 rollout）。学习一个结构化评分表 R——对技能行为的 M 条带符号权重的二元判据——作为廉价的 oracle 对齐替代器。内环：冻结 R 引导技能修订，用一次 LLM 调用而非 rollout 为候选打分。外环：在冻结技能上跑少量 oracle rollout，用 Kendall's tau 秩相关重对齐 R——只看相对次序，不校准绝对分值。交替循环在保持替代器可信的同时摊薄 oracle 成本。"
+   },
+   "result": {
+    "en": "On WildClawBench and SkillsBench with three backbone models (SkillsBench uses GPT-5.4-mini, WildClawBench GPT-5.4, matching official setups), SkillLift beats human-written skills, one-shot LLM-written skills, SkillOpt and CoEvoSkills while spending 40-70% less token cost than frontier evolving methods. Table 2 per-category cells show overall deltas of +5.4 to +14.0 (WildClawBench) and +9.6 to +28.3 (SkillsBench) over the strongest baselines per model group; a pilot study shows oracle rollout cost dominates cumulative tokens for direct oracle-guided search.",
+    "zh": "在 WildClawBench 与 SkillsBench、三个骨干模型上（SkillsBench 用 GPT-5.4-mini、WildClawBench 用 GPT-5.4，与官方实现对齐），SkillLift 同时超过人工技能、一次性 LLM 技能、SkillOpt 与 CoEvoSkills，且 token 成本比前沿进化方法省 40-70%。表 2 分类别格显示：各组内对最强基线的总分区间为 WildClawBench +5.4~+14.0、SkillsBench +9.6~+28.3；先导实验表明直接 oracle 引导搜索的累积 token 被 oracle rollout 成本主导。"
+   },
+   "limits": {
+    "en": "Two-author paper; benchmark categories and rubric quality depend on the oracle existing and being rankable. Baselines receive 2x SkillLift's default token budget, which favors SkillLift in cost comparisons. All numbers are authors' own runs; the repository is new (2 stars at verification).",
+    "zh": "两人署名论文；基准类别与评分表质量依赖 oracle 存在且可排序。基线获得 2 倍于 SkillLift 默认预算的 token，成本对比对此有利。全部数字为作者自测；仓库很新（核验时 2 星）。"
+   },
+   "application": {
+    "en": "For nanoRSI's skill loop: replace per-edit full rollouts with a learned rubric surrogate re-aligned by rank correlation on periodic oracle rollouts - directly testable on the minimal task as a cheaper acceptance signal for candidate skills.",
+    "zh": "对 nanoRSI 技能环：用学习的评分表替代器替换逐编辑全 rollout，周期性用秩相关在 oracle rollout 上重对齐——可在最小任务上直接验证其为更便宜的技能验收信号。"
+   },
+   "availability": {
+    "en": "Code released under MIT at github.com/WalteR-MittY-pro/SkillLift (repo created 2026-08-08, 2 stars at verification). No weights or data release located.",
+    "zh": "代码以 MIT 发布于 github.com/WalteR-MittY-pro/SkillLift（仓库创建于 2026-08-08，核验时 2 星）。未找到权重或数据发布。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.15396",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 PDF (affiliations, Figure 2, Table 2, protocol)",
+     "url": "https://arxiv.org/pdf/2609.15396",
+     "kind": "paper"
+    },
+    {
+     "label": "Code repository (MIT)",
+     "url": "https://github.com/WalteR-MittY-pro/SkillLift",
+     "kind": "repository"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-16",
+   "visual": {
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/skilllift-dense-rubrics.png",
+    "source_url": "https://arxiv.org/pdf/2609.15396",
+    "locator": "Figure 2, PDF page 3",
+    "caption": {
+     "en": "Figure 2: SkillLift overview - the inner loop revises skills against the frozen rubric at no oracle cost, while the outer loop re-aligns the rubric with a few oracle rollouts via Kendall's tau.",
+     "zh": "图 2：SkillLift 总览——内环以冻结评分表零 oracle 成本地修订技能，外环用少量 oracle rollout 按 Kendall's tau 重对齐评分表。"
+    }
+   }
+  },
+  {
+   "id": "evoontology-self-evolving",
+   "title": "EvoOntology: A Self-Evolving Ontology Layer for Data Agents",
+   "organizations": [
+    "Renmin University of China"
+   ],
+   "category": "memory-context",
+   "relationship": "direct-loop",
+   "published": "2026-09-14",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-14. Code repository created 2026-09-15.",
+    "zh": "arXiv v1：2026-09-14。代码仓库创建于 2026-09-15。"
+   },
+   "additional_events": [],
+   "affiliation": {
+    "en": "All four authors (Meiduo Chong, Shaolei Zhang - corresponding, Ju Fan, Xiaoyong Du) are at the School of Information, Renmin University of China; the code lives under the ruc-datalab organization.",
+    "zh": "四位作者（Meiduo Chong、Shaolei Zhang——通讯、Ju Fan、Xiaoyong Du）均属中国人民大学信息学院；代码位于 ruc-datalab 组织下。"
+   },
+   "mechanism": {
+    "en": "The evolving artifact is an ontology layer (schema, content, tool levels) packaged as an MCP server that sits between a data agent and heterogeneous sources. A builder agent first constructs an evidence-grounded initial ontology from workload queries; then a diagnose-attribute-patch-gate loop refines it: trajectory failures are attributed via interaction signatures to exactly one level, a typed candidate patch modifies only that level, and a backbone-conditional paired gate accepts a candidate only when the same backbone on the same validation set with identical decoding and budgets improves by at least tau; rejected patches are logged.",
+    "zh": "进化的对象是打包为 MCP 服务器的本体层（模式、内容、工具三层），位于数据智能体与异构数据源之间。构建智能体先从负载查询构建证据落地的初始本体；随后诊断-归因-补丁-闸门循环精炼它：轨迹失败经交互签名归因到唯一一层，类型化候选补丁只改该层，骨干条件化配对闸门只在同一骨干、同一验证集、相同解码与预算下提升至少 tau 时才接受候选；被拒绝的补丁留痕。"
+   },
+   "result": {
+    "en": "Three benchmarks, four analysis backbones. DDR-Bench trajectory-wise vs ReAct baseline: GPT-5.5 90.9 (+26.7), GPT-5.6-sol 93.5 (+25.0), Claude-Sonnet-5 81.3 (+8.8), Claude-Opus-4.8 92.3 (+19.3) - average +17.8; vs ReAct+Memory 89.5 vs 75.8 (+13.7). Attribution of gains: builder +12.3, evolution loop a further +7.7 on DDR-Bench; on BIRD EX +5.1 then +3.7. Gate ablation costs -11.2 trajectory-wise, attribution -6.3. Honest negatives: InsightBench is saturated (mean +0.7 to +1.6), and cross-backbone transfer of an evolved ontology drops at least 6.6 points.",
+    "zh": "三个基准、四个分析骨干。DDR-Bench 轨迹级对 ReAct 基线：GPT-5.5 90.9（+26.7）、GPT-5.6-sol 93.5（+25.0）、Claude-Sonnet-5 81.3（+8.8）、Claude-Opus-4.8 92.3（+19.3）——平均 +17.8；对 ReAct+Memory 为 89.5 对 75.8（+13.7）。增益归因：构建器 +12.3，进化环再 +7.7（DDR-Bench）；BIRD EX 上 +5.1 再 +3.7。闸门消融损失 -11.2 轨迹级，归因 -6.3。诚实负结果：InsightBench 已饱和（均值 +0.7~+1.6），进化后本体跨骨干迁移至少掉 6.6 分。"
+   },
+   "limits": {
+    "en": "Evolution is backbone-specific (paired gate conditions acceptance on the same backbone); saturated benchmarks show near-zero gains; paired validation costs extra compute, which the authors offset by claiming total cost about 20% below the baseline; no dedicated limitations section.",
+    "zh": "进化依赖特定骨干（配对闸门以同骨干为验收条件）；已饱和基准近零增益；配对验证带来额外算力，作者以总成本比基线低约 20% 对冲；无专门局限性章节。"
+   },
+   "application": {
+    "en": "For nanoRSI: treat knowledge artifacts (skill libraries, domain notes) as typed objects with level-restricted edits and a paired same-condition acceptance gate plus a rejected-edit log - the same shape as the evidence ledger, applied to an evolving artifact.",
+    "zh": "对 nanoRSI：把知识产物（技能库、领域笔记）当作带层级限制编辑的类型化对象，配同条件配对验收闸门与拒绝日志——与证据账本同构，应用于进化产物。"
+   },
+   "availability": {
+    "en": "Code released under MIT at github.com/ruc-datalab/EvoOntology (repo created 2026-09-15, 7 stars at verification). No weights or data release located; evaluation uses GPT-5.5/5.6-sol and Claude Sonnet-5/Opus-4.8 APIs.",
+    "zh": "代码以 MIT 发布于 github.com/ruc-datalab/EvoOntology（仓库创建于 2026-09-15，核验时 7 星）。未找到权重或数据发布；评测调用 GPT-5.5/5.6-sol 与 Claude Sonnet-5/Opus-4.8 API。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.15779",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 (affiliations, Figure 2, Tables, gate details)",
+     "url": "https://arxiv.org/html/2609.15779v1",
+     "kind": "paper"
+    },
+    {
+     "label": "Code repository (MIT)",
+     "url": "https://github.com/ruc-datalab/EvoOntology",
+     "kind": "repository"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-16",
+   "visual": {
+    "kind": "paper-figure",
+    "asset": "assets/paper-figures/evoontology-self-evolving.png",
+    "source_url": "https://arxiv.org/html/2609.15779v1",
+    "locator": "Figure 2",
+    "caption": {
+     "en": "Figure 2: EvoOntology overview - the builder grounds candidate concepts in heterogeneous sources, exposes the three-layer ontology as tools, and the evolution agent diagnoses, attributes, patches and gates candidates against the parent ontology.",
+     "zh": "图 2：EvoOntology 总览——构建器把候选概念落地到异构数据源，三层本体以工具暴露，进化智能体对父本体执行诊断、归因、补丁与闸门。"
+    }
+   }
+  },
+  {
+   "id": "economics-of-rsi-2026",
+   "title": "The Economics of Recursive Self-Improvement",
+   "organizations": [
+    "METR",
+    "Stanford University",
+    "University of Virginia",
+    "Carnegie Mellon University",
+    "Columbia University",
+    "MIT",
+    "Stanford DEL / Epoch AI",
+    "Yale University",
+    "Elasticity Institute"
+   ],
+   "category": "research-workflows",
+   "relationship": "enabling",
+   "published": "2026-09-14",
+   "kind": "paper",
+   "date_note": {
+    "en": "arXiv v1: 2026-09-14 (econ.GN, cross-listed). An earlier definitional piece by the lead author (Tom Cunningham, 'Definitions of Recursive Self-Improvement', June 2026) preceded it; this is the first public version of the economics model.",
+    "zh": "arXiv v1：2026-09-14（econ.GN 交叉）。第一作者 Tom Cunningham 更早的定义性文章（2026 年 6 月）是前置工作；本文是经济学模型的首次公开版本。"
+   },
+   "additional_events": [],
+   "affiliation": {
+    "en": "Nine economists and measurement researchers: Tom Cunningham (METR), Lukas Althoff (Stanford), Basil Halperin (Virginia), Brian Jabarian (CMU), Andrew Koh (Columbia), Arjun Ramani (MIT), Phil Trammell (Stanford DEL and Epoch AI), Parker Whitfill (METR), Cheryl Wu (Yale); the acknowledgements note all authors are affiliated with the Elasticity Institute.",
+    "zh": "九位经济学与测度研究者：Tom Cunningham（METR）、Lukas Althoff（斯坦福）、Basil Halperin（弗吉尼亚大学）、Brian Jabarian（卡内基梅隆）、Andrew Koh（哥伦比亚）、Arjun Ramani（MIT）、Phil Trammell（斯坦福 DEL 与 Epoch AI）、Parker Whitfill（METR）、Cheryl Wu（耶鲁）；致谢注明全部作者隶属 Elasticity Institute。"
+   },
+   "mechanism": {
+    "en": "Not a working loop: an economic formalization of RSI as directed feedback-loop graphs. Progress models of increasing richness add an AI-capabilities stock C and a core loop A -> C -> A-hat (algorithmic efficiency improves capabilities, which feed back into algorithmic work) on top of Jones-style self-feedback; acceleration requires the product of elasticities along a loop to be strong enough, formalized as a total elasticity exceeding one; the paper then catalogs which elasticities can plausibly be measured and proposes that AI firms publish them.",
+    "zh": "非工作闭环：把 RSI 形式化为有向反馈环图的经济学模型。逐步加细的进展模型在 Jones 式自反馈之上引入 AI 能力存量 C 与核心环 A -> C -> A-hat（算法效率提升能力，能力反哺算法工作）；加速要求环上弹性乘积足够强，形式化为总弹性大于一；论文随后梳理哪些弹性可实际测量，并倡议 AI 公司公开这些量。"
+   },
+   "result": {
+    "en": "Calibration, not benchmark: self-sustaining acceleration requires roughly a 15% or higher return of AI-R&D productivity per unit increase in AI capability; a back-of-envelope estimate from reported AI-engineer uplift puts the observed return near 9% since coding agents launched. Conclusion quoted: 'feedback loops are not currently strong enough to generate a self-sustaining acceleration, though they appear to be strengthening.' The model does not rule out near-future acceleration and warns benchmark gains may not transfer to broad economically valuable tasks.",
+    "zh": "校准而非基准：自持加速大致要求单位 AI 能力提升带来 15% 以上的 AI 研发生产率回报；按已报告的 AI 工程师增益估算，编码智能体问世以来观察值约 9%。结论原文：'feedback loops are not currently strong enough to generate a self-sustaining acceleration, though they appear to be strengthening.' 模型不排除近期加速，并警告基准收益未必转化为宽谱经济价值。"
+   },
+   "limits": {
+    "en": "Pure theory and calibration with no experiments; the 9% figure is a self-described back-of-the-envelope estimate; capability measurement (Epoch Capabilities Index) is acknowledged to be imperfect; predictions are about aggregate loops, not any specific system.",
+    "zh": "纯理论与校准、无实验；9% 为作者自述的粗估；能力测度（Epoch Capabilities Index）承认不完备；结论针对总体反馈环，不针对任何具体系统。"
+   },
+   "application": {
+    "en": "For nanoRSI: adopt the loop-elasticity framing as a report metric - measure per-round marginal return (score delta per improvement round against its control) so recursion claims are quantified rather than asserted; this matches the existing relative-control experiment rule.",
+    "zh": "对 nanoRSI：把环弹性框架落成报告指标——测量每轮相对对照的边际回报（每改进轮的分数增量），让递归声明可量化而非口头断言；与既有相对对照实验规则一致。"
+   },
+   "availability": {
+    "en": "arXiv preprint only; no code or data release located. Figures are vector graphics in the PDF; the catalogue crops Figure 2 from a 150dpi page render.",
+    "zh": "仅有 arXiv 预印本；未找到代码或数据发布。图为 PDF 内矢量图，本条目图 2 取自 150dpi 页面渲染的裁剪。"
+   },
+   "sources": [
+    {
+     "label": "arXiv abstract",
+     "url": "https://arxiv.org/abs/2609.15802",
+     "kind": "paper"
+    },
+    {
+     "label": "Paper v1 PDF (Figure 2, Section 2.2, calibration)",
+     "url": "https://arxiv.org/pdf/2609.15802",
+     "kind": "paper"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-16",
+   "visual": {
+    "kind": "paper-figure-crop",
+    "asset": "assets/paper-figures/economics-of-rsi-2026.png",
+    "source_url": "https://arxiv.org/pdf/2609.15802",
+    "locator": "Figure 2, PDF page 8",
+    "caption": {
+     "en": "Figure 2: baseline model of RSI - the core feedback loop A -> C -> A-hat alongside Jones-style self-feedback; self-sustaining acceleration requires the total elasticity along the loops to exceed one.",
+     "zh": "图 2：RSI 基线模型——核心反馈环 A -> C -> A-hat 与 Jones 式自反馈并存；自持加速要求环上总弹性大于一。"
+    }
+   }
+  },
+  {
+   "id": "sakana-rsi-lab",
+   "title": "Introducing Sakana AI's Recursive Self-Improvement (RSI) Lab",
+   "organizations": [
+    "Sakana AI"
+   ],
+   "category": "research-workflows",
+   "relationship": "direct-loop",
+   "published": "2026-06-05",
+   "kind": "report",
+   "date_note": {
+    "en": "The official page carries no date. The date is pinned to 2026-06-05 from the Hacker News submission timestamp of this exact URL (item 48415633); first verified against the page on 2026-09-16 after it surfaced in a radar sweep, so it enters the catalogue roughly three months after publication.",
+    "zh": "官方页面未标日期。日期依据该 URL 的 Hacker News 提交时间戳（条目 48415633）定为 2026-06-05；2026-09-16 雷达扫查中浮出后才首次对照页面核验，入库时间比发布晚约三个月。"
+   },
+   "additional_events": [],
+   "affiliation": {
+    "en": "First-party Sakana AI (Tokyo) announcement about its own organizational program; no lab lead or staffing is named on the page.",
+    "zh": "Sakana AI（东京）关于自身组织计划的第一方公告；页面未披露实验室负责人或人员编制。"
+   },
+   "mechanism": {
+    "en": "An organizational commitment rather than a new mechanism: a dedicated research group tasked with 'redesigning the AI development process itself with AI', moving 'from static, human-led R&D to autonomous, self-improving intelligence engines'. The page fixes two design constraints - sample efficiency ('not the most compute-hungry self-improvement engine, but the most sample-efficient one') and responsibility ('Responsible RSI is not a constraint on capability; it is what makes capability sustainable') - and situates the lab on a published trajectory: Agent-Native Models -> The AI Scientist -> Recursive Self-Improvement -> Democratized AI.",
+    "zh": "组织级承诺而非新机制：设立专门研究组，任务是'用 AI 重新设计 AI 研发流程本身'，从'静态的人类主导研发'走向'自主的自改进智能引擎'。页面固定了两条设计约束——样本效率（'不做最耗算力的自改进引擎，而做样本效率最高的'）与责任（'负责任的 RSI 不是能力的约束，而是能力可持续的前提'），并把实验室放在一条公开路线上：Agent 原生模型 -> AI Scientist -> 递归自改进 -> 民主化 AI。"
+   },
+   "result": {
+    "en": "No new benchmark; the page cites the group's prior results as evidence of trajectory: DiscoPOP from LLM-Squared (2024, with Oxford/Cambridge), Darwin Godel Machine (~2x SWE-bench, +30 absolute; 2025, with UBC), ShinkaEvolve (solving tasks at ~150 samples; 2025), ALE-Agent (1st of 804 humans in AtCoder Heuristic Contest 058), Digital Red Queen (2026, with MIT) and The AI Scientist (published in Nature, March 26, 2026).",
+    "zh": "无新基准；页面引用该团队既往成果作为路线证据：LLM-Squared 的 DiscoPOP（2024，与牛津/剑桥）、Darwin Godel Machine（SWE-bench 约 2 倍、绝对 +30；2025，与 UBC）、ShinkaEvolve（约 150 样本解题；2025）、ALE-Agent（AtCoder 启发式竞赛 058 804 名人类选手中第一）、Digital Red Queen（2026，与 MIT）与 The AI Scientist（Nature 刊发，2026 年 3 月 26 日）。"
+   },
+   "limits": {
+    "en": "A mission page: no new system, benchmark, or staffing detail; the page is undated and the date relies on third-party submission metadata; all cited results predate the announcement and are catalogued or verifiable separately.",
+    "zh": "属于使命宣言页：无新系统、新基准或人事细节；页面无日期，日期依赖第三方提交元数据；所引成果均早于公告，已单独收录或可独立核验。"
+   },
+   "application": {
+    "en": "Track the RSI Lab's outputs as a high-priority source for sample-efficient self-improvement mechanisms; its sample-efficiency-over-compute stance matches nanoRSI's minimal-budget minimal-task discipline.",
+    "zh": "把该实验室的产出列为样本高效自改进机制的高优先级来源；其'样本效率优先于算力'的立场与 nanoRSI 的最小预算最小任务纪律同向。"
+   },
+   "availability": {
+    "en": "Public web page only; no new code, weights or data accompany the announcement. The trajectory figure is served from the official page (rsi-trajectory.png).",
+    "zh": "仅有公开网页；公告未附新代码、权重或数据。路线图取自官方页面（rsi-trajectory.png）。"
+   },
+   "sources": [
+    {
+     "label": "RSI Lab announcement page (undated)",
+     "url": "https://sakana.ai/rsi-lab/",
+     "kind": "official-report"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-16",
+   "visual": {
+    "kind": "official-project-figure",
+    "asset": "assets/paper-figures/sakana-rsi-lab.png",
+    "source_url": "https://sakana.ai/rsi-lab/",
+    "locator": "RSI trajectory diagram (rsi-trajectory.png)",
+    "caption": {
+     "en": "Sakana AI's published RSI trajectory: agent-native models feeding The AI Scientist's automated discovery, then recursive self-improvement (AI optimizing AI code), toward democratized AI - plotted against the human-led status quo.",
+     "zh": "Sakana AI 公布的 RSI 路线：Agent 原生模型支撑 The AI Scientist 的自动发现，再到递归自改进（AI 优化 AI 代码），通往民主化 AI——与人类主导的现状对照。"
     }
    }
   }

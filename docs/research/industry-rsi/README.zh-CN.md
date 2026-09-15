@@ -1,6 +1,6 @@
 # 企业 RSI 研究地图
 
-**2025-09-15 → 2026-09-15** · **45** 条窗口内记录
+**2025-09-16 → 2026-09-16** · **52** 条窗口内记录
 
 按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。每条详情都带一张纳入仓库的论文原图、官方研究图片或原文页截图，并注明定位信息和来源链接；有核验结果时还会单独列出代码、权重或数据链接。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。
 
@@ -12,19 +12,24 @@
 
 | 分类 | 条目数 |
 | --- | ---: |
-| [参数与训练数据](parameter-learning.zh-CN.md) | 12 |
-| [Agent 与代码](agent-code.zh-CN.md) | 13 |
-| [记忆与上下文](memory-context.zh-CN.md) | 9 |
-| [自动化研发与评测](research-workflows.zh-CN.md) | 11 |
+| [参数与训练数据](parameter-learning.zh-CN.md) | 13 |
+| [Agent 与代码](agent-code.zh-CN.md) | 15 |
+| [记忆与上下文](memory-context.zh-CN.md) | 11 |
+| [自动化研发与评测](research-workflows.zh-CN.md) | 13 |
 
 ## 时间索引
 
 | 日期 | 工作 | 机构 | 证据类别 |
 | --- | --- | --- | --- |
+| 2026-09-14 | [SkillLift: Learning Dense Rubrics from Sparse Oracles for Efficient Skill Evolution](agent-code.zh-CN.md#skilllift-dense-rubrics) | Independent Researcher (Haoxiang Kang) / Fudan University (Ming Wen) | 直接有界闭环 |
+| 2026-09-14 | [RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments](memory-context.zh-CN.md#rsiagent-autonomous-exploration) | Aether AI / University of California San Diego / University of Illinois Chicago | 直接有界闭环 |
+| 2026-09-14 | [EvoOntology: A Self-Evolving Ontology Layer for Data Agents](memory-context.zh-CN.md#evoontology-self-evolving) | Renmin University of China | 直接有界闭环 |
+| 2026-09-14 | [The Economics of Recursive Self-Improvement](research-workflows.zh-CN.md#economics-of-rsi-2026) | METR / Stanford University / University of Virginia / Carnegie Mellon University / Columbia University / MIT / Stanford DEL / Epoch AI / Yale University / Elasticity Institute | 支撑技术／评测 |
 | 2026-09-10 | [The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement](research-workflows.zh-CN.md#genuine-rsi-roadmap-2026) | Shanghai Jiao Tong University / Theseus Labs / Tsinghua University / ByteDance / Shanghai AI Lab / ModelBest / Xiaohongshu Inc. / Humanlaya | 支撑技术／评测 |
 | 2026-09-08 | [NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness](parameter-learning.zh-CN.md#tokenrhythm-neohorse-1) | TokenRhythm Technologies / Infinigence AI / Tsinghua University / Peking University / The Chinese University of Hong Kong / Alibaba Group | 直接有界闭环 |
 | 2026-09-08 | [SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale](memory-context.zh-CN.md#se-gos-skill-graph) | Peking University / Tencent / University of Edinburgh / Northwestern University / Tsinghua University | 直接有界闭环 |
 | 2026-09-08 | [Procedural Graphs: Self-Evolving Execution Structures for LLM Agents](memory-context.zh-CN.md#procedural-graphs-google) | Google / Georgia Institute of Technology / Peking University | 直接有界闭环 |
+| 2026-09-08 | [Experience Funnel: A State-Policy Alternating Loop for Self-Evolving Agents](parameter-learning.zh-CN.md#experience-funnel-state-policy) | The Hong Kong Polytechnic University / Huawei / Renmin University of China | 直接有界闭环 |
 | 2026-09-06 | [Research acceleration: The view inside OpenAI](research-workflows.zh-CN.md#openai-research-acceleration-2026) | OpenAI | 自动化／辅助研发 |
 | 2026-09-04 | [From Interaction Traces to Persistent Skills: Online Evolution for Computer-Use Agents](agent-code.zh-CN.md#persistent-skills-osworld) | University of Electronic Science and Technology of China / Zhejiang University | 直接有界闭环 |
 | 2026-09-03 | [SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation in Traffic Simulation](agent-code.zh-CN.md#simskill-traffic) | Jilin University / Tongji University | 直接有界闭环 |
@@ -44,7 +49,9 @@
 | 2026-07-15 | [GPT-Red: Automated Red Teaming via Self-Play at Scale](parameter-learning.zh-CN.md#gpt-red) | OpenAI | 直接有界闭环 |
 | 2026-06-30 | [SkillOpt: Executive Strategy for Self-Evolving Agent Skills](agent-code.zh-CN.md#microsoft-skillopt) | Microsoft Research | 直接有界闭环 |
 | 2026-06-07 | [SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History](agent-code.zh-CN.md#tencent-skillhone) | WeChat, Tencent Inc. | 直接有界闭环 |
+| 2026-06-05 | [Introducing Sakana AI's Recursive Self-Improvement (RSI) Lab](research-workflows.zh-CN.md#sakana-rsi-lab) | Sakana AI | 直接有界闭环 |
 | 2026-05-11 | [SkillEvolver: Skill Learning as a Meta-Skill](agent-code.zh-CN.md#skillevolver-meta-skill) | Tsinghua University / Beijing Jiaotong University | 直接有界闭环 |
+| 2026-05-11 | [EmbodiSkill: Skill-Aware Reflection for Self-Evolving Embodied Agents](agent-code.zh-CN.md#embodiskill-skill-aware-reflection) | Huazhong University of Science and Technology / University of Science and Technology of China / Microsoft Research / Institute for AI Industry Research (AIR), Tsinghua University / Nanjing University | 直接有界闭环 |
 | 2026-04 | [Automated Weak-to-Strong Researcher](research-workflows.zh-CN.md#automated-w2s) | Anthropic / Anthropic Fellows Program | 自动化／辅助研发 |
 | 2026-03-19 | [Hyperagents](agent-code.zh-CN.md#meta-hyperagents-2026) | Meta / University of British Columbia | 直接有界闭环 |
 | 2026-03-18 | [MiniMax M2.7: Early Echoes of Self-Evolution](agent-code.zh-CN.md#minimax-m27-self-evolution) | MiniMax | 直接有界闭环 |

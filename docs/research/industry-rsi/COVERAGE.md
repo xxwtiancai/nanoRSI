@@ -15,7 +15,7 @@ The university and collaborator relationships appear in each record. A company n
 | Anthropic / Fellows Program | [A3](parameter-learning.zh-CN.md#a3), [weak-to-strong researcher](research-workflows.zh-CN.md#automated-w2s), [alignment researchers](research-workflows.zh-CN.md#automated-alignment-researchers), [TASTE](research-workflows.zh-CN.md#taste) |
 | Meta + universities | [Hyperagents](agent-code.zh-CN.md#meta-hyperagents-2026) |
 | Microsoft + collaborators | [ACON](memory-context.zh-CN.md#microsoft-acon-2025), [LEGOMem](memory-context.zh-CN.md#microsoft-legomem-2025), [SkillOpt](agent-code.zh-CN.md#microsoft-skillopt) |
-| Sakana AI + collaborators | [ShinkaEvolve](agent-code.zh-CN.md#sakana-shinkaevolve), [TRINITY](parameter-learning.zh-CN.md#sakana-trinity), [Doc-to-LoRA](parameter-learning.zh-CN.md#sakana-doc-to-lora) |
+| Sakana AI + collaborators | [ShinkaEvolve](agent-code.zh-CN.md#sakana-shinkaevolve), [TRINITY](parameter-learning.zh-CN.md#sakana-trinity), [Doc-to-LoRA](parameter-learning.zh-CN.md#sakana-doc-to-lora), [RSI Lab](research-workflows.zh-CN.md#sakana-rsi-lab) — dedicated recursive-self-improvement group announced 2026-06-05 |
 | SambaNova + Stanford / Berkeley | [ACE](memory-context.zh-CN.md#sambanova-stanford-ace) |
 | Salesforce (Research / AI Labs) + UNC / Stanford | [Agent0](parameter-learning.zh-CN.md#salesforce-unc-agent0), [self-improving agents story](research-workflows.zh-CN.md#salesforce-toward-self-improving-agents) |
 | Prime Intellect + collaborators | [Prime Agent](memory-context.zh-CN.md#prime-agent), [autonomous research evaluation](research-workflows.zh-CN.md#prime-measuring-autonomous-ai-research) |
@@ -36,6 +36,12 @@ The university and collaborator relationships appear in each record. A company n
 | UESTC + Zhejiang | [Persistent skills on OSWorld](agent-code.zh-CN.md#persistent-skills-osworld) — online evolution of a versioned GUI skill library |
 | PKU + Edinburgh + Northwestern (+ Tencent / Tsinghua) | [SE-GoS](memory-context.zh-CN.md#se-gos-skill-graph) — training-free self-evolution of a skill-retrieval graph |
 | Jilin + Tongji | [SimSkill](agent-code.zh-CN.md#simskill-traffic) — gap-driven self-evolving agent for SUMO traffic simulation |
+| HUST + USTC + Microsoft Research + AIR Tsinghua + Nanjing | [EmbodiSkill](agent-code.zh-CN.md#embodiskill-skill-aware-reflection) — skill-aware reflection splitting defect edits from lapse re-emphasis |
+| Aether AI + UCSD + UIC | [RSIAgent](memory-context.zh-CN.md#rsiagent-autonomous-exploration) — broad-then-deep autonomous exploration freezing a causal memory |
+| HK PolyU + Huawei + Renmin University | [Experience Funnel](parameter-learning.zh-CN.md#experience-funnel-state-policy) — state-policy alternating loop with transition-aware distillation |
+| Fudan (+ independent researcher) | [SkillLift](agent-code.zh-CN.md#skilllift-dense-rubrics) — bilevel rubric surrogate decoupling skill search from oracle rollouts |
+| Renmin University (GSAI/data lab) | [EvoOntology](memory-context.zh-CN.md#evoontology-self-evolving) — self-evolving MCP ontology layer behind a paired acceptance gate |
+| METR + Stanford / CMU / Columbia / MIT / Yale economists | [Economics of RSI](research-workflows.zh-CN.md#economics-of-rsi-2026) — feedback-loop elasticity calibration (~9% observed vs ≥15% threshold) |
 
 ## Checked but not promoted to a dated main entry / 已检索但未强行收录
 
@@ -49,7 +55,7 @@ These are gaps in this audit, not evidence that an institution has no relevant w
 | Mistral | [Remote agents / Medium 3.5](https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/) describes agent execution and model capabilities; an autonomous persistent improvement mechanism was not verified. / 已检索产品能力，未核实自主持久改进机制。 |
 | Reflection | [Company news](https://reflection.ai/news) provides organizational and infrastructure updates; no sufficiently specified mutation/feedback/reuse result was verified. / 已检索公司及基础设施动态，未核实足够明确的修改、反馈与复用实验。 |
 | Alibaba CuES | [Paper](https://arxiv.org/abs/2512.01311) is a relevant follow-up lead; the full affiliation, mechanism and release audit is pending. / 是相关后续线索，完整机构、机制和资产核验待完成。 |
-| ByteDance Seed-Evolving | Reported 2026-09-11 by [Tencent News](https://news.qq.com/rain/a/20260911A0F8DU00) as a self-evolving model; no official Seed page or paper existed when checked on 2026-09-14 (official list ends 2026.08.18). Re-checked 2026-09-15: the official list is unchanged. Media lead only; revisit when ByteDance publishes. / 腾讯新闻 2026-09-11 报道的自进化模型；2026-09-14 核验时 Seed 官方页无论文或公告（官方列表止于 2026.08.18）。2026-09-15 复查：官方列表无变化。仅作媒体线索，官方发布后再议。 |
+| ByteDance Seed-Evolving | Reported 2026-09-11 by [Tencent News](https://news.qq.com/rain/a/20260911A0F8DU00) as a self-evolving model; no official Seed page or paper existed when checked on 2026-09-14 (official list ends 2026.08.18). Re-checked 2026-09-15: the official list is unchanged. Re-checked 2026-09-16: still ends at Chain-of-Experience (2026.08.18). Media lead only; revisit when ByteDance publishes. / 腾讯新闻 2026-09-11 报道的自进化模型；2026-09-14 核验时 Seed 官方页无论文或公告（官方列表止于 2026.08.18）。2026-09-15 复查：官方列表无变化。2026-09-16 复查：仍止于 Chain-of-Experience（2026.08.18）。仅作媒体线索，官方发布后再议。 |
 
 ## Earlier foundations / 窗口之前的基础工作
 

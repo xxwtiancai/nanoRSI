@@ -32,6 +32,36 @@
 
 **Primary sources** — [arXiv abstract (v1 date)](https://arxiv.org/abs/2609.08183) · [Paper HTML (loop description, scores, limitations)](https://arxiv.org/html/2609.08183v1) · [Official implementation (Apache-2.0)](https://github.com/TokenRhythm/NeoHorse)
 
+<a id="experience-funnel-state-policy"></a>
+
+## Experience Funnel: A State-Policy Alternating Loop for Self-Evolving Agents
+
+**2026-09-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-08. No later revision recorded at verification time. Surfaced as a lead on 2026-09-15 (abstract lacked affiliation and numbers); verified against the HTML full text on 2026-09-16.
+
+**Institutional relationship** — Paper v1: Wenbo Gao and James Chung-wai Cheung are at The Hong Kong Polytechnic University; the Huawei group includes Zhaomou Song, Renxi Liu, Xing Li, Xianzhi Yu, Xiaoguang Li, Weizhe Lin (corresponding), Yaoyuan Wang; Zhiyuan Ji is affiliated with both Huawei and Renmin University of China.
+
+**What changes and how feedback is reused** — A two-timescale loop over a deployed (textual state, policy) pair. Fast: trajectories are aggregated into a task-specific textual state summarizing recurring procedures, failure modes and corrective strategies, and candidate state edits must pass validation on held-out interactions before acceptance. Slow: Transition-Aware Skill Distillation compares rollouts under no state, the previous state and the updated state, labeling each experience newly-useful (0,1), persistently-useful (1,1), regressive (1,0) or inactive (0,0); token-level Jensen-Shannon divergence localizes state-responsive decisions, and a state-conditioned teacher distills only the useful rollouts into the state-free student policy, combined with a state-free RL reward. The updated pair redeploys for the next round.
+
+**Author-reported result** — Three benchmarks (SearchQA, ALFWorld, WebShop) with a Qwen3.5-4B student and frozen Qwen3.5-27B teacher on Ascend 910B3 NPUs: average 57.6% vs SkillRL 56.2, OPID 55.4, SkillOpt 53.9 and base 33.7. The state-free policy itself rises 58.1% -> 61.3% on SearchQA over five rounds (residual state contributes nothing after consolidation: 61.3 with full state vs 61.3 with residual). Ablation: state-only 61.1, policy-only 62.8, full loop 63.6; experience selection (0,1)+(1,1) reaches 63.0 vs 58.9 unfiltered. Honest no-op accounting: of five evolution rounds only rounds 1 and 4 were accepted; rounds 2, 3 and 5 were rejected.
+
+**Evidence limits** — No code release; the margin over SkillRL is +1.4 points; per-benchmark numbers show SearchQA carries most of the gain (WebShop 42.4 remains low). Rejected rounds are reported but not analyzed in depth.
+
+**Code / weights / data / license** — No code, weights or data release located; paper only. Experiments run on Huawei Ascend 910B3 NPUs with Qwen3.5-4B/27B checkpoints.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI's parameter track: adopt the counterfactual state comparison (rollouts under no-state vs previous-state vs updated-state) as the acceptance test for whether a context change deserves distillation, keeping weight updates gated the same way skill commits are.
+
+![Figure 1: the state-policy consolidation loop - Phase I aggregates trajectories into a validated textual state; Phase II labels matched rollouts by transition type and distills state-responsive behavior into the state-free policy.](assets/paper-figures/experience-funnel-state-policy.svg)
+
+**Source figure / official image** — Figure 1: the state-policy consolidation loop - Phase I aggregates trajectories into a validated textual state; Phase II labels matched rollouts by transition type and distills state-responsive behavior into the state-free policy. · Figure 1 · [source](https://arxiv.org/html/2609.08919v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.08919) · [Paper v1 (affiliations, Figure 1, Tables, ablations)](https://arxiv.org/html/2609.08919v1)
+
 <a id="bytedance-aspire"></a>
 
 ## Aspire: Can Models Self-Evolve from Vague Goals?

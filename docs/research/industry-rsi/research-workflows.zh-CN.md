@@ -2,6 +2,36 @@
 
 [← 研究地图](README.zh-CN.md)
 
+<a id="economics-of-rsi-2026"></a>
+
+## The Economics of Recursive Self-Improvement
+
+**2026-09-14** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1：2026-09-14（econ.GN 交叉）。第一作者 Tom Cunningham 更早的定义性文章（2026 年 6 月）是前置工作；本文是经济学模型的首次公开版本。
+
+**机构关系** — 九位经济学与测度研究者：Tom Cunningham（METR）、Lukas Althoff（斯坦福）、Basil Halperin（弗吉尼亚大学）、Brian Jabarian（卡内基梅隆）、Andrew Koh（哥伦比亚）、Arjun Ramani（MIT）、Phil Trammell（斯坦福 DEL 与 Epoch AI）、Parker Whitfill（METR）、Cheryl Wu（耶鲁）；致谢注明全部作者隶属 Elasticity Institute。
+
+**改变对象与反馈复用** — 非工作闭环：把 RSI 形式化为有向反馈环图的经济学模型。逐步加细的进展模型在 Jones 式自反馈之上引入 AI 能力存量 C 与核心环 A -> C -> A-hat（算法效率提升能力，能力反哺算法工作）；加速要求环上弹性乘积足够强，形式化为总弹性大于一；论文随后梳理哪些弹性可实际测量，并倡议 AI 公司公开这些量。
+
+**作者报告结果** — 校准而非基准：自持加速大致要求单位 AI 能力提升带来 15% 以上的 AI 研发生产率回报；按已报告的 AI 工程师增益估算，编码智能体问世以来观察值约 9%。结论原文：'feedback loops are not currently strong enough to generate a self-sustaining acceleration, though they appear to be strengthening.' 模型不排除近期加速，并警告基准收益未必转化为宽谱经济价值。
+
+**证据边界** — 纯理论与校准、无实验；9% 为作者自述的粗估；能力测度（Epoch Capabilities Index）承认不完备；结论针对总体反馈环，不针对任何具体系统。
+
+**代码／权重／数据／许可** — 仅有 arXiv 预印本；未找到代码或数据发布。图为 PDF 内矢量图，本条目图 2 取自 150dpi 页面渲染的裁剪。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把环弹性框架落成报告指标——测量每轮相对对照的边际回报（每改进轮的分数增量），让递归声明可量化而非口头断言；与既有相对对照实验规则一致。
+
+![图 2：RSI 基线模型——核心反馈环 A -> C -> A-hat 与 Jones 式自反馈并存；自持加速要求环上总弹性大于一。](assets/paper-figures/economics-of-rsi-2026.png)
+
+**原文图／官方图片** — 图 2：RSI 基线模型——核心反馈环 A -> C -> A-hat 与 Jones 式自反馈并存；自持加速要求环上总弹性大于一。 · Figure 2, PDF page 8 · [source](https://arxiv.org/pdf/2609.15802)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15802) · [Paper v1 PDF (Figure 2, Section 2.2, calibration)](https://arxiv.org/pdf/2609.15802)
+
 <a id="genuine-rsi-roadmap-2026"></a>
 
 ## The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement
@@ -211,6 +241,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Official Salesforce news story (opened)](https://www.salesforce.com/news/stories/toward-self-improving-agents/)
+
+<a id="sakana-rsi-lab"></a>
+
+## Introducing Sakana AI's Recursive Self-Improvement (RSI) Lab
+
+**2026-06-05** · report · 直接有界闭环
+
+**日期说明** — 官方页面未标日期。日期依据该 URL 的 Hacker News 提交时间戳（条目 48415633）定为 2026-06-05；2026-09-16 雷达扫查中浮出后才首次对照页面核验，入库时间比发布晚约三个月。
+
+**机构关系** — Sakana AI（东京）关于自身组织计划的第一方公告；页面未披露实验室负责人或人员编制。
+
+**改变对象与反馈复用** — 组织级承诺而非新机制：设立专门研究组，任务是'用 AI 重新设计 AI 研发流程本身'，从'静态的人类主导研发'走向'自主的自改进智能引擎'。页面固定了两条设计约束——样本效率（'不做最耗算力的自改进引擎，而做样本效率最高的'）与责任（'负责任的 RSI 不是能力的约束，而是能力可持续的前提'），并把实验室放在一条公开路线上：Agent 原生模型 -> AI Scientist -> 递归自改进 -> 民主化 AI。
+
+**作者报告结果** — 无新基准；页面引用该团队既往成果作为路线证据：LLM-Squared 的 DiscoPOP（2024，与牛津/剑桥）、Darwin Godel Machine（SWE-bench 约 2 倍、绝对 +30；2025，与 UBC）、ShinkaEvolve（约 150 样本解题；2025）、ALE-Agent（AtCoder 启发式竞赛 058 804 名人类选手中第一）、Digital Red Queen（2026，与 MIT）与 The AI Scientist（Nature 刊发，2026 年 3 月 26 日）。
+
+**证据边界** — 属于使命宣言页：无新系统、新基准或人事细节；页面无日期，日期依赖第三方提交元数据；所引成果均早于公告，已单独收录或可独立核验。
+
+**代码／权重／数据／许可** — 仅有公开网页；公告未附新代码、权重或数据。路线图取自官方页面（rsi-trajectory.png）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把该实验室的产出列为样本高效自改进机制的高优先级来源；其'样本效率优先于算力'的立场与 nanoRSI 的最小预算最小任务纪律同向。
+
+![Sakana AI 公布的 RSI 路线：Agent 原生模型支撑 The AI Scientist 的自动发现，再到递归自改进（AI 优化 AI 代码），通往民主化 AI——与人类主导的现状对照。](assets/paper-figures/sakana-rsi-lab.png)
+
+**原文图／官方图片** — Sakana AI 公布的 RSI 路线：Agent 原生模型支撑 The AI Scientist 的自动发现，再到递归自改进（AI 优化 AI 代码），通往民主化 AI——与人类主导的现状对照。 · RSI trajectory diagram (rsi-trajectory.png) · [source](https://sakana.ai/rsi-lab/)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [RSI Lab announcement page (undated)](https://sakana.ai/rsi-lab/)
 
 <a id="automated-w2s"></a>
 

@@ -2,6 +2,66 @@
 
 [← 研究地图](README.zh-CN.md)
 
+<a id="rsiagent-autonomous-exploration"></a>
+
+## RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments
+
+**2026-09-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-14。代码仓库创建于 2026-09-13，比论文挂网早一天。
+
+**机构关系** — 论文 v1 标注 Aether AI（通讯作者 Kun Zhou）与加州大学圣迭戈分校；第一作者 Sibo Zhu 的工作完成于 Aether AI 实习期间，合作者来自 UCSD 与伊利诺伊大学芝加哥分校。
+
+**改变对象与反馈复用** — 面向陌生环境的免训练多智能体自改进：课程、执行、验证三类智能体在无金标条件下探索。广度递归自探索（BRS）并行跑课程组织的任务组，绘制环境结构并存下按组分组的经验记忆——可复用的（动作、条件、后果）因果模式；深度递归自探索（DRS）再在目标任务上迭代，验证器裁决每次尝试，成功记忆回流到后续轮次。逐步精炼的记忆最终冻结供下游复用；全程不改模型参数。
+
+**作者报告结果** — 以 GLM-5.3 为执行、Kimi-K3 为验证/课程：OSWorld 2.0 partial 78.98，高于 GPT-6 Astra 报告的 72.60（+6.38），binary 42.68；Agents' Last Exam partial 84.82 对 GPT-6 Astra 82.26（+2.56），binary 50.75 低于 GPT-6 Astra 的 52.24（该项 GPT-6 领先）。四任务消融：完整 RSI 74.54% 对仅 BRS 65.52%、仅 DRS 56.50%。论文同时报告 Claude Opus 5（OSWorld 70.19/34.72）。
+
+**证据边界** — 作者自述测试时算力开销大；表现取决于探索预算、停止策略与记忆质量；模型验证器可能误判并把错误传导进后续记忆；组件贡献未完全隔离；实验在受控环境进行，不覆盖越权访问与隐私风险。GPT-6 Astra 数字引用自其报告，未复跑。
+
+**代码／权重／数据／许可** — 代码以 Apache-2.0 发布于 github.com/AetherLabsAI/RSIAgent（仓库创建于 2026-09-13，核验时 143 星）；项目页 aetherlabsai.github.io/RSIAgent。未找到权重或数据发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把改进预算拆成广度测绘阶段（大量廉价探针任务沉淀因果模式）与目标任务上的深度利用阶段，随后在最终测试前冻结记忆——与 nanoRSI 的冻结纪律天然对齐的两段式调度。
+
+![图 2：RSIAgent 方法总览——广度递归自探索按任务组沉淀经验记忆，深度递归自探索在目标任务上借验证器反馈精炼，冻结后的记忆供测试期复用。](assets/paper-figures/rsiagent-autonomous-exploration.png)
+
+**原文图／官方图片** — 图 2：RSIAgent 方法总览——广度递归自探索按任务组沉淀经验记忆，深度递归自探索在目标任务上借验证器反馈精炼，冻结后的记忆供测试期复用。 · Figure 2 · [source](https://arxiv.org/html/2609.15364v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15364) · [Paper v1 (affiliations, Figure 2, Table 1, limitations)](https://arxiv.org/html/2609.15364v1) · [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
+
+<a id="evoontology-self-evolving"></a>
+
+## EvoOntology: A Self-Evolving Ontology Layer for Data Agents
+
+**2026-09-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-14。代码仓库创建于 2026-09-15。
+
+**机构关系** — 四位作者（Meiduo Chong、Shaolei Zhang——通讯、Ju Fan、Xiaoyong Du）均属中国人民大学信息学院；代码位于 ruc-datalab 组织下。
+
+**改变对象与反馈复用** — 进化的对象是打包为 MCP 服务器的本体层（模式、内容、工具三层），位于数据智能体与异构数据源之间。构建智能体先从负载查询构建证据落地的初始本体；随后诊断-归因-补丁-闸门循环精炼它：轨迹失败经交互签名归因到唯一一层，类型化候选补丁只改该层，骨干条件化配对闸门只在同一骨干、同一验证集、相同解码与预算下提升至少 tau 时才接受候选；被拒绝的补丁留痕。
+
+**作者报告结果** — 三个基准、四个分析骨干。DDR-Bench 轨迹级对 ReAct 基线：GPT-5.5 90.9（+26.7）、GPT-5.6-sol 93.5（+25.0）、Claude-Sonnet-5 81.3（+8.8）、Claude-Opus-4.8 92.3（+19.3）——平均 +17.8；对 ReAct+Memory 为 89.5 对 75.8（+13.7）。增益归因：构建器 +12.3，进化环再 +7.7（DDR-Bench）；BIRD EX 上 +5.1 再 +3.7。闸门消融损失 -11.2 轨迹级，归因 -6.3。诚实负结果：InsightBench 已饱和（均值 +0.7~+1.6），进化后本体跨骨干迁移至少掉 6.6 分。
+
+**证据边界** — 进化依赖特定骨干（配对闸门以同骨干为验收条件）；已饱和基准近零增益；配对验证带来额外算力，作者以总成本比基线低约 20% 对冲；无专门局限性章节。
+
+**代码／权重／数据／许可** — 代码以 MIT 发布于 github.com/ruc-datalab/EvoOntology（仓库创建于 2026-09-15，核验时 7 星）。未找到权重或数据发布；评测调用 GPT-5.5/5.6-sol 与 Claude Sonnet-5/Opus-4.8 API。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把知识产物（技能库、领域笔记）当作带层级限制编辑的类型化对象，配同条件配对验收闸门与拒绝日志——与证据账本同构，应用于进化产物。
+
+![图 2：EvoOntology 总览——构建器把候选概念落地到异构数据源，三层本体以工具暴露，进化智能体对父本体执行诊断、归因、补丁与闸门。](assets/paper-figures/evoontology-self-evolving.png)
+
+**原文图／官方图片** — 图 2：EvoOntology 总览——构建器把候选概念落地到异构数据源，三层本体以工具暴露，进化智能体对父本体执行诊断、归因、补丁与闸门。 · Figure 2 · [source](https://arxiv.org/html/2609.15779v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/ruc-datalab/EvoOntology)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15779) · [Paper v1 (affiliations, Figure 2, Tables, gate details)](https://arxiv.org/html/2609.15779v1) · [Code repository (MIT)](https://github.com/ruc-datalab/EvoOntology)
+
 <a id="se-gos-skill-graph"></a>
 
 ## SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale
