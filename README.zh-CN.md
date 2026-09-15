@@ -97,6 +97,8 @@ nanorsi verify --workspace ./learner-lab
 
 **远程示例选中的解析器仍无法处理 `(12.5)`，尽管最终得分为 4/4。** [反例、被拒绝尝试、源码快照与证据边界](examples/results/v0.4.0/README.md#known-counterexample)。
 
+一个更小的后续研究（[live frozen-vs-self-use 技能实验](examples/results/live-skills-frozen-selfuse/README.md)，2026-09-16）检验演进技能能否迁移到未见任务、self-use 是否有额外收益：两臂都在冻结测试面板上从 0/3 提升到 2/3；**self-use 与 frozen 提案器打平**，两臂都没解出排序变体任务，技能审计零泄漏、零静默旁路。
+
 <p align="center"><img src="examples/results/v0.4.0/overview.png" alt="分别展示真实模型演示和 CPU 参数学习结果；两组面板不构成统一 RSI 总分。" width="100%"></p>
 
 ## 递归学习实测：手写数字

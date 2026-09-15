@@ -100,6 +100,8 @@ These are separate authored tasks, not one benchmark or RSI score. Recursive pla
 
 **The selected remote parser still fails on `(12.5)` despite its 4/4 final score.** [Counterexample, rejected attempts, source snapshots and evidence limits](examples/results/v0.4.0/README.md#known-counterexample).
 
+A smaller follow-up study ([live frozen-vs-self-use skills](examples/results/live-skills-frozen-selfuse/README.md), 2026-09-16) asked whether evolved skills transfer to unseen tasks and whether self-use adds anything: both arms improved 0/3 → 2/3 on the frozen test panel; **self-use tied the frozen proposer**, both arms failed the sort-variant task, and the skill audit found zero leakage and zero silent bypass.
+
 <p align="center"><img src="examples/results/v0.4.0/overview.png" alt="Separate live-demo test outcomes and CPU parameter-learning results; these panels are not a combined RSI score." width="100%"></p>
 
 ## Measured recursive learning: handwritten digits

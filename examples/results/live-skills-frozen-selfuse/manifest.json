@@ -1,0 +1,101 @@
+{
+ "schema_version": 1,
+ "tasks": [
+  {
+   "task_id": "norm-preserve-1",
+   "group_id": "norm-preserve-1",
+   "split": "train",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "FIG :69 \n  Cherry  : 13\nGrape   :47\n  APPLE : 75\nBanana  :8 \n  Lemon   : 65\n"
+   },
+   "expected_files": {
+    "inventory.txt": "fig=69\ncherry=13\ngrape=47\napple=75\nbanana=8\nlemon=65\n"
+   }
+  },
+  {
+   "task_id": "norm-dedupe-1",
+   "group_id": "norm-dedupe-1",
+   "split": "train",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "DATE :9 \n  Apple  : 31\nBanana   :12\n  GRAPE : 71\nKiwi  :55 \n  Apple   : 16\n"
+   },
+   "expected_files": {
+    "inventory.txt": "date=9\napple=31\nbanana=12\ngrape=71\nkiwi=55\n"
+   }
+  },
+  {
+   "task_id": "norm-preserve-2",
+   "group_id": "norm-preserve-2",
+   "split": "validation",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "MANGO :6 \n  Nectarine  : 72\nLemon   :18\n  APPLE : 38\nGrape  :54 \n  Kiwi   : 19\nBANANA :70\n"
+   },
+   "expected_files": {
+    "inventory.txt": "mango=6\nnectarine=72\nlemon=18\napple=38\ngrape=54\nkiwi=19\nbanana=70\n"
+   }
+  },
+  {
+   "task_id": "norm-dedupe-2",
+   "group_id": "norm-dedupe-2",
+   "split": "validation",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "BANANA :14 \n  Lemon  : 75\nElderberry   :74\n  KIWI : 82\nCherry  :25 \n  Banana   : 4\n"
+   },
+   "expected_files": {
+    "inventory.txt": "banana=14\nlemon=75\nelderberry=74\nkiwi=82\ncherry=25\n"
+   }
+  },
+  {
+   "task_id": "norm-sort-1",
+   "group_id": "norm-sort-1",
+   "split": "validation",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "APPLE :41 \n  Lemon  : 60\nDate   :75\n  HONEYDEW : 59\nGrape  :47 \n  Kiwi   : 39\n"
+   },
+   "expected_files": {
+    "inventory.txt": "apple=41\ndate=75\ngrape=47\nhoneydew=59\nkiwi=39\nlemon=60\n"
+   }
+  },
+  {
+   "task_id": "norm-preserve-3",
+   "group_id": "norm-preserve-3",
+   "split": "test",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "DATE :94 \n  Cherry  : 58\nNectarine   :37\n  BANANA : 78\nElderberry  :10 \n  Honeydew   : 16\nLEMON :66\n  Mango  : 54\n"
+   },
+   "expected_files": {
+    "inventory.txt": "date=94\ncherry=58\nnectarine=37\nbanana=78\nelderberry=10\nhoneydew=16\nlemon=66\nmango=54\n"
+   }
+  },
+  {
+   "task_id": "norm-dedupe-3",
+   "group_id": "norm-dedupe-3",
+   "split": "test",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "CHERRY :86 \n  Fig  : 10\nNectarine   :98\n  HONEYDEW : 72\nGrape  :74 \n  Apple   : 41\nFIG :77\n"
+   },
+   "expected_files": {
+    "inventory.txt": "cherry=86\nfig=10\nnectarine=98\nhoneydew=72\ngrape=74\napple=41\n"
+   }
+  },
+  {
+   "task_id": "norm-sort-2",
+   "group_id": "norm-sort-2",
+   "split": "test",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "LEMON :86 \n  Honeydew  : 9\nBanana   :8\n  NECTARINE : 94\nElderberry  :90 \n  Date   : 40\nFIG :83\n"
+   },
+   "expected_files": {
+    "inventory.txt": "banana=8\ndate=40\nelderberry=90\nfig=83\nhoneydew=9\nlemon=86\nnectarine=94\n"
+   }
+  }
+ ]
+}
