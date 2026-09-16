@@ -4,6 +4,14 @@
 
 Run these commands from the repository with Python 3.11+, Git and nanoRSI installed. Every output directory must be new so earlier outcomes are retained. The canonical starters are `artifact`, `harness` and `model`; `program`, `agent` and `learner` remain aliases. Each experiment uses the ordinary CLI and the same protected evaluation contract.
 
+## Smoke: the whole loop in one command
+
+```bash
+python examples/smoke/run_smoke.py
+```
+
+Builds a throwaway CPU workspace, runs baseline → gated search (three accepted checkpoint updates) → freeze → unseen final test (0.0 vs 0.75) → audit → evidence ledger, and narrates each step. Fully offline; add `--keep` to inspect the reports. Start with the [minimal mechanism set](../docs/RSI_MINIMAL.md) · [中文](../docs/RSI_MINIMAL.zh-CN.md).
+
 ## Recursive checkpoint reuse on handwritten digits
 
 The optional [digits study](recursive_learning/README.md) · [中文](recursive_learning/README.zh-CN.md) uses NumPy tooling and a bundled attributed dataset to compare recursive checkpoint-based sampling with frozen, uniform and random controls. It separates all searches/freezes from final testing and checks actual training budgets. [All 120 measured runs](results/recursive-digits-v0.4.1/README.md) retain the stronger and weaker control outcomes. This is a classifier experiment, not LLM fine-tuning.

@@ -42,6 +42,8 @@ nanoRSI is two things under one name:
 
 [Radar findings become prioritized experiments](docs/research/industry-rsi/ADOPTION.md); experiment results feed back into what the radar watches. Neither track claims general RSI is solved; evidence limits stay part of every record.
 
+New to RSI? [The minimal mechanism set](docs/RSI_MINIMAL.md) explains the concept in five minutes, and `python examples/smoke/run_smoke.py` runs the entire loop offline — no API key.
+
 ## What can improve?
 
 | Start with | What actually changes | Try it |
@@ -237,6 +239,7 @@ Direct bounded loops, enabling techniques and assisted R&D are labeled separatel
 
 | I want to… | Start here |
 | --- | --- |
+| Understand RSI fast | [Minimal mechanism set](docs/RSI_MINIMAL.md) · [Offline smoke](examples/smoke/run_smoke.py) |
 | Run my own experiment | [Quickstart and API keys](docs/QUICKSTART.md) · [Multilevel experiments](docs/MULTILEVEL.md) |
 | Read the implementation | [The loop](src/nanorsi/loop.py) · [Reference runner](src/nanorsi/templates/skills/target/agent/run.py) |
 | Understand the design | [Project charter](docs/PROJECT_CHARTER.md) · [v0.2 design](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md) |

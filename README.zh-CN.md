@@ -39,6 +39,8 @@ nanoRSI 这个名字下有两件事：
 
 [雷达发现会转化为排好序的实验方向](docs/research/industry-rsi/ADOPTION.md)，实验结果又反过来决定雷达盯什么。任何一条都不宣称通用 RSI 已解决，证据边界始终是记录的一部分。
 
+刚接触 RSI？[RSI 的最小机制集](docs/RSI_MINIMAL.zh-CN.md)五分钟讲清概念，`python examples/smoke/run_smoke.py` 离线跑通整个循环——无需 API key。
+
 ## 可以改进什么？
 
 | 从哪里开始 | 实际改变什么 | 命令 |
@@ -234,6 +236,7 @@ Skills 比较工具输出配对任务宏平均差值、分组结果、单次任�
 
 | 想做什么 | 入口 |
 | --- | --- |
+| 快速理解 RSI | [最小机制集](docs/RSI_MINIMAL.zh-CN.md) · [离线冒烟实验](examples/smoke/run_smoke.py) |
 | 运行自己的实验 | [操作与 API 密钥指南](docs/QUICKSTART.zh-CN.md) · [多层级实验](docs/MULTILEVEL.zh-CN.md) |
 | 看核心实现 | [实验循环](src/nanorsi/loop.py) · [参考 Runner](src/nanorsi/templates/skills/target/agent/run.py) |
 | 理解设计取舍 | [项目章程](docs/PROJECT_CHARTER.md) · [v0.2 设计](docs/design/HARNESS_PLATFORM_V0_2.zh-CN.md) |
