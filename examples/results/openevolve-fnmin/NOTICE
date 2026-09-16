@@ -1,0 +1,8 @@
+This workspace embeds a real evaluation task from OpenEvolve
+(https://github.com/codelion/openevolve), Copyright 2025 Asankhaya Sharma,
+licensed under Apache-2.0. Source files: examples/function_minimization/
+initial_program.py (target/program.py, verbatim under an attribution header)
+and examples/function_minimization/evaluator.py (evaluator/evaluate.py,
+scoring formula preserved; trial execution and score normalization adapted
+to the nanoRSI contract). See the evaluator docstring for the exact
+adaptations. Apache-2.0 requires this notice to be retained in distributions.

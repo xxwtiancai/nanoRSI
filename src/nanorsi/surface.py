@@ -62,12 +62,15 @@ class SurfacePolicy:
 def changed_paths_from_unified_diff(diff: str) -> list[str]:
     paths: list[str] = []
     for line in diff.splitlines():
-        if not line.startswith("diff --git "):
-            continue
-        tokens = shlex.split(line)
-        if len(tokens) != 4:
-            raise ValueError(f"malformed diff header: {line}")
-        for token in tokens[2:]:
-            if token.startswith("a/"):
-                paths.append(normalize_relative_path(token[2:]))
+        if line.startswith("diff --git "):
+            tokens = shlex.split(line)
+            if len(tokens) != 4:
+                raise ValueError(f"malformed diff header: {line}")
+            for token in tokens[2:]:
+                if token.startswith("a/"):
+                    paths.append(normalize_relative_path(token[2:]))
+    if not paths:
+        for line in diff.splitlines():
+            if line.startswith("+++ b/"):
+                paths.append(normalize_relative_path(line[6:]))
     return list(dict.fromkeys(paths))

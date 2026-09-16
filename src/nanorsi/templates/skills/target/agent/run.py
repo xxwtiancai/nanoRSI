@@ -269,23 +269,7 @@ def _stream_bridge(command: list[str], payload: bytes, timeout: float, *, cwd: P
     return process.returncode, bytes(streams.get(stdout_fd, b"")), bytes(streams.get(stderr_fd, b"")), timed_out, output_limited, False
 
 
-def _call_bridge(agent: dict[str, Any], messages: list[dict[str, str]], usage: _Usage) -> tuple[Any | None, str | None]:
-    command = agent.get("model_command")
-    if not isinstance(command, list) or not command or not all(isinstance(item, str) and item for item in command):
-        usage.errors.append("invalid_model_command")
-        return None, "invalid model command"
-    timeout = agent.get("timeout_s", 60)
-    try:
-        timeout_value = float(timeout)
-    except (TypeError, ValueError, OverflowError):
-        timeout_value = math.nan
-    if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or not math.isfinite(timeout_value) or timeout <= 0:
-        usage.errors.append("invalid_timeout")
-        return None, "invalid model timeout"
-    payload = {"messages": messages, "model": agent.get("model"), "max_tokens": agent.get("max_tokens")}
-    for key in ("base_url", "api_key_file", "timeout_s", "token_parameter", "thinking"):
-        if key in agent:
-            payload[key] = agent[key]
+def _bridge_envelope(command: list[str], payload: dict[str, Any], timeout_value: float, usage: _Usage) -> tuple[dict[str, Any] | None, str | None]:
     returncode, stdout, _stderr, timed_out, output_limited, start_error = _stream_bridge(command, _json(payload).encode("utf-8"), timeout_value)
     if start_error:
         usage.errors.append("model_start_error")
@@ -311,15 +295,56 @@ def _call_bridge(agent: dict[str, Any], messages: list[dict[str, str]], usage: _
     if not isinstance(envelope, dict) or not isinstance(envelope.get("content"), str):
         usage.record_call(envelope.get("usage") if isinstance(envelope, dict) else None, "model_missing_content")
         return None, "model bridge response has no content"
+    return envelope, None
+
+
+def _strip_outer_fence(text: str) -> str:
+    stripped = text.strip()
+    if stripped.startswith("```") and stripped.endswith("```") and stripped.count("```") == 2:
+        first_newline = stripped.find("\n")
+        if first_newline != -1:
+            return stripped[first_newline + 1:-3].strip("\n")
+    return text
+
+
+def _parse_action(envelope: dict[str, Any], usage: _Usage) -> tuple[Any | None, str | None]:
     usage.record_call(envelope.get("usage"))
     try:
-        if len(envelope["content"].encode("utf-8")) > MAX_ACTION_BYTES:
+        content = envelope["content"]
+        if len(content.encode("utf-8")) > MAX_ACTION_BYTES:
             raise RunnerError("model action exceeded limit")
-        action = json.loads(envelope["content"])
+        return json.loads(_strip_outer_fence(content)), None
     except (UnicodeError, json.JSONDecodeError, RunnerError):
         usage.errors.append("invalid_action")
         return None, "model returned invalid action JSON"
-    return action, None
+
+
+def _call_bridge(agent: dict[str, Any], messages: list[dict[str, str]], usage: _Usage) -> tuple[Any | None, str | None]:
+    command = agent.get("model_command")
+    if not isinstance(command, list) or not command or not all(isinstance(item, str) and item for item in command):
+        usage.errors.append("invalid_model_command")
+        return None, "invalid model command"
+    timeout = agent.get("timeout_s", 60)
+    try:
+        timeout_value = float(timeout)
+    except (TypeError, ValueError, OverflowError):
+        timeout_value = math.nan
+    if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or not math.isfinite(timeout_value) or timeout_value <= 0:
+        usage.errors.append("invalid_timeout")
+        return None, "invalid model timeout"
+    payload = {"messages": messages, "model": agent.get("model"), "max_tokens": agent.get("max_tokens")}
+    for key in ("base_url", "api_key_file", "timeout_s", "token_parameter", "thinking"):
+        if key in agent:
+            payload[key] = agent[key]
+    for attempt in (1, 2):
+        envelope, error = _bridge_envelope(command, payload, timeout_value, usage)
+        if error is not None:
+            return None, error
+        action, error = _parse_action(envelope, usage)
+        if error is None or attempt == 2:
+            return action, error
+        usage.errors.append("invalid_action_retry")
+    return None, "model returned invalid action JSON"
 
 
 def _trace_add(trace: list[dict[str, Any]], item: dict[str, Any]) -> None:

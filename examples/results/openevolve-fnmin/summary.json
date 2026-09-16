@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "study": "openevolve-fnmin",
+  "created_at": "2026-09-16T22:00:00+08:00",
+  "question": "Can nanoRSI run a complete, real evaluation task taken from another open RSI repository and produce a genuine, frozen-tested improvement?",
+  "task_source": {
+    "repository": "https://github.com/codelion/openevolve",
+    "license": "Apache-2.0",
+    "copyright": "Asankhaya Sharma, 2025",
+    "source_files": ["examples/function_minimization/initial_program.py", "examples/function_minimization/evaluator.py"],
+    "adaptations": "verbatim initial program under an attribution header; evaluator scoring formula preserved, trials executed as bounded subprocesses, per-trial numpy RNG seeding for reproducibility, combined score (max 1.5) normalized to [0,1]"
+  },
+  "settings": {
+    "mode": "artifact (program template)", "arm": "frozen", "seed": 0,
+    "model": "glm-5.3-flash", "base_url": "https://api.z.ai/api/coding/paas/v4",
+    "thinking": "disabled", "max_steps": 5, "max_episodes": 40, "final_repeats": 1
+  },
+  "search_outcomes": [
+    {"attempt": 1, "decision": "failed", "reason": "provider rate limit (429)"},
+    {"attempt": 2, "decision": "accepted", "validation": "0.9194 -> 0.9975 (+0.0776)"},
+    {"attempt": 3, "decision": "failed", "reason": "patch with only garbage at line 4"},
+    {"attempt": 4, "decision": "rejected", "reason": "improvement below minimum: 0.000519"},
+    {"attempt": 5, "decision": "rejected", "reason": "improvement below minimum: 0.002571"}
+  ],
+  "final_panel_unseen_seeds": {
+    "baseline": {"score": 0.9418, "avg_distance": 0.1749, "avg_value": -1.4912, "reliability": 1.0},
+    "candidate": {"score": 0.9960, "avg_distance": 0.0126, "avg_value": -1.5184, "reliability": 1.0},
+    "true_global_minimum": {"x": -1.704, "y": 0.678, "value": -1.519}
+  },
+  "accepted_hypothesis": "Replace pure random search with batched global exploration plus adaptive pattern-search local refinement from multiple promising restart points.",
+  "usage": {"model_calls": 5, "input_tokens": 5705, "output_tokens": 5362, "cost_usd": null},
+  "audit": "zero leakage, zero silent bypass, zero declared-but-unloaded (artifact mode has no skills surface)",
+  "limits": "One seed, one final repeat, one flash-tier model, one upstream task. The task measures optimization quality, not generalization across task families. Upstream author-reported OpenEvolve results are not reproduced here; this is nanoRSI running the task independently."
+}

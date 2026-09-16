@@ -207,6 +207,69 @@ class LiveTemplateTests(unittest.TestCase):
         self.assertLessEqual(sum(len(value.encode()) for value in bounded.values()), 192000)
         self.assertEqual(len(bounded), 3)
 
+    def test_invalid_action_json_gets_one_bounded_retry(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _render(root, "skills")
+            counter = root / "counter"
+            response = {"diff": "", "hypothesis": {}}
+            bridge = root / "bridge.py"
+            bridge.write_text(
+                "import json,sys\n"
+                "from pathlib import Path\n"
+                "c = Path(" + repr(str(counter)) + ")\n"
+                "n = int(c.read_text()) if c.exists() else 0\n"
+                "c.write_text(str(n + 1))\n"
+                "json.load(sys.stdin)\n"
+                "content = " + repr(json.dumps(response)) + " if n >= 1 else '{not json'\n"
+                "print(json.dumps({'content': content, 'usage': {'model_calls': 1, 'input_tokens': 1, 'output_tokens': 1, 'cost_usd': None}}))\n")
+            result = _runner(root, {"mode": "propose", "context": {"parent_files": {}, "train_results": []},
+                                    "agent": {"model_command": [sys.executable, str(bridge)]}})
+            self.assertEqual(result["status"], "ok", result)
+            self.assertEqual(counter.read_text(), "2")
+            self.assertEqual(result["usage"]["model_calls"], 2)
+            self.assertIn("invalid_action", result["usage"]["errors"])
+            self.assertIn("invalid_action_retry", result["usage"]["errors"])
+
+    def test_single_outer_markdown_fence_is_stripped_before_strict_parsing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _render(root, "skills")
+            response = {"diff": "diff --git a/target/program.py b/target/program.py\n--- a/target/program.py\n+++ b/target/program.py\n@@ -1 +1 @@\n-old\n+new\n", "hypothesis": {"reason": "fenced reply"}}
+            fenced = "```json\n" + json.dumps(response) + "\n```"
+            bridge = root / "bridge.py"
+            bridge.write_text("import json,sys\njson.load(sys.stdin)\nprint(json.dumps({'content': " + repr(fenced) + ", 'usage': {'model_calls': 1}}))\n")
+            result = _runner(root, {"mode": "propose", "context": {"parent_files": {"target/program.py": "old\n"}, "surface": {"allow": ["target/**"]}},
+                                    "agent": {"model_command": [sys.executable, str(bridge)]}})
+            self.assertEqual(result["status"], "ok", result)
+            self.assertIn("diff --git a/target/program.py", result["diff"])
+            self.assertNotIn("invalid_action", result["usage"]["errors"])
+            double_fence = "```json\n" + json.dumps(response) + "\n```\ntrailing prose"
+            bridge.write_text("import json,sys\njson.load(sys.stdin)\nprint(json.dumps({'content': " + repr(double_fence) + ", 'usage': {'model_calls': 1}}))\n")
+            result = _runner(root, {"mode": "propose", "context": {"parent_files": {"target/program.py": "old\n"}, "surface": {"allow": ["target/**"]}},
+                                    "agent": {"model_command": [sys.executable, str(bridge)]}})
+            self.assertIn("model returned invalid action JSON", json.dumps(result["trace"]))
+
+    def test_persistent_invalid_action_json_fails_after_the_single_retry(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _render(root, "skills")
+            counter = root / "counter"
+            bridge = root / "bridge.py"
+            bridge.write_text(
+                "import json,sys\n"
+                "from pathlib import Path\n"
+                "c = Path(" + repr(str(counter)) + ")\n"
+                "n = int(c.read_text()) if c.exists() else 0\n"
+                "c.write_text(str(n + 1))\n"
+                "json.load(sys.stdin)\n"
+                "print(json.dumps({'content': '{still not json', 'usage': {'model_calls': 1}}))\n")
+            result = _runner(root, {"mode": "propose", "context": {"parent_files": {}, "train_results": []},
+                                    "agent": {"model_command": [sys.executable, str(bridge)]}})
+            self.assertIn("model returned invalid action JSON", json.dumps(result["trace"]))
+            self.assertEqual(counter.read_text(), "2")
+            self.assertEqual(result["usage"]["model_calls"], 2)
+
     def test_declared_skill_script_executes_with_arguments_and_actual_hash(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

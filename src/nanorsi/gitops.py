@@ -90,10 +90,14 @@ class Git:
     def apply_diff(self, checkout: Path, diff: str) -> None:
         git = Git(checkout)
         payload = diff.encode("utf-8")
-        check = git._run("apply", "--check", "--whitespace=nowarn", "-", input_bytes=payload, check=False)
-        if check.returncode:
-            raise GitError(check.stderr.decode("utf-8", "replace"))
-        git._run("apply", "--whitespace=nowarn", "-", input_bytes=payload)
+        modes = (["--recount"], ["--recount", "-C1"])
+        for flags in modes:
+            check = git._run("apply", "--check", *flags, "--whitespace=nowarn", "-", input_bytes=payload, check=False)
+            if not check.returncode:
+                git._run("apply", *flags, "--whitespace=nowarn", "-", input_bytes=payload)
+                return
+        strict = git._run("apply", "--check", *modes[0], "--whitespace=nowarn", "-", input_bytes=payload, check=False)
+        raise GitError(strict.stderr.decode("utf-8", "replace"))
 
     def changed_paths(self, checkout: Path, parent_ref: str) -> list[str]:
         git = Git(checkout)

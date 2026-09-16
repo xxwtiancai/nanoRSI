@@ -95,6 +95,44 @@ index 1..2 100644
                 self.assertNotEqual(git.tree_hash(child_commit), parent_tree)
                 self.assertEqual((child / "target" / "a.txt").read_text(), "two\n")
 
+    def test_apply_diff_repairs_miscounted_and_drifted_model_hunks(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            git = Git(repo)
+            git.init()
+            (repo / "target").mkdir()
+            (repo / "target" / "a.txt").write_text("one\ntwo\nthree\nfour\nfive\n", encoding="utf-8")
+            parent = git.commit_all("baseline")
+            miscounted = """diff --git a/target/a.txt b/target/a.txt
+--- a/target/a.txt
++++ b/target/a.txt
+@@ -2,2 +2,2 @@
+ two
+-three
++THREE
+ four
+"""
+            with git.worktree(parent, repo / "recount-child") as child:
+                git.apply_diff(child, miscounted)
+                self.assertEqual((child / "target" / "a.txt").read_text(), "one\ntwo\nTHREE\nfour\nfive\n")
+            drifted = """diff --git a/target/a.txt b/target/a.txt
+--- a/target/a.txt
++++ b/target/a.txt
+@@ -1,5 +1,5 @@
+ imagined-context
+ two
+-three
++THREE
+ four
+ five
+"""
+            with git.worktree(parent, repo / "drift-child") as child:
+                git.apply_diff(child, drifted)
+                self.assertEqual((child / "target" / "a.txt").read_text(), "one\ntwo\nTHREE\nfour\nfive\n")
+            with git.worktree(parent, repo / "garbage-child") as child:
+                with self.assertRaises(Exception):
+                    git.apply_diff(child, "not a unified diff at all\n")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -12,6 +12,10 @@ python examples/smoke/run_smoke.py
 
 Builds a throwaway CPU workspace, runs baseline → gated search (three accepted checkpoint updates) → freeze → unseen final test (0.0 vs 0.75) → audit → evidence ledger, and narrates each step. Fully offline; add `--keep` to inspect the reports. Start with the [minimal mechanism set](../docs/RSI_MINIMAL.md) · [中文](../docs/RSI_MINIMAL.zh-CN.md).
 
+## Real upstream task: OpenEvolve function minimization (live model)
+
+[results/openevolve-fnmin](results/openevolve-fnmin/README.md) ports a complete Apache-2.0 evaluation task from [OpenEvolve](https://github.com/codelion/openevolve) and runs it on nanoRSI with GLM-5.3-Flash: the evolved program reached 0.9960 vs the initial 0.9418 on unseen seeds, converging to the known global minimum (distance 0.175 → 0.013) in five model calls. The run also forced three platform hardenings (action-JSON retry, fence stripping, git diff-repair ladder). ShinkaEvolve's Apache-2.0 example tasks are the queued follow-up donor.
+
 ## Recursive checkpoint reuse on handwritten digits
 
 The optional [digits study](recursive_learning/README.md) · [中文](recursive_learning/README.zh-CN.md) uses NumPy tooling and a bundled attributed dataset to compare recursive checkpoint-based sampling with frozen, uniform and random controls. It separates all searches/freezes from final testing and checks actual training budgets. [All 120 measured runs](results/recursive-digits-v0.4.1/README.md) retain the stronger and weaker control outcomes. This is a classifier experiment, not LLM fine-tuning.
