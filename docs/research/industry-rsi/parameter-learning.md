@@ -21,9 +21,9 @@
 
 ### SPADE: Self-Play in Adaptive Synthetic Executable Environments
 
-**2026-08** · paper · Direct bounded loop
+**2026-08-19** · paper · Direct bounded loop
 
-**Publication date** — arXiv v1: August 2026 (2608.19197). Exact v1 day not re-verified; month precision used.
+**Publication date** — arXiv v1: 2026-08-19 (2608.19197); v2 2026-08-24; v3 2026-08-31. Numbers cited from v1, re-checked on the abs page.
 
 **Institutional relationship** — Paper: a nine-institution collaboration led from University of Washington (Bo Liu, Natasha Jaques corresponding) with Stanford, Northeastern, CMU, MIT, NUS, SNU, Stevens and UChicago.
 
@@ -41,7 +41,7 @@
 
 **Source figure / official image** — Figure 4: SPADE - the Environment Designer conditions on memory and corpus to emit an executable environment plus privileged hint; the agent plays with and without the hint, and the return gap is the designer's hint-based regret. · Figure 4 · [source](https://arxiv.org/html/2608.19197v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository (MIT)](https://github.com/spade-rl/spade)
 
@@ -221,7 +221,7 @@
 
 **Source figure / official image** — Figure 2: EvoLMM - the Proposer generates questions from raw images, the Solver answers with multiple samples; rewards are continuous self-consistency (Solver) and an entropy band-pass curriculum (Proposer), optimized with KL-regularized REINFORCE. · Figure 2 · [source](https://arxiv.org/html/2511.16672v4)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository](https://github.com/mbzuai-oryx/EvoLMM)
 
@@ -841,11 +841,11 @@
 
 **Source figure / official image** — Figure 3: Conductor training - GRPO updates the 7B coordinator on rewards from full multi-agent rollouts over randomized worker pools, teaching it to write topology + instructions that can recursively include itself. · Figure 3 · [source](https://arxiv.org/html/2512.04388v5)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
-**Primary sources** — [Conductor arXiv abstract](https://arxiv.org/abs/2512.04388) · [Paper v5 (affiliations, training figure, Tables 1/7)](https://arxiv.org/html/2512.04388v5) · [Fugu product page](https://sakana.ai/fugu/)
+**Primary sources** — [Conductor arXiv abstract](https://arxiv.org/abs/2512.04388) · [Paper v5 (affiliations, training figure, Tables 1/7)](https://arxiv.org/html/2512.04388v5) · [Fugu product page](https://sakana.ai/fugu/) · [Fugu Max release post](https://sakana.ai/fugu-max-release/)
 
 <a id="google-discorl-2025"></a>
 

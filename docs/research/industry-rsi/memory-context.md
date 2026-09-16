@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Structured knowledge bases & graphs](#family-structured-knowledge) | 6 |
-| [Experience accumulation & replay](#family-experience-accumulation) | 5 |
+| [Experience accumulation & replay](#family-experience-accumulation) | 6 |
 | [Context organization policies](#family-context-policies) | 3 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
 | [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 2 |
@@ -108,11 +108,11 @@
 
 <a id="recuris-memory-evolution"></a>
 
-### Recuris: Recursive Experiential-Working Memory Evolution for Long-Horizon Agents
+### Recursive Experiential-Working Memory Evolution for Long-Horizon Agent Harnesses
 
-**2026-08** · paper · Direct bounded loop
+**2026-08-25** · paper · Direct bounded loop
 
-**Publication date** — arXiv v1: August 2026 (2608.24876; repository created 2026-08-25). Exact v1 day not re-verified; month precision used.
+**Publication date** — arXiv v1: 2026-08-25 (2608.24876; the repository was created the same day). The system is named Recuris in the paper body; the arXiv title carries no prefix.
 
 **Institutional relationship** — Paper: NUS (Zhaochen Yu, Shuicheng Yan), Stanford (Yingcheng Wu, Zhe Zhao), Oxford (Zhenfei Yin, Kaiyuan Chen) and Princeton (Mengdi Wang, Ling Yang).
 
@@ -130,7 +130,7 @@
 
 **Source figure / official image** — Figure 3: Recuris - within-task, working memory drives a skill-invocation policy with checker-committed state; across tasks, a fixed Meta-Agent patches one implicated component at a time behind a validation gate. · Figure 3 · [source](https://arxiv.org/html/2608.24876v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/Gen-Verse/Recuris)
 
@@ -160,7 +160,7 @@
 
 **Source figure / official image** — Figure 2: XSkill - Phase I distills skill documents and experience items from multi-path visually grounded trajectories via rollout summary and cross-rollout critique; Phase II retrieves, adapts and injects both streams at test time. · Figure 2 · [source](https://arxiv.org/html/2603.12056v3)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository](https://github.com/XSkill-Agent/XSkill)
 
@@ -198,7 +198,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## Experience accumulation & replay (5)
+## Experience accumulation & replay (6)
+
+<a id="echopath-replayable-memory"></a>
+
+### EchoPath: Execution-Level Replayable Memory for GUI Agents
+
+**2026-09-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-15 (2609.16635), verified on the abs page.
+
+**Institutional relationship** — Paper: Johns Hopkins University (Department of Applied Mathematics and Statistics) and Amazon AGI.
+
+**What changes and how feedback is reused** — Artifact-validated GUI trajectories are compiled into standardized, parameter-controlled callable memories (task-intent keys, preconditions, parameters, GUI evidence, validation provenance, lifecycle state). An image-based target-reaiming algorithm re-matches stored GUI targets against the current screen and corrects coordinates before replay, rebinding only declared modifiable inputs. Lifecycle states (candidate, active, quarantined, repaired branch, merged, deprecated) gate what retrieval can expose.
+
+**Author-reported result** — OSWorld-Verified with a paired two-pass design (second pass replays at a changed resolution): replay preserves success — Codex 145/159 (91.2%), Claude 92.8%, Kimi 87.3%, comparable to the Synapse planning-augmentation baseline (91.8%). Second-pass median cost: 20,370 tokens and 127.5 seconds vs Synapse 586,386 tokens and 315.7 seconds (median token cost down more than 90%, execution time down about 60%); first-pass construction costs about 572K tokens and 4.5 minutes.
+
+**Evidence limits** — Best suited to stable environments: visual re-aiming stays vulnerable to toolbar rearrangement, localization, responsive layouts, display scaling and near-duplicate UI elements; live robustness under interface drift is not established, and memory acquisition requires a full autonomous first pass rather than user demonstration.
+
+**Code / weights / data / license** — Paper lists github.com/JackZhao1998/EchoPath; the URL did not resolve at verification.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: store execution-level skills as callable memories carrying their own validation provenance and lifecycle state, and expose only active ones to retrieval — replay then buys most of the win at a tenth of the tokens.
+
+![EchoPath framework: validated trajectories become parameter-controlled callable memories with validation provenance and lifecycle states, re-aimed to the current screen before replay.](assets/paper-figures/echopath-replayable-memory.png)
+
+**Source figure / official image** — EchoPath framework: validated trajectories become parameter-controlled callable memories with validation provenance and lifecycle states, re-aimed to the current screen before replay. · Figure 1 (S2.F1) · [source](https://arxiv.org/html/2609.16635v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.16635) · [arXiv HTML v1](https://arxiv.org/html/2609.16635v1)
 
 <a id="bytedance-chain-of-experience"></a>
 
@@ -262,11 +292,11 @@
 
 <a id="atlas-pamphlets"></a>
 
-### ATLAS: Continual Learning, Not Training - Online Adaptation for Agents
+### Continual Learning, Not Training: Online Adaptation for Agents
 
 **2025-11-02** · paper · Direct bounded loop
 
-**Publication date** — arXiv v1: 2025-11-02. The SDK repository was created 2025-09-30.
+**Publication date** — arXiv v1: 2025-11-02. The SDK repository was created 2025-09-30. The system is named ATLAS in the paper body; the arXiv title carries no prefix.
 
 **Institutional relationship** — Paper: Aman Jaglan and Jarrod Barnes (corresponding) at Arc Intelligence; the evaluation uses Microsoft's ExCyTIn-Bench but the work is not a Microsoft affiliation.
 
@@ -284,7 +314,7 @@
 
 **Source figure / official image** — Figure 1: ATLAS architecture - an orchestrator manages Teacher-Student interactions during execution; learning is stored in Persistent Learning Memory and distilled into Teacher and Student pamphlets that guide future inference-time decisions. · Figure 1 · [source](https://arxiv.org/html/2511.01093v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository](https://github.com/Arc-Computer/atlas-sdk)
 
@@ -326,7 +356,7 @@
 
 **2025-08-04** · paper · Direct bounded loop
 
-**Publication date** — arXiv v1: 2025-08-04 (before the 2025-09-16 window start, so the record sits in the renderer's archive section); v6: 2025-11-03; NeurIPS 2025 poster. Catalogued on 2026-09-16 to close a tracked lead; affiliations below from the paper's author list with StepFun senior authorship.
+**Publication date** — arXiv v1: 2025-08-04 (before the 2025-09-16 window start, so the record sits in the renderer's archive section); v6: 2025-11-03. The abs page lists no venue; a NeurIPS 2025 poster appearance is claimed in third-party listings and was not confirmed on arXiv at verification.
 
 **Institutional relationship** — Paper v6: a fourteen-author list including Daxin Jiang (StepFun) and academic co-authors; the abstract page does not render affiliations, so the organization field reflects the tracked lead (StepFun-led with academic partners) and should be re-verified from the PDF before any strong claim.
 
@@ -344,7 +374,7 @@
 
 **Source figure / official image** — Figure 1: SE-Agent - multi-step reasoning trajectories are revisited via revision, recombination and refinement, with improved strategies persisted across problems. · Figure 1 · [source](https://arxiv.org/html/2508.02085v6)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository](https://github.com/JARVIS-Xs/SE-Agent)
 
@@ -536,7 +566,7 @@
 
 **Source figure / official image** — Figure 2: the ReMem agent on the Evo-Memory stream - test-time evolution where the agent iteratively searches, synthesizes and evolves its memory across sequential tasks. · Figure 2 · [source](https://arxiv.org/html/2511.20857v2)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 

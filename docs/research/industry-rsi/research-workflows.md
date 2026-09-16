@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [AI-scientist systems](#family-ai-scientists) | 4 |
-| [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 2 |
+| [AI-scientist systems](#family-ai-scientists) | 5 |
+| [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
 | [Company R&D telemetry](#family-company-telemetry) | 5 |
 | [Alignment automation](#family-alignment-automation) | 3 |
 | [Analyses & audits](#family-analyses-audits) | 6 |
-| [Positions, roadmaps & labs](#family-positions-labs) | 3 |
+| [Positions, roadmaps & labs](#family-positions-labs) | 4 |
 
 <a id="family-ai-scientists"></a>
 
-## AI-scientist systems (4)
+## AI-scientist systems (5)
+
+<a id="sciencebuddy-recursive-in-recursive"></a>
+
+### ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents
+
+**2026-09-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-15 (2609.17523); the companion repository was created 2026-09-14.
+
+**Institutional relationship** — Paper: PhAI Labs (first authors and corresponding yin/wuyc/yang@phai-labs.com), Fudan University Zhongshan Hospital and Shanghai Academy of Natural Sciences (Qiang Gao), Shunwei Capital (Pengyu Zhan, Yuntong Zhang, Tian Cheng), University of Oxford (Zhenfei Yin), Stanford (Yingcheng Wu) and Princeton (Ling Yang). The HTML lists no NUS affiliation despite the Recuris author overlap.
+
+**What changes and how feedback is reused** — An interactive research workspace couples two recursions: the inner recursion holds the model fixed and lets a fixed auxiliary model (GPT-6 Astra) propose one bounded harness edit at a time (instruction, skill, or context setting), accepted only if schema-valid and better than the parent on paired development evaluation; the outer recursion trains the task model (GRPO) under the frozen improved harness using rubric rewards composed from the full collaboration trajectory. Researcher feedback defines rubric criteria but is not itself the training reward.
+
+**Author-reported result** — Four scientific task families (895 tasks from LAB-Bench and Biomni-Eval1). Coupled three-cycle experiment: test accuracy 42.2%→73.3%, with 33.3% of problems going incorrect→correct against 2.2% regressions. Harness-only (model fixed): validation accuracy 31.1%→51.1% (+20 points). Model-only (harness fixed): pass@4 coverage 48.3%→67.8% over roughly two hours of RL.
+
+**Evidence limits** — Appendix states effects of individual skills and feedback sources are not separately isolated, and the fixed auxiliary reflector means better task performance does not imply a stronger improvement mechanism; no token-cost accounting is given.
+
+**Code / weights / data / license** — Paper points to Gen-Verse/ScienceBuddy-RSI and science-buddy.io; the visible org repository at verification is Gen-Verse/ScienceBuddy (MIT, 16 stars, created 2026-09-14).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: alternate bounded harness edits (accepted only on paired-evaluation improvement) with a model-training phase under the frozen winner — the two recursions feed each other but never mutate the same surface at once.
+
+![ScienceBuddy system diagram: the inner harness-evolution recursion and outer model-training recursion compose into recursive-in-recursive self-improvement.](assets/paper-figures/sciencebuddy-system-diagram.png)
+
+**Source figure / official image** — ScienceBuddy system diagram: the inner harness-evolution recursion and outer model-training recursion compose into recursive-in-recursive self-improvement. · Figure 2 (S0.F2, system diagram) · [source](https://arxiv.org/html/2609.17523v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+
+**Open code / weights / data links** — [GitHub repository](https://github.com/Gen-Verse/ScienceBuddy)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17523) · [arXiv HTML v1](https://arxiv.org/html/2609.17523v1) · [GitHub repository](https://github.com/Gen-Verse/ScienceBuddy)
 
 <a id="faraday-replica-ai-scientist"></a>
 
@@ -139,7 +169,37 @@
 
 <a id="family-autonomous-post-training"></a>
 
-## Autonomous post-training & its evaluation (2)
+## Autonomous post-training & its evaluation (3)
+
+<a id="metarsi-composition"></a>
+
+### MetaRSI / RSI2: A Meta-Recursive Self-Improving System for Recursive Self-Improving Systems Themselves
+
+**2026-09-06** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-06 (2609.06396); v2: 2026-09-09. The companion repository was created 2026-09-03. Chinese media covered it as MetaRSI-v1 on 2026-09-14.
+
+**Institutional relationship** — Thirty-one authors; the HTML renders no institutional affiliations at verification. CosmosMind is the releasing organization (GitHub/Hugging Face org of the artifacts), consistent with media attribution "CosmosMind + partner universities" — treat author-institution mapping as unverified.
+
+**What changes and how feedback is reused** — Three typed operators share one loop kernel: Data-RSI writes verified training records synthesized from the system's own execution traces (adversarial generation with blind re-derivation by an input-isolated Anchor role); Harness-RSI applies typed patches to a five-slot scaffold (system prompt, memory, built-in tools, skills, MCP tools); Model-RSI internalizes data into parameters via bounded LoRA-style training from a fixed base. A two-axis optimizer (horizontal operator sequencing, vertical proposal-policy rewriting under a mutable/action/protected contract) schedules them, with a meta-agent revising the scheduler once per improvement term.
+
+**Author-reported result** — Target Qwen3.5-35B-A3B, mean of five seeds: MetaRSI-v1 averages +10.9 over the frozen system — Terminal-Bench 2.1 +8.3, SWE-bench Pro +9.2 (resolve rate 10.3→19.5), AIME +13.3, GPQA-D-hard100 +12.6. Ablations: composition adds 4.3 points over the best single operator (Harness-RSI +6.6 alone) and beats hand-fixed and static-router pipelines by 3.6 points.
+
+**Evidence limits** — The authors' own census: RSI is validated almost only where verification is machine-checkable (69% of 45 surveyed systems, including theirs), so gains certify "restricted, benchmark-bound capability"; Data-RSI's blind re-solve does not certify correctness against knowledge the model itself lacks.
+
+**Code / weights / data / license** — Artifacts at github.com/CosmosMind-ai/RSI-Harness (565 stars at verification) and Hugging Face CosmosMind/RSI-Harness — no license file at verification, so all rights reserved by default: reference the ideas only, copy nothing.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: type every mutation as writing data, scaffold or parameters, keep one shared loop kernel, and learn the operator schedule itself — the +3.6 over hand-fixed pipelines is the measurable value of scheduling.
+
+![MetaRSI-v1 results: frontier models improve themselves on Terminal-Bench 2.1 under the composed operators.](assets/paper-figures/metarsi-frontier.svg)
+
+**Source figure / official image** — MetaRSI-v1 results: frontier models improve themselves on Terminal-Bench 2.1 under the composed operators. · Figure 10 (S5.F10, results_frontier.svg) · [source](https://arxiv.org/html/2609.06396v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+
+**Open code / weights / data links** — [GitHub repository](https://github.com/CosmosMind-ai/RSI-Harness)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.06396) · [arXiv HTML v2](https://arxiv.org/html/2609.06396v2) · [GitHub repository](https://github.com/CosmosMind-ai/RSI-Harness)
 
 <a id="amazon-autonomous-post-training"></a>
 
@@ -229,11 +289,11 @@
 
 **Source figure / official image** — Opening of the September 6, 2026 post: OpenAI states it reached the automated-research-intern goal announced the previous fall and is 'making strong progress toward creating an automated AI researcher by March of 2028'. · Article opening (date, title, first paragraphs) · [source](https://openai.com/index/research-acceleration-view-inside-openai/)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-14.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
-**Primary sources** — [Official research post (opened via browser)](https://openai.com/index/research-acceleration-view-inside-openai/)
+**Primary sources** — [Official research post (opened via browser)](https://openai.com/index/research-acceleration-view-inside-openai/) · [An Alien Mind (essay)](https://openai.com/index/an-alien-mind/)
 
 <a id="prime-measuring-autonomous-ai-research"></a>
 
@@ -537,7 +597,7 @@
 
 **Source figure / official image** — Figure 1: the survey's two-axis taxonomy - what is improved (deployment-time self-evolution, training-time self-iteration, self-evaluation, Auto Research) against degree of loop closure, with representative systems per cell. · Figure 1 · [source](https://arxiv.org/html/2607.07663v2)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
@@ -635,7 +695,37 @@
 
 <a id="family-positions-labs"></a>
 
-## Positions, roadmaps & labs (3)
+## Positions, roadmaps & labs (4)
+
+<a id="zhipu-glm-selftraining-filing"></a>
+
+### Zhipu HKEX placing announcement: next-generation GLM with a fully self-trained (recursive self-improvement) system
+
+**2026-09-13** · report · Automated / assisted R&D
+
+**Publication date** — HKEX announcement dated 2026-09-13 (board signature date on page 30; filename timestamp 20260913), first carried by Chinese media on 2026-09-14. This is a funded research-direction disclosure, not a published mechanism or result.
+
+**Institutional relationship** — Zhipu AI (北京智谱华章科技股份有限公司, HKEX 2513), listed issuer of the announcement.
+
+**What changes and how feedback is reused** — No mechanism published. The use-of-proceeds item (ii) states the next-generation GLM will be trained inside an environment built by the previous-generation GLM, forming a recursive self-improvement closed loop covering data self-generation, environment self-building and infrastructure self-optimization; roughly 60% of the estimated HK$39.3bn net proceeds fund this direction alongside computing power (item i), with multimodality, deeper effective compute and long-horizon RL listed separately (item iii).
+
+**Author-reported result** — No results — a capital-raising disclosure. The RSI claim is a plan with committed funding (about HK$23.5bn of about HK$39.3bn net proceeds toward next-gen GLM and the self-training system), to be spent by 2028-06-30. Tang Jie had previewed the self-evolution direction at the August earnings call.
+
+**Evidence limits** — A prospectus-style statement of intent: no architecture, no benchmark, no artifact. Until a paper or official technical page appears, this entry tracks a disclosed direction, not a demonstrated loop; media paraphrases must not be cited as evidence of capability.
+
+**Code / weights / data / license** — Primary document: the HKEX announcement PDF (eurolandir mirror). No paper, code or weights; the official docs portal (docs.bigmodel.cn) lists nothing after GLM-5.3-Flash (2026-08-26) at verification.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: none directly — track Zhipu as the first HKEX-listed issuer to put a recursive self-improvement closed loop into a funded use-of-proceeds disclosure, and re-verify when the technical paper or GLM-6.0 lands.
+
+![Zhipu HKEX announcement page 11: item (ii) commits funding to the next-gen GLM trained inside the previous generation's environment, forming a recursive self-improvement closed loop.](assets/paper-figures/zhipu-glm-selftraining-filing.png)
+
+**Source figure / official image** — Zhipu HKEX announcement page 11: item (ii) commits funding to the next-gen GLM trained inside the previous generation's environment, forming a recursive self-improvement closed loop. · Page 11, use-of-proceeds item (ii) · [source](https://ea-cdn.eurolandir.com/press-releases-attachments/4179721/HKEX-EPS_20260913_12330384_0.PDF)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [HKEX announcement PDF (primary)](https://ea-cdn.eurolandir.com/press-releases-attachments/4179721/HKEX-EPS_20260913_12330384_0.PDF) · [Zhipu release notes](https://docs.bigmodel.cn/cn/update/new-releases)
 
 <a id="genuine-rsi-roadmap-2026"></a>
 

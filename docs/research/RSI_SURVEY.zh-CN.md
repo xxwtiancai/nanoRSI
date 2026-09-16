@@ -2,7 +2,7 @@
 
 **[English](RSI_SURVEY.md)** · [产业研究地图（日期核验条目）](industry-rsi/README.zh-CN.md) · [English map](industry-rsi/README.md) · [每日雷达日志](industry-rsi/RADAR.md) · [工程待办](industry-rsi/ADOPTION.md)
 
-本文是一部**活综述**：把 [catalog.json](industry-rsi/catalog.json) 中 97 条日期核验条目（滚动窗口 **2025-09-16 → 2026-09-16**，截至 **2026-09-16**）综合为一份分析文档，并随每日零点雷达扫查同步更新。下文每个论断都可回溯到资料库条目；作者结果**不等于**本地复现，本综述不宣称通用递归自改进已经实现。当前构成：**直接闭环（direct-loop）** 70 条、**支撑技术（enabling）** 20 条、**辅助研发（assisted-rd）** 7 条，横跨四个改变面——参数学习 29、智能体/代码 28、记忆/上下文 17、研究工作流 23——并进一步归入 **23 个机制家族**，分类页按家族分节呈现。
+本文是一部**活综述**：把 [catalog.json](industry-rsi/catalog.json) 中 103 条日期核验条目（滚动窗口 **2025-09-17 → 2026-09-17**，截至 **2026-09-17**）综合为一份分析文档，并随每日零点雷达扫查同步更新。下文每个论断都可回溯到资料库条目；作者结果**不等于**本地复现，本综述不宣称通用递归自改进已经实现。当前构成：**直接闭环（direct-loop）** 75 条、**支撑技术（enabling）** 20 条、**辅助研发（assisted-rd）** 8 条，横跨四个改变面——参数学习 29、智能体/代码 30、记忆/上下文 18、研究工作流 26——并进一步归入 **23 个机制家族**，分类页按家族分节呈现。
 
 nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指南](../MULTILEVEL.zh-CN.md)与安全模型。
 
@@ -86,7 +86,7 @@ nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指�
 
 ## 5. 跨领域发现
 
-**5.1 验收闸门是全领域的收敛发明。** 70 条直接闭环条目中最强模式：持久化必须过独立检查。留出验证（SkillOpt、Experience Funnel）、验证器锚定提交闸门（SkillGLoW）、同条件配对比较（EvoOntology 无闸门 -11.2；EvoRS 匹配回放）、执行前审查（Apple）、新鲜会话审计（SkillEvolver）、处处可见的带日志回滚（WikiSkill 永不回滚的 wiki；Amazon 死胡同登记表）。昂贵闸门的廉价替代器是最新 refine——SkillLift 的秩相关重对齐评分表、Dream-RSI 的回放打分、Faraday 的自动 rubric。nanoRSI 的冻结评估器不变量正是该模式的架构化表述。
+**5.1 验收闸门是全领域的收敛发明。** 75 条直接闭环条目中最强模式：持久化必须过独立检查。留出验证（SkillOpt、Experience Funnel）、验证器锚定提交闸门（SkillGLoW）、同条件配对比较（EvoOntology 无闸门 -11.2；EvoRS 匹配回放）、执行前审查（Apple）、新鲜会话审计（SkillEvolver）、处处可见的带日志回滚（WikiSkill 永不回滚的 wiki；Amazon 死胡同登记表）。昂贵闸门的廉价替代器是最新 refine——SkillLift 的秩相关重对齐评分表、Dream-RSI 的回放打分、Faraday 的自动 rubric。nanoRSI 的冻结评估器不变量正是该模式的架构化表述。
 
 **5.2 诚实负结果正在沉淀为一门纪律。** 被拒轮次留痕（Experience Funnel 2/5）、代理被钻空子后抓到并改写策略（Amazon）、方向不一致量化（HarnessDev 53.1%）、迁移退化保留（EvoOntology 跨骨干 -6.6；EmbodiSkill 配对 +1.49；SpyRL 负迁移）、自评去相关（S3Gym）、"锐化而非学习"（GenGap Pass@32 持平）、迭代下自我退化（Contextual Drag 的 GPT-OSS-20B 塌缩）、"回滚选择制造的保留增益"被点破（Aspire：三个后继全部*落后*参照 harness）。资料库把这些当一等公民结果。
 

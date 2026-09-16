@@ -7,9 +7,9 @@
 | Family | Records |
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 12 |
-| [Harness search & evolution](#family-harness-search) | 6 |
+| [Harness search & evolution](#family-harness-search) | 7 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 3 |
-| [Program evolution & evolutionary search](#family-program-evolution) | 4 |
+| [Program evolution & evolutionary search](#family-program-evolution) | 5 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 2 |
 | [Safety & governance](#family-safety-governance) | 1 |
 
@@ -161,7 +161,7 @@
 
 **Source figure / official image** — Figure 2: the skill library overview - 163 versioned procedural-knowledge skills across 16 areas of practice, each loaded only when a task needs it (always-resident descriptions cost 7.1% of a 200K-token window). · Figure 2 · [source](https://arxiv.org/html/2609.00065v2)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Library repository (MIT)](https://github.com/K-Dense-AI/scientific-agent-skills)
 
@@ -261,9 +261,9 @@
 
 ### OpenSkill: Open-World Self-Evolution for LLM Agents
 
-**2026-06** · paper · Direct bounded loop
+**2026-06-04** · paper · Direct bounded loop
 
-**Publication date** — arXiv v1: June 2026 (2606.06741). Exact v1 day not re-verified; month precision used.
+**Publication date** — arXiv v1: 2026-06-04 (2606.06741), day-precision verified on the abs page.
 
 **Institutional relationship** — Paper: Lehigh University (Zhiling Yan, Lichao Sun corresponding) with UIC (Hanrong Zhang, Philip S. Yu), UBC/Vector (Yuxuan Zhang), Salesforce AI Research (Yutong Dai, Ran Xu) and MGH/Harvard Medical School (Xiang Li).
 
@@ -281,7 +281,7 @@
 
 **Source figure / official image** — Figure 2: OpenSkill - a base agent acquires open-world knowledge to build a skill plan, iteratively generates, executes and refines the skill in a sandbox against self-built virtual tests, with a leakage barrier blocking target supervision during construction. · Figure 2 · [source](https://arxiv.org/html/2606.06741v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/OpenLAIR/OpenSkill)
 
@@ -379,7 +379,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (6)
+## Harness search & evolution (7)
+
+<a id="modularrsi-modular-harness"></a>
+
+### ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement
+
+**2026-09-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-14 (2609.14857), verified on the abs page.
+
+**Institutional relationship** — Paper: Beihang University, University of Manchester, IQuest Research, M-A-P, Langboat and Hohai University (six superscript affiliations rendered in the HTML).
+
+**What changes and how feedback is reused** — Contrastive analysis of successful versus failed trajectories on the same task drives independent evolution of five harness modules (Agent Loop, Tool Use, Observation Management, Context Management, Task Completion Detection), each within a restricted scope; a cross-module integration epoch then resolves conflicts (duplicates, responsibility, coordination) before the library is frozen. Evolution uses 2,000 human-curated executable tasks deliberately disjoint from evaluation benchmarks.
+
+**Author-reported result** — TerminalBench 2.0 (DeepSeek-V4-Flash): accuracy 47.57→52.43, Pass@3 58.43→65.17 in-domain; the TB-evolved harness transfers to SWE-bench Verified at 73.40→76.45 in-domain and the SWE-evolved harness reaches 49.40 out-of-domain on TB. Frozen-harness cross-model transfer: GLM-5.2 59.55→61.80, MiniMax-2.5 41.57→44.94. Against baselines: 61.79→67.42 vs AHE 62.54 and Meta-Harness 62.92.
+
+**Evidence limits** — Authors state they did not run a dedicated ablation isolating the contribution of contrastive trajectory analysis, and cost limited evolution experiments to a subset of the 2,000 instances.
+
+**Code / weights / data / license** — No code repository URL located at verification; paper only (arXiv).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: decompose the harness into named modules with restricted edit scopes, evolve each against contrastive success/failure pairs on benchmark-disjoint executable tasks, and gate the merged library through an explicit conflict-resolution epoch before freezing.
+
+![ModularRSI overview: contrastive trajectories feed independent evolution of five harness modules before conflict-resolving integration.](assets/paper-figures/modularrsi-overview.png)
+
+**Source figure / official image** — ModularRSI overview: contrastive trajectories feed independent evolution of five harness modules before conflict-resolving integration. · Figure 1 (S2.F1) · [source](https://arxiv.org/html/2609.14857v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.14857) · [arXiv HTML v1](https://arxiv.org/html/2609.14857v1)
 
 <a id="bytedance-harnessdev"></a>
 
@@ -657,7 +687,7 @@
 
 <a id="family-program-evolution"></a>
 
-## Program evolution & evolutionary search (4)
+## Program evolution & evolutionary search (5)
 
 <a id="dream-rsi-replay-simulator"></a>
 
@@ -689,13 +719,43 @@
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.14858) · [Paper v1 (affiliations, Figure 1, tables)](https://arxiv.org/html/2609.14858v1) · [Code repository](https://github.com/zhengkid/Dream-RSI)
 
+<a id="algoevo-agentic-search"></a>
+
+### AlgoEvo: Self-Evolving Agentic Search for Automated Algorithm Discovery
+
+**2026-09-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-14 (2609.15820). Note: a Sept-16 radar process note recorded a garbled listing entry named "AlgoEvo" that resolved to an unrelated XAI paper; this abs page confirms the present title and content are genuine.
+
+**Institutional relationship** — Paper: City University of Hong Kong (Junhao Qiu, Qinglong Hu, Qingfu Zhang), Huawei Noah's Ark Lab (Xialiang Tong, Mingxuan Yuan) and A*STAR (Liyong Lin).
+
+**What changes and how feedback is reused** — An autonomous agent inspects, diagnoses and edits algorithm code from runtime feedback instead of running a fixed search pipeline. A Design Skill Hub externalizes paradigm-specific knowledge as pluggable skills (strategy roles, code interfaces, modification principles, evaluation conventions) so one engine covers single-objective, multi-objective and multi-component design; a hierarchical experience bank (experience cards, a task-level experience tree with situational-UCB selection, cross-task consolidation into skills) accumulates knowledge across tasks, promoting a pattern into a skill after it validates on at least two tasks.
+
+**Author-reported result** — Across six tasks (TSP, CVRP, Bi-TSP, Bi-FJSP, CVRP-DR, FJSP 4-Ops) AlgoEvo matches or surpasses specialized baselines (EoH, ReEvo, MCTS-AHD, FunSearch, MEoH, MOTIF, E2OC and others): best TSP result with about 39 evaluations versus the 500-evaluation allowance and 2.9M tokens versus FunSearch 3.2M; best CVRP at about 35 evaluations (1.9M tokens vs about 4M for EoH/ReEvo/MCTS-AHD); best HV on Bi-TSP and Bi-FJSP at 33-36 evaluations; best both splits on CVRP-DR (139.2M tokens vs MOTIF 317.1M) and best test on FJSP 4-Ops (118.1M vs 584.7M).
+
+**Evidence limits** — Authors report increased token overhead in complex multi-component settings and reduced transfer efficacy outside aligned problem families; no public repository URL is given (source in supplementary materials).
+
+**Code / weights / data / license** — No public repository URL located at verification; paper states source is in supplementary materials and instances/seeds/evaluation scripts are released.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: promote a reusable skill only after it validates on two or more tasks, and store experience as cards plus a task-level tree with UCB-style selection — evaluation-budget discipline (committing at 35 of 500 evaluations) is the transferable part.
+
+![AlgoEvo overview: the Design Skill Hub activates paradigm skills over a hierarchical experience bank for algorithm discovery.](assets/paper-figures/algoevo-skill-hub.png)
+
+**Source figure / official image** — AlgoEvo overview: the Design Skill Hub activates paradigm skills over a hierarchical experience bank for algorithm discovery. · Figure 2 (S3.F2) · [source](https://arxiv.org/html/2609.15820v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.15820) · [arXiv HTML v1](https://arxiv.org/html/2609.15820v1)
+
 <a id="evopolicygym-benchmark"></a>
 
-### EvoPolicyGym: Benchmarking Executable-Policy Evolution in Coding Agents
+### EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments
 
-**2026-07** · paper · Enabling technique / evaluation
+**2026-07-02** · paper · Enabling technique / evaluation
 
-**Publication date** — arXiv v1: July 2026 (2607.02440). Exact v1 day not re-verified; month precision used. Same author lineage as AgentGym/AgentEvol.
+**Publication date** — arXiv v1: 2026-07-02 (2607.02440). Same author lineage as AgentGym/AgentEvol.
 
 **Institutional relationship** — Paper: USTC, CUHK, University of Macau, Tsinghua, Zhejiang, Soochow, Brown and SJTU.
 
@@ -713,7 +773,7 @@
 
 **Source figure / official image** — Figure 1: EvoPolicyGym - agents edit executable policies, submit episodic rollouts under a finite budget, and receive platform-mediated feedback; validation and held-out scoring stay server-side and hidden. · Figure 1 · [source](https://arxiv.org/html/2607.02440v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository (MIT)](https://github.com/Linzwcs/EvoPolicyGym)
 
@@ -851,9 +911,9 @@
 
 ### Practice Makes Unsafe: Skill Misevolution in Self-Improving LLM Agents
 
-**2026-08** · paper · Enabling technique / evaluation
+**2026-08-13** · paper · Enabling technique / evaluation
 
-**Publication date** — arXiv v1: August 2026 (2608.12851). Exact v1 day not re-verified; month precision used.
+**Publication date** — arXiv v1: 2026-08-13 (2608.12851), day-precision verified on the abs page.
 
 **Institutional relationship** — Paper: City University of Hong Kong (Xutao Mao, Xiang Zheng, Cong Wang) with Liangjie Zhao (University of Adelaide).
 
@@ -871,7 +931,7 @@
 
 **Source figure / official image** — Figure 1: SkillMisevo-Gym and SkillMisevo-Bench - autoresearch-discovered malicious/benign vulnerability concepts become episodes; the harness versions skill libraries across frameworks and only the agent-authored SKILL.md crosses the final reset. · Figure 1 · [source](https://arxiv.org/html/2608.12851v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
 
 **Open code / weights / data links** — [Code repository (MIT)](https://github.com/henrymao2004/misevolve)
 

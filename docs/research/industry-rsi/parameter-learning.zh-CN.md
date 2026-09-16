@@ -21,9 +21,9 @@
 
 ### SPADE: Self-Play in Adaptive Synthetic Executable Environments
 
-**2026-08** · paper · 直接有界闭环
+**2026-08-19** · paper · 直接有界闭环
 
-**日期说明** — arXiv v1：2026 年 8 月（2608.19197）。v1 确切日期未复核，采用月精度。
+**日期说明** — arXiv v1：2026-08-19（2608.19197）；v2 2026-08-24；v3 2026-08-31。数字引自 v1，并已在 abs 页复核。
 
 **机构关系** — 论文：以华盛顿大学为首（通讯 Bo Liu、Natasha Jaques）的九机构合作，含斯坦福、东北、CMU、MIT、NUS、SNU、Stevens 与芝大。
 
@@ -41,7 +41,7 @@
 
 **原文图／官方图片** — 图 4：SPADE——环境设计者以记忆与语料为条件产出可执行环境与特权提示；智能体在有/无提示下各玩一次，回报差即设计者的基于提示的后悔。 · Figure 4 · [source](https://arxiv.org/html/2608.19197v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/spade-rl/spade)
 
@@ -221,7 +221,7 @@
 
 **原文图／官方图片** — 图 2：EvoLMM——提案者从原始图像出题、求解者多样本作答；奖励为连续自一致性（求解者）与熵带通课程（提案者），KL 正则 REINFORCE 优化。 · Figure 2 · [source](https://arxiv.org/html/2511.16672v4)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository](https://github.com/mbzuai-oryx/EvoLMM)
 
@@ -841,11 +841,11 @@
 
 **原文图／官方图片** — 图 3：Conductor 训练——GRPO 在随机化工人池的完整多智能体 rollout 奖励上更新 7B 协调器，教它写出可递归包含自身的拓扑与指令。 · Figure 3 · [source](https://arxiv.org/html/2512.04388v5)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
-**一手来源** — [Conductor arXiv abstract](https://arxiv.org/abs/2512.04388) · [Paper v5 (affiliations, training figure, Tables 1/7)](https://arxiv.org/html/2512.04388v5) · [Fugu product page](https://sakana.ai/fugu/)
+**一手来源** — [Conductor arXiv abstract](https://arxiv.org/abs/2512.04388) · [Paper v5 (affiliations, training figure, Tables 1/7)](https://arxiv.org/html/2512.04388v5) · [Fugu product page](https://sakana.ai/fugu/) · [Fugu Max release post](https://sakana.ai/fugu-max-release/)
 
 <a id="google-discorl-2025"></a>
 

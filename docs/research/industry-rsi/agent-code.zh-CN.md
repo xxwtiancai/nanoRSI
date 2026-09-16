@@ -7,9 +7,9 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [技能文件优化与技能库](#family-skill-file-optimization) | 12 |
-| [Harness 搜索与进化](#family-harness-search) | 6 |
+| [Harness 搜索与进化](#family-harness-search) | 7 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 3 |
-| [程序进化与进化搜索](#family-program-evolution) | 4 |
+| [程序进化与进化搜索](#family-program-evolution) | 5 |
 | [反馈审查与编排](#family-feedback-orchestration) | 2 |
 | [安全与治理](#family-safety-governance) | 1 |
 
@@ -161,7 +161,7 @@
 
 **原文图／官方图片** — 图 2：技能库总览——16 个实践领域 163 个版本化程序知识技能，按任务需要加载（常驻描述占 200K token 窗口的 7.1%）。 · Figure 2 · [source](https://arxiv.org/html/2609.00065v2)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Library repository (MIT)](https://github.com/K-Dense-AI/scientific-agent-skills)
 
@@ -261,9 +261,9 @@
 
 ### OpenSkill: Open-World Self-Evolution for LLM Agents
 
-**2026-06** · paper · 直接有界闭环
+**2026-06-04** · paper · 直接有界闭环
 
-**日期说明** — arXiv v1：2026 年 6 月（2606.06741）。v1 确切日期未复核，采用月精度。
+**日期说明** — arXiv v1：2026-06-04（2606.06741），日期已在 abs 页按日核验。
 
 **机构关系** — 论文：理海大学（Zhiling Yan、通讯 Lichao Sun）与 UIC（Hanrong Zhang、Philip S. Yu）、UBC/Vector（Yuxuan Zhang）、Salesforce AI Research（Yutong Dai、Ran Xu）、麻省总医院/哈佛医学院（Xiang Li）。
 
@@ -281,7 +281,7 @@
 
 **原文图／官方图片** — 图 2：OpenSkill——基础智能体获取开放世界知识构建技能计划，在沙箱中对照自制虚拟测试迭代生成、执行、精炼技能；泄漏屏障在构建期阻断目标监督。 · Figure 2 · [source](https://arxiv.org/html/2606.06741v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/OpenLAIR/OpenSkill)
 
@@ -379,7 +379,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (6)
+## Harness 搜索与进化 (7)
+
+<a id="modularrsi-modular-harness"></a>
+
+### ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement
+
+**2026-09-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-14（2609.14857），已在 abs 页核验。
+
+**机构关系** — 论文：北京航空航天大学、曼彻斯特大学、IQuest Research、M-A-P、澜舟科技（Langboat）与河海大学（HTML 中渲染了六个上标机构）。
+
+**改变对象与反馈复用** — 对同一任务上成功与失败轨迹做对比分析，驱动五个 harness 模块（智能体循环、工具使用、观测管理、上下文管理、任务完成检测）各自在受限范围内独立进化；随后一轮跨模块集成解决冲突（重复、职责、协作）再冻结模块库。进化使用 2,000 条人工策划、与评测基准刻意不相交的可执行任务。
+
+**作者报告结果** — TerminalBench 2.0（DeepSeek-V4-Flash）：域内准确率 47.57→52.43、Pass@3 58.43→65.17；TB 上进化的 harness 迁移到 SWE-bench Verified，域内 73.40→76.45，SWE 上进化的 harness 在 TB 域外达 49.40。冻结 harness 跨模型迁移：GLM-5.2 59.55→61.80、MiniMax-2.5 41.57→44.94。与基线比较：61.79→67.42，优于 AHE 62.54 与 Meta-Harness 62.92。
+
+**证据边界** — 作者明确未做隔离对比轨迹分析贡献的专门消融，且成本使进化实验只用了 2,000 条任务的子集。
+
+**代码／权重／数据／许可** — 核验时未找到代码仓库；仅论文（arXiv）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把 harness 分解为具名模块并限定各自编辑范围，在与基准不相交的可执行任务上用成功/失败对比对分别进化，合并库须经显式冲突消解轮再冻结。
+
+![ModularRSI 总览：对比轨迹驱动五个 harness 模块独立进化，再经冲突消解集成。](assets/paper-figures/modularrsi-overview.png)
+
+**原文图／官方图片** — ModularRSI 总览：对比轨迹驱动五个 harness 模块独立进化，再经冲突消解集成。 · Figure 1 (S2.F1) · [source](https://arxiv.org/html/2609.14857v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.14857) · [arXiv HTML v1](https://arxiv.org/html/2609.14857v1)
 
 <a id="bytedance-harnessdev"></a>
 
@@ -657,7 +687,7 @@
 
 <a id="family-program-evolution"></a>
 
-## 程序进化与进化搜索 (4)
+## 程序进化与进化搜索 (5)
 
 <a id="dream-rsi-replay-simulator"></a>
 
@@ -689,13 +719,43 @@
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.14858) · [Paper v1 (affiliations, Figure 1, tables)](https://arxiv.org/html/2609.14858v1) · [Code repository](https://github.com/zhengkid/Dream-RSI)
 
+<a id="algoevo-agentic-search"></a>
+
+### AlgoEvo: Self-Evolving Agentic Search for Automated Algorithm Discovery
+
+**2026-09-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-14（2609.15820）。注：9 月 16 日雷达流程注记曾记录一个错乱的"AlgoEvo"列表项并解析到无关的 XAI 论文；本 abs 页确认当前标题与内容真实。
+
+**机构关系** — 论文：香港城市大学（Junhao Qiu、Qinglong Hu、Qingfu Zhang）、华为诺亚方舟实验室（Xialiang Tong、Mingxuan Yuan）与 A*STAR（Liyong Lin）。
+
+**改变对象与反馈复用** — 自治智能体依据运行时反馈检视、诊断并编辑算法代码，而非执行固定搜索管线。设计技能中心把范式专属知识外置为可插拔技能（策略角色、代码接口、修改原则、评测约定），使单一引擎覆盖单目标、多目标与多组件设计；层级经验库（经验卡、带情境 UCB 选择的任务级经验树、跨任务固化进技能）跨任务积累知识，一个模式在至少两个任务上验证后才升格为技能。
+
+**作者报告结果** — 在六个任务（TSP、CVRP、Bi-TSP、Bi-FJSP、CVRP-DR、FJSP 4-Ops）上匹配或超越专用基线（EoH、ReEvo、MCTS-AHD、FunSearch、MEoH、MOTIF、E2OC 等）：TSP 最优结果仅约 39 次评估（配额 500）与 290 万 token（FunSearch 320 万）；CVRP 约 35 次评估最优（190 万 token 对 EoH/ReEvo/MCTS-AHD 约 400 万）；Bi-TSP 与 Bi-FJSP 的 HV 最优且仅 33-36 次评估；CVRP-DR 两个划分皆最优（1.392 亿 token 对 MOTIF 3.171 亿）、FJSP 4-Ops 测试最优（1.181 亿对 5.847 亿）。
+
+**证据边界** — 作者报告复杂多组件设置下 token 开销增大、对齐的问题族之外迁移效果下降；未给公开仓库地址（源码在补充材料中）。
+
+**代码／权重／数据／许可** — 核验时未找到公开仓库；论文称源码在补充材料中，实例/种子/评测脚本已发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：可复用技能只有在两个及以上任务验证后才升格；经验存为卡片加带 UCB 选择的任务级树——35/500 次评估即收敛的评测预算纪律是最可迁移的部分。
+
+![AlgoEvo 总览：设计技能中心在层级经验库之上激活范式技能，用于算法发现。](assets/paper-figures/algoevo-skill-hub.png)
+
+**原文图／官方图片** — AlgoEvo 总览：设计技能中心在层级经验库之上激活范式技能，用于算法发现。 · Figure 2 (S3.F2) · [source](https://arxiv.org/html/2609.15820v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15820) · [arXiv HTML v1](https://arxiv.org/html/2609.15820v1)
+
 <a id="evopolicygym-benchmark"></a>
 
-### EvoPolicyGym: Benchmarking Executable-Policy Evolution in Coding Agents
+### EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments
 
-**2026-07** · paper · 支撑技术／评测
+**2026-07-02** · paper · 支撑技术／评测
 
-**日期说明** — arXiv v1：2026 年 7 月（2607.02440）。v1 确切日期未复核，采用月精度。与 AgentGym/AgentEvol 同作者谱系。
+**日期说明** — arXiv v1：2026-07-02（2607.02440）。与 AgentGym/AgentEvol 同一作者谱系。
 
 **机构关系** — 论文：中科大、港中文、澳门大学、清华、浙大、苏州大学、布朗大学与上海交大。
 
@@ -713,7 +773,7 @@
 
 **原文图／官方图片** — 图 1：EvoPolicyGym——智能体编辑可执行策略，在有限预算下提交回合 rollout 并获平台中介反馈；验证与留出计分留在服务端隐藏。 · Figure 1 · [source](https://arxiv.org/html/2607.02440v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/Linzwcs/EvoPolicyGym)
 
@@ -851,9 +911,9 @@
 
 ### Practice Makes Unsafe: Skill Misevolution in Self-Improving LLM Agents
 
-**2026-08** · paper · 支撑技术／评测
+**2026-08-13** · paper · 支撑技术／评测
 
-**日期说明** — arXiv v1：2026 年 8 月（2608.12851）。v1 确切日期未复核，采用月精度。
+**日期说明** — arXiv v1：2026-08-13（2608.12851），日期已在 abs 页按日核验。
 
 **机构关系** — 论文：香港城市大学（Xutao Mao、Xiang Zheng、Cong Wang）与阿德莱德大学（Liangjie Zhao）。
 
@@ -871,7 +931,7 @@
 
 **原文图／官方图片** — 图 1：SkillMisevo-Gym 与 Bench——自动研究发现的恶意/良性漏洞概念构成回合；harness 跨框架给技能库做版本化，只有智能体写的 SKILL.md 能跨过最终重置。 · Figure 1 · [source](https://arxiv.org/html/2608.12851v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/henrymao2004/misevolve)
 

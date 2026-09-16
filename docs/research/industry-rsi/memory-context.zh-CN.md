@@ -7,7 +7,7 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [结构化知识库与图](#family-structured-knowledge) | 6 |
-| [经验积累与回放](#family-experience-accumulation) | 5 |
+| [经验积累与回放](#family-experience-accumulation) | 6 |
 | [上下文组织策略](#family-context-policies) | 3 |
 | [探索式记忆构建](#family-exploration-memory) | 1 |
 | [记忆进化评测研究](#family-memory-evolution-studies) | 2 |
@@ -108,11 +108,11 @@
 
 <a id="recuris-memory-evolution"></a>
 
-### Recuris: Recursive Experiential-Working Memory Evolution for Long-Horizon Agents
+### Recursive Experiential-Working Memory Evolution for Long-Horizon Agent Harnesses
 
-**2026-08** · paper · 直接有界闭环
+**2026-08-25** · paper · 直接有界闭环
 
-**日期说明** — arXiv v1：2026 年 8 月（2608.24876；仓库创建于 2026-08-25）。v1 确切日期未复核，采用月精度。
+**日期说明** — arXiv v1：2026-08-25（2608.24876；仓库同日创建）。系统在论文正文中名为 Recuris；arXiv 标题不含该前缀。
 
 **机构关系** — 论文：新加坡国立（Zhaochen Yu、Shuicheng Yan）、斯坦福（Yingcheng Wu、Zhe Zhao）、牛津（Zhenfei Yin、Kaiyuan Chen）与普林斯顿（Mengdi Wang、Ling Yang）。
 
@@ -130,7 +130,7 @@
 
 **原文图／官方图片** — 图 3：Recuris——任务内工作记忆驱动技能调用策略、检查器提交状态；跨任务固定元智能体在验证闸门后逐次修补单一被牵连组件。 · Figure 3 · [source](https://arxiv.org/html/2608.24876v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/Gen-Verse/Recuris)
 
@@ -160,7 +160,7 @@
 
 **原文图／官方图片** — 图 2：XSkill——阶段一经 rollout 摘要与跨 rollout 批评，从多路径视觉落地轨迹蒸馏技能文档与经验条目；阶段二测试时检索、适配并注入双流。 · Figure 2 · [source](https://arxiv.org/html/2603.12056v3)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository](https://github.com/XSkill-Agent/XSkill)
 
@@ -198,7 +198,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## 经验积累与回放 (5)
+## 经验积累与回放 (6)
+
+<a id="echopath-replayable-memory"></a>
+
+### EchoPath: Execution-Level Replayable Memory for GUI Agents
+
+**2026-09-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-15（2609.16635），已在 abs 页核验。
+
+**机构关系** — 论文：约翰霍普金斯大学（应用数学与统计系）与 Amazon AGI。
+
+**改变对象与反馈复用** — 经验证的 GUI 轨迹被编译为标准化、参数可控的可调用记忆（任务意图键、前置条件、参数、GUI 证据、验证出处、生命周期状态）。基于图像的目标重瞄算法在回放前把存储的 GUI 目标与当前屏幕重新匹配并校正坐标，只重绑定声明的可变输入。生命周期状态（候选、活跃、隔离、修复分支、合并、弃用）约束检索可见范围。
+
+**作者报告结果** — OSWorld-Verified 配对两遍设计（第二遍在改变分辨率后回放）：回放保持成功率——Codex 145/159（91.2%）、Claude 92.8%、Kimi 87.3%，与 Synapse 规划增强基线（91.8%）相当。第二遍中位成本：20,370 token 与 127.5 秒，对比 Synapse 586,386 token 与 315.7 秒（中位 token 成本降逾 90%、执行时间降约 60%）；首遍构建约耗 57.2 万 token、4.5 分钟。
+
+**证据边界** — 最适合稳定环境：视觉重瞄对工具栏重排、本地化、响应式布局、显示缩放与近重复 UI 元素仍然脆弱；界面漂移下的在线稳健性未验证；记忆获取需完整自治首遍而非用户演示。
+
+**代码／权重／数据／许可** — 论文列出 github.com/JackZhao1998/EchoPath；核验时该地址未能解析。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把执行级技能存为自带验证出处与生命周期状态的可调用记忆，检索只暴露活跃项——回放即可用十分之一 token 换取大部分收益。
+
+![EchoPath 框架：验证轨迹变为带验证出处与生命周期状态的参数可控可调用记忆，回放前重瞄当前屏幕。](assets/paper-figures/echopath-replayable-memory.png)
+
+**原文图／官方图片** — EchoPath 框架：验证轨迹变为带验证出处与生命周期状态的参数可控可调用记忆，回放前重瞄当前屏幕。 · Figure 1 (S2.F1) · [source](https://arxiv.org/html/2609.16635v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.16635) · [arXiv HTML v1](https://arxiv.org/html/2609.16635v1)
 
 <a id="bytedance-chain-of-experience"></a>
 
@@ -262,11 +292,11 @@
 
 <a id="atlas-pamphlets"></a>
 
-### ATLAS: Continual Learning, Not Training - Online Adaptation for Agents
+### Continual Learning, Not Training: Online Adaptation for Agents
 
 **2025-11-02** · paper · 直接有界闭环
 
-**日期说明** — arXiv v1：2025-11-02。SDK 仓库创建于 2025-09-30。
+**日期说明** — arXiv v1：2025-11-02。SDK 仓库创建于 2025-09-30。系统在论文正文中名为 ATLAS；arXiv 标题不含该前缀。
 
 **机构关系** — 论文：Aman Jaglan 与通讯 Jarrod Barnes 均属 Arc Intelligence；评测用了微软的 ExCyTIn-Bench，但不隶属微软。
 
@@ -284,7 +314,7 @@
 
 **原文图／官方图片** — 图 1：ATLAS 架构——编排器管理执行中的师生交互；学习存入持久学习记忆并蒸馏为教师/学生手册，指导后续推理期决策。 · Figure 1 · [source](https://arxiv.org/html/2511.01093v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository](https://github.com/Arc-Computer/atlas-sdk)
 
@@ -326,7 +356,7 @@
 
 **2025-08-04** · paper · 直接有界闭环
 
-**日期说明** — arXiv v1：2025-08-04（早于 2025-09-16 窗口起点，记录进入渲染器归档区）；v6：2025-11-03；NeurIPS 2025 海报。2026-09-16 收录以闭合跟踪线索；机构信息见论文作者表，资深作者来自 StepFun。
+**日期说明** — arXiv v1：2025-08-04（早于 2025-09-16 窗口起点，记录位于渲染器的档案区）；v6：2025-11-03。abs 页未标注发表场所；第三方列表声称的 NeurIPS 2025 poster 未能在 arXiv 页核验。
 
 **机构关系** — 论文 v6：十四位作者，含 Daxin Jiang（StepFun）与高校合作者；abs 页未渲染隶属，机构字段依跟踪线索（StepFun 牵头 + 高校合作）记录，做强声明前应对照 PDF 复核。
 
@@ -344,7 +374,7 @@
 
 **原文图／官方图片** — 图 1：SE-Agent——经修订、重组与精炼重访多步推理轨迹，改进策略跨问题持久化。 · Figure 1 · [source](https://arxiv.org/html/2508.02085v6)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — [Code repository](https://github.com/JARVIS-Xs/SE-Agent)
 
@@ -536,7 +566,7 @@
 
 **原文图／官方图片** — 图 2：Evo-Memory 流上的 ReMem 智能体——测试期进化，跨顺序任务迭代地检索、综合并进化记忆。 · Figure 2 · [source](https://arxiv.org/html/2511.20857v2)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 

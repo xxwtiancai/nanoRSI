@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [AI 科学家系统](#family-ai-scientists) | 4 |
-| [自主后训练及其评测](#family-autonomous-post-training) | 2 |
+| [AI 科学家系统](#family-ai-scientists) | 5 |
+| [自主后训练及其评测](#family-autonomous-post-training) | 3 |
 | [公司研发遥测](#family-company-telemetry) | 5 |
 | [对齐自动化](#family-alignment-automation) | 3 |
 | [分析与审计](#family-analyses-audits) | 6 |
-| [立场、路线图与实验室](#family-positions-labs) | 3 |
+| [立场、路线图与实验室](#family-positions-labs) | 4 |
 
 <a id="family-ai-scientists"></a>
 
-## AI 科学家系统 (4)
+## AI 科学家系统 (5)
+
+<a id="sciencebuddy-recursive-in-recursive"></a>
+
+### ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents
+
+**2026-09-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-15（2609.17523）；配套仓库创建于 2026-09-14。
+
+**机构关系** — 论文：PhAI Labs（一作与通讯 yin/wuyc/yang@phai-labs.com）、复旦中山医院与上海自然科学研究院（Qiang Gao）、顺为资本（Pengyu Zhan、Yuntong Zhang、Tian Cheng）、牛津（Zhenfei Yin）、斯坦福（Yingcheng Wu）、普林斯顿（Ling Yang）。与 Recuris 作者有重叠，但 HTML 未列任何 NUS 隶属。
+
+**改变对象与反馈复用** — 交互式科研工作台耦合两个递归：内层固定模型，由固定辅助模型（GPT-6 Astra）每次提出一个有界 harness 编辑（指令、技能或上下文设置），仅在 schema 合法且配对开发评测优于父代时接受；外层在冻结的改进 harness 下用从完整协作轨迹合成的评分表奖励做 GRPO 训练任务模型。研究者反馈定义评分标准，但本身不充当训练奖励。
+
+**作者报告结果** — 四个科研任务族（来自 LAB-Bench 与 Biomni-Eval1 的 895 个任务）。耦合三轮实验：测试准确率 42.2%→73.3%，33.3% 问题由错转对、2.2% 退化。仅 harness（模型固定）：验证准确率 31.1%→51.1%（+20 点）。仅模型（harness 固定）：约两小时 RL 后 pass@4 覆盖 48.3%→67.8%。
+
+**证据边界** — 附录明确单项技能与反馈来源的贡献未单独隔离；辅助反思器固定，任务表现变好不代表改进机制本身变强；未给 token 成本核算。
+
+**代码／权重／数据／许可** — 论文指向 Gen-Verse/ScienceBuddy-RSI 与 science-buddy.io；核验时组织下可见仓库为 Gen-Verse/ScienceBuddy（MIT，16 星，创建于 2026-09-14）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：让有界 harness 编辑（仅配对评测提升才接受）与冻结胜者下的模型训练阶段交替——两个递归互相喂养，但绝不同时改动同一个面。
+
+![ScienceBuddy 系统图：内层 harness 进化递归与外层模型训练递归复合为递归中的递归自改进。](assets/paper-figures/sciencebuddy-system-diagram.png)
+
+**原文图／官方图片** — ScienceBuddy 系统图：内层 harness 进化递归与外层模型训练递归复合为递归中的递归自改进。 · Figure 2 (S0.F2, system diagram) · [source](https://arxiv.org/html/2609.17523v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+
+**开源代码／权重／数据链接** — [GitHub repository](https://github.com/Gen-Verse/ScienceBuddy)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17523) · [arXiv HTML v1](https://arxiv.org/html/2609.17523v1) · [GitHub repository](https://github.com/Gen-Verse/ScienceBuddy)
 
 <a id="faraday-replica-ai-scientist"></a>
 
@@ -139,7 +169,37 @@
 
 <a id="family-autonomous-post-training"></a>
 
-## 自主后训练及其评测 (2)
+## 自主后训练及其评测 (3)
+
+<a id="metarsi-composition"></a>
+
+### MetaRSI / RSI2: A Meta-Recursive Self-Improving System for Recursive Self-Improving Systems Themselves
+
+**2026-09-06** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-06（2609.06396）；v2：2026-09-09。配套仓库创建于 2026-09-03。中文媒体于 2026-09-14 以 MetaRSI-v1 报道。
+
+**机构关系** — 三十一位作者；核验时 HTML 未渲染任何机构隶属。CosmosMind 是发布组织（产物的 GitHub/Hugging Face 组织），与媒体" CosmosMind 与合作高校"的说法一致——作者机构映射应视为未核验。
+
+**改变对象与反馈复用** — 三个类型化算子共享同一循环内核：Data-RSI 从自身执行轨迹合成经核验的训练记录（对抗式生成加输入隔离 Anchor 角色的盲重推导）；Harness-RSI 对五槽脚手架（系统提示、记忆、内置工具、技能、MCP 工具）打类型化补丁；Model-RSI 从固定基座以有界 LoRA 式训练把数据内化进参数。双轴优化器（横向算子排序、纵向在可变/动作/受保护契约下改写提案策略）调度三者，元智能体每个改进项修订一次调度器。
+
+**作者报告结果** — 目标 Qwen3.5-35B-A3B、五种子均值：MetaRSI-v1 相对冻结系统平均 +10.9——Terminal-Bench 2.1 +8.3、SWE-bench Pro +9.2（解决率 10.3→19.5）、AIME +13.3、GPQA-D-hard100 +12.6。消融：组合比最佳单算子（Harness-RSI 单独 +6.6）多 4.3 点，比手工固定与静态路由管线高 3.6 点。
+
+**证据边界** — 作者自己的普查：RSI 几乎只在验证可机器判定的领域得到验证（45 个被调查系统的 69%，包括他们自己），因此增益只证明"受限的、基准绑定的能力"；Data-RSI 的盲重解无法对模型自身缺乏的知识证明正确性。
+
+**代码／权重／数据／许可** — 产物在 github.com/CosmosMind-ai/RSI-Harness（核验时 565 星）与 Hugging Face CosmosMind/RSI-Harness——核验时无许可证文件，默认保留所有权利：只可借鉴思路，零代码复制。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把每次变更类型化为写数据、写脚手架或写参数，共用同一循环内核，并学习算子调度本身——比手工固定管线高出的 3.6 点就是调度的可测价值。
+
+![MetaRSI-v1 结果：前沿模型在组合算子下于 Terminal-Bench 2.1 上自我改进。](assets/paper-figures/metarsi-frontier.svg)
+
+**原文图／官方图片** — MetaRSI-v1 结果：前沿模型在组合算子下于 Terminal-Bench 2.1 上自我改进。 · Figure 10 (S5.F10, results_frontier.svg) · [source](https://arxiv.org/html/2609.06396v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+
+**开源代码／权重／数据链接** — [GitHub repository](https://github.com/CosmosMind-ai/RSI-Harness)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.06396) · [arXiv HTML v2](https://arxiv.org/html/2609.06396v2) · [GitHub repository](https://github.com/CosmosMind-ai/RSI-Harness)
 
 <a id="amazon-autonomous-post-training"></a>
 
@@ -229,11 +289,11 @@
 
 **原文图／官方图片** — 2026 年 9 月 6 日博文开头：OpenAI 宣布达成上年秋天设定的"自动研究实习生"目标，并"正朝着 2028 年 3 月前创建自动 AI 研究员取得强劲进展"。 · Article opening (date, title, first paragraphs) · [source](https://openai.com/index/research-acceleration-view-inside-openai/)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-14.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
-**一手来源** — [Official research post (opened via browser)](https://openai.com/index/research-acceleration-view-inside-openai/)
+**一手来源** — [Official research post (opened via browser)](https://openai.com/index/research-acceleration-view-inside-openai/) · [An Alien Mind (essay)](https://openai.com/index/an-alien-mind/)
 
 <a id="prime-measuring-autonomous-ai-research"></a>
 
@@ -537,7 +597,7 @@
 
 **原文图／官方图片** — 图 1：综述的两轴分类法——改进对象（部署时自进化、训练时自迭代、自评估、自动研究）对闭环程度，每格列代表性系统。 · Figure 1 · [source](https://arxiv.org/html/2607.07663v2)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
@@ -635,7 +695,37 @@
 
 <a id="family-positions-labs"></a>
 
-## 立场、路线图与实验室 (3)
+## 立场、路线图与实验室 (4)
+
+<a id="zhipu-glm-selftraining-filing"></a>
+
+### Zhipu HKEX placing announcement: next-generation GLM with a fully self-trained (recursive self-improvement) system
+
+**2026-09-13** · report · 自动化／辅助研发
+
+**日期说明** — 港交所公告落款 2026-09-13（第 30 页签署日期；文件名时间戳 20260913），中文媒体 2026-09-14 首报。这是有资金支持的研究方向披露，不是已发表的机制或结果。
+
+**机构关系** — 智谱（北京智谱华章科技股份有限公司，股份代号 2513），公告的上市发行人。
+
+**改变对象与反馈复用** — 未发表机制。所得款项用途第 (ii) 项称下一代 GLM 将在上一代 GLM 搭建的环境中训练，形成涵盖数据自产、环境自造与基础设施自我优化的递归式自我改进闭环；预计约 393 亿港元净额中约六成投向该方向与算力（第 i 项），原生多模态、更深有效计算与长程任务强化学习另列（第 iii 项）。
+
+**作者报告结果** — 无结果——这是一次融资披露。RSI 主张是有资金承诺的计划（约 393 亿港元净额中约 235 亿投向下一代 GLM 与自训练体系），款项须于 2028-06-30 前使用。唐杰曾在 8 月业绩会上预告自进化方向。
+
+**证据边界** — 招股书式的意向声明：无架构、无基准、无产物。在论文或官方技术页出现前，本条目只跟踪已披露的方向，不证明已实现的闭环；媒体转述不得作为能力证据。
+
+**代码／权重／数据／许可** — 一手文件：港交所公告 PDF（eurolandir 镜像）。无论文、代码或权重；核验时官方文档站（docs.bigmodel.cn）在 GLM-5.3-Flash（2026-08-26）之后无新条目。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：无直接应用——把智谱作为首家把递归自改进闭环写进有资金用途披露的港交所发行人来跟踪，待技术论文或 GLM-6.0 落地时再核验。
+
+![智谱港交所公告第 11 页：第 (ii) 项承诺投入下一代 GLM——在上一代所搭环境中训练、形成递归式自我改进闭环。](assets/paper-figures/zhipu-glm-selftraining-filing.png)
+
+**原文图／官方图片** — 智谱港交所公告第 11 页：第 (ii) 项承诺投入下一代 GLM——在上一代所搭环境中训练、形成递归式自我改进闭环。 · Page 11, use-of-proceeds item (ii) · [source](https://ea-cdn.eurolandir.com/press-releases-attachments/4179721/HKEX-EPS_20260913_12330384_0.PDF)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [HKEX announcement PDF (primary)](https://ea-cdn.eurolandir.com/press-releases-attachments/4179721/HKEX-EPS_20260913_12330384_0.PDF) · [Zhipu release notes](https://docs.bigmodel.cn/cn/update/new-releases)
 
 <a id="genuine-rsi-roadmap-2026"></a>
 
