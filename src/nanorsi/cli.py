@@ -84,7 +84,7 @@ def _attempt(root, config, git, store, parent, attempt, run_dir, *, promote=True
     with git.worktree(ref, root / '.nanorsi/worktrees' / run_dir.name) as checkout:
         feedback = loop.train_feedback(root, config, checkout, run_dir, store)
         store.append({'event_type': 'proposal_started', 'attempt_id': attempt})
-        proposal, proposer_commit = _propose(root, config, git, checkout, parent, attempt, feedback, run_dir, proposal_context)
+        proposal, proposer_commit = _propose(root, config, git, store, checkout, parent, attempt, feedback, run_dir, proposal_context)
         loop.record_proposal(store, run_dir, attempt)
         if git.changed_paths(checkout, ref):
             raise ProposalError('proposer modified the parent checkout directly')
@@ -115,11 +115,12 @@ def _attempt(root, config, git, store, parent, attempt, run_dir, *, promote=True
                        attempt, proposer_commit, measured_parent, run_dir, promote=promote, trained=trained)
 
 
-def _propose(root, config, git, checkout, parent, attempt, feedback, run_dir, proposal_context=None):
+def _propose(root, config, git, store, checkout, parent, attempt, feedback, run_dir, proposal_context=None):
     proposer_commit = git.resolve_ref('nanorsi/gen-0') if config.experiment.arm == 'frozen' else parent['candidate_commit']
     context = {'goal': config.experiment.goal, 'surface': {'allow': config.surface.allow, 'deny': config.surface.deny}, 'attempt_id': attempt,
                'parent_generation': parent['generation'], 'parent_commit': parent['candidate_commit'],
-               'proposer_harness_commit': proposer_commit, 'agent': config.agent, 'train_results': feedback}
+               'proposer_harness_commit': proposer_commit, 'agent': config.agent, 'train_results': feedback,
+               'rejected_recent': loop.rejected_recent(store.events())}
     if proposal_context:
         if set(proposal_context) & set(context):
             raise ValueError('proposal context cannot replace fixed parent or agent fields')

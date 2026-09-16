@@ -162,6 +162,27 @@ def train_feedback(root, config, checkout, run_dir, store):
     return result.case_results
 
 
+def rejected_recent(events, limit=5):
+    """Compact memory of recently rejected/failed proposals for the proposer context.
+
+    ADOPTION item 14: keep a rejected-edit memory and test whether it stops repeat
+    proposals. Entries carry attempt id, decision, bounded reason, hypothesis text
+    and changed paths; no metrics, diffs or artifacts leak into the prompt."""
+    memory = []
+    for event in events:
+        if not event.get("attempt_id") or event.get("event_type") not in {"generation", "attempt_failed"}:
+            continue
+        if event.get("decision") not in {"rejected", "failed", "no-op"}:
+            continue
+        hypothesis = event.get("hypothesis") or {}
+        reason = hypothesis.get("reason") if isinstance(hypothesis, dict) else None
+        memory.append({"attempt_id": event["attempt_id"], "decision": event["decision"],
+                       "gate_reason": str(event.get("reason", ""))[:200],
+                       "hypothesis_reason": str(reason)[:200] if reason else None,
+                       "changed_paths": event.get("changed_paths") or []})
+    return memory[-limit:]
+
+
 def record_proposal(store, run_dir, attempt):
     events = [e for e in store.events() if e.get("attempt_id") == attempt]
     if not any(e.get("event_type") == "proposal_started" for e in events) or any(e.get("event_type") == "proposal_finished" for e in events):

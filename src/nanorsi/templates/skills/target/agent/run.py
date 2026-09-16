@@ -547,7 +547,7 @@ def _run_propose(request: dict[str, Any], agent: dict[str, Any], hashes: dict[st
         raise RunnerError("invalid proposal context")
     if "operator" in context and context["operator"] not in {"draft", "improve", "debug", "crossover"}:
         raise RunnerError("invalid proposal operator")
-    visible = {key: context.get(key) for key in ("goal", "parent_files", "train_results", "surface")}
+    visible = {key: context.get(key) for key in ("goal", "parent_files", "train_results", "surface", "rejected_recent")}
     for key in ("operator", "extra_parents", "candidate_id", "parent_candidate_id", "round"):
         if key in context:
             visible[key] = context[key]
