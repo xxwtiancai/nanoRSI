@@ -1,0 +1,572 @@
+{
+  "arm": "frozen",
+  "comparison_hash": "8e8ba479486cceaa1b92a15e68102a018fecd61009b609c6edae76dc25b89490",
+  "conditions": [
+    "baseline",
+    "candidate"
+  ],
+  "experiment_id": "shinka-sine",
+  "manifest_hash": "6074c671cddb6c2221c954fb41021bbf402bf4354757a7b1fe0479e5e3c02ee5",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "artifact",
+  "repeats": 1,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 0,
+          "group_id": "sine-test",
+          "repeat_id": 0,
+          "score": 0.10492469434578348,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "sine-test",
+          "trace": [
+            {
+              "event": "shinka_metrics",
+              "max_abs_error": 3.141592653589793,
+              "mean_abs_error": 0.9410656965856543,
+              "points": 321,
+              "rmse": 1.3472630543337667,
+              "score": 0.10492469434578348
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "metrics": {
+        "score": 0.10492469434578348
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 1,
+          "group_id": "sine-test",
+          "repeat_id": 0,
+          "score": 0.9999629290301792,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "sine-test",
+          "trace": [
+            {
+              "event": "shinka_metrics",
+              "max_abs_error": 2.114256755849257e-05,
+              "mean_abs_error": 1.38905766516377e-06,
+              "points": 321,
+              "rmse": 3.982444142491988e-06,
+              "score": 0.9999629290301792
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "metrics": {
+        "score": 0.9999629290301792
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.7058823529411765,
+    "known_count": 12,
+    "known_usd": 0.0,
+    "total_count": 17,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "6e107e7176434020b40ea2ebe136b35a",
+      "phase": "search",
+      "receipt": "05805fc71e128a6dcef79b51f8d1cbedd92ad4e5409942b505c6d66700b9b50c",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/baseline/7577132211/gate.json",
+          "sha256": "4c2515a7c7cd429225f9a3e38cb2c24d2b4ce1aad81fa564e738b492d42690d3"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "6e107e7176434020b40ea2ebe136b35a",
+      "phase": "search",
+      "receipt": "a1eaca2eea6f586b759980b9ba0c7d0b2433513d4d4464c0674acc5ae732b725",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "b32622996a19489aa922492767d7f393",
+      "phase": "search",
+      "receipt": "4c8c22096120f6cd716c8a74d20f01ac8adb85f07ec389e0f08ad978317ac47b",
+      "seq": 6,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/5afc122ee9/train.json",
+          "sha256": "0e55379230c21356ed347f98f561e76751a8e8a54b1b603b1f184cb527502d70"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "b32622996a19489aa922492767d7f393",
+      "phase": "search",
+      "receipt": "76c1717c2095803bf72fa75ab862ad147c9ff326f52b1e1be073fb4f110ec478",
+      "seq": 7,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "d3bcb6b4c2ec4bb1beb3a761c349d222",
+      "phase": "search",
+      "receipt": "cdde9741eab2ab9361eed19f6db9dc32f08cf5f24b61a8eb786fd08ecdf0dc18",
+      "seq": 12,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/8e625645b8/train.json",
+          "sha256": "22cd6880e20073d3cb1253cc3196de4f900eabd0126c2c2da4af92b1011354c2"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "d3bcb6b4c2ec4bb1beb3a761c349d222",
+      "phase": "search",
+      "receipt": "1283195dace1049dd711f6c1bc3c0ec5f802dd7b8f1323a0a89ddbc6d4b8d359",
+      "seq": 13,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "6932754a46f34f22b75ed1f725bbc40d",
+      "phase": "search",
+      "receipt": "40094393b2da8bdb456437ca022bd62b60f9de769ec5ba7aba530d7cf416b45a",
+      "seq": 16,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/8e625645b8/parent.json",
+          "sha256": "4c2515a7c7cd429225f9a3e38cb2c24d2b4ce1aad81fa564e738b492d42690d3"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "6932754a46f34f22b75ed1f725bbc40d",
+      "phase": "search",
+      "receipt": "a565fc29e2d09aa6ccd0c223037c2abd9a75c6648f9cd6adf192377f2547d9f5",
+      "seq": 17,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "86f5818c69454b09b8d60710e9488910",
+      "phase": "search",
+      "receipt": "6f950912c05ab6a8a73142ec337749f6f4f4342b1419f0ef8550d6487ba50626",
+      "seq": 18,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/8e625645b8/gate.json",
+          "sha256": "639d926ca0dc3e3ecb57bb9f251c98ce730bed1d4ded683e45a3d7f83e6334f2"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "86f5818c69454b09b8d60710e9488910",
+      "phase": "search",
+      "receipt": "95b4b850450df2f79dd269eb8fef35c73002a8334d1ee9fc8345021c861e6dc5",
+      "seq": 19,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "f158a6bdabb0467fadd44be34a08c738",
+      "phase": "search",
+      "receipt": "74ec6870fc68835f1670a507c3449d092f0f9816484180b57475c1b49916bf37",
+      "seq": 22,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/de7fc36eda/train.json",
+          "sha256": "4f098266a80f8244d3c387de7f9bd642944aad6a5525ea640a6612a0a15c954c"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "f158a6bdabb0467fadd44be34a08c738",
+      "phase": "search",
+      "receipt": "e1452458f4da0930258cfcf12d2e00194ed41c766b6622171cba8cfd57e55bb4",
+      "seq": 23,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "7de362a5449b481490112e89bdae1b24",
+      "phase": "search",
+      "receipt": "f5db321e25d4630afd101ab7aba893baffc894fa0fda6efb0b91a2dd62d20b24",
+      "seq": 28,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/62e9de30a0/train.json",
+          "sha256": "4f098266a80f8244d3c387de7f9bd642944aad6a5525ea640a6612a0a15c954c"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "7de362a5449b481490112e89bdae1b24",
+      "phase": "search",
+      "receipt": "920a6531b3613e912c3b7527a1c7fd2a4d83fd9d0b3989c58dc75545029e7e18",
+      "seq": 29,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "50cbdb992add4ac38992ecc7e16dbf40",
+      "phase": "search",
+      "receipt": "992edbd5e8ccd41c56a8c4335029947608daf5fdd990212e8ae23c50c6863b92",
+      "seq": 32,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/62e9de30a0/parent.json",
+          "sha256": "639d926ca0dc3e3ecb57bb9f251c98ce730bed1d4ded683e45a3d7f83e6334f2"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "50cbdb992add4ac38992ecc7e16dbf40",
+      "phase": "search",
+      "receipt": "9fe48d82cb63f7109b271519354570008be705b01855830fec755a7863c294c8",
+      "seq": 33,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "1f8ddc8727df49209f46a1d0d0a65695",
+      "phase": "search",
+      "receipt": "ecf860a50af9ce207820dde88018d35728bc172d7c3c081ba8ec3979870c0c11",
+      "seq": 34,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/62e9de30a0/gate.json",
+          "sha256": "c517d92614e054862e25f66810faa5daa1681d658adedc9b4bf90a19ab48c7f5"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "1f8ddc8727df49209f46a1d0d0a65695",
+      "phase": "search",
+      "receipt": "cf19cc84bd859c82c7be02ff4c1f89004f9e21e1ce1a6e5d26b602cdfc9f0ed8",
+      "seq": 35,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "eeeef7da875e49458f39500c21e08f08",
+      "phase": "search",
+      "receipt": "a924cab5ef4619b63fd49e5120da0e9ed4a7e2545c1325159c7dfed6d4600d14",
+      "seq": 38,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/55023e1faa/train.json",
+          "sha256": "6929e2fc9ed0e106827791c46469a88ad4c04dd680eff27e945efae88d1533eb"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "eeeef7da875e49458f39500c21e08f08",
+      "phase": "search",
+      "receipt": "95dba6b20d15ccffdc2ce0fd2906846140197e26bfe6317b7f1dcb8cfbc55a5d",
+      "seq": 39,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "ecd0ca2827d0405cbe6498a544217586",
+      "phase": "search",
+      "receipt": "1fea2bccec96c9ff34daa756878b58c62f90b0faa00d5623a70d711e9ed94591",
+      "seq": 42,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/55023e1faa/parent.json",
+          "sha256": "c517d92614e054862e25f66810faa5daa1681d658adedc9b4bf90a19ab48c7f5"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "ecd0ca2827d0405cbe6498a544217586",
+      "phase": "search",
+      "receipt": "9cf239c7eacca2bdef5836f5bce27bffa5928bd5bab105a4d1da3725ce8e3532",
+      "seq": 43,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "8dfb0c3e29964d37b47ee3db254a6354",
+      "phase": "search",
+      "receipt": "28febcc5e95a9b2de8fe7af671e53b830ea7d2a8abeecaa84992b152dd5d0431",
+      "seq": 44,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/55023e1faa/gate.json",
+          "sha256": "e1e6c3e9a43c22608c4813b930fcbf4c1c3485e849d983327089b2acdbab7eca"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "8dfb0c3e29964d37b47ee3db254a6354",
+      "phase": "search",
+      "receipt": "ad9aff671e197cca21e8b4fa63cfe4e3e9fd17123bbd8241def45cd54202740e",
+      "seq": 45,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "4a38b338074bb15fc6e87c3c66914fe9870a8693b4944b125773110939e7c150",
+      "seq": 9,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 676,
+        "model_calls": 1,
+        "output_tokens": 516
+      }
+    },
+    {
+      "attempt_id": 2,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "1fd6ff4de2d44b63cd1946fdecc53125aab57cbbbe52254d094aa2532a1f78cd",
+      "seq": 15,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 676,
+        "model_calls": 1,
+        "output_tokens": 325
+      }
+    },
+    {
+      "attempt_id": 3,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "72ecf78d42983acce89abc43bb5db964b28644af2b03d34dae8b5bad8ae58059",
+      "seq": 25,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 838,
+        "model_calls": 1,
+        "output_tokens": 457
+      }
+    },
+    {
+      "attempt_id": 4,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "a885eefaca743031732717d7308a693db385261d72ef6c63db29767a54b0f35a",
+      "seq": 31,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 838,
+        "model_calls": 1,
+        "output_tokens": 753
+      }
+    },
+    {
+      "attempt_id": 5,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "9ef4f8eca33de57abf765adf12fcab8b2229c1533bdcdd673067bcc5f3c22daf",
+      "seq": 41,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 948,
+        "model_calls": 1,
+        "output_tokens": 931
+      }
+    }
+  ],
+  "seed": 0,
+  "test_cost_usd": {
+    "coverage": 1.0,
+    "known_count": 2,
+    "known_usd": 0.0,
+    "total_count": 2,
+    "total_usd": 0.0
+  }
+}

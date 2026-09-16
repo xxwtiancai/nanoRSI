@@ -1,0 +1,1097 @@
+{
+  "arm": "frozen",
+  "comparison_hash": "8dde1d01907911778315319fda23c00f0b32bb2be5c1c0a80840aa2ec529f75e",
+  "conditions": [
+    "baseline",
+    "candidate"
+  ],
+  "experiment_id": "openevolve-kmodule",
+  "manifest_hash": "82e3db178d3458928687fdadc323e1c56bc9d0d8167bf3ad987ffdba42e304b3",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "artifact",
+  "repeats": 1,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 0,
+          "group_id": "kmod-test",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "kmod-test",
+          "trace": [
+            {
+              "correct_modules": 0,
+              "event": "kmodule_metrics",
+              "score": 0.0,
+              "total_modules": 4
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 1,
+          "group_id": "kmod-test",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "kmod-test",
+          "trace": [
+            {
+              "correct_modules": 4,
+              "event": "kmodule_metrics",
+              "score": 1.0,
+              "total_modules": 4
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "metrics": {
+        "score": 1.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.7241379310344828,
+    "known_count": 21,
+    "known_usd": 0.0,
+    "total_count": 29,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "91413b56a55b4310830f7d082d0fdbbe",
+      "phase": "search",
+      "receipt": "1aa5b6d26f2274b016ee6f082a6a691b9127cd687989cade23566af034c6576e",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/baseline/a5b74b4c72/gate.json",
+          "sha256": "2d4e8a3fde7ec9b2d5ca1e175ddc28751ec535952c854e4d5c3248ab6dd88779"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "91413b56a55b4310830f7d082d0fdbbe",
+      "phase": "search",
+      "receipt": "9c51ce527e4e5611d8bb32221ef2867b124514dc85fb878894a56cb7a3df5f11",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 1,
+      "episodes": 3,
+      "event_type": "episode_reservation",
+      "phase": "search",
+      "receipt": "43b9c78387a0088756b7f581c7e45357945800cd41d9549376a93402a44714c2",
+      "reservation_id": "candidate-000001",
+      "seq": 7
+    },
+    {
+      "attempt_id": 2,
+      "episodes": 3,
+      "event_type": "episode_reservation",
+      "phase": "search",
+      "receipt": "90c4d14fa2087c1337e900587db89a8aca47c4f61cea5089819d69c1d699dfd6",
+      "reservation_id": "candidate-000002",
+      "seq": 9
+    },
+    {
+      "attempt_id": 3,
+      "episodes": 3,
+      "event_type": "episode_reservation",
+      "phase": "search",
+      "receipt": "84d03610fca6a90db7576b27689c6d8960991ad36b0db7db39333f020df39321",
+      "reservation_id": "candidate-000003",
+      "seq": 11
+    },
+    {
+      "attempt_id": 4,
+      "episodes": 3,
+      "event_type": "episode_reservation",
+      "phase": "search",
+      "receipt": "ab60bbda1758361b9db5913bc58364afcdd842466b990d50cbe39aebc6760f67",
+      "reservation_id": "candidate-000004",
+      "seq": 13
+    },
+    {
+      "attempt_id": 1,
+      "candidate_id": "candidate-000001",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "2e535c313e7d48fe9cae5b245a1b5b5b",
+      "phase": "search",
+      "receipt": "e463db8bea5b1b4d5d1097df9b50a0231ecb5565d3c2d6c56b765c64e69cc4f4",
+      "reservation_id": "candidate-000001",
+      "seq": 14,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000001/train.json",
+          "sha256": "2982b0dc1dcd6b5d5e297c2ca620883b3f99ae1dc8ccbe2c0d053880a6b7b1ac"
+        }
+      },
+      "attempt_id": 1,
+      "candidate_id": "candidate-000001",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "2e535c313e7d48fe9cae5b245a1b5b5b",
+      "phase": "search",
+      "receipt": "173efc9ff768f5811750cefb3f0bfe63e331e06d62ae95ef93557f2501a7d770",
+      "reservation_id": "candidate-000001",
+      "seq": 15,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 1,
+      "candidate_id": "candidate-000001",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "3ae5027cc0da4ab4bd3f1a34676752c8",
+      "phase": "search",
+      "receipt": "70465036940b6de3dfc29255328b4027e600736fa05fe23f31fc48f3aa0bd7ed",
+      "reservation_id": "candidate-000001",
+      "seq": 18,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000001/parent.json",
+          "sha256": "99d90a573f9ee54524c061fee3ef0930412c804a9846b39b129f84b89dac0809"
+        }
+      },
+      "attempt_id": 1,
+      "candidate_id": "candidate-000001",
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "3ae5027cc0da4ab4bd3f1a34676752c8",
+      "phase": "search",
+      "receipt": "adac7043daedb809d8ba47722ae438f2321ff899a68ce2e9593d64fac8f0406c",
+      "reservation_id": "candidate-000001",
+      "seq": 19,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 1,
+      "candidate_id": "candidate-000001",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "903893b932744407962a5bf7651c88e7",
+      "phase": "search",
+      "receipt": "f863cdf1434dc8f609654a1a1be16edfad41982d094f4ee82485179609231f93",
+      "reservation_id": "candidate-000001",
+      "seq": 20,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000001/gate.json",
+          "sha256": "fbdcedc8484c1f97d69dc584d328dc2eadbc34e965f9cdb775f60ed646444ea6"
+        }
+      },
+      "attempt_id": 1,
+      "candidate_id": "candidate-000001",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "903893b932744407962a5bf7651c88e7",
+      "phase": "search",
+      "receipt": "48f00f56352a198065878995106c30c0b1a086e1072c124c9a6f12635928b797",
+      "reservation_id": "candidate-000001",
+      "seq": 21,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 2,
+      "candidate_id": "candidate-000002",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "742be402acc54f8ba7ca9320f5891c9b",
+      "phase": "search",
+      "receipt": "c2cfa3fe33b28edcf21fd78da6e03ccc34005467b9d28aed42ffedd32c0bd5e9",
+      "reservation_id": "candidate-000002",
+      "seq": 24,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000002/train.json",
+          "sha256": "efd5e040f1f2f1ac0cf1d0a5547d742b63fd93c2bbef65fe5413a509bb2bd7bc"
+        }
+      },
+      "attempt_id": 2,
+      "candidate_id": "candidate-000002",
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "742be402acc54f8ba7ca9320f5891c9b",
+      "phase": "search",
+      "receipt": "fc5e5546eaa78162e39e9579080e9c1528bdce6116318da10170e3d647dc05ef",
+      "reservation_id": "candidate-000002",
+      "seq": 25,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 2,
+      "candidate_id": "candidate-000002",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "53dd117ec71e43389d78acf0b6fb4895",
+      "phase": "search",
+      "receipt": "dc4c1cf0db5dccd686eab9dab69b5799c54033ade827ad304a32e5a260fef442",
+      "reservation_id": "candidate-000002",
+      "seq": 28,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000002/parent.json",
+          "sha256": "2d4e8a3fde7ec9b2d5ca1e175ddc28751ec535952c854e4d5c3248ab6dd88779"
+        }
+      },
+      "attempt_id": 2,
+      "candidate_id": "candidate-000002",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "53dd117ec71e43389d78acf0b6fb4895",
+      "phase": "search",
+      "receipt": "0a430894540d13dcacc3428072dcdd26a76159b87ed5df2e22bab2cf84af8bc3",
+      "reservation_id": "candidate-000002",
+      "seq": 29,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 2,
+      "candidate_id": "candidate-000002",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "dc185d976bab4ce38822a8163d1e69f7",
+      "phase": "search",
+      "receipt": "7182cbe37a4a4e4ab9ab6345e7903d30d020a904d578411a622e613efc546c44",
+      "reservation_id": "candidate-000002",
+      "seq": 30,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000002/gate.json",
+          "sha256": "97d752e946234ae1284ba776899c452771571fb077513a7d48f15296e1f4904a"
+        }
+      },
+      "attempt_id": 2,
+      "candidate_id": "candidate-000002",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "dc185d976bab4ce38822a8163d1e69f7",
+      "phase": "search",
+      "receipt": "a42928cb6d66295bd07baac99edfba7b3a43309927f288327892396e58200a5a",
+      "reservation_id": "candidate-000002",
+      "seq": 31,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 3,
+      "candidate_id": "candidate-000003",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "034ca672de51488c8392a89414942073",
+      "phase": "search",
+      "receipt": "2444bcb85601001ed402835a5a0ffecad88fbfb16995ca59651e670f3a067790",
+      "reservation_id": "candidate-000003",
+      "seq": 34,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000003/train.json",
+          "sha256": "2982b0dc1dcd6b5d5e297c2ca620883b3f99ae1dc8ccbe2c0d053880a6b7b1ac"
+        }
+      },
+      "attempt_id": 3,
+      "candidate_id": "candidate-000003",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "034ca672de51488c8392a89414942073",
+      "phase": "search",
+      "receipt": "b7eaf3e913a5f521196ba22e214843e47164fe65e57f3dda6b081704b470ca0f",
+      "reservation_id": "candidate-000003",
+      "seq": 35,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 3,
+      "candidate_id": "candidate-000003",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "be08300ab84447529e52a8855733f2d7",
+      "phase": "search",
+      "receipt": "dd16c0ce27fb3ba54b1d3aac467b96c3a8e38c5fb3f0d322212ddc9a7a158bb4",
+      "reservation_id": "candidate-000003",
+      "seq": 38,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000003/parent.json",
+          "sha256": "2d4e8a3fde7ec9b2d5ca1e175ddc28751ec535952c854e4d5c3248ab6dd88779"
+        }
+      },
+      "attempt_id": 3,
+      "candidate_id": "candidate-000003",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "be08300ab84447529e52a8855733f2d7",
+      "phase": "search",
+      "receipt": "6c9c627b029045b121571e88ab965c244306b88d91ab1707e3c3617a558971ca",
+      "reservation_id": "candidate-000003",
+      "seq": 39,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 3,
+      "candidate_id": "candidate-000003",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "fc6e22eccfeb4a7b9874f50e6d0df42f",
+      "phase": "search",
+      "receipt": "14f8e7b6235a1d2c902aef6e10b70e9454ef67ea6b86bf22a4a94f2de2aeebc1",
+      "reservation_id": "candidate-000003",
+      "seq": 40,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000003/gate.json",
+          "sha256": "fbdcedc8484c1f97d69dc584d328dc2eadbc34e965f9cdb775f60ed646444ea6"
+        }
+      },
+      "attempt_id": 3,
+      "candidate_id": "candidate-000003",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "fc6e22eccfeb4a7b9874f50e6d0df42f",
+      "phase": "search",
+      "receipt": "12005fe71fcaccab52abb49bf9a58f22b1a92167f3d615753b22e4861dfd1562",
+      "reservation_id": "candidate-000003",
+      "seq": 41,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 4,
+      "candidate_id": "candidate-000004",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "2c600760b71d4545bda10cf119b3eef5",
+      "phase": "search",
+      "receipt": "38eebc648e1bc8a619e4d871e7917842222bf2d999e33169358eff143d14f4b8",
+      "reservation_id": "candidate-000004",
+      "seq": 44,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000004/train.json",
+          "sha256": "2982b0dc1dcd6b5d5e297c2ca620883b3f99ae1dc8ccbe2c0d053880a6b7b1ac"
+        }
+      },
+      "attempt_id": 4,
+      "candidate_id": "candidate-000004",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "2c600760b71d4545bda10cf119b3eef5",
+      "phase": "search",
+      "receipt": "2257a43a9f28b965aad6a6a087c5a3a54814cdf824c71835cb76bf633ae0adfc",
+      "reservation_id": "candidate-000004",
+      "seq": 45,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 4,
+      "candidate_id": "candidate-000004",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "09b8d71b909e4eb799fbcbeb4c2608a4",
+      "phase": "search",
+      "receipt": "238bc40c613f1f75db492d3899a31ba8f8f3839767d3986cc8f1fcb42a65728b",
+      "reservation_id": "candidate-000004",
+      "seq": 48,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000004/parent.json",
+          "sha256": "2d4e8a3fde7ec9b2d5ca1e175ddc28751ec535952c854e4d5c3248ab6dd88779"
+        }
+      },
+      "attempt_id": 4,
+      "candidate_id": "candidate-000004",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "09b8d71b909e4eb799fbcbeb4c2608a4",
+      "phase": "search",
+      "receipt": "130a19bd353dae709f7e88e06568d8bb261d5031405bb90562a56da9e20eee7a",
+      "reservation_id": "candidate-000004",
+      "seq": 49,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 4,
+      "candidate_id": "candidate-000004",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "91dfc22d415c4843b780ac340f798af2",
+      "phase": "search",
+      "receipt": "90baa1ad154b1fa00220081816d9c8e510dfebe9b28e0d17e417a03050c5bc04",
+      "reservation_id": "candidate-000004",
+      "seq": 50,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000004/gate.json",
+          "sha256": "cc5938787d84ab618f08c5c4ea4ee6d3dde488be173846c27d213e2a6a61cde3"
+        }
+      },
+      "attempt_id": 4,
+      "candidate_id": "candidate-000004",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "91dfc22d415c4843b780ac340f798af2",
+      "phase": "search",
+      "receipt": "f7c4c921b0153d767781bf19e87a7df92888280094d8bc20457c4ac412c84535",
+      "reservation_id": "candidate-000004",
+      "seq": 51,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 5,
+      "episodes": 3,
+      "event_type": "episode_reservation",
+      "phase": "search",
+      "receipt": "bd546e2fb765e9cf20e8dc05a704c3d4ff99351843be71e339e06d39e8f9ed4b",
+      "reservation_id": "candidate-000005",
+      "seq": 56
+    },
+    {
+      "attempt_id": 6,
+      "episodes": 3,
+      "event_type": "episode_reservation",
+      "phase": "search",
+      "receipt": "32aeb44dd2bf88ba62f814df441f5b87534038b5823a6c7c4c55fe7fa91cef40",
+      "reservation_id": "candidate-000006",
+      "seq": 58
+    },
+    {
+      "attempt_id": 7,
+      "episodes": 3,
+      "event_type": "episode_reservation",
+      "phase": "search",
+      "receipt": "1cb5ae347fbc19bf65206874b678d6f63f36f457b32c33e60f0538a8a49b8d86",
+      "reservation_id": "candidate-000007",
+      "seq": 60
+    },
+    {
+      "attempt_id": 8,
+      "episodes": 3,
+      "event_type": "episode_reservation",
+      "phase": "search",
+      "receipt": "1c46e4f2bf135bf768491225802fad2563ca69f6c8172174b828ddd8685c9404",
+      "reservation_id": "candidate-000008",
+      "seq": 62
+    },
+    {
+      "attempt_id": 5,
+      "candidate_id": "candidate-000005",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "14faa31c9db2412792f3a6b94f614bc4",
+      "phase": "search",
+      "receipt": "015ce56076e5e8e45f53f45dd348c93d760d05f8f422bdcaaa70c3bb5860bc92",
+      "reservation_id": "candidate-000005",
+      "seq": 63,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000005/train.json",
+          "sha256": "4871020d91f1c479165fcc15469d693100d0b8a0c759f07a614baa9e6872ca1d"
+        }
+      },
+      "attempt_id": 5,
+      "candidate_id": "candidate-000005",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "14faa31c9db2412792f3a6b94f614bc4",
+      "phase": "search",
+      "receipt": "baffcfd6eb86167ff1d0ad3e938d70058181869dbf82eae3067ed03558be06ce",
+      "reservation_id": "candidate-000005",
+      "seq": 64,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 6,
+      "candidate_id": "candidate-000006",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "0529e04aa9ac4cb199f98c1ec2450c07",
+      "phase": "search",
+      "receipt": "68d6fecd1f9beaee4246d4f99775ac9f135bc3b2c3a7e7fd7069e836bd0fb055",
+      "reservation_id": "candidate-000006",
+      "seq": 69,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000006/train.json",
+          "sha256": "4871020d91f1c479165fcc15469d693100d0b8a0c759f07a614baa9e6872ca1d"
+        }
+      },
+      "attempt_id": 6,
+      "candidate_id": "candidate-000006",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "0529e04aa9ac4cb199f98c1ec2450c07",
+      "phase": "search",
+      "receipt": "c0ef2610c9ad723f0932b0089b78ef9ea49f7bf64a43642cdee16f1c7e9d2f39",
+      "reservation_id": "candidate-000006",
+      "seq": 70,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 7,
+      "candidate_id": "candidate-000007",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "5bf12407f611447fba448ec7b3db7e33",
+      "phase": "search",
+      "receipt": "7b2e8cd338a704b22de996d4f9f241918b6fb1ce74c2fbdca86d640ad1567e41",
+      "reservation_id": "candidate-000007",
+      "seq": 75,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000007/train.json",
+          "sha256": "10ed25a103ccaed77a583a954bb218c75fc29a8e385a679ba0ba6eca62ea7264"
+        }
+      },
+      "attempt_id": 7,
+      "candidate_id": "candidate-000007",
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "5bf12407f611447fba448ec7b3db7e33",
+      "phase": "search",
+      "receipt": "fde2ed04a6f92397d84cb156be74d930ec11776a52e289a073071605f30cd501",
+      "reservation_id": "candidate-000007",
+      "seq": 76,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 7,
+      "candidate_id": "candidate-000007",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "4cd17a5ea44a45359bb611dbd7939897",
+      "phase": "search",
+      "receipt": "3f4f14fba5e9f51d7d6fb67fe3bd4730ee3ebd1aceb68a64fe193d2b172854ee",
+      "reservation_id": "candidate-000007",
+      "seq": 79,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000007/parent.json",
+          "sha256": "5111cb40690ac20abb873d62c53b7399421614210ad9a57ea1336e55825de58e"
+        }
+      },
+      "attempt_id": 7,
+      "candidate_id": "candidate-000007",
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "4cd17a5ea44a45359bb611dbd7939897",
+      "phase": "search",
+      "receipt": "1fae066d761cc193e62a7a02a5788bd3a47cb5eeb12329330f85ef61fefea826",
+      "reservation_id": "candidate-000007",
+      "seq": 80,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 7,
+      "candidate_id": "candidate-000007",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "aefcb7f3bb1a4f1ebe13981059b08aa6",
+      "phase": "search",
+      "receipt": "fabb1af831f3cd790a18cabee59ade823a341614c2ebdca5949ad8f301b214d2",
+      "reservation_id": "candidate-000007",
+      "seq": 81,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000007/gate.json",
+          "sha256": "cc5938787d84ab618f08c5c4ea4ee6d3dde488be173846c27d213e2a6a61cde3"
+        }
+      },
+      "attempt_id": 7,
+      "candidate_id": "candidate-000007",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "aefcb7f3bb1a4f1ebe13981059b08aa6",
+      "phase": "search",
+      "receipt": "a257693d21865971097876728ec9dd858505fd90726229d0beb27b8199c844af",
+      "reservation_id": "candidate-000007",
+      "seq": 82,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 8,
+      "candidate_id": "candidate-000008",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "924601d601c444cfbc71a7b000c8c49f",
+      "phase": "search",
+      "receipt": "f4af8639ab82399db7e24d11fcb9483908b2c272644e9936bf5e83ca807657eb",
+      "reservation_id": "candidate-000008",
+      "seq": 85,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000008/train.json",
+          "sha256": "a082abebf06c57ce76e6a7fb5a6b8828eef50ff83a3b34adb41441a1fdb4446c"
+        }
+      },
+      "attempt_id": 8,
+      "candidate_id": "candidate-000008",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "924601d601c444cfbc71a7b000c8c49f",
+      "phase": "search",
+      "receipt": "453cfbde116859f048648fccd1b94166b42017971cc027341453bc7a329b5515",
+      "reservation_id": "candidate-000008",
+      "seq": 86,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 8,
+      "candidate_id": "candidate-000008",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "5babf6c284fe45d2b197df2ee42bb2e0",
+      "phase": "search",
+      "receipt": "c4f93fc10b79751ac87827b1a796c9b31023a7d4643c89ad737e43d6e41760d8",
+      "reservation_id": "candidate-000008",
+      "seq": 89,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000008/parent.json",
+          "sha256": "cc5938787d84ab618f08c5c4ea4ee6d3dde488be173846c27d213e2a6a61cde3"
+        }
+      },
+      "attempt_id": 8,
+      "candidate_id": "candidate-000008",
+      "cost_usd": 0.0,
+      "duration_ms": 0,
+      "event_type": "evaluation_finished",
+      "invocation_id": "5babf6c284fe45d2b197df2ee42bb2e0",
+      "phase": "search",
+      "receipt": "c90b90cd6be2b10b606e594fc5b7a9437f867882e1141bb7b8f82c5b8c074efd",
+      "reservation_id": "candidate-000008",
+      "seq": 90,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "attempt_id": 8,
+      "candidate_id": "candidate-000008",
+      "episodes": 1,
+      "event_type": "evaluation_started",
+      "invocation_id": "78f6a7f546a8486a8b8bf54b9a00b5a7",
+      "phase": "search",
+      "receipt": "28191e0f303e0e2a634ff86e805c25a0b753cd8c77c874324b7fb9522272da11",
+      "reservation_id": "candidate-000008",
+      "seq": 91,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/365544379d24-candidate-000008/gate.json",
+          "sha256": "5111cb40690ac20abb873d62c53b7399421614210ad9a57ea1336e55825de58e"
+        }
+      },
+      "attempt_id": 8,
+      "candidate_id": "candidate-000008",
+      "cost_usd": 0.0,
+      "duration_ms": 1,
+      "event_type": "evaluation_finished",
+      "invocation_id": "78f6a7f546a8486a8b8bf54b9a00b5a7",
+      "phase": "search",
+      "receipt": "b4f2e26ab9aa4f2ff0b392eb4ab590a4210d7f489091a7e5b040c211972a1091",
+      "reservation_id": "candidate-000008",
+      "seq": 92,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "candidate_id": "candidate-000001",
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "8ed18a78fcb03004f3586d4d64c801661f97af514fbeb491886c6bc09f4b7aa5",
+      "reservation_id": "candidate-000001",
+      "seq": 17,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1106,
+        "model_calls": 1,
+        "output_tokens": 290
+      }
+    },
+    {
+      "attempt_id": 2,
+      "candidate_id": "candidate-000002",
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "ec2aec66896c113fc9b906765b4b9445068335ecc6a087df9b1bff34f0b52e35",
+      "reservation_id": "candidate-000002",
+      "seq": 27,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1106,
+        "model_calls": 1,
+        "output_tokens": 286
+      }
+    },
+    {
+      "attempt_id": 3,
+      "candidate_id": "candidate-000003",
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "0c69f241e1e57bc3bd013a1e206ec193a5a5e7d468e4a6d47a79046d4c4f31f8",
+      "reservation_id": "candidate-000003",
+      "seq": 37,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1107,
+        "model_calls": 1,
+        "output_tokens": 272
+      }
+    },
+    {
+      "attempt_id": 4,
+      "candidate_id": "candidate-000004",
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "d79959c20c007d2f0d7744a17bafa8e4a9e9a28a610c29ef4236d1894e816365",
+      "reservation_id": "candidate-000004",
+      "seq": 47,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1107,
+        "model_calls": 1,
+        "output_tokens": 289
+      }
+    },
+    {
+      "attempt_id": 5,
+      "candidate_id": "candidate-000005",
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "f03ba211abc0fbaeecc8de1641fabcf454224c0ccb305b324469f4754a8e108d",
+      "reservation_id": "candidate-000005",
+      "seq": 66,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1107,
+        "model_calls": 1,
+        "output_tokens": 66
+      }
+    },
+    {
+      "attempt_id": 6,
+      "candidate_id": "candidate-000006",
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "e0dfd64051d9460efa9ba61f2ee8386f9c86b833787cc81c157e3cad7242c62f",
+      "reservation_id": "candidate-000006",
+      "seq": 72,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1107,
+        "model_calls": 1,
+        "output_tokens": 274
+      }
+    },
+    {
+      "attempt_id": 7,
+      "candidate_id": "candidate-000007",
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "dc47d57d0d1ebac807e70bc995a14d9285a2fb5e44fe4ec4ed4121d907f113af",
+      "reservation_id": "candidate-000007",
+      "seq": 78,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1107,
+        "model_calls": 1,
+        "output_tokens": 257
+      }
+    },
+    {
+      "attempt_id": 8,
+      "candidate_id": "candidate-000008",
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "83cf401ab8f6678e02335bc778d2567fbbdda7c4a1b23071e772548bfe685bd3",
+      "reservation_id": "candidate-000008",
+      "seq": 88,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 1731,
+        "model_calls": 1,
+        "output_tokens": 820
+      }
+    }
+  ],
+  "seed": 0,
+  "test_cost_usd": {
+    "coverage": 1.0,
+    "known_count": 2,
+    "known_usd": 0.0,
+    "total_count": 2,
+    "total_usd": 0.0
+  }
+}

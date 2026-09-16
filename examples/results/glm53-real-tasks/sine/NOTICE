@@ -1,0 +1,7 @@
+This workspace embeds a real evaluation task from ShinkaEvolve
+(https://github.com/SakanaAI/ShinkaEvolve), Copyright Sakana AI 2025, licensed
+under Apache-2.0. Source files: examples/sine_approx_headless/initial.py
+(target/program.py, verbatim under an attribution header) and
+examples/sine_approx_headless/evaluate.py (evaluator/evaluate.py, scoring and
+blocked-source check preserved; protocol wrapper added; test split uses a
+denser grid). Apache-2.0 requires this notice to be retained in distributions.

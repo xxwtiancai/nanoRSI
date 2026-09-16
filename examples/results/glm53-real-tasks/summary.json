@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "study": "glm53-real-tasks",
+  "created_at": "2026-09-17T02:00:00+08:00",
+  "question": "Can nanoRSI, driven by GLM-5.3 (full tier, not flash), produce clear frozen-tested improvements on complete evaluation tasks reported by upstream papers and repositories?",
+  "model": "glm-5.3",
+  "tasks": [
+    {
+      "id": "shinka-sine",
+      "source": {"repo": "https://github.com/SakanaAI/ShinkaEvolve", "license": "Apache-2.0", "files": ["examples/sine_approx_headless/initial.py", "examples/sine_approx_headless/evaluate.py"], "paper": "arXiv 2509.19349 (ICLR 2026) sine-approximation task family"},
+      "mode": "serial (program template), 5 attempts",
+      "search_outcomes": ["failed (unsalvageable diff)", "accepted 0.1045 -> 0.8078 (degree-9 fitted odd polynomial)", "failed (corrupt diff)", "accepted 0.8078 -> 0.99997+ (degree-13 Taylor)", "rejected (+0.000008 below gate)"],
+      "final_panel": {"baseline": {"score": 0.104925, "rmse": 1.347e+00, "max_err": 3.142e+00}, "candidate": {"score": 0.999963, "rmse": 3.982e-06, "max_err": 2.114e-05}, "note": "test split uses a denser 321-point grid containing inputs absent from the 161-point selection grid"},
+      "usage": {"model_calls": 5, "input_tokens": 3976, "output_tokens": 2982}
+    },
+    {
+      "id": "openevolve-kmodule",
+      "source": {"repo": "https://github.com/codelion/openevolve", "license": "Apache-2.0", "files": ["examples/k_module_problem/initial_program.py", "examples/k_module_problem/evaluator.py"]},
+      "mode": "population search (size 4, generations 2, workers 2, crossover enabled), count-only feedback preserved",
+      "search_outcomes": {"attempts": 8, "promoted": 1, "no_ops_retained": 2, "winner": "first-generation direct candidate (crossover occurred in the population but did not produce the winner — reported honestly)"},
+      "final_panel": {"baseline": {"score": 0.0, "correct_modules": 0}, "candidate": {"score": 1.0, "correct_modules": 4}},
+      "usage": {"model_calls": 8}
+    }
+  ],
+  "audit": "both workspaces: zero expected-answer leakage, zero silent bypass, verify passes",
+  "limits": "Single runs, single seed, one model tier; the sine test split shares the task family's grid formula (denser, not disjoint); k-module has a deterministic hidden target so test re-measures selection; upstream author-reported results are not reproduced — these are independent nanoRSI runs of their tasks. Combined with the earlier GLM-5.3-Flash function-minimization study (0.9418 -> 0.9960), three upstream tasks have now been run end to end on this platform."
+}

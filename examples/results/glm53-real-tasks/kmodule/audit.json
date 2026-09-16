@@ -1,0 +1,18 @@
+{
+  "candidate_commit": "204fea258ba9a5d24f335feac0d6aa5b842dc3e8",
+  "declared_but_unloaded": [],
+  "declared_skills": [],
+  "executable_skills": [],
+  "generation": 1,
+  "leakage": [],
+  "markdown_only_always_in_context": [],
+  "panel_cases": 1,
+  "panel_status": "ok",
+  "schema_version": 1,
+  "skill_files": [
+    "edit/SKILL.md",
+    "inspect/SKILL.md",
+    "verify/SKILL.md"
+  ],
+  "uninvoked_scripts": []
+}

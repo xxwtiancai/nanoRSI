@@ -1,0 +1,7 @@
+This workspace embeds a real evaluation task from OpenEvolve
+(https://github.com/codelion/openevolve), Copyright 2025 Asankhaya Sharma,
+licensed under Apache-2.0. Source files: examples/k_module_problem/
+initial_program.py (target/program.py, verbatim under an attribution header)
+and examples/k_module_problem/evaluator.py (evaluator/evaluate.py, hidden
+target, validation and count-only scoring preserved; protocol wrapper only).
+Apache-2.0 requires this notice to be retained in distributions.
