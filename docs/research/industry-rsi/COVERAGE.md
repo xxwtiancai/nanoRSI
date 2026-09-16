@@ -70,6 +70,18 @@ The university and collaborator relationships appear in each record. A company n
 | Jilin + KAUST + Alberta + IDSIA (Schmidhuber) | [Self-Improving Agents survey](research-workflows.zh-CN.md#self-improving-agents-survey) — the self-induced update-operator formalism |
 | AI-scientist audit (Tianyu Ding et al.) | [Verification gap](research-workflows.zh-CN.md#ai-scientist-verification-gap) — 0/9 LLM-era closed-loop systems externally validated |
 | Sakana AI + U Michigan + Science Tokyo | [Conductor / Fugu](parameter-learning.zh-CN.md#sakana-conductor-fugu) — RL-trained orchestrator designing recursive topologies (RSI-Lab lineage) |
+| HKUST + ZJU + HUST | [XSkill](memory-context.zh-CN.md#xskill-dual-stream) — dual-stream visually-grounded skills and experiences for multimodal agents |
+| ANU + Linköping + MBZUAI + Aalto | [EvoLMM](parameter-learning.zh-CN.md#evolmm-proposer-solver) — label-free multimodal self-evolution with continuous rewards |
+| Arc Intelligence | [ATLAS](memory-context.zh-CN.md#atlas-pamphlets) — teacher/student pamphlets for gradient-free continual adaptation |
+| UIUC + Google DeepMind | [Evo-Memory](memory-context.zh-CN.md#evo-memory-remem) — streaming benchmark for self-evolving memory; hard-to-easy ordering wins |
+| CityU HK + Adelaide | [Skill Misevolution](agent-code.zh-CN.md#skill-misevolution-safety) — safety audit of skill evolution across four frameworks |
+| Lehigh + UIC + UBC/Vector + Salesforce + MGH/Harvard | [OpenSkill](agent-code.zh-CN.md#openskill-open-world) — skills and verification anchors from open-world sources |
+| UW + Stanford + CMU + MIT + NUS + SNU + Stevens + NEU + UChicago | [SPADE](parameter-learning.zh-CN.md#spade-adaptive-environments) — self-play in corpus-grounded executable environments |
+| USTC + CUHK + Macau + Tsinghua + ZJU + Soochow + Brown + SJTU | [EvoPolicyGym](agent-code.zh-CN.md#evopolicygym-benchmark) — benchmarking executable-policy evolution |
+| NUS + Stanford + Oxford + Princeton | [Recuris](memory-context.zh-CN.md#recuris-memory-evolution) — recursive experiential-working memory evolution |
+| DeepGrounding / AlphaAvatar / IIT | [RSI survey](research-workflows.zh-CN.md#rsi-survey-1250) — 1,250 papers, two-axis taxonomy, verification hierarchy |
+| StepFun + academic partners | [SE-Agent](memory-context.zh-CN.md#se-agent-trajectory) — trajectory-level self-evolution (archival, v1 predates window) |
+| K-Dense AI | [Scientific Agent Skills](agent-code.zh-CN.md#scientific-agent-skills-library) — 163-skill curated library, 45K stars |
 
 ## Checked but not promoted to a dated main entry / 已检索但未强行收录
 

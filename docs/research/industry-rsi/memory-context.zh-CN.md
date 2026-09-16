@@ -2,39 +2,23 @@
 
 [← 研究地图](README.zh-CN.md)
 
-<a id="rsiagent-autonomous-exploration"></a>
+## 机制家族
 
-## RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments
+| 家族 | 条目数 |
+| --- | ---: |
+| [结构化知识库与图](#family-structured-knowledge) | 6 |
+| [经验积累与回放](#family-experience-accumulation) | 5 |
+| [上下文组织策略](#family-context-policies) | 3 |
+| [探索式记忆构建](#family-exploration-memory) | 1 |
+| [记忆进化评测研究](#family-memory-evolution-studies) | 2 |
 
-**2026-09-14** · paper · 直接有界闭环
+<a id="family-structured-knowledge"></a>
 
-**日期说明** — arXiv v1：2026-09-14。代码仓库创建于 2026-09-13，比论文挂网早一天。
-
-**机构关系** — 论文 v1 标注 Aether AI（通讯作者 Kun Zhou）与加州大学圣迭戈分校；第一作者 Sibo Zhu 的工作完成于 Aether AI 实习期间，合作者来自 UCSD 与伊利诺伊大学芝加哥分校。
-
-**改变对象与反馈复用** — 面向陌生环境的免训练多智能体自改进：课程、执行、验证三类智能体在无金标条件下探索。广度递归自探索（BRS）并行跑课程组织的任务组，绘制环境结构并存下按组分组的经验记忆——可复用的（动作、条件、后果）因果模式；深度递归自探索（DRS）再在目标任务上迭代，验证器裁决每次尝试，成功记忆回流到后续轮次。逐步精炼的记忆最终冻结供下游复用；全程不改模型参数。
-
-**作者报告结果** — 以 GLM-5.3 为执行、Kimi-K3 为验证/课程：OSWorld 2.0 partial 78.98，高于 GPT-6 Astra 报告的 72.60（+6.38），binary 42.68；Agents' Last Exam partial 84.82 对 GPT-6 Astra 82.26（+2.56），binary 50.75 低于 GPT-6 Astra 的 52.24（该项 GPT-6 领先）。四任务消融：完整 RSI 74.54% 对仅 BRS 65.52%、仅 DRS 56.50%。论文同时报告 Claude Opus 5（OSWorld 70.19/34.72）。
-
-**证据边界** — 作者自述测试时算力开销大；表现取决于探索预算、停止策略与记忆质量；模型验证器可能误判并把错误传导进后续记忆；组件贡献未完全隔离；实验在受控环境进行，不覆盖越权访问与隐私风险。GPT-6 Astra 数字引用自其报告，未复跑。
-
-**代码／权重／数据／许可** — 代码以 Apache-2.0 发布于 github.com/AetherLabsAI/RSIAgent（仓库创建于 2026-09-13，核验时 143 星）；项目页 aetherlabsai.github.io/RSIAgent。未找到权重或数据发布。
-
-**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把改进预算拆成广度测绘阶段（大量廉价探针任务沉淀因果模式）与目标任务上的深度利用阶段，随后在最终测试前冻结记忆——与 nanoRSI 的冻结纪律天然对齐的两段式调度。
-
-![图 2：RSIAgent 方法总览——广度递归自探索按任务组沉淀经验记忆，深度递归自探索在目标任务上借验证器反馈精炼，冻结后的记忆供测试期复用。](assets/paper-figures/rsiagent-autonomous-exploration.png)
-
-**原文图／官方图片** — 图 2：RSIAgent 方法总览——广度递归自探索按任务组沉淀经验记忆，深度递归自探索在目标任务上借验证器反馈精炼，冻结后的记忆供测试期复用。 · Figure 2 · [source](https://arxiv.org/html/2609.15364v1)
-
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
-
-**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
-
-**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15364) · [Paper v1 (affiliations, Figure 2, Table 1, limitations)](https://arxiv.org/html/2609.15364v1) · [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
+## 结构化知识库与图 (6)
 
 <a id="evoontology-self-evolving"></a>
 
-## EvoOntology: A Self-Evolving Ontology Layer for Data Agents
+### EvoOntology: A Self-Evolving Ontology Layer for Data Agents
 
 **2026-09-14** · paper · 直接有界闭环
 
@@ -64,7 +48,7 @@
 
 <a id="se-gos-skill-graph"></a>
 
-## SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale
+### SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale
 
 **2026-09-08** · paper · 直接有界闭环
 
@@ -94,7 +78,7 @@
 
 <a id="procedural-graphs-google"></a>
 
-## Procedural Graphs: Self-Evolving Execution Structures for LLM Agents
+### Procedural Graphs: Self-Evolving Execution Structures for LLM Agents
 
 **2026-09-08** · paper · 直接有界闭环
 
@@ -122,39 +106,103 @@
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.09153) · [Paper v1 (affiliations, Figure 2, Section 5.4)](https://arxiv.org/html/2609.09153v1)
 
-<a id="bytedance-s3gym"></a>
+<a id="recuris-memory-evolution"></a>
 
-## S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?
+### Recuris: Recursive Experiential-Working Memory Evolution for Long-Horizon Agents
 
-**2026-08-31** · paper · 直接有界闭环
+**2026-08** · paper · 直接有界闭环
 
-**日期说明** — arXiv v1 提交于 2026-08-31，项目公告为 2026-09-01；标题采用 arXiv 可检索的 S3Gym 拼写。
+**日期说明** — arXiv v1：2026 年 8 月（2608.24876；仓库创建于 2026-08-25）。v1 确切日期未复核，采用月精度。
 
-**机构关系** — 论文明列 ByteDance Seed、M-A-P 和 TokenWave.AI。
+**机构关系** — 论文：新加坡国立（Zhaochen Yu、Shuicheng Yan）、斯坦福（Yingcheng Wu、Zhe Zhao）、牛津（Zhenfei Yin、Kaiyuan Chen）与普林斯顿（Mengdi Wang、Ling Yang）。
 
-**改变对象与反馈复用** — 智能体探索游戏并自评决策，在后续回合复用原始历史、按分数整理的记忆摘要或经验训练后的参数。主要探索阶段的可执行验证器奖励留在基准侧，通过更严格且隔离的评测检查继承状态是否改善行为；没有通用的收益准入门。
+**改变对象与反馈复用** — 工作记忆（经验证的任务状态：待办/完成/阻塞目标，仅由观察支持的检查器谓词提交）与经验记忆（技能）耦合，由匹配当前状态的调用策略检索——结构化轨迹使失败定位率达 64.8%，对仅结果反馈的 13.0%。跨任务由固定元智能体把失败定位到四组件之一（技能、工作记忆规格、调用策略、检查器），只修补被牵连的组件，且固定验证闸门只在'修复来源任务且不伤留出开发集'时放行。基座 LLM 与外层流程冻结。
 
-**作者报告结果** — 七个游戏中，自评质量与下一次严格评测提升的分块相关系数接近零：事件一致性为 −0.010，负校准误差为 −0.018。这些是相关系数而非提升百分比。不同任务适合不同上下文路径，参数训练可能产生负迁移。
+**作者报告结果** — 37 个完成的模型-基准对中 35 个提升。Tau2-Retail：GPT-5.6 Sol 58.3 -> 76.1、Claude Opus 5 72.4 -> 87.9、Doubao-2.0-Pro 58.1 -> 81.4（+23.3）、Granite-4.1-3B 9.7 -> 23.0。SkillFlow（Qwen3.6-27B）42.2 -> 58.7。留出进化：对初始记忆 +9.01~+17.44，第二轮再复利 +6.98——罕见的多轮增益。保留诚实警示：Terminal-Bench 2.1 适应效应 +2.3、p=0.774（'方向而非效应'），13 次运行未放行任何补丁。
 
-**证据边界** — 证据限于特定游戏；识别成功不保证形成有效记忆或可迁移策略。
+**证据边界** — 无专门局限性章节，但论文保留了自身的噪声披露（tau2-Airline 置信区间含零；时程分析是分层再分析；记忆在单一中型部署模型上进化；留出任务缺可修复失败类型时迁移失败）。
 
-**代码／权重／数据／许可** — 论文及项目页公开；论文为 CC BY 4.0。未核验到独立基准代码、数据、训练检查点及对应资产许可的发布。
+**代码／权重／数据／许可** — 代码在 github.com/Gen-Verse/Recuris（Apache-2.0，核验时 205 星）。
 
-**可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI skills 消融：比较原始历史、摘要记忆与冻结状态，构建记忆时隐藏验证器分数。
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：四组件定位（技能/记忆规格/检索策略/检查器）加'修复且不回退'闸门，是把失败归因到唯一可编辑面再提补丁的具体蓝图。
 
-![图 2：S3Gym 通过历史 ICL、摘要记忆和参数训练展示经验驱动的改进路径。](assets/paper-figures/s3gym-figure.png)
+![图 3：Recuris——任务内工作记忆驱动技能调用策略、检查器提交状态；跨任务固定元智能体在验证闸门后逐次修补单一被牵连组件。](assets/paper-figures/recuris-memory-evolution.png)
 
-**原文图／官方图片** — 图 2：S3Gym 通过历史 ICL、摘要记忆和参数训练展示经验驱动的改进路径。 · Figure 2, PDF p.7 · [source](https://arxiv.org/html/2608.31100v1)
+**原文图／官方图片** — 图 3：Recuris——任务内工作记忆驱动技能调用策略、检查器提交状态；跨任务固定元智能体在验证闸门后逐次修补单一被牵连组件。 · Figure 3 · [source](https://arxiv.org/html/2608.24876v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
 
-**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/Gen-Verse/Recuris)
 
-**一手来源** — [arXiv first submission](https://arxiv.org/abs/2608.31100) · [Paper v1 methods and Table 6](https://arxiv.org/html/2608.31100v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.24876) · [Paper v1 (affiliations, Figure 3, tables)](https://arxiv.org/html/2608.24876v1) · [Code repository (Apache-2.0)](https://github.com/Gen-Verse/Recuris)
+
+<a id="xskill-dual-stream"></a>
+
+### XSkill: Continual Learning from Experience and Skills in Multimodal Agents
+
+**2026-03-12** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-03-12；v3：2026-07-01（ICML 2026；数字引自 v3）。
+
+**机构关系** — 论文 v3：香港科技大学（Guanyu Jiang 兼浙江大学、Zhaochen Su、通讯 Yi R. Fung）与华中科技大学。
+
+**改变对象与反馈复用** — 面向多模态智能体的免训练持续学习，双流知识：任务级 Markdown 技能（含可复用工具模板）与短条件-动作经验条目（上限 120 条，嵌入检索）。抽取做视觉落地（记录每个动作由什么视觉证据驱动），跨 rollout 批评对比成功/失败轨迹产出增改操作；测试时子任务按流各检索 top-3、适配当前图像后非指令式注入。使用历史回流支持持续精炼。
+
+**作者报告结果** — 四个多模态基准 x 四个骨干：对仅工具基线 average@4 +2.58~+6.71；对最强基线最高 +11.13（TIR-Bench、Gemini-3-Flash：47.75 对 Agent-KB 36.62）；执行错误率从 29.9% 降到 15.3%。消融：去经验 -3.04、去技能 -3.85、去经验管理器 -4.09。从 Gemini-3-Flash 迁移的知识也提升 GPT-5-mini（20.61 -> 23.19）。
+
+**证据边界** — 仅演示单轮'先积累后测试'（迭代精炼有架构支持但未测）；迁移知识损害 Qwen 系 average@4（Qwen3-VL-235B 11.80 -> 11.52），基座能力是关键；作者提示环内偏置传播并建议人工监督。
+
+**代码／权重／数据／许可** — 代码在 github.com/XSkill-Agent/XSkill（268 星，核验时无许可证文件）；项目页 xskill-agent.github.io。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把任务级技能与短条件-动作经验分开（各自上限与检索），并记录驱动每个动作的视觉/文本证据，让批评能对照'有依据的原因'而非原始日志。
+
+![图 2：XSkill——阶段一经 rollout 摘要与跨 rollout 批评，从多路径视觉落地轨迹蒸馏技能文档与经验条目；阶段二测试时检索、适配并注入双流。](assets/paper-figures/xskill-dual-stream.png)
+
+**原文图／官方图片** — 图 2：XSkill——阶段一经 rollout 摘要与跨 rollout 批评，从多路径视觉落地轨迹蒸馏技能文档与经验条目；阶段二测试时检索、适配并注入双流。 · Figure 2 · [source](https://arxiv.org/html/2603.12056v3)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/XSkill-Agent/XSkill)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2603.12056) · [Paper v3 (affiliations, Figure 2, tables)](https://arxiv.org/html/2603.12056v3) · [Code repository](https://github.com/XSkill-Agent/XSkill)
+
+<a id="memskill-memory-skills"></a>
+
+### MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents
+
+**2026-02-02** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-02-02；v2：2026-05-24（数字引自 v2）。
+
+**机构关系** — 论文 v2：南洋理工大学（Haozhen Zhang、Quanyu Long、Jianzhu Bao、通讯 Wenya Wang）与 UIUC（Tao Feng）、UIC（Weizhi Zhang）、清华（Haodong Yue）。
+
+**改变对象与反馈复用** — 记忆抽取操作成为可学习的'记忆技能'，双环交织。技能选择/使用：轻量控制器（状态-技能嵌入上的 MLP，Gumbel-Top-K 采样）逐文本 span 选 Top-K 技能子集，LLM 执行器按技能更新该轨迹记忆库，控制器以下游问答表现为 PPO 奖励训练。技能进化：滑动难例缓冲记录以查询为中心的失败；每 100 步设计者 LLM 聚类难例、精炼/新增技能（每轮最多 3 次编辑），配快照回滚、早停与新技能探索偏置。
+
+**作者报告结果** — LoCoMo（LLaMA3.3-70B）：F1 44.21 / L-J 53.82 对 MemoryOS 41.39、A-MEM 49.71；迁移到 LongMemEval（L-J 60.89）与 HotpotQA（50/100/200 文档全部最优）；ALFWorld seen/unseen 77.14/83.58 成功率（均值 80.36）胜 Mem0 与 CoN；AppWorld 26.71% 对 AWM 25.42%。消融：去控制器 L-J -5.4，去技能描述（Qwen）-17.7。成本：215 次 LLM 调用对 MemoryOS 1,288、A-MEM 1,548。
+
+**证据边界** — 局限性在附录 F（HTML 审阅未渲染）；LongMemEval 与 Qwen 行为纯迁移（在 LoCoMo+LLaMA 上训练）；技能进化的准备成本是摊销而非免费。
+
+**代码／权重／数据／许可** — 代码在 github.com/ViktorAxelsen/MemSkill（Apache-2.0，核验时 576 星）；项目页 viktoraxelsen.github.io/MemSkill。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：进化'写记忆的操作'本身（而不止记忆内容），并用快照回滚 + 早停闸门约束设计者编辑——与技能轨相同的控制，再高一层。
+
+![图 2：MemSkill 架构——控制器从共享库选 Top-K 记忆技能，执行器逐 span 应用，任务奖励训练控制器，失败喂给设计者驱动的技能进化环。](assets/paper-figures/memskill-memory-skills.png)
+
+**原文图／官方图片** — 图 2：MemSkill 架构——控制器从共享库选 Top-K 记忆技能，执行器逐 span 应用，任务奖励训练控制器，失败喂给设计者驱动的技能进化环。 · Figure 2 · [source](https://arxiv.org/html/2602.02474v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2602.02474) · [Paper v2 (affiliations, Figure 2, tables)](https://arxiv.org/html/2602.02474v2) · [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+
+<a id="family-experience-accumulation"></a>
+
+## 经验积累与回放 (5)
 
 <a id="bytedance-chain-of-experience"></a>
 
-## Chain-of-Experience for Continual LLM Improvement
+### Chain-of-Experience for Continual LLM Improvement
 
 **2026-08-18** · paper · 直接有界闭环
 
@@ -184,7 +232,7 @@
 
 <a id="prime-agent"></a>
 
-## Prime Agent: A Self-Improving RLM Harness
+### Prime Agent: A Self-Improving RLM Harness
 
 **2026-08-05** · paper · 直接有界闭环
 
@@ -212,39 +260,39 @@
 
 **一手来源** — [arXiv record](https://arxiv.org/abs/2608.23552) · [Paper first-publication statement and Factorio evidence](https://arxiv.org/html/2608.23552v1) · [Official launch and update mechanism](https://www.primeintellect.ai/blog/prime-agent) · [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
-<a id="memskill-memory-skills"></a>
+<a id="atlas-pamphlets"></a>
 
-## MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents
+### ATLAS: Continual Learning, Not Training - Online Adaptation for Agents
 
-**2026-02-02** · paper · 直接有界闭环
+**2025-11-02** · paper · 直接有界闭环
 
-**日期说明** — arXiv v1：2026-02-02；v2：2026-05-24（数字引自 v2）。
+**日期说明** — arXiv v1：2025-11-02。SDK 仓库创建于 2025-09-30。
 
-**机构关系** — 论文 v2：南洋理工大学（Haozhen Zhang、Quanyu Long、Jianzhu Bao、通讯 Wenya Wang）与 UIUC（Tao Feng）、UIC（Weizhi Zhang）、清华（Haodong Yue）。
+**机构关系** — 论文：Aman Jaglan 与通讯 Jarrod Barnes 均属 Arc Intelligence；评测用了微软的 ExCyTIn-Bench，但不隶属微软。
 
-**改变对象与反馈复用** — 记忆抽取操作成为可学习的'记忆技能'，双环交织。技能选择/使用：轻量控制器（状态-技能嵌入上的 MLP，Gumbel-Top-K 采样）逐文本 span 选 Top-K 技能子集，LLM 执行器按技能更新该轨迹记忆库，控制器以下游问答表现为 PPO 奖励训练。技能进化：滑动难例缓冲记录以查询为中心的失败；每 100 步设计者 LLM 聚类难例、精炼/新增技能（每轮最多 3 次编辑），配快照回滚、早停与新技能探索偏置。
+**改变对象与反馈复用** — 双智能体免梯度推理期适应：教师（GPT-5）审查学生（GPT-5-mini）的轨迹并给原则级纠正；编排器把轨迹、指引与裁判集奖励分存入持久学习记忆，蒸馏成教师手册（原则、失败模式、停止条件）与学生手册（动作模式、工具计划、防护），按任务上下文检索以调节监督力度与种子计划——全程无权重更新。
 
-**作者报告结果** — LoCoMo（LLaMA3.3-70B）：F1 44.21 / L-J 53.82 对 MemoryOS 41.39、A-MEM 49.71；迁移到 LongMemEval（L-J 60.89）与 HotpotQA（50/100/200 文档全部最优）；ALFWorld seen/unseen 77.14/83.58 成功率（均值 80.36）胜 Mem0 与 CoN；AppWorld 26.71% 对 AWM 25.42%。消融：去控制器 L-J -5.4，去技能描述（Qwen）-17.7。成本：215 次 LLM 调用对 MemoryOS 1,288、A-MEM 1,548。
+**作者报告结果** — ExCyTIn-Bench 事件 #5（n=98）：ATLAS 成功率 54.1% 对 GPT-5（High）的 48.0%（+6.1），成本低约 86%（每题 0.024 对 0.174 美元），token 较学生基线降 45%；冻结手册把新事件从 28% 提到 41%（相对 +46%），非推理 token 降 52.1%。
 
-**证据边界** — 局限性在附录 F（HTML 审阅未渲染）；LongMemEval 与 Qwen 行为纯迁移（在 LoCoMo+LLaMA 上训练）；技能进化的准备成本是摊销而非免费。
+**证据边界** — 单基准评测（一个事件、n=98）；一条基线的 token 只记录了 47 次中的 42 次；泛化仅在另一个事件上测试；世界模型训练是假设未验证；作者自述静态基准不足、评测黑客风险仍在。
 
-**代码／权重／数据／许可** — 代码在 github.com/ViktorAxelsen/MemSkill（Apache-2.0，核验时 576 星）；项目页 viktoraxelsen.github.io/MemSkill。论文 CC BY 4.0。
+**代码／权重／数据／许可** — 代码在 github.com/Arc-Computer/atlas-sdk（17 星，核验时未检出许可证文件）；论文称以 CC BY 4.0 发布并附轨迹与手册。
 
-**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：进化'写记忆的操作'本身（而不止记忆内容），并用快照回滚 + 早停闸门约束设计者编辑——与技能轨相同的控制，再高一层。
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：双层蒸馏指引（给批评者的原则层、给执行者的模式层）加监督力度调节，是单体记忆的轻量替代——且手册可干净冻结做迁移测试。
 
-![图 2：MemSkill 架构——控制器从共享库选 Top-K 记忆技能，执行器逐 span 应用，任务奖励训练控制器，失败喂给设计者驱动的技能进化环。](assets/paper-figures/memskill-memory-skills.png)
+![图 1：ATLAS 架构——编排器管理执行中的师生交互；学习存入持久学习记忆并蒸馏为教师/学生手册，指导后续推理期决策。](assets/paper-figures/atlas-pamphlets.png)
 
-**原文图／官方图片** — 图 2：MemSkill 架构——控制器从共享库选 Top-K 记忆技能，执行器逐 span 应用，任务奖励训练控制器，失败喂给设计者驱动的技能进化环。 · Figure 2 · [source](https://arxiv.org/html/2602.02474v2)
+**原文图／官方图片** — 图 1：ATLAS 架构——编排器管理执行中的师生交互；学习存入持久学习记忆并蒸馏为教师/学生手册，指导后续推理期决策。 · Figure 1 · [source](https://arxiv.org/html/2511.01093v1)
 
 **nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
 
-**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+**开源代码／权重／数据链接** — [Code repository](https://github.com/Arc-Computer/atlas-sdk)
 
-**一手来源** — [arXiv abstract](https://arxiv.org/abs/2602.02474) · [Paper v2 (affiliations, Figure 2, tables)](https://arxiv.org/html/2602.02474v2) · [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2511.01093) · [Paper v1 (affiliations, Figure 1, results)](https://arxiv.org/html/2511.01093v1) · [Code repository](https://github.com/Arc-Computer/atlas-sdk)
 
 <a id="tencent-training-free-grpo"></a>
 
-## Training-Free Group Relative Policy Optimization
+### Training-Free Group Relative Policy Optimization
 
 **2025-10-09** · paper · 直接有界闭环
 
@@ -272,9 +320,43 @@
 
 **一手来源** — [arXiv first submission and history](https://arxiv.org/abs/2510.08191) · [Paper v1 and Training-Free GRPO figure](https://arxiv.org/html/2510.08191v1) · [Official Youtu-Agent implementation](https://github.com/TencentCloudADP/youtu-agent/tree/training_free_GRPO) · [Youtu-Agent MIT license](https://github.com/TencentCloudADP/youtu-agent/blob/main/LICENSE)
 
+<a id="se-agent-trajectory"></a>
+
+### SE-Agent: Self-Evolution Trajectory Optimization in Multi-Step Reasoning with LLM-Based Agents
+
+**2025-08-04** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2025-08-04（早于 2025-09-16 窗口起点，记录进入渲染器归档区）；v6：2025-11-03；NeurIPS 2025 海报。2026-09-16 收录以闭合跟踪线索；机构信息见论文作者表，资深作者来自 StepFun。
+
+**机构关系** — 论文 v6：十四位作者，含 Daxin Jiang（StepFun）与高校合作者；abs 页未渲染隶属，机构字段依跟踪线索（StepFun 牵头 + 高校合作）记录，做强声明前应对照 PDF 复核。
+
+**改变对象与反馈复用** — 轨迹级自进化：智能体经三种操作迭代重访早前解轨迹——修订、重组、精炼——利用逐步搜索（MCTS 式）忽略的跨轨迹启发，把搜索空间扩到局部最优之外，并把改进策略持久化给后续问题。
+
+**作者报告结果** — SWE-bench Verified、五个 LLM：相对改进最高 55%，v6 时开源智能体中最优（摘要口径；逐基线数字不在摘要页）。
+
+**证据边界** — 本次审计中的头条数字为摘要口径（逐基线表未从 HTML 复核）；v1 首发日期早于滚动窗口，本条目作归档背景而非窗口内证据。
+
+**代码／权重／数据／许可** — 代码在 github.com/JARVIS-Xs/SE-Agent。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：对已存轨迹做修订/重组/精炼是运行档案的廉价二次利用——生成新候选前，先挖掘过往尝试的跨轨迹重组。
+
+![图 1：SE-Agent——经修订、重组与精炼重访多步推理轨迹，改进策略跨问题持久化。](assets/paper-figures/se-agent-trajectory.png)
+
+**原文图／官方图片** — 图 1：SE-Agent——经修订、重组与精炼重访多步推理轨迹，改进策略跨问题持久化。 · Figure 1 · [source](https://arxiv.org/html/2508.02085v6)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/JARVIS-Xs/SE-Agent)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2508.02085) · [Paper v6 (Figure 1, mechanism)](https://arxiv.org/html/2508.02085v6) · [Code repository](https://github.com/JARVIS-Xs/SE-Agent)
+
+<a id="family-context-policies"></a>
+
+## 上下文组织策略 (3)
+
 <a id="sambanova-stanford-ace"></a>
 
-## Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models
+### Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models
 
 **2025-10-06** · paper · 直接有界闭环
 
@@ -304,7 +386,7 @@
 
 <a id="microsoft-legomem-2025"></a>
 
-## LEGOMem: Modular Procedural Memory for Multi-agent LLM Systems for Workflow Automation
+### LEGOMem: Modular Procedural Memory for Multi-agent LLM Systems for Workflow Automation
 
 **2025-10-06** · paper · 支撑技术／评测
 
@@ -334,7 +416,7 @@
 
 <a id="microsoft-acon-2025"></a>
 
-## ACON: Optimizing Context Compression for Long-horizon LLM Agents
+### ACON: Optimizing Context Compression for Long-horizon LLM Agents
 
 **2025-10-01** · paper · 直接有界闭环
 
@@ -361,3 +443,101 @@
 **开源代码／权重／数据链接** — [Official Microsoft code](https://github.com/microsoft/acon) · [MIT licence](https://github.com/microsoft/acon/blob/main/LICENSE)
 
 **一手来源** — [Paper history](https://arxiv.org/abs/2510.00615) · [Paper v1](https://arxiv.org/html/2510.00615v1) · [Official Microsoft code](https://github.com/microsoft/acon) · [MIT licence](https://github.com/microsoft/acon/blob/main/LICENSE)
+
+<a id="family-exploration-memory"></a>
+
+## 探索式记忆构建 (1)
+
+<a id="rsiagent-autonomous-exploration"></a>
+
+### RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments
+
+**2026-09-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-14。代码仓库创建于 2026-09-13，比论文挂网早一天。
+
+**机构关系** — 论文 v1 标注 Aether AI（通讯作者 Kun Zhou）与加州大学圣迭戈分校；第一作者 Sibo Zhu 的工作完成于 Aether AI 实习期间，合作者来自 UCSD 与伊利诺伊大学芝加哥分校。
+
+**改变对象与反馈复用** — 面向陌生环境的免训练多智能体自改进：课程、执行、验证三类智能体在无金标条件下探索。广度递归自探索（BRS）并行跑课程组织的任务组，绘制环境结构并存下按组分组的经验记忆——可复用的（动作、条件、后果）因果模式；深度递归自探索（DRS）再在目标任务上迭代，验证器裁决每次尝试，成功记忆回流到后续轮次。逐步精炼的记忆最终冻结供下游复用；全程不改模型参数。
+
+**作者报告结果** — 以 GLM-5.3 为执行、Kimi-K3 为验证/课程：OSWorld 2.0 partial 78.98，高于 GPT-6 Astra 报告的 72.60（+6.38），binary 42.68；Agents' Last Exam partial 84.82 对 GPT-6 Astra 82.26（+2.56），binary 50.75 低于 GPT-6 Astra 的 52.24（该项 GPT-6 领先）。四任务消融：完整 RSI 74.54% 对仅 BRS 65.52%、仅 DRS 56.50%。论文同时报告 Claude Opus 5（OSWorld 70.19/34.72）。
+
+**证据边界** — 作者自述测试时算力开销大；表现取决于探索预算、停止策略与记忆质量；模型验证器可能误判并把错误传导进后续记忆；组件贡献未完全隔离；实验在受控环境进行，不覆盖越权访问与隐私风险。GPT-6 Astra 数字引用自其报告，未复跑。
+
+**代码／权重／数据／许可** — 代码以 Apache-2.0 发布于 github.com/AetherLabsAI/RSIAgent（仓库创建于 2026-09-13，核验时 143 星）；项目页 aetherlabsai.github.io/RSIAgent。未找到权重或数据发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把改进预算拆成广度测绘阶段（大量廉价探针任务沉淀因果模式）与目标任务上的深度利用阶段，随后在最终测试前冻结记忆——与 nanoRSI 的冻结纪律天然对齐的两段式调度。
+
+![图 2：RSIAgent 方法总览——广度递归自探索按任务组沉淀经验记忆，深度递归自探索在目标任务上借验证器反馈精炼，冻结后的记忆供测试期复用。](assets/paper-figures/rsiagent-autonomous-exploration.png)
+
+**原文图／官方图片** — 图 2：RSIAgent 方法总览——广度递归自探索按任务组沉淀经验记忆，深度递归自探索在目标任务上借验证器反馈精炼，冻结后的记忆供测试期复用。 · Figure 2 · [source](https://arxiv.org/html/2609.15364v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15364) · [Paper v1 (affiliations, Figure 2, Table 1, limitations)](https://arxiv.org/html/2609.15364v1) · [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
+
+<a id="family-memory-evolution-studies"></a>
+
+## 记忆进化评测研究 (2)
+
+<a id="bytedance-s3gym"></a>
+
+### S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?
+
+**2026-08-31** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-08-31，项目公告为 2026-09-01；标题采用 arXiv 可检索的 S3Gym 拼写。
+
+**机构关系** — 论文明列 ByteDance Seed、M-A-P 和 TokenWave.AI。
+
+**改变对象与反馈复用** — 智能体探索游戏并自评决策，在后续回合复用原始历史、按分数整理的记忆摘要或经验训练后的参数。主要探索阶段的可执行验证器奖励留在基准侧，通过更严格且隔离的评测检查继承状态是否改善行为；没有通用的收益准入门。
+
+**作者报告结果** — 七个游戏中，自评质量与下一次严格评测提升的分块相关系数接近零：事件一致性为 −0.010，负校准误差为 −0.018。这些是相关系数而非提升百分比。不同任务适合不同上下文路径，参数训练可能产生负迁移。
+
+**证据边界** — 证据限于特定游戏；识别成功不保证形成有效记忆或可迁移策略。
+
+**代码／权重／数据／许可** — 论文及项目页公开；论文为 CC BY 4.0。未核验到独立基准代码、数据、训练检查点及对应资产许可的发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 拟议 nanoRSI skills 消融：比较原始历史、摘要记忆与冻结状态，构建记忆时隐藏验证器分数。
+
+![图 2：S3Gym 通过历史 ICL、摘要记忆和参数训练展示经验驱动的改进路径。](assets/paper-figures/s3gym-figure.png)
+
+**原文图／官方图片** — 图 2：S3Gym 通过历史 ICL、摘要记忆和参数训练展示经验驱动的改进路径。 · Figure 2, PDF p.7 · [source](https://arxiv.org/html/2608.31100v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv first submission](https://arxiv.org/abs/2608.31100) · [Paper v1 methods and Table 6](https://arxiv.org/html/2608.31100v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
+
+<a id="evo-memory-remem"></a>
+
+### Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory
+
+**2025-11-25** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1：2025-11-25；v2：2026-05-18（数字引自 v2）。
+
+**机构关系** — 论文 v2：UIUC（Tianxin Wei 等、Jingrui He）与 Google DeepMind（Noveen Sachdeva、Benjamin Coleman、Ed H. Chi、Fernando Pereira 等）；一作工作完成于 Google DeepMind。
+
+**改变对象与反馈复用** — 流式基准而非机制：静态数据集重组为顺序任务流，每步走'检索-综合-进化'（从记忆检索、作答、以正确性信号更新记忆）。十个数据集覆盖单轮（MMLU-Pro、GPQA、AIME 24/25、ToolBench）与多轮（AlfWorld、BabyAI、ScienceWorld、PDDL）；对比 10+ 记忆模块（Mem0、A-MEM、MemOS、AWM、Dynamic Cheatsheet 等）并新增 ExpRAG 与 ReMem（动作-思考-记忆精炼）基线。
+
+**作者报告结果** — 自进化记忆稳定有效，多轮场景增益最大（Claude 3.7 Sonnet：ReMem 平均成功率 0.78 对 History 0.49）；增益与数据集内任务相似度相关（Pearson r=0.717/0.563）；难->易迁移优于易->难（均值 0.94/0.97）；存失败经验让多个基线退化而 ReMem 稳健；简单 ExpRAG'胜过若干更复杂设计'；AlfWorld 步数从 22.6 降到 11.5。
+
+**证据边界** — 代码'接收后发布'（核验时未找到）；反馈信号仅正确性；基准测的是给定更新规则下的记忆，而非记忆与策略联合进化。
+
+**代码／权重／数据／许可** — 核验时无代码 URL（'接收后以宽松开源许可发布'）。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：难->易优于易->难是实验设计规则——记忆流先难后易排课；'简单胜复杂'（ExpRAG）是加记忆机制前的反复警告。
+
+![图 2：Evo-Memory 流上的 ReMem 智能体——测试期进化，跨顺序任务迭代地检索、综合并进化记忆。](assets/paper-figures/evo-memory-remem.png)
+
+**原文图／官方图片** — 图 2：Evo-Memory 流上的 ReMem 智能体——测试期进化，跨顺序任务迭代地检索、综合并进化记忆。 · Figure 2 · [source](https://arxiv.org/html/2511.20857v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2511.20857) · [Paper v2 (affiliations, Figure 2, results)](https://arxiv.org/html/2511.20857v2)

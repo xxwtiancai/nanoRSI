@@ -26,6 +26,37 @@ RELATIONS = {
     "enabling": ("Enabling technique / evaluation", "支撑技术／评测"),
     "assisted-rd": ("Automated / assisted R&D", "自动化／辅助研发"),
 }
+FAMILIES = {
+    "self-play-curriculum": ("Self-play & curriculum task generation", "自博弈与课程任务生成"),
+    "verifier-reward": ("Verifier- and reward-centric loops", "验证器与奖励进化"),
+    "skill-weight-coevolution": ("Skill-weight co-evolution", "技能-权重共进化"),
+    "experience-distillation": ("Experience distillation & test-time adaptation", "经验蒸馏与测试时适应"),
+    "autonomous-training": ("Autonomous training agents & data pipelines", "自主训练智能体与数据管线"),
+    "enabling-adaptation": ("Enabling adaptation mechanisms", "支撑性适应机制"),
+    "skill-file-optimization": ("Skill-file optimization & libraries", "技能文件优化与技能库"),
+    "harness-search": ("Harness search & evolution", "Harness 搜索与进化"),
+    "self-modifying-meta-agents": ("Self-modifying meta-agents & lineages", "自改写元智能体与谱系"),
+    "program-evolution": ("Program evolution & evolutionary search", "程序进化与进化搜索"),
+    "feedback-orchestration": ("Feedback review & orchestration", "反馈审查与编排"),
+    "safety-governance": ("Safety & governance", "安全与治理"),
+    "experience-accumulation": ("Experience accumulation & replay", "经验积累与回放"),
+    "structured-knowledge": ("Structured knowledge bases & graphs", "结构化知识库与图"),
+    "context-policies": ("Context organization policies", "上下文组织策略"),
+    "exploration-memory": ("Exploration-driven memory construction", "探索式记忆构建"),
+    "memory-evolution-studies": ("Memory-evolution studies & benchmarks", "记忆进化评测研究"),
+    "ai-scientists": ("AI-scientist systems", "AI 科学家系统"),
+    "autonomous-post-training": ("Autonomous post-training & its evaluation", "自主后训练及其评测"),
+    "company-telemetry": ("Company R&D telemetry", "公司研发遥测"),
+    "alignment-automation": ("Alignment automation", "对齐自动化"),
+    "analyses-audits": ("Analyses & audits", "分析与审计"),
+    "positions-labs": ("Positions, roadmaps & labs", "立场、路线图与实验室"),
+}
+CATEGORY_FAMILIES = {
+    "parameter-learning": ["self-play-curriculum", "verifier-reward", "skill-weight-coevolution", "experience-distillation", "autonomous-training", "enabling-adaptation"],
+    "agent-code": ["skill-file-optimization", "harness-search", "self-modifying-meta-agents", "program-evolution", "feedback-orchestration", "safety-governance"],
+    "memory-context": ["structured-knowledge", "experience-accumulation", "context-policies", "exploration-memory", "memory-evolution-studies"],
+    "research-workflows": ["ai-scientists", "autonomous-post-training", "company-telemetry", "alignment-automation", "analyses-audits", "positions-labs"],
+}
 FIELDS = {
     "date_note": ("Publication date", "日期说明"),
     "affiliation": ("Institutional relationship", "机构关系"),
@@ -63,6 +94,8 @@ def validate(data):
         seen.add(identity)
         if row["category"] not in CATEGORIES or row["relationship"] not in RELATIONS:
             raise ValueError(f"Unknown classification: {identity}")
+        if row.get("family") not in CATEGORY_FAMILIES[row["category"]]:
+            raise ValueError(f"Unknown or misplaced mechanism family: {identity}")
         if row["kind"] not in {"paper", "report", "release"}:
             raise ValueError(f"Unknown publication kind: {identity}")
         if not row["title"] or not row["organizations"] or not all(row["organizations"]):
@@ -130,12 +163,13 @@ def asset_link(row, lang):
 
 
 def table(rows, lang):
-    heading = tr(("Date | Work | Organizations | Evidence class", "日期 | 工作 | 机构 | 证据类别"), lang)
-    lines = [f"| {heading} |", "| --- | --- | --- | --- |"]
+    heading = tr(("Date | Work | Organizations | Family | Evidence class", "日期 | 工作 | 机构 | 家族 | 证据类别"), lang)
+    lines = [f"| {heading} |", "| --- | --- | --- | --- | --- |"]
     for row in rows:
         orgs = cell(" / ".join(row["organizations"]))
         relation = tr(RELATIONS[row["relationship"]], lang)
-        lines.append(f"| {row['published']} | {row_link(row, lang)} | {orgs} | {relation} |")
+        family = cell(tr(FAMILIES[row["family"]], lang)) if row.get("family") in FAMILIES else ""
+        lines.append(f"| {row['published']} | {row_link(row, lang)} | {orgs} | {family} | {relation} |")
     return "\n".join(lines)
 
 
@@ -180,9 +214,14 @@ def overview(data, rows, lang):
     ), lang)
     links = tr(("[Quickstart](QUICKSTART.md) · [Landscape and taxonomy](LANDSCAPE.md) · [Open materials](OPEN_MATERIALS.md) · [Tencent coverage audit](TENCENT.md) · [Coverage and dates](COVERAGE.md) · [Experiments to build next](ADOPTION.md) · [Source-image manifest](assets/paper-figures/README.md)",
                 "[快速开始](QUICKSTART.zh-CN.md) · [研究全景与分类](LANDSCAPE.zh-CN.md) · [开放材料](OPEN_MATERIALS.zh-CN.md) · [Tencent 覆盖审计](TENCENT.zh-CN.md) · [检索覆盖与日期](COVERAGE.md) · [下一步可实现的实验](ADOPTION.md) · [原文图片清单](assets/paper-figures/README.md)"), lang)
-    lines = [f"# {title}", "", f"**{start} → {end}** · **{len(active)}** " + tr(("in-window records", "条窗口内记录"), lang), "", intro, "", terms, "", links + " · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)", "", "## " + tr(("Browse by what changes", "按改变对象浏览"), lang), "", "| " + tr(("Category | Records", "分类 | 条目数"), lang) + " |", "| --- | ---: |"]
+    lines = [f"# {title}", "", f"**{start} → {end}** · **{len(active)}** " + tr(("in-window records", "条窗口内记录"), lang), "", intro, "", terms, "", links + " · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)", "", "## " + tr(("Browse by what changes", "按改变对象浏览"), lang), "", "| " + tr(("Category | Records | Mechanism families", "分类 | 条目数 | 机制家族"), lang) + " |", "| --- | ---: | --- |"]
     for category, label in CATEGORIES.items():
-        lines.append(f"| [{tr(label, lang)}]({name(category, lang)}) | {counts[category]} |")
+        fams = []
+        for slug in CATEGORY_FAMILIES[category]:
+            count = sum(1 for r in active if r["category"] == category and r.get("family") == slug)
+            if count:
+                fams.append(f"[{tr(FAMILIES[slug], lang)}]({name(category, lang)}#family-{slug}) ({count})")
+        lines.append(f"| [{tr(label, lang)}]({name(category, lang)}) | {counts[category]} | {' · '.join(fams)} |")
     lines.extend(["", "## " + tr(("Timeline", "时间索引"), lang), "", table(active, lang)])
     if archived:
         lines.extend(["", "## " + tr(("Archive — outside the current window", "历史归档——已超出当前窗口"), lang), "", table(archived, lang)])
@@ -197,37 +236,48 @@ def overview(data, rows, lang):
 
 
 def details(category, rows, lang):
+    members = [row for row in rows if row["category"] == category]
     lines = [f"# {tr(CATEGORIES[category], lang)}", "", f"[← {tr(('Research map', '研究地图'), lang)}]({name('README', lang)})", ""]
-    for row in rows:
-        if row["category"] != category:
-            continue
-        lines.extend([f'<a id="{row["id"]}"></a>', "", f"## {row['title']}", "", f"**{row['published']}** · {row['kind']} · {tr(RELATIONS[row['relationship']], lang)}", ""])
-        for key, label in FIELDS.items():
-            lines.extend([f"**{tr(label, lang)}** — {row[key][lang]}", ""])
-        visual = row["visual"]
-        lines.extend([
-            f"![{cell(visual['caption'][lang])}]({asset_link(row, lang)})",
-            "",
-            f"**{tr(('Source figure / official image', '原文图／官方图片'), lang)}** — {visual['caption'][lang]} · {visual['locator']} · [source]({visual['source_url']})",
-            "",
-        ])
-        status = row["local_reproduction"]
-        evidence = row.get("reproduction_evidence")
-        if evidence:
-            status += f" · [Evidence]({evidence})"
-        lines.extend([f"**{tr(('nanoRSI reproduction', 'nanoRSI 复现状态'), lang)}** — {status}. " + tr(("Last source check: ", "来源最近核验："), lang) + row["last_verified"] + ".", ""])
-        sources = " · ".join(f"[{s['label']}]({s['url']})" for s in row["sources"])
-        released = [s for s in row["sources"] if s["kind"] in {"repository", "license"}]
-        if released:
-            open_assets = " · ".join(f"[{s['label']}]({s['url']})" for s in released)
-        else:
-            open_assets = tr(("No verified public code/asset link in the audited sources.", "核验来源中没有确认的公开代码／资产链接。"), lang)
-        lines.extend([
-            f"**{tr(('Open code / weights / data links', '开源代码／权重／数据链接'), lang)}** — {open_assets}",
-            "",
-            f"**{tr(('Primary sources', '一手来源'), lang)}** — {sources}",
-            "",
-        ])
+    grouped = {slug: [row for row in members if row.get("family") == slug] for slug in CATEGORY_FAMILIES[category]}
+    stray = [row for row in members if row.get("family") not in CATEGORY_FAMILIES[category]]
+    if stray:
+        raise ValueError(f"Records without a valid family in {category}: " + ", ".join(r["id"] for r in stray))
+    present = [(slug, grouped[slug]) for slug in CATEGORY_FAMILIES[category] if grouped[slug]]
+    lines.extend(["## " + tr(("Mechanism families", "机制家族"), lang), "",
+                  "| " + tr(("Family | Records", "家族 | 条目数"), lang) + " |", "| --- | ---: |"])
+    for slug, group_rows in present:
+        lines.append(f"| [{tr(FAMILIES[slug], lang)}](#family-{slug}) | {len(group_rows)} |")
+    lines.append("")
+    for slug, group_rows in present:
+        lines.extend([f'<a id="family-{slug}"></a>', "", f"## {tr(FAMILIES[slug], lang)} ({len(group_rows)})", ""])
+        for row in group_rows:
+            lines.extend([f'<a id="{row["id"]}"></a>', "", f"### {row['title']}", "", f"**{row['published']}** · {row['kind']} · {tr(RELATIONS[row['relationship']], lang)}", ""])
+            for key, label in FIELDS.items():
+                lines.extend([f"**{tr(label, lang)}** — {row[key][lang]}", ""])
+            visual = row["visual"]
+            lines.extend([
+                f"![{cell(visual['caption'][lang])}]({asset_link(row, lang)})",
+                "",
+                f"**{tr(('Source figure / official image', '原文图／官方图片'), lang)}** — {visual['caption'][lang]} · {visual['locator']} · [source]({visual['source_url']})",
+                "",
+            ])
+            status = row["local_reproduction"]
+            evidence = row.get("reproduction_evidence")
+            if evidence:
+                status += f" · [Evidence]({evidence})"
+            lines.extend([f"**{tr(('nanoRSI reproduction', 'nanoRSI 复现状态'), lang)}** — {status}. " + tr(("Last source check: ", "来源最近核验："), lang) + row["last_verified"] + ".", ""])
+            sources = " · ".join(f"[{s['label']}]({s['url']})" for s in row["sources"])
+            released = [s for s in row["sources"] if s["kind"] in {"repository", "license"}]
+            if released:
+                open_assets = " · ".join(f"[{s['label']}]({s['url']})" for s in released)
+            else:
+                open_assets = tr(("No verified public code/asset link in the audited sources.", "核验来源中没有确认的公开代码／资产链接。"), lang)
+            lines.extend([
+                f"**{tr(('Open code / weights / data links', '开源代码／权重／数据链接'), lang)}** — {open_assets}",
+                "",
+                f"**{tr(('Primary sources', '一手来源'), lang)}** — {sources}",
+                "",
+            ])
     return "\n".join(lines)
 
 

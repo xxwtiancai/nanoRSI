@@ -2,39 +2,23 @@
 
 [← Research map](README.md)
 
-<a id="rsiagent-autonomous-exploration"></a>
+## Mechanism families
 
-## RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments
+| Family | Records |
+| --- | ---: |
+| [Structured knowledge bases & graphs](#family-structured-knowledge) | 6 |
+| [Experience accumulation & replay](#family-experience-accumulation) | 5 |
+| [Context organization policies](#family-context-policies) | 3 |
+| [Exploration-driven memory construction](#family-exploration-memory) | 1 |
+| [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 2 |
 
-**2026-09-14** · paper · Direct bounded loop
+<a id="family-structured-knowledge"></a>
 
-**Publication date** — arXiv v1: 2026-09-14. Code repository created 2026-09-13, one day before the paper listing.
-
-**Institutional relationship** — Paper v1 lists Aether AI (corresponding author Kun Zhou) and UC San Diego; first author Sibo Zhu's work was done during an Aether AI internship, with coauthors from UCSD and UIC.
-
-**What changes and how feedback is reused** — Training-free multi-agent self-improvement for an unfamiliar environment: curriculum, actor and verifier agents explore with no gold labels. Broad Recursive Self-exploration (BRS) runs parallel curriculum-organized task groups to map the environment and bank per-group experience memories of reusable (action, condition, consequence) causal patterns; Deep Recursive Self-exploration (DRS) then iterates on the target task, with the verifier judging each attempt and successful memories routed back into later rounds. The progressively refined memory is frozen and reused for downstream tasks; no model parameter is updated at any point.
-
-**Author-reported result** — With GLM-5.3 as actor and Kimi-K3 as verifier/curriculum: OSWorld 2.0 partial 78.98 vs GPT-6 Astra's reported 72.60 (+6.38) and binary 42.68; Agents' Last Exam partial 84.82 vs GPT-6 Astra 82.26 (+2.56), binary 50.75 vs GPT-6 Astra's 52.24 (GPT-6 leads). Ablation over four tasks: full RSI 74.54% vs BRS-only 65.52% vs DRS-only 56.50%. Claude Opus 5 is also reported (70.19/34.72 OSWorld).
-
-**Evidence limits** — The authors state substantial test-time compute cost; performance depends on exploration budgets, stopping policies and memory quality; the model-based verifier may misjudge and propagate errors into later memory; components are not fully isolated; experiments run in controlled environments and do not cover unauthorized-access or privacy risks. GPT-6 Astra numbers are cited from its report, not re-run.
-
-**Code / weights / data / license** — Code released under Apache-2.0 at github.com/AetherLabsAI/RSIAgent (repo created 2026-09-13, 143 stars at verification); project page aetherlabsai.github.io/RSIAgent. No weights or data release located.
-
-**Possible nanoRSI experiment — not implemented here** — For nanoRSI: split the improvement budget into a broad mapping phase (many cheap probe tasks banking causal patterns) and a deep exploitation phase on the target task, then freeze the memory before final testing - a two-phase schedule that matches nanoRSI's freeze discipline.
-
-![Figure 2: RSIAgent method overview - broad recursive self-exploration banks per-group experience memories, deep recursive self-exploration refines them on the target task with verifier feedback, and the frozen memory is reused at test time.](assets/paper-figures/rsiagent-autonomous-exploration.png)
-
-**Source figure / official image** — Figure 2: RSIAgent method overview - broad recursive self-exploration banks per-group experience memories, deep recursive self-exploration refines them on the target task with verifier feedback, and the frozen memory is reused at test time. · Figure 2 · [source](https://arxiv.org/html/2609.15364v1)
-
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
-
-**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
-
-**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.15364) · [Paper v1 (affiliations, Figure 2, Table 1, limitations)](https://arxiv.org/html/2609.15364v1) · [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
+## Structured knowledge bases & graphs (6)
 
 <a id="evoontology-self-evolving"></a>
 
-## EvoOntology: A Self-Evolving Ontology Layer for Data Agents
+### EvoOntology: A Self-Evolving Ontology Layer for Data Agents
 
 **2026-09-14** · paper · Direct bounded loop
 
@@ -64,7 +48,7 @@
 
 <a id="se-gos-skill-graph"></a>
 
-## SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale
+### SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale
 
 **2026-09-08** · paper · Direct bounded loop
 
@@ -94,7 +78,7 @@
 
 <a id="procedural-graphs-google"></a>
 
-## Procedural Graphs: Self-Evolving Execution Structures for LLM Agents
+### Procedural Graphs: Self-Evolving Execution Structures for LLM Agents
 
 **2026-09-08** · paper · Direct bounded loop
 
@@ -122,39 +106,103 @@
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.09153) · [Paper v1 (affiliations, Figure 2, Section 5.4)](https://arxiv.org/html/2609.09153v1)
 
-<a id="bytedance-s3gym"></a>
+<a id="recuris-memory-evolution"></a>
 
-## S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?
+### Recuris: Recursive Experiential-Working Memory Evolution for Long-Horizon Agents
 
-**2026-08-31** · paper · Direct bounded loop
+**2026-08** · paper · Direct bounded loop
 
-**Publication date** — arXiv v1 submitted 2026-08-31; project announcement is 2026-09-01. Title uses arXiv's searchable S3Gym spelling.
+**Publication date** — arXiv v1: August 2026 (2608.24876; repository created 2026-08-25). Exact v1 day not re-verified; month precision used.
 
-**Institutional relationship** — Paper explicitly lists ByteDance Seed, M-A-P and TokenWave.AI.
+**Institutional relationship** — Paper: NUS (Zhaochen Yu, Shuicheng Yan), Stanford (Yingcheng Wu, Zhe Zhao), Oxford (Zhenfei Yin, Kaiyuan Chen) and Princeton (Mengdi Wang, Ling Yang).
 
-**What changes and how feedback is reused** — Agents explore games and self-score decisions, then reuse raw histories, score-conditioned memory summaries, or experience-trained parameters in later episodes. Executable verifier rewards stay benchmark-side during main exploration; stricter disjoint evaluations measure whether the inherited state improves behavior. There is no universal improvement acceptance gate.
+**What changes and how feedback is reused** — Couples Working Memory (verified task state with pending/done/blocked goals, committed only by checker predicates the observation supports) with Experiential Memory (skills), retrieved by an invocation policy matched to current state - producing structured traces with 64.8% failure localization versus 13.0% for outcome-only. Across tasks, a fixed Meta-Agent localizes failures to exactly one of four components (skills, working-memory spec, invocation policy, checkers), patches only the implicated component, and a fixed validation gate admits patches only if they repair the source task without regressing a held-out dev set. The base LLM and outer procedure stay frozen.
 
-**Author-reported result** — Across seven games, blockwise self-judgment quality has near-zero correlation with next strict-evaluation improvement: −0.010 for event agreement and −0.018 for negative calibration error. These are correlations, not percentage gains. Context pathways have task-dependent winners; parameter training can cause negative transfer.
+**Author-reported result** — 35 of 37 completed model-benchmark pairs improve. Tau2-Retail: GPT-5.6 Sol 58.3 -> 76.1, Claude Opus 5 72.4 -> 87.9, Doubao-2.0-Pro 58.1 -> 81.4 (+23.3), Granite-4.1-3B 9.7 -> 23.0. SkillFlow (Qwen3.6-27B) 42.2 -> 58.7. Held-out evolution: +9.01 to +17.44 versus the initial memory, and a second round compounds +6.98 - a rare multi-round gain. Honest caveats kept: Terminal-Bench 2.1 adaptation effect +2.3 at p=0.774 ('a direction rather than an effect'), and 13 runs admitted no patch.
 
-**Evidence limits** — Game-specific bounded evaluation; recognizing success does not ensure useful memory or transferable policies.
+**Evidence limits** — No dedicated limitations section, but the paper keeps its own noise disclosures (zero-including intervals on tau2-Airline; horizon analysis is a stratified re-analysis; memory evolved on one mid-sized deployment model; transfer fails where held-out tasks lack repairable failure types).
 
-**Code / weights / data / license** — Paper/project public; paper CC BY 4.0. Standalone benchmark code, data, trained checkpoints and associated asset licenses were not verified as released.
+**Code / weights / data / license** — Code at github.com/Gen-Verse/Recuris (Apache-2.0, 205 stars at verification).
 
-**Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI skills ablation: compare raw-history, summary-memory and frozen-state runs, with verifier scores hidden from memory construction.
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: the four-component localization (skills / memory spec / retrieval policy / checkers) plus repair-without-regression gates is a concrete blueprint for attributing a failure to exactly one editable surface before proposing a patch.
 
-![Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training.](assets/paper-figures/s3gym-figure.png)
+![Figure 3: Recuris - within-task, working memory drives a skill-invocation policy with checker-committed state; across tasks, a fixed Meta-Agent patches one implicated component at a time behind a validation gate.](assets/paper-figures/recuris-memory-evolution.png)
 
-**Source figure / official image** — Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training. · Figure 2, PDF p.7 · [source](https://arxiv.org/html/2608.31100v1)
+**Source figure / official image** — Figure 3: Recuris - within-task, working memory drives a skill-invocation policy with checker-committed state; across tasks, a fixed Meta-Agent patches one implicated component at a time behind a validation gate. · Figure 3 · [source](https://arxiv.org/html/2608.24876v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
 
-**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/Gen-Verse/Recuris)
 
-**Primary sources** — [arXiv first submission](https://arxiv.org/abs/2608.31100) · [Paper v1 methods and Table 6](https://arxiv.org/html/2608.31100v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2608.24876) · [Paper v1 (affiliations, Figure 3, tables)](https://arxiv.org/html/2608.24876v1) · [Code repository (Apache-2.0)](https://github.com/Gen-Verse/Recuris)
+
+<a id="xskill-dual-stream"></a>
+
+### XSkill: Continual Learning from Experience and Skills in Multimodal Agents
+
+**2026-03-12** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-03-12; v3: 2026-07-01 (ICML 2026; numbers cited from v3).
+
+**Institutional relationship** — Paper v3: HKUST (Guanyu Jiang also Zhejiang; Zhaochen Su; Yi R. Fung corresponding) with Huazhong University of Science and Technology.
+
+**What changes and how feedback is reused** — Training-free continual learning for multimodal agents via dual-stream knowledge: task-level Markdown skills with reusable tool templates, and short condition-action experience items (capped at 120, embedded for retrieval). Extraction is visually grounded (records what visual evidence motivated each action) and a cross-rollout critique contrasts successful vs failed trajectories to emit add/modify operations; at test time subtasks retrieve top-3 items per stream, adapt them to the current images, and inject non-prescriptively. Usage history feeds back for continual refinement.
+
+**Author-reported result** — Four multimodal benchmarks x four backbones: +2.58 to +6.71 average@4 over the tool-only baseline; up to +11.13 over the strongest baseline (TIR-Bench, Gemini-3-Flash: 47.75 vs Agent-KB 36.62); execution errors fall from 29.9% to 15.3%. Ablations: without experience -3.04, without skill -3.85, without experience manager -4.09. Knowledge transferred from Gemini-3-Flash also lifts GPT-5-mini (20.61 -> 23.19).
+
+**Evidence limits** — Only a single accumulation-then-test cycle demonstrated (iterative refinement architecturally supported but untested); transferred knowledge hurt Qwen models' average@4 (Qwen3-VL-235B 11.80 -> 11.52), so base-model capability is critical; authors flag bias propagation through the loop and recommend human oversight.
+
+**Code / weights / data / license** — Code at github.com/XSkill-Agent/XSkill (268 stars, no license file at verification); project page xskill-agent.github.io.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: separate task-level skills from short condition-action experiences with different caps and retrieval, and record the visual/textual evidence that motivated each action so critiques can contrast grounded causes rather than raw logs.
+
+![Figure 2: XSkill - Phase I distills skill documents and experience items from multi-path visually grounded trajectories via rollout summary and cross-rollout critique; Phase II retrieves, adapts and injects both streams at test time.](assets/paper-figures/xskill-dual-stream.png)
+
+**Source figure / official image** — Figure 2: XSkill - Phase I distills skill documents and experience items from multi-path visually grounded trajectories via rollout summary and cross-rollout critique; Phase II retrieves, adapts and injects both streams at test time. · Figure 2 · [source](https://arxiv.org/html/2603.12056v3)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository](https://github.com/XSkill-Agent/XSkill)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2603.12056) · [Paper v3 (affiliations, Figure 2, tables)](https://arxiv.org/html/2603.12056v3) · [Code repository](https://github.com/XSkill-Agent/XSkill)
+
+<a id="memskill-memory-skills"></a>
+
+### MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents
+
+**2026-02-02** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-02-02; v2: 2026-05-24 (numbers cited from v2).
+
+**Institutional relationship** — Paper v2: NTU Singapore (Haozhen Zhang, Quanyu Long, Jianzhu Bao, Wenya Wang corresponding) with UIUC (Tao Feng), UIC (Weizhi Zhang) and Tsinghua (Haodong Yue).
+
+**What changes and how feedback is reused** — Memory-extraction operations become learnable 'memory skills' in two intertwined loops. Skill selection/usage: a lightweight controller (MLPs over state-skill embeddings, Gumbel-Top-K sampling) picks a Top-K skill subset per text span; an LLM executor applies them to update the trace-specific memory bank; the controller trains with PPO on downstream query performance. Skill evolution: a sliding hard-case buffer logs query-centric failures; every 100 steps a designer LLM clusters hard cases and refines/adds skills (max 3 edits/round) with snapshot rollback, early stopping and exploration bias toward new skills.
+
+**Author-reported result** — LoCoMo (LLaMA3.3-70B): F1 44.21 / L-J 53.82 vs MemoryOS 41.39 and A-MEM 49.71; transfers to LongMemEval (L-J 60.89) and HotpotQA (best at all 50/100/200-doc settings); ALFWorld seen/unseen 77.14/83.58 SR (avg 80.36) beating Mem0 and CoN; AppWorld 26.71% vs AWM 25.42%. Ablations: without controller -5.4 L-J, without skill descriptions -17.7 (Qwen). Cost: 215 LLM calls vs MemoryOS 1,288 and A-MEM 1,548.
+
+**Evidence limits** — Limitations live in Appendix F (not rendered in the HTML audit); LongMemEval and Qwen rows are transfer-only (trained on LoCoMo with LLaMA); skill-evolution preparation cost is amortized rather than free.
+
+**Code / weights / data / license** — Code at github.com/ViktorAxelsen/MemSkill (Apache-2.0, 576 stars at verification); project page viktoraxelsen.github.io/MemSkill. Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: evolve the memory-writing operations themselves (not just memory content), and gate designer edits with snapshot rollback + early stopping - the same controls as the skill track, one layer up.
+
+![Figure 2: MemSkill architecture - the controller selects a Top-K subset of memory skills from a shared bank, the executor applies them span by span, task rewards train the controller, and failures feed a designer-driven skill-evolution loop.](assets/paper-figures/memskill-memory-skills.png)
+
+**Source figure / official image** — Figure 2: MemSkill architecture - the controller selects a Top-K subset of memory skills from a shared bank, the executor applies them span by span, task rewards train the controller, and failures feed a designer-driven skill-evolution loop. · Figure 2 · [source](https://arxiv.org/html/2602.02474v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2602.02474) · [Paper v2 (affiliations, Figure 2, tables)](https://arxiv.org/html/2602.02474v2) · [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+
+<a id="family-experience-accumulation"></a>
+
+## Experience accumulation & replay (5)
 
 <a id="bytedance-chain-of-experience"></a>
 
-## Chain-of-Experience for Continual LLM Improvement
+### Chain-of-Experience for Continual LLM Improvement
 
 **2026-08-18** · paper · Direct bounded loop
 
@@ -184,7 +232,7 @@
 
 <a id="prime-agent"></a>
 
-## Prime Agent: A Self-Improving RLM Harness
+### Prime Agent: A Self-Improving RLM Harness
 
 **2026-08-05** · paper · Direct bounded loop
 
@@ -212,39 +260,39 @@
 
 **Primary sources** — [arXiv record](https://arxiv.org/abs/2608.23552) · [Paper first-publication statement and Factorio evidence](https://arxiv.org/html/2608.23552v1) · [Official launch and update mechanism](https://www.primeintellect.ai/blog/prime-agent) · [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
-<a id="memskill-memory-skills"></a>
+<a id="atlas-pamphlets"></a>
 
-## MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents
+### ATLAS: Continual Learning, Not Training - Online Adaptation for Agents
 
-**2026-02-02** · paper · Direct bounded loop
+**2025-11-02** · paper · Direct bounded loop
 
-**Publication date** — arXiv v1: 2026-02-02; v2: 2026-05-24 (numbers cited from v2).
+**Publication date** — arXiv v1: 2025-11-02. The SDK repository was created 2025-09-30.
 
-**Institutional relationship** — Paper v2: NTU Singapore (Haozhen Zhang, Quanyu Long, Jianzhu Bao, Wenya Wang corresponding) with UIUC (Tao Feng), UIC (Weizhi Zhang) and Tsinghua (Haodong Yue).
+**Institutional relationship** — Paper: Aman Jaglan and Jarrod Barnes (corresponding) at Arc Intelligence; the evaluation uses Microsoft's ExCyTIn-Bench but the work is not a Microsoft affiliation.
 
-**What changes and how feedback is reused** — Memory-extraction operations become learnable 'memory skills' in two intertwined loops. Skill selection/usage: a lightweight controller (MLPs over state-skill embeddings, Gumbel-Top-K sampling) picks a Top-K skill subset per text span; an LLM executor applies them to update the trace-specific memory bank; the controller trains with PPO on downstream query performance. Skill evolution: a sliding hard-case buffer logs query-centric failures; every 100 steps a designer LLM clusters hard cases and refines/adds skills (max 3 edits/round) with snapshot rollback, early stopping and exploration bias toward new skills.
+**What changes and how feedback is reused** — Gradient-free inference-time adaptation via dual agents: a Teacher (GPT-5) reviews the Student's (GPT-5-mini) trajectories and gives principle-level corrections; an orchestrator stores traces, guidance and ensemble-of-judges reward scores in a Persistent Learning Memory, distilled into Teacher Pamphlets (principles, failure modes, stop conditions) and Student Pamphlets (action schemas, tool plans, guards) retrieved by task context to adjust supervision level and seed plans - no weight updates anywhere.
 
-**Author-reported result** — LoCoMo (LLaMA3.3-70B): F1 44.21 / L-J 53.82 vs MemoryOS 41.39 and A-MEM 49.71; transfers to LongMemEval (L-J 60.89) and HotpotQA (best at all 50/100/200-doc settings); ALFWorld seen/unseen 77.14/83.58 SR (avg 80.36) beating Mem0 and CoN; AppWorld 26.71% vs AWM 25.42%. Ablations: without controller -5.4 L-J, without skill descriptions -17.7 (Qwen). Cost: 215 LLM calls vs MemoryOS 1,288 and A-MEM 1,548.
+**Author-reported result** — ExCyTIn-Bench Incident #5 (n=98): ATLAS 54.1% success vs GPT-5 (High) 48.0% (+6.1) at ~86% lower cost ($0.024 vs $0.174 per question), with tokens cut 45% versus the Student baseline; frozen pamphlets lift a new incident from 28% to 41% (+46% relative) while cutting non-reasoning tokens 52.1%.
 
-**Evidence limits** — Limitations live in Appendix F (not rendered in the HTML audit); LongMemEval and Qwen rows are transfer-only (trained on LoCoMo with LLaMA); skill-evolution preparation cost is amortized rather than free.
+**Evidence limits** — Single-benchmark evaluation (one incident, n=98); one baseline's tokens logged on only 42/47 runs; generalization tested on exactly one other incident; world-model training is a hypothesis, not validated; the authors themselves note static benchmarks are insufficient and evaluation hacking remains a risk.
 
-**Code / weights / data / license** — Code at github.com/ViktorAxelsen/MemSkill (Apache-2.0, 576 stars at verification); project page viktoraxelsen.github.io/MemSkill. Paper CC BY 4.0.
+**Code / weights / data / license** — Code at github.com/Arc-Computer/atlas-sdk (17 stars, no license file detected at verification); paper states CC BY 4.0 release with traces and pamphlets.
 
-**Possible nanoRSI experiment — not implemented here** — For nanoRSI: evolve the memory-writing operations themselves (not just memory content), and gate designer edits with snapshot rollback + early stopping - the same controls as the skill track, one layer up.
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: two-tier distilled guidance (principle-level for the critic, schema-level for the executor) with supervision-level control is a lightweight alternative to monolithic memory - and pamphlets freeze cleanly for transfer tests.
 
-![Figure 2: MemSkill architecture - the controller selects a Top-K subset of memory skills from a shared bank, the executor applies them span by span, task rewards train the controller, and failures feed a designer-driven skill-evolution loop.](assets/paper-figures/memskill-memory-skills.png)
+![Figure 1: ATLAS architecture - an orchestrator manages Teacher-Student interactions during execution; learning is stored in Persistent Learning Memory and distilled into Teacher and Student pamphlets that guide future inference-time decisions.](assets/paper-figures/atlas-pamphlets.png)
 
-**Source figure / official image** — Figure 2: MemSkill architecture - the controller selects a Top-K subset of memory skills from a shared bank, the executor applies them span by span, task rewards train the controller, and failures feed a designer-driven skill-evolution loop. · Figure 2 · [source](https://arxiv.org/html/2602.02474v2)
+**Source figure / official image** — Figure 1: ATLAS architecture - an orchestrator manages Teacher-Student interactions during execution; learning is stored in Persistent Learning Memory and distilled into Teacher and Student pamphlets that guide future inference-time decisions. · Figure 1 · [source](https://arxiv.org/html/2511.01093v1)
 
 **nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
 
-**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+**Open code / weights / data links** — [Code repository](https://github.com/Arc-Computer/atlas-sdk)
 
-**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2602.02474) · [Paper v2 (affiliations, Figure 2, tables)](https://arxiv.org/html/2602.02474v2) · [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2511.01093) · [Paper v1 (affiliations, Figure 1, results)](https://arxiv.org/html/2511.01093v1) · [Code repository](https://github.com/Arc-Computer/atlas-sdk)
 
 <a id="tencent-training-free-grpo"></a>
 
-## Training-Free Group Relative Policy Optimization
+### Training-Free Group Relative Policy Optimization
 
 **2025-10-09** · paper · Direct bounded loop
 
@@ -272,9 +320,43 @@
 
 **Primary sources** — [arXiv first submission and history](https://arxiv.org/abs/2510.08191) · [Paper v1 and Training-Free GRPO figure](https://arxiv.org/html/2510.08191v1) · [Official Youtu-Agent implementation](https://github.com/TencentCloudADP/youtu-agent/tree/training_free_GRPO) · [Youtu-Agent MIT license](https://github.com/TencentCloudADP/youtu-agent/blob/main/LICENSE)
 
+<a id="se-agent-trajectory"></a>
+
+### SE-Agent: Self-Evolution Trajectory Optimization in Multi-Step Reasoning with LLM-Based Agents
+
+**2025-08-04** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2025-08-04 (before the 2025-09-16 window start, so the record sits in the renderer's archive section); v6: 2025-11-03; NeurIPS 2025 poster. Catalogued on 2026-09-16 to close a tracked lead; affiliations below from the paper's author list with StepFun senior authorship.
+
+**Institutional relationship** — Paper v6: a fourteen-author list including Daxin Jiang (StepFun) and academic co-authors; the abstract page does not render affiliations, so the organization field reflects the tracked lead (StepFun-led with academic partners) and should be re-verified from the PDF before any strong claim.
+
+**What changes and how feedback is reused** — Trajectory-level self-evolution: the agent iteratively revisits its earlier solution trajectories through three operations - revision, recombination and refinement - exploiting cross-trajectory inspiration that per-step search (MCTS-style) misses, expanding the search space beyond local optima and persisting improved strategies for later problems.
+
+**Author-reported result** — SWE-bench Verified across five LLMs: up to 55% relative improvement and state-of-the-art among open-source agents at v6 (abstract-level claim; per-baseline numbers not on the abstract page).
+
+**Evidence limits** — Headline numbers are abstract-level in this audit (per-baseline tables not re-verified from HTML); the v1-first-public date predates the rolling window, so this entry is archival context rather than in-window evidence.
+
+**Code / weights / data / license** — Code at github.com/JARVIS-Xs/SE-Agent.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: revision/recombination/refinement over stored trajectories is a cheap second use of the run archive - before generating new candidates, mine cross-trajectory recombinations of past attempts.
+
+![Figure 1: SE-Agent - multi-step reasoning trajectories are revisited via revision, recombination and refinement, with improved strategies persisted across problems.](assets/paper-figures/se-agent-trajectory.png)
+
+**Source figure / official image** — Figure 1: SE-Agent - multi-step reasoning trajectories are revisited via revision, recombination and refinement, with improved strategies persisted across problems. · Figure 1 · [source](https://arxiv.org/html/2508.02085v6)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository](https://github.com/JARVIS-Xs/SE-Agent)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2508.02085) · [Paper v6 (Figure 1, mechanism)](https://arxiv.org/html/2508.02085v6) · [Code repository](https://github.com/JARVIS-Xs/SE-Agent)
+
+<a id="family-context-policies"></a>
+
+## Context organization policies (3)
+
 <a id="sambanova-stanford-ace"></a>
 
-## Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models
+### Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models
 
 **2025-10-06** · paper · Direct bounded loop
 
@@ -304,7 +386,7 @@
 
 <a id="microsoft-legomem-2025"></a>
 
-## LEGOMem: Modular Procedural Memory for Multi-agent LLM Systems for Workflow Automation
+### LEGOMem: Modular Procedural Memory for Multi-agent LLM Systems for Workflow Automation
 
 **2025-10-06** · paper · Enabling technique / evaluation
 
@@ -334,7 +416,7 @@
 
 <a id="microsoft-acon-2025"></a>
 
-## ACON: Optimizing Context Compression for Long-horizon LLM Agents
+### ACON: Optimizing Context Compression for Long-horizon LLM Agents
 
 **2025-10-01** · paper · Direct bounded loop
 
@@ -361,3 +443,101 @@
 **Open code / weights / data links** — [Official Microsoft code](https://github.com/microsoft/acon) · [MIT licence](https://github.com/microsoft/acon/blob/main/LICENSE)
 
 **Primary sources** — [Paper history](https://arxiv.org/abs/2510.00615) · [Paper v1](https://arxiv.org/html/2510.00615v1) · [Official Microsoft code](https://github.com/microsoft/acon) · [MIT licence](https://github.com/microsoft/acon/blob/main/LICENSE)
+
+<a id="family-exploration-memory"></a>
+
+## Exploration-driven memory construction (1)
+
+<a id="rsiagent-autonomous-exploration"></a>
+
+### RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments
+
+**2026-09-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-14. Code repository created 2026-09-13, one day before the paper listing.
+
+**Institutional relationship** — Paper v1 lists Aether AI (corresponding author Kun Zhou) and UC San Diego; first author Sibo Zhu's work was done during an Aether AI internship, with coauthors from UCSD and UIC.
+
+**What changes and how feedback is reused** — Training-free multi-agent self-improvement for an unfamiliar environment: curriculum, actor and verifier agents explore with no gold labels. Broad Recursive Self-exploration (BRS) runs parallel curriculum-organized task groups to map the environment and bank per-group experience memories of reusable (action, condition, consequence) causal patterns; Deep Recursive Self-exploration (DRS) then iterates on the target task, with the verifier judging each attempt and successful memories routed back into later rounds. The progressively refined memory is frozen and reused for downstream tasks; no model parameter is updated at any point.
+
+**Author-reported result** — With GLM-5.3 as actor and Kimi-K3 as verifier/curriculum: OSWorld 2.0 partial 78.98 vs GPT-6 Astra's reported 72.60 (+6.38) and binary 42.68; Agents' Last Exam partial 84.82 vs GPT-6 Astra 82.26 (+2.56), binary 50.75 vs GPT-6 Astra's 52.24 (GPT-6 leads). Ablation over four tasks: full RSI 74.54% vs BRS-only 65.52% vs DRS-only 56.50%. Claude Opus 5 is also reported (70.19/34.72 OSWorld).
+
+**Evidence limits** — The authors state substantial test-time compute cost; performance depends on exploration budgets, stopping policies and memory quality; the model-based verifier may misjudge and propagate errors into later memory; components are not fully isolated; experiments run in controlled environments and do not cover unauthorized-access or privacy risks. GPT-6 Astra numbers are cited from its report, not re-run.
+
+**Code / weights / data / license** — Code released under Apache-2.0 at github.com/AetherLabsAI/RSIAgent (repo created 2026-09-13, 143 stars at verification); project page aetherlabsai.github.io/RSIAgent. No weights or data release located.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: split the improvement budget into a broad mapping phase (many cheap probe tasks banking causal patterns) and a deep exploitation phase on the target task, then freeze the memory before final testing - a two-phase schedule that matches nanoRSI's freeze discipline.
+
+![Figure 2: RSIAgent method overview - broad recursive self-exploration banks per-group experience memories, deep recursive self-exploration refines them on the target task with verifier feedback, and the frozen memory is reused at test time.](assets/paper-figures/rsiagent-autonomous-exploration.png)
+
+**Source figure / official image** — Figure 2: RSIAgent method overview - broad recursive self-exploration banks per-group experience memories, deep recursive self-exploration refines them on the target task with verifier feedback, and the frozen memory is reused at test time. · Figure 2 · [source](https://arxiv.org/html/2609.15364v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.15364) · [Paper v1 (affiliations, Figure 2, Table 1, limitations)](https://arxiv.org/html/2609.15364v1) · [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
+
+<a id="family-memory-evolution-studies"></a>
+
+## Memory-evolution studies & benchmarks (2)
+
+<a id="bytedance-s3gym"></a>
+
+### S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?
+
+**2026-08-31** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-08-31; project announcement is 2026-09-01. Title uses arXiv's searchable S3Gym spelling.
+
+**Institutional relationship** — Paper explicitly lists ByteDance Seed, M-A-P and TokenWave.AI.
+
+**What changes and how feedback is reused** — Agents explore games and self-score decisions, then reuse raw histories, score-conditioned memory summaries, or experience-trained parameters in later episodes. Executable verifier rewards stay benchmark-side during main exploration; stricter disjoint evaluations measure whether the inherited state improves behavior. There is no universal improvement acceptance gate.
+
+**Author-reported result** — Across seven games, blockwise self-judgment quality has near-zero correlation with next strict-evaluation improvement: −0.010 for event agreement and −0.018 for negative calibration error. These are correlations, not percentage gains. Context pathways have task-dependent winners; parameter training can cause negative transfer.
+
+**Evidence limits** — Game-specific bounded evaluation; recognizing success does not ensure useful memory or transferable policies.
+
+**Code / weights / data / license** — Paper/project public; paper CC BY 4.0. Standalone benchmark code, data, trained checkpoints and associated asset licenses were not verified as released.
+
+**Possible nanoRSI experiment — not implemented here** — Proposed nanoRSI skills ablation: compare raw-history, summary-memory and frozen-state runs, with verifier scores hidden from memory construction.
+
+![Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training.](assets/paper-figures/s3gym-figure.png)
+
+**Source figure / official image** — Figure 2: S3Gym explores experience-driven improvement through history ICL, summary memory and parameter training. · Figure 2, PDF p.7 · [source](https://arxiv.org/html/2608.31100v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv first submission](https://arxiv.org/abs/2608.31100) · [Paper v1 methods and Table 6](https://arxiv.org/html/2608.31100v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
+
+<a id="evo-memory-remem"></a>
+
+### Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory
+
+**2025-11-25** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1: 2025-11-25; v2: 2026-05-18 (numbers cited from v2).
+
+**Institutional relationship** — Paper v2: UIUC (Tianxin Wei et al., Jingrui He) and Google DeepMind (Noveen Sachdeva, Benjamin Coleman, Ed H. Chi, Fernando Pereira et al.); first author's work done at Google DeepMind.
+
+**What changes and how feedback is reused** — A streaming benchmark, not a mechanism: static datasets are restructured into sequential task streams where each step follows search-synthesize-evolve (retrieve from memory, answer, update memory with the correctness signal). Ten datasets span single-turn (MMLU-Pro, GPQA, AIME 24/25, ToolBench) and multi-turn (AlfWorld, BabyAI, ScienceWorld, PDDL); 10+ memory modules compared (Mem0, A-MEM, MemOS, AWM, Dynamic Cheatsheet...) plus new baselines ExpRAG and ReMem (action-think-memory refine).
+
+**Author-reported result** — Self-evolving memory helps consistently, largest in multi-turn settings (Claude 3.7 Sonnet: ReMem 0.78 average success vs History 0.49); gains correlate with within-dataset task similarity (Pearson r=0.717/0.563); Hard->Easy transfer beats Easy->Hard (0.94/0.97 average); storing failed experiences degrades several baselines while ReMem stays robust; simple ExpRAG 'outperforms several more complex designs'; AlfWorld steps fall from 22.6 to 11.5.
+
+**Evidence limits** — Code 'to be released upon acceptance' (not located at verification); correctness-only feedback signals; the benchmark measures memory given a fixed update rule, not joint memory-plus-policy evolution.
+
+**Code / weights / data / license** — No code URL at verification ('will be released under a permissive open-source license upon acceptance'). Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: the Hard->Easy vs Easy->Hard ordering result is an experiment-design rule - curriculum the memory stream from hard tasks first; and 'simple beats complex' (ExpRAG) is a recurring warning before adding memory machinery.
+
+![Figure 2: the ReMem agent on the Evo-Memory stream - test-time evolution where the agent iteratively searches, synthesizes and evolves its memory across sequential tasks.](assets/paper-figures/evo-memory-remem.png)
+
+**Source figure / official image** — Figure 2: the ReMem agent on the Evo-Memory stream - test-time evolution where the agent iteratively searches, synthesizes and evolves its memory across sequential tasks. · Figure 2 · [source](https://arxiv.org/html/2511.20857v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2511.20857) · [Paper v2 (affiliations, Figure 2, results)](https://arxiv.org/html/2511.20857v2)

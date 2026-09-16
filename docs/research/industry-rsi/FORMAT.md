@@ -16,6 +16,7 @@
 | `date_note` | Explain announcement/paper/revision differences; do not substitute conference year for first publication / 解释公告、论文与修订日期差异，不用会议年份替代首发日期 |
 | `additional_events` | Optional later substantive paper/release events, each with `date`, `kind`, `label`; sources must be in the record / 后续实质论文或发布事件；来源必须包含在条目中 |
 | `category` | `parameter-learning`, `agent-code`, `memory-context`, `research-workflows`; choose the primary surface and explain secondary ones in prose / 选择主要改变对象，次要机制在正文说明 |
+| `family` | Mechanism family within the category (second-level grouping rendered on every category page); must be one of the renderer's `CATEGORY_FAMILIES` values for that category / 类别内的机制家族（分类页二级分组）；必须属于该类别在渲染器 `CATEGORY_FAMILIES` 中的取值 |
 | `relationship` | `direct-loop`, `enabling`, `assisted-rd`; catalogue interpretation, not an author endorsement / 资料库的机制解读，不代表作者认可该标签 |
 | `affiliation`, `mechanism` | Institutional relationship and mutation → feedback → reuse mechanism / 机构关系，以及修改 → 反馈 → 复用机制 |
 | `result`, `limits` | Author result with comparator, unit and conditions; negative findings and confounders belong here too / 作者结果、对照、单位及条件；保留负结果与混杂因素 |

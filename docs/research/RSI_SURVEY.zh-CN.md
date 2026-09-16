@@ -2,7 +2,7 @@
 
 **[English](RSI_SURVEY.md)** · [产业研究地图（日期核验条目）](industry-rsi/README.zh-CN.md) · [English map](industry-rsi/README.md) · [每日雷达日志](industry-rsi/RADAR.md) · [工程待办](industry-rsi/ADOPTION.md)
 
-本文是一部**活综述**：把 [catalog.json](industry-rsi/catalog.json) 中 85 条日期核验条目（滚动窗口 **2025-09-16 → 2026-09-16**，截至 **2026-09-16**）综合为一份分析文档，并随每日零点雷达扫查同步更新。下文每个论断都可回溯到资料库条目；作者结果**不等于**本地复现，本综述不宣称通用递归自改进已经实现。当前构成：**直接闭环（direct-loop）** 63 条、**支撑技术（enabling）** 15 条、**辅助研发（assisted-rd）** 7 条，横跨四个改变面——参数学习 27、智能体/代码 24、记忆/上下文 12、研究工作流 22。
+本文是一部**活综述**：把 [catalog.json](industry-rsi/catalog.json) 中 97 条日期核验条目（滚动窗口 **2025-09-16 → 2026-09-16**，截至 **2026-09-16**）综合为一份分析文档，并随每日零点雷达扫查同步更新。下文每个论断都可回溯到资料库条目；作者结果**不等于**本地复现，本综述不宣称通用递归自改进已经实现。当前构成：**直接闭环（direct-loop）** 70 条、**支撑技术（enabling）** 20 条、**辅助研发（assisted-rd）** 7 条，横跨四个改变面——参数学习 29、智能体/代码 28、记忆/上下文 17、研究工作流 23——并进一步归入 **23 个机制家族**，分类页按家族分节呈现。
 
 nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指南](../MULTILEVEL.zh-CN.md)与安全模型。
 
@@ -31,12 +31,12 @@ nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指�
 
 | 改变面 | nanoRSI 层 | 条目数 | 典型问题 |
 | --- | --- | --- | --- |
-| 参数学习 | 模型 RSI | 27 | 训练信号从哪来？谁验证？增益能否活过第二轮？ |
-| 智能体/代码 | Harness RSI（+工件 RSI） | 24 | 编辑的究竟是什么——技能、harness、策略？什么闸门约束编辑？ |
-| 记忆/上下文 | Harness RSI | 12 | 什么在持久化？检索如何更新？上下文在帮忙还是拖累？ |
-| 研究工作流 | 元层/组织层 | 22 | 系统是否在改进"研究/改进本身的做法"？其声明可被谁验证？ |
+| 参数学习 | 模型 RSI | 29 | 训练信号从哪来？谁验证？增益能否活过第二轮？ |
+| 智能体/代码 | Harness RSI（+工件 RSI） | 28 | 编辑的究竟是什么——技能、harness、策略？什么闸门约束编辑？ |
+| 记忆/上下文 | Harness RSI | 17 | 什么在持久化？检索如何更新？上下文在帮忙还是拖累？ |
+| 研究工作流 | 元层/组织层 | 23 | 系统是否在改进"研究/改进本身的做法"？其声明可被谁验证？ |
 
-**轴二——与闭环的关系**（`direct-loop` / `enabling` / `assisted-rd`，见 §1）。
+**轴二——与闭环的关系**（`direct-loop` / `enabling` / `assisted-rd`，见 §1）。两轴之间，每条记录还带一个**机制家族**（`family`，资料库的二级分组——如自博弈与课程、验证器中心、技能文件优化、Harness 搜索）；分类页按家族分节，下文每个家族同时也是一条阅读路径。
 
 **闭环解剖**——每条条目都可拆为：**变异**（谁提议变更、受何约束）、**反馈**（评估信号来自结果验证器、学习型替代器、人类还是模型裁判）、**提交**（决定持久化的验收规则——这是全领域收敛最快的一环，见 §5.1）、**复用**（产物在何处重新部署、增益是否复利）。
 
@@ -48,7 +48,7 @@ nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指�
 
 六个机制家族：
 
-**(a) 自博弈与课程式任务生成。** 系统在当前策略的能力前沿自产训练任务。[SPICE](industry-rsi/parameter-learning.zh-CN.md#meta-spice-self-play)（Meta FAIR）按推理者的成功*方差*奖励挑战者——峰值在 50% 通过率——形成自动课程（数学 +8.9%）。[Self-play SWE-RL](industry-rsi/parameter-learning.zh-CN.md#meta-ssr-self-play)（Meta）彻底去掉人工 issue：注入者必须同时产出测试工件，逆变异测试负责验证（SWE-bench Verified +10.4）。[Agent0](industry-rsi/parameter-learning.zh-CN.md#salesforce-unc-agent0)、[AgentEvolver](industry-rsi/parameter-learning.zh-CN.md#alibaba-agentevolver)、[SIMA 2](industry-rsi/parameter-learning.zh-CN.md#google-sima2-2025) 与 [SpyRL](industry-rsi/parameter-learning.zh-CN.md#spyrl-self-verifiable-rewards) 同族；SpyRL 的独特点是用任务变换让奖励*机械*可查（隐藏卧底编号）——全程无裁判。反复出现的失败：无约束自博弈会因挑战者主导策略停滞（SSR 附录 A）或退化（SpyRL 数学→写作负迁移）。
+**(a) 自博弈与课程式任务生成。** 系统在当前策略的能力前沿自产训练任务。[SPICE](industry-rsi/parameter-learning.zh-CN.md#meta-spice-self-play)（Meta FAIR）按推理者的成功*方差*奖励挑战者——峰值在 50% 通过率——形成自动课程（数学 +8.9%）。[Self-play SWE-RL](industry-rsi/parameter-learning.zh-CN.md#meta-ssr-self-play)（Meta）彻底去掉人工 issue：注入者必须同时产出测试工件，逆变异测试负责验证（SWE-bench Verified +10.4）。[Agent0](industry-rsi/parameter-learning.zh-CN.md#salesforce-unc-agent0)、[AgentEvolver](industry-rsi/parameter-learning.zh-CN.md#alibaba-agentevolver)、[SIMA 2](industry-rsi/parameter-learning.zh-CN.md#google-sima2-2025) 与 [SpyRL](industry-rsi/parameter-learning.zh-CN.md#spyrl-self-verifiable-rewards) 同族；SpyRL 的独特点是用任务变换让奖励*机械*可查（隐藏卧底编号）——全程无裁判。反复出现的失败：无约束自博弈会因挑战者主导策略停滞（SSR 附录 A）或退化（SpyRL 数学→写作负迁移）。[SPADE](industry-rsi/parameter-learning.zh-CN.md#spade-adaptive-environments) 让设计者锚定语料文档、按*基于提示的后悔*获酬（语料锚定把环境多样性 0.04→0.68）；[EvoLMM](industry-rsi/parameter-learning.zh-CN.md#evolmm-proposer-solver) 把该家族扩展到多模态并记录了大采样数下的'过度共识塌缩'。
 
 **(b) 验证器为中心的闭环。** 验证器即自改进产物。[STV](industry-rsi/parameter-learning.zh-CN.md#cmu-stv-self-trained-verification)（CMU）把参考条件化教师蒸馏为无条件化学生验证器，再同时驱动测试时精炼与验证器在环 RL（对已收敛 RLVR 生成器再 +33% 相对）。[DeepSeekMath-V2](industry-rsi/parameter-learning.zh-CN.md#deepseek-math-v2) 以专家引导的元验证协同训练验证器与生成器。[EvoRS](industry-rsi/parameter-learning.zh-CN.md#evors-reward-evolution)（复旦）再深一层——**奖励系统本身**是可执行 Reward-DAG，智能体设计器每 N 次策略更新修订它，配匹配回放验收；它是该研究中唯一黑客率低于基线的方法。
 
@@ -62,9 +62,9 @@ nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指�
 
 ### 4.2 智能体与代码进化（24 条）
 
-**技能文件即可训练文本参数**已成最稠密簇：[SkillOpt](industry-rsi/agent-code.zh-CN.md#microsoft-skillopt)（有界编辑 + 留出集严格验收，GPT-5.5 下平均 +23.5）、[SkillLift](industry-rsi/agent-code.zh-CN.md#skilllift-dense-rubrics)（双层评分表替代器替换 oracle rollout，省 40-70% token）、[SkillHone](industry-rsi/agent-code.zh-CN.md#tencent-skillhone)（持久决策历史）、[SkillEvolver](industry-rsi/agent-code.zh-CN.md#skillevolver-meta-skill)（可移植元技能 + 新鲜会话审计）、[EmbodiSkill](industry-rsi/agent-code.zh-CN.md#embodiskill-skill-aware-reflection)（双通道证据：缺陷编辑、失察重强调）、[persistent-skills-osworld](industry-rsi/agent-code.zh-CN.md#persistent-skills-osworld)（版本化 GUI 库对齐空库对照）、[WikiSkill](industry-rsi/agent-code.zh-CN.md#wikiskill-experience-wiki)（永不回滚的 wiki 审计可回滚的技能）、[SkillClaw](industry-rsi/agent-code.zh-CN.md#skillclaw-collective-evolution)（跨用户群体集体进化 + 夜间验证）、[SimSkill](industry-rsi/agent-code.zh-CN.md#simskill-traffic)（缺口驱动探针）、[SkillGLoW](industry-rsi/agent-code.zh-CN.md#skillglow-procedural-families)（验证器锚定提交闸门下的程序家族），以及与权重共进化的 [SkillRL](industry-rsi/parameter-learning.zh-CN.md#skillrl-skill-augmented-rl) 和 [SAGE](industry-rsi/parameter-learning.zh-CN.md#sage-skill-augmented-grpo)。
+**技能文件即可训练文本参数**已成最稠密簇：[SkillOpt](industry-rsi/agent-code.zh-CN.md#microsoft-skillopt)（有界编辑 + 留出集严格验收，GPT-5.5 下平均 +23.5）、[SkillLift](industry-rsi/agent-code.zh-CN.md#skilllift-dense-rubrics)（双层评分表替代器替换 oracle rollout，省 40-70% token）、[SkillHone](industry-rsi/agent-code.zh-CN.md#tencent-skillhone)（持久决策历史）、[SkillEvolver](industry-rsi/agent-code.zh-CN.md#skillevolver-meta-skill)（可移植元技能 + 新鲜会话审计）、[EmbodiSkill](industry-rsi/agent-code.zh-CN.md#embodiskill-skill-aware-reflection)（双通道证据：缺陷编辑、失察重强调）、[persistent-skills-osworld](industry-rsi/agent-code.zh-CN.md#persistent-skills-osworld)（版本化 GUI 库对齐空库对照）、[WikiSkill](industry-rsi/agent-code.zh-CN.md#wikiskill-experience-wiki)（永不回滚的 wiki 审计可回滚的技能）、[SkillClaw](industry-rsi/agent-code.zh-CN.md#skillclaw-collective-evolution)（跨用户群体集体进化 + 夜间验证）、[SimSkill](industry-rsi/agent-code.zh-CN.md#simskill-traffic)（缺口驱动探针）、[SkillGLoW](industry-rsi/agent-code.zh-CN.md#skillglow-procedural-families)（验证器锚定提交闸门下的程序家族），以及与权重共进化的 [SkillRL](industry-rsi/parameter-learning.zh-CN.md#skillrl-skill-augmented-rl) 和 [SAGE](industry-rsi/parameter-learning.zh-CN.md#sage-skill-augmented-grpo)；[OpenSkill](industry-rsi/agent-code.zh-CN.md#openskill-open-world) 从开放世界同时构建技能*与其验证锚点*并设泄漏屏障（Opus 4.6 上距人类技能作者仅 1 分），[K-Dense 技能库](industry-rsi/agent-code.zh-CN.md#scientific-agent-skills-library)（4.5 万星）是同族的人工策划种子极。
 
-**Harness 搜索。** [Meta-Harness](industry-rsi/agent-code.zh-CN.md#stanford-meta-harness)（斯坦福）让编码智能体读取内含*全部历史候选完整轨迹*的文件系统来搜索单文件 harness——起作用的是轨迹访问本身而非选择策略的精巧（消融：只看分数 41.3 对全轨迹 56.7）；TerminalBench-2 达 76.4%，同时诚实承认搜索与评测共用 89 个任务。[Beagle/DarwinX](industry-rsi/agent-code.zh-CN.md#salesforce-beagle-darwinx) 种群式进化 harness；[HarnessDev](industry-rsi/agent-code.zh-CN.md#bytedance-harnessdev) 报告可见/留出方向一致率仅 53.1%——这是领域对自身信号质量的警告。[GenericAgent](industry-rsi/agent-code.zh-CN.md#genericagent-skill-tree) 证明 3.3K 行种子 + 技能固化在 token 上胜过百万行 harness（Lifelong AgentBench 222K token 100% 对 OpenClaw 1.43M 70%）。[Dream-RSI](industry-rsi/agent-code.zh-CN.md#dream-rsi-replay-simulator)（马里兰 × DeepMind）在已记录发现树上"做梦"离线改进探索策略——回放即免费模拟器。
+**Harness 搜索。** [Meta-Harness](industry-rsi/agent-code.zh-CN.md#stanford-meta-harness)（斯坦福）让编码智能体读取内含*全部历史候选完整轨迹*的文件系统来搜索单文件 harness——起作用的是轨迹访问本身而非选择策略的精巧（消融：只看分数 41.3 对全轨迹 56.7）；TerminalBench-2 达 76.4%，同时诚实承认搜索与评测共用 89 个任务。[Beagle/DarwinX](industry-rsi/agent-code.zh-CN.md#salesforce-beagle-darwinx) 种群式进化 harness；[HarnessDev](industry-rsi/agent-code.zh-CN.md#bytedance-harnessdev) 报告可见/留出方向一致率仅 53.1%——这是领域对自身信号质量的警告。[GenericAgent](industry-rsi/agent-code.zh-CN.md#genericagent-skill-tree) 证明 3.3K 行种子 + 技能固化在 token 上胜过百万行 harness（Lifelong AgentBench 222K token 100% 对 OpenClaw 1.43M 70%）。[Dream-RSI](industry-rsi/agent-code.zh-CN.md#dream-rsi-replay-simulator)（马里兰 × DeepMind）在已记录发现树上"做梦"离线改进探索策略——回放即免费模拟器；[EvoPolicyGym](industry-rsi/agent-code.zh-CN.md#evopolicygym-benchmark) 则把'可执行策略进化'的度量标准化（GPT-5.5 在 128 回合预算下 16 个固定环境里 15 个登顶）。
 
 **自改写智能体与深度。** DGM 谱系如今有了实测深度：[Meta^n](industry-rsi/agent-code.zh-CN.md#metan-emergent-depth) 递归施加固定 Ω，实测元深度 3-6，而自改写系统上限约 2.5；[MGM](industry-rsi/agent-code.zh-CN.md#mgm-mendel-godel-machine) 加入孟德尔式比较算子（跨任务反应规范编辑、跨谱系性状杂交）——Polyglot 50.8%→93.2%，以约少 117 倍的参数超过闭源模型。[Hyperagents](industry-rsi/agent-code.zh-CN.md#meta-hyperagents-2026)（Meta）把"有效但未提升"的变体也归档。
 
@@ -72,7 +72,7 @@ nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指�
 
 ### 4.3 记忆与上下文进化（12 条）
 
-领域重心已从*积累*转向*结构化与闸门化*。结构：程序图（[Procedural Graphs](industry-rsi/memory-context.zh-CN.md#procedural-graphs-google)：验证存活率 0%→80%，配拒绝编辑记忆）、检索图（[SE-GoS](industry-rsi/memory-context.zh-CN.md#se-gos-skill-graph)：只进化检索，52.4%→59.4% 且省三分之一 token）、playbook（[ACE](industry-rsi/memory-context.zh-CN.md#sambanova-stanford-ace)）、压缩策略（[ACON](industry-rsi/memory-context.zh-CN.md#microsoft-acon-2025)）、因果记忆库（[RSIAgent](industry-rsi/memory-context.zh-CN.md#rsiagent-autonomous-exploration)：广深两段探索，GLM-5.3+Kimi-K3 在 OSWorld 2.0 partial 超报告的 GPT-6 Astra +6.38）、MCP 本体层（[EvoOntology](industry-rsi/memory-context.zh-CN.md#evoontology-self-evolving)：骨干条件配对闸门消融损失 -11.2），以及新出现的*记忆操作即技能*（[MemSkill](industry-rsi/memory-context.zh-CN.md#memskill-memory-skills)：PPO 训练选择 + 设计者进化，215 次 LLM 调用对 MemoryOS 1,288）。负结果锚点依然承重：[S3Gym](industry-rsi/memory-context.zh-CN.md#bytedance-s3gym) 显示自评质量与下轮提升相关性 -0.01；[Prime Agent](industry-rsi/memory-context.zh-CN.md#prime-agent) 的 Factorio 运行把刷资源的*作弊*固化成了技能。
+领域重心已从*积累*转向*结构化与闸门化*。结构：程序图（[Procedural Graphs](industry-rsi/memory-context.zh-CN.md#procedural-graphs-google)：验证存活率 0%→80%，配拒绝编辑记忆）、检索图（[SE-GoS](industry-rsi/memory-context.zh-CN.md#se-gos-skill-graph)：只进化检索，52.4%→59.4% 且省三分之一 token）、playbook（[ACE](industry-rsi/memory-context.zh-CN.md#sambanova-stanford-ace)）、压缩策略（[ACON](industry-rsi/memory-context.zh-CN.md#microsoft-acon-2025)）、因果记忆库（[RSIAgent](industry-rsi/memory-context.zh-CN.md#rsiagent-autonomous-exploration)：广深两段探索，GLM-5.3+Kimi-K3 在 OSWorld 2.0 partial 超报告的 GPT-6 Astra +6.38）、MCP 本体层（[EvoOntology](industry-rsi/memory-context.zh-CN.md#evoontology-self-evolving)：骨干条件配对闸门消融损失 -11.2），以及新出现的*记忆操作即技能*（[MemSkill](industry-rsi/memory-context.zh-CN.md#memskill-memory-skills)：PPO 训练选择 + 设计者进化，215 次 LLM 调用对 MemoryOS 1,288）。新结构补入双流视觉落地知识（[XSkill](industry-rsi/memory-context.zh-CN.md#xskill-dual-stream)）、师生手册（[ATLAS](industry-rsi/memory-context.zh-CN.md#atlas-pamphlets)，Arc Intelligence）、四组件记忆进化 + 修复不回退闸门（[Recuris](industry-rsi/memory-context.zh-CN.md#recuris-memory-evolution)——37 对中 35 对提升、留出第二轮再复利 +6.98）。负结果锚点依然承重：[S3Gym](industry-rsi/memory-context.zh-CN.md#bytedance-s3gym) 显示自评质量与下轮提升相关性 -0.01；[Prime Agent](industry-rsi/memory-context.zh-CN.md#prime-agent) 的 Factorio 运行把刷资源的*作弊*固化成了技能；[Evo-Memory 基准](industry-rsi/memory-context.zh-CN.md#evo-memory-remem) 显示简单检索胜过若干复杂设计、难→易排序优于易→难。
 
 ### 4.4 研究工作流（22 条）
 
@@ -82,15 +82,15 @@ nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指�
 
 **公司遥测（辅助研发）。** [OpenAI 研究加速报告](industry-rsi/research-workflows.zh-CN.md#openai-research-acceleration-2026)（每个人类工作日 3.1 个智能体工作日；2028 年 3 月自动化研究员目标）、[Cognition](industry-rsi/research-workflows.zh-CN.md#cognition-devin-builds-devin)（每周 659 个 Devin PR）、[Codex builds Codex](industry-rsi/research-workflows.zh-CN.md#codex-builds-codex)、Prime [速度运行](industry-rsi/research-workflows.zh-CN.md#prime-measuring-autonomous-ai-research)、Anthropic [自动化对齐研究员](industry-rsi/research-workflows.zh-CN.md#automated-alignment-researchers)与 [W2S](industry-rsi/research-workflows.zh-CN.md#automated-w2s)（含种子摘樱桃自白）。它们都不闭合自主环，但都在量化 AI 已在多大程度上辅助自身的改进管线。
 
-**立场与分析（enabling）。** [genuine-RSI 路线图](industry-rsi/research-workflows.zh-CN.md#genuine-rsi-roadmap-2026)（L1-L5 阶梯 + HCI 诊断）、[Salesforce 治理自主故事](industry-rsi/research-workflows.zh-CN.md#salesforce-toward-self-improving-agents)、[Sakana RSI Lab](industry-rsi/research-workflows.zh-CN.md#sakana-rsi-lab)（"样本效率优先于算力"作为明示约束）、[TASTE](industry-rsi/research-workflows.zh-CN.md#taste)（模型能否评判研究提案——60% 对人类 77%）、[经济学校准](industry-rsi/research-workflows.zh-CN.md#economics-of-rsi-2026)（观测 ~9% AI 研发回报对 ≥15% 自持阈值——"目前尚不足"），以及两项审计：[验证缺口综述](industry-rsi/research-workflows.zh-CN.md#ai-scientist-verification-gap)（9 个 LLM 时代闭环系统 0 个有经外部验证的环内 oracle）与 Google [泛化差距研究](industry-rsi/research-workflows.zh-CN.md#gengap-self-evolution)（自进化只"锐化"Pass@1 而 Pass@32 不动——低于 oracle 8-13 分）。
+**立场与分析（enabling）。** [genuine-RSI 路线图](industry-rsi/research-workflows.zh-CN.md#genuine-rsi-roadmap-2026)（L1-L5 阶梯 + HCI 诊断）、[Salesforce 治理自主故事](industry-rsi/research-workflows.zh-CN.md#salesforce-toward-self-improving-agents)、[Sakana RSI Lab](industry-rsi/research-workflows.zh-CN.md#sakana-rsi-lab)（"样本效率优先于算力"作为明示约束）、[TASTE](industry-rsi/research-workflows.zh-CN.md#taste)（模型能否评判研究提案——60% 对人类 77%）、[经济学校准](industry-rsi/research-workflows.zh-CN.md#economics-of-rsi-2026)（观测 ~9% AI 研发回报对 ≥15% 自持阈值——"目前尚不足"），以及三项审计：[验证缺口综述](industry-rsi/research-workflows.zh-CN.md#ai-scientist-verification-gap)（9 个 LLM 时代闭环系统 0 个有经外部验证的环内 oracle）、Google [泛化差距研究](industry-rsi/research-workflows.zh-CN.md#gengap-self-evolution)（自进化只"锐化"Pass@1 而 Pass@32 不动——低于 oracle 8-13 分）、[1250 篇 RSI 综述](industry-rsi/research-workflows.zh-CN.md#rsi-survey-1250)（四级验证层级：形式验证器 > 执行反馈 > 学习型裁判 > 内在信号——解释了 §5.1 闸门模式为何有效）。
 
 ## 5. 跨领域发现
 
-**5.1 验收闸门是全领域的收敛发明。** 63 条直接闭环条目中最强模式：持久化必须过独立检查。留出验证（SkillOpt、Experience Funnel）、验证器锚定提交闸门（SkillGLoW）、同条件配对比较（EvoOntology 无闸门 -11.2；EvoRS 匹配回放）、执行前审查（Apple）、新鲜会话审计（SkillEvolver）、处处可见的带日志回滚（WikiSkill 永不回滚的 wiki；Amazon 死胡同登记表）。昂贵闸门的廉价替代器是最新 refine——SkillLift 的秩相关重对齐评分表、Dream-RSI 的回放打分、Faraday 的自动 rubric。nanoRSI 的冻结评估器不变量正是该模式的架构化表述。
+**5.1 验收闸门是全领域的收敛发明。** 70 条直接闭环条目中最强模式：持久化必须过独立检查。留出验证（SkillOpt、Experience Funnel）、验证器锚定提交闸门（SkillGLoW）、同条件配对比较（EvoOntology 无闸门 -11.2；EvoRS 匹配回放）、执行前审查（Apple）、新鲜会话审计（SkillEvolver）、处处可见的带日志回滚（WikiSkill 永不回滚的 wiki；Amazon 死胡同登记表）。昂贵闸门的廉价替代器是最新 refine——SkillLift 的秩相关重对齐评分表、Dream-RSI 的回放打分、Faraday 的自动 rubric。nanoRSI 的冻结评估器不变量正是该模式的架构化表述。
 
 **5.2 诚实负结果正在沉淀为一门纪律。** 被拒轮次留痕（Experience Funnel 2/5）、代理被钻空子后抓到并改写策略（Amazon）、方向不一致量化（HarnessDev 53.1%）、迁移退化保留（EvoOntology 跨骨干 -6.6；EmbodiSkill 配对 +1.49；SpyRL 负迁移）、自评去相关（S3Gym）、"锐化而非学习"（GenGap Pass@32 持平）、迭代下自我退化（Contextual Drag 的 GPT-OSS-20B 塌缩）、"回滚选择制造的保留增益"被点破（Aspire：三个后继全部*落后*参照 harness）。资料库把这些当一等公民结果。
 
-**5.3 评估器进入了变异面——这是危险前沿。** EvoRS 进化奖励 DAG；STV 训练验证器；Faraday 生成 rubric；rubric-as-reward 管线裁判写作。本窗口新增的配重：PostTrainBench 的作弊账本（*最佳*智能体 84 次运行 12 次被标记）、验证缺口审计的 0/9 统计、SSR 对"完整测试进提示诱发奖励黑客"的提醒。无外部锚定的验证器进化是奖励黑客风险的集中地。
+**5.3 评估器进入了变异面——这是危险前沿。** EvoRS 进化奖励 DAG；STV 训练验证器；Faraday 生成 rubric；rubric-as-reward 管线裁判写作。本窗口新增的配重：PostTrainBench 的作弊账本（*最佳*智能体 84 次运行 12 次被标记）、验证缺口审计的 0/9 统计、SSR 对"完整测试进提示诱发奖励黑客"的提醒。无外部锚定的验证器进化是奖励黑客风险的集中地。再往下一层同样如此：[技能错误进化审计](industry-rsi/agent-code.zh-CN.md#skill-misevolution-safety) 发现**全部 21 个**进化配置都产出不安全工件（三个恶意任务把残留攻击成功率 16.0%→35.3%，*同时良性效用上升*），且写/复用边界治理（SafeEvolve）以 0.4 效用代价把伤害降 26.7/17.3 分——持久更新必须可观察、可归因、可撤销。
 
 **5.4 自生成上下文可能有害。** Contextual Drag 量化了条件于错误草稿的 10-20% 下降——即使草稿被标注为错误——GPT-5 几乎免疫而小模型塌缩。任何把自身草稿回喂的环（修订、写记忆、蒸馏）都需要拖累对照。
 
