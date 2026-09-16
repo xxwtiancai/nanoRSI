@@ -2,7 +2,7 @@
 
 [Research map](README.md) · [中文入口](README.zh-CN.md)
 
-This initial audit was checked on **2026-09-13**, covering **2025-09-13–2026-09-13**. We searched company research pages, first-party repositories and paper publication histories, then opened the relevant primary documents. This is a selective engineering-oriented collection, not a systematic review or a ranking of labs. Newer paper versions may exist; a record pins the version supporting its result rather than silently changing its evidence. Daily midnight sweeps since **2026-09-14** append verified records to the rolling window (see [RADAR.md](RADAR.md)); the tables below cover the initial audit plus institutions added by those sweeps. / 本次首批资料核验于 **2026-09-13**，窗口为 **2025-09-13–2026-09-13**。检索覆盖公司研究页面、第一方仓库及论文发布记录，再打开相关原始材料核对。它面向工程实践，是精选集合，不是系统综述或机构排名；部分论文已有新版，条目固定引用提供该结果的版本。自 **2026-09-14** 起每日零点检索会把核验过的记录追加进滚动窗口（见 [RADAR.md](RADAR.md)）；下表覆盖首批审计及后续每日新增机构。
+This initial audit was checked on **2026-09-13**, covering **2025-09-13–2026-09-13**. We searched company research pages, first-party repositories and paper publication histories, then opened the relevant primary documents. This is a selective engineering-oriented collection, not a systematic review or a ranking of labs. Newer paper versions may exist; a record pins the version supporting its result rather than silently changing its evidence. Daily midnight sweeps since **2026-09-14** append verified records to the rolling window (see [RADAR.md](RADAR.md)); the tables below cover the initial audit plus institutions added by those sweeps. The analytical synthesis of all records lives in the [living survey](../RSI_SURVEY.md) / [活综述](../RSI_SURVEY.zh-CN.md). / 本次首批资料核验于 **2026-09-13**，窗口为 **2025-09-13–2026-09-13**。检索覆盖公司研究页面、第一方仓库及论文发布记录，再打开相关原始材料核对。它面向工程实践，是精选集合，不是系统综述或机构排名；部分论文已有新版，条目固定引用提供该结果的版本。自 **2026-09-14** 起每日零点检索会把核验过的记录追加进滚动窗口（见 [RADAR.md](RADAR.md)）；下表覆盖首批审计及后续每日新增机构。
 
 ## Included institutional coverage / 已收录机构
 
@@ -42,6 +42,34 @@ The university and collaborator relationships appear in each record. A company n
 | Fudan (+ independent researcher) | [SkillLift](agent-code.zh-CN.md#skilllift-dense-rubrics) — bilevel rubric surrogate decoupling skill search from oracle rollouts |
 | Renmin University (GSAI/data lab) | [EvoOntology](memory-context.zh-CN.md#evoontology-self-evolving) — self-evolving MCP ontology layer behind a paired acceptance gate |
 | METR + Stanford / CMU / Columbia / MIT / Yale economists | [Economics of RSI](research-workflows.zh-CN.md#economics-of-rsi-2026) — feedback-loop elasticity calibration (~9% observed vs ≥15% threshold) |
+| Meta FAIR + UIUC / CMU / NUS | [Self-play SWE-RL](parameter-learning.zh-CN.md#meta-ssr-self-play), [SPICE](parameter-learning.zh-CN.md#meta-spice-self-play) — self-play task generation with self-emitted test artifacts; variance-shaped adversarial curriculum |
+| Amazon (AWS Agentic AI) + UW-Madison | [Autonomous 30B post-training](research-workflows.zh-CN.md#amazon-autonomous-post-training), [SAGE](parameter-learning.zh-CN.md#sage-skill-augmented-grpo) — no-human multi-round post-training with policy-only promotion; skill-integrated GRPO |
+| Apple | [Reinforced Agent](agent-code.zh-CN.md#apple-reinforced-agent) — pre-execution tool-call review with GEPA-optimized reviewer prompts |
+| NVIDIA + CMU + Berkeley | [ENPIRE](research-workflows.zh-CN.md#nvidia-enpire-physical-autoresearch) — physical autoresearch on 8 robots with self-constructed verification environments |
+| Huawei + VU Amsterdam | [EvoScientist](research-workflows.zh-CN.md#evoscientist-self-evolving) — ideation/experimentation memory evolution; ICAIS 2025 Best Paper |
+| Inherent Laboratories | [Faraday / Replica](research-workflows.zh-CN.md#faraday-replica-ai-scientist) — training AI scientists to replicate research under auto-generated rubric judges |
+| Stanford (Finn group / IRIS) + MIT + KRAFTON | [Feedback Descent](agent-code.zh-CN.md#stanford-feedback-descent), [Meta-Harness](agent-code.zh-CN.md#stanford-meta-harness) — preference rationales as text gradients; harness search over full-trace filesystems |
+| Princeton PLI (Arora) | [Contextual Drag](research-workflows.zh-CN.md#princeton-contextual-drag) — erroneous in-context drafts drag SOTA reasoners 10-20% |
+| CMU (Wu & Raghunathan) | [STV](parameter-learning.zh-CN.md#cmu-stv-self-trained-verification) — self-trained verification for training- and test-time improvement |
+| UNC (aiming-lab) + NEC + UC system | [SkillRL](parameter-learning.zh-CN.md#skillrl-skill-augmented-rl) — skill-bank ↔ policy co-evolution |
+| Fudan + Nankai + Hello Group | [EvoRS](parameter-learning.zh-CN.md#evors-reward-evolution) — the reward system itself evolves as an executable DAG |
+| Tsinghua + Eigen AI | [EigenData](parameter-learning.zh-CN.md#eigendata-self-evolving-synthesis) — self-evolving synthetic-data pipeline with per-instance checkers |
+| CAS (UCAS + Inst. of Automation) + PKU + Mininglamp + THU + Qilu | [SESA](parameter-learning.zh-CN.md#sesa-self-play-skills) — asymmetric self-play with solver-only skill retrieval |
+| TU/e + Liverpool + MIT-IBM Watson | [Q-Evolve](parameter-learning.zh-CN.md#qevolve-in-distribution) — in-distribution critic co-evolution |
+| Duke + Adobe + PSU + NUS + OSU + Amazon | [RLSVR / SpyRL](parameter-learning.zh-CN.md#spyrl-self-verifiable-rewards) — task transformation induces mechanically checkable rewards |
+| Shanghai AI Lab + ZJU/ECNU/Fudan/SJTU/USTC | [EvolveR](parameter-learning.zh-CN.md#evolver-experience-lifecycle) — offline self-distillation alternated with policy RL |
+| UIUC (Ji / Hakkani-Tür / Tur) | [TT-SI](parameter-learning.zh-CN.md#ttsi-test-time-self-improvement) — test-time self-improvement via temporary LoRA |
+| Google Research + Harvard / Virginia Tech | [WikiSkill](agent-code.zh-CN.md#wikiskill-experience-wiki), [Generalization Gap](research-workflows.zh-CN.md#gengap-self-evolution) — wiki-audited skill evolution; sharpening-vs-learning controls |
+| NTU Singapore + UIUC + UIC + THU | [MemSkill](memory-context.zh-CN.md#memskill-memory-skills) — memory operations as evolvable skills |
+| Minnesota + SNU | [Meta^n](agent-code.zh-CN.md#metan-emergent-depth) — measured meta-depth 3-6 vs ~2.5 prior cap |
+| UESTC + LMU Munich + MCML | [MGM](agent-code.zh-CN.md#mgm-mendel-godel-machine) — Mendelian comparative evolution of coding agents |
+| Alibaba Amap (DreamX) | [SkillClaw](agent-code.zh-CN.md#skillclaw-collective-evolution) — collective skill evolution across a user fleet |
+| A3 Lab (Shenzhen Aquaintelling + Fudan) | [GenericAgent](agent-code.zh-CN.md#genericagent-skill-tree) — 3.3K-line seed growing a skill tree |
+| U Maryland + Google DeepMind + UVA | [Dream-RSI](agent-code.zh-CN.md#dream-rsi-replay-simulator) — offline policy improvement by replaying the discovery tree |
+| Tübingen (ELLIS/MPI/AI Center) + Thoughtful Lab | [PostTrainBench](research-workflows.zh-CN.md#posttrainbench-autonomous-post-training) — benchmarking autonomous post-training with a cheating ledger |
+| Jilin + KAUST + Alberta + IDSIA (Schmidhuber) | [Self-Improving Agents survey](research-workflows.zh-CN.md#self-improving-agents-survey) — the self-induced update-operator formalism |
+| AI-scientist audit (Tianyu Ding et al.) | [Verification gap](research-workflows.zh-CN.md#ai-scientist-verification-gap) — 0/9 LLM-era closed-loop systems externally validated |
+| Sakana AI + U Michigan + Science Tokyo | [Conductor / Fugu](parameter-learning.zh-CN.md#sakana-conductor-fugu) — RL-trained orchestrator designing recursive topologies (RSI-Lab lineage) |
 
 ## Checked but not promoted to a dated main entry / 已检索但未强行收录
 

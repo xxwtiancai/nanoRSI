@@ -32,6 +32,36 @@
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.15396) · [Paper v1 PDF (affiliations, Figure 2, Table 2, protocol)](https://arxiv.org/pdf/2609.15396) · [Code repository (MIT)](https://github.com/WalteR-MittY-pro/SkillLift)
 
+<a id="dream-rsi-replay-simulator"></a>
+
+## Dream-RSI: Improving Exploration Policies by Dreaming over the Discovery Tree
+
+**2026-09-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-14; repository created 2026-09-13.
+
+**Institutional relationship** — Paper: University of Maryland (Tong Zheng, Rui Liu, Heng Huang et al.), Google DeepMind (Zhankui He, Benjamin Coleman, Di Bai, Wang-Cheng Kang) and University of Virginia (Haolin Liu).
+
+**What changes and how feedback is reused** — Discovery history is organized as a tree whose nodes store each attempt's workspace, artifact, diagnostics and score; the tree becomes a replay simulator - alternative exploration policies 'navigate' recorded branches with different orders, parallel groupings and stopping points without re-executing the underlying agent. A policy-development LLM iteratively rewrites exploration-policy code, scoring each version by a replay objective balancing best score, execution cost and parallelism; the best policy is redeployed online, and the new history expands the simulator pool.
+
+**Author-reported result** — Algorithm engineering (Lasso, 6 held-out datasets): Dream-RSI with Gemini-3.1-Pro reaches 2,931ms average using 317 calls vs Fixed Exploration 3,587ms at 550; with Gemini-3.7-Flash 2,350.6ms at 1,879 calls vs 2,516.7 at 3,200 (SimpleTES needs 51,200 calls). Kernel engineering: comparable VGG16/LayerNorm results at 2.43x/1.79x fewer generations; ConvDiv +2.09x score at similar budget.
+
+**Evidence limits** — Replay is deterministic on recorded branches - it cannot evaluate truly novel directions; gains shown on 8 tasks across 3 domains; requires a structured discovery tree; offline policy iteration still spends LLM calls.
+
+**Code / weights / data / license** — Code at github.com/zhengkid/Dream-RSI (172 stars, no license file at verification); project site dream-rsi.com.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: reuse the run archive as a free simulator - score alternative proposer/scheduler policies by replaying them over recorded candidate trees before spending any new evaluations, the cheapest form of policy improvement available to a bounded loop.
+
+![Figure 1: Dream-RSI's three-stage recursive loop - online exploration builds a discovery tree, the tree becomes a replay simulator, and dreaming-based policy improvement rewrites the exploration policy offline.](assets/paper-figures/dream-rsi-replay-simulator.png)
+
+**Source figure / official image** — Figure 1: Dream-RSI's three-stage recursive loop - online exploration builds a discovery tree, the tree becomes a replay simulator, and dreaming-based policy improvement rewrites the exploration policy offline. · Figure 1 · [source](https://arxiv.org/html/2609.14858v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository](https://github.com/zhengkid/Dream-RSI)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.14858) · [Paper v1 (affiliations, Figure 1, tables)](https://arxiv.org/html/2609.14858v1) · [Code repository](https://github.com/zhengkid/Dream-RSI)
+
 <a id="persistent-skills-osworld"></a>
 
 ## From Interaction Traces to Persistent Skills: Online Evolution for Computer-Use Agents
@@ -152,6 +182,36 @@
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2609.01437) · [Paper v1](https://arxiv.org/html/2609.01437v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
+<a id="wikiskill-experience-wiki"></a>
+
+## WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution
+
+**2026-08-27** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-08-27. No later revision recorded at verification time.
+
+**Institutional relationship** — Paper v1: Google Research (Liyan Tang, Cyrus Rashtchian, Chun-Sung Ferng, Andrew Tomkins, Da-Cheng Juan) with Tu Vu (Google Research + Virginia Tech, corresponding).
+
+**What changes and how feedback is reused** — A three-layer workspace: immutable raw execution traces, a persistent wiki that compounds across iterations (patterns, logs, skill-impact records), and active SKILL.md files. Each iteration the Inference Agent rolls out with skills but no wiki access; a Wiki Maintainer consolidates sampled traces into patterns; a Skill Proposer reads wiki + traces and proposes one atomic skill edit; validation gating accepts or rolls back skills - while the wiki itself is never rolled back, accumulating a ground-truth audit trail of accepted and rejected diffs.
+
+**Author-reported result** — Five benchmarks x five models, 3 runs, paired bootstrap p<0.05: WikiSkill beats no-skill, Trace2Skill, EvoSkill and SkillOpt everywhere (e.g., Gemini-3.5-Flash 68.1 vs SkillOpt 55.9; Qwen-3.6-27B 63.3 vs 50.7). Gains scale with model size (+12.3/+17.5/+23.9 for Qwen 4B/9B/27B); Qwen-3.5-9B + WikiSkill (47.4%) beats Qwen-3.6-27B without skills (39.4%). Ablation: wiki access for the proposer alone +15.0; giving the inference agent wiki access hurts (-7.2).
+
+**Evidence limits** — Full skill injection into prompts (retrieval/triggering unevaluated); strict gating rejects neutral proposals that might enable later gains; no automated wiki pruning; no very long-horizon tasks.
+
+**Code / weights / data / license** — No code release located; paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: separate never-rolled-back knowledge (the wiki, with accepted/rejected diffs) from rolled-back executable skills - an audit layer whose monotonic growth makes skill-gate decisions reviewable after the fact.
+
+![Figure 2: WikiSkill's three layers - immutable execution traces (raw), a persistent knowledge base that compounds across iterations (wiki), and active procedural instructions (skills), with the wiki never rolled back.](assets/paper-figures/wikiskill-experience-wiki.png)
+
+**Source figure / official image** — Figure 2: WikiSkill's three layers - immutable execution traces (raw), a persistent knowledge base that compounds across iterations (wiki), and active procedural instructions (skills), with the wiki never rolled back. · Figure 2 · [source](https://arxiv.org/html/2608.27454v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2608.27454) · [Paper v1 (affiliations, Figure 2, main table)](https://arxiv.org/html/2608.27454v1)
+
 <a id="qwen38-max-self-evolving-harness"></a>
 
 ## Qwen3.8-Max: A New Bar for Coding and Cowork (self-evolving harness demonstrations)
@@ -181,6 +241,66 @@
 **Open code / weights / data links** — [Demonstration repository with full trace (Apache-2.0)](https://github.com/qwen-code-dev-bot/oh-my-cli)
 
 **Primary sources** — [Official Qwen blog post (opened via browser)](https://qwen.ai/blog?id=qwen3.8) · [Demonstration repository with full trace (Apache-2.0)](https://github.com/qwen-code-dev-bot/oh-my-cli)
+
+<a id="mgm-mendel-godel-machine"></a>
+
+## Mendel Godel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution
+
+**2026-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: August 2026 (2608.07645). Exact v1 day not re-verified; month precision used.
+
+**Institutional relationship** — Paper: Changzhi Liu, Yilun Liu, Sikuan Yan, Volker Tresp, Yunpu Ma - UESTC, LMU Munich and Munich Center for Machine Learning.
+
+**What changes and how feedback is reused** — Extends archive-based self-modification (DGM/HGM) with three Mendelian operators driven by comparative evidence: clonal mutation (single-trajectory edit), reaction-norm mutation (edit from one agent's trajectories across multiple tasks - recurring failures mark genotype defects), and cross-lineage hybridization (extract a transferable behavioral trait from another lineage's successful trajectory and adapt it, without splicing code). A failed-task pool boosts sampling weights so lineages overlap on hard tasks. Proposition 1: under an additive fitness landscape, comparative evidence raises fix probability over single-trajectory mutation.
+
+**Author-reported result** — Qwen3.6-35B-A3B, 200 evaluations + 24 expansions: SWE-bench Verified-60 68.3% -> 78.3% (HGM 73.3%); Polyglot-60 50.8% -> 93.2% (HGM 77.9%); full Polyglot-225 93.3%, 'surpassing closed-source GPT-5 with ~117x fewer parameters'. Cross-benchmark transfer: SWE-bench Pro 16.7% -> 26.7%; Multilingual 41.7% -> 55.0%. Cross-model transfer: DeepSeek-V4-Flash 50.0% -> 66.7%, V4-Pro 45.0% -> 75.0%.
+
+**Evidence limits** — High wall-clock/GPU cost limits seeds and sweeps; operators need multi-trajectory history and cross-lineage task overlap (degenerates toward single-trajectory baselines with small archives); no edit-quality guarantee; claims limited to coding-agent scaffolds on public benchmarks.
+
+**Code / weights / data / license** — Code at github.com/RealLcz/MGM (Apache-2.0, 32 stars at verification); project page reallcz.github.io/MGM.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: keep per-task trajectories per lineage and admit edits driven by cross-task recurring failures (reaction-norm) and by other candidates' successes on shared tasks (hybridization) - both are selection signals beyond per-candidate scores.
+
+![Figure 1: Mendel Godel Machine - an archive lineage tree where pi-sampling and phi-evaluation feed three comparative operators: clonal mutation, reaction-norm mutation, and cross-lineage hybridization.](assets/paper-figures/mgm-mendel-godel-machine.png)
+
+**Source figure / official image** — Figure 1: Mendel Godel Machine - an archive lineage tree where pi-sampling and phi-evaluation feed three comparative operators: clonal mutation, reaction-norm mutation, and cross-lineage hybridization. · Figure 1 · [source](https://arxiv.org/html/2608.07645v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/RealLcz/MGM)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2608.07645) · [Paper v1 (affiliations, Figure 1, results tables)](https://arxiv.org/html/2608.07645v1) · [Code repository (Apache-2.0)](https://github.com/RealLcz/MGM)
+
+<a id="metan-emergent-depth"></a>
+
+## Meta^n: Recursive Self-Improvement through Emergent Depth
+
+**2026-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: August 2026 (2608.24735); official repository created 2026-08-26. Exact v1 day not re-verified; month precision used.
+
+**Institutional relationship** — Paper: Zae Myung Kim, Young-Jun Lee, Dongyeop Kang (University of Minnesota) and Seungyeon Jwa (Seoul National University).
+
+**What changes and how feedback is reused** — A single fixed meta-operation Omega is applied repeatedly to its own outputs: each call reads the traces of the layers below and (from depth 3) their emitted code, then writes the next layer's code (pre-processor plus code library); wrappers compose so Sd = Md o ... o M2 o S1. Depth grows until Omega stops finding improvements (convergence threshold 0.02), with an evolutionary archive over chains; layer roles emerge unprompted (rollback behavior first appears at depth 3).
+
+**Author-reported result** — Realized meta-depth 3-6 across eight benchmark families (plateau 3-4; depth 6 on materials-science SR), versus prior self-rewriting systems capping at ~2.5. ARC-AGI-2: 0.331 +/- 0.010 vs OpenEvolve 0.003 and Godel Agent 0.054 - the only system to solve any task at all; CO-Bench (GPT-5.2) 0.870 vs OpenEvolve 0.702. Ablation -recursion: -0.131 (Gemma CO); inter-layer context carries ~72% of the gain.
+
+**Evidence limits** — Same model at all layers (a stronger Omega over a weaker base untested); inter-layer context is a free-form string; reasoning capacity at high meta-levels and context saturation from accumulated layer code remain untested ceilings.
+
+**Code / weights / data / license** — Code at github.com/minnesotanlp/meta-n (MIT, 29 stars at verification). Paper CC BY-NC-ND 4.0 (noncommercial terms).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: measure realized meta-depth (how many nested improvement layers actually help before plateau) as a standard report field - Meta^n shows it is measurable, and ~2.5 is the number to beat for self-rewriting loops.
+
+![Figure 1: Meta^n at a glance - one fixed meta-operation repeatedly reads the layers below and writes the next layer's code; realized depth grows to 3-6 versus the ~2.5 cap of self-rewriting systems.](assets/paper-figures/metan-emergent-depth.png)
+
+**Source figure / official image** — Figure 1: Meta^n at a glance - one fixed meta-operation repeatedly reads the layers below and writes the next layer's code; realized depth grows to 3-6 versus the ~2.5 cap of self-rewriting systems. · Figure 1 · [source](https://arxiv.org/html/2608.24735v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (MIT)](https://github.com/minnesotanlp/meta-n)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2608.24735) · [Paper v1 (affiliations, Figures 1-3, tables)](https://arxiv.org/html/2608.24735v1) · [Code repository (MIT)](https://github.com/minnesotanlp/meta-n)
 
 <a id="salesforce-beagle-darwinx"></a>
 
@@ -332,6 +452,96 @@
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2605.10332) · [Paper v2 (affiliations, Figure 2, Tables, ablations)](https://arxiv.org/html/2605.10332v2) · [Code repository (MIT)](https://github.com/air-embodied-brain/EmbodiSkill)
 
+<a id="skillclaw-collective-evolution"></a>
+
+## SkillClaw: Let Skills Evolve Collectively with Agentic Evolver
+
+**2026-04** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: April 2026 (2604.08377). Exact v1 day not re-verified; month precision used.
+
+**Institutional relationship** — Paper: the DreamX Team of Alibaba's Amap (Ziyu Ma, Shidong Yang, ..., Tongwen Huang, Xiangxiang Chu); repository under the AMAP-ML organization.
+
+**What changes and how feedback is reused** — Collective skill evolution across a fleet of interacting users: cross-user sessions become structured trajectories preserving full action-feedback causal chains; sessions are grouped by referenced skill (a natural ablation isolating each skill's effect); an agentic evolver reasons over success/failure patterns and picks refine / create / skip; candidate updates are validated nightly in idle user environments and only improvements that pass validation are merged and synchronized to all agents (Interaction -> Evidence -> Evolution -> Validation -> Deployment).
+
+**Author-reported result** — WildClawBench (Qwen3-Max backbone, 8 simulated users, 6 days; four of six categories reported): Social Interaction 54.01% -> 60.34% (+6.33), Search & Retrieval 22.73% -> 34.55% (+11.82, +52% relative), Creative Synthesis 11.57% -> 21.80% (+88.41% relative), Safety & Alignment 24.00% -> 32.00%. Controlled 'Skill Evolve Lite' probes: save-report 28.3% -> 100.0%; average 30.4% -> 72.5%. Gains are versus the Day-1 initial skill set, not external systems.
+
+**Evidence limits** — Self-described small-scale test (limited users, feedback signals, interaction depth); results cover only four of six categories; many late-round candidate updates were rejected (evolution plateaus within 6 days); validation adds token cost.
+
+**Code / weights / data / license** — Code at github.com/AMAP-ML/SkillClaw (MIT, 2,613 stars at verification).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: group execution evidence by the skill it exercised before attributing credit - per-skill session buckets are the cheapest causal isolation available without extra ablation runs.
+
+![Figure 1: SkillClaw overview - sessions preserving action-feedback causal chains are grouped by referenced skill, an agentic evolver refines or creates skills, and nightly validation gates what is merged back to every agent.](assets/paper-figures/skillclaw-collective-evolution.png)
+
+**Source figure / official image** — Figure 1: SkillClaw overview - sessions preserving action-feedback causal chains are grouped by referenced skill, an agentic evolver refines or creates skills, and nightly validation gates what is merged back to every agent. · Figure 1 · [source](https://arxiv.org/html/2604.08377v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (MIT)](https://github.com/AMAP-ML/SkillClaw)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2604.08377) · [Paper v1 (Figure 1, results)](https://arxiv.org/html/2604.08377v1) · [Code repository (MIT)](https://github.com/AMAP-ML/SkillClaw)
+
+<a id="genericagent-skill-tree"></a>
+
+## GenericAgent: A Self-Evololving Agent Growing a Skill Tree from a 3.3K-Line Seed
+
+**2026-04** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: April 2026 (2604.17091). Exact v1 day not re-verified; month precision used. The repository (lsdefine/GenericAgent, MIT) reached 14.2K stars by verification time.
+
+**Institutional relationship** — Paper credited to the Advantage AI Agent Lab (A3 Lab), 'a joint research lab with members from Shenzhen Aquaintelling Technology and Fudan University'; no individual authors listed.
+
+**What changes and how feedback is reused** — A unified agent loop (~92-line core inside a ~3,300-line codebase, >160x smaller than OpenClaw) constructs execution context from task plus memory and a two-level skill tree of categories and named skills with usage counters. A curriculum planner scores skill candidates (benefit, difficulty, usage, interest; weights 0.3/0.2/0.3/0.2) and adapts weights by reflection; each task ends with skill consolidation - archiving the Markdown report, updating the tree, incrementing counters - so the deployed artifact grows monotonically while the loop stays small.
+
+**Author-reported result** — Lifelong AgentBench: 100% accuracy at 222K input tokens vs OpenClaw 70% at 1.43M and Claude Code 75% at 800K (~6.4x token advantage - the repository's '6x' claim). Long-horizon tasks 100% at 188.8K tokens vs Claude Code 537K. Self-evolution round #1 -> #9: 222,203 -> 23,010 tokens (-89.6%), 7m30s -> 1m38s, 32 -> 5 LLM calls. Prompt after 20 skills: 2,298 tokens vs Claude Code 22,821, OpenClaw 43,321. Cross-task savings 61.0-92.4% (overall 79.3%).
+
+**Evidence limits** — 30-round context cap forces long research across sessions; the adaptive weight adjustment lacks long-term validation; the self-improvement log is manually curated; skill-tree merging/deprecation is manual.
+
+**Code / weights / data / license** — Code at github.com/lsdefine/GenericAgent (MIT, 14,200 stars at verification).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: proof that a minimal seed loop with skill consolidation can beat million-line harnesses on token efficiency - nanoRSI's stdlib-only kernel is the same bet; add usage counters and per-skill prompt isolation as the cheapest first step.
+
+![Figure 2: GenericAgent's unified loop - execution context from task, memory and a two-level skill tree; a curriculum planner scores skills and every task ends with skill consolidation (archive report, update tree, increment counters).](assets/paper-figures/genericagent-skill-tree.png)
+
+**Source figure / official image** — Figure 2: GenericAgent's unified loop - execution context from task, memory and a two-level skill tree; a curriculum planner scores skills and every task ends with skill consolidation (archive report, update tree, increment counters). · Figure 2 · [source](https://arxiv.org/html/2604.17091v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (MIT)](https://github.com/lsdefine/GenericAgent)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2604.17091) · [Paper v1 (Figure 2, token/cost tables)](https://arxiv.org/html/2604.17091v1) · [Code repository (MIT)](https://github.com/lsdefine/GenericAgent)
+
+<a id="apple-reinforced-agent"></a>
+
+## Reinforced Agent: Inference-Time Feedback Architecture for Tool-Calling Agents
+
+**2026-04** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: April 2026 (2604.27233); Apple ML research blog May 2026; ACL 2026 workshop. Exact v1 day not re-verified; month precision used.
+
+**Institutional relationship** — All three authors (Anh Ta, Junjie Zhu, Shahin Shayandeh) are at Apple.
+
+**What changes and how feedback is reused** — Separates execution from review: a base tool-calling agent emits a provisional tool call, and a separate reviewer agent evaluates it BEFORE execution - either injecting progressive feedback for revision, selecting among N candidates, or grading them. Reviewing pre-execution mitigates destructive errors and avoids the state-recovery problem. The reviewer itself is improved automatically: GEPA (genetic-Pareto prompt evolution with LLM reflection) optimizes the reviewer prompt (+4.5x length); the base agent stays untouched. Helpfulness-harmlessness metrics score reviewer corrections.
+
+**Author-reported result** — BFCL irrelevance detection 84.9% -> 90.4% (+5.5); relevance suite 90.9% -> 92.5%; tau2-Bench 48.7% -> 55.8% (+7.1). Benefit-to-risk ratio 3.1:1 (o3-mini reviewer: 36.8% helpfulness vs 11.7% harmfulness). GEPA adds +1.5-2.8%. Cost: 6.2x latency multiplier on BFCL (1.27s -> 7.87s) and 2.4x on tau2-Bench.
+
+**Evidence limits** — Only GPT-4o tested as base agent; GEPA optimization and benefit/risk metrics applied only to BFCL; latency multipliers are substantial; manual reviewer tuning does not generalize without automated optimization.
+
+**Code / weights / data / license** — No code repository; Apple ML research blog post (May 2026) accompanies the paper.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: place the acceptance check before execution (pre-execution review) rather than after damage, and optimize the reviewer's prompt with an evolutionary optimizer while freezing the actor.
+
+![Figure 2: feedback architecture - the base agent emits a provisional tool call, the reviewer agent evaluates it before execution, and feedback loops run until approval or a maximum iteration count.](assets/paper-figures/apple-reinforced-agent.svg)
+
+**Source figure / official image** — Figure 2: feedback architecture - the base agent emits a provisional tool call, the reviewer agent evaluates it before execution, and feedback loops run until approval or a maximum iteration count. · Figure 2 (inline SVG) · [source](https://arxiv.org/html/2604.27233v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2604.27233) · [Paper v1 (Figure 2, Tables, metrics)](https://arxiv.org/html/2604.27233v1) · [Apple ML research blog](https://machinelearning.apple.com/research/reinforced-agent-inference-feedback)
+
 <a id="meta-hyperagents-2026"></a>
 
 ## Hyperagents
@@ -356,7 +566,7 @@
 
 **Source figure / official image** — Figure 1: DGM-Hyperagents combines a modifiable task agent and meta agent with an archive of stepping stones. · Figure 1 · [source](https://arxiv.org/html/2603.19461v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
 
 **Open code / weights / data links** — [Official code](https://github.com/facebookresearch/HyperAgents) · [Code licence](https://github.com/facebookresearch/HyperAgents/blob/main/LICENSE.md)
 
@@ -391,6 +601,66 @@
 **Open code / weights / data links** — [Official M2.7 model](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) · [Current M2.7 non-commercial license](https://huggingface.co/MiniMaxAI/MiniMax-M2.7/blob/main/LICENSE)
 
 **Primary sources** — [Official M2.7 report](https://www.minimax.io/news/minimax-m27-en) · [Related M2-series technical paper dates](https://arxiv.org/abs/2605.26494) · [Related M2-series paper v1](https://arxiv.org/html/2605.26494v1) · [Official M2.7 model](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) · [Current M2.7 non-commercial license](https://huggingface.co/MiniMaxAI/MiniMax-M2.7/blob/main/LICENSE)
+
+<a id="stanford-meta-harness"></a>
+
+## Meta-Harness: End-to-End Optimization of Model Harnesses
+
+**2026-03** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: March 2026 (2603.28052); the Terminal-Bench 2.0 artifact repository was created 2026-03-26. Exact v1 day not re-verified; month precision used.
+
+**Institutional relationship** — Paper: Yoonho Lee, Roshen Nair, Qizheng Zhang, Chelsea Finn (Stanford), Kangwook Lee (KRAFTON), Omar Khattab (MIT).
+
+**What changes and how feedback is reused** — An outer search loop over task-harness code: a coding-agent proposer (Claude Code / Opus 4.6) reads a growing filesystem holding every prior candidate's source code, execution traces and scores (via grep/cat tools), proposes a new single-file harness controlling prompting, retrieval, memory and orchestration, evaluates it, and logs everything as a new directory. A Pareto frontier (accuracy vs context cost) replaces hard-coded parent selection; ~60 harnesses over 20 iterations. Ablation: full-trace access is the key ingredient - scores-only search collapses from 56.7 to 41.3 best accuracy, and trace summaries 'may even hurt'.
+
+**Author-reported result** — TerminalBench-2 with Opus 4.6: 76.4% (rank #2 among Opus-4.6 agents; Terminus-KIRA 74.7%; ForgeCode's higher 81.8% could not be reproduced from public code). With Haiku 4.5: 37.6%, #1. Text classification: 48.6% at 11.4K context tokens vs ACE 40.9% at 50.8K (+7.9 at 4x fewer tokens); OOD 73.1% vs 70.2%; matches best prior text optimizers in 0.1x the evaluations.
+
+**Evidence limits** — TerminalBench-2 uses the same 89 tasks for search and final evaluation ('discovery problem' setup), checked only by manual inspection and regex audits for string leakage; one proposer agent studied; ForgeCode's leaderboard score not reproducible.
+
+**Code / weights / data / license** — Project page yoonholee.com/meta-harness; optimized artifact at github.com/stanford-iris-lab/meta-harness-tbench2-artifact (1,213 stars, no license file at verification). Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: keep every candidate's full traces (not summaries) in a queryable store for the proposer - the ablation says trace access, not selection cleverness, is what makes harness search work.
+
+![Figure 2: the Meta-Harness search loop - an agent reads a filesystem of all prior candidates' code, traces and scores, proposes a new harness, evaluates it, and logs everything as a new directory.](assets/paper-figures/stanford-meta-harness.png)
+
+**Source figure / official image** — Figure 2: the Meta-Harness search loop - an agent reads a filesystem of all prior candidates' code, traces and scores, proposes a new harness, evaluates it, and logs everything as a new directory. · Figure 2 · [source](https://arxiv.org/html/2603.28052v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Artifact repository](https://github.com/stanford-iris-lab/meta-harness-tbench2-artifact)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2603.28052) · [Paper v1 (affiliations, Figure 2, results)](https://arxiv.org/html/2603.28052v1) · [Artifact repository](https://github.com/stanford-iris-lab/meta-harness-tbench2-artifact)
+
+<a id="stanford-feedback-descent"></a>
+
+## Feedback Descent: Open-Ended Text Optimization via Pairwise Comparison
+
+**2025-11-11** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2025-11-11. No later revision recorded at verification time.
+
+**Institutional relationship** — All three authors (Yoonho Lee, Joseph Boen, Chelsea Finn) are at Stanford University; the first author's page files it under 'Recursive Self-Improvement'.
+
+**What changes and how feedback is reused** — Textual critiques on pairwise comparisons act as high-bandwidth 'gradient-like' supervision for editing text artifacts entirely at inference time, with no weight updates. Each iteration: propose an improved artifact conditioned on accumulated feedback and the current best; an evaluator returns a binary preference plus a textual rationale; the rationale serves as a heuristic direction of improvement. Theory: if feedback directions are on average positively aligned with the true gradient, convergence is dimension-free and linear.
+
+**Author-reported result** — Prompt optimization (Qwen3-8B): beats GRPO on all four tasks (e.g., Hover 60.00 vs 38.67) and trades wins with GEPA (Hover 60.00 vs 52.33). Molecule optimization (DOCKSTRING): surpasses the 99.9th percentile of ~260K database compounds on all six targets (e.g., ADRB1 10.623 vs threshold 10.209), beating REINVENT and TextGrad.
+
+**Evidence limits** — Relies on strong evaluators, which may be scarce in some domains; in creative domains strictly 'following the gradient' may limit exploration.
+
+**Code / weights / data / license** — No code repository URL in the paper; materials via the first author's project page (yoonholee.com).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: replace scalar acceptance with 'preference + rationale' pairs when no numeric oracle exists - the rationale becomes reusable feedback memory for the next proposal, a text-space analogue of gradients.
+
+![Figure 1: feedback descent - each iteration compares the previous best artifact with a new candidate; the evaluator's binary preference plus textual rationale acts as a high-bandwidth directional cue for the next edit.](assets/paper-figures/stanford-feedback-descent.png)
+
+**Source figure / official image** — Figure 1: feedback descent - each iteration compares the previous best artifact with a new candidate; the evaluator's binary preference plus textual rationale acts as a high-bandwidth directional cue for the next edit. · Figure 1 · [source](https://arxiv.org/html/2511.07919v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2511.07919) · [Paper v1 (affiliations, Figure 1, Tables 2-3)](https://arxiv.org/html/2511.07919v1)
 
 <a id="tencent-webaggregator"></a>
 

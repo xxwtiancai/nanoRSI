@@ -32,6 +32,36 @@
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15396) · [Paper v1 PDF (affiliations, Figure 2, Table 2, protocol)](https://arxiv.org/pdf/2609.15396) · [Code repository (MIT)](https://github.com/WalteR-MittY-pro/SkillLift)
 
+<a id="dream-rsi-replay-simulator"></a>
+
+## Dream-RSI: Improving Exploration Policies by Dreaming over the Discovery Tree
+
+**2026-09-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-14；仓库创建于 2026-09-13。
+
+**机构关系** — 论文：马里兰大学帕克分校（Tong Zheng、Rui Liu、Heng Huang 等）、Google DeepMind（Zhankui He、Benjamin Coleman、Di Bai、Wang-Cheng Kang）与弗吉尼亚大学（Haolin Liu）。
+
+**改变对象与反馈复用** — 发现历史被组织成树，节点存每次尝试的工作区、工件、诊断与得分；这棵树成为回放模拟器——备选探索策略以不同顺序、并行分组与停止点'导航'已记录分支，无需重跑底层智能体。策略开发 LLM 迭代改写探索策略代码，每个版本按平衡最优得分、执行成本与并行度的回放目标打分；最优策略重新上线，新历史又扩充模拟器池。
+
+**作者报告结果** — 算法工程（Lasso、6 个留出数据集）：Gemini-3.1-Pro 下 Dream-RSI 以 317 次调用达均值 2,931ms，对固定探索 550 次的 3,587ms；Gemini-3.7-Flash 下 1,879 次调用 2,350.6ms 对 3,200 次的 2,516.7ms（SimpleTES 需 51,200 次）。内核工程：VGG16/LayerNorm 以少 2.43/1.79 倍生成数持平；ConvDiv 同预算下 +2.09 倍得分。
+
+**证据边界** — 回放只对已记录分支确定性有效——无法评估真正新颖的方向；增益仅见于 3 域 8 任务；需要结构化发现树；离线策略迭代仍耗 LLM 调用。
+
+**代码／权重／数据／许可** — 代码在 github.com/zhengkid/Dream-RSI（172 星，核验时无许可证文件）；项目站 dream-rsi.com。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把运行档案复用为免费模拟器——在花费任何新评估之前，让备选提案/调度策略在已记录的候选树上回放打分；这是有界环可用的最廉价策略改进形式。
+
+![图 1：Dream-RSI 三阶段递归环——在线探索构建发现树，树成为回放模拟器，'做梦'式策略改进离线改写探索策略。](assets/paper-figures/dream-rsi-replay-simulator.png)
+
+**原文图／官方图片** — 图 1：Dream-RSI 三阶段递归环——在线探索构建发现树，树成为回放模拟器，'做梦'式策略改进离线改写探索策略。 · Figure 1 · [source](https://arxiv.org/html/2609.14858v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/zhengkid/Dream-RSI)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.14858) · [Paper v1 (affiliations, Figure 1, tables)](https://arxiv.org/html/2609.14858v1) · [Code repository](https://github.com/zhengkid/Dream-RSI)
+
 <a id="persistent-skills-osworld"></a>
 
 ## From Interaction Traces to Persistent Skills: Online Evolution for Computer-Use Agents
@@ -152,6 +182,36 @@
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2609.01437) · [Paper v1](https://arxiv.org/html/2609.01437v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
+<a id="wikiskill-experience-wiki"></a>
+
+## WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution
+
+**2026-08-27** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-08-27。核验时无更新版本。
+
+**机构关系** — 论文 v1：Google Research（Liyan Tang、Cyrus Rashtchian、Chun-Sung Ferng、Andrew Tomkins、Da-Cheng Juan）与 Tu Vu（Google Research + 弗吉尼亚理工，通讯）。
+
+**改变对象与反馈复用** — 三层工作区：不可变的原始执行轨迹、跨迭代复利的持久 wiki（模式、日志、技能影响记录）、活跃的 SKILL.md 技能层。每轮推理智能体带技能（但不可访问 wiki）执行；wiki 维护者把采样轨迹固化为模式；技能提案者读 wiki 与轨迹，提议一次原子技能编辑；验证闸门决定接受或回滚技能——而 wiki 本身永不回滚，持续累积已接受/已拒绝 diff 的真值审计轨迹。
+
+**作者报告结果** — 五个基准 x 五个模型、3 次运行、配对 bootstrap p<0.05：WikiSkill 全格胜过无技能、Trace2Skill、EvoSkill 与 SkillOpt（如 Gemini-3.5-Flash 68.1 对 SkillOpt 55.9；Qwen-3.6-27B 63.3 对 50.7）。增益随模型规模扩大（Qwen 4B/9B/27B +12.3/+17.5/+23.9）；Qwen-3.5-9B + WikiSkill（47.4%）胜过无技能的 Qwen-3.6-27B（39.4%）。消融：只给提案者 wiki 访问 +15.0；给推理智能体 wiki 访问反而 -7.2。
+
+**证据边界** — 技能全量注入提示（未评估检索/触发）；严格闸门会拒绝可能支撑后续收益的中性提案；无自动 wiki 剪枝；未覆盖超长时程任务。
+
+**代码／权重／数据／许可** — 未找到代码发布；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把'永不回滚的知识'（wiki，含接受/拒绝 diff）与'可回滚的可执行技能'分层——一个单调增长的审计层，让技能闸门决策可事后复查。
+
+![图 2：WikiSkill 三层——不可变执行轨迹（raw）、跨迭代复利的持久知识库（wiki）、活跃过程指令（skills）；wiki 永不回滚。](assets/paper-figures/wikiskill-experience-wiki.png)
+
+**原文图／官方图片** — 图 2：WikiSkill 三层——不可变执行轨迹（raw）、跨迭代复利的持久知识库（wiki）、活跃过程指令（skills）；wiki 永不回滚。 · Figure 2 · [source](https://arxiv.org/html/2608.27454v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.27454) · [Paper v1 (affiliations, Figure 2, main table)](https://arxiv.org/html/2608.27454v1)
+
 <a id="qwen38-max-self-evolving-harness"></a>
 
 ## Qwen3.8-Max: A New Bar for Coding and Cowork (self-evolving harness demonstrations)
@@ -181,6 +241,66 @@
 **开源代码／权重／数据链接** — [Demonstration repository with full trace (Apache-2.0)](https://github.com/qwen-code-dev-bot/oh-my-cli)
 
 **一手来源** — [Official Qwen blog post (opened via browser)](https://qwen.ai/blog?id=qwen3.8) · [Demonstration repository with full trace (Apache-2.0)](https://github.com/qwen-code-dev-bot/oh-my-cli)
+
+<a id="mgm-mendel-godel-machine"></a>
+
+## Mendel Godel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution
+
+**2026-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 8 月（2608.07645）。v1 确切日期未复核，采用月精度。
+
+**机构关系** — 论文：Changzhi Liu、Yilun Liu、Sikuan Yan、Volker Tresp、Yunpu Ma——电子科技大学、慕尼黑大学与慕尼黑机器学习中心。
+
+**改变对象与反馈复用** — 在档案式自修改（DGM/HGM）上加入三个由比较证据驱动的孟德尔算子：克隆变异（单轨迹编辑）、反应规范变异（用同一智能体跨多任务的轨迹编辑——复现失败标记基因型缺陷）、跨谱系杂交（从另一谱系的成功轨迹提取可迁移行为性状并适配，不拼接代码）。失败任务池提高采样权重使谱系在难题上重叠。命题 1：加性适应度地形下，比较证据提升修复概率。
+
+**作者报告结果** — Qwen3.6-35B-A3B、200 次评估 + 24 次扩展：SWE-bench Verified-60 68.3% -> 78.3%（HGM 73.3%）；Polyglot-60 50.8% -> 93.2%（HGM 77.9%）；完整 Polyglot-225 达 93.3%，'以约 117 倍少的参数超过闭源 GPT-5'。跨基准迁移：SWE-bench Pro 16.7% -> 26.7%；Multilingual 41.7% -> 55.0%。跨模型迁移：DeepSeek-V4-Flash 50.0% -> 66.7%、V4-Pro 45.0% -> 75.0%。
+
+**证据边界** — 高时间/GPU 成本限制了种子数与扫参；算子需要多轨迹历史与跨谱系任务重叠（档案小时退化为单轨迹基线）；编辑质量无保证；结论限于公开基准上的编码智能体脚手架。
+
+**代码／权重／数据／许可** — 代码在 github.com/RealLcz/MGM（Apache-2.0，核验时 32 星）；项目页 reallcz.github.io/MGM。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：按谱系保存逐任务轨迹，并允许由跨任务复现失败（反应规范）与其他候选在共享任务上的成功（杂交）驱动的编辑——都是候选分数之外的选择信号。
+
+![图 1：孟德尔哥德尔机——档案谱系树上，采样与评估喂给三个比较算子：克隆变异、反应规范变异、跨谱系杂交。](assets/paper-figures/mgm-mendel-godel-machine.png)
+
+**原文图／官方图片** — 图 1：孟德尔哥德尔机——档案谱系树上，采样与评估喂给三个比较算子：克隆变异、反应规范变异、跨谱系杂交。 · Figure 1 · [source](https://arxiv.org/html/2608.07645v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/RealLcz/MGM)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.07645) · [Paper v1 (affiliations, Figure 1, results tables)](https://arxiv.org/html/2608.07645v1) · [Code repository (Apache-2.0)](https://github.com/RealLcz/MGM)
+
+<a id="metan-emergent-depth"></a>
+
+## Meta^n: Recursive Self-Improvement through Emergent Depth
+
+**2026-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 8 月（2608.24735）；官方仓库创建于 2026-08-26。v1 确切日期未复核，采用月精度。
+
+**机构关系** — 论文：Zae Myung Kim、Young-Jun Lee、Dongyeop Kang（明尼苏达大学）与 Seungyeon Jwa（首尔国立大学）。
+
+**改变对象与反馈复用** — 单一固定的元操作 Omega 反复作用于自身输出：每次调用读取下层的轨迹与（自第 3 层起）其产出的代码，再写出下一层代码（预处理器 + 代码库）；包装器复合成 Sd = Md o ... o M2 o S1。深度持续增长直到 Omega 不再找到改进（收敛阈值 0.02），并有跨链进化档案；各层角色无提示地涌现（回滚行为首次出现在第 3 层）。
+
+**作者报告结果** — 八个基准家族上实测元深度 3-6（平台期 3-4；材料科学 SR 达 6），而既有自改写系统实测上限约 2.5。ARC-AGI-2：0.331 +/- 0.010 对 OpenEvolve 0.003、Godel Agent 0.054——唯一能解出任意任务的系统；CO-Bench（GPT-5.2）0.870 对 0.702。消融去递归：-0.131（Gemma CO）；层间上下文贡献约 72% 增益。
+
+**证据边界** — 所有层用同一模型（更强的 Omega 配更弱基座未测）；层间上下文是自由文本；高层推理能力与累积层代码的上下文饱和仍是未测上界。
+
+**代码／权重／数据／许可** — 代码在 github.com/minnesotanlp/meta-n（MIT，核验时 29 星）。论文 CC BY-NC-ND 4.0（非商业条款）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把'实测元深度'（在平台期前真正有效的嵌套改进层数）作为标准报告字段——Meta^n 证明它可测量，而自改写环要打败的基线约为 2.5。
+
+![图 1：Meta^n 一览——固定元操作反复读取下层并写出下一层代码；实测深度增长到 3-6，而自改写系统上限约 2.5。](assets/paper-figures/metan-emergent-depth.png)
+
+**原文图／官方图片** — 图 1：Meta^n 一览——固定元操作反复读取下层并写出下一层代码；实测深度增长到 3-6，而自改写系统上限约 2.5。 · Figure 1 · [source](https://arxiv.org/html/2608.24735v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/minnesotanlp/meta-n)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.24735) · [Paper v1 (affiliations, Figures 1-3, tables)](https://arxiv.org/html/2608.24735v1) · [Code repository (MIT)](https://github.com/minnesotanlp/meta-n)
 
 <a id="salesforce-beagle-darwinx"></a>
 
@@ -332,6 +452,96 @@
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2605.10332) · [Paper v2 (affiliations, Figure 2, Tables, ablations)](https://arxiv.org/html/2605.10332v2) · [Code repository (MIT)](https://github.com/air-embodied-brain/EmbodiSkill)
 
+<a id="skillclaw-collective-evolution"></a>
+
+## SkillClaw: Let Skills Evolve Collectively with Agentic Evolver
+
+**2026-04** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 4 月（2604.08377）。v1 确切日期未复核，采用月精度。
+
+**机构关系** — 论文：阿里巴巴高德 DreamX 团队（Ziyu Ma、Shidong Yang 等，Tongwen Huang、Xiangxiang Chu）；仓库在 AMAP-ML 组织下。
+
+**改变对象与反馈复用** — 跨用户群体的技能集体进化：跨用户会话变成保留完整'动作-反馈'因果链的结构化轨迹；会话按所引用的技能分组（天然消融，隔离每个技能的影响）；智能体进化器分析成败模式后选择精炼/新建/跳过；候选更新夜间在空闲用户环境验证，只有通过验证的改进才合并并同步给全部智能体（交互 -> 证据 -> 进化 -> 验证 -> 部署）。
+
+**作者报告结果** — WildClawBench（Qwen3-Max 骨干、8 个模拟用户、6 天；报告六个类别中四个）：社交互动 54.01% -> 60.34%（+6.33）、搜索检索 22.73% -> 34.55%（+11.82，相对 +52%）、创意合成 11.57% -> 21.80%（相对 +88.41%）、安全对齐 24.00% -> 32.00%。受控'Skill Evolve Lite'探针：保存报告 28.3% -> 100.0%；平均 30.4% -> 72.5%。增益相对第 1 天初始技能集，非外部系统。
+
+**证据边界** — 作者自述小规模测试（用户、反馈信号、交互深度有限）；结果仅覆盖六类中四类；后期大量候选被拒（6 天内进化进入平台期）；验证增加 token 成本。
+
+**代码／权重／数据／许可** — 代码在 github.com/AMAP-ML/SkillClaw（MIT，核验时 2,613 星）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：先按'调用过的技能'给执行证据分组再做归因——按技能分桶的会话是无须额外消融运行的最廉价因果隔离。
+
+![图 1：SkillClaw 总览——保留动作-反馈因果链的会话按所引技能分组，智能体进化器精炼或新建技能，夜间验证闸门决定合并回全部智能体的内容。](assets/paper-figures/skillclaw-collective-evolution.png)
+
+**原文图／官方图片** — 图 1：SkillClaw 总览——保留动作-反馈因果链的会话按所引技能分组，智能体进化器精炼或新建技能，夜间验证闸门决定合并回全部智能体的内容。 · Figure 1 · [source](https://arxiv.org/html/2604.08377v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/AMAP-ML/SkillClaw)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2604.08377) · [Paper v1 (Figure 1, results)](https://arxiv.org/html/2604.08377v1) · [Code repository (MIT)](https://github.com/AMAP-ML/SkillClaw)
+
+<a id="genericagent-skill-tree"></a>
+
+## GenericAgent: A Self-Evololving Agent Growing a Skill Tree from a 3.3K-Line Seed
+
+**2026-04** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 4 月（2604.17091）。v1 确切日期未复核，采用月精度。仓库（lsdefine/GenericAgent，MIT）核验时已达 1.42 万星。
+
+**机构关系** — 论文署名为 Advantage AI Agent Lab（A3 Lab），'深圳 Aquaintelling 科技与复旦大学成员的联合实验室'；未列个人作者。
+
+**改变对象与反馈复用** — 统一智能体循环（约 3,300 行代码中核心约 92 行，比 OpenClaw 小 160 倍以上）从任务、记忆与两层技能树（类别 + 带使用计数的命名技能）构造执行上下文。课程规划器为技能候选打分（收益/难度/使用/兴趣，权重 0.3/0.2/0.3/0.2）并经反思自适应权重；每个任务以'技能固化'收尾——归档 Markdown 报告、更新技能树、递增计数——部署产物单调增长而循环保持极小。
+
+**作者报告结果** — Lifelong AgentBench：222K 输入 token 下 100% 准确率，对 OpenClaw 1.43M 下 70%、Claude Code 800K 下 75%（约 6.4 倍 token 优势——即仓库的'6 倍'说法）。长时程任务 188.8K token 下 100%，对 Claude Code 537K。自进化第 1 -> 9 轮：222,203 -> 23,010 token（-89.6%）、7m30s -> 1m38s、32 -> 5 次 LLM 调用。20 个技能后提示仅 2,298 token，对 Claude Code 22,821、OpenClaw 43,321。跨任务节省 61.0-92.4%（总体 79.3%）。
+
+**证据边界** — 30 轮上下文上限迫使长研究跨会话；自适应权重缺乏长期验证；自改进日志人工整理；技能树的合并/废弃靠手工。
+
+**代码／权重／数据／许可** — 代码在 github.com/lsdefine/GenericAgent（MIT，核验时 14,200 星）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：证明带技能固化的极小种子环能在 token 效率上胜过百万行级 harness——nanoRSI 的纯标准库内核押注相同；使用计数与按技能隔离提示是最廉价的第一步。
+
+![图 2：GenericAgent 统一循环——由任务、记忆与两层技能树构造执行上下文；课程规划器为技能打分，每个任务以技能固化（归档报告、更新树、递增计数）收尾。](assets/paper-figures/genericagent-skill-tree.png)
+
+**原文图／官方图片** — 图 2：GenericAgent 统一循环——由任务、记忆与两层技能树构造执行上下文；课程规划器为技能打分，每个任务以技能固化（归档报告、更新树、递增计数）收尾。 · Figure 2 · [source](https://arxiv.org/html/2604.17091v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/lsdefine/GenericAgent)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2604.17091) · [Paper v1 (Figure 2, token/cost tables)](https://arxiv.org/html/2604.17091v1) · [Code repository (MIT)](https://github.com/lsdefine/GenericAgent)
+
+<a id="apple-reinforced-agent"></a>
+
+## Reinforced Agent: Inference-Time Feedback Architecture for Tool-Calling Agents
+
+**2026-04** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 4 月（2604.27233）；Apple 机器学习研究博客 2026 年 5 月；ACL 2026 workshop。v1 确切日期未复核，采用月精度。
+
+**机构关系** — 三位作者（Anh Ta、Junjie Zhu、Shahin Shayandeh）均属 Apple。
+
+**改变对象与反馈复用** — 把执行与审查分离：基础工具调用智能体先给出临时工具调用，由独立的审查智能体在执行前评估——注入渐进反馈促其修订、在 N 个候选中选择或打分。执行前审查既缓解破坏性错误又规避状态恢复问题。审查者本身也被自动改进：GEPA（带 LLM 反思的遗传-帕累托提示进化）优化审查提示（长度增至 4.5 倍）；基础智能体不动。有益-有害双指标为审查者修正打分。
+
+**作者报告结果** — BFCL 无关检测 84.9% -> 90.4%（+5.5）；相关套件 90.9% -> 92.5%；tau2-Bench 48.7% -> 55.8%（+7.1）。收益风险比 3.1:1（o3-mini 审查者：有益 36.8% 对有害 11.7%）。GEPA 再加 +1.5-2.8%。代价：BFCL 延迟 6.2 倍（1.27s -> 7.87s），tau2-Bench 2.4 倍。
+
+**证据边界** — 基础智能体仅测 GPT-4o；GEPA 优化与收益/风险指标仅用于 BFCL；延迟倍数不小；无自动优化时手工调审查提示不可泛化。
+
+**代码／权重／数据／许可** — 无代码仓库；配套 Apple 机器学习研究博客（2026 年 5 月）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把验收检查放到执行之前（执行前审查）而非破坏之后；用进化优化器优化审查者提示、冻结执行者。
+
+![图 2：反馈架构——基础智能体给出临时工具调用，审查智能体在执行前评估，反馈循环直到批准或达到最大迭代。](assets/paper-figures/apple-reinforced-agent.svg)
+
+**原文图／官方图片** — 图 2：反馈架构——基础智能体给出临时工具调用，审查智能体在执行前评估，反馈循环直到批准或达到最大迭代。 · Figure 2 (inline SVG) · [source](https://arxiv.org/html/2604.27233v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2604.27233) · [Paper v1 (Figure 2, Tables, metrics)](https://arxiv.org/html/2604.27233v1) · [Apple ML research blog](https://machinelearning.apple.com/research/reinforced-agent-inference-feedback)
+
 <a id="meta-hyperagents-2026"></a>
 
 ## Hyperagents
@@ -356,7 +566,7 @@
 
 **原文图／官方图片** — 图 1：DGM-Hyperagents 将可修改的任务 Agent 与元 Agent 结合，并用 stepping-stone 档案持续搜索。 · Figure 1 · [source](https://arxiv.org/html/2603.19461v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-13.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
 
 **开源代码／权重／数据链接** — [Official code](https://github.com/facebookresearch/HyperAgents) · [Code licence](https://github.com/facebookresearch/HyperAgents/blob/main/LICENSE.md)
 
@@ -391,6 +601,66 @@
 **开源代码／权重／数据链接** — [Official M2.7 model](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) · [Current M2.7 non-commercial license](https://huggingface.co/MiniMaxAI/MiniMax-M2.7/blob/main/LICENSE)
 
 **一手来源** — [Official M2.7 report](https://www.minimax.io/news/minimax-m27-en) · [Related M2-series technical paper dates](https://arxiv.org/abs/2605.26494) · [Related M2-series paper v1](https://arxiv.org/html/2605.26494v1) · [Official M2.7 model](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) · [Current M2.7 non-commercial license](https://huggingface.co/MiniMaxAI/MiniMax-M2.7/blob/main/LICENSE)
+
+<a id="stanford-meta-harness"></a>
+
+## Meta-Harness: End-to-End Optimization of Model Harnesses
+
+**2026-03** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 3 月（2603.28052）；Terminal-Bench 2.0 工件仓库创建于 2026-03-26。v1 确切日期未复核，采用月精度。
+
+**机构关系** — 论文：Yoonho Lee、Roshen Nair、Qizheng Zhang、Chelsea Finn（斯坦福）、Kangwook Lee（KRAFTON）、Omar Khattab（MIT）。
+
+**改变对象与反馈复用** — 对任务 harness 代码的外层搜索环：编码智能体提案者（Claude Code / Opus 4.6）读取一个持续增长的文件系统——内含此前每个候选的源码、执行轨迹与分数（经 grep/cat 工具）——提议新的单文件 harness（控制提示、检索、记忆与编排），评估后把全部信息写入新目录。用精度-上下文成本的 Pareto 前沿取代硬编码父代选择；20 轮迭代约 60 个 harness。消融：完整轨迹访问是关键——只看分数时最优精度从 56.7 塌到 41.3，轨迹摘要甚至有害。
+
+**作者报告结果** — TerminalBench-2（Opus 4.6）：76.4%（Opus-4.6 智能体中排名第二；Terminus-KIRA 74.7%；ForgeCode 更高的 81.8% 用公开代码无法复现）。Haiku 4.5：37.6%，第一。文本分类：11.4K 上下文 token 下 48.6%，对 ACE 50.8K 下的 40.9%（+7.9 且省 4 倍 token）；OOD 73.1% 对 70.2%；以 0.1 倍评估次数追平此前最优文本优化器。
+
+**证据边界** — TerminalBench-2 的搜索与最终评估用同一批 89 个任务（'发现问题'设定），仅靠人工检查与正则审计查字符串泄漏；只研究了一个提案智能体；ForgeCode 榜单分无法复现。
+
+**代码／权重／数据／许可** — 项目页 yoonholee.com/meta-harness；优化工件在 github.com/stanford-iris-lab/meta-harness-tbench2-artifact（1,213 星，核验时无许可证文件）。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把每个候选的完整轨迹（而非摘要）存入提案者可查询的存储——消融表明让 harness 搜索奏效的是轨迹访问本身，而非选择策略的精巧。
+
+![图 2：Meta-Harness 搜索环——智能体读取含此前全部候选代码、轨迹与分数的文件系统，提议新 harness、评估、并把全部信息记入新目录。](assets/paper-figures/stanford-meta-harness.png)
+
+**原文图／官方图片** — 图 2：Meta-Harness 搜索环——智能体读取含此前全部候选代码、轨迹与分数的文件系统，提议新 harness、评估、并把全部信息记入新目录。 · Figure 2 · [source](https://arxiv.org/html/2603.28052v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Artifact repository](https://github.com/stanford-iris-lab/meta-harness-tbench2-artifact)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2603.28052) · [Paper v1 (affiliations, Figure 2, results)](https://arxiv.org/html/2603.28052v1) · [Artifact repository](https://github.com/stanford-iris-lab/meta-harness-tbench2-artifact)
+
+<a id="stanford-feedback-descent"></a>
+
+## Feedback Descent: Open-Ended Text Optimization via Pairwise Comparison
+
+**2025-11-11** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2025-11-11。核验时无更新版本。
+
+**机构关系** — 三位作者（Yoonho Lee、Joseph Boen、Chelsea Finn）均属斯坦福大学；一作个人页面把它归入'Recursive Self-Improvement'方向。
+
+**改变对象与反馈复用** — 对成对比较的文本批评充当高带宽'类梯度'监督，完全在推理期编辑文本工件，不改权重。每轮：在累积反馈与当前最优条件下提议改进工件；评估器返回二元偏好 + 文本理由；理由即启发式改进方向。理论：若反馈方向平均与真实梯度正相关，收敛与维度无关且为线性。
+
+**作者报告结果** — 提示优化（Qwen3-8B）：四任务全胜 GRPO（如 Hover 60.00 对 38.67），与 GEPA 互有胜负（Hover 60.00 对 52.33）。分子优化（DOCKSTRING）：六个靶点全部超过约 26 万化合物库的第 99.9 百分位（如 ADRB1 10.623 对阈值 10.209），胜 REINVENT 与 TextGrad。
+
+**证据边界** — 依赖强评估器（某些领域稀缺）；创意领域严格'沿梯度走'可能限制探索。
+
+**代码／权重／数据／许可** — 论文未给代码仓库 URL；素材见一作项目页（yoonholee.com）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：无数值 oracle 时，把标量验收换成'偏好 + 理由'对——理由成为下一次提议的复用反馈记忆，即文本空间的梯度类似物。
+
+![图 1：反馈下降——每轮把当前最优工件与新候选比较；评估器的二元偏好 + 文本理由作为下一次编辑的高带宽方向信号。](assets/paper-figures/stanford-feedback-descent.png)
+
+**原文图／官方图片** — 图 1：反馈下降——每轮把当前最优工件与新候选比较；评估器的二元偏好 + 文本理由作为下一次编辑的高带宽方向信号。 · Figure 1 · [source](https://arxiv.org/html/2511.07919v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2511.07919) · [Paper v1 (affiliations, Figure 1, Tables 2-3)](https://arxiv.org/html/2511.07919v1)
 
 <a id="tencent-webaggregator"></a>
 

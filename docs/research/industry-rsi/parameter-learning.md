@@ -2,6 +2,36 @@
 
 [← Research map](README.md)
 
+<a id="evors-reward-evolution"></a>
+
+## EvoRS: On-Policy Self-Evolution of Reward Systems for Open-Ended Reinforcement Learning
+
+**2026-09-11** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-09-11. No later revision recorded at verification time.
+
+**Institutional relationship** — Paper v1: Fudan University (School of Data Science + Shanghai Key Lab of Data Science; Deqing Yang corresponding) with Nankai University (Cryptology) and Hello Group engineers.
+
+**What changes and how feedback is reused** — The reward system itself is the evolving artifact: an executable Reward-DAG whose rubric nodes (criteria + scoring mechanisms) and composition operators define the RL reward. Every N policy updates, an agentic designer reads on-policy rollouts and node-level reward traces, diagnoses validity/coverage/informativeness failures, and proposes bounded typed edits; 'matched replay' compares current and candidate reward states on the same rollout cases, and only a candidate that repairs the targeted failure while preserving useful reward behavior becomes the next active state. Outcomes feed run-local memory and dynamic skills.
+
+**Author-reported result** — WritingBench 57.001 vs base 54.894 (+2.107, the largest gain, averaged over three judges GPT-5.6-Terra/DeepSeek-V4-Pro/GLM-5.2) and the only method whose hacking rate falls below base (6.5 vs 7.7); CoSER 65.676 vs 60.909 (+4.767), rank-first on all four dimensions. Generalizes across reward models (Qwen3-8B: 66.370 vs RaR 62.044). Ablations: fixed final Reward-DAG costs -0.693/-5.103; dropping candidate selection -3.182; evolution memory -3.264. Cost ~192 A800 GPU-hours per run.
+
+**Evidence limits** — Evaluated on writing and roleplay only; agentic/tool-use extension unvalidated; fixed every-N-step evolution schedule; extra compute for periodic diagnosis/candidate evaluation.
+
+**Code / weights / data / license** — No code release located; paper only. Designer uses Codex SDK with GPT-5.4.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: the evaluator side can evolve too - version the reward definition as a DAG, let a designer propose typed edits, and accept them only via matched-replay comparison on identical rollouts; log rejected reward edits like rejected skills.
+
+![Figure 4: EvoRS overview - policy learning is coupled with reward-system evolution over an executable Reward-DAG, with candidate states selected by matched replay on the same rollouts.](assets/paper-figures/evors-reward-evolution.png)
+
+**Source figure / official image** — Figure 4: EvoRS overview - policy learning is coupled with reward-system evolution over an executable Reward-DAG, with candidate states selected by matched replay on the same rollouts. · Figure 4 · [source](https://arxiv.org/html/2609.12459v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.12459) · [Paper v1 (affiliations, Figure 4, Tables 1-3)](https://arxiv.org/html/2609.12459v1)
+
 <a id="tokenrhythm-neohorse-1"></a>
 
 ## NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness
@@ -92,6 +122,66 @@
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2608.31111) · [Paper v1 retention protocol and Table 1](https://arxiv.org/html/2608.31111v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
+<a id="sesa-self-play-skills"></a>
+
+## Self-Play Meets Skill Evolution: Self-Evolving Search Agents that Pose, Solve, and Remember
+
+**2026-07-31** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-07-31. No later revision recorded at verification time.
+
+**Institutional relationship** — Paper v1: UCAS + Institute of Automation CAS + Peking University + Mininglamp Technology + Tsinghua University + Qilu University of Technology (Shandong Computer Science Center); corresponding authors Guannan He and Changwei Wang.
+
+**What changes and how feedback is reused** — Asymmetric self-play couples three evolving objects: a Challenger poses verifiable search questions from a 50K answer pool; only the solver can retrieve from a skill bank (memory hidden from the challenger to prevent strategy leakage); informative frontier failures are distilled into skills (trigger, avoidance cues, query templates) with cosine deduplication and eviction on net-negative helpfulness. Skills enter on-policy rollouts, reshaping the trajectory distribution for the policy gradient so gains are internalized in solver weights; the strengthened solver shifts the challenger's frontier-shaped difficulty reward, whose new failures rewrite memory - a closed flywheel that commits bank updates only at step boundaries.
+
+**Author-reported result** — Across seven QA benchmarks (3,125 held-out questions): +1.2 to +3.2 average accuracy over SSP across six backbones (e.g., Qwen3-8B 47.5 avg with +7.0 over base); beats SkillRL-Search-7B 51.0 vs 50.1 under a unified protocol; memory-free deployment (SESA-Off) retains +1.8 to +2.2 and re-enabling the bank adds +0.5 to +1.0. Ablations: without failure distillation -2.7.
+
+**Evidence limits** — Gains are not per-benchmark uniform (below SSP on 2Wiki for Qwen3-4B, on Bamboogle for Qwen3-8B); retrieval can distract the solver; coupled-evolution evidence is correlational; solver-only memory access is a design constraint, not ablated.
+
+**Code / weights / data / license** — Code listed at github.com/Zenghuang-Fu/SESA-Self-Evolving-Agents (URL from the paper; repository did not resolve via the GitHub API at verification time). Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: hide evolving memory from the task generator (asymmetric access) so generated tasks cannot exploit memorized answers, and internalize skill gains into weights before declaring recursion.
+
+![Figure 2: SESA training loop - memory priming seeds a retrievable skill bank; asymmetric self-play lets the challenger pose search tasks while only the solver retrieves skills; frontier shaping and failure distillation close the flywheel.](assets/paper-figures/sesa-self-play-skills.png)
+
+**Source figure / official image** — Figure 2: SESA training loop - memory priming seeds a retrievable skill bank; asymmetric self-play lets the challenger pose search tasks while only the solver retrieves skills; frontier shaping and failure distillation close the flywheel. · Figure 2 · [source](https://arxiv.org/html/2607.29468v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2607.29468) · [Paper v1 (affiliations, Figure 2, tables)](https://arxiv.org/html/2607.29468v1)
+
+<a id="spyrl-self-verifiable-rewards"></a>
+
+## From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement
+
+**2026-07-26** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-07-26; v2: 2026-07-31 (numbers cited from v2). Accepted at COLM 2026.
+
+**Institutional relationship** — Paper v2: Duke University, Adobe Inc., Oregon State University, Penn State, NUS, Amazon; one contribution done at Adobe.
+
+**What changes and how feedback is reused** — Transforms open-ended tasks into proxy environments whose latent variable induces exactly checkable rewards: in SpyRL ('Who Is the Spy?'), n-1 civilians see the full input while the spy sees a degraded version, all perform the task, then detectors vote on the spy's identity - the detection reward is deterministic against the environment-assigned spy index, and performing rewards are zero-sum in suspicion votes. GRPO-style optimization with role-advantage estimation and hysteresis-gated alternating updates; no human preference or LLM judge anywhere.
+
+**Author-reported result** — Qwen3-8B win rates vs backbone: 75.4% (summarization) and 77.3% (creative writing); GovReport ROUGE-L 36.7 vs Absolute Zero 33.2, R-Zero 32.1, base 30.2; math also improves (Qwen3-4B: GSM8K 93.4 vs 84.5, GPQA-D 41.3 vs 26.3, average +8.97%); beats rubric-as-reward pipelines (Qwen3.5-27B-RaR) at ~$200-900 less verifier inference cost.
+
+**Evidence limits** — Cross-task transfer fails from math to writing (negative transfer); group-size gains plateau beyond n=5; the degradation operator must stay meaningful but non-degenerate; prolonged self-play carries known degeneration risk, mitigated but not eliminated.
+
+**Code / weights / data / license** — Code at github.com/wangqinsi1/RLSVR/tree/SpyRL (Apache-2.0, 192 stars at verification). Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: when a task lacks a verifier, transform it into a proxy game whose hidden state makes the reward mechanically checkable - verifiability by construction rather than by judging.
+
+![Figure 2: the two-stage SpyRL game - civilians and the degraded-information spy perform the task, detectors vote, performing rewards are inverse to suspicion votes and detection rewards are deterministically verifiable against the known spy identity.](assets/paper-figures/spyrl-self-verifiable-rewards.png)
+
+**Source figure / official image** — Figure 2: the two-stage SpyRL game - civilians and the degraded-information spy perform the task, detectors vote, performing rewards are inverse to suspicion votes and detection rewards are deterministically verifiable against the known spy identity. · Figure 2 · [source](https://arxiv.org/html/2607.23802v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/wangqinsi1/RLSVR/tree/SpyRL)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2607.23802) · [Paper v2 (affiliations, Figure 2, tables)](https://arxiv.org/html/2607.23802v2) · [Code repository (Apache-2.0)](https://github.com/wangqinsi1/RLSVR/tree/SpyRL)
+
 <a id="gpt-red"></a>
 
 ## GPT-Red: Automated Red Teaming via Self-Play at Scale
@@ -121,6 +211,66 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [Paper](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf) · [Official report](https://openai.com/index/unlocking-self-improvement-gpt-red/)
+
+<a id="qevolve-in-distribution"></a>
+
+## Self-Evolving LLM Agents with In-Distribution Optimization
+
+**2026-06-05** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-06-05. Accepted at ICML 2026.
+
+**Institutional relationship** — Paper v1: TU Eindhoven (Yudi Zhang, Mykola Pechenizkiy), Meng Fang (TU/e + University of Liverpool, corresponding), Zhenfang Chen (MIT-IBM Watson AI Lab).
+
+**What changes and how feedback is reused** — Each self-evolution round trains an in-distribution critic by weighted Implicit Q-Learning on a hybrid of expert demonstrations and the agent's own trajectories (no max over out-of-distribution actions; step weights upweight informative later steps of successful trajectories), derives step-level process rewards via GAE over environment rewards only, and updates the policy with behavior-proximal policy optimization - asymmetric clipping that aggressively suppresses negative-advantage actions - so distribution shift across rounds is explicitly controlled. Policy, critic and dataset co-evolve over 2-3 iterations.
+
+**Author-reported result** — Llama-2-7B-Chat backbone: average 79.4 vs QLASS 74.5, ETO 69.4, Best-of-N 65.4, PPO 45.3 (ALFWorld seen/unseen 90.7/89.6; ScienceWorld unseen 69.7; WebShop 70.5). Sample efficiency: Q-Evolve reaches 88.6/87.3 on ALFWorld (Qwen2.5-7B) with 13K environment steps versus 320K for PPO/RLOO/GRPO and ~600K for QLASS.
+
+**Evidence limits** — Retrospective rewards depend on structured environment feedback; greedy rollouts reduce trajectory diversity across iterations; cross-iteration distribution drift is not explicitly corrected.
+
+**Code / weights / data / license** — Project page qevolve.github.io. No code repository stated on the arXiv page; paper CC BY-NC-SA 4.0 (noncommercial terms).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI's model track: keep each learning round's critic trained in-distribution on the current policy's own rollouts (plus demos) and use asymmetric clipping - a recipe for multi-round stability without off-policy drift.
+
+![Figure 2: Q-Evolve framework - warmup behavior cloning, then iterative loops over hybrid demonstrations and self-trajectories with retrospective labeling, in-distribution critic learning, token-level advantage redistribution, and co-evolution of policy, critic and dataset.](assets/paper-figures/qevolve-in-distribution.png)
+
+**Source figure / official image** — Figure 2: Q-Evolve framework - warmup behavior cloning, then iterative loops over hybrid demonstrations and self-trajectories with retrospective labeling, in-distribution critic learning, token-level advantage redistribution, and co-evolution of policy, critic and dataset. · Figure 2 · [source](https://arxiv.org/html/2606.07367v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2606.07367) · [Paper v1 (affiliations, Figure 2, Tables 2/5/6)](https://arxiv.org/html/2606.07367v1)
+
+<a id="cmu-stv-self-trained-verification"></a>
+
+## Self-Trained Verification for Training- and Test-Time Self-Improvement
+
+**2026-05-28** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-05-28; v2: 2026-05-31 (numbers cited from v2).
+
+**Institutional relationship** — Both authors (Chen Henry Wu, Aditi Raghunathan) are at Carnegie Mellon University.
+
+**What changes and how feedback is reused** — Exploits the asymmetry that a model cannot diagnose its own errors cold but can when shown a reference solution. A reference-conditioned verifier (teacher) supervises an unconditioned student via on-policy distillation over (verdict, feedback) distributions plus a verdict-RL term against ground-truth correctness; SFT on teacher traces fails due to off-policy drift. The trained verifier then powers both test-time verification-refinement loops and verifier-in-the-loop (ViL) RL training of the generator - the verifier itself is the self-improved artifact.
+
+**Author-reported result** — Roughly doubles accuracy on hard math (final-round Hardest 5.5% vs 2.7% for Qwen3-32B's pipeline); SciKnowEval Hardest 1.5% -> 21.0% and Hard 11.5% -> 42.4%, beating Qwen3-235B-A22B; ViL adds a further +33% relative pass@1 from an RLVR-converged generator where extending RLVR alone gives no gain; STV-trained 4B verifier nearly matches an 8B one (26.4% vs 27.4%).
+
+**Evidence limits** — Open questions per authors: generalization beyond math to non-verifiable-from-scratch tasks, other supervision signals, larger models, and the compute-optimal split between generator, verifier and test-time rounds.
+
+**Code / weights / data / license** — Code at github.com/AR-FORUM/stv (Apache-2.0, 11 stars at verification); project page ar-forum.github.io/stv-webpage. Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: train the acceptance-verifier by imitating its own reference-conditioned judgments, then gate every candidate change through that self-trained verifier - directly strengthens the frozen-evaluator invariant with a cheap learned checker.
+
+![Figure 1: self-trained verification - a reference-conditioned teacher verifier distills into an unconditioned student, which then drives test-time verification-refinement loops and verifier-in-the-loop RL.](assets/paper-figures/cmu-stv-self-trained-verification.svg)
+
+**Source figure / official image** — Figure 1: self-trained verification - a reference-conditioned teacher verifier distills into an unconditioned student, which then drives test-time verification-refinement loops and verifier-in-the-loop RL. · Figure 1 · [source](https://arxiv.org/html/2605.30290v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/AR-FORUM/stv)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2605.30290) · [Paper v2 (affiliations, Figure 1, all tables)](https://arxiv.org/html/2605.30290v2) · [Code repository (Apache-2.0)](https://github.com/AR-FORUM/stv)
 
 <a id="a3"></a>
 
@@ -182,6 +332,126 @@
 
 **Primary sources** — [Original paper date](https://arxiv.org/abs/2602.15902) · [Paper Table 1](https://arxiv.org/html/2602.15902v1) · [Official project and affiliations](https://pub.sakana.ai/doc-to-lora/) · [Official code](https://github.com/SakanaAI/doc-to-lora) · [Official checkpoint inventory](https://huggingface.co/SakanaAI/doc-to-lora/tree/main)
 
+<a id="skillrl-skill-augmented-rl"></a>
+
+## SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning
+
+**2026-02-09** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-02-09. No later revision recorded at verification time.
+
+**Institutional relationship** — Paper v1: UNC-Chapel Hill leads (Peng Xia ... Huaxiu Yao, aiming-lab); co-authors span UChicago, UCSD, NEC Labs America, UC Berkeley and UC Santa Cruz.
+
+**What changes and how feedback is reused** — A hierarchical SkillBank distilled from trajectories (general strategies plus task-specific skills retrieved by embedding similarity) is used in-context during rollouts while the RL policy is trained with GRPO - and the library itself keeps co-evolving: after each validation epoch, failed-trajectory categories trigger skill generation/refinement (max 3 new skills per evolution round), so skills and weights improve each other. Skill distillation compresses context 10-20x.
+
+**Author-reported result** — ALFWorld 89.9% overall success vs GRPO 77.6% (+12.3 absolute; Mem0+GRPO 54.7%); WebShop 85.2 score / 72.7% success vs GRPO 79.3/66.1; search-augmented QA average 47.1% vs Search-R1 38.5% and EvolveR 43.1% (Bamboogle 73.8 vs EvolveR 54.4). Ablations: no library drops ALFWorld to 61.7; no dynamic evolution to 84.4; library grows 55 -> 100 skills.
+
+**Evidence limits** — No explicit limitations section. Implicit: depends on a strong teacher (OpenAI o3) for distillation, binary rewards, skill growth capped by hyperparameters, Qwen2.5-7B-Instruct base.
+
+**Code / weights / data / license** — Code at github.com/aiming-lab/SkillRL (MIT, 976 stars at verification).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: the missing bridge between its skills and model tracks - validate skills against frozen-rollout baselines first, then co-evolve the library with the learner and log which side contributes what.
+
+![Figure 2: SkillRL framework - trajectories are distilled into a hierarchical skill bank, cold-start SFT teaches skill use, and RL training co-evolves the policy with the library driven by validation failures.](assets/paper-figures/skillrl-skill-augmented-rl.png)
+
+**Source figure / official image** — Figure 2: SkillRL framework - trajectories are distilled into a hierarchical skill bank, cold-start SFT teaches skill use, and RL training co-evolves the policy with the library driven by validation failures. · Figure 2 · [source](https://arxiv.org/html/2602.08234v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (MIT)](https://github.com/aiming-lab/SkillRL)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2602.08234) · [Paper v1 (affiliations, Figure 2, Tables 1-5)](https://arxiv.org/html/2602.08234v1) · [Code repository (MIT)](https://github.com/aiming-lab/SkillRL)
+
+<a id="eigendata-self-evolving-synthesis"></a>
+
+## From Self-Evolving Synthetic Data to Verifiable-Reward RL: Post-Training Multi-turn Interactive Tool-Using Agents
+
+**2026-01-30** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-01-30; v3: 2026-03-10 (numbers cited from v3).
+
+**Institutional relationship** — Paper v3: Jiaxuan Gao, Shusheng Xu, Yi Wu at Tsinghua University; Jiaao Chen, Di Jin at Eigen AI (corresponding); Chuyi He independent.
+
+**What changes and how feedback is reused** — A hierarchical multi-agent engine generates diversified synthesis-evaluation plan pairs; worker agents run task synthesis, task verification, trajectory rollout (with a user simulator) and trajectory verification (attributing failure to task vs trajectory); each instance gets an executable per-instance checker comparing final state against ground truth for binary reward. A reflection module updates both synthesis and evaluation plans from failures each iteration - the data pipeline itself evolves - before GRPO-style RL on the verifiable rewards.
+
+**Author-reported result** — Qwen3-235B-A22B-2507 + RL: 73.0% pass^1 on tau2-bench Airline (matches Gemini 3.0 Pro, exceeds GPT-5 at 62.5%), 98.3% Telecom (best reported); mix-trained average 81.3% surpassing Qwen3-Max-Thinking (80.7%) and GPT-5 (80.0%). Ablations (Airline SFT, 30B-A3B): full 56.0% vs without validation 50.0%, without evolution 44.0%, 4 fixed prompt sets 42.5%, human-expert pipeline 52.0% - the evolving engine beats human-authored data.
+
+**Evidence limits** — Retail remains hardest (Claude Sonnet 4.5 leads at 86.2% vs their 75.0%); smaller models degrade under mix training (30B-A3B average 71.5% -> 63.7%); off-the-shelf user simulators unstable in dual-control settings.
+
+**Code / weights / data / license** — Example code under github.com/inclusionAI/AReaL/tree/main/examples/tau2 (CC BY-NC-SA 4.0 - noncommercial terms; do not copy into nanoRSI).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: per-instance executable checkers plus a reflection loop that revises the task generator itself - the same two surfaces (task validity, trajectory attribution) a minimal self-evolving data loop needs.
+
+![Figure 1: the self-evolving data engine - meta-planning emits synthesis-evaluation plan pairs, workers synthesize/verify tasks and trajectories, and a reflection module updates the plans from failures in a closed loop.](assets/paper-figures/eigendata-self-evolving-synthesis.png)
+
+**Source figure / official image** — Figure 1: the self-evolving data engine - meta-planning emits synthesis-evaluation plan pairs, workers synthesize/verify tasks and trajectories, and a reflection module updates the plans from failures in a closed loop. · Figure 1 · [source](https://arxiv.org/html/2601.22607v3)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Example code (CC BY-NC-SA 4.0)](https://github.com/inclusionAI/AReaL/tree/main/examples/tau2)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2601.22607) · [Paper v3 (affiliations, Figure 1, tables)](https://arxiv.org/html/2601.22607v3) · [Example code (CC BY-NC-SA 4.0)](https://github.com/inclusionAI/AReaL/tree/main/examples/tau2)
+
+<a id="meta-ssr-self-play"></a>
+
+## Toward Training Superintelligent Software Agents through Self-Play SWE-RL
+
+**2025-12-21** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2025-12-21; v3: 2026-06-02 (metrics cited from v3). Accepted at ICML 2026.
+
+**Institutional relationship** — Paper v3: Yuxiang Wei (Meta FAIR + UIUC), Zhiqing Sun (Meta TBD Lab), Emily McMilin, Jonas Gehring, David Zhang, Gabriel Synnaeve, Sida Wang (Meta FAIR), Daniel Fried (Meta FAIR + CMU), Lingming Zhang (UIUC).
+
+**What changes and how feedback is reused** — One LLM (CWM-sft 32B) plays both bug-injector and repairer in self-play over sandboxed real repositories, with no human-written issues or tests. The injector explores a repo without tests or issue text, discovers how to run tests, and emits a bug artifact (test script, parser, inject diff, test-weakening diff) validated by consistency checks including inverse mutation testing; the solver sees only the reversed weakening patch as its formal specification and must produce a repair passing restored oracle tests. Failed solve attempts become capped second-order 'higher-order bugs'. Rewards are grounded purely in test outcomes.
+
+**Author-reported result** — +10.4 points on SWE-bench Verified and +7.8 on SWE-Bench Pro over the base model after self-play RL (CWM-sft 32B, 512 H100s); consistently outperforms the human-data baseline across the whole training trajectory and transfers to natural-language issues never seen in self-play. Paired standard error on SWE-bench Verified is acknowledged at around 2%.
+
+**Evidence limits** — Authors state hidden oracles are absent (full tests in the prompt invite reward hacking), only unit-test verification is used, one shared model config plays both roles, and synthesizing natural-language issues collapsed to incoherent patterns. Appendix A documents challenger dominant strategies that stall deep unmitigated self-play.
+
+**Code / weights / data / license** — No code release located; base model CWM-sft is on Hugging Face (facebook/cwm-sft). Training used 512 H100 GPUs and CWM-RL infrastructure, so local reproduction is out of nanoRSI scope.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: self-play task generation where the mutator must also emit the verifier artifact (test script + weakening patch) and inverse mutation testing validates it - a blueprint for generator-verifier co-production without human labels.
+
+![Figure 1: Self-play SWE-RL overview - one agent injects a bug (with test artifacts) into a sandboxed repo and the same model must repair it against restored oracle tests; test outcomes are the only reward.](assets/paper-figures/meta-ssr-self-play.svg)
+
+**Source figure / official image** — Figure 1: Self-play SWE-RL overview - one agent injects a bug (with test artifacts) into a sandboxed repo and the same model must repair it against restored oracle tests; test outcomes are the only reward. · Figure 1 · [source](https://arxiv.org/html/2512.18552v3)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2512.18552) · [Paper v3 (affiliations, Figure 1, ablations, Appendix A)](https://arxiv.org/html/2512.18552v3)
+
+<a id="sage-skill-augmented-grpo"></a>
+
+## SAGE: Reinforcement Learning for Self-Improving Agent with Skill Library
+
+**2025-12-18** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2025-12-18; ACL 2026 long paper. Artifact hosted under amazon-science.
+
+**Institutional relationship** — Paper v1: AWS Agentic AI (Qiaojing Yan, Yawei Wang, Yijun Tian, ..., Panpan Xu corresponding, Lin Lee Cheong); first author Jiongxiao Wang (UW-Madison) did the work during an AWS internship.
+
+**What changes and how feedback is reused** — Skill-Augmented GRPO: the agent defines and calls function skills (CodeAct-style, following DynaSaur), and sequential rollouts run each agent across a chain of similar tasks so skills generated on task one are reused on task two - reward from successful later skill use back-propagates credit to earlier skill generation. The skill-integrated reward adds bonuses for generating a skill that gets successfully reused and for successfully using retrieved skills. GRPO is modified to use reward-mean advantages without std normalization or KL penalty, computed across the task chain with per-task skill libraries.
+
+**Author-reported result** — AppWorld (Qwen2.5-32B-Instruct): vs baseline GRPO, +8.9% Scenario Goal Completion with 26% fewer interaction steps and 59% fewer tokens (Test Normal 60.7% vs 51.8% SGC at 1,475 vs 3,613 tokens; Test Challenge 32.4% vs 26.9%). Beats LOOP (53.6% SGC) and GPT-4o ReAct (32.1%); chain-length ablation shows 3-task chains (54.8% SGC) underperform 2-task chains.
+
+**Evidence limits** — Experiments use only AppWorld; the authors note different scenarios may need different agent designs.
+
+**Code / weights / data / license** — Artifact at github.com/amazon-science/SAGE (23 stars; license reported NOASSERTION by the GitHub API - verify terms before reuse).
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: evaluate skills across chains of related tasks rather than isolated episodes, and pay reward credit back to the skill-generating step - a direct answer to 'how do generated skills get selected?'
+
+![Figure 1: the Skill Library Agent and sequential rollout with skill-integrated reward - skills generated on an earlier task in the chain are reused on the next, and successful reuse pays reward credit back to skill generation.](assets/paper-figures/sage-skill-augmented-grpo.png)
+
+**Source figure / official image** — Figure 1: the Skill Library Agent and sequential rollout with skill-integrated reward - skills generated on an earlier task in the chain are reused on the next, and successful reuse pays reward credit back to skill generation. · Figure 1 · [source](https://arxiv.org/html/2512.17102v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Artifact repository](https://github.com/amazon-science/SAGE)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2512.17102) · [Paper v1 (affiliations, Figure 1, tables)](https://arxiv.org/html/2512.17102v1) · [Artifact repository](https://github.com/amazon-science/SAGE)
+
 <a id="sakana-trinity"></a>
 
 ## TRINITY: An Evolved LLM Coordinator
@@ -211,6 +481,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [Original paper date](https://arxiv.org/abs/2512.04695) · [Original paper methods and experimental conditions](https://arxiv.org/html/2512.04695v1) · [Official Sakana announcement](https://sakana.ai/trinity/)
+
+<a id="sakana-conductor-fugu"></a>
+
+## Conductor / Fugu: An LLM Trained to Orchestrate (and Include) Itself
+
+**2025-12-04** · paper · Enabling technique / evaluation
+
+**Publication date** — Conductor arXiv v1: 2025-12-04; v5: 2026-05-06 (ICLR 2026). The Fugu product tech report (arXiv 2606.21228, June 2026) ships the coordinator behind an OpenAI-compatible API. First RSI-Lab-lineage mechanism output verified since the lab's June 5 announcement.
+
+**Institutional relationship** — Paper v5: Sakana AI (Japan) with University of Michigan and Institute of Science Tokyo; equal-contribution authors include interns at Sakana AI.
+
+**What changes and how feedback is reused** — A 7B model (Qwen2.5-7B) is trained for 200 GRPO iterations to output complete coordination strategies as three Python lists - worker model IDs, natural-language subtask instructions, and access lists - thereby learning to design communication topologies between stronger workers and to prompt-engineer their instructions, trained end-to-end on task reward with randomized agent pools. Because the Conductor can specify itself as a worker, discovered topologies can be recursive, giving dynamic test-time scaling.
+
+**Author-reported result** — Conductor (7B coordinating GPT-5/Claude/Gemini-class workers): LiveCodeBench 83.93, GPQA-D 87.5, AIME25 93.3, average 77.27 - above GPT-5 (74.78) and every individual worker; versus multi-agent baselines in a constrained setting: MASRouter 56.89, MoA 62.13, RouterDC 52.41, Smoothie 56.48 vs Conductor 72.35 average.
+
+**Evidence limits** — Depends on expensive frontier workers (the authors flag an economic-divide concern); the fine-grained topology variant produced no significant gains; a 7B Conductor caps planning quality. Fugu numbers come from the vendor's own tech report.
+
+**Code / weights / data / license** — Conductor paper: base model and datasets stated public, no standalone code repo located. Fugu is served as a product API; its tech report is arXiv 2606.21228.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: orchestration-as-a-learned-skill - if populations of candidate harnesses exist, a small trained selector that writes subtask assignments (and may include itself) is a cheap population-level meta-controller to compare against rule-based selection.
+
+![Figure 3: Conductor training - GRPO updates the 7B coordinator on rewards from full multi-agent rollouts over randomized worker pools, teaching it to write topology + instructions that can recursively include itself.](assets/paper-figures/sakana-conductor.svg)
+
+**Source figure / official image** — Figure 3: Conductor training - GRPO updates the 7B coordinator on rewards from full multi-agent rollouts over randomized worker pools, teaching it to write topology + instructions that can recursively include itself. · Figure 3 · [source](https://arxiv.org/html/2512.04388v5)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Conductor arXiv abstract](https://arxiv.org/abs/2512.04388) · [Paper v5 (affiliations, training figure, Tables 1/7)](https://arxiv.org/html/2512.04388v5) · [Fugu product page](https://sakana.ai/fugu/)
 
 <a id="deepseek-math-v2"></a>
 
@@ -332,6 +632,36 @@
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2511.10395) · [Paper v1: affiliation, methods, Table 1](https://arxiv.org/html/2511.10395v1) · [Official AgentEvolver repository](https://github.com/modelscope/AgentEvolver)
 
+<a id="meta-spice-self-play"></a>
+
+## SPICE: Self-Play in Corpus Environments (adversarial curriculum from raw documents)
+
+**2025-10-28** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2025-10-28. No later revision recorded at verification time.
+
+**Institutional relationship** — Paper v1: Meta FAIR (Bo Liu w/ NUS, Chuanyang Jin, Seungone Kim, Weizhe Yuan, Wenting Zhao, Ilia Kulikov, Xian Li, Sainbayar Sukhbaatar, Jack Lanchantin, Jason Weston).
+
+**What changes and how feedback is reused** — A single RL model plays two roles over a raw corpus: the Challenger mines documents to create (question, verifiable answer) pairs; the Reasoner answers without seeing the document (information asymmetry). The Challenger is rewarded by a Gaussian-shaped variance reward peaking at 50% Reasoner pass rate - an automatic curriculum at the Reasoner's capability frontier - while the Reasoner earns binary correctness. Both roles train jointly with shared weights via DrGRPO with role-specific mean-centered advantages; invalid tasks receive a small negative penalty.
+
+**Author-reported result** — Qwen3-4B-Base: 35.8% -> 44.9% (+9.1); Qwen3-8B-Base +5.7; OctoThinker-3B/8B +10.5/+11.9 - abstract-level +8.9% math and +9.8% general reasoning across families. Beats Strong Challenger (+7.2), R-Zero (+3.7), Absolute Zero (+4.9) on Qwen3-4B. Training dynamics: fixed-Reasoner pass rate falls 55% -> 35% as the Challenger sharpens; corpus grounding adds +3.2.
+
+**Evidence limits** — Corpus limited to 20K documents (each reused ~2-3 times); verification depends on answer types extractable from documents; the R-Zero baseline trained only 5 iterations due to degradation, which may affect baseline fairness.
+
+**Code / weights / data / license** — No code repository on the paper page ('evaluation code and prompts will be released'); components use the open-source Oat framework.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: reward the task generator by the executor's success variance (peak at 50%) instead of raw difficulty - a one-line change that keeps generated tasks at the frontier of what the current candidate can learn from.
+
+![Figure 2: SPICE overview - one model plays Challenger (mines a document into a question with a verifiable answer) and Reasoner (answers without the document); variance-shaped reward keeps questions at the Reasoner's frontier.](assets/paper-figures/meta-spice-self-play.png)
+
+**Source figure / official image** — Figure 2: SPICE overview - one model plays Challenger (mines a document into a question with a verifiable answer) and Reasoner (answers without the document); variance-shaped reward keeps questions at the Reasoner's frontier. · Figure 2 · [source](https://arxiv.org/html/2510.24684v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2510.24684) · [Paper v1 (affiliations, Figure 2, tables)](https://arxiv.org/html/2510.24684v1)
+
 <a id="google-discorl-2025"></a>
 
 ## Discovering state-of-the-art reinforcement learning algorithms
@@ -361,6 +691,66 @@
 **Open code / weights / data links** — [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
 
 **Primary sources** — [Primary Nature article at PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12695655/) · [Publication metadata](https://pubmed.ncbi.nlm.nih.gov/41125136/) · [Author project and artifact availability](https://google-deepmind.github.io/disco_rl/) · [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
+
+<a id="evolver-experience-lifecycle"></a>
+
+## EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle
+
+**2025-10-17** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2025-10-17; v3: 2026-05-16 (numbers cited from v3). Accepted at ICML 2026.
+
+**Institutional relationship** — Paper v3: Shanghai AI Laboratory leads (Botian Shi corresponding) with Zhejiang University, ECNU, Fudan, SJTU and USTC co-authors.
+
+**What changes and how feedback is reused** — A closed experience lifecycle alternating two phases: offline, with parameters frozen, the agent's own policy reviews past trajectories under expert-persona prompts and distills them into 'guiding' (success) or 'cautionary' (failure) principles - natural-language descriptions with knowledge triples, deduplicated by embedding similarity plus LLM equivalence checks and pruned by a dynamic usefulness score; online, retrieved principles shape reasoning and trajectories feed the next distillation cycle; GRPO updates the policy so it learns to use its own distilled wisdom.
+
+**Author-reported result** — Qwen2.5-3B search-agent average 0.382 vs Search-R1-instruct 0.325, rejection sampling 0.265, RAG 0.270; Qwen2.5-7B average 0.417 vs 0.385. Ablations (3B): without experience retrieval 0.340; RL-only 0.325; teacher-distilled (GPT-4o-mini) 0.370 vs self-distilled 0.382 - the agent's own distillation beats the external teacher's.
+
+**Evidence limits** — Self-distillation quality is bounded by the base model; validated on QA tasks only (embodied/creative untested); lifelong computational efficiency open; safety of self-evolved strategies depends on the reward function.
+
+**Code / weights / data / license** — Paper lists github.com/Edaizi/EvolveR; the repository did not resolve via the GitHub API at verification time. No license established.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: the offline distillation phase with frozen parameters is directly portable - turn accepted trajectories into deduplicated principle cards with a dynamic usefulness score that prunes dead entries.
+
+![Figure 2: EvolveR's experience lifecycle - an online phase (RL policy updates) alternates with an offline phase (frozen parameters, self-distillation of trajectories into principles, experience-base maintenance).](assets/paper-figures/evolver-experience-lifecycle.png)
+
+**Source figure / official image** — Figure 2: EvolveR's experience lifecycle - an online phase (RL policy updates) alternates with an offline phase (frozen parameters, self-distillation of trajectories into principles, experience-base maintenance). · Figure 2 · [source](https://arxiv.org/html/2510.16079v3)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2510.16079) · [Paper v3 (affiliations, Figure 2, tables)](https://arxiv.org/html/2510.16079v3)
+
+<a id="ttsi-test-time-self-improvement"></a>
+
+## Self-Improving LLM Agents at Test-Time
+
+**2025-10-09** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2025-10-09. ACL 2026 Findings.
+
+**Institutional relationship** — All five authors (Emre Can Acikgoz, Cheng Qian, Heng Ji, Dilek Hakkani-Tur, Gokhan Tur) are at UIUC.
+
+**What changes and how feedback is reused** — Per uncertain test instance, a three-stage self-improvement loop runs entirely at inference: self-awareness flags low-margin samples via relative softmax scoring over candidate-action NLLs; self-data augmentation has the model itself generate K similar input-output pairs from the flagged sample (never seeing gold labels); self-improvement applies temporary LoRA fine-tuning on the synthetic data, answers with the adapted weights, then resets parameters to the original values.
+
+**Author-reported result** — +5.48% average absolute accuracy across agent benchmarks over prompting (ToolAlpaca +5.84%, NexusRaven +6.05%, SealTool +5.76%, API-Bank +4.26%); on SealTool it surpasses SFT (72.43% vs 70.20%) using 68x fewer samples (190 synthetic examples vs ~13K training split).
+
+**Evidence limits** — Sensitive to the uncertainty threshold (autonomously learning it is open); bounded by base-model capacity - knowledge absent from pretraining cannot be recovered; small-sample training yields high variance (five seeds averaged).
+
+**Code / weights / data / license** — No code release mentioned in the paper.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: a minimal per-instance loop - uncertainty-triggered synthetic self-data plus temporary adapter, reset after answering - is testable on the digits/artifact tasks with no training infrastructure.
+
+![Figure 1: the TT-SI framework - self-awareness detects uncertain samples, self-data augmentation generates similar examples, and test-time fine-tuning temporarily adapts weights per instance.](assets/paper-figures/ttsi-test-time-self-improvement.png)
+
+**Source figure / official image** — Figure 1: the TT-SI framework - self-awareness detects uncertain samples, self-data augmentation generates similar examples, and test-time fine-tuning temporarily adapts weights per instance. · Figure 1 · [source](https://arxiv.org/html/2510.07841v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2510.07841) · [Paper v1 (affiliations, Figure 1, per-benchmark gains)](https://arxiv.org/html/2510.07841v1)
 
 <a id="tencent-spear"></a>
 

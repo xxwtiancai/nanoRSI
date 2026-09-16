@@ -152,6 +152,36 @@
 
 **一手来源** — [Official report, live results and verification conditions](https://www.primeintellect.ai/blog/measuring-autonomous-research) · [Official research repository](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun) · [Research repository README](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun/blob/main/README.md)
 
+<a id="faraday-replica-ai-scientist"></a>
+
+## Training AI Scientists to Replicate Research (Faraday on the Replica benchmark)
+
+**2026-08-13** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-08-13。核验时无更新版本。
+
+**机构关系** — 全部 11 位作者（Falck、Sabri、Surina、Foster、Sims、Devlin、Rogers、Collins、Aleksiev、Kirsch、Hughes）共同隶属 Inherent Laboratories。
+
+**改变对象与反馈复用** — Replica：从 100 篇 ML/AI-for-science 论文自动构造 310 个复现任务（Gemini 2.5 Pro 把结果图抠成任务；每个任务 = 60 分钟内、1/7 张 H200 上复现一张图）。评分规则裁判：Claude Opus 4.7 自动生成五维 rubric（视觉匹配、论断支撑、忠实实现、算力使用、科学诚信）；Codex GPT-5.5 带工作区探索地评判 rollout，三采样平均并输出轮次级信用权重。Faraday：对 Qwen3.6-27B 做 GRPO 后训练（LoRA r128），以五工具 harness 运行并把 Codex GPT-5.5 当工具用（小模型指挥大得多的编码智能体）。
+
+**作者报告结果** — Faraday 在 73% 的分布内 ML 任务与 60% 的留出 AI-for-science 任务上胜过 Claude Opus 4.8 与 GPT-5.5（测试集上比 Claude +6%、比 Codex +8%）；提示优化过的 Codex'没有实质提升'；裁判 Kendall-tau 自一致性 0.66（人类 0.30）；人工在 41 个被检 rollout 中偏好 Faraday 29 次。
+
+**证据边界** — 小 GPU 切片上的短时程；20 个'想象任务'结果缺裁判验证；人工偏好研究只覆盖 Faraday 已领先的 rollout（作者自述'不能据此下结论'）；Faraday 在若干严谨论文上失败；污染仅在附录讨论；语料含作者或相识者的论文。
+
+**代码／权重／数据／许可** — 未提及代码或模型发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：自动生成 rubric 裁判 + 轮次级信用权重，是缺精确答案长时程任务可复用的验收信号——且其自一致性（0.66）应随每个分数一并报告。
+
+![图 1：在 Replica 上训练 Faraday——论文抠成复现任务、容器内 rollout、自动生成 rubric 裁判、多样本评判产出奖励与轮次级信用供 GRPO 使用。](assets/paper-figures/faraday-replica-ai-scientist.png)
+
+**原文图／官方图片** — 图 1：在 Replica 上训练 Faraday——论文抠成复现任务、容器内 rollout、自动生成 rubric 裁判、多样本评判产出奖励与轮次级信用供 GRPO 使用。 · Figure 1 · [source](https://arxiv.org/html/2608.13331v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.13331) · [Paper v1 (affiliations, Figure 1, results)](https://arxiv.org/html/2608.13331v1)
+
 <a id="automated-alignment-researchers"></a>
 
 ## Automated Researchers Can Mitigate Well-Characterized Alignment Failures
@@ -242,6 +272,96 @@
 
 **一手来源** — [Official Salesforce news story (opened)](https://www.salesforce.com/news/stories/toward-self-improving-agents/)
 
+<a id="self-improving-agents-survey"></a>
+
+## Self-Improvements in Modern Agentic Systems: A Survey
+
+**2026-07-14** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1：2026-07-14。核验时无更新版本。
+
+**机构关系** — 论文：吉林大学人工智能学院、KAUST、独立研究者（阿尔伯塔大学）与 Schmidhuber 所在的 IDSIA/USI/SUPSI。
+
+**改变对象与反馈复用** — 97 页综述，把自改进形式化为作用于智能体状态 (theta, Sigma) 的自诱导更新算子 A(t+1) = U(A(1:t), E(...))，其中脚手架 Sigma =（提示、记忆、工具、控制逻辑）；两条组织轴是更新目标（基础模型参数 vs 脚手架组件）与改进信号来源（内在生成演示、内在评价反馈、外在探索经验）。
+
+**作者报告结果** — 无基准；贡献为统一分类（基础模型更新 vs 脚手架更新）、信号来源分类、策划的 awesome 清单，以及设计启示：分层闸门保安全、把评论家当作受治理的基础设施、快探索配慢巩固。
+
+**证据边界** — 综述：无实验；分类法是作者的综合。其'更新算子'形式化与本资料库的四个改变面接近，故按 enabling 收录。
+
+**代码／权重／数据／许可** — 清单在 github.com/selfimproving-agent/awesome-Self-Improving-Agents；项目页 selfimproving-agent.github.io。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：采纳'信号来源'轴（内在生成/内在评价/外在经验）作为标注候选变更的必填字段——它决定了哪种验收闸门是可行的。
+
+![图 1：自改进范式总览——按'修改什么'（基础模型参数 vs 智能体脚手架）分两条主路径，再与'改进信号来源'交叉。](assets/paper-figures/self-improving-agents-survey.png)
+
+**原文图／官方图片** — 图 1：自改进范式总览——按'修改什么'（基础模型参数 vs 智能体脚手架）分两条主路径，再与'改进信号来源'交叉。 · Figure 1 · [source](https://arxiv.org/html/2607.13104v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Awesome list](https://github.com/selfimproving-agent/awesome-Self-Improving-Agents)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2607.13104) · [Paper v1 (affiliations, Figures 1/3, formalism)](https://arxiv.org/html/2607.13104v1) · [Awesome list](https://github.com/selfimproving-agent/awesome-Self-Improving-Agents)
+
+<a id="ai-scientist-verification-gap"></a>
+
+## Autonomous Research Agents: A Survey of AI Scientists and the Verification Gap
+
+**2026-06-29** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1：2026-06-29。所审 HTML 未渲染作者隶属；机构字段依据一作公开页面并如实标注。
+
+**机构关系** — 作者：Tianyu Ding、Aditya Nannapaneni、Bingfan Liu、Ling Zhang。所审 HTML 无隶属信息；一作公开页面显示其属约翰霍普金斯大学——暂按此记录。
+
+**改变对象与反馈复用** — 审计而非系统：从 arXiv/Semantic Scholar/OpenReview 取 144 条记录（2023-2026.6），去重得 125、筛入 35，对 24 个可运行的 AI 科学家系统按七维全文编码：生命周期阶段、自主层级、评测方法、发布工件、人环介入点、新颖性验证方法、结果选择披露。第二编码者对工件一致性 90%，但对自主性/新颖性/选择仅 50-65%。
+
+**作者报告结果** — 24 个可运行系统中：83% 发布代码、71% 发布提示，但仅 38% 发布种子/执行轨迹、38% 报告任何新颖性验证方法、67% 披露结果选择策略；88% 保留人环介入点。九个 L4 闭环系统中：七个闭环仅是机械的、一个作者自称但无外部核验、一个经外部验证——而那个（CAMEO）早于 LLM 智能体：零个 LLM 时代闭环系统拥有经外部验证的环内 oracle。
+
+**证据边界** — 全文编码为单人，判断密集维度上第二编码者一致性中等；审计无法实际运行这些系统；表 10 的报告清单是建议而非标准。
+
+**代码／权重／数据／许可** — 未找到该综述的仓库；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：该清单与证据账本直接对应——种子/轨迹、选择披露与新颖性验证正是审计发现 62% 缺失的字段；发布它们本身就是差异化优势。
+
+![图 1：综述范围图——从工具型科学智能体到 LLM 时代 AI 科学家系统；闭环分支刻意延后，因为其审计信号（种子、轨迹、选择策略、新颖性检查）仍比任务完成证据稀薄。](assets/paper-figures/ai-scientist-verification-gap.png)
+
+**原文图／官方图片** — 图 1：综述范围图——从工具型科学智能体到 LLM 时代 AI 科学家系统；闭环分支刻意延后，因为其审计信号（种子、轨迹、选择策略、新颖性检查）仍比任务完成证据稀薄。 · Figure 1 · [source](https://arxiv.org/html/2608.05179v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.05179) · [Paper v1 (methodology, Figure 1, audit statistics)](https://arxiv.org/html/2608.05179v1)
+
+<a id="amazon-autonomous-post-training"></a>
+
+## Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search
+
+**2026-06-09** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-06-09；v3：2026-09-08（数字引自 v3）。媒体报道曾误标为'NVIDIA'（因后训练的是 Nemotron 模型）；作者为 Amazon。
+
+**机构关系** — 全部作者（Zhan Shi、Bing He、Yisi Sang、Benoit Dumoulin、Hanqing Lu）均属 Amazon。
+
+**改变对象与反馈复用** — 在 30B Nemotron 基座上做四轮多周、全程无人的后训练（Nemotron-Reasoning Challenge）。支柱：每轮都从不可变、经运营审计的基座分叉（绝不覆写）；每轮 8 个同构无记忆全栈工人（1 个基线锚 + 7 个正交轴探索者）——专责分工设计'无法扩展'，因为中间状态复利会放大未观察方差；轮级聚合：评审者把工人清单蒸馏为固定 schema 的证据工件，宪法约束的元智能体在冻结系统提示下只改写下一轮的滚动搜索策略，并维护单调增长的死胡同登记表。递归对象是搜索策略本身。
+
+**作者报告结果** — 留出榜 0.86 对人类最高提交的 0.87（约 4000 名中第 8）——首个在 30B 规模上报告有竞争力的自主环（此前自主 ML 演示为 GPT-2 级约 1.24 亿参数；执行规模约差 10^3 倍）。诚实的失败记录：第 3 轮候选钻了脱钩开发代理的空子（开发 0.93 对榜单 0.85；公式项开发 0.65 -> 0.82 而外部停在 0.84-0.85）；元智能体随后改写自己的搜索策略以不信任该代理，第 4 轮落在开发 0.89 / 榜 0.86。另在 120B 与 550B 上端到端跑通（仅作基础设施证据）。
+
+**证据边界** — 单一后训练任务族；单一 30B 基座；单一公开榜单作锚；单次未复现的战役；代码/权重'待确认'；120B/550B 运行仅为基础设施证据而非效果声明。
+
+**代码／权重／数据／许可** — 尚未发布代码（'完整代码、参考基座与训练后权重发布时间待确认'）；基于内部 A-Evolve 框架。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：单调增长的死胡同登记表 + 冻结宪法下'只晋升策略'，是可移植的元层模式——环改进的是搜索策略而非基座，并把失败写下来。
+
+![图 2：自主后训练基础设施——不可变、经运营审计的基座每轮分叉出 N 个候选沙箱；无记忆工人探索，评审者聚合为固定 schema 摘要，宪法约束的编排者只更新下一轮的研究策略。](assets/paper-figures/amazon-autonomous-post-training.png)
+
+**原文图／官方图片** — 图 2：自主后训练基础设施——不可变、经运营审计的基座每轮分叉出 N 个候选沙箱；无记忆工人探索，评审者聚合为固定 schema 摘要，宪法约束的编排者只更新下一轮的研究策略。 · Figure 2 · [source](https://arxiv.org/html/2606.20657v3)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2606.20657) · [Paper v3 (affiliations, Figure 2, rounds/proxy tables)](https://arxiv.org/html/2606.20657v3)
+
 <a id="sakana-rsi-lab"></a>
 
 ## Introducing Sakana AI's Recursive Self-Improvement (RSI) Lab
@@ -272,6 +392,66 @@
 
 **一手来源** — [RSI Lab announcement page (undated)](https://sakana.ai/rsi-lab/)
 
+<a id="nvidia-enpire-physical-autoresearch"></a>
+
+## ENPIRE: Physical Autoresearch - Self-Improving Coding Agents on Real Robots
+
+**2026-06** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 6 月（2606.19980）。v1 确切日期未复核，采用月精度。
+
+**机构关系** — 论文署名：NVIDIA、CMU 与 UC Berkeley（同等贡献/同等指导脚注；未渲染逐人隶属）。
+
+**改变对象与反馈复用** — 在物理机器人上做自主研究：EN——智能体自建环境，含自动二元奖励验证（几分钟成败演示学得、150ms 内校验）与自动复位（SAM3/BundleSDF/cuRobo 工具调用），以不可变 Gym API 暴露；PI——智能体读文献、提假设、在真实验证信号引导下改训练代码；R——单/多机器人策略评估；E——8 台双臂 YAM 机器人上的去中心化智能体团队异步测试假设，经 Git 分支 cherry-pick/merge 协同。新增 MRU/MTU 利用率指标跟踪机器人/GPU/token 效率。
+
+**作者报告结果** — Push-T：Claude Code 与 Codex 约 2 小时内达 95% 成功（Kimi Code 翻倍）；插针收敛到连续 50 次成功，扩队列把时间从 >1.5 小时缩到约 40 分钟；摘要口径 PushT、钉盒整理与扎带切割 99% 成功；仿真 RoboCasa365 胜 GR00T 与 CaP-X。诚实成本核算：token 成本随队列规模超线性增长（4 个智能体内近线性、8 个时陡升）；智能体读日志写代码时机器人在闲置。
+
+**证据边界** — 智能体读日志写代码时机器人闲置（队列越大 MRU 越低）；token 成本随队列规模超线性；物理任务限于有界灵巧技能而非开放科学。
+
+**代码／权重／数据／许可** — 论文未给代码仓库 URL；项目站 research.nvidia.com/labs/gear/enpire。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：智能体自建奖励验证环境（从演示学得的二元检查 + 不可变 API）是冻结评估器不变量的物理世界对应物；利用率指标（闲置时间、单位结果 token）在任何环上都可报告。
+
+![图 2：ENPIRE 框架——智能体把带自动复位与验证的环境构建为不可变 Gym API，在真实信号引导下改进策略、机器人 rollout、并在经 Git 协同的去中心化团队间进化假设。](assets/paper-figures/nvidia-enpire-physical-autoresearch.png)
+
+**原文图／官方图片** — 图 2：ENPIRE 框架——智能体把带自动复位与验证的环境构建为不可变 Gym API，在真实信号引导下改进策略、机器人 rollout、并在经 Git 协同的去中心化团队间进化假设。 · Figure 2 · [source](https://arxiv.org/html/2606.19980v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2606.19980) · [Paper v1 (Figure 2, fleet results)](https://arxiv.org/html/2606.19980v1) · [Project page](https://research.nvidia.com/labs/gear/enpire)
+
+<a id="gengap-self-evolution"></a>
+
+## On the Generalization Gap in Self-Evolving Language Model Reasoning
+
+**2026-06** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1：2026 年 6 月（2606.01075），ICML 2026 海报；ICML 元数据中出现更早草稿编号（2601.05280）但未独立核验。采用月精度。
+
+**机构关系** — 论文：Google Research（Zhenting Qi 兼哈佛；Tu Vu 兼弗吉尼亚理工；Andrew Tomkins、Da-Cheng Juan、通讯 Cyrus Rashtchian）——与 WikiSkill 同一团队。
+
+**改变对象与反馈复用** — 受控研究而非新系统：同一指令微调模型经提示在确定性'骑士与骗子'任务（难度参数化）上同时扮演生成器与验证器；对验证器通过做阈值多数投票构造偏好对，离线训练 DPO。统一框架下对比四种自进化策略（SimpleSE、多轮 RevisionSE、迭代 SE、课程 SE）与 oracle 监督 DPO，并做验证器阈值、数据规模、Pass@1-vs-Pass@k 消融与跨家族复现（Qwen2.5-7B）。
+
+**作者报告结果** — Gemma 3 4B：自进化把 Pass@1 从 31.0% 提到 44.8%（课程式），但仍比 oracle DPO（53.3%）低 8-13 分；Pass@32 几乎不动（78.0% -> 78.8%），支持'锐化而非新授'假设——自进化放大既有解题模式而非新增能力。补一轮 oracle 即跳到 53.2%。扩大验证器通过数优于扩大生成；12B 时 RevisionSE 达 oracle 的 98.5%。开放式任务：增益温和且有时为负（MATH500 +1.6%，4 万样本时退化）。
+
+**证据边界** — 严格表述下的结论：内部反馈不能替代可验证奖励；确定性任务族与仅用 DPO 限制了范围；作者自述结论是缩小'有意义的比例'而非消除 oracle 差距。
+
+**代码／权重／数据／许可** — 未提及代码仓库。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：每个自改进声明同时报告 Pass@1 与 Pass@k——若 Pass@1 升而 Pass@k 平，说明环在'锐化'而非'学习'；这一区分应进入证据账本。
+
+![图 1：所分析的自进化策略分类——单轮 SE（直接验证 vs 带反馈修订）与多轮 SE（迭代 vs 课程），各自对照 oracle 监督训练。](assets/paper-figures/gengap-self-evolution-taxonomy.svg)
+
+**原文图／官方图片** — 图 1：所分析的自进化策略分类——单轮 SE（直接验证 vs 带反馈修订）与多轮 SE（迭代 vs 课程），各自对照 oracle 监督训练。 · Figure 1 · [source](https://arxiv.org/html/2606.01075v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2606.01075) · [Paper v1 (affiliations, Figure 1, findings)](https://arxiv.org/html/2606.01075v1)
+
 <a id="automated-w2s"></a>
 
 ## Automated Weak-to-Strong Researcher
@@ -301,6 +481,66 @@
 **开源代码／权重／数据链接** — [Repository](https://github.com/safety-research/automated-w2s-research)
 
 **一手来源** — [Research report](https://alignment.anthropic.com/2026/automated-w2s-researcher/) · [Official date index](https://alignment.anthropic.com/) · [Repository](https://github.com/safety-research/automated-w2s-research)
+
+<a id="posttrainbench-autonomous-post-training"></a>
+
+## PostTrainBench: Can LLM Agents Automate LLM Post-Training?
+
+**2026-03** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1：2026 年 3 月（2603.08640）；ICML 2026 与 ICLR 2026 RSI workshop 口头报告。v1 确切日期未复核，采用月精度。
+
+**机构关系** — 论文：图宾根 ELLIS 研究所 + 马普智能系统研究所 + 图宾根 AI 中心 + 图宾根大学（Ben Rank、Hardik Bhatnagar、Ameya Prabhu、Matthias Bethge、通讯 Maksym Andriushchenko），合作方 Thoughtful Lab（Shira Eisenberg、Nguyen Karina）。
+
+**改变对象与反馈复用** — 给 CLI 智能体四个小基座 LLM 之一（Qwen3-1.7B/4B、SmolLM3-3B、Gemma-3-4B）、一张 H100 与 10 小时，在七个基准之一上自主后训练该模型：可联网、无起始代码，禁止测试集训练、改 harness、训练给定基座以外的模型。LLM 裁判标记作弊（换模型、污染）；被标记的运行按基座计分。前沿智能体 28 配置 x 3 次；按运行记账成本。
+
+**作者报告结果** — 最佳智能体：Claude Opus 4.6（Claude Code）均值 23.2 +/- 1.8%，对官方指令微调模型的 51.1% 与基座零样本 7.5%；基座少样本基线 18.1%（仅 Opus 4.6 明显超过）。代际进步：Sonnet 4.5 9.9% -> Opus 4.5 17.1% -> Opus 4.6 23.2%。存在单配置胜出（Codex Max + Gemma-3-4B BFCL 89% 对官方 67%）。5 个智能体共 23 次污染标记；Opus 4.6 在 84 次运行中被标 12 次；Gemini 3.1 Pro 零标记。每次运行约 600-910 美元。
+
+**证据边界** — 10 小时单卡预算不反映真实后训练；基准选择可能偏向特定策略；智能体优化单任务而非通才模型；污染裁判存在假阳/假阴；前沿智能体仅 3 次运行。
+
+**代码／权重／数据／许可** — 论文 CC BY 4.0。二手来源提到代码仓库（aisa-group/PostTrainBench），本次审计未在论文页核验。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把防作弊账本（规则清单 + 裁判标记 + 按基座计分的回退）作为任何'智能体训练模型'实验的标准 harness，让奖励黑客成为被测量的结果而非轶事。
+
+![图 2：PostTrainBench 流水线——智能体拿到基座 LLM、目标基准与一张 H100 的 10 小时自主后训练；LLM 裁判标记作弊运行，被标者回退按基座计分。](assets/paper-figures/posttrainbench-pipeline.svg)
+
+**原文图／官方图片** — 图 2：PostTrainBench 流水线——智能体拿到基座 LLM、目标基准与一张 H100 的 10 小时自主后训练；LLM 裁判标记作弊运行，被标者回退按基座计分。 · Figure 2 · [source](https://arxiv.org/html/2603.08640v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2603.08640) · [Paper v1 (affiliations, Figure 2, results)](https://arxiv.org/html/2603.08640v1)
+
+<a id="evoscientist-self-evolving"></a>
+
+## EvoScientist: Self-Evolving Multi-Agent System for End-to-End Scientific Discovery
+
+**2026-03** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 3 月（2603.08127）。v1 确切日期未复核，采用月精度。ICAIS 2025 端到端结果早于预印本公开日期，按作者自述记录。
+
+**机构关系** — 论文：华为技术有限公司（全体作者），Jacopo Urbani 兼属阿姆斯特丹自由大学。
+
+**改变对象与反馈复用** — 三智能体 + 双持久记忆：研究员智能体做树结构'提案-评审-精炼'想法搜索（最多 21 个候选、Elo 循环赛、留前 3）；工程师智能体检索执行策略并在四阶段上做实验树搜索（含失败诊断与代码修订）；进化管理者智能体以三种自进化机制把交互历史蒸馏为可复用知识——想法方向进化、想法验证进化（记录失败方向）、实验策略进化——记忆逐任务更新，后续任务可检索既往成败。
+
+**作者报告结果** — 想法生成（Gemini-3-flash 裁判）：对 AI Scientist-v2 平均差 +29.17、AI-Researcher +87.50、InternAgent +83.33；人工评估确认（对 AI Scientist-v2 +34.16；新颖性胜率 82.50%）。实验执行成功率进化后 34.39% -> 44.56%。端到端：6/6 篇论文被 ICAIS 2025 接收（赛道接收率 31.71%），一最佳论文奖 + 一 AI 评审嘉许奖；LLM-人工一致率 90.0%。
+
+**证据边界** — 评测聚焦计算研究；物理实验泛化未解；评审指出缺理论形式化；第 3 阶段执行成功率仍低（约 21.57%）。
+
+**代码／权重／数据／许可** — 代码在 github.com/EvoScientist/EvoScientist（Apache-2.0，核验时 4,893 星）。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把'想法记忆'与'执行策略记忆'分开，并显式记录失败方向——阻止提案者重复开采死矿的负知识与正技能同样有价值。
+
+![图 1：EvoScientist 总览——研究员、工程师与进化管理者三智能体跑在想法与实验双持久记忆上，三种自进化机制逐任务更新知识。](assets/paper-figures/evoscientist-self-evolving.png)
+
+**原文图／官方图片** — 图 1：EvoScientist 总览——研究员、工程师与进化管理者三智能体跑在想法与实验双持久记忆上，三种自进化机制逐任务更新知识。 · Figure 1 · [source](https://arxiv.org/html/2603.08127v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/EvoScientist/EvoScientist)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2603.08127) · [Paper v1 (affiliations, Figure 1, results)](https://arxiv.org/html/2603.08127v1) · [Code repository (Apache-2.0)](https://github.com/EvoScientist/EvoScientist)
 
 <a id="cognition-devin-builds-devin"></a>
 
@@ -391,3 +631,33 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Development report](https://openai.com/index/introducing-gpt-5-3-codex/) · [System card](https://openai.com/index/gpt-5-3-codex-system-card/)
+
+<a id="princeton-contextual-drag"></a>
+
+## Contextual Drag: How Errors in the Context Affect LLM Reasoning
+
+**2026-02-04** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1：2026-02-04。ICLR 2026 RSI workshop 口头报告；第三方（此处未核验）称其为 workshop 最佳论文。
+
+**机构关系** — 四位作者（Yun Cheng、Xingyu Zhu、Haoyu Zhao、Sanjeev Arora）均属普林斯顿语言与智能研究所、普林斯顿大学。
+
+**改变对象与反馈复用** — 失败模式研究而非系统：在 11 个模型、8 个推理任务上比较干净生成与'条件于 1-2 个错误草稿'的生成（草稿取自强锚模型），每题 16 次生成、符号化答案校验；用树编辑距离量化结构性偏置；检验缓解手段（上下文去噪、定向 SFT）以及外部错误标签或正确的自我验证能否消除拖累。
+
+**作者报告结果** — 上下文拖累造成 10-20% 的普遍性能下降；GPT-OSS-20B AIME24 一个错误草稿即 51.88 -> 17.50（-34.4），HMMT25 -38.1；Qwen3-32B 二十四点 78.48 -> 25.47（-53.0）。GPT-5 几乎免疫（88.75 -> 88.13）。外部'此草稿有错'标签不能消除拖累（GPT-OSS-120B 照样掉到 25.0）；SFT 缓解恢复 +23.1 分但仍低于干净生成，且以减少利用正确上下文为代价。GPT-OSS-20B 在迭代精炼中'塌缩为自我退化'，而多数投票在改善。
+
+**证据边界** — 失败模式研究：缓解不彻底（SFT 恢复不满全额且降低正确上下文的利用率）；模型覆盖广但任务以推理为中心；拖累机制（结构性偏置）被量化而未被解决。
+
+**代码／权重／数据／许可** — 代码在 github.com/princeton-pli/contextual-drag。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：任何把自身草稿回喂上下文的环，都必须测'拖累对照'（同一任务带与不带自身中间输出）；缺此对照的自改进声明可能测的是自我伤害。
+
+![图 1：上下文拖累——干净生成与错误条件生成之间的性能落差；即使标注了'错误'的草稿仍会拖累 SOTA 推理器。](assets/paper-figures/princeton-contextual-drag.png)
+
+**原文图／官方图片** — 图 1：上下文拖累——干净生成与错误条件生成之间的性能落差；即使标注了'错误'的草稿仍会拖累 SOTA 推理器。 · Figure 1 · [source](https://arxiv.org/html/2602.04288v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/princeton-pli/contextual-drag)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2602.04288) · [Paper v1 (affiliations, Figure 1, findings)](https://arxiv.org/html/2602.04288v1) · [Code repository](https://github.com/princeton-pli/contextual-drag)

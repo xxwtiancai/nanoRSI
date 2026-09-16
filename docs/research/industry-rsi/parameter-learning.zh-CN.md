@@ -2,6 +2,36 @@
 
 [← 研究地图](README.zh-CN.md)
 
+<a id="evors-reward-evolution"></a>
+
+## EvoRS: On-Policy Self-Evolution of Reward Systems for Open-Ended Reinforcement Learning
+
+**2026-09-11** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-09-11。核验时无更新版本。
+
+**机构关系** — 论文 v1：复旦大学（数据科学学院 + 上海市数据科学重点实验室；通讯 Deqing Yang），合作方含南开大学（密码学）与 Hello Group 工程师。
+
+**改变对象与反馈复用** — 奖励系统本身即进化对象：一个可执行的 Reward-DAG，其评分规则节点（判据 + 打分机制）与组合算子共同定义 RL 奖励。每 N 次策略更新，一个智能体设计器读在线策略 rollout 与节点级奖励轨迹，诊断有效性/覆盖/信息量失败并提议有界类型化编辑；'匹配回放'在同一批 rollout 上对比当前与候选奖励状态，只有既修复目标失败又保留有用奖励行为的候选才成为下一活动状态。结果进入运行内记忆与动态技能。
+
+**作者报告结果** — WritingBench 57.001 对基线 54.894（+2.107，三评审均值：GPT-5.6-Terra/DeepSeek-V4-Pro/GLM-5.2），且是唯一黑客率低于基线的方法（6.5 对 7.7）；CoSER 65.676 对 60.909（+4.767），四维全部第一。跨奖励模型泛化（Qwen3-8B：66.370 对 RaR 62.044）。消融：固定最终 Reward-DAG 损失 -0.693/-5.103；去候选选择 -3.182；去进化记忆 -3.264。约 192 A800 GPU 时/次。
+
+**证据边界** — 仅在写作与角色扮演上评测；智能体/工具场景未验证；固定每 N 步的进化节奏；周期性诊断与候选评估有额外算力开销。
+
+**代码／权重／数据／许可** — 未找到代码发布，仅有论文。设计器经 Codex SDK 调用 GPT-5.4。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：评估器一侧同样可以进化——把奖励定义版本化为 DAG，设计器提议类型化编辑，且只在相同 rollout 上做匹配回放对比后接受；像拒绝技能一样记录被拒的奖励编辑。
+
+![图 4：EvoRS 总览——策略学习与可执行 Reward-DAG 上的奖励系统进化耦合，候选状态经同批 rollout 匹配回放筛选。](assets/paper-figures/evors-reward-evolution.png)
+
+**原文图／官方图片** — 图 4：EvoRS 总览——策略学习与可执行 Reward-DAG 上的奖励系统进化耦合，候选状态经同批 rollout 匹配回放筛选。 · Figure 4 · [source](https://arxiv.org/html/2609.12459v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.12459) · [Paper v1 (affiliations, Figure 4, Tables 1-3)](https://arxiv.org/html/2609.12459v1)
+
 <a id="tokenrhythm-neohorse-1"></a>
 
 ## NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness
@@ -92,6 +122,66 @@
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2608.31111) · [Paper v1 retention protocol and Table 1](https://arxiv.org/html/2608.31111v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
+<a id="sesa-self-play-skills"></a>
+
+## Self-Play Meets Skill Evolution: Self-Evolving Search Agents that Pose, Solve, and Remember
+
+**2026-07-31** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-07-31。核验时无更新版本。
+
+**机构关系** — 论文 v1：中科院大学 + 自动化所 + 北京大学 + 明略科技 + 清华大学 + 齐鲁工业大学（山东省计算中心）；通讯 Guannan He 与 Changwei Wang。
+
+**改变对象与反馈复用** — 非对称自博弈耦合三个进化对象：挑战者从 5 万答案池提出可验证的搜索问题；只有求解者能检索技能库（记忆对挑战者隐藏以防策略泄漏）； informative 的前沿失败被蒸馏为技能（触发条件、规避线索、查询模板），余弦去重并按净负贡献逐出。技能进入在线策略 rollout，重塑策略梯度的轨迹分布，使增益内化进求解者权重；变强的求解者又改变挑战者以前沿塑形的难度奖励，新失败再重写记忆——只在步边界提交库更新的闭环飞轮。
+
+**作者报告结果** — 七个 QA 基准（3,125 道留出题）：六个骨干上比 SSP 平均 +1.2~+3.2（如 Qwen3-8B 均值 47.5、超基线 +7.0）；统一协议下 51.0 对 SkillRL-Search-7B 的 50.1；免记忆部署（SESA-Off）保留 +1.8~+2.2，重新启用技能库再加 +0.5~+1.0。消融：去失败蒸馏 -2.7。
+
+**证据边界** — 增益非逐基准均匀（Qwen3-4B 在 2Wiki、Qwen3-8B 在 Bamboogle 低于 SSP）；检索可能干扰求解者；耦合进化证据为相关性；仅求解者可访记忆是设计约束而非消融项。
+
+**代码／权重／数据／许可** — 论文列出代码 github.com/Zenghuang-Fu/SESA-Self-Evolving-Agents（论文给出的 URL；核验时经 GitHub API 未能解析）。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：对任务生成器隐藏进化中的记忆（非对称访问），使生成任务无法利用记忆答案；并在宣布递归前把技能增益内化进权重。
+
+![图 2：SESA 训练环——记忆启动播种可检索技能库；非对称自博弈让挑战者出题、仅求解者检索技能；前沿塑形与失败蒸馏闭合飞轮。](assets/paper-figures/sesa-self-play-skills.png)
+
+**原文图／官方图片** — 图 2：SESA 训练环——记忆启动播种可检索技能库；非对称自博弈让挑战者出题、仅求解者检索技能；前沿塑形与失败蒸馏闭合飞轮。 · Figure 2 · [source](https://arxiv.org/html/2607.29468v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2607.29468) · [Paper v1 (affiliations, Figure 2, tables)](https://arxiv.org/html/2607.29468v1)
+
+<a id="spyrl-self-verifiable-rewards"></a>
+
+## From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement
+
+**2026-07-26** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-07-26；v2：2026-07-31（数字引自 v2）。COLM 2026 接收。
+
+**机构关系** — 论文 v2：杜克大学、Adobe、俄勒冈州立、宾州州立、新加坡国立、Amazon；其中一项贡献完成于 Adobe。
+
+**改变对象与反馈复用** — 把开放式任务变换为'潜变量诱导精确可查奖励'的代理环境：SpyRL（谁是卧底）中 n-1 个平民看完整输入、卧底看降级版，各自作答后检测者投票猜卧底——检测奖励对环境指定的卧底编号确定性可查，表演奖励按怀疑票零和分配。GRPO 式优化配角色优势估计与迟滞门控的交替更新；全程无人类偏好、无 LLM 裁判。
+
+**作者报告结果** — Qwen3-8B 对骨干胜率：摘要 75.4%、创意写作 77.3%；GovReport ROUGE-L 36.7 对 Absolute Zero 33.2、R-Zero 32.1、基线 30.2；数学同升（Qwen3-4B：GSM8K 93.4 对 84.5、GPQA-D 41.3 对 26.3，平均 +8.97%）；以少约 200-900 美元的验证器推理成本胜过 rubric-as-reward 流水线（Qwen3.5-27B-RaR）。
+
+**证据边界** — 数学到写作的跨任务迁移失败（负迁移）；组规模收益 n>5 后饱和；降级算子必须保持有意义且不退化；长期自博弈有已知退化风险，仅缓解未消除。
+
+**代码／权重／数据／许可** — 代码在 github.com/wangqinsi1/RLSVR/tree/SpyRL（Apache-2.0，核验时 192 星）。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：任务缺验证器时，把它变换为'隐藏状态使奖励机械可查'的代理博弈——用构造获得可验证性，而非靠裁判。
+
+![图 2：两阶段 SpyRL 博弈——平民与信息降级的卧底各自作答、检测者投票；表演奖励与怀疑票成反比，检测奖励对已知卧底身份确定性可查。](assets/paper-figures/spyrl-self-verifiable-rewards.png)
+
+**原文图／官方图片** — 图 2：两阶段 SpyRL 博弈——平民与信息降级的卧底各自作答、检测者投票；表演奖励与怀疑票成反比，检测奖励对已知卧底身份确定性可查。 · Figure 2 · [source](https://arxiv.org/html/2607.23802v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/wangqinsi1/RLSVR/tree/SpyRL)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2607.23802) · [Paper v2 (affiliations, Figure 2, tables)](https://arxiv.org/html/2607.23802v2) · [Code repository (Apache-2.0)](https://github.com/wangqinsi1/RLSVR/tree/SpyRL)
+
 <a id="gpt-red"></a>
 
 ## GPT-Red: Automated Red Teaming via Self-Play at Scale
@@ -121,6 +211,66 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Paper](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf) · [Official report](https://openai.com/index/unlocking-self-improvement-gpt-red/)
+
+<a id="qevolve-in-distribution"></a>
+
+## Self-Evolving LLM Agents with In-Distribution Optimization
+
+**2026-06-05** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-06-05。ICML 2026 接收。
+
+**机构关系** — 论文 v1：代尔夫特外的埃因霍温理工大学（Yudi Zhang、Mykola Pechenizkiy），Meng Fang（TU/e + 利物浦大学，通讯），陈振芳（MIT-IBM Watson AI Lab）。
+
+**改变对象与反馈复用** — 每轮自进化在专家演示与自身轨迹的混合集上用加权隐式 Q-Learning 训练分布内评论家（不对分布外动作取 max；步权上调成功轨迹中信息量大的后段步骤），仅在环境奖励上做 GAE 得到步骤级过程奖励，再用行为近端策略优化——非对称裁剪激进压制负优势动作——显式控制跨轮分布漂移。策略、评论家与数据集在 2-3 轮迭代中共进化。
+
+**作者报告结果** — Llama-2-7B-Chat 骨干：均值 79.4 对 QLASS 74.5、ETO 69.4、Best-of-N 65.4、PPO 45.3（ALFWorld seen/unseen 90.7/89.6；ScienceWorld unseen 69.7；WebShop 70.5）。样本效率：ALFWorld（Qwen2.5-7B）仅 13K 环境步达 88.6/87.3，对 PPO/RLOO/GRPO 的 320K 与 QLASS 的约 600K。
+
+**证据边界** — 回溯奖励依赖结构化环境反馈；贪婪 rollout 降低跨轮轨迹多样性；跨轮分布漂移未显式纠正。
+
+**代码／权重／数据／许可** — 项目页 qevolve.github.io。arXiv 页未列代码仓库；论文 CC BY-NC-SA 4.0（非商业条款）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI 模型轨：每轮学习都用当前策略自身 rollout（加演示）训练分布内评论家，并用非对称裁剪——多轮稳定、无离策略漂移的配方。
+
+![图 2：Q-Evolve 框架——行为克隆热身后，在演示与自轨迹混合集上迭代：回溯标注、分布内评论家、token 级优势再分配，策略/评论家/数据集共进化。](assets/paper-figures/qevolve-in-distribution.png)
+
+**原文图／官方图片** — 图 2：Q-Evolve 框架——行为克隆热身后，在演示与自轨迹混合集上迭代：回溯标注、分布内评论家、token 级优势再分配，策略/评论家/数据集共进化。 · Figure 2 · [source](https://arxiv.org/html/2606.07367v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2606.07367) · [Paper v1 (affiliations, Figure 2, Tables 2/5/6)](https://arxiv.org/html/2606.07367v1)
+
+<a id="cmu-stv-self-trained-verification"></a>
+
+## Self-Trained Verification for Training- and Test-Time Self-Improvement
+
+**2026-05-28** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-05-28；v2：2026-05-31（数字引自 v2）。
+
+**机构关系** — 两位作者（Chen Henry Wu、Aditi Raghunathan）均属卡内基梅隆大学。
+
+**改变对象与反馈复用** — 利用'模型无法冷诊断自身错误、但看到参考解就可以'的不对称性。参考条件化验证器（教师）通过 (verdict, feedback) 分布的在线策略蒸馏 + 对照真值的 verdict-RL 项监督无条件化学生；直接 SFT 教师轨迹会因离策略漂移而失败。训练出的验证器同时驱动测试时验证-精炼环与验证器在环（ViL）的生成器 RL 训练——验证器本身即自改进产物。
+
+**作者报告结果** — 困难数学上准确率约翻倍（末轮 Hardest 5.5% 对 Qwen3-32B 流水线 2.7%）；SciKnowEval Hardest 1.5% -> 21.0%、Hard 11.5% -> 42.4%，超过 Qwen3-235B-A22B；对已收敛 RLVR 生成器，ViL 再加 +33% 相对 pass@1，而继续 RLVR 无增益；STV 训练的 4B 验证器接近 8B（26.4% 对 27.4%）。
+
+**证据边界** — 作者自述开放问题：能否推广到'从头不可验证'的任务之外、其他监督信号、更大模型，以及生成器/验证器/测试时轮次的最优算力分配。
+
+**代码／权重／数据／许可** — 代码在 github.com/AR-FORUM/stv（Apache-2.0，核验时 11 星）；项目页 ar-forum.github.io/stv-webpage。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：让验收验证器模仿自身'参考条件化'的判断来训练，再用这个自训练验证器闸门每个候选变更——用廉价的学习型检查器直接强化冻结评估器不变量。
+
+![图 1：自训练验证——参考条件化教师验证器蒸馏进无条件化学生，后者再驱动测试时验证-精炼环与验证器在环 RL。](assets/paper-figures/cmu-stv-self-trained-verification.svg)
+
+**原文图／官方图片** — 图 1：自训练验证——参考条件化教师验证器蒸馏进无条件化学生，后者再驱动测试时验证-精炼环与验证器在环 RL。 · Figure 1 · [source](https://arxiv.org/html/2605.30290v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/AR-FORUM/stv)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2605.30290) · [Paper v2 (affiliations, Figure 1, all tables)](https://arxiv.org/html/2605.30290v2) · [Code repository (Apache-2.0)](https://github.com/AR-FORUM/stv)
 
 <a id="a3"></a>
 
@@ -182,6 +332,126 @@
 
 **一手来源** — [Original paper date](https://arxiv.org/abs/2602.15902) · [Paper Table 1](https://arxiv.org/html/2602.15902v1) · [Official project and affiliations](https://pub.sakana.ai/doc-to-lora/) · [Official code](https://github.com/SakanaAI/doc-to-lora) · [Official checkpoint inventory](https://huggingface.co/SakanaAI/doc-to-lora/tree/main)
 
+<a id="skillrl-skill-augmented-rl"></a>
+
+## SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning
+
+**2026-02-09** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-02-09。核验时无更新版本。
+
+**机构关系** — 论文 v1：北卡罗来纳大学教堂山分校牵头（Peng Xia ... Huaxiu Yao，aiming-lab）；合作者来自芝加哥大学、UCSD、NEC Labs America、UC 伯克利与 UC 圣克鲁兹。
+
+**改变对象与反馈复用** — 从轨迹蒸馏出分层 SkillBank（通用策略 + 按嵌入相似度检索的任务技能），在 rollout 中以上下文形式使用，同时用 GRPO 训练策略——技能库本身持续共进化：每个验证 epoch 后，失败轨迹类别触发技能生成/精炼（每轮最多 3 个新技能），技能与权重互相成就。技能蒸馏压缩上下文 10-20 倍。
+
+**作者报告结果** — ALFWorld 总成功率 89.9% 对 GRPO 77.6%（绝对 +12.3；Mem0+GRPO 54.7%）；WebShop 85.2 分/72.7% 成功率对 GRPO 79.3/66.1；搜索增强 QA 均值 47.1% 对 Search-R1 38.5%、EvolveR 43.1%（Bamboogle 73.8 对 54.4）。消融：去掉技能库 ALFWorld 掉到 61.7；去掉动态进化掉到 84.4；库从 55 长到 100 个技能。
+
+**证据边界** — 无专门局限性章节。隐含：蒸馏依赖强教师（OpenAI o3）、二元奖励、技能增长受超参上限约束、基座为 Qwen2.5-7B-Instruct。
+
+**代码／权重／数据／许可** — 代码在 github.com/aiming-lab/SkillRL（MIT，核验时 976 星）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：这是技能轨与模型轨之间缺失的桥梁——先让技能对照冻结 rollout 基线验证，再让库与学习器共进化，并记录两侧各自贡献。
+
+![图 2：SkillRL 框架——轨迹蒸馏进分层技能库，冷启动 SFT 教会技能使用，RL 训练在验证失败驱动下让策略与技能库共同进化。](assets/paper-figures/skillrl-skill-augmented-rl.png)
+
+**原文图／官方图片** — 图 2：SkillRL 框架——轨迹蒸馏进分层技能库，冷启动 SFT 教会技能使用，RL 训练在验证失败驱动下让策略与技能库共同进化。 · Figure 2 · [source](https://arxiv.org/html/2602.08234v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/aiming-lab/SkillRL)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2602.08234) · [Paper v1 (affiliations, Figure 2, Tables 1-5)](https://arxiv.org/html/2602.08234v1) · [Code repository (MIT)](https://github.com/aiming-lab/SkillRL)
+
+<a id="eigendata-self-evolving-synthesis"></a>
+
+## From Self-Evolving Synthetic Data to Verifiable-Reward RL: Post-Training Multi-turn Interactive Tool-Using Agents
+
+**2026-01-30** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026-01-30；v3：2026-03-10（数字引自 v3）。
+
+**机构关系** — 论文 v3：Jiaxuan Gao、Shusheng Xu、Yi Wu 属清华大学；Jiaao Chen、Di Jin 属 Eigen AI（通讯）；Chuyi He 为独立研究者。
+
+**改变对象与反馈复用** — 层级多智能体引擎生成多样化的'合成-评测'计划对；工人智能体执行任务合成、任务验证、轨迹 rollout（带用户模拟器）与轨迹验证（把失败归因到任务或轨迹）；每个实例得到一个可执行的逐实例检查器，对比最终状态与真值产生二元奖励。每次迭代由反思模块据失败更新合成与评测计划——数据管线本身在进化——随后在可验证奖励上做 GRPO 式 RL。
+
+**作者报告结果** — Qwen3-235B-A22B-2507 + RL：tau2-bench Airline 73.0% pass^1（追平 Gemini 3.0 Pro、超 GPT-5 的 62.5%），Telecom 98.3%（已报告最优）；混合训练均值 81.3% 超 Qwen3-Max-Thinking（80.7%）与 GPT-5（80.0%）。消融（Airline SFT，30B-A3B）：完整 56.0% 对无验证 50.0%、无进化 44.0%、4 组固定提示 42.5%、人类专家管线 52.0%——进化引擎胜过人工数据。
+
+**证据边界** — Retail 仍最难（Claude Sonnet 4.5 以 86.2% 领先其 75.0%）；小模型混合训练退化（30B-A3B 均值 71.5% -> 63.7%）；现成用户模拟器在双控场景不稳。
+
+**代码／权重／数据／许可** — 示例代码在 github.com/inclusionAI/AReaL/tree/main/examples/tau2（CC BY-NC-SA 4.0——非商业条款，不得复制进 nanoRSI）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：逐实例可执行检查器 + 修订任务生成器本身的反思环——最小自进化数据环同样需要这两个面（任务有效性、轨迹归因）。
+
+![图 1：自进化数据引擎——元规划产出'合成-评测'计划对，工人做任务与轨迹的合成/验证，反思模块据失败闭环更新计划。](assets/paper-figures/eigendata-self-evolving-synthesis.png)
+
+**原文图／官方图片** — 图 1：自进化数据引擎——元规划产出'合成-评测'计划对，工人做任务与轨迹的合成/验证，反思模块据失败闭环更新计划。 · Figure 1 · [source](https://arxiv.org/html/2601.22607v3)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Example code (CC BY-NC-SA 4.0)](https://github.com/inclusionAI/AReaL/tree/main/examples/tau2)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2601.22607) · [Paper v3 (affiliations, Figure 1, tables)](https://arxiv.org/html/2601.22607v3) · [Example code (CC BY-NC-SA 4.0)](https://github.com/inclusionAI/AReaL/tree/main/examples/tau2)
+
+<a id="meta-ssr-self-play"></a>
+
+## Toward Training Superintelligent Software Agents through Self-Play SWE-RL
+
+**2025-12-21** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2025-12-21；v3：2026-06-02（指标引自 v3）。ICML 2026 接收。
+
+**机构关系** — 论文 v3：Yuxiang Wei（Meta FAIR + UIUC）、Zhiqing Sun（Meta TBD Lab）、Emily McMilin、Jonas Gehring、David Zhang、Gabriel Synnaeve、Sida Wang（Meta FAIR）、Daniel Fried（Meta FAIR + CMU）、Lingming Zhang（UIUC）。
+
+**改变对象与反馈复用** — 单个 LLM（CWM-sft 32B）在沙箱化的真实仓库上同时扮演缺陷注入者与修复者，无需人工 issue 或测试。注入者在不看测试与 issue 的情况下探索仓库、发现测试运行方式，产出缺陷工件（测试脚本、解析器、注入 diff、测试弱化 diff），经一致性检查（含逆变异测试）验证；修复者只看反转的弱化补丁作为形式规格，必须给出通过恢复后 oracle 测试的修复。失败的求解尝试转化为有上限的二阶'高阶缺陷'。奖励完全锚定在测试结果上。
+
+**作者报告结果** — 自博弈 RL 后（CWM-sft 32B、512 张 H100）SWE-bench Verified +10.4 分、SWE-Bench Pro +7.8 分；整条训练轨迹上持续优于人类数据基线，并迁移到自博弈中从未见过的自然语言 issue。论文自述 SWE-bench Verified 配对标准误约 2%。
+
+**证据边界** — 作者自述缺少隐藏 oracle（完整测试进提示会诱发奖励黑客）、只用单元测试验证、双角色共享同一模型配置、合成自然语言 issue 会退化成无意义模式。附录 A 记录了挑战者的主导策略会使无缓解的自博弈停滞。
+
+**代码／权重／数据／许可** — 未找到代码发布；基座模型 CWM-sft 在 Hugging Face（facebook/cwm-sft）。训练用 512 张 H100 与 CWM-RL 基础设施，超出 nanoRSI 本地复现范围。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：让变异者同时产出验证器工件（测试脚本 + 弱化补丁）并用逆变异测试校验的自博弈任务生成——无人工标注下生成器-验证器协同生产的蓝图。
+
+![图 1：Self-play SWE-RL 总览——同一智能体向沙箱仓库注入缺陷（含测试工件），再由同型模型对照恢复后的 oracle 测试完成修复；测试结果是唯一奖励。](assets/paper-figures/meta-ssr-self-play.svg)
+
+**原文图／官方图片** — 图 1：Self-play SWE-RL 总览——同一智能体向沙箱仓库注入缺陷（含测试工件），再由同型模型对照恢复后的 oracle 测试完成修复；测试结果是唯一奖励。 · Figure 1 · [source](https://arxiv.org/html/2512.18552v3)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2512.18552) · [Paper v3 (affiliations, Figure 1, ablations, Appendix A)](https://arxiv.org/html/2512.18552v3)
+
+<a id="sage-skill-augmented-grpo"></a>
+
+## SAGE: Reinforcement Learning for Self-Improving Agent with Skill Library
+
+**2025-12-18** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2025-12-18；ACL 2026 长文。代码工件托管于 amazon-science。
+
+**机构关系** — 论文 v1：AWS Agentic AI（Qiaojing Yan、Yawei Wang、Yijun Tian 等，通讯 Panpan Xu、Lin Lee Cheong）；一作 Jiongxiao Wang（威斯康星麦迪逊）于 AWS 实习期间完成。
+
+**改变对象与反馈复用** — 技能增强 GRPO：智能体定义并调用函数式技能（CodeAct 风格，沿用 DynaSaur），顺序 rollout 让同一智能体跨相似任务链执行，任务一生成的技能在任务二被复用——后续技能使用的成功奖励把信用回传给更早的技能生成。技能整合奖励为'生成的技能被成功复用'与'成功使用检索到的技能'加成。GRPO 改为用奖励均值优势（无 std 归一化、无 KL 惩罚），跨任务链、按任务技能库计算。
+
+**作者报告结果** — AppWorld（Qwen2.5-32B-Instruct）：对基线 GRPO，Scenario Goal Completion +8.9%、交互步数少 26%、token 少 59%（Test Normal 60.7% 对 51.8% SGC，1,475 对 3,613 token；Test Challenge 32.4% 对 26.9%）。胜 LOOP（53.6% SGC）与 GPT-4o ReAct（32.1%）；链长消融显示 3 任务链（54.8% SGC）不如 2 任务链。
+
+**证据边界** — 实验仅在 AppWorld 上进行；作者自述不同场景可能需要不同智能体设计。
+
+**代码／权重／数据／许可** — 工件在 github.com/amazon-science/SAGE（23 星；GitHub API 报告许可 NOASSERTION——复用前须核对条款）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：在相关任务链上而非孤立回合评估技能，并把奖励信用回传给生成技能的步骤——直接回答'生成的技能如何被选择'。
+
+![图 1：技能库智能体与带技能整合奖励的顺序 rollout——链上前置任务生成的技能被下一任务复用，成功复用把奖励信用回传给技能生成。](assets/paper-figures/sage-skill-augmented-grpo.png)
+
+**原文图／官方图片** — 图 1：技能库智能体与带技能整合奖励的顺序 rollout——链上前置任务生成的技能被下一任务复用，成功复用把奖励信用回传给技能生成。 · Figure 1 · [source](https://arxiv.org/html/2512.17102v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — [Artifact repository](https://github.com/amazon-science/SAGE)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2512.17102) · [Paper v1 (affiliations, Figure 1, tables)](https://arxiv.org/html/2512.17102v1) · [Artifact repository](https://github.com/amazon-science/SAGE)
+
 <a id="sakana-trinity"></a>
 
 ## TRINITY: An Evolved LLM Coordinator
@@ -211,6 +481,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Original paper date](https://arxiv.org/abs/2512.04695) · [Original paper methods and experimental conditions](https://arxiv.org/html/2512.04695v1) · [Official Sakana announcement](https://sakana.ai/trinity/)
+
+<a id="sakana-conductor-fugu"></a>
+
+## Conductor / Fugu: An LLM Trained to Orchestrate (and Include) Itself
+
+**2025-12-04** · paper · 支撑技术／评测
+
+**日期说明** — Conductor arXiv v1：2025-12-04；v5：2026-05-06（ICLR 2026）。Fugu 产品技术报告（arXiv 2606.21228，2026 年 6 月）把该协调器以 OpenAI 兼容 API 形式交付。这是 RSI Lab 6 月 5 日公告后首批经核验的谱系机制产出。
+
+**机构关系** — 论文 v5：Sakana AI（日本）与密歇根大学、东京科研大学；同等贡献作者含 Sakana AI 实习生。
+
+**改变对象与反馈复用** — 一个 7B 模型（Qwen2.5-7B）经 200 轮 GRPO 训练，以三张 Python 列表输出完整协调策略——工人模型 ID、自然语言子任务指令、访问列表——从而学会在更强的工人之间设计通信拓扑并为其提示工程，以随机化智能体池上的任务奖励端到端训练。由于 Conductor 可以把自己也指定为工人，发现的拓扑可递归嵌套，实现动态测试时扩展。
+
+**作者报告结果** — Conductor（7B 协调 GPT-5/Claude/Gemini 级工人）：LiveCodeBench 83.93、GPQA-D 87.5、AIME25 93.3、均值 77.27——高于 GPT-5（74.78）与任一单工人；受限设定下对多智能体基线：MASRouter 56.89、MoA 62.13、RouterDC 52.41、Smoothie 56.48 对 Conductor 均值 72.35。
+
+**证据边界** — 依赖昂贵的前沿工人（作者自述加剧数字鸿沟的担忧）；细粒度拓扑变体无显著收益；7B 协调器限制规划质量。Fugu 数字来自厂商自家的技术报告。
+
+**代码／权重／数据／许可** — Conductor 论文称基座与数据集公开，未找到独立代码仓库。Fugu 以产品 API 交付，技术报告为 arXiv 2606.21228。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：'协调即习得技能'——若存在候选 harness 种群，一个训练出的小型选择器（可把自身纳入编排）是可与规则选择对照的廉价种群级元控制器。
+
+![图 3：Conductor 训练——GRPO 在随机化工人池的完整多智能体 rollout 奖励上更新 7B 协调器，教它写出可递归包含自身的拓扑与指令。](assets/paper-figures/sakana-conductor.svg)
+
+**原文图／官方图片** — 图 3：Conductor 训练——GRPO 在随机化工人池的完整多智能体 rollout 奖励上更新 7B 协调器，教它写出可递归包含自身的拓扑与指令。 · Figure 3 · [source](https://arxiv.org/html/2512.04388v5)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Conductor arXiv abstract](https://arxiv.org/abs/2512.04388) · [Paper v5 (affiliations, training figure, Tables 1/7)](https://arxiv.org/html/2512.04388v5) · [Fugu product page](https://sakana.ai/fugu/)
 
 <a id="deepseek-math-v2"></a>
 
@@ -332,6 +632,36 @@
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2511.10395) · [Paper v1: affiliation, methods, Table 1](https://arxiv.org/html/2511.10395v1) · [Official AgentEvolver repository](https://github.com/modelscope/AgentEvolver)
 
+<a id="meta-spice-self-play"></a>
+
+## SPICE: Self-Play in Corpus Environments (adversarial curriculum from raw documents)
+
+**2025-10-28** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2025-10-28。核验时无更新版本。
+
+**机构关系** — 论文 v1：Meta FAIR（Bo Liu 兼 NUS、Chuanyang Jin、Seungone Kim、Weizhe Yuan、Wenting Zhao、Ilia Kulikov、Xian Li、Sainbayar Sukhbaatar、Jack Lanchantin、Jason Weston）。
+
+**改变对象与反馈复用** — 单一 RL 模型在原始语料上扮演两角：挑战者从文档挖出（问题，可验证答案）对；推理者不看文档作答（信息不对称）。挑战者获得峰在推理者 50% 通过率的高斯方差奖励——正好落在推理者能力前沿的自动课程——推理者拿二元正确性奖励。双角色共享权重、经 DrGRPO（角色专属均值中心优势）联合训练；无效任务给小额负罚。
+
+**作者报告结果** — Qwen3-4B-Base：35.8% -> 44.9%（+9.1）；Qwen3-8B-Base +5.7；OctoThinker-3B/8B +10.5/+11.9——摘要口径跨家族数学 +8.9%、通用推理 +9.8%。Qwen3-4B 上胜 Strong Challenger（+7.2）、R-Zero（+3.7）、Absolute Zero（+4.9）。训练动态：挑战者变强时固定推理者通过率从 55% 降到 35%；语料落地加 +3.2。
+
+**证据边界** — 语料仅 2 万文档（每篇复用约 2-3 次）；验证依赖可从文档抽取的答案类型；R-Zero 基线因退化只训了 5 轮，可能影响基线公平性。
+
+**代码／权重／数据／许可** — 论文页无代码仓库（'评测代码与提示将发布'）；组件使用开源 Oat 框架。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：用执行者的成功率方差（峰值 50%）而非原始难度奖励任务生成器——一行改动即可让生成任务始终落在当前候选可学习的边界上。
+
+![图 2：SPICE 总览——同一模型分别扮演挑战者（把文档挖成带可验证答案的问题）与推理者（不看文档作答）；方差塑形奖励使问题始终处于推理者能力边界。](assets/paper-figures/meta-spice-self-play.png)
+
+**原文图／官方图片** — 图 2：SPICE 总览——同一模型分别扮演挑战者（把文档挖成带可验证答案的问题）与推理者（不看文档作答）；方差塑形奖励使问题始终处于推理者能力边界。 · Figure 2 · [source](https://arxiv.org/html/2510.24684v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2510.24684) · [Paper v1 (affiliations, Figure 2, tables)](https://arxiv.org/html/2510.24684v1)
+
 <a id="google-discorl-2025"></a>
 
 ## Discovering state-of-the-art reinforcement learning algorithms
@@ -361,6 +691,66 @@
 **开源代码／权重／数据链接** — [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
 
 **一手来源** — [Primary Nature article at PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12695655/) · [Publication metadata](https://pubmed.ncbi.nlm.nih.gov/41125136/) · [Author project and artifact availability](https://google-deepmind.github.io/disco_rl/) · [Official code and licence statements](https://github.com/google-deepmind/disco_rl)
+
+<a id="evolver-experience-lifecycle"></a>
+
+## EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle
+
+**2025-10-17** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2025-10-17；v3：2026-05-16（数字引自 v3）。ICML 2026 接收。
+
+**机构关系** — 论文 v3：上海人工智能实验室牵头（通讯 Botian Shi），合作者来自浙江大学、华东师大、复旦、上交与中国科大。
+
+**改变对象与反馈复用** — 闭环经验生命周期，两阶段交替：离线阶段参数冻结，智能体以专家人设回顾历史轨迹，蒸馏成'指导性'（成功）与'警示性'（失败）原则——自然语言描述 + 知识三元组，经嵌入相似度与 LLM 等价性双重去重、按动态有用性分数剪枝；在线阶段检索到的原则参与推理，轨迹再喂给下一轮蒸馏；GRPO 更新策略，使其学会使用自己蒸馏的智慧。
+
+**作者报告结果** — Qwen2.5-3B 搜索智能体均值 0.382 对 Search-R1-instruct 0.325、拒绝采样 0.265、RAG 0.270；Qwen2.5-7B 均值 0.417 对 0.385。消融（3B）：去经验检索 0.340；仅 RL 0.325；外师蒸馏（GPT-4o-mini）0.370 对自蒸馏 0.382——自蒸馏胜过外部教师。
+
+**证据边界** — 自蒸馏质量受基座能力上界约束；仅在 QA 上验证（具身/创意未测）；终身算力效率未解；自进化策略的安全性依赖奖励函数。
+
+**代码／权重／数据／许可** — 论文列出 github.com/Edaizi/EvolveR；核验时经 GitHub API 未能解析，许可未确立。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：参数冻结的离线蒸馏阶段可直接移植——把被接受的轨迹变成去重原则卡，并用动态有用性分数剪除死条目。
+
+![图 2：EvolveR 经验生命周期——在线阶段（RL 策略更新）与离线阶段（参数冻结、轨迹自蒸馏为原则、经验库维护）交替。](assets/paper-figures/evolver-experience-lifecycle.png)
+
+**原文图／官方图片** — 图 2：EvolveR 经验生命周期——在线阶段（RL 策略更新）与离线阶段（参数冻结、轨迹自蒸馏为原则、经验库维护）交替。 · Figure 2 · [source](https://arxiv.org/html/2510.16079v3)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2510.16079) · [Paper v3 (affiliations, Figure 2, tables)](https://arxiv.org/html/2510.16079v3)
+
+<a id="ttsi-test-time-self-improvement"></a>
+
+## Self-Improving LLM Agents at Test-Time
+
+**2025-10-09** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2025-10-09。ACL 2026 Findings。
+
+**机构关系** — 五位作者（Emre Can Acikgoz、Cheng Qian、Heng Ji、Dilek Hakkani-Tur、Gokhan Tur）均属伊利诺伊大学厄巴纳-香槟分校。
+
+**改变对象与反馈复用** — 对每个不确定的测试样本，三阶段自改进全程在推理期完成：自我感知用候选动作 NLL 的相对 softmax 打分标记低边际样本；自我数据增强让模型自己（从不看金标）从被标记样本生成 K 个相似输入-输出对；自我改进在合成数据上做临时 LoRA 微调，用适配后的权重作答，再把参数重置回原值。
+
+**作者报告结果** — 相对提示基线平均绝对 +5.48%（ToolAlpaca +5.84%、NexusRaven +6.05%、SealTool +5.76%、API-Bank +4.26%）；SealTool 上以少 68 倍样本（190 个合成样本对约 1.3 万训练集）超过 SFT（72.43% 对 70.20%）。
+
+**证据边界** — 对不确定性阈值敏感（自主学习阈值仍是开放问题）；受基座能力上界约束——预训练中没有的知识无法恢复；小样本训练方差大（五个种子取平均）。
+
+**代码／权重／数据／许可** — 论文未提及代码发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：最小逐样本环——不确定性触发的合成自数据 + 临时适配器、答完即重置——可在数字/工件任务上验证，无需训练基础设施。
+
+![图 1：TT-SI 框架——自我感知检测不确定样本、自我数据增强生成相似例、测试时微调逐样本临时适配权重。](assets/paper-figures/ttsi-test-time-self-improvement.png)
+
+**原文图／官方图片** — 图 1：TT-SI 框架——自我感知检测不确定样本、自我数据增强生成相似例、测试时微调逐样本临时适配权重。 · Figure 1 · [source](https://arxiv.org/html/2510.07841v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2510.07841) · [Paper v1 (affiliations, Figure 1, per-benchmark gains)](https://arxiv.org/html/2510.07841v1)
 
 <a id="tencent-spear"></a>
 

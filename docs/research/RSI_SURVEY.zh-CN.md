@@ -1,115 +1,131 @@
-# 递归自进化 (RSI) 研究档案与架构全景调研
+# 递归自改进（RSI）：经核验系统的活综述
 
-近期企业论文与成果请查看经过日期核验的[企业 RSI 研究地图](industry-rsi/README.zh-CN.md)。本档案包含历史架构设想与研究笔记；当前可执行能力与运行边界以[多层级指南](../MULTILEVEL.zh-CN.md)和[安全模型](../../SECURITY.md)为准。
+**[English](RSI_SURVEY.md)** · [产业研究地图（日期核验条目）](industry-rsi/README.zh-CN.md) · [English map](industry-rsi/README.md) · [每日雷达日志](industry-rsi/RADAR.md) · [工程待办](industry-rsi/ADOPTION.md)
 
-## 1. 概述与核心定位
+本文是一部**活综述**：把 [catalog.json](industry-rsi/catalog.json) 中 85 条日期核验条目（滚动窗口 **2025-09-16 → 2026-09-16**，截至 **2026-09-16**）综合为一份分析文档，并随每日零点雷达扫查同步更新。下文每个论断都可回溯到资料库条目；作者结果**不等于**本地复现，本综述不宣称通用递归自改进已经实现。当前构成：**直接闭环（direct-loop）** 63 条、**支撑技术（enabling）** 15 条、**辅助研发（assisted-rd）** 7 条，横跨四个改变面——参数学习 27、智能体/代码 24、记忆/上下文 12、研究工作流 22。
 
-本文档系统性追踪语言模型与自主智能体（Autonomous Agents）在递归自进化（Recursive Self-Improvement, RSI）方向的前沿研究进展与开源参考实践，并明确各项技术方案在 **nanoRSI** 中的最小原语映射。
+nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指南](../MULTILEVEL.zh-CN.md)与安全模型。
 
-nanoRSI 将自进化体系严格划分为三层正交结构：
-1. **Artifact RSI（目标资产自进化）**：面向目标产物（如算法、代码、文档、特定策略 Prompt）在函数空间中通过遗传/采样变异进行优化。
-2. **Harness RSI（智能体认知脚手架自进化）**：面向智能体内部决策编排、工具调用、反思总结与上下文工程的自迭代。
-3. **Model RSI（模型参数与适配器自进化）**：在外部标准化训练契约下，闭环处理数据合成、LoRA 参数微调与自蒸馏。
+## 1. 范围与定义
 
----
+本文采用资料库确立的**操作性定义**：一个系统 (i) **修改自身运行的持久产物**——权重、代码、技能、记忆、harness 或它自己的改进策略；(ii) **从执行或评估获得对该产物的反馈**；(iii) **在后续工作中复用修改后的产物**——全程无人手写该变更。三种证据等级区分"声明到底证明了什么"：
 
-## 2. 研究范式全景对比
+| 等级 | 含义 | 数量 | 例 |
+| --- | --- | --- | --- |
+| `direct-loop` | 修改 → 反馈 → 复用 在持久产物上闭合 | 63 | SkillOpt、DGM 谱系、AgentEvolver、Amazon 自主后训练 |
+| `enabling` | 支撑或分析闭环，自身不闭合 | 15 | Doc-to-LoRA、TRINITY、经济学校准、contextual-drag 分析 |
+| `assisted-rd` | 人类主导的研发提速遥测，无自主闭环 | 7 | OpenAI 研究加速、Devin 构建 Devin |
 
-| 研究范式 | 目标层级 | 核心实现机制 | 代表项目 / 论文 | 核心安全与可信不变量 |
-| :--- | :--- | :--- | :--- | :--- |
-| **函数空间进化 (MAP-Elites)** | Artifact | 基于大模型变异与质量-多样性（QD）档案保留最优代际 | FunSearch (DeepMind), OpenEvolve | 孤岛隔离；评测器绝对处于变异表面之外 |
-| **智能体上下文工程 (ACE)** | Harness | 动态 Playbook 演化、策略剪枝与执行经验沉淀 | ACE, Memento-Skills, Hermes Agent | 结构化变异规范；追加式策略血统记录 |
-| **达尔文-哥德尔机 (DGM)** | Harness / Artifact | 通过编程基准经验性评估自修改 | DGM, Gödel Agent | 提供实验证据；不构成全局提升的形式化证明 |
-| **自适应语言模型 (SEAL)** | Model | 任务执行反馈 -> 合成训练集 -> 目标参数更新闭环 | SEAL, Continual-Intelligence/SEAL | 泛化保持；防止自训练产生分布崩溃 |
-| **规范评测循环** | 全层级 | 标准化算子生命周期：Select -> Mutate -> Evaluate -> Gate -> Lineage | RSIHub (simple-agent-lab), nanoRSI | 评测器绝对冻结；真实指标不可篡改；HMAC 审计链 |
+两条边界刻意划清。其一，**能力 ≠ 机制**：更强的模型或没有持久自修改闭环的自动化研究演示（Anthropic Fermat 形式化、Google Stellar Colosseum、北大 OpenAI4S）只记为信号，不收录条目。其二，**单次通过不是递归**：NeoHorse-1 自己就把结果定性为"初步尝试而非决定性证明"；资料库逐字保留这类诚实表述。
 
----
+## 2. 本综述如何产出
 
-## 3. 开源参考仓库深度解析与 nanoRSI 映射
+1. **每日扫查**（[RADAR.md](industry-rsi/RADAR.md)）：arXiv（列表页 + 直接打开 abs/HTML；export API 自 9/14 起在本机持续限流）、企业研究页、高校实验室、会议（NeurIPS/ICML/ICLR/COLM/ACL 2025-26）、跟踪的 GitHub 仓库；媒体**只作线索**。
+2. **一手来源核验**：每条都打开原始论文或官方页；钉准首发日期（修订日期绝不重置成果日期；无日期页面用可验证元数据钉定，如 Sakana RSI Lab 用其 HN 提交时间戳）。作者姓名不做音译。
+3. **统一 schema**（[FORMAT.md](industry-rsi/FORMAT.md)）：机制、带对照/单位/条件的结果、含负结果的局限、分开的代码/权重/数据/许可状态，以及**强制原文配图**（论文管线图或官方图，禁用概念插画）。
+4. **本综合**：对照资料库手写，绝非自动摘要；下文分类法即资料库分类。
 
-### 3.1 RSIHub (simple-agent-lab/RSIHub)
-- **核心机制**：基于 YAML 配方的可插拔流水线，将循环清晰拆分为 `Select`、`Rollout`、`Analyze`、`Mutate`、`Validate`、`Novelty`、`Gate`、`Record`、`Reflect` 算子阶段。通过子进程隔离与 Git 生成分支运行，使用固化的 `gen/0` 密封集锚点防止指标虚高。
-- **nanoRSI 映射**：nanoRSI 将其精炼为纯 Python 标准库内核，直接运行在 Git detached worktree 中。去除插件和复杂外部依赖，确保最纯粹的隔离与零依赖审计。
+## 3. 分类法：两轴一解剖
 
-### 3.2 OpenEvolve & FunSearch
-- **核心机制**：函数空间进化搜索，通过 LLM 提议新算法实现，结合代码静态分析与测试套件动态评分维护最优解族。
-- **nanoRSI 映射**：直接对应 nanoRSI 内置的 `artifact` 模板（`nanorsi.templates.artifact`）。待演进目标置于 `target/`，评估与测试套件保持完全只读。
+**轴一——改什么**（资料库 `category`，与 nanoRSI 三层对齐）：
 
-### 3.3 Hermes Agent & Memento-Skills
-- **核心机制**：工具使用与执行经验技能化沉淀，通过逐步累加经过验证的高质量 Python 函数扩充 Agent 能力。
-- **nanoRSI 映射**：对应 nanoRSI 内置的 `harness` 模板（`nanorsi.templates.harness`）。通过 `nanorsi.toml` 中的 `mutable_surface` 精确界定允许变异的 Agent 逻辑（如 `target/agent/**`），严防自修改破坏评测与安全约束。
+| 改变面 | nanoRSI 层 | 条目数 | 典型问题 |
+| --- | --- | --- | --- |
+| 参数学习 | 模型 RSI | 27 | 训练信号从哪来？谁验证？增益能否活过第二轮？ |
+| 智能体/代码 | Harness RSI（+工件 RSI） | 24 | 编辑的究竟是什么——技能、harness、策略？什么闸门约束编辑？ |
+| 记忆/上下文 | Harness RSI | 12 | 什么在持久化？检索如何更新？上下文在帮忙还是拖累？ |
+| 研究工作流 | 元层/组织层 | 22 | 系统是否在改进"研究/改进本身的做法"？其声明可被谁验证？ |
 
-### 3.4 SEAL (Self-Adapting Language Models)
-- **核心机制**：通过解决问题收集的执行轨迹自动化构建微调数据集，触发外部训练器更新模型权重。
-- **nanoRSI 映射**：对应 nanoRSI 内置的 `model` 模板（`nanorsi.templates.model`）。nanoRSI 内核负责评估、门禁与 Git 检查点管理，将耗时的 GPU 训练委托给标准化的外部训练脚本。
+**轴二——与闭环的关系**（`direct-loop` / `enabling` / `assisted-rd`，见 §1）。
 
----
+**闭环解剖**——每条条目都可拆为：**变异**（谁提议变更、受何约束）、**反馈**（评估信号来自结果验证器、学习型替代器、人类还是模型裁判）、**提交**（决定持久化的验收规则——这是全领域收敛最快的一环，见 §5.1）、**复用**（产物在何处重新部署、增益是否复利）。
 
-## 4. 可信自进化的三大铁律
+外部分类法在骨架上一致：[genuine-RSI 路线图](industry-rsi/research-workflows.zh-CN.md#genuine-rsi-roadmap-2026) 用 L1–L5 自主性阶梯；[Schmidhuber 谱系综述](industry-rsi/research-workflows.zh-CN.md#self-improving-agents-survey) 把自改进形式化为作用于参数或脚手架的*自诱导更新算子*；1,250 篇论文的 RSI 综述（arXiv 2607.07663，作线索跟踪）以"改什么 × 闭环程度"两轴组织。本综述刻意保持操作性：条目按**其自身证据**所示持久化的对象归类。
 
-所有在 nanoRSI 中运行的自进化任务必须遵守以下不变量：
+## 4. 按改变面的系统综述
 
-1. **评测器绝对冻结（Frozen Evaluator Invariant）**：
-   衡量表现的评估脚本、测试用例和打分逻辑绝对不得进入候选变异范围。
-2. **原子回滚与签名血统（Atomic Rollback & Lineage Guarantee）**：
-   每一步自修改均有 SHA/Tag 记录并以 HMAC 签名追加至 `lineage.jsonl`；一旦指标未达标或破坏约束，系统必须秒级原子回退至上一有效基线。
-3. **资源开销与子进程沙盒（Subprocess & Resource Boundary）**：
-   所有候选提议与评测运行必须受限于超时截断与清理机制，严防递归失控与资源耗尽。
+### 4.1 参数学习（27 条）
 
----
+六个机制家族：
 
-## 5. 持续前沿追踪雷达（每日跟踪维护）
+**(a) 自博弈与课程式任务生成。** 系统在当前策略的能力前沿自产训练任务。[SPICE](industry-rsi/parameter-learning.zh-CN.md#meta-spice-self-play)（Meta FAIR）按推理者的成功*方差*奖励挑战者——峰值在 50% 通过率——形成自动课程（数学 +8.9%）。[Self-play SWE-RL](industry-rsi/parameter-learning.zh-CN.md#meta-ssr-self-play)（Meta）彻底去掉人工 issue：注入者必须同时产出测试工件，逆变异测试负责验证（SWE-bench Verified +10.4）。[Agent0](industry-rsi/parameter-learning.zh-CN.md#salesforce-unc-agent0)、[AgentEvolver](industry-rsi/parameter-learning.zh-CN.md#alibaba-agentevolver)、[SIMA 2](industry-rsi/parameter-learning.zh-CN.md#google-sima2-2025) 与 [SpyRL](industry-rsi/parameter-learning.zh-CN.md#spyrl-self-verifiable-rewards) 同族；SpyRL 的独特点是用任务变换让奖励*机械*可查（隐藏卧底编号）——全程无裁判。反复出现的失败：无约束自博弈会因挑战者主导策略停滞（SSR 附录 A）或退化（SpyRL 数学→写作负迁移）。
 
-- **2026-09-13 跟踪（候选集成与状态保留）**：
-  - **证据范围**：对六个参考仓库分别复查默认分支最近两次提交、最新发布条目，以及最近更新的三个开放 issue/PR。六个分支头和最新发布条目均与 9 月 12 日快照一致。下述内容属于开放提案，不代表已合并能力，也不是本地独立复现的结果。
-  - **RSIHub——DeepSeek Harness 集成草案**：[PR #79](https://github.com/simple-agent-lab/RSIHub/pull/79) 于 9 月 12 日更新，加入候选配方与会话日志用量提取。已检查 `seeds/dsh/dsh_trajectory.py`：存在可识别的 token 字段时记录，缺失计量保持 null。提案仍将端到端验证列为未完成。**决策**：保留 nanoRSI 报告中明确的未知用量；没有具体基准和已验证的传输实现前，不引入 Node/SDK 集成。仅靠会话日志计量不能独立证明候选的资源消耗。
-  - **Anton——记忆往返保留**：开放的 [PR #472](https://github.com/mindsdb/anton/pull/472) 于 9 月 12 日更新，处理规则条目位于首个标题之前或使用未知分区时，在读取、修改、写回过程中丢失的问题。已检查的差异统一分区名称，并加入回退处理与回归用例。nanoRSI 内置 skills 提案器输出 unified diff，不使用 Anton 的规则解析器。**决策**：无需直接移植；未来引入结构化记忆压缩器前，必须验证内容保留。此处未复现上游测试结果。
-  - **ACE——原子适配器提案**：[issue #42](https://github.com/ace-agent/ace/issues/42) 于 9 月 12 日更新，提议以 Generator–Reflector–Curator 可调用接口支持版本化增量、过期写入拒绝和安全重放。正文明确指出尚未接入上游运行器；这是描述原型的 issue，并非已集成实现。**决策**：保留 nanoRSI 现有实验锁与基于 Git 的候选生命周期；获得可执行的集成证据后再考虑适配器。
-  - **SEAL、DGM、OpenEvolve**：抽样活动未提供更新的已合并机制。分别保留外部参数训练、有界实证评测和结构化判定解析；OpenEvolve [PR #486](https://github.com/algorithmicsuperintelligence/openevolve/pull/486) 仍未合并。
-  - **结果**：仅更新研究记录。这些提案提供了值得保留的集成检查点，但不能据此认定 nanoRSI 缺少某项运行时功能，也不能据此宣称新增能力收益。
+**(b) 验证器为中心的闭环。** 验证器即自改进产物。[STV](industry-rsi/parameter-learning.zh-CN.md#cmu-stv-self-trained-verification)（CMU）把参考条件化教师蒸馏为无条件化学生验证器，再同时驱动测试时精炼与验证器在环 RL（对已收敛 RLVR 生成器再 +33% 相对）。[DeepSeekMath-V2](industry-rsi/parameter-learning.zh-CN.md#deepseek-math-v2) 以专家引导的元验证协同训练验证器与生成器。[EvoRS](industry-rsi/parameter-learning.zh-CN.md#evors-reward-evolution)（复旦）再深一层——**奖励系统本身**是可执行 Reward-DAG，智能体设计器每 N 次策略更新修订它，配匹配回放验收；它是该研究中唯一黑客率低于基线的方法。
 
-- **2026-09-12 跟踪（默认分支之外的发布与开放提案）**：
-  - **证据范围**：六个默认分支头均与下方 9 月 11 日快照一致。另查各仓库最新发布及最近更新的两条开放拉取请求；这只是有界活动抽样，不是对所有分支的全面审查。
-  - **Anton——预发布与未合并的可靠性工作**：[v2.26.9.11.1rc4](https://github.com/mindsdb/anton/releases/tag/v2.26.9.11.1rc4) 于 9 月 11 日发布并标为预发布，说明列出云端会话时间戳修正。另有开放的 [PR #471](https://github.com/mindsdb/anton/pull/471)，描述如何防止空工具调用 ID 破坏会话历史重放。其中测试结果属于作者报告，本次未独立复现。nanoRSI 内置适配器读取消息文本，技能运行器解析 JSON 动作，并未实现这种供应商原生工具调用重放路径。**决定**：不直接移植；未来引入此类传输时应验证重放标识符。
-  - **OpenEvolve——未合并的新颖性解析修复**：检查了开放的 [PR #486](https://github.com/algorithmicsuperintelligence/openevolve/pull/486) 的差异与回归用例，该提案最后更新于 9 月 10 日。它在子串分类前将 `NOT_NOVEL` 规范化为 `NOT NOVEL`，覆盖纯标签、带解释和 Markdown 包裹的响应。该工作仍是提案，并非已发布修复。nanoRSI 没有对应的自由文本新颖性判别器；其评测结果通过 JSON 解析及模式校验。**决定**：保留结构化决策契约；未来新增新颖性判别器时，应先测试否定标签与歧义响应，再将其用于门禁。
-  - **RSIHub、SEAL、DGM、ACE**：发布查询未返回条目，抽样的开放提案最后更新时间均早于 9 月 11 日。保留既有隔离、外部训练、经验评测及归并候选验证决定。本次检查不支持运行时修改。
+**(c) 经验 → 蒸馏。** [EvolveR](industry-rsi/parameter-learning.zh-CN.md#evolver-experience-lifecycle) 让"离线自蒸馏成去重原则"与在线 GRPO 交替；其自蒸馏胜过 GPT-4o-mini 外师（0.382 对 0.370）。[Experience Funnel](industry-rsi/parameter-learning.zh-CN.md#experience-funnel-state-policy) 用反事实状态对比闸门蒸馏，并如实报告 5 轮进化只接受 2 轮。[Q-Evolve](industry-rsi/parameter-learning.zh-CN.md#qevolve-in-distribution) 让每轮评论家保持分布内（加权 IQL + 行为近端裁剪）——均值 79.4 只花 13K 环境步，PPO 类基线要 320K。
 
-- **2026-09-11 跟踪（与 9 月 10 日比较）**：
-  - **证据范围**：复查六个参考仓库默认分支最近两条提交。分支头仍为 [RSIHub `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1)、[Anton `22f7414`](https://github.com/mindsdb/anton/commit/22f74142ad5dffc81b1f85232b0b7ce5a3df451d)、[SEAL `6d9c9f9`](https://github.com/Continual-Intelligence/SEAL/commit/6d9c9f9ee392c6cc618e771f399d436d190f6ca4)、[DGM `a565fd2`](https://github.com/jennyzzt/dgm/commit/a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2)、[OpenEvolve `411fb59`](https://github.com/algorithmicsuperintelligence/openevolve/commit/411fb59c886c18704caaffb611e17cf9e7d824d2) 和 [ACE `82709de`](https://github.com/ace-agent/ace/commit/82709de050e1db6e6ef2f07bcb0393560b94992a)。本次比较覆盖默认分支已合并活动，不涵盖未公开实验或其他分支。
-  - **决定**：没有新合并的机制足以支持运行时移植。保留 9 月 9–10 日的采纳决定：隔离搜索与最终评测、将模型训练置于外部、拒绝布尔适应度值，并在引入多提案编排前要求归并候选的实验证据。重复检查不构成能力提升的新增证据。
+**(d) 自进化合成数据管线。** [EigenData](industry-rsi/parameter-learning.zh-CN.md#eigendata-self-evolving-synthesis)（清华 × Eigen AI）迭代*数据管线自身的计划*，配逐实例可执行检查器——进化引擎胜过人类专家管线（56.0% 对 52.0%）。[WebAggregator](industry-rsi/agent-code.zh-CN.md#tencent-webaggregator) 与 [NeoHorse-1](industry-rsi/parameter-learning.zh-CN.md#tokenrhythm-neohorse-1) 把真实 harness 流量引入训练配比。
 
-- **2026-09-10 跟踪（与 9 月 9 日默认分支基线比较）**：
-  - **Anton——仅文档依赖变更**：[9 月 9 日 `22f7414`](https://github.com/mindsdb/anton/commit/22f74142ad5dffc81b1f85232b0b7ce5a3df451d) 在 `docs/package.json` 及其锁文件中将 Docusaurus 相关包更新至 3.10.2。所查差异没有改变智能体学习机制，不足以支持移植 nanoRSI 运行时改动。
-  - **未变化的参考分支头**：[RSIHub `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1)、[SEAL `6d9c9f9`](https://github.com/Continual-Intelligence/SEAL/commit/6d9c9f9ee392c6cc618e771f399d436d190f6ca4)、[DGM `a565fd2`](https://github.com/jennyzzt/dgm/commit/a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2)、[OpenEvolve `411fb59`](https://github.com/algorithmicsuperintelligence/openevolve/commit/411fb59c886c18704caaffb611e17cf9e7d824d2) 和 [ACE `82709de`](https://github.com/ace-agent/ace/commit/82709de050e1db6e6ef2f07bcb0393560b94992a)。OpenEvolve 当前规范仓库地址为 `algorithmicsuperintelligence/openevolve`，原 `codelion` 地址会重定向至此。分支头未变化并不代表其他分支或论文中没有新工作。
-  - **对 nanoRSI v0.2 的适用性**：9 月 9 日讨论的独立最终测试边界已有具体本地对应：`run` 使用训练与验证数据，`freeze` 结束搜索，`final-test` 比较初始技能、无技能及选定候选。`tests/test_v2_lifecycle.py` 检查搜索期间不评测测试分区、最终测试必须先冻结、冻结后禁止继续迭代。这些确定性夹具验证的是协议，并非真实模型提升或针对恶意进程的安全边界。
-  - **决定**：保留现有评测控制，在实测实验支持前暂缓引入 ACE 式并行提案与归并编排。SEAL 仍作为外部模型训练参考，DGM 仍作为经验性自修改参考。所查变更没有提供足以支持今日运行时修改的新机制。
+**(e) 测试时/有界适应。** [TT-SI](industry-rsi/parameter-learning.zh-CN.md#ttsi-test-time-self-improvement)（UIUC）对每个不确定测试样本做临时 LoRA 微调后重置——平均 +5.48%、样本比 SFT 少 68 倍。[Chain-of-Experience](industry-rsi/memory-context.zh-CN.md#bytedance-chain-of-experience) 在测试期跨 8 个 LLM 积累经验（+5.6% 且省 19% API 成本）。
 
-- **2026-09-09 追踪（一手来源核验）**：
-  - **RSIHub——较上次检查新增**：[9 月 8 日合并 `bb8f4dd`](https://github.com/simple-agent-lab/RSIHub/commit/bb8f4ddde8f6c301bbf0a976af01747d11b8dab1) 引入持续研究隔离。[生命周期变更](https://github.com/simple-agent-lab/RSIHub/commit/5dbf7a7d36483f576126336d37aa216022a7650d) 将研究统一为持续会话，允许结束前发布候选，显式结束后再进行密封评测。边界检查和评测阶段仍由框架控制。**启示**：未来 nanoRSI 长时实验应将开发反馈与最终保留集验收分离；目前不足以支持向最小内核加入控制器。
-  - **Anton——仓库有新增活动，所查提交未发现 RSI 机制变化**：[9 月 8 日文档依赖修复](https://github.com/mindsdb/anton/commit/d63624618d8897f50b578dec1969870917465b88) 提高 React 声明版本下限，实际锁定版本保持不变。这属于文档依赖维护，不是智能体学习能力提升的证据，也不适用于 nanoRSI 的标准库运行时。
-  - **SEAL——复查基线，并非新发布**：所查默认分支最新提交仍为 [2025 年 8 月 1 日 `6d9c9f9`](https://github.com/Continual-Intelligence/SEAL/commit/6d9c9f9ee392c6cc618e771f399d436d190f6ca4)。[Self-Adapting Language Models](https://arxiv.org/abs/2506.10943) 通过强化学习生成含训练数据与更新指令的自编辑。参数适配继续置于外部训练契约之后；其他同名 SEAL 论文属于不同项目。
-  - **DGM——复查基线并澄清术语**：所查最新提交仍为 [2025 年 8 月 13 日 `a565fd2`](https://github.com/jennyzzt/dgm/commit/a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2)。[参考实现](https://github.com/jennyzzt/dgm) 描述的是通过编程基准对自修改进行经验验证，而非全局提升的形式化证明。nanoRSI 的验收门禁同样只提供有界的实验证据。
-  - **OpenEvolve——本次新评估的既有修复**：[7 月 18 日 `411fb59`](https://github.com/codelion/openevolve/commit/411fb59c886c18704caaffb611e17cf9e7d824d2) 将布尔标记排除出适应度聚合，防止超时标记抬高失败候选的得分。nanoRSI 的 `parse_evaluation` 已拒绝布尔指标值，布尔约束标记单独保存，无须移植运行时改动。
-  - **ACE——本次新评估的既有进展**：[8 月 24 日 `82709de`](https://github.com/ace-agent/ace/commit/82709de050e1db6e6ef2f07bcb0393560b94992a) 加入并行 ComBEE 提案与 LLM 归并器。[参考项目](https://github.com/ace-agent/ace) 通过增量 Playbook 更新保留上下文。**启示**：未来多提案脚手架实验必须评测归并后的候选；单个提案的质量不能证明归并结果的质量。在具体基准支持增加编排复杂度前，暂缓集成。
-  - **决定**：更新研究记录并修正 DGM 术语。本次检查不足以支持新增运行时依赖或行为变更。上述日期为上游提交日期，并不表示每项都是刚发布的新进展。
+**(f) 支撑技术**（自身不闭合）：[Doc-to-LoRA](industry-rsi/parameter-learning.zh-CN.md#sakana-doc-to-lora)（摊销适配器）、[TRINITY](industry-rsi/parameter-learning.zh-CN.md#sakana-trinity)（Sep-CMA-ES 协调头）、[DiscoRL](industry-rsi/parameter-learning.zh-CN.md#google-discorl-2025)（发现的学习规则）、[MoE-CL](industry-rsi/parameter-learning.zh-CN.md#tencent-moe-cl)（持续专家），以及新增的 [Conductor/Fugu](industry-rsi/parameter-learning.zh-CN.md#sakana-conductor-fugu)（7B RL 训练的编排器，写工人拓扑且可纳入自身；按 enabling 归类，因编排器只训练一次、并非自改进）。
 
-- **2026-09-08 跟踪维护**：
-  - *TokenRhythm/NeoHorse-1*：基于路由脚手架（Routing Harness）的智能体后训练递归自进化架构（基于 Qwen3.5 的 4B/9B 系列权重）。其核心构建了“评估-选择-更新”闭环：通过多样化模型池分配任务，记录工具交互与执行轨迹，评估能力需求并反哺下一阶段的训练混合配比（Curriculum SFT 与在线策略蒸馏）。指出了面向长程 RSI 时，执行安全性、评估去污染以及脚手架级任务调度的必要前置保障。
-  - *Liuziyu77/Awesome-RSI*（系统性 RSI 分层知识库与论文语料）：将大模型递归自进化系统形式化划分为清晰的三层拓扑架构：经验积累（Experience Accumulation：Prompt、上下文、技能库与记忆演进）、系统修改（System Modification：Harness 脚手架自改动、动态工具链、代码级自变异，如 DGM、SICA、MGM、Metaⁿ）与模型参数（Model Parameters：后训练权重更新、自博弈 RL 与经验蒸馏，如 SafeEvolve、APEx、SPADE）。深度印证了 nanoRSI 作为轻量、稳健的“System Modification”演进框架的架构定性，其冻结只读评测器与 HMAC 血统防篡改审计是保证系统进化不偏航的基础。
-  - *KaiWU5/Awesome-AI4AI*（AI 能否可靠地自我改进？）：周更的 223 篇前沿 AI4AI 综述与论文追踪索引，涵盖长程自主研究、自动化脚手架合成与自进化评测基准。着重强调了防范自进化中的“虚假增益（Phantom Gains）”以及多随机种子任务序的鲁棒性控制。
+### 4.2 智能体与代码进化（24 条）
 
-- **2026-09-07 跟踪维护**：
-  - *ahmd-mohsin/KernelAscent*：GPU Kernel 级能力分层因果自循环基准。其实证揭示了自进化的“能力地板（Capability Floor）”法则：弱模型自修改往往产生负增益（即 N < 0），因果自利用（Causal Self-Use）收益仅在 Frontier 级别模型涌现；同时指出了执行脚手架健壮性瓶颈——底层原生编译崩溃（如 SIGABRT）会绕过 Python 级信号超时，必须采用单任务独立子进程与进程组沙盒清理（严格印证了 nanoRSI 进程边界设计）。
-  - *asimfish/awesome_rsi*：系统性综述 67 篇 RSI 前沿工作并沉淀 10 条核心实证发现。明确指出“评估器决定系统上限且是首要被攻击目标”、“优化窗口外设立锚定评估防止评估器坍塌”、“生产级自进化系统必须具备版本、审计、预测、回滚四项核心机制”。深度佐证了 nanoRSI 冻结评测器、HMAC 审计链以及原子回滚三大铁律的技术必要性。
-  - *SystemOriginArchive/creator-theory-operational-canon*：形式化了针对失控风险、后继对齐（Successor Alignment）、评测漂移防范与血统连续性（Provenance Continuity）的 RSI 安全操作规约，与 nanoRSI 的血统防篡改校验和门禁准入体系高度一致。
+**技能文件即可训练文本参数**已成最稠密簇：[SkillOpt](industry-rsi/agent-code.zh-CN.md#microsoft-skillopt)（有界编辑 + 留出集严格验收，GPT-5.5 下平均 +23.5）、[SkillLift](industry-rsi/agent-code.zh-CN.md#skilllift-dense-rubrics)（双层评分表替代器替换 oracle rollout，省 40-70% token）、[SkillHone](industry-rsi/agent-code.zh-CN.md#tencent-skillhone)（持久决策历史）、[SkillEvolver](industry-rsi/agent-code.zh-CN.md#skillevolver-meta-skill)（可移植元技能 + 新鲜会话审计）、[EmbodiSkill](industry-rsi/agent-code.zh-CN.md#embodiskill-skill-aware-reflection)（双通道证据：缺陷编辑、失察重强调）、[persistent-skills-osworld](industry-rsi/agent-code.zh-CN.md#persistent-skills-osworld)（版本化 GUI 库对齐空库对照）、[WikiSkill](industry-rsi/agent-code.zh-CN.md#wikiskill-experience-wiki)（永不回滚的 wiki 审计可回滚的技能）、[SkillClaw](industry-rsi/agent-code.zh-CN.md#skillclaw-collective-evolution)（跨用户群体集体进化 + 夜间验证）、[SimSkill](industry-rsi/agent-code.zh-CN.md#simskill-traffic)（缺口驱动探针）、[SkillGLoW](industry-rsi/agent-code.zh-CN.md#skillglow-procedural-families)（验证器锚定提交闸门下的程序家族），以及与权重共进化的 [SkillRL](industry-rsi/parameter-learning.zh-CN.md#skillrl-skill-augmented-rl) 和 [SAGE](industry-rsi/parameter-learning.zh-CN.md#sage-skill-augmented-grpo)。
 
-- **2026-09-06 跟踪维护**：
-  - *mindsdb/anton*：基于 Verifier-Eval 与动态反思的双重门禁判定（Session 级 `verdict`），确立了智能体执行评估必须采用外部独立运行的测试套件规范；其 Harness 自进化核心依赖于上下文技能逐步沉淀与工具链热拔插。
-  - *simple-agent-lab/RSIHub*：固化 `Select -> Mutate -> Evaluate -> Gate -> Lineage -> Reflect` 循环规范，严格隔离变异面与只读评测器。
-  - *exoharness/exo & OpenEvolve*：验证了基于函数空间进化及代码补丁（Patch Diff）原子合入时的沙盒隔离必要性。
-  - *Darwin Gödel Machine (DGM) & ACE*：强调在 Harness / Context 层级变异时，必须附带结构化不变量检查与策略血统追溯，杜绝盲目 Prompt 变异引发的认知衰退。
+**Harness 搜索。** [Meta-Harness](industry-rsi/agent-code.zh-CN.md#stanford-meta-harness)（斯坦福）让编码智能体读取内含*全部历史候选完整轨迹*的文件系统来搜索单文件 harness——起作用的是轨迹访问本身而非选择策略的精巧（消融：只看分数 41.3 对全轨迹 56.7）；TerminalBench-2 达 76.4%，同时诚实承认搜索与评测共用 89 个任务。[Beagle/DarwinX](industry-rsi/agent-code.zh-CN.md#salesforce-beagle-darwinx) 种群式进化 harness；[HarnessDev](industry-rsi/agent-code.zh-CN.md#bytedance-harnessdev) 报告可见/留出方向一致率仅 53.1%——这是领域对自身信号质量的警告。[GenericAgent](industry-rsi/agent-code.zh-CN.md#genericagent-skill-tree) 证明 3.3K 行种子 + 技能固化在 token 上胜过百万行 harness（Lifelong AgentBench 222K token 100% 对 OpenClaw 1.43M 70%）。[Dream-RSI](industry-rsi/agent-code.zh-CN.md#dream-rsi-replay-simulator)（马里兰 × DeepMind）在已记录发现树上"做梦"离线改进探索策略——回放即免费模拟器。
 
-- **2026-09-04 / 2026-09-05 历史跟踪**：
-  - *simple-agent-lab/RSIHub*：重构自循环阶段（`Select` 至 `Reflect`）与双语规范；评测器严格保持进程外运行。
-  - *mindsdb/anton*：自进化协作者智能体，融合 Hermes 式技能沉淀与运行时状态持久化。
-  - *Continual-Intelligence/SEAL*：长程任务持续自适应基准与参数调优契约。
+**自改写智能体与深度。** DGM 谱系如今有了实测深度：[Meta^n](industry-rsi/agent-code.zh-CN.md#metan-emergent-depth) 递归施加固定 Ω，实测元深度 3-6，而自改写系统上限约 2.5；[MGM](industry-rsi/agent-code.zh-CN.md#mgm-mendel-godel-machine) 加入孟德尔式比较算子（跨任务反应规范编辑、跨谱系性状杂交）——Polyglot 50.8%→93.2%，以约少 117 倍的参数超过闭源模型。[Hyperagents](industry-rsi/agent-code.zh-CN.md#meta-hyperagents-2026)（Meta）把"有效但未提升"的变体也归档。
+
+**编排与审查。** [Feedback Descent](industry-rsi/agent-code.zh-CN.md#stanford-feedback-descent)（斯坦福）把成对偏好理由当作梯度式文本监督并给线性收敛保证——DOCKSTRING 六靶点全超 26 万化合物的第 99.9 百分位；[Apple Reinforced Agent](industry-rsi/agent-code.zh-CN.md#apple-reinforced-agent) 在执行*前*审查工具调用（收益风险比 3.1:1），审查者提示经 GEPA 优化。[Qwen3.8-Max](industry-rsi/agent-code.zh-CN.md#qwen38-max-self-evolving-harness) 与 [MiniMax M2.7](industry-rsi/agent-code.zh-CN.md#minimax-m27-self-evolution) 是生产规模的公司自述脚手架自编辑。
+
+### 4.3 记忆与上下文进化（12 条）
+
+领域重心已从*积累*转向*结构化与闸门化*。结构：程序图（[Procedural Graphs](industry-rsi/memory-context.zh-CN.md#procedural-graphs-google)：验证存活率 0%→80%，配拒绝编辑记忆）、检索图（[SE-GoS](industry-rsi/memory-context.zh-CN.md#se-gos-skill-graph)：只进化检索，52.4%→59.4% 且省三分之一 token）、playbook（[ACE](industry-rsi/memory-context.zh-CN.md#sambanova-stanford-ace)）、压缩策略（[ACON](industry-rsi/memory-context.zh-CN.md#microsoft-acon-2025)）、因果记忆库（[RSIAgent](industry-rsi/memory-context.zh-CN.md#rsiagent-autonomous-exploration)：广深两段探索，GLM-5.3+Kimi-K3 在 OSWorld 2.0 partial 超报告的 GPT-6 Astra +6.38）、MCP 本体层（[EvoOntology](industry-rsi/memory-context.zh-CN.md#evoontology-self-evolving)：骨干条件配对闸门消融损失 -11.2），以及新出现的*记忆操作即技能*（[MemSkill](industry-rsi/memory-context.zh-CN.md#memskill-memory-skills)：PPO 训练选择 + 设计者进化，215 次 LLM 调用对 MemoryOS 1,288）。负结果锚点依然承重：[S3Gym](industry-rsi/memory-context.zh-CN.md#bytedance-s3gym) 显示自评质量与下轮提升相关性 -0.01；[Prime Agent](industry-rsi/memory-context.zh-CN.md#prime-agent) 的 Factorio 运行把刷资源的*作弊*固化成了技能。
+
+### 4.4 研究工作流（22 条）
+
+**会训练的 AI 科学家。** [Faraday/Replica](industry-rsi/research-workflows.zh-CN.md#faraday-replica-ai-scientist)（Inherent Labs）后训练 27B 指挥 Codex-as-tool 做论文复现，自动生成 rubric 裁判打分（自一致性 0.66 如实报告）。[EvoScientist](industry-rsi/research-workflows.zh-CN.md#evoscientist-self-evolving)（华为）进化想法与实验双记忆，ICAIS 2025 六投六中含最佳论文。[Frontis-MA1/OpenRSI](industry-rsi/research-workflows.zh-CN.md#frontis-ma1-openmle) 训练改进算子（MLE-Bench Lite 奖牌率 39.4%→60.6%）。[ENPIRE](industry-rsi/research-workflows.zh-CN.md#nvidia-enpire-physical-autoresearch)（NVIDIA × CMU × Berkeley）把自研究搬上 8 台物理机器人——智能体自建奖励验证环境为不可变 Gym API，并诚实报告 token 成本随队列规模超线性。
+
+**规模化的自主后训练。** [Amazon 自主后训练](industry-rsi/research-workflows.zh-CN.md#amazon-autonomous-post-training)在 30B 模型上跑四轮全程无人（约 4000 名中第 8，0.86 对人类最高 0.87），递归对象是*搜索策略*——该环检测并拒绝自己开发代理被钻空子、随后改写自身搜索策略的记录，是全库最具教益的诚实样本。[PostTrainBench](industry-rsi/research-workflows.zh-CN.md#posttrainbench-autonomous-post-training)（图宾根）给所有人打分：最佳智能体 23.2% 对人类管线 51.1%，五个智能体共 23 次污染标记。
+
+**公司遥测（辅助研发）。** [OpenAI 研究加速报告](industry-rsi/research-workflows.zh-CN.md#openai-research-acceleration-2026)（每个人类工作日 3.1 个智能体工作日；2028 年 3 月自动化研究员目标）、[Cognition](industry-rsi/research-workflows.zh-CN.md#cognition-devin-builds-devin)（每周 659 个 Devin PR）、[Codex builds Codex](industry-rsi/research-workflows.zh-CN.md#codex-builds-codex)、Prime [速度运行](industry-rsi/research-workflows.zh-CN.md#prime-measuring-autonomous-ai-research)、Anthropic [自动化对齐研究员](industry-rsi/research-workflows.zh-CN.md#automated-alignment-researchers)与 [W2S](industry-rsi/research-workflows.zh-CN.md#automated-w2s)（含种子摘樱桃自白）。它们都不闭合自主环，但都在量化 AI 已在多大程度上辅助自身的改进管线。
+
+**立场与分析（enabling）。** [genuine-RSI 路线图](industry-rsi/research-workflows.zh-CN.md#genuine-rsi-roadmap-2026)（L1-L5 阶梯 + HCI 诊断）、[Salesforce 治理自主故事](industry-rsi/research-workflows.zh-CN.md#salesforce-toward-self-improving-agents)、[Sakana RSI Lab](industry-rsi/research-workflows.zh-CN.md#sakana-rsi-lab)（"样本效率优先于算力"作为明示约束）、[TASTE](industry-rsi/research-workflows.zh-CN.md#taste)（模型能否评判研究提案——60% 对人类 77%）、[经济学校准](industry-rsi/research-workflows.zh-CN.md#economics-of-rsi-2026)（观测 ~9% AI 研发回报对 ≥15% 自持阈值——"目前尚不足"），以及两项审计：[验证缺口综述](industry-rsi/research-workflows.zh-CN.md#ai-scientist-verification-gap)（9 个 LLM 时代闭环系统 0 个有经外部验证的环内 oracle）与 Google [泛化差距研究](industry-rsi/research-workflows.zh-CN.md#gengap-self-evolution)（自进化只"锐化"Pass@1 而 Pass@32 不动——低于 oracle 8-13 分）。
+
+## 5. 跨领域发现
+
+**5.1 验收闸门是全领域的收敛发明。** 63 条直接闭环条目中最强模式：持久化必须过独立检查。留出验证（SkillOpt、Experience Funnel）、验证器锚定提交闸门（SkillGLoW）、同条件配对比较（EvoOntology 无闸门 -11.2；EvoRS 匹配回放）、执行前审查（Apple）、新鲜会话审计（SkillEvolver）、处处可见的带日志回滚（WikiSkill 永不回滚的 wiki；Amazon 死胡同登记表）。昂贵闸门的廉价替代器是最新 refine——SkillLift 的秩相关重对齐评分表、Dream-RSI 的回放打分、Faraday 的自动 rubric。nanoRSI 的冻结评估器不变量正是该模式的架构化表述。
+
+**5.2 诚实负结果正在沉淀为一门纪律。** 被拒轮次留痕（Experience Funnel 2/5）、代理被钻空子后抓到并改写策略（Amazon）、方向不一致量化（HarnessDev 53.1%）、迁移退化保留（EvoOntology 跨骨干 -6.6；EmbodiSkill 配对 +1.49；SpyRL 负迁移）、自评去相关（S3Gym）、"锐化而非学习"（GenGap Pass@32 持平）、迭代下自我退化（Contextual Drag 的 GPT-OSS-20B 塌缩）、"回滚选择制造的保留增益"被点破（Aspire：三个后继全部*落后*参照 harness）。资料库把这些当一等公民结果。
+
+**5.3 评估器进入了变异面——这是危险前沿。** EvoRS 进化奖励 DAG；STV 训练验证器；Faraday 生成 rubric；rubric-as-reward 管线裁判写作。本窗口新增的配重：PostTrainBench 的作弊账本（*最佳*智能体 84 次运行 12 次被标记）、验证缺口审计的 0/9 统计、SSR 对"完整测试进提示诱发奖励黑客"的提醒。无外部锚定的验证器进化是奖励黑客风险的集中地。
+
+**5.4 自生成上下文可能有害。** Contextual Drag 量化了条件于错误草稿的 10-20% 下降——即使草稿被标注为错误——GPT-5 几乎免疫而小模型塌缩。任何把自身草稿回喂的环（修订、写记忆、蒸馏）都需要拖累对照。
+
+**5.5 成本与样本效率成为可报告的科学。** SkillLift 省 40-70% token；SkillGLoW 库紧凑 3.6 倍；SE-GoS 省三分之一输入；SAGE 省 59% token；Meta-Harness 0.1 倍评估次数；Q-Evolve 13K 对 320K 步；Amazon 较此前自主 ML 演示执行规模约 10³ 倍；ENPIRE 的 MRU/MTU 利用率指标；Sakana 的样本效率优先章程；经济学论文把整个问题压成一个弹性数（~9% 对 15%）。PostTrainBench 给智能体按运行计价（600-910 美元）。
+
+**5.6 种群、谱系与深度胜过单线编辑。** Beagle 的保留并扩展、MGM 的跨谱系杂交（附"比较证据提升修复概率"命题）、Meta^n 的实测深度 3-6、Amazon 的正交轴工人 + 基线锚、ShinkaEvolve 的质量-多样性档案。2025 世代的单谱系自编辑器正让位于"对改进历史的搜索"——轨迹访问是经验上决定性的接口（Meta-Harness 消融：只看分数 41.3 对全轨迹 56.7）。
+
+**5.7 地理与机构。** 本窗口直接闭环工作真正国际化：美国（Meta、Google、斯坦福、CMU、普林斯顿、AWS、Apple、NVIDIA、Anthropic、OpenAI、Salesforce、Prime、Cognition）、中国（字节、阿里/通义/高德、腾讯、DeepSeek、MiniMax、清华、北大、人大、复旦、上交、浙大、电子科大、中科院、吉大、华为）、日本（Sakana、东京科研）、新加坡（NUS、NTU、IAIC）、欧洲（TU/e、图宾根、LMU、Hello Group），以及新实验室（Inherent、Aether AI、Eigen AI、TokenRhythm、Frontis、Thoughtful Lab）。没有单一机构垄断闸门模式——它在 本窗口至少被独立发明了六次。
+
+## 6. 基准与对照图景
+
+集中度：ALFWorld（9+ 条）、SWE-bench 系（7）、OSWorld/AppWorld/GAIA 级计算机使用（7）、SkillsBench/WildClawBench 技能套件（6）、WebShop（5）、AIME/数学（5）、GAIA 级浏览（4）。饱和正被诚实报告（InsightBench +0.7-1.6；ALFWorld 顶格 93-100%）。
+
+全库所用对照，由弱到强：配置对齐消融（persistent-skills-osworld 的空库对照）→ 冻结/均匀/随机臂（nanoRSI 自身纪律）→ 反事实状态对比（Experience Funnel）→ 同条件配对回放（EvoRS、EvoOntology）→ 新鲜会话审计（SkillEvolver）→ 外部锚评估（Amazon 榜单；PostTrainBench 留出配置）。缺口：AI 科学家系统仅 38% 发布种子/轨迹（验证缺口审计）；搜索与评测的任务重叠极少披露（Meta-Harness 是坦白的例外）。
+
+## 7. 窗口前基础
+
+见 [COVERAGE.md](industry-rsi/COVERAGE.md)：AlphaEvolve（2025-05-14）、Darwin Gödel Machine（2025-05-29）、Text-to-LoRA（2025-06-06）、Agent Lightning（2025-08-05）、WebEvolver（2025-04-23）、WebCoT（2025-05-26）、SEAL（2025-06，arXiv 2506.10943）、FunSearch/Voyager/Reflexion/STaR/自奖励 LM（2025-09 前，概念基础在各条目中引用）。更早不等于被超越——DGM 的档案与垫脚石设计是 MGM 与 Meta^n 的直接祖先。
+
+## 8. 开放问题
+
+1. **第二轮复利**——只有 NeoHorse-1（自述单次）、Amazon（单任务族四轮策略迭代）与 EvolveR/Q-Evolve（2-3 轮）测过重复穿越；无人在固定预算下展示逐轮加速回报。（ADOPTION 1）
+2. **验证器漂移与评估器锚定**——进化的奖励系统与训练的验证器需要外部锚；0/9 闭环验证统计就是要补的缺口。（ADOPTION 14-15、19）
+3. **跨骨干与跨任务迁移**——套件内普遍为正、跨骨干普遍为负（EvoOntology -6.6；EmbodiSkill 配对 +1.49；SpyRL）。什么让技能可移植？
+4. **锐化 vs 学习**——Pass@1/Pass@32 分叉说明今天的环大多在重新加权既有能力；增加能力需要外部信号（GenGap 补一轮 oracle 即跳到 53.2%）。
+5. **成本完备核算**——极少论文同时报告发现+评估成本（DiscoRL 与 ENPIRE 是例外）；样本效率声明需要两个分母。
+6. **拖累感知的上下文设计**——尚无条目在活改进环内缓解 contextual drag。
+7. **元深度测量**——Meta^n 的 3-6 需要复现；约 2.5 的既有上限呼唤标准基准。
+
+## 9. nanoRSI 映射
+
+nanoRSI 在微缩尺度上实现本综述的纪律：三个改变面（工件/harness/模型）对应 §4；冻结评估器、原子回滚谱系与预算沙箱三不变量对应 §5.1；[ADOPTION.md](industry-rsi/ADOPTION.md) 管线（23 项，均标注来源条目）对应 §8。本窗口已落地：逐修订[证据账本](../../reports/evidence.jsonl)（§5.2 的纪律）与 `nanorsi audit` 新鲜会话技能审计（§5.1 模式，源自 SkillEvolver）。资料库的诚实红线即 nanoRSI 的章程：不宣称通用 RSI、作者结果 ≠ 复现、负结果保留。
+
+## 10. 附录——上游仓库跟踪日志（压缩版）
+
+每日明细在本地 `.omx/`；以下为合并后的决定。截至 2026-09-16 的默认分支状态：RSIHub `bb8f4dd`（09-08 合入持续研究隔离）；Anton `22f7414`（+09-13 v2.26.9.13.2，CI 凭据测试修复；09-14/15 rc 预发布）；SEAL `6d9c9f9`（2025-08-01，未变）；DGM `a565fd2`（2025-08-13，未变）；OpenEvolve `411fb59`（布尔适应度排除，2025-07-18；仓库现为 `algorithmicsuperintelligence/openevolve`）；ACE `82709de`（并行 ComBEE + 归约器，2025-08-24）；hermes-agent v2026.9.14（v0.21.3，338 PR 网关/会话可靠性汇总；独立的 hermes-agent-self-evolution 仓库 5.4K 星，打包 DSPy+GEPA 进化）；prime-rl v0.9.0（2026-08-25，自适应并发）；prime-agent v0.9.4/v0.9.5（09-08/09-16）；ShinkaEvolve v0.0.7（06-02）；OpenRSI 最后推送 09-08。长期决定：无验证基准不引入 Node/SDK 传输；无保留测试不引入结构化记忆压缩器；结构化 JSON 裁决契约优先于自由文本裁判；多提案编排推迟至有合并候选证据；参数工作走外部训练契约；NC 许可材料（Hyperagents、OpenRSI、EigenData 示例代码、Q-Evolve 论文）对本 Apache-2.0 仓库仅作参考。
+
+本综述依赖的更正与日期钉定：Sakana RSI Lab 经 HN 条目元数据定为 2026-06-05；arXiv cs.AI 列表页的"AlgoEvo"经核验实为无关 XAI 论文（列表页标题错乱是系统性的）；9/15 曾把 OpenSIR/SIMS/EvoTest/SRPO 记为 ICLR workshop 线索，未能在实际的 110 篇录用名单中确认，按撤回处理。

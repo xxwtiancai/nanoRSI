@@ -206,11 +206,41 @@
 
 **Source figure / official image** — Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop. · Figure 1, PDF p.3 · [source](https://arxiv.org/html/2608.23552v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
 
 **Open code / weights / data links** — [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
 **Primary sources** — [arXiv record](https://arxiv.org/abs/2608.23552) · [Paper first-publication statement and Factorio evidence](https://arxiv.org/html/2608.23552v1) · [Official launch and update mechanism](https://www.primeintellect.ai/blog/prime-agent) · [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
+
+<a id="memskill-memory-skills"></a>
+
+## MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents
+
+**2026-02-02** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: 2026-02-02; v2: 2026-05-24 (numbers cited from v2).
+
+**Institutional relationship** — Paper v2: NTU Singapore (Haozhen Zhang, Quanyu Long, Jianzhu Bao, Wenya Wang corresponding) with UIUC (Tao Feng), UIC (Weizhi Zhang) and Tsinghua (Haodong Yue).
+
+**What changes and how feedback is reused** — Memory-extraction operations become learnable 'memory skills' in two intertwined loops. Skill selection/usage: a lightweight controller (MLPs over state-skill embeddings, Gumbel-Top-K sampling) picks a Top-K skill subset per text span; an LLM executor applies them to update the trace-specific memory bank; the controller trains with PPO on downstream query performance. Skill evolution: a sliding hard-case buffer logs query-centric failures; every 100 steps a designer LLM clusters hard cases and refines/adds skills (max 3 edits/round) with snapshot rollback, early stopping and exploration bias toward new skills.
+
+**Author-reported result** — LoCoMo (LLaMA3.3-70B): F1 44.21 / L-J 53.82 vs MemoryOS 41.39 and A-MEM 49.71; transfers to LongMemEval (L-J 60.89) and HotpotQA (best at all 50/100/200-doc settings); ALFWorld seen/unseen 77.14/83.58 SR (avg 80.36) beating Mem0 and CoN; AppWorld 26.71% vs AWM 25.42%. Ablations: without controller -5.4 L-J, without skill descriptions -17.7 (Qwen). Cost: 215 LLM calls vs MemoryOS 1,288 and A-MEM 1,548.
+
+**Evidence limits** — Limitations live in Appendix F (not rendered in the HTML audit); LongMemEval and Qwen rows are transfer-only (trained on LoCoMo with LLaMA); skill-evolution preparation cost is amortized rather than free.
+
+**Code / weights / data / license** — Code at github.com/ViktorAxelsen/MemSkill (Apache-2.0, 576 stars at verification); project page viktoraxelsen.github.io/MemSkill. Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: evolve the memory-writing operations themselves (not just memory content), and gate designer edits with snapshot rollback + early stopping - the same controls as the skill track, one layer up.
+
+![Figure 2: MemSkill architecture - the controller selects a Top-K subset of memory skills from a shared bank, the executor applies them span by span, task rewards train the controller, and failures feed a designer-driven skill-evolution loop.](assets/paper-figures/memskill-memory-skills.png)
+
+**Source figure / official image** — Figure 2: MemSkill architecture - the controller selects a Top-K subset of memory skills from a shared bank, the executor applies them span by span, task rewards train the controller, and failures feed a designer-driven skill-evolution loop. · Figure 2 · [source](https://arxiv.org/html/2602.02474v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+
+**Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2602.02474) · [Paper v2 (affiliations, Figure 2, tables)](https://arxiv.org/html/2602.02474v2) · [Code repository (Apache-2.0)](https://github.com/ViktorAxelsen/MemSkill)
 
 <a id="tencent-training-free-grpo"></a>
 
