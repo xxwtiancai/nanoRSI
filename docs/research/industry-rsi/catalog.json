@@ -7430,6 +7430,82 @@
         }
       },
       "family": "positions-labs"
+    },
+    {
+      "id": "ruc-skilladam",
+      "title": "SkillAdam: Stable and Efficient Skill Evolution for Agents",
+      "organizations": [
+        "Renmin University of China",
+        "Tencent"
+      ],
+      "category": "agent-code",
+      "relationship": "direct-loop",
+      "published": "2026-09-08",
+      "kind": "paper",
+      "date_note": {
+        "en": "arXiv v1: September 8, 2026 (2609.08944). The official repository was created September 6 and announced the paper on September 8; these later repository events are not used as the original publication date.",
+        "zh": "arXiv v1：2026 年 9 月 8 日（2609.08944）。官方仓库创建于 9 月 6 日并于 9 月 8 日公告论文；这些后续仓库事件不作为原始发表日期。"
+      },
+      "affiliation": {
+        "en": "The paper lists Renmin University of China and Tencent affiliations for the author group; the releasing repository is ruc-datalab/SkillAdam. This is an academic–industry report of the authors' own method.",
+        "zh": "论文为作者团队列出中国人民大学与腾讯隶属；发布仓库为 ruc-datalab/SkillAdam。这是产学团队对自有方法的报告。"
+      },
+      "mechanism": {
+        "en": "Optimizes a persistent natural-language skill while the target model stays frozen. Each iteration rolls out the current skill on a sampled mini-batch, records case-level issues and outcomes in an Evolving Issue Tracker (direction memory), estimates recent improvement volatility, and lets both states constrain the next patch's scope. Candidates are accepted only when designated metrics improve without protected-metric regressions; the accepted skill and optimizer states feed the next iteration.",
+        "zh": "目标模型保持冻结，只优化持久的自然语言技能。每轮在抽样小批次上执行当前技能，把案例级问题与结果写入演化问题跟踪器（方向记忆），估计近期改进波动，并由两种状态共同约束下一次补丁范围。候选只有在指定指标提升且受保护指标不退化时才接受；被接受技能与优化状态进入下一轮。"
+      },
+      "result": {
+        "en": "Author-reported: seven benchmarks covering short- and long-horizon tasks show state-of-the-art results with fewer optimization iterations and lower cost than the listed baselines. The paper reports a cumulative ablation where adding optimization memory raises DeepPlanning average from 19.2% to 21.7%; the main protocol uses GPT-5.5 for six benchmarks, Claude Sonnet 4.5 for DeepPlanning, and seed 42 for controlled sampling.",
+        "zh": "作者报告：覆盖短程与长程任务的七个基准上，相比列出的基线取得当时最优结果，同时使用更少优化轮次和更低成本。论文报告一项累积消融：加入优化记忆后 DeepPlanning 平均分从 19.2% 升至 21.7%；主协议六个基准使用 GPT-5.5，DeepPlanning 使用 Claude Sonnet 4.5，受控采样种子为 42。"
+      },
+      "limits": {
+        "en": "The reported loop is bounded and benchmark-native: six benchmarks make one pass through an optimization pool, the acceptance decision has no additional validation set, and the final test partition is evaluated once. The memory ablation is cumulative rather than an isolated interaction analysis; cross-task transfer, repeated compounding under a fixed budget, and independent external gating are not demonstrated.",
+        "zh": "报告闭环有界且绑定基准：六个基准只遍历一次优化池，准入决策没有额外验证集，最终测试划分只评测一次。记忆消融是累积消融而非孤立的交互分析；尚未证明跨任务迁移、固定预算下的多轮复利或独立外部闸门。"
+      },
+      "availability": {
+        "en": "Official code is released at github.com/ruc-datalab/SkillAdam under the repository's MIT license. No new model weights are released; the target models are frozen third-party systems. Benchmark data and any third-party components retain their own terms, and the audited repository does not establish a redistributable data bundle.",
+        "zh": "官方代码发布于 github.com/ruc-datalab/SkillAdam，仓库内许可证为 MIT。未发布新的模型权重；目标模型是冻结的第三方系统。基准数据与第三方组件仍适用各自条款，核验的仓库未证明存在可再分发的数据包。"
+      },
+      "application": {
+        "en": "For nanoRSI: add a small persistent optimizer-state record to the skills surface — issue history plus bounded edit budget — while keeping the existing evaluator frozen. Compare stateless editing, issue-memory-only, volatility-budget-only and the combined state at matched rollout budgets; report accepted edits, regressions, edit size, tokens and held-out transfer. This is an experiment proposal, not an implementation or local reproduction.",
+        "zh": "对 nanoRSI：在技能面增加小型持久优化状态记录——问题历史加有界编辑预算——同时保持现有评估器冻结。在匹配 rollout 预算下比较无状态编辑、仅问题记忆、仅波动预算和组合状态；报告接受编辑、退化、编辑规模、token 及留出迁移。这是实验提案，不是已实现功能或本地复现。"
+      },
+      "sources": [
+        {
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2609.08944",
+          "kind": "paper"
+        },
+        {
+          "label": "Paper HTML v1 (Figure 2, protocol, results)",
+          "url": "https://arxiv.org/html/2609.08944v1",
+          "kind": "paper"
+        },
+        {
+          "label": "Official implementation (MIT)",
+          "url": "https://github.com/ruc-datalab/SkillAdam",
+          "kind": "repository"
+        },
+        {
+          "label": "Repository license (MIT)",
+          "url": "https://raw.githubusercontent.com/ruc-datalab/SkillAdam/main/LICENSE",
+          "kind": "license"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/skilladam-framework.png",
+        "source_url": "https://arxiv.org/html/2609.08944v1",
+        "locator": "Figure 2",
+        "caption": {
+          "en": "Figure 2: Functional correspondence between Adam and SkillAdam — rollout feedback updates an issue-memory state and a volatility-driven edit budget, which constrain the next skill patch.",
+          "zh": "图 2：Adam 与 SkillAdam 的功能对应——rollout 反馈更新问题记忆状态与波动驱动编辑预算，二者共同约束下一次技能补丁。"
+        }
+      },
+      "family": "skill-file-optimization",
+      "last_verified": "2026-09-17",
+      "additional_events": [],
+      "local_reproduction": "not-run"
     }
   ]
 }

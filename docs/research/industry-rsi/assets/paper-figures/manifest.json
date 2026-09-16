@@ -427,5 +427,16 @@
    "en": "Figure 1: skill-space optimization analogy — bounded edits with a held-out selection gate descend the validation-error surface where ad-hoc unguarded updates jump; the table maps classic training hyperparameters to their text-space counterparts.",
    "zh": "图 1：技能空间优化类比——带留出选择闸门的有界编辑沿验证误差面下降，而无约束的临时更新会跳变；右侧表格把经典训练超参数映射到文本空间对应物。"
   }
+ },
+ {
+  "id": "ruc-skilladam",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/skilladam-framework.png",
+  "source_url": "https://arxiv.org/html/2609.08944v1",
+  "locator": "Figure 2",
+  "caption": {
+   "en": "Figure 2: SkillAdam's rollout, persistent issue-tracker and volatility-driven edit-budget loop for stable skill updates.",
+   "zh": "图 2：SkillAdam 通过 rollout、持久问题跟踪器和波动驱动编辑预算稳定技能更新的闭环。"
+  }
  }
 ]

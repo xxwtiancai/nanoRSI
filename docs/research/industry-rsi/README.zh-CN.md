@@ -1,6 +1,6 @@
 # 企业 RSI 研究地图
 
-**2025-09-17 → 2026-09-17** · **101** 条窗口内记录
+**2025-09-17 → 2026-09-17** · **102** 条窗口内记录
 
 按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。每条详情都带一张纳入仓库的论文原图、官方研究图片或原文页截图，并注明定位信息和来源链接；有核验结果时还会单独列出代码、权重或数据链接。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。
 
@@ -13,7 +13,7 @@
 | 分类 | 条目数 | 机制家族 |
 | --- | ---: | --- |
 | [参数与训练数据](parameter-learning.zh-CN.md) | 28 | [自博弈与课程任务生成](parameter-learning.zh-CN.md#family-self-play-curriculum) (11) · [验证器与奖励进化](parameter-learning.zh-CN.md#family-verifier-reward) (4) · [技能-权重共进化](parameter-learning.zh-CN.md#family-skill-weight-coevolution) (2) · [经验蒸馏与测试时适应](parameter-learning.zh-CN.md#family-experience-distillation) (4) · [自主训练智能体与数据管线](parameter-learning.zh-CN.md#family-autonomous-training) (3) · [支撑性适应机制](parameter-learning.zh-CN.md#family-enabling-adaptation) (4) |
-| [Agent 与代码](agent-code.zh-CN.md) | 30 | [技能文件优化与技能库](agent-code.zh-CN.md#family-skill-file-optimization) (12) · [Harness 搜索与进化](agent-code.zh-CN.md#family-harness-search) (7) · [自改写元智能体与谱系](agent-code.zh-CN.md#family-self-modifying-meta-agents) (3) · [程序进化与进化搜索](agent-code.zh-CN.md#family-program-evolution) (5) · [反馈审查与编排](agent-code.zh-CN.md#family-feedback-orchestration) (2) · [安全与治理](agent-code.zh-CN.md#family-safety-governance) (1) |
+| [Agent 与代码](agent-code.zh-CN.md) | 31 | [技能文件优化与技能库](agent-code.zh-CN.md#family-skill-file-optimization) (13) · [Harness 搜索与进化](agent-code.zh-CN.md#family-harness-search) (7) · [自改写元智能体与谱系](agent-code.zh-CN.md#family-self-modifying-meta-agents) (3) · [程序进化与进化搜索](agent-code.zh-CN.md#family-program-evolution) (5) · [反馈审查与编排](agent-code.zh-CN.md#family-feedback-orchestration) (2) · [安全与治理](agent-code.zh-CN.md#family-safety-governance) (1) |
 | [记忆与上下文](memory-context.zh-CN.md) | 17 | [结构化知识库与图](memory-context.zh-CN.md#family-structured-knowledge) (6) · [经验积累与回放](memory-context.zh-CN.md#family-experience-accumulation) (5) · [上下文组织策略](memory-context.zh-CN.md#family-context-policies) (3) · [探索式记忆构建](memory-context.zh-CN.md#family-exploration-memory) (1) · [记忆进化评测研究](memory-context.zh-CN.md#family-memory-evolution-studies) (2) |
 | [自动化研发与评测](research-workflows.zh-CN.md) | 26 | [AI 科学家系统](research-workflows.zh-CN.md#family-ai-scientists) (5) · [自主后训练及其评测](research-workflows.zh-CN.md#family-autonomous-post-training) (3) · [公司研发遥测](research-workflows.zh-CN.md#family-company-telemetry) (5) · [对齐自动化](research-workflows.zh-CN.md#family-alignment-automation) (3) · [分析与审计](research-workflows.zh-CN.md#family-analyses-audits) (6) · [立场、路线图与实验室](research-workflows.zh-CN.md#family-positions-labs) (4) |
 
@@ -35,6 +35,7 @@
 | 2026-09-10 | [The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement](research-workflows.zh-CN.md#genuine-rsi-roadmap-2026) | Shanghai Jiao Tong University / Theseus Labs / Tsinghua University / ByteDance / Shanghai AI Lab / ModelBest / Xiaohongshu Inc. / Humanlaya | 立场、路线图与实验室 | 支撑技术／评测 |
 | 2026-09-08 | [NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness](parameter-learning.zh-CN.md#tokenrhythm-neohorse-1) | TokenRhythm Technologies / Infinigence AI / Tsinghua University / Peking University / The Chinese University of Hong Kong / Alibaba Group | 自主训练智能体与数据管线 | 直接有界闭环 |
 | 2026-09-08 | [SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale](memory-context.zh-CN.md#se-gos-skill-graph) | Peking University / Tencent / University of Edinburgh / Northwestern University / Tsinghua University | 结构化知识库与图 | 直接有界闭环 |
+| 2026-09-08 | [SkillAdam: Stable and Efficient Skill Evolution for Agents](agent-code.zh-CN.md#ruc-skilladam) | Renmin University of China / Tencent | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-09-08 | [Procedural Graphs: Self-Evolving Execution Structures for LLM Agents](memory-context.zh-CN.md#procedural-graphs-google) | Google / Georgia Institute of Technology / Peking University | 结构化知识库与图 | 直接有界闭环 |
 | 2026-09-08 | [Experience Funnel: A State-Policy Alternating Loop for Self-Evolving Agents](parameter-learning.zh-CN.md#experience-funnel-state-policy) | The Hong Kong Polytechnic University / Huawei / Renmin University of China | 经验蒸馏与测试时适应 | 直接有界闭环 |
 | 2026-09-06 | [Research acceleration: The view inside OpenAI](research-workflows.zh-CN.md#openai-research-acceleration-2026) | OpenAI | 公司研发遥测 | 自动化／辅助研发 |

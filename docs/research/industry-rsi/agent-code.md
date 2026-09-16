@@ -6,7 +6,7 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 12 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 13 |
 | [Harness search & evolution](#family-harness-search) | 7 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 3 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 5 |
@@ -15,7 +15,7 @@
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (12)
+## Skill-file optimization & libraries (13)
 
 <a id="skilllift-dense-rubrics"></a>
 
@@ -46,6 +46,36 @@
 **Open code / weights / data links** — [Code repository (MIT)](https://github.com/WalteR-MittY-pro/SkillLift)
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.15396) · [Paper v1 PDF (affiliations, Figure 2, Table 2, protocol)](https://arxiv.org/pdf/2609.15396) · [Code repository (MIT)](https://github.com/WalteR-MittY-pro/SkillLift)
+
+<a id="ruc-skilladam"></a>
+
+### SkillAdam: Stable and Efficient Skill Evolution for Agents
+
+**2026-09-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1: September 8, 2026 (2609.08944). The official repository was created September 6 and announced the paper on September 8; these later repository events are not used as the original publication date.
+
+**Institutional relationship** — The paper lists Renmin University of China and Tencent affiliations for the author group; the releasing repository is ruc-datalab/SkillAdam. This is an academic–industry report of the authors' own method.
+
+**What changes and how feedback is reused** — Optimizes a persistent natural-language skill while the target model stays frozen. Each iteration rolls out the current skill on a sampled mini-batch, records case-level issues and outcomes in an Evolving Issue Tracker (direction memory), estimates recent improvement volatility, and lets both states constrain the next patch's scope. Candidates are accepted only when designated metrics improve without protected-metric regressions; the accepted skill and optimizer states feed the next iteration.
+
+**Author-reported result** — Author-reported: seven benchmarks covering short- and long-horizon tasks show state-of-the-art results with fewer optimization iterations and lower cost than the listed baselines. The paper reports a cumulative ablation where adding optimization memory raises DeepPlanning average from 19.2% to 21.7%; the main protocol uses GPT-5.5 for six benchmarks, Claude Sonnet 4.5 for DeepPlanning, and seed 42 for controlled sampling.
+
+**Evidence limits** — The reported loop is bounded and benchmark-native: six benchmarks make one pass through an optimization pool, the acceptance decision has no additional validation set, and the final test partition is evaluated once. The memory ablation is cumulative rather than an isolated interaction analysis; cross-task transfer, repeated compounding under a fixed budget, and independent external gating are not demonstrated.
+
+**Code / weights / data / license** — Official code is released at github.com/ruc-datalab/SkillAdam under the repository's MIT license. No new model weights are released; the target models are frozen third-party systems. Benchmark data and any third-party components retain their own terms, and the audited repository does not establish a redistributable data bundle.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI: add a small persistent optimizer-state record to the skills surface — issue history plus bounded edit budget — while keeping the existing evaluator frozen. Compare stateless editing, issue-memory-only, volatility-budget-only and the combined state at matched rollout budgets; report accepted edits, regressions, edit size, tokens and held-out transfer. This is an experiment proposal, not an implementation or local reproduction.
+
+![Figure 2: Functional correspondence between Adam and SkillAdam — rollout feedback updates an issue-memory state and a volatility-driven edit budget, which constrain the next skill patch.](assets/paper-figures/skilladam-framework.png)
+
+**Source figure / official image** — Figure 2: Functional correspondence between Adam and SkillAdam — rollout feedback updates an issue-memory state and a volatility-driven edit budget, which constrain the next skill patch. · Figure 2 · [source](https://arxiv.org/html/2609.08944v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+
+**Open code / weights / data links** — [Official implementation (MIT)](https://github.com/ruc-datalab/SkillAdam) · [Repository license (MIT)](https://raw.githubusercontent.com/ruc-datalab/SkillAdam/main/LICENSE)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.08944) · [Paper HTML v1 (Figure 2, protocol, results)](https://arxiv.org/html/2609.08944v1) · [Official implementation (MIT)](https://github.com/ruc-datalab/SkillAdam) · [Repository license (MIT)](https://raw.githubusercontent.com/ruc-datalab/SkillAdam/main/LICENSE)
 
 <a id="persistent-skills-osworld"></a>
 

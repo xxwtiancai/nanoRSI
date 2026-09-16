@@ -6,7 +6,7 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 12 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 13 |
 | [Harness 搜索与进化](#family-harness-search) | 7 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 3 |
 | [程序进化与进化搜索](#family-program-evolution) | 5 |
@@ -15,7 +15,7 @@
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (12)
+## 技能文件优化与技能库 (13)
 
 <a id="skilllift-dense-rubrics"></a>
 
@@ -46,6 +46,36 @@
 **开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/WalteR-MittY-pro/SkillLift)
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15396) · [Paper v1 PDF (affiliations, Figure 2, Table 2, protocol)](https://arxiv.org/pdf/2609.15396) · [Code repository (MIT)](https://github.com/WalteR-MittY-pro/SkillLift)
+
+<a id="ruc-skilladam"></a>
+
+### SkillAdam: Stable and Efficient Skill Evolution for Agents
+
+**2026-09-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1：2026 年 9 月 8 日（2609.08944）。官方仓库创建于 9 月 6 日并于 9 月 8 日公告论文；这些后续仓库事件不作为原始发表日期。
+
+**机构关系** — 论文为作者团队列出中国人民大学与腾讯隶属；发布仓库为 ruc-datalab/SkillAdam。这是产学团队对自有方法的报告。
+
+**改变对象与反馈复用** — 目标模型保持冻结，只优化持久的自然语言技能。每轮在抽样小批次上执行当前技能，把案例级问题与结果写入演化问题跟踪器（方向记忆），估计近期改进波动，并由两种状态共同约束下一次补丁范围。候选只有在指定指标提升且受保护指标不退化时才接受；被接受技能与优化状态进入下一轮。
+
+**作者报告结果** — 作者报告：覆盖短程与长程任务的七个基准上，相比列出的基线取得当时最优结果，同时使用更少优化轮次和更低成本。论文报告一项累积消融：加入优化记忆后 DeepPlanning 平均分从 19.2% 升至 21.7%；主协议六个基准使用 GPT-5.5，DeepPlanning 使用 Claude Sonnet 4.5，受控采样种子为 42。
+
+**证据边界** — 报告闭环有界且绑定基准：六个基准只遍历一次优化池，准入决策没有额外验证集，最终测试划分只评测一次。记忆消融是累积消融而非孤立的交互分析；尚未证明跨任务迁移、固定预算下的多轮复利或独立外部闸门。
+
+**代码／权重／数据／许可** — 官方代码发布于 github.com/ruc-datalab/SkillAdam，仓库内许可证为 MIT。未发布新的模型权重；目标模型是冻结的第三方系统。基准数据与第三方组件仍适用各自条款，核验的仓库未证明存在可再分发的数据包。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：在技能面增加小型持久优化状态记录——问题历史加有界编辑预算——同时保持现有评估器冻结。在匹配 rollout 预算下比较无状态编辑、仅问题记忆、仅波动预算和组合状态；报告接受编辑、退化、编辑规模、token 及留出迁移。这是实验提案，不是已实现功能或本地复现。
+
+![图 2：Adam 与 SkillAdam 的功能对应——rollout 反馈更新问题记忆状态与波动驱动编辑预算，二者共同约束下一次技能补丁。](assets/paper-figures/skilladam-framework.png)
+
+**原文图／官方图片** — 图 2：Adam 与 SkillAdam 的功能对应——rollout 反馈更新问题记忆状态与波动驱动编辑预算，二者共同约束下一次技能补丁。 · Figure 2 · [source](https://arxiv.org/html/2609.08944v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+
+**开源代码／权重／数据链接** — [Official implementation (MIT)](https://github.com/ruc-datalab/SkillAdam) · [Repository license (MIT)](https://raw.githubusercontent.com/ruc-datalab/SkillAdam/main/LICENSE)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.08944) · [Paper HTML v1 (Figure 2, protocol, results)](https://arxiv.org/html/2609.08944v1) · [Official implementation (MIT)](https://github.com/ruc-datalab/SkillAdam) · [Repository license (MIT)](https://raw.githubusercontent.com/ruc-datalab/SkillAdam/main/LICENSE)
 
 <a id="persistent-skills-osworld"></a>
 

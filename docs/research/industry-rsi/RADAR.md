@@ -8,6 +8,8 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ## 2026-09-17
 
+- Added [SkillAdam](agent-code.md#ruc-skilladam) (Renmin University of China × Tencent, arXiv 2609.08944, September 8): a frozen-model skill loop that carries an evolving issue tracker and volatility-driven edit budget across iterations. The paper reports seven benchmark wins with fewer iterations/lower cost, but its six non-DeepPlanning benchmarks make one optimization pass and accept without an additional validation set; treat the result as author-reported, not a nanoRSI reproduction. The repository is MIT; Figure 2 is stored with provenance. This strengthens ADOPTION's persistent-skill state proposal, not the runtime yet.
+
 **New entries (6; catalog 97 → 103)**
 - [modularrsi-modular-harness](agent-code.zh-CN.md#modularrsi-modular-harness) — Beihang × Manchester × IQuest × M-A-P × Langboat × Hohai (arXiv 2609.14857): contrastive success/failure trajectory pairs evolve five scoped harness modules, integrated through a conflict-resolving epoch; TB2.0 47.57→52.43 with cross-model transfer, on 2,000 benchmark-disjoint evolution tasks.
 - [sciencebuddy-recursive-in-recursive](research-workflows.zh-CN.md#sciencebuddy-recursive-in-recursive) — PhAI Labs × Fudan Zhongshan Hospital × Shanghai Academy of Natural Sciences × Shunwei Capital × Oxford × Stanford × Princeton (arXiv 2609.17523): inner recursion edits the harness (paired-dev acceptance), outer recursion GRPO-trains the model under the frozen winner; coupled three cycles 42.2%→73.3% across 895 scientific tasks.
