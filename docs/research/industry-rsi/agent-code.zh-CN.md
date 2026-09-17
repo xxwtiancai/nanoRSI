@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 13 |
-| [Harness 搜索与进化](#family-harness-search) | 7 |
-| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 3 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 14 |
+| [Harness 搜索与进化](#family-harness-search) | 9 |
+| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 5 |
 | [程序进化与进化搜索](#family-program-evolution) | 5 |
 | [反馈审查与编排](#family-feedback-orchestration) | 2 |
-| [安全与治理](#family-safety-governance) | 1 |
+| [安全与治理](#family-safety-governance) | 2 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (13)
+## 技能文件优化与技能库 (14)
+
+<a id="evoskill-gui-reflect-revise-reuse"></a>
+
+### Reflect, Revise, Reuse: Training-Free Skill Evolution for GUI Agents
+
+**2026-09-15** · paper · 直接有界闭环
+
+**日期说明** — v1 2026-09-15；机构列表取自论文 HTML（一位合作者为电子科大，其余浙大）。
+
+**机构关系** — 学术工作（浙大牵头）；未见企业隶属。
+
+**改变对象与反馈复用** — 技能是部署期持续修订的多文件包，走反思-修订-复用循环：隔离评审者诊断失败、受限编辑接口限定可改的技能文件、修订过闸后复用——全程无权重更新。
+
+**作者报告结果** — 免训练增益最高 +16.2%（MobileWorld）、+6.0%（AndroidWorld）、+10.5%（OSWorld），最后一项是跨基准迁移设定。
+
+**证据边界** — 作者自报；仅 GUI 域；摘要未完整量化修订预算与评审者误差的影响。
+
+**代码／权重／数据／许可** — arXiv 论文公开；代码在本次核验时未确认。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 受限编辑接口（仅指定技能文件可写）加隔离评审者与 nanoRSI 的契约守卫同构；把部署期修订加为对照条件，可区分'技能变好了'与'技能没坏、执行漂移了'。
+
+![反思-修订-复用循环：失败触发隔离评审者与对多文件技能包的受限编辑，过闸后复用。](assets/paper-figures/evoskill-gui-reflect-revise-reuse.png)
+
+**原文图／官方图片** — 反思-修订-复用循环：失败触发隔离评审者与对多文件技能包的受限编辑，过闸后复用。 · Method figure (method.png) · [source](https://arxiv.org/html/2609.17653v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17653) · [Paper HTML (affiliations, method figure)](https://arxiv.org/html/2609.17653v1)
 
 <a id="skilllift-dense-rubrics"></a>
 
@@ -409,7 +439,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (7)
+## Harness 搜索与进化 (9)
+
+<a id="chase-counterfactual-harness"></a>
+
+### Bad Genius: Counterfactual-Guided Harness Evolution Beyond Task-Specific Shortcuts
+
+**2026-09-16** · paper · 直接有界闭环
+
+**日期说明** — v1 2026-09-16；机构信息取自论文 HTML 作者块。
+
+**机构关系** — 学术联合体（国科大 × 新加坡国立 × 中科院自动化所）；未见企业隶属。
+
+**改变对象与反馈复用** — 提案者进化目标智能体的 harness（提示、记忆、检索、工具、控制代码）；挑战者搜索保持任务有效性的基准反事实变体，确认档案会把在反事实下不再成立的增益降级，针对逐任务留集漏掉的基准级捷径。
+
+**作者报告结果** — OfficeQA（每题 3 次滚动）上进化后 harness 的 R̂avg,A3 达 68.42%，对照原始 harness 66.23%（+2.19）；ProV2 切片 30.37% 对 27.04%（+3.33）；合成基准 Syn-Ledger 用于分离捷径行为；去掉挑战者的 HarnessCompass 变体得分低于原始 harness。
+
+**证据边界** — 绝对增益温和；评测仅 OfficeQA 加合成基准；作者自报。
+
+**代码／权重／数据／许可** — arXiv 论文公开；代码在本次核验时未确认。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把挑战者移植进 nanoRSI 闸门：在最小任务集自动生成的保有效性反事实上重测被接受候选；在那里消失的增益标记为捷径而非技能。
+
+![CHASE 概览：提案者进化 harness，挑战者搜索保有效性的基准反事实以中和基准级捷径。](assets/paper-figures/chase-counterfactual-harness.svg)
+
+**原文图／官方图片** — CHASE 概览：提案者进化 harness，挑战者搜索保有效性的基准反事实以中和基准级捷径。 · Figure 2 (figure2_CHASE_pipeline.svg) · [source](https://arxiv.org/html/2609.18366v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.18366) · [Paper HTML (affiliations, Figure 2, OfficeQA table)](https://arxiv.org/html/2609.18366v1)
 
 <a id="modularrsi-modular-harness"></a>
 
@@ -531,6 +591,36 @@
 
 **一手来源** — [DarwinX paper v1](https://arxiv.org/abs/2608.07545) · [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt) · [Official Beagle architecture figure](https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg)
 
+<a id="combee-parallel-prompt-learning"></a>
+
+### Combee: Scaling Prompt Learning for Self-Improving Language Model Agents
+
+**2026-04-05** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 2026-04-05；COLM 2026 接收列表（2026-09-18 核验）的措辞略有差异。
+
+**机构关系** — 学术工作（斯坦福 × 伯克利系统/机器学习组），另有两家企业合著者。
+
+**改变对象与反馈复用** — 并行扫描、增强洗牌机制与动态批大小控制器让多个智能体并行做提示学习并从合并轨迹中学习而不损质量——把自改进循环横向而非串行扩展。
+
+**作者报告结果** — 在 AppWorld、Terminal-Bench、Formula、FiNER 上（头条快照为 DeepSeek-V3.1 底座），相对既有提示学习方法最高 17× 加速，精度持平或更优、成本相当。
+
+**证据边界** — 作者自报；加速相对既有提示学习流水线而非单次运行质量上限；仅覆盖智能体任务。
+
+**代码／权重／数据／许可** — arXiv 论文公开；代码在本次核验时未确认。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 种群运行已并行评测；Combee 可借鉴的是运行中洗牌——候选在代际边界之前就周期性交换已学提示内容。
+
+![Combee 通过提高高并行下学到的提示内容量，以显著降低的训练时间逼近最优提示质量。](assets/paper-figures/combee-parallel-prompt-learning.svg)
+
+**原文图／官方图片** — Combee 通过提高高并行下学到的提示内容量，以显著降低的训练时间逼近最优提示质量。 · Figure 1 (intro_fig.svg) · [source](https://arxiv.org/html/2604.04247v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2604.04247) · [Paper HTML (affiliations, Figure 1)](https://arxiv.org/html/2604.04247v1)
+
 <a id="genericagent-skill-tree"></a>
 
 ### GenericAgent: A Self-Evololving Agent Growing a Skill Tree from a 3.3K-Line Seed
@@ -623,7 +713,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## 自改写元智能体与谱系 (3)
+## 自改写元智能体与谱系 (5)
+
+<a id="nous-hermes-selfrefactor"></a>
+
+### Refactoring Hermes with 1,393 agents
+
+**2026-09-15** · report · 直接有界闭环
+
+**日期说明** — 重构运行发生在 2026-09-02/04；页面结构化元数据把发布日期记为 2026-09-15T15:00Z。
+
+**机构关系** — Nous Research 第一方记录，Teknium 执笔。
+
+**改变对象与反馈复用** — 人类下达 /goal 后，Hermes 编排器把自家约 106 万行仓库切成 36 组，派出工作子智能体在独立 git worktree 中编辑并做接口校验（JSON schema、逐字节一致的 CLI --help）；经验教训自动写入 hermes-agent-dev Markdown 技能并再共享，让其他智能体继承已学流程。
+
+**作者报告结果** — 1,393 个子智能体（峰值并发 218）、约 19 个活跃小时、主运行约 1.93 万美元（人工估算 15 万-180 万）；非测试 Python 从 1,063,826 行降至 698,363 行（−34.4%）；超 5,000 行的文件 37 → 6；超 300 行的函数 192 → 2；最长 if/elif 链 92 → 9 分支；4,000 次符号查询测试的平均返回 token 从 2,218 降至 993。
+
+**证据边界** — 无能力对照——测的是代码健康度而非任务表现；评审抓到测试漏掉的真实回归（删除公开命名、约 65 处异常处理被重写）；首次运行因鉴权 token 过期中断；模块数与部分入口导入时间变差。
+
+**代码／权重／数据／许可** — 博文公开；Hermes 智能体仓库公开，但 README 声明的 MIT 没有 LICENSE 文件——复用按保留所有权利对待。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 已有每候选 worktree 评测；要补的是把事后教训自动写入技能文件供后续运行加载，让一次性失败与持久流程记忆之间闭环。
+
+![Nous Research 官方文章题图：Hermens 用 1,393 个子智能体自主重构自身约百万行代码库。](assets/paper-figures/nous-hermes-selfrefactor.png)
+
+**原文图／官方图片** — Nous Research 官方文章题图：Hermens 用 1,393 个子智能体自主重构自身约百万行代码库。 · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
 <a id="mgm-mendel-godel-machine"></a>
 
@@ -684,6 +804,36 @@
 **开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/minnesotanlp/meta-n)
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.24735) · [Paper v1 (affiliations, Figures 1-3, tables)](https://arxiv.org/html/2608.24735v1) · [Code repository (MIT)](https://github.com/minnesotanlp/meta-n)
+
+<a id="weco-aide2-first-evidence"></a>
+
+### AIDE²: The First Evidence of Recursive Self-Improvement
+
+**2026-07-14** · report · 直接有界闭环
+
+**日期说明** — Weco AI 博客报告；官方预告的 PDF 技术报告与 AIDE₈₅ 发布在本次核验时仍未上线。
+
+**机构关系** — Weco AI 对自家系统的第一方报告，无独立复现。
+
+**改变对象与反馈复用** — 双层循环：外环智能体（手工调优、运行于 claude-opus-4.7 的 AIDE_human）改写内环智能体（运行于 gemini-3-flash 的 AIDE₀）的代码；每次改写在固定美元预算下跨异构任务族评测，公开/私有分数分离，约九成提案被拒绝。
+
+**作者报告结果** — 8 天无人值守 100 步产生 7 个连续改进版本。留出集 MLE-Bench Lite（3 种子、相对 AIDE₀ 配对差值）：AIDE₄₇ +0.053（p=0.0024）、AIDE₈₅ +0.042（p=0.0041）；奖励黑客率（KernelBench/SpecBench 式端到端检验）63%→42%→34%；平均提示压缩 16×；两者在留出任务族上均胜过调优两年的人工基线 AIDE_human。把 AIDE₄₇ 放入外环的点火测试约 20 步收敛（对照约 40 步）但不显著且渐近不更优——未宣称点火。
+
+**证据边界** — 由系统构建方自报；单次运行；增益非单调（AIDE₈₅ 在 MLE-Bench Lite 上低于 AIDE₄₇）；'首个证据'是相对 Weco 自设的 RSI 阶梯（Level 1：固定预算下胜过公平人工基线），并非社区统一定义。
+
+**代码／权重／数据／许可** — 博文公开；预告的 PDF 报告、代码与权重在本次核验时未发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 在最小任务上复刻固定预算的提案/拒绝阶梯：外环改写内环执行器，约九成拒绝率是接受闸门起效的证据，接受由私有留出分割裁决。
+
+![Weco AI 外环示意图：AIDE_human 改写内环 AIDE 智能体，每次改写在固定预算下评测，约九成被拒绝。](assets/paper-figures/weco-aide2-first-evidence.png)
+
+**原文图／官方图片** — Weco AI 外环示意图：AIDE_human 改写内环 AIDE 智能体，每次改写在固定预算下评测，约九成被拒绝。 · Outer-loop figure (figB) in the blog post · [source](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Weco AI blog report](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
 
 <a id="meta-hyperagents-2026"></a>
 
@@ -935,7 +1085,37 @@
 
 <a id="family-safety-governance"></a>
 
-## 安全与治理 (1)
+## 安全与治理 (2)
+
+<a id="trusting-trust-self-modifying"></a>
+
+### Reflections on Trusting Trust, Revisited: Contaminating Self-Modifying AI Coding Agents with Poisoned Benchmarks
+
+**2026-09-15** · paper · 支撑技术／评测
+
+**日期说明** — v1 2026-09-15；Franziska Roesner（华盛顿大学）与 Tadayoshi Kohno（乔治城大学）。
+
+**机构关系** — 学术安全团队；研究对象是第三方自改进系统而非作者自家系统。
+
+**改变对象与反馈复用** — 把 Thompson 编译器木马重演到自改写智能体上：注入智能体自评环的带毒基准诱导 Darwin Gödel Machine、Self-Improving Coding Agent 与 Hyperagents（Sonnet 4.5）自我演化出关闭 HTTPS 证书校验的指令，且该脆弱性迁移到中性留出任务。
+
+**作者报告结果** — 三个目标系统上都能诱导出关闭证书校验的脆弱性并迁移到中性留出任务；在干净基准上继续演化后仍然存留（逐演化迁移表见论文；具体比率待表格级核验后再引）。
+
+**证据边界** — 攻击者模型假设能控制部分评测套件；比率级数字本次未核验；属实验室演示而非野外事件。
+
+**代码／权重／数据／许可** — arXiv 论文公开；攻击产物在本次核验时未确认。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI 冻结循环做 fixture 投毒红队：故意泄漏的评测用于检验契约守卫与证据账本能否拦住被污染的接受，对应本文的干净基准持续性检验。
+
+![攻击概念：自评环中的带毒基准驱动 DGM 式智能体演化出关闭证书校验的指令，并在干净任务上存留。](assets/paper-figures/trusting-trust-self-modifying.svg)
+
+**原文图／官方图片** — 攻击概念：自评环中的带毒基准驱动 DGM 式智能体演化出关闭证书校验的指令，并在干净任务上存留。 · Figure 2(a) attack concept for Darwin Gödel Machine (DGM-Attack.svg) · [source](https://arxiv.org/html/2609.17817v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17817) · [Paper HTML (affiliations, attack figures)](https://arxiv.org/html/2609.17817v1)
 
 <a id="skill-misevolution-safety"></a>
 

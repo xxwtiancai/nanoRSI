@@ -7,10 +7,10 @@
 | Family | Records |
 | --- | ---: |
 | [Self-play & curriculum task generation](#family-self-play-curriculum) | 11 |
-| [Verifier- and reward-centric loops](#family-verifier-reward) | 4 |
+| [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 2 |
 | [Experience distillation & test-time adaptation](#family-experience-distillation) | 4 |
-| [Autonomous training agents & data pipelines](#family-autonomous-training) | 3 |
+| [Autonomous training agents & data pipelines](#family-autonomous-training) | 4 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 5 |
 
 <a id="family-self-play-curriculum"></a>
@@ -349,7 +349,7 @@
 
 <a id="family-verifier-reward"></a>
 
-## Verifier- and reward-centric loops (4)
+## Verifier- and reward-centric loops (5)
 
 <a id="evors-reward-evolution"></a>
 
@@ -410,6 +410,36 @@
 **Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/AR-FORUM/stv)
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2605.30290) · [Paper v2 (affiliations, Figure 1, all tables)](https://arxiv.org/html/2605.30290v2) · [Code repository (Apache-2.0)](https://github.com/AR-FORUM/stv)
+
+<a id="evolm-coevolved-rubrics"></a>
+
+### EvoLM: Self-Evolving Language Models through Co-Evolved Discriminative Rubrics
+
+**2026-05-05** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-05-05; the ICLR 2026 RSI-workshop spotlight was verified on the accepted list on 2026-09-17, where the paper appears under a shortened title.
+
+**Institutional relationship** — Academic (UW-led with AI2); the open-weight EvoLM-8B line is the artifact.
+
+**What changes and how feedback is reused** — A rubric generator emits instance-specific natural-language criteria and a frozen judge as small as 0.6B scores the policy against them; the generator trains by GRPO with a binary discriminative reward (does the judge correctly rank a preference pair built from the policy's own earlier-vs-later outputs via temporal contrast), and generator and policy co-evolve in alternation with a replay buffer — no human annotation, external reward model or stronger teacher.
+
+**Author-reported result** — A Qwen3-8B generator beats GPT-4.1 rubrics on RewardBench-2 by 25.7%; the co-trained policy reaches 69.3% average on the 12-benchmark OLMo3-Adapt suite (+3.9 over GPT-4.1-prompted rubrics); on out-of-distribution deep-research tasks its rubrics agree with expert human rubrics more than GPT-4.1 does (HealthBench 58.4% vs 52.5%, ResearchQA 59.3% vs 51.0%); the framework extends to OLMo-3-7B and rubrics transfer to unseen policies and judges without retraining.
+
+**Evidence limits** — Author-reported; temporal-contrast preference construction ties supervision quality to checkpoint pacing; judge-quality metrics (RewardBench-2/JudgeBench) are themselves LLM-judgment-based.
+
+**Code / weights / data / license** — Code at github.com/stellalisy/EvoLM (license not verified); weights on Hugging Face (stellalisy/EvoLM-8B); training data not verified.
+
+**Possible nanoRSI experiment — not implemented here** — Temporal contrast is directly portable: build preference pairs from nanoRSI's frozen-vs-candidate outputs and train a small rubric scorer as the cheap gate that replaces per-candidate full rollouts (extends ADOPTION item 19).
+
+![EvoLM overview: one model co-evolves its own evaluation (rubric generator + frozen judge) and generation capabilities via temporal-contrast preferences from its own checkpoints.](assets/paper-figures/evolm-coevolved-rubrics.png)
+
+**Source figure / official image** — EvoLM overview: one model co-evolves its own evaluation (rubric generator + frozen judge) and generation capabilities via temporal-contrast preferences from its own checkpoints. · Figure 1 (rubric_fig1.png) · [source](https://arxiv.org/html/2605.03871v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — [EvoLM repository](https://github.com/stellalisy/EvoLM)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2605.03871) · [Paper HTML (affiliations, results, Figure 1)](https://arxiv.org/html/2605.03871v1) · [EvoLM repository](https://github.com/stellalisy/EvoLM)
 
 <a id="a3"></a>
 
@@ -661,7 +691,37 @@
 
 <a id="family-autonomous-training"></a>
 
-## Autonomous training agents & data pipelines (3)
+## Autonomous training agents & data pipelines (4)
+
+<a id="scienceide-agent-environments"></a>
+
+### ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments
+
+**2026-09-16** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 2026-09-16; 45 authors across 25 institutions with PhAI Labs/AItonomy as the artifact organization (contact team@aitonomy.org, yang@phai-labs.com); listed organizations are the headline subset, the full map is in the paper's author block.
+
+**Institutional relationship** — PhAI Labs/aitofound-led consortium in the ScienceBuddy lineage; the environment infrastructure and PhAI-IDE models are the artifacts.
+
+**What changes and how feedback is reused** — Infrastructure converts scientific code repositories into programmable agent environments: expert-defined cases and acceptance criteria drive task generation, execution and verification; verified interaction trajectories then serve SFT, RL and evaluation as one shared foundation.
+
+**Author-reported result** — Trains PhAI-IDE-72B/9B/4B from verified trajectories; the family reports gains on held-out scientific-code repair and selected general-purpose code/reasoning/knowledge benchmarks (qualitative at abstract level, no single headline number), with online verifier feedback reported to substantially improve held-out scientific reward.
+
+**Evidence limits** — Author-reported; results verified here at abstract level only; gains framed as positive transfer from scientific experience, not as a measured self-improvement loop.
+
+**Code / weights / data / license** — Code at github.com/aitofound/ScienceIDE (license not verified); PhAI-IDE-4B/9B/72B announced in the repository README; environment data availability not verified.
+
+**Possible nanoRSI experiment — not implemented here** — The acceptance-criteria-first recipe maps onto nanoRSI fixtures: generate executable task+verifier pairs from a corpus, admit only verified trajectories into the improvement loop.
+
+![Figure 1 summarizes ScienceIDE: expert-grounded construction of environments, Science4AI turning scientific experience into agent capability, AI4Science application, and domain/task coverage.](assets/paper-figures/scienceide-agent-environments.svg)
+
+**Source figure / official image** — Figure 1 summarizes ScienceIDE: expert-grounded construction of environments, Science4AI turning scientific experience into agent capability, AI4Science application, and domain/task coverage. · Figure 1 (scienceide_summary.svg) · [source](https://arxiv.org/html/2609.19134v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — [ScienceIDE repository](https://github.com/aitofound/ScienceIDE)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.19134) · [Paper HTML (author block, Figure 1)](https://arxiv.org/html/2609.19134v1) · [ScienceIDE repository](https://github.com/aitofound/ScienceIDE)
 
 <a id="tokenrhythm-neohorse-1"></a>
 

@@ -6,16 +6,76 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [AI 科学家系统](#family-ai-scientists) | 5 |
+| [AI 科学家系统](#family-ai-scientists) | 8 |
 | [自主后训练及其评测](#family-autonomous-post-training) | 3 |
-| [公司研发遥测](#family-company-telemetry) | 5 |
+| [公司研发遥测](#family-company-telemetry) | 6 |
 | [对齐自动化](#family-alignment-automation) | 3 |
 | [分析与审计](#family-analyses-audits) | 6 |
 | [立场、路线图与实验室](#family-positions-labs) | 4 |
 
 <a id="family-ai-scientists"></a>
 
-## AI 科学家系统 (5)
+## AI 科学家系统 (8)
+
+<a id="andromeda2-evidence-grounded-lab"></a>
+
+### Evidence-Grounded Agentic Formulation Development in an Autonomous Laboratory
+
+**2026-09-16** · paper · 支撑技术／评测
+
+**日期说明** — v1 2026-09-16；论文 HTML 机构为'Intrepid Labs, Toronto, Canada'；这是第二代 Andromeda 系统。
+
+**机构关系** — 自主实验室公司团队（Intrepid Labs）；药物制剂领域。
+
+**改变对象与反馈复用** — 闭环自主实验室智能体设计与执行连续的药物制剂数批，每次迭代都锚定在结构化积累的内部实验证据库上，而非从零开始优化。
+
+**作者报告结果** — 匹配实验预算下，高性能命中率 50%，对照 Andromeda 1 为 17%、DoE 为 2%；满足全部目标产品概况的制剂数 12 对 6 对 0；消融中去掉证据访问平均 AUC 降 34%。
+
+**证据边界** — 单一制剂 campaign（紫杉醇增溶）；物理实验室时间尺度；平台构建方自报。
+
+**代码／权重／数据／许可** — arXiv 论文公开；实验室集成与数据不公开。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 结构化证据库是 nanoRSI 证据账本的非 LLM 类比：每次新运行都对照累积证据表选择，而不只看上一代面板。
+
+![匹配实验预算下的紫杉醇制剂表现：证据锚定的 Andromeda 2 平台对照 Andromeda 1 与 DoE。](assets/paper-figures/andromeda2-evidence-grounded-lab.svg)
+
+**原文图／官方图片** — 匹配实验预算下的紫杉醇制剂表现：证据锚定的 Andromeda 2 平台对照 Andromeda 1 与 DoE。 · Figure 1 (fig0_first_page_takeaway.svg) · [source](https://arxiv.org/html/2609.19099v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.19099) · [Paper HTML (affiliation, Figure 1)](https://arxiv.org/html/2609.19099v1)
+
+<a id="agora-git-shared-memory"></a>
+
+### Agora: Git as Shared Memory for Collective AutoResearch
+
+**2026-09-16** · paper · 直接有界闭环
+
+**日期说明** — v1 2026-09-16；HTML 中全体作者唯一机构为 NVIDIA。
+
+**机构关系** — NVIDIA 对集体研究循环的报告；单一企业作者。
+
+**改变对象与反馈复用** — 自主研究会话把主张、结果与验证记录为只追加的 Git DAG；带多样性感知选择的前沿索引让后续会话在先前工作之上推进而非重启，独立复现是一等贡献类型。
+
+**作者报告结果** — 12 天运行、13 个未指派 LM 工作者针对一个冻结的 1.196 亿参数 attention-SSM 混合体做权重迁移：1,703 项贡献，评测器 3.39 → 1.899 bits/byte，闭合与训练版 GPT-2 124M 差距的 62%，165 次独立复现全部通过。
+
+**证据边界** — 单一任务族上的一次集体运行；验证者即评测器指标本身；由基础设施构建方自报。
+
+**代码／权重／数据／许可** — arXiv 论文公开；代码仓库在本次核验时未确认。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把 nanoRSI 的提案谱系建为同样的 DAG——每个候选存主张+证据、选择偏向前沿+多样性、独立重滚动作为复现节点入库。
+
+![Agora 研究 DAG：只追加的主张、结果与验证，13 个工作者在其上集体推进而非各自从零开始。](assets/paper-figures/agora-git-shared-memory.png)
+
+**原文图／官方图片** — Agora 研究 DAG：只追加的主张、结果与验证，13 个工作者在其上集体推进而非各自从零开始。 · Research-DAG topology figure · [source](https://arxiv.org/html/2609.18094v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.18094) · [Paper HTML (affiliations, figures)](https://arxiv.org/html/2609.18094v1)
 
 <a id="sciencebuddy-recursive-in-recursive"></a>
 
@@ -41,11 +101,41 @@
 
 **原文图／官方图片** — ScienceBuddy 系统图：内层 harness 进化递归与外层模型训练递归复合为递归中的递归自改进。 · Figure 2 (S0.F2, system diagram) · [source](https://arxiv.org/html/2609.17523v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
 
 **开源代码／权重／数据链接** — [GitHub repository](https://github.com/Gen-Verse/ScienceBuddy)
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17523) · [arXiv HTML v1](https://arxiv.org/html/2609.17523v1) · [GitHub repository](https://github.com/Gen-Verse/ScienceBuddy)
+
+<a id="primescientist-effort-allocation"></a>
+
+### PrimeScientist: Strategic Allocation of Research Effort in Autonomous Research
+
+**2026-09-15** · paper · 支撑技术／评测
+
+**日期说明** — v1 2026-09-15；HTML 作者块列出加州大学圣地亚哥分校与约翰霍普金斯大学；后一组作者未另列机构行。
+
+**机构关系** — 学术工作（UCSD 牵头）；未见企业隶属。
+
+**改变对象与反馈复用** — 自主研究智能体同时决定方向与资源投入：可执行计划树编码有前景但未探索的方向，自适应 MCTS 随结果到达重新分配剩余 token 预算，而非执行固定计划。
+
+**作者报告结果** — 在 12 个 AI 研究任务、预算匹配下，平均奖励 +10.3%，尝试次数比 AutoResearch 少 50.6%。
+
+**证据边界** — 作者自报；在 AI 研究任务模拟器上评测，非湿实验或生产科研；单智能体设定。
+
+**代码／权重／数据／许可** — arXiv 论文公开；代码在本次核验时未确认。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 的步进器每代花费固定回合预算；把候选机制编成计划树并自适应重分配剩余预算，是同一分配问题的微缩版。
+
+![在匹配 token 预算下，PrimeScientist 以更少尝试取得相当或更好分数，驱动因素是显式计划与自适应重分配。](assets/paper-figures/primescientist-effort-allocation.svg)
+
+**原文图／官方图片** — 在匹配 token 预算下，PrimeScientist 以更少尝试取得相当或更好分数，驱动因素是显式计划与自适应重分配。 · Figure 1 (fig1_grid.svg) · [source](https://arxiv.org/html/2609.17846v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17846) · [Paper HTML (affiliations, Figure 1)](https://arxiv.org/html/2609.17846v1)
 
 <a id="faraday-replica-ai-scientist"></a>
 
@@ -263,7 +353,7 @@
 
 <a id="family-company-telemetry"></a>
 
-## 公司研发遥测 (5)
+## 公司研发遥测 (6)
 
 <a id="openai-research-acceleration-2026"></a>
 
@@ -324,6 +414,36 @@
 **开源代码／权重／数据链接** — [Official research repository](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun) · [Research repository README](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun/blob/main/README.md)
 
 **一手来源** — [Official report, live results and verification conditions](https://www.primeintellect.ai/blog/measuring-autonomous-research) · [Official research repository](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun) · [Research repository README](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun/blob/main/README.md)
+
+<a id="anthropic-when-ai-builds-itself"></a>
+
+### When AI builds itself
+
+**2026-06** · report · 自动化／辅助研发
+
+**日期说明** — 页面本身无日期；正文引用至 2026 年 5 月的事件、媒体覆盖出现于 2026-06-05，故首发钉为 2026-06。本库 2026-09-18 才发现，滞后三个月。
+
+**机构关系** — Anthropic 自家研究机构文章，Marina Favaro 与 Jack Clark 合著。
+
+**改变对象与反馈复用** — 该文把公开基准与 Anthropic 内部遥测合成为一篇论述：Claude 正在自动化 Anthropic 自身的编码与研究；文中给出三种未来（能力平台期、人类主导的复利式自动化、完全递归自改进），按现有证据判断复利式自动化最可能，并主张建设可验证的减速机制。
+
+**作者报告结果** — 作者自报内部数据：Anthropic 合入代码中超过 80% 由 Claude 编写（2026-05）；工程师日均交付代码量约为 2024 年的 8×；代码优化加速任务从约 3×（Claude Opus 4，2025-05）升至约 52×（Mythos Preview，2026-04），人类 4-8 小时约 4×；智能体在 800 算力小时（约 1.8 万美元）内恢复弱到强监督差距的 97%，两名人类一周仅恢复约 23%；最难开放式任务成功率 76%（2026-05，六个月提高 50 个百分点）；下一步判断在 2026-04 以 64% 胜过人类选择（2025-11 为 51%）。
+
+**证据边界** — 自报立场文章、无外部审计；作者自附保留（代码行数高估真实增益、约 4× 产出民意估计预计偏高）；时域/加速数字混合了不同任务族。
+
+**代码／权重／数据／许可** — 文章公开；底层内部数据与轨迹未发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把'下一步判断对决人类'作为 nanoRSI 面板上与能力分数并列的'研究品味'读数——在决策点上配对施测成本很低。
+
+![Anthropic 内部下一步判断指标：2026 年 4 月模型所选下一步在 64% 的迂回时刻胜过人类，五个月前为 51%。](assets/paper-figures/anthropic-when-ai-builds-itself.png)
+
+**原文图／官方图片** — Anthropic 内部下一步判断指标：2026 年 4 月模型所选下一步在 64% 的迂回时刻胜过人类，五个月前为 51%。 · In-essay chart 'Can the model pick a better next step than the human?' · [source](https://www.anthropic.com/institute/recursive-self-improvement)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Anthropic Institute essay](https://www.anthropic.com/institute/recursive-self-improvement)
 
 <a id="cognition-devin-builds-devin"></a>
 
@@ -751,7 +871,7 @@
 
 **原文图／官方图片** — 图 1：论文的 L0–L5 自主性全景，把代表性产业系统（AlphaEvolve、字节 Seed、Anthropic、Hermes、ASPIRE、Theseus、SIMA、Sakana、HyperAgents）从执行自动化排到元改进。 · Figure 1 · [source](https://arxiv.org/html/2609.11873v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-14.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 

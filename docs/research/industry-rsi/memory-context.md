@@ -8,7 +8,7 @@
 | --- | ---: |
 | [Structured knowledge bases & graphs](#family-structured-knowledge) | 6 |
 | [Experience accumulation & replay](#family-experience-accumulation) | 6 |
-| [Context organization policies](#family-context-policies) | 3 |
+| [Context organization policies](#family-context-policies) | 4 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
 | [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 2 |
 
@@ -284,7 +284,7 @@
 
 **Source figure / official image** — Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop. · Figure 1, PDF p.3 · [source](https://arxiv.org/html/2608.23552v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
 
 **Open code / weights / data links** — [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
@@ -382,7 +382,37 @@
 
 <a id="family-context-policies"></a>
 
-## Context organization policies (3)
+## Context organization policies (4)
+
+<a id="repoatlas-evolving-views"></a>
+
+### RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views
+
+**2026-09-15** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 2026-09-15; the paper's own affiliation block reads '1 Beihang University 2 Independent Researcher' (corresponding author chenyan2022@buaa.edu.cn).
+
+**Institutional relationship** — Academic (Beihang-led); no company affiliation shown.
+
+**What changes and how feedback is reused** — A training-free select-project-refresh loop maintains an evolving repository view over a code graph: issue- and exploration-state-conditioned selection under a fixed node budget, projection into complementary visual and textual representations, and refresh when state changes make the view stale.
+
+**Author-reported result** — SWE-bench Verified: +2.4 points resolve rate over the strongest multimodal graph baseline with 5.8% fewer input tokens and 7.8% fewer model calls, consistent across three model families (Qwen3.6-35B-A3B, MiMo-V2.5, Kimi-K2.5); under a matched 15-node budget, selection improves LocBench FA@3 from 0.256 to 0.336.
+
+**Evidence limits** — Gains are over graph-interface baselines rather than the strongest overall agents; the evolving artifact is the repository view, not the agent itself.
+
+**Code / weights / data / license** — arXiv paper public; code not verified at last check.
+
+**Possible nanoRSI experiment — not implemented here** — Give nanoRSI skills a per-skill 'view' — a file whitelist refreshed on drift — instead of full-tree context; the refresh trigger plays the role of the contract guard for context.
+
+![RepoAtlas overview: select a connected, issue- and state-conditioned structure under fixed budgets, project it into phase-appropriate views, reuse or refresh as exploration proceeds.](assets/paper-figures/repoatlas-evolving-views.png)
+
+**Source figure / official image** — RepoAtlas overview: select a connected, issue- and state-conditioned structure under fixed budgets, project it into phase-appropriate views, reuse or refresh as exploration proceeds. · Figure 2 (fig_overview.png) · [source](https://arxiv.org/html/2609.16936v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.16936) · [Paper HTML (affiliations, Figure 2, selection ablation)](https://arxiv.org/html/2609.16936v1)
 
 <a id="sambanova-stanford-ace"></a>
 

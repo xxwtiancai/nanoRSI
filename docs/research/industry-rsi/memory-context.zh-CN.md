@@ -8,7 +8,7 @@
 | --- | ---: |
 | [结构化知识库与图](#family-structured-knowledge) | 6 |
 | [经验积累与回放](#family-experience-accumulation) | 6 |
-| [上下文组织策略](#family-context-policies) | 3 |
+| [上下文组织策略](#family-context-policies) | 4 |
 | [探索式记忆构建](#family-exploration-memory) | 1 |
 | [记忆进化评测研究](#family-memory-evolution-studies) | 2 |
 
@@ -284,7 +284,7 @@
 
 **原文图／官方图片** — 图 1：Prime Agent 将持久根会话、子智能体会话连接到守护进程和持续改进闭环。 · Figure 1, PDF p.3 · [source](https://arxiv.org/html/2608.23552v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
 
 **开源代码／权重／数据链接** — [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
@@ -382,7 +382,37 @@
 
 <a id="family-context-policies"></a>
 
-## 上下文组织策略 (3)
+## 上下文组织策略 (4)
+
+<a id="repoatlas-evolving-views"></a>
+
+### RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views
+
+**2026-09-15** · paper · 支撑技术／评测
+
+**日期说明** — v1 2026-09-15；论文机构块为'1 北京航空航天大学 2 独立研究者'（通讯作者 chenyan2022@buaa.edu.cn）。
+
+**机构关系** — 学术工作（北航牵头）；未见企业隶属。
+
+**改变对象与反馈复用** — 免训练的选择-投影-刷新循环在代码图上维护演化的仓库视图：以固定节点预算按议题与探索状态选区、投影为互补的视觉与文本表示、状态变化致视图过期时刷新。
+
+**作者报告结果** — SWE-bench Verified：相对最强多模态图基线解决率 +2.4 分，输入 token 少 5.8%、模型调用少 7.8%，三个模型族一致（Qwen3.6-35B-A3B、MiMo-V2.5、Kimi-K2.5）；匹配 15 节点预算下，选择阶段把 LocBench FA@3 从 0.256 提到 0.336。
+
+**证据边界** — 增益相对图接口基线而非最强整体智能体；演化对象是仓库视图而非智能体本身。
+
+**代码／权重／数据／许可** — arXiv 论文公开；代码在本次核验时未确认。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 给 nanoRSI 技能配每技能'视图'（漂移即刷新的文件白名单）替代全树上下文；刷新触发器即为上下文版的契约守卫。
+
+![RepoAtlas 概览：固定预算下选择连通的、以议题与状态为条件的结构，投影为阶段适配的视图，随探索推进复用或刷新。](assets/paper-figures/repoatlas-evolving-views.png)
+
+**原文图／官方图片** — RepoAtlas 概览：固定预算下选择连通的、以议题与状态为条件的结构，投影为阶段适配的视图，随探索推进复用或刷新。 · Figure 2 (fig_overview.png) · [source](https://arxiv.org/html/2609.16936v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.16936) · [Paper HTML (affiliations, Figure 2, selection ablation)](https://arxiv.org/html/2609.16936v1)
 
 <a id="sambanova-stanford-ace"></a>
 

@@ -7,10 +7,10 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [自博弈与课程任务生成](#family-self-play-curriculum) | 11 |
-| [验证器与奖励进化](#family-verifier-reward) | 4 |
+| [验证器与奖励进化](#family-verifier-reward) | 5 |
 | [技能-权重共进化](#family-skill-weight-coevolution) | 2 |
 | [经验蒸馏与测试时适应](#family-experience-distillation) | 4 |
-| [自主训练智能体与数据管线](#family-autonomous-training) | 3 |
+| [自主训练智能体与数据管线](#family-autonomous-training) | 4 |
 | [支撑性适应机制](#family-enabling-adaptation) | 5 |
 
 <a id="family-self-play-curriculum"></a>
@@ -349,7 +349,7 @@
 
 <a id="family-verifier-reward"></a>
 
-## 验证器与奖励进化 (4)
+## 验证器与奖励进化 (5)
 
 <a id="evors-reward-evolution"></a>
 
@@ -410,6 +410,36 @@
 **开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/AR-FORUM/stv)
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2605.30290) · [Paper v2 (affiliations, Figure 1, all tables)](https://arxiv.org/html/2605.30290v2) · [Code repository (Apache-2.0)](https://github.com/AR-FORUM/stv)
+
+<a id="evolm-coevolved-rubrics"></a>
+
+### EvoLM: Self-Evolving Language Models through Co-Evolved Discriminative Rubrics
+
+**2026-05-05** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-05-05；ICLR 2026 RSI 工作坊 spotlight 于 2026-09-17 在接收列表核验，列表中以缩短标题 'Self-Evolving Rubrics' 出现。
+
+**机构关系** — 学术工作（华盛顿大学牵头、AI2 参与）；产物为开放权重的 EvoLM-8B 系列。
+
+**改变对象与反馈复用** — 规则生成器输出逐实例的自然语言评判标准，小至 0.6B 的冻结评判者据此给策略打分；生成器以二元判别奖励（评判者能否正确排序由策略自身前后检查点经时间对比构成的偏好对）经 GRPO 训练，生成器与策略交替共进化并配回放缓冲——无人类标注、外部奖励模型或更强教师。
+
+**作者报告结果** — Qwen3-8B 生成器在 RewardBench-2 上超过 GPT-4.1 规则 25.7%；共训练策略在 12 基准 OLMo3-Adapt 套件均分 69.3%（比 GPT-4.1 提示规则高 3.9）；在分布外深度研究任务上其规则与专家人类规则的一致率高于 GPT-4.1（HealthBench 58.4% 对 52.5%、ResearchQA 59.3% 对 51.0%）；框架可迁移到 OLMo-3-7B，规则无需重训即可迁移到未见策略与评判者。
+
+**证据边界** — 作者自报；时间对比的偏好构造把监督质量与检查点节奏绑定；评判质量指标（RewardBench-2/JudgeBench）本身基于 LLM 评判。
+
+**代码／权重／数据／许可** — 代码在 github.com/stellalisy/EvoLM（许可证未核验）；权重在 Hugging Face（stellalisy/EvoLM-8B）；训练数据未核验。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 时间对比可直接移植：用 nanoRSI 冻结版对候选版的输出构造偏好对，训练小规则评分器作为替代逐候选全滚动的廉价闸门（扩展 ADOPTION 第 19 项）。
+
+![EvoLM 概览：单个模型借自身检查点的时间对比偏好，共进化自己的评测（规则生成器+冻结评判者）与生成能力。](assets/paper-figures/evolm-coevolved-rubrics.png)
+
+**原文图／官方图片** — EvoLM 概览：单个模型借自身检查点的时间对比偏好，共进化自己的评测（规则生成器+冻结评判者）与生成能力。 · Figure 1 (rubric_fig1.png) · [source](https://arxiv.org/html/2605.03871v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — [EvoLM repository](https://github.com/stellalisy/EvoLM)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2605.03871) · [Paper HTML (affiliations, results, Figure 1)](https://arxiv.org/html/2605.03871v1) · [EvoLM repository](https://github.com/stellalisy/EvoLM)
 
 <a id="a3"></a>
 
@@ -661,7 +691,37 @@
 
 <a id="family-autonomous-training"></a>
 
-## 自主训练智能体与数据管线 (3)
+## 自主训练智能体与数据管线 (4)
+
+<a id="scienceide-agent-environments"></a>
+
+### ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments
+
+**2026-09-16** · paper · 支撑技术／评测
+
+**日期说明** — v1 2026-09-16；45 位作者分布 25 家机构，产物组织为 PhAI Labs/AItonomy（联系邮箱 team@aitonomy.org、yang@phai-labs.com）；此处列头部机构子集，完整映射见论文作者块。
+
+**机构关系** — PhAI Labs/aitofound 牵头的联合体，属 ScienceBuddy 谱系；产物是环境基础设施与 PhAI-IDE 模型。
+
+**改变对象与反馈复用** — 把科学代码仓库转换为可编程智能体环境：专家定义的案例与验收准则驱动任务生成、执行与校验；经过验证的交互轨迹作为统一底座供 SFT、RL 与评测使用。
+
+**作者报告结果** — 用验证轨迹训练 PhAI-IDE-72B/9B/4B；模型族在留出科学代码修复与若干通用代码/推理/知识基准上报告增益（摘要层面为定性描述、无单一头条数字），并报告在线验证者反馈显著改善留出科学奖励。
+
+**证据边界** — 作者自报；本次仅核验到摘要层面；增益被表述为科学经验的正迁移，不是受测的自改进循环。
+
+**代码／权重／数据／许可** — 代码在 github.com/aitofound/ScienceIDE（许可证未核验）；仓库 README 宣布 PhAI-IDE-4B/9B/72B；环境数据可得性未核验。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 验收准则先行的做法可映射到 nanoRSI 的 fixture：从语料生成可执行的任务+验证器对，仅让验证过的轨迹进入改进循环。
+
+![图 1 概览 ScienceIDE：专家奠基的环境构建、以科学经验换取智能体能力的 Science4AI、AI4Science 应用与领域/任务覆盖。](assets/paper-figures/scienceide-agent-environments.svg)
+
+**原文图／官方图片** — 图 1 概览 ScienceIDE：专家奠基的环境构建、以科学经验换取智能体能力的 Science4AI、AI4Science 应用与领域/任务覆盖。 · Figure 1 (scienceide_summary.svg) · [source](https://arxiv.org/html/2609.19134v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+
+**开源代码／权重／数据链接** — [ScienceIDE repository](https://github.com/aitofound/ScienceIDE)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.19134) · [Paper HTML (author block, Figure 1)](https://arxiv.org/html/2609.19134v1) · [ScienceIDE repository](https://github.com/aitofound/ScienceIDE)
 
 <a id="tokenrhythm-neohorse-1"></a>
 

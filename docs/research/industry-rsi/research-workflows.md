@@ -6,16 +6,76 @@
 
 | Family | Records |
 | --- | ---: |
-| [AI-scientist systems](#family-ai-scientists) | 5 |
+| [AI-scientist systems](#family-ai-scientists) | 8 |
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
-| [Company R&D telemetry](#family-company-telemetry) | 5 |
+| [Company R&D telemetry](#family-company-telemetry) | 6 |
 | [Alignment automation](#family-alignment-automation) | 3 |
 | [Analyses & audits](#family-analyses-audits) | 6 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 4 |
 
 <a id="family-ai-scientists"></a>
 
-## AI-scientist systems (5)
+## AI-scientist systems (8)
+
+<a id="andromeda2-evidence-grounded-lab"></a>
+
+### Evidence-Grounded Agentic Formulation Development in an Autonomous Laboratory
+
+**2026-09-16** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 2026-09-16; the paper HTML lists 'Intrepid Labs, Toronto, Canada' as the affiliation; it is the second-generation Andromeda system.
+
+**Institutional relationship** — Autonomous-laboratory company group (Intrepid Labs); drug-formulation domain.
+
+**What changes and how feedback is reused** — A closed-loop autonomous-lab agent designs and runs successive drug-formulation batches, each iteration grounded in a structured store of accumulated in-house experimental evidence rather than fresh-start optimization.
+
+**Author-reported result** — At matched experimental budget, high-performance hit rate 50% vs 17% (Andromeda 1) vs 2% (DoE); 12 vs 6 vs 0 formulations meeting all target-product-profile objectives; removing evidence access costs −34% mean AUC in ablation.
+
+**Evidence limits** — Single formulation campaign (paclitaxel solubilization); physical-lab timescales; author-reported by the platform's builders.
+
+**Code / weights / data / license** — arXiv paper public; lab integration and data not public.
+
+**Possible nanoRSI experiment — not implemented here** — The structured evidence store is the non-LLM analogue of nanoRSI's evidence ledger: select each new run against the accumulated evidence table, not just the last generation's panel.
+
+![Paclitaxel formulation performance at matched experimental budget: the evidence-grounded Andromeda 2 platform vs Andromeda 1 vs DoE.](assets/paper-figures/andromeda2-evidence-grounded-lab.svg)
+
+**Source figure / official image** — Paclitaxel formulation performance at matched experimental budget: the evidence-grounded Andromeda 2 platform vs Andromeda 1 vs DoE. · Figure 1 (fig0_first_page_takeaway.svg) · [source](https://arxiv.org/html/2609.19099v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.19099) · [Paper HTML (affiliation, Figure 1)](https://arxiv.org/html/2609.19099v1)
+
+<a id="agora-git-shared-memory"></a>
+
+### Agora: Git as Shared Memory for Collective AutoResearch
+
+**2026-09-16** · paper · Direct bounded loop
+
+**Publication date** — v1 2026-09-16; the HTML lists NVIDIA as the sole affiliation for all authors.
+
+**Institutional relationship** — NVIDIA's account of a collective research loop; single-company authorship.
+
+**What changes and how feedback is reused** — Autonomous-research sessions record claims, results and verifications as an append-only Git DAG; a frontier index with diversity-aware selection lets later sessions build on earlier ones instead of restarting, and independent reproduction is a first-class contribution type.
+
+**Author-reported result** — 12-day run, 13 unassigned LM workers on weight transfer for a frozen 119.6M attention-SSM hybrid: 1,703 contributions, evaluator 3.39 → 1.899 bits/byte, closing 62% of the gap to a trained GPT-2 124M, with 165 independent reproductions and none failed.
+
+**Evidence limits** — Single collective run on one task family; the verifier is the evaluator metric itself; author-reported by the infrastructure's builder.
+
+**Code / weights / data / license** — arXiv paper public; code repository not verified at last check.
+
+**Possible nanoRSI experiment — not implemented here** — Model nanoRSI's proposal lineage as the same DAG — every candidate stores claim+evidence, selection favors frontier+diversity, and independent re-rollouts enter as reproduction nodes.
+
+![The Agora research DAG: append-only claims, results and verifications that 13 workers extend collectively instead of restarting from scratch.](assets/paper-figures/agora-git-shared-memory.png)
+
+**Source figure / official image** — The Agora research DAG: append-only claims, results and verifications that 13 workers extend collectively instead of restarting from scratch. · Research-DAG topology figure · [source](https://arxiv.org/html/2609.18094v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.18094) · [Paper HTML (affiliations, figures)](https://arxiv.org/html/2609.18094v1)
 
 <a id="sciencebuddy-recursive-in-recursive"></a>
 
@@ -41,11 +101,41 @@
 
 **Source figure / official image** — ScienceBuddy system diagram: the inner harness-evolution recursion and outer model-training recursion compose into recursive-in-recursive self-improvement. · Figure 2 (S0.F2, system diagram) · [source](https://arxiv.org/html/2609.17523v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
 
 **Open code / weights / data links** — [GitHub repository](https://github.com/Gen-Verse/ScienceBuddy)
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17523) · [arXiv HTML v1](https://arxiv.org/html/2609.17523v1) · [GitHub repository](https://github.com/Gen-Verse/ScienceBuddy)
+
+<a id="primescientist-effort-allocation"></a>
+
+### PrimeScientist: Strategic Allocation of Research Effort in Autonomous Research
+
+**2026-09-15** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 2026-09-15; the HTML author block lists UC San Diego and Johns Hopkins University; the later author group carries no separate affiliation line.
+
+**Institutional relationship** — Academic (UCSD-led); no company affiliation shown.
+
+**What changes and how feedback is reused** — An autonomous-research agent that jointly chooses direction and resource investment: an executable plan tree encodes promising-but-unexplored directions, and adaptive MCTS reallocates the remaining token budget as results arrive instead of executing a fixed plan.
+
+**Author-reported result** — +10.3% average reward with 50.6% fewer attempts than AutoResearch across 12 AI research tasks under matched budgets.
+
+**Evidence limits** — Author-reported; measured on AI-research task simulators rather than wet-lab or production research; single-agent setting.
+
+**Code / weights / data / license** — arXiv paper public; code not verified at last check.
+
+**Possible nanoRSI experiment — not implemented here** — nanoRSI's stepper spends a fixed episode budget per generation; encoding candidate mechanisms as a plan tree and adaptively reallocating the remaining budget is the same allocation question at miniature scale.
+
+![PrimeScientist attains comparable or better scores with fewer attempts than AutoResearch under matched token budgets, driven by explicit plans and adaptive reallocation.](assets/paper-figures/primescientist-effort-allocation.svg)
+
+**Source figure / official image** — PrimeScientist attains comparable or better scores with fewer attempts than AutoResearch under matched token budgets, driven by explicit plans and adaptive reallocation. · Figure 1 (fig1_grid.svg) · [source](https://arxiv.org/html/2609.17846v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17846) · [Paper HTML (affiliations, Figure 1)](https://arxiv.org/html/2609.17846v1)
 
 <a id="faraday-replica-ai-scientist"></a>
 
@@ -263,7 +353,7 @@
 
 <a id="family-company-telemetry"></a>
 
-## Company R&D telemetry (5)
+## Company R&D telemetry (6)
 
 <a id="openai-research-acceleration-2026"></a>
 
@@ -324,6 +414,36 @@
 **Open code / weights / data links** — [Official research repository](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun) · [Research repository README](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun/blob/main/README.md)
 
 **Primary sources** — [Official report, live results and verification conditions](https://www.primeintellect.ai/blog/measuring-autonomous-research) · [Official research repository](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun) · [Research repository README](https://github.com/PrimeIntellect-ai/frontier-automated-speedrun/blob/main/README.md)
+
+<a id="anthropic-when-ai-builds-itself"></a>
+
+### When AI builds itself
+
+**2026-06** · report · Automated / assisted R&D
+
+**Publication date** — The page carries no explicit date; its content references events through May 2026 and press coverage appeared 2026-06-05, so first publication is pinned to 2026-06. It surfaced for this catalogue on 2026-09-18, three months late.
+
+**Institutional relationship** — Anthropic's own institute essay, co-authored by Marina Favaro and Jack Clark.
+
+**What changes and how feedback is reused** — An essay synthesizing public benchmarks with internal Anthropic telemetry on Claude automating Anthropic's own coding and research; it lays out three futures (capability plateau, compounding human-directed automation, full recursive self-improvement), judges compounding automation most likely on current evidence, and argues for verifiable slowdown mechanisms.
+
+**Author-reported result** — Author-reported internals: >80% of merged code Claude-authored (May 2026); ~8× code shipped per engineer per day vs 2024; code-optimization speedup task ~3× (Claude Opus 4, 2025-05) → ~52× (Mythos Preview, 2026-04) vs ~4× for humans in 4-8 hours; agents recovered 97% of the weak-to-strong supervision gap over 800 compute hours (~$18k) where two humans recovered ~23% in a week; success on hardest open-ended tasks 76% (2026-05, +50 points in six months); next-step judgment beat the human's choice 64% (2026-04) vs 51% (2025-11).
+
+**Evidence limits** — Self-reported position essay with no external audit; the authors attach their own caveats (lines of code overstate gains; the ~4× output poll estimate expected to be somewhat high); horizon/speedup figures mix task families.
+
+**Code / weights / data / license** — Essay public; the underlying internal data and traces are not released.
+
+**Possible nanoRSI experiment — not implemented here** — Adopt the next-step-judgment-vs-human readout as a nanoRSI panel metric for 'research taste' alongside capability scores — it is cheap to pair-administer on decision points.
+
+![Anthropic's internal next-step judgment metric: the model's chosen next step beat the human's on 64% of detour moments by 2026-04, up from 51% five months earlier.](assets/paper-figures/anthropic-when-ai-builds-itself.png)
+
+**Source figure / official image** — Anthropic's internal next-step judgment metric: the model's chosen next step beat the human's on 64% of detour moments by 2026-04, up from 51% five months earlier. · In-essay chart 'Can the model pick a better next step than the human?' · [source](https://www.anthropic.com/institute/recursive-self-improvement)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Anthropic Institute essay](https://www.anthropic.com/institute/recursive-self-improvement)
 
 <a id="cognition-devin-builds-devin"></a>
 
@@ -751,7 +871,7 @@
 
 **Source figure / official image** — Figure 1: the paper's L0–L5 autonomy landscape placing representative industry systems (AlphaEvolve, ByteDance Seed, Anthropic, Hermes, ASPIRE, Theseus, SIMA, Sakana, HyperAgents) from execution automation to meta improvement. · Figure 1 · [source](https://arxiv.org/html/2609.11873v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-14.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 

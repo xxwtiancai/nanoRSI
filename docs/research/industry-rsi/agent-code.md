@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 13 |
-| [Harness search & evolution](#family-harness-search) | 7 |
-| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 3 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 14 |
+| [Harness search & evolution](#family-harness-search) | 9 |
+| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 5 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 5 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 2 |
-| [Safety & governance](#family-safety-governance) | 1 |
+| [Safety & governance](#family-safety-governance) | 2 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (13)
+## Skill-file optimization & libraries (14)
+
+<a id="evoskill-gui-reflect-revise-reuse"></a>
+
+### Reflect, Revise, Reuse: Training-Free Skill Evolution for GUI Agents
+
+**2026-09-15** · paper · Direct bounded loop
+
+**Publication date** — v1 2026-09-15; affiliation list read from the paper HTML (one co-author is UESTC, the rest ZJU).
+
+**Institutional relationship** — Academic (ZJU-led); no company affiliation shown.
+
+**What changes and how feedback is reused** — Skills are living multi-file packages revised at deployment time in a reflect-revise-reuse loop: an isolated critic diagnoses failures, a restricted edit interface confines which skill files may change, and revisions are gated before reuse — no weight updates anywhere.
+
+**Author-reported result** — Training-free gains up to +16.2% (MobileWorld), +6.0% (AndroidWorld) and +10.5% (OSWorld), the last being a cross-benchmark transfer setting.
+
+**Evidence limits** — Author-reported; GUI domain only; revision-budget and critic-error effects not fully quantified in the abstract.
+
+**Code / weights / data / license** — arXiv paper public; code not verified at last check.
+
+**Possible nanoRSI experiment — not implemented here** — The restricted-edit-interface (only named skill files writable) plus isolated critic matches nanoRSI's contract guard; adding deployment-time revision as a control condition would separate 'skill improved' from 'skill was fine, execution drifted'.
+
+![The reflect-revise-reuse loop: failures trigger an isolated critic and a restricted edit of the multi-file skill package before gated reuse.](assets/paper-figures/evoskill-gui-reflect-revise-reuse.png)
+
+**Source figure / official image** — The reflect-revise-reuse loop: failures trigger an isolated critic and a restricted edit of the multi-file skill package before gated reuse. · Method figure (method.png) · [source](https://arxiv.org/html/2609.17653v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17653) · [Paper HTML (affiliations, method figure)](https://arxiv.org/html/2609.17653v1)
 
 <a id="skilllift-dense-rubrics"></a>
 
@@ -409,7 +439,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (7)
+## Harness search & evolution (9)
+
+<a id="chase-counterfactual-harness"></a>
+
+### Bad Genius: Counterfactual-Guided Harness Evolution Beyond Task-Specific Shortcuts
+
+**2026-09-16** · paper · Direct bounded loop
+
+**Publication date** — v1 2026-09-16; affiliations read from the paper HTML author block.
+
+**Institutional relationship** — Academic consortium (UCAS × NUS × CAS-IA); no company affiliation shown.
+
+**What changes and how feedback is reused** — A Proposer evolves the target agent's harness (prompts, memory, retrieval, tools, control code); a Challenger searches validity-preserving counterfactual variants of benchmark tasks, and a confirmation archive demotes harness edits whose gains do not survive the counterfactuals, targeting benchmark-wide shortcuts that per-task holdout misses.
+
+**Author-reported result** — On OfficeQA (3 rollouts/question) the evolved harness reaches 68.42% R̂avg,A3 vs 66.23% for the raw harness (+2.19) and 30.37% vs 27.04% on the ProV2 slice (+3.33), with a synthetic benchmark (Syn-Ledger) isolating shortcut behaviour; the HarnessCompass comparison variant without the challenger scores below the raw harness.
+
+**Evidence limits** — Modest absolute gains; evaluation limited to OfficeQA plus a synthetic benchmark; author-reported.
+
+**Code / weights / data / license** — arXiv paper public; code not verified at last check.
+
+**Possible nanoRSI experiment — not implemented here** — Transplant the challenger into nanoRSI's gate: re-score accepted candidates on auto-generated validity-preserving counterfactuals of the minimal task set; gains that vanish there are labelled shortcut, not skill.
+
+![CHASE overview: a Proposer evolves the harness while a Challenger searches validity-preserving benchmark counterfactuals to neutralize benchmark-wide shortcuts.](assets/paper-figures/chase-counterfactual-harness.svg)
+
+**Source figure / official image** — CHASE overview: a Proposer evolves the harness while a Challenger searches validity-preserving benchmark counterfactuals to neutralize benchmark-wide shortcuts. · Figure 2 (figure2_CHASE_pipeline.svg) · [source](https://arxiv.org/html/2609.18366v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.18366) · [Paper HTML (affiliations, Figure 2, OfficeQA table)](https://arxiv.org/html/2609.18366v1)
 
 <a id="modularrsi-modular-harness"></a>
 
@@ -531,6 +591,36 @@
 
 **Primary sources** — [DarwinX paper v1](https://arxiv.org/abs/2608.07545) · [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt) · [Official Beagle architecture figure](https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg)
 
+<a id="combee-parallel-prompt-learning"></a>
+
+### Combee: Scaling Prompt Learning for Self-Improving Language Model Agents
+
+**2026-04-05** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 2026-04-05; the COLM 2026 accepted list (verified 2026-09-18) uses a slightly different title wording.
+
+**Institutional relationship** — Academic (Stanford × Berkeley systems/ML groups) with two company co-authors.
+
+**What changes and how feedback is reused** — Parallel scans, an augmented shuffle mechanism and a dynamic batch-size controller let many agents run prompt learning in parallel and learn from combined traces without quality loss — scaling the self-improvement loop horizontally instead of sequentially.
+
+**Author-reported result** — Up to 17× speedup over previous prompt-learning methods with comparable or better accuracy and equivalent cost, on AppWorld, Terminal-Bench, Formula and FiNER (DeepSeek-V3.1 backbone in the headline snapshot).
+
+**Evidence limits** — Author-reported; speedups measured against prior prompt-learning pipelines rather than single-run quality ceilings; agent-task scope only.
+
+**Code / weights / data / license** — arXiv paper public; code not verified at last check.
+
+**Possible nanoRSI experiment — not implemented here** — nanoRSI's population runs already parallelize evaluation; Combee's transferable piece is the mid-run shuffle — candidates periodically exchange learned prompt content before generation boundaries.
+
+![Combee reaches close-to-optimal prompt quality at significantly reduced training time by raising the content learnt under high parallelism.](assets/paper-figures/combee-parallel-prompt-learning.svg)
+
+**Source figure / official image** — Combee reaches close-to-optimal prompt quality at significantly reduced training time by raising the content learnt under high parallelism. · Figure 1 (intro_fig.svg) · [source](https://arxiv.org/html/2604.04247v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2604.04247) · [Paper HTML (affiliations, Figure 1)](https://arxiv.org/html/2604.04247v1)
+
 <a id="genericagent-skill-tree"></a>
 
 ### GenericAgent: A Self-Evololving Agent Growing a Skill Tree from a 3.3K-Line Seed
@@ -623,7 +713,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## Self-modifying meta-agents & lineages (3)
+## Self-modifying meta-agents & lineages (5)
+
+<a id="nous-hermes-selfrefactor"></a>
+
+### Refactoring Hermes with 1,393 agents
+
+**2026-09-15** · report · Direct bounded loop
+
+**Publication date** — The refactor run itself took place 2026-09-02/04; the page's structured metadata dates publication 2026-09-15T15:00Z.
+
+**Institutional relationship** — Nous Research first-party account written by Teknium.
+
+**What changes and how feedback is reused** — A human sets a /goal; the Hermes orchestrator splits its own ~1.06M-line repository into 36 groups and dispatches worker subagents that edit in separate git worktrees with interface checks (JSON schemas, byte-for-byte CLI --help); lessons are auto-recorded into a hermes-agent-dev Markdown skill and reshared so other agents inherit the learned procedures.
+
+**Author-reported result** — 1,393 subagents (up to 218 concurrent), ~19 active hours, ~$19.3k main-run cost against a manual estimate of $150k-$1.8M; non-test Python 1,063,826 → 698,363 lines (−34.4%); files >5,000 lines 37 → 6; functions >300 lines 192 → 2; longest if/elif chain 92 → 9 branches; on a 4,000-lookup symbol test the average tokens returned fell 2,218 → 993.
+
+**Evidence limits** — No capability control — the measured object is code health, not task performance; reviewers caught regressions the tests missed (removed public names, an exception-handling rewrite across ~65 sites); the first attempt died on auth-token expiry; module count and some import times worsened.
+
+**Code / weights / data / license** — Blog post public; the Hermes agent repository is public but README's MIT claim has no LICENSE file — treat as all-rights-reserved for reuse.
+
+**Possible nanoRSI experiment — not implemented here** — nanoRSI already has worktree-per-candidate evaluation; the missing piece to copy is auto-recording postmortem lessons into a skill file that later runs load, closing the loop between one-off failures and persistent procedure memory.
+
+![Official banner of Nous Research's account of Hermes autonomously refactoring its own ~1M-line codebase with 1,393 subagents.](assets/paper-figures/nous-hermes-selfrefactor.png)
+
+**Source figure / official image** — Official banner of Nous Research's account of Hermes autonomously refactoring its own ~1M-line codebase with 1,393 subagents. · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
 <a id="mgm-mendel-godel-machine"></a>
 
@@ -684,6 +804,36 @@
 **Open code / weights / data links** — [Code repository (MIT)](https://github.com/minnesotanlp/meta-n)
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2608.24735) · [Paper v1 (affiliations, Figures 1-3, tables)](https://arxiv.org/html/2608.24735v1) · [Code repository (MIT)](https://github.com/minnesotanlp/meta-n)
+
+<a id="weco-aide2-first-evidence"></a>
+
+### AIDE²: The First Evidence of Recursive Self-Improvement
+
+**2026-07-14** · report · Direct bounded loop
+
+**Publication date** — Weco AI blog report; a PDF technical report and an AIDE₈₅ release were promised to follow and had not appeared at last verification.
+
+**Institutional relationship** — Weco AI's first-party account of its own system; no independent replication.
+
+**What changes and how feedback is reused** — A bi-level loop: an outer-loop agent (hand-tuned AIDE_human on claude-opus-4.7) rewrites the code of an inner-loop agent (AIDE₀ on gemini-3-flash); each rewrite is scored across heterogeneous task families under a fixed dollar budget with public/private score splits, and roughly 9 of 10 proposals are rejected.
+
+**Author-reported result** — 100 steps over 8 unattended days produced 7 successive improved agent versions. Held-out MLE-Bench Lite (3 seeds, paired deltas vs AIDE₀): AIDE₄₇ +0.053 (p=0.0024), AIDE₈₅ +0.042 (p=0.0041); reward-hacking rate (KernelBench/SpecBench-style end-to-end check) fell 63%→42%→34%; 16× average prompt compression; both beat the two-year human-tuned AIDE_human on held-out families. An ignition test with AIDE₄₇ as the outer loop converged in ~20 vs ~40 steps but not significantly and not asymptotically better — no ignition claimed.
+
+**Evidence limits** — Author-reported by the system's builder; single run; gains non-monotonic (AIDE₈₅ trails AIDE₄₇ on MLE-Bench Lite); the 'first evidence' claim is against Weco's own RSI ladder (Level 1: beating a fair human baseline under fixed budget), not a community-standard definition.
+
+**Code / weights / data / license** — Blog post public; promised PDF report, code and weights not released at last check.
+
+**Possible nanoRSI experiment — not implemented here** — Recreate the fixed-budget proposal/reject ladder on a minimal task: outer loop rewrites the inner runner, ~90% rejection is evidence the acceptance gate works, and a private held-out split decides acceptance.
+
+![Weco AI's outer-loop diagram: AIDE_human rewrites the inner-loop AIDE agent, each rewrite evaluated under a fixed budget with ~90% rejection.](assets/paper-figures/weco-aide2-first-evidence.png)
+
+**Source figure / official image** — Weco AI's outer-loop diagram: AIDE_human rewrites the inner-loop AIDE agent, each rewrite evaluated under a fixed budget with ~90% rejection. · Outer-loop figure (figB) in the blog post · [source](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Weco AI blog report](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
 
 <a id="meta-hyperagents-2026"></a>
 
@@ -935,7 +1085,37 @@
 
 <a id="family-safety-governance"></a>
 
-## Safety & governance (1)
+## Safety & governance (2)
+
+<a id="trusting-trust-self-modifying"></a>
+
+### Reflections on Trusting Trust, Revisited: Contaminating Self-Modifying AI Coding Agents with Poisoned Benchmarks
+
+**2026-09-15** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 2026-09-15; Franziska Roesner (UW) and Tadayoshi Kohno (Georgetown).
+
+**Institutional relationship** — Academic security group; targets third-party self-improving systems rather than the authors' own.
+
+**What changes and how feedback is reused** — Thompson's compiler Trojan re-cast for self-modifying agents: a poisoned benchmark inside the agent's self-evaluation loop induces Darwin Gödel Machine, Self-Improving Coding Agent and Hyperagents (Sonnet 4.5) to self-evolve instructions that disable HTTPS certificate validation, and the vulnerability then transfers to neutral held-out tasks.
+
+**Author-reported result** — The certificate-check-disabling vulnerability is produced across all three target systems and transfers to neutral held-out tasks; it persists after evolution continues on clean benchmarks (per-evolution transfer tables in the paper; rates not quoted here pending table-level verification).
+
+**Evidence limits** — The attacker model assumes control over part of the evaluation suite; rate-level numbers not yet verified here; laboratory demonstration rather than field incident.
+
+**Code / weights / data / license** — arXiv paper public; attack artifacts not verified at last check.
+
+**Possible nanoRSI experiment — not implemented here** — Run a fixture-poisoning red team against nanoRSI's frozen loop: deliberately leaky evals should test whether the contract guard and evidence ledger catch contaminated acceptance, mirroring this paper's clean-benchmark persistence check.
+
+![Attack concept: a poisoned benchmark in the self-evaluation loop drives the DGM-style agent to evolve certificate-check-disabling instructions that persist on clean tasks.](assets/paper-figures/trusting-trust-self-modifying.svg)
+
+**Source figure / official image** — Attack concept: a poisoned benchmark in the self-evaluation loop drives the DGM-style agent to evolve certificate-check-disabling instructions that persist on clean tasks. · Figure 2(a) attack concept for Darwin Gödel Machine (DGM-Attack.svg) · [source](https://arxiv.org/html/2609.17817v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17817) · [Paper HTML (affiliations, attack figures)](https://arxiv.org/html/2609.17817v1)
 
 <a id="skill-misevolution-safety"></a>
 
