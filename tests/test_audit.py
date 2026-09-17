@@ -65,7 +65,7 @@ class SkillAuditTests(unittest.TestCase):
             report = json.loads(self.call(root, 'audit').stdout)
             self.assertEqual(report['generation'], 0)
             self.assertEqual(report['panel_status'], 'ok')
-            self.assertEqual({leak['skill'] for leak in report['leakage']}, {'dormant/SKILL.md'})
+            self.assertEqual({leak['skill'] for leak in report['leakage']}, {'target/agent/skills/dormant/SKILL.md'})
             self.assertEqual(report['leakage'][0]['task_id'], 'validation')
             self.assertEqual(report['uninvoked_scripts'], ['dormant'])
             self.assertIn('ghost', report['executable_skills'])

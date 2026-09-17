@@ -25,6 +25,28 @@ def _skill_files(checkout: Path) -> dict[str, str]:
             for path in sorted(base.rglob("*")) if path.is_file()}
 
 
+def _surface_files(checkout: Path, include: list[str], deny: list[str]) -> dict[str, str]:
+    """Every mutable-surface text file, not just the skills directory.
+
+    Red-team follow-up (ADOPTION item 31): answers can hide anywhere the surface
+    allows, so leakage scanning follows the allow patterns rather than one path."""
+    from .surface import check_paths
+    candidates = []
+    for path in sorted(checkout.rglob("*")):
+        relative = path.relative_to(checkout)
+        if not path.is_file() or path.is_symlink() or any(part in {".git", "__pycache__", ".nanorsi"} for part in relative.parts):
+            continue
+        try:
+            if path.stat().st_size > 65536:
+                continue
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeError):
+            continue
+        candidates.append((relative.as_posix(), text))
+    blocked = set(check_paths([relative for relative, _ in candidates], include, deny))
+    return {relative: text for relative, text in candidates if relative not in blocked}
+
+
 def _leakage(skill_files: dict[str, str], rows: list[dict]) -> list[dict]:
     leaks: list[dict] = []
     for skill, text in skill_files.items():
@@ -87,12 +109,14 @@ def audit(root: Path, generation: int | None = None) -> dict:
     with Lock(root):
         with Git(root).worktree(event["candidate_commit"], root / ".nanorsi/worktrees/audit") as checkout:
             skill_files = _skill_files(checkout)
+            surface_files = _surface_files(checkout, config.surface.allow, config.surface.deny)
     panel_rows, panel_status = _panel(root, event)
     observed = _invocations(panel_rows)
     declared = list(config.agent.get("skills", []))
     report = {"schema_version": 1, "generation": event["generation"], "candidate_commit": event["candidate_commit"],
               "panel_status": panel_status, "declared_skills": declared, "skill_files": sorted(skill_files),
-              "leakage": _leakage(skill_files, tasks(root, config))}
+              "surface_files": sorted(surface_files),
+              "leakage": _leakage(surface_files, tasks(root, config))}
     report.update(_bypass(declared, skill_files, observed, len(panel_rows)))
     write_json(root / "reports" / "audit.json", report)
     return report
