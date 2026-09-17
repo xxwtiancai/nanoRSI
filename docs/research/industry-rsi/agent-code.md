@@ -10,7 +10,7 @@
 | [Harness search & evolution](#family-harness-search) | 9 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 5 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 5 |
-| [Feedback review & orchestration](#family-feedback-orchestration) | 2 |
+| [Feedback review & orchestration](#family-feedback-orchestration) | 3 |
 | [Safety & governance](#family-safety-governance) | 2 |
 
 <a id="family-skill-file-optimization"></a>
@@ -1021,7 +1021,37 @@
 
 <a id="family-feedback-orchestration"></a>
 
-## Feedback review & orchestration (2)
+## Feedback review & orchestration (3)
+
+<a id="human-agent-society-reef"></a>
+
+### Reef: Continual Learning Infrastructure for Self-Improving Agents
+
+**2026-09-01** · release · Direct bounded loop
+
+**Publication date** — First public PyPI release reef-infra 0.0.1: 2026-09-01; 0.0.2 followed on 2026-09-02. The repository was inspected at its current main branch; these dates are release dates, not a claim about the project's private development start.
+
+**Institutional relationship** — Human-Agent-Society's first-party open-source infrastructure project; the repository and PyPI package identify the organization as maintainer rather than presenting an academic paper affiliation.
+
+**What changes and how feedback is reused** — A four-stage continual loop serves agent requests, links later feedback to interaction receipts, grows a weight or harness candidate through a configurable recipe, and applies a selection policy before publishing an accepted version. The harness path can evolve skills, rules, commands and extensions without local training GPUs; rejected candidates remain out of the serving release. The public HTTP surface is provider-compatible and exposes scenario, receipt, report and release operations.
+
+**Author-reported result** — The release documents runnable quickstarts and a Reefine harness-evolution tutorial, but does not provide a comparable, independently audited benchmark gain for the infrastructure itself. The repository reports 2.4k GitHub stars and 186 forks at verification, while PyPI exposes a Python 3.10+ 0.0.2 package.
+
+**Evidence limits** — This is infrastructure and release documentation, not evidence of general RSI or a controlled model-improvement result. The harness recipes depend on external model endpoints and task/evaluator configuration; weight training additionally depends on GPU-oriented stacks. GitHub's API rate limit prevented a fresh numeric issues/PR listing, so repository activity counts are treated as page-reported snapshots.
+
+**Code / weights / data / license** — Source repository and Apache-2.0 LICENSE are public; reef-infra 0.0.2 is on PyPI with a source distribution and wheel. No model weights or benchmark dataset bundle is claimed by the release. Optional integrations include Slime, SGLang, veRL/AReaL and other external stacks, so their licenses remain separate.
+
+**Possible nanoRSI experiment — not implemented here** — Use Reef as a design reference for ADOPTION 18: keep nanoRSI's frozen evaluator and worktree isolation, then make receipt-linked feedback, candidate version history, explicit pending/rejected states and a narrow promote step first-class. Do not import Reef's provider, GPU or web-service dependencies into nanoRSI's stdlib-only core.
+
+![Official Reef loop diagram: serve requests, observe receipt-linked feedback, grow a candidate update, and commit only after selection into version history.](assets/paper-figures/reef-continual-loop.svg)
+
+**Source figure / official image** — Official Reef loop diagram: serve requests, observe receipt-linked feedback, grow a candidate update, and commit only after selection into version history. · README 'How it works' loop diagram · [source](https://github.com/Human-Agent-Society/reef)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+
+**Open code / weights / data links** — [Official repository README](https://github.com/Human-Agent-Society/reef) · [Apache-2.0 LICENSE](https://raw.githubusercontent.com/Human-Agent-Society/reef/main/LICENSE)
+
+**Primary sources** — [Official repository README](https://github.com/Human-Agent-Society/reef) · [Apache-2.0 LICENSE](https://raw.githubusercontent.com/Human-Agent-Society/reef/main/LICENSE) · [PyPI reef-infra release history and metadata](https://pypi.org/project/reef-infra/) · [Reefine harness-evolution tutorial](https://github.com/Human-Agent-Society/reef/tree/main/tutorials/evolve-your-harness)
 
 <a id="apple-reinforced-agent"></a>
 

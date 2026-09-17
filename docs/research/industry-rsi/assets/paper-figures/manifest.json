@@ -1,5 +1,16 @@
 [
  {
+  "id": "human-agent-society-reef",
+  "kind": "official-report-figure",
+  "asset": "assets/paper-figures/reef-continual-loop.svg",
+  "source_url": "https://github.com/Human-Agent-Society/reef",
+  "locator": "README 'How it works' loop diagram",
+  "caption": {
+   "en": "Official Reef loop diagram: serve requests, observe receipt-linked feedback, grow a candidate update, and commit only after selection into version history.",
+   "zh": "Reef 官方循环图：服务请求、观察与 receipt 关联的反馈、生成候选更新，并在选择后才提交到版本历史。"
+  }
+ },
+ {
   "id": "bytedance-harnessdev",
   "kind": "paper-figure-crop",
   "asset": "assets/paper-figures/harnessdev-figure.png",

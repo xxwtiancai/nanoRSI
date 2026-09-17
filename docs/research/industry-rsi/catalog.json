@@ -228,6 +228,92 @@
    "family": "company-telemetry"
   },
   {
+   "id": "human-agent-society-reef",
+   "title": "Reef: Continual Learning Infrastructure for Self-Improving Agents",
+   "organizations": [
+    "Human-Agent-Society"
+   ],
+   "category": "agent-code",
+   "family": "feedback-orchestration",
+   "relationship": "direct-loop",
+   "published": "2026-09-01",
+   "kind": "release",
+   "date_note": {
+    "en": "First public PyPI release reef-infra 0.0.1: 2026-09-01; 0.0.2 followed on 2026-09-02. The repository was inspected at its current main branch; these dates are release dates, not a claim about the project's private development start.",
+    "zh": "PyPI 首个公开版本 reef-infra 0.0.1：2026-09-01；0.0.2 于 2026-09-02 发布。仓库按当前 main 分支核验；这些是公开发布日，不代表项目私下开发起始时间。"
+   },
+   "additional_events": [
+    {
+     "date": "2026-09-02",
+     "kind": "release",
+     "label": "reef-infra 0.0.2 on PyPI"
+    },
+    {
+     "date": "2026-09-12",
+     "kind": "release",
+     "label": "Reefine harness-refinement recipe documented as shipped"
+    }
+   ],
+   "affiliation": {
+    "en": "Human-Agent-Society's first-party open-source infrastructure project; the repository and PyPI package identify the organization as maintainer rather than presenting an academic paper affiliation.",
+    "zh": "Human-Agent-Society 的第一方开源基础设施项目；仓库与 PyPI 包将该组织标为维护方，而不是学术论文式机构署名。"
+   },
+   "mechanism": {
+    "en": "A four-stage continual loop serves agent requests, links later feedback to interaction receipts, grows a weight or harness candidate through a configurable recipe, and applies a selection policy before publishing an accepted version. The harness path can evolve skills, rules, commands and extensions without local training GPUs; rejected candidates remain out of the serving release. The public HTTP surface is provider-compatible and exposes scenario, receipt, report and release operations.",
+    "zh": "一个四阶段持续循环负责服务智能体请求、把后续反馈关联到交互 receipt、通过可配置 recipe 生成权重或 harness 候选，并在发布接受版本前执行选择策略。harness 路径无需本地训练 GPU 即可进化技能、规则、命令和扩展；被拒候选不会进入服务版本。公开 HTTP 接口兼容常见模型服务，并提供 scenario、receipt、report 与 release 操作。"
+   },
+   "result": {
+    "en": "The release documents runnable quickstarts and a Reefine harness-evolution tutorial, but does not provide a comparable, independently audited benchmark gain for the infrastructure itself. The repository reports 2.4k GitHub stars and 186 forks at verification, while PyPI exposes a Python 3.10+ 0.0.2 package.",
+    "zh": "该发布提供可运行 quickstart 与 Reefine harness 演进教程，但没有为基础设施本身提供可比且独立审计的基准增益。核验时仓库页面显示约 2.4k GitHub stars、186 forks；PyPI 提供 Python 3.10+ 的 0.0.2 包。"
+   },
+   "limits": {
+    "en": "This is infrastructure and release documentation, not evidence of general RSI or a controlled model-improvement result. The harness recipes depend on external model endpoints and task/evaluator configuration; weight training additionally depends on GPU-oriented stacks. GitHub's API rate limit prevented a fresh numeric issues/PR listing, so repository activity counts are treated as page-reported snapshots.",
+    "zh": "这是基础设施与发布文档，不是通用 RSI 或受控模型改进结果的证据。harness recipe 依赖外部模型端点及任务/评测配置；权重训练还依赖 GPU 栈。GitHub API 触发速率限制，无法新鲜读取 issue/PR 数字，因此仓库活动数量仅作为页面快照记录。"
+   },
+   "availability": {
+    "en": "Source repository and Apache-2.0 LICENSE are public; reef-infra 0.0.2 is on PyPI with a source distribution and wheel. No model weights or benchmark dataset bundle is claimed by the release. Optional integrations include Slime, SGLang, veRL/AReaL and other external stacks, so their licenses remain separate.",
+    "zh": "源代码仓库与 Apache-2.0 LICENSE 公开；reef-infra 0.0.2 已在 PyPI 发布源码包和 wheel。该发布没有声称提供模型权重或基准数据包。Slime、SGLang、veRL/AReaL 等可选集成属于外部栈，其许可需分别核验。"
+   },
+   "application": {
+    "en": "Use Reef as a design reference for ADOPTION 18: keep nanoRSI's frozen evaluator and worktree isolation, then make receipt-linked feedback, candidate version history, explicit pending/rejected states and a narrow promote step first-class. Do not import Reef's provider, GPU or web-service dependencies into nanoRSI's stdlib-only core.",
+    "zh": "把 Reef 作为 ADOPTION 18 的设计参照：保留 nanoRSI 的冻结评测器与 worktree 隔离，再把 receipt 关联反馈、候选版本历史、显式 pending/rejected 状态和窄范围 promote 步骤提升为一等对象。不要把 Reef 的服务商、GPU 或 Web 服务依赖引入 nanoRSI 的标准库核心。"
+   },
+   "sources": [
+    {
+     "label": "Official repository README",
+     "url": "https://github.com/Human-Agent-Society/reef",
+     "kind": "repository"
+    },
+    {
+     "label": "Apache-2.0 LICENSE",
+     "url": "https://raw.githubusercontent.com/Human-Agent-Society/reef/main/LICENSE",
+     "kind": "license"
+    },
+    {
+     "label": "PyPI reef-infra release history and metadata",
+     "url": "https://pypi.org/project/reef-infra/",
+     "kind": "project-page"
+    },
+    {
+     "label": "Reefine harness-evolution tutorial",
+     "url": "https://github.com/Human-Agent-Society/reef/tree/main/tutorials/evolve-your-harness",
+     "kind": "project-page"
+    }
+   ],
+   "local_reproduction": "not-run",
+   "last_verified": "2026-09-18",
+   "visual": {
+    "kind": "official-report-figure",
+    "asset": "assets/paper-figures/reef-continual-loop.svg",
+    "source_url": "https://github.com/Human-Agent-Society/reef",
+    "locator": "README 'How it works' loop diagram",
+    "caption": {
+     "en": "Official Reef loop diagram: serve requests, observe receipt-linked feedback, grow a candidate update, and commit only after selection into version history.",
+     "zh": "Reef 官方循环图：服务请求、观察与 receipt 关联的反馈、生成候选更新，并在选择后才提交到版本历史。"
+    }
+   }
+  },
+  {
    "id": "bytedance-harnessdev",
    "title": "HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?",
    "organizations": [

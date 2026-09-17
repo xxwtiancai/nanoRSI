@@ -1,6 +1,6 @@
 # 企业 RSI 研究地图
 
-**2025-09-18 → 2026-09-18** · **114** 条窗口内记录
+**2025-09-18 → 2026-09-18** · **115** 条窗口内记录
 
 按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。每条详情都带一张纳入仓库的论文原图、官方研究图片或原文页截图，并注明定位信息和来源链接；有核验结果时还会单独列出代码、权重或数据链接。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。
 
@@ -13,7 +13,7 @@
 | 分类 | 条目数 | 机制家族 |
 | --- | ---: | --- |
 | [参数与训练数据](parameter-learning.zh-CN.md) | 30 | [自博弈与课程任务生成](parameter-learning.zh-CN.md#family-self-play-curriculum) (11) · [验证器与奖励进化](parameter-learning.zh-CN.md#family-verifier-reward) (5) · [技能-权重共进化](parameter-learning.zh-CN.md#family-skill-weight-coevolution) (2) · [经验蒸馏与测试时适应](parameter-learning.zh-CN.md#family-experience-distillation) (4) · [自主训练智能体与数据管线](parameter-learning.zh-CN.md#family-autonomous-training) (4) · [支撑性适应机制](parameter-learning.zh-CN.md#family-enabling-adaptation) (4) |
-| [Agent 与代码](agent-code.zh-CN.md) | 36 | [技能文件优化与技能库](agent-code.zh-CN.md#family-skill-file-optimization) (14) · [Harness 搜索与进化](agent-code.zh-CN.md#family-harness-search) (9) · [自改写元智能体与谱系](agent-code.zh-CN.md#family-self-modifying-meta-agents) (5) · [程序进化与进化搜索](agent-code.zh-CN.md#family-program-evolution) (4) · [反馈审查与编排](agent-code.zh-CN.md#family-feedback-orchestration) (2) · [安全与治理](agent-code.zh-CN.md#family-safety-governance) (2) |
+| [Agent 与代码](agent-code.zh-CN.md) | 37 | [技能文件优化与技能库](agent-code.zh-CN.md#family-skill-file-optimization) (14) · [Harness 搜索与进化](agent-code.zh-CN.md#family-harness-search) (9) · [自改写元智能体与谱系](agent-code.zh-CN.md#family-self-modifying-meta-agents) (5) · [程序进化与进化搜索](agent-code.zh-CN.md#family-program-evolution) (4) · [反馈审查与编排](agent-code.zh-CN.md#family-feedback-orchestration) (3) · [安全与治理](agent-code.zh-CN.md#family-safety-governance) (2) |
 | [记忆与上下文](memory-context.zh-CN.md) | 18 | [结构化知识库与图](memory-context.zh-CN.md#family-structured-knowledge) (6) · [经验积累与回放](memory-context.zh-CN.md#family-experience-accumulation) (5) · [上下文组织策略](memory-context.zh-CN.md#family-context-policies) (4) · [探索式记忆构建](memory-context.zh-CN.md#family-exploration-memory) (1) · [记忆进化评测研究](memory-context.zh-CN.md#family-memory-evolution-studies) (2) |
 | [自动化研发与评测](research-workflows.zh-CN.md) | 30 | [AI 科学家系统](research-workflows.zh-CN.md#family-ai-scientists) (8) · [自主后训练及其评测](research-workflows.zh-CN.md#family-autonomous-post-training) (3) · [公司研发遥测](research-workflows.zh-CN.md#family-company-telemetry) (6) · [对齐自动化](research-workflows.zh-CN.md#family-alignment-automation) (3) · [分析与审计](research-workflows.zh-CN.md#family-analyses-audits) (6) · [立场、路线图与实验室](research-workflows.zh-CN.md#family-positions-labs) (4) |
 
@@ -52,6 +52,7 @@
 | 2026-09-04 | [From Interaction Traces to Persistent Skills: Online Evolution for Computer-Use Agents](agent-code.zh-CN.md#persistent-skills-osworld) | University of Electronic Science and Technology of China / Zhejiang University | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-09-03 | [SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation in Traffic Simulation](agent-code.zh-CN.md#simskill-traffic) | Jilin University / Tongji University | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-09-02 | [SkillGLoW: Procedural-Family Skill Consolidation for Self-Improving Agents on Long-Horizon Task Streams](agent-code.zh-CN.md#skillglow-procedural-families) | National University of Singapore / Institute of Advanced Intelligence and Computing (IAIC), Singapore | 技能文件优化与技能库 | 直接有界闭环 |
+| 2026-09-01 | [Reef: Continual Learning Infrastructure for Self-Improving Agents](agent-code.zh-CN.md#human-agent-society-reef) | Human-Agent-Society | 反馈审查与编排 | 直接有界闭环 |
 | 2026-09-01 | [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](agent-code.zh-CN.md#bytedance-harnessdev) | ByteDance Seed / Singapore University of Technology and Design / Georgia Institute of Technology / M-A-P / TokenWave.AI | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-08-31 | [S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?](memory-context.zh-CN.md#bytedance-s3gym) | ByteDance Seed / M-A-P / TokenWave.AI | 记忆进化评测研究 | 直接有界闭环 |
 | 2026-08-31 | [Aspire: Can Models Self-Evolve from Vague Goals?](parameter-learning.zh-CN.md#bytedance-aspire) | ByteDance Seed / Singapore University of Technology and Design / M-A-P / TokenWave.AI | 自主训练智能体与数据管线 | 直接有界闭环 |

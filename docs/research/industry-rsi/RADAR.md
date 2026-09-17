@@ -8,7 +8,8 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ## 2026-09-18
 
-**New entries (13; catalog 104 → 117)**
+**New entries (14; catalog 104 → 118)**
+- [human-agent-society-reef](agent-code.zh-CN.md#human-agent-society-reef) — Human-Agent-Society (PyPI 0.0.1, 2026-09-01; 0.0.2 on 2026-09-02): an Apache-2.0 continual-learning service that links receipts and feedback to candidate harness/weight updates, evaluates and versions releases, and keeps rejected candidates out of serving. This is portable acceptance/versioning infrastructure, not a demonstrated general RSI gain.
 - [weco-aide2-first-evidence](agent-code.zh-CN.md#weco-aide2-first-evidence) — Weco AI (blog report, 2026-07-14): a bi-level loop where a hand-tuned outer agent rewrites the inner AIDE agent's code under a fixed dollar budget; 8 unattended days and 7 successive versions with ~90% of rewrites rejected, held-out MLE-Bench Lite gains (+0.053/+0.042, p<0.005), hacking rate down 63%→34%, and an honest negative ignition test. The promised PDF/release is still outstanding — report only.
 - [anthropic-when-ai-builds-itself](research-workflows.zh-CN.md#anthropic-when-ai-builds-itself) — Anthropic Institute essay (pinned 2026-06, surfaced 3 months late): internal telemetry on Claude automating Anthropic's own R&D — >80% of merged code Claude-authored, ~52× code-optimization speedup, 97% of the weak-to-strong gap recovered by agents vs ~23% by humans — plus a next-step-judgment metric (64% vs human) this radar adopts as a proposed panel readout. Self-reported position essay, no external audit.
 - [nous-hermes-selfrefactor](agent-code.zh-CN.md#nous-hermes-selfrefactor) — Nous Research (2026-09-15): Hermes autonomously refactors its own ~1.06M-line codebase with 1,393 worktree-isolated subagents (−34.4% non-test Python, ~$19.3k) and auto-records lessons into a reshared skill file; honestly admits reviewer-caught regressions and no capability control.
