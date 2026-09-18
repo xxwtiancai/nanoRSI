@@ -6,16 +6,16 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [AI 科学家系统](#family-ai-scientists) | 8 |
+| [AI 科学家系统](#family-ai-scientists) | 9 |
 | [自主后训练及其评测](#family-autonomous-post-training) | 3 |
 | [公司研发遥测](#family-company-telemetry) | 6 |
 | [对齐自动化](#family-alignment-automation) | 3 |
 | [分析与审计](#family-analyses-audits) | 6 |
-| [立场、路线图与实验室](#family-positions-labs) | 4 |
+| [立场、路线图与实验室](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
 
-## AI 科学家系统 (8)
+## AI 科学家系统 (9)
 
 <a id="andromeda2-evidence-grounded-lab"></a>
 
@@ -196,6 +196,36 @@
 **开源代码／权重／数据链接** — [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2607.28568) · [Paper v1](https://arxiv.org/html/2607.28568v1) · [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
+
+<a id="tencent-hyra-research-agent"></a>
+
+### Hyra: 简单有效的科学发现智能体
+
+**2026-07-21** · report · 直接有界闭环
+
+**日期说明** — 混元官方研究页标注 2026-07-21；2026-09-19 企业扫描时发现（滞后两个月）；工件仓库创建于 2026-07-17，最后推送 2026-08-19。
+
+**机构关系** — 企业一手（腾讯混元 Hyra 团队）。
+
+**改变对象与反馈复用** — 生产者-消费者研究循环：Context Agent 维护经验库并持续把多样化灵感上下文入队；多个 Proposal Agent 撰写沙盒化方案（solve.sh 入口），在全新沙盒运行打分后回流经验库；无评估器时升级为双层循环、改进评估器本身（评估-方案共同进化）。
+
+**作者报告结果** — 复用 Recursive 公开设置：NanoChat Autoresearch 验证 BPB 0.9015 vs 0.9109；NanoGPT Speedrun 达 3.28 loss 用时 76.4s vs 77.5s；SOL-ExecBench 平均 SOL 0.771 vs 0.754（本地运行、Evaluation Stack v1.0）。另在 55 个数学开放问题上刷新 29 个；如实给出 reward-hacking 观察（NanoChat 泄漏未来 token、SOL-ExecBench 计时阶段缓存输出），并以此论证评估器需共同进化。
+
+**证据边界** — 公司博客报告，无论文；对 Recursive 的对比数字为复用公开设置的自跑结果；工件仓库为非标准自定义许可证；太阳黑子/药物设计结论属初步模拟。
+
+**代码／权重／数据／许可** — 研究工件开源于 github.com/Tencent-Hunyuan/Hyra-results（核验时为非标准自定义许可证）；未找到模型或 harness 代码发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可移植的是评估器升级环：当严格闸门开始放过刷指标的候选时，先花一轮改进评估器（更严检查、更粗粒度奖励、更大进步空间），再继续候选搜索。
+
+![Hyra 循环：ContextAgent 维护经验并入队灵感；ProposalAgent 产出方案在全新沙盒运行后回流；eval evolution 迭代评估器。](assets/paper-figures/tencent-hyra-research-agent.jpg)
+
+**原文图／官方图片** — Hyra 循环：ContextAgent 维护经验并入队灵感；ProposalAgent 产出方案在全新沙盒运行后回流；eval evolution 迭代评估器。 · Hyra Harness loop diagram · [source](https://hy.tencent.com/research/hyra)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — [Artifacts repository](https://github.com/Tencent-Hunyuan/Hyra-results)
+
+**一手来源** — [Official research page](https://hy.tencent.com/research/hyra) · [Artifacts repository](https://github.com/Tencent-Hunyuan/Hyra-results)
 
 <a id="nvidia-enpire-physical-autoresearch"></a>
 
@@ -815,7 +845,7 @@
 
 <a id="family-positions-labs"></a>
 
-## 立场、路线图与实验室 (4)
+## 立场、路线图与实验室 (6)
 
 <a id="zhipu-glm-selftraining-filing"></a>
 
@@ -846,6 +876,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [HKEX announcement PDF (primary)](https://ea-cdn.eurolandir.com/press-releases-attachments/4179721/HKEX-EPS_20260913_12330384_0.PDF) · [Zhipu release notes](https://docs.bigmodel.cn/cn/update/new-releases)
+
+<a id="amodei-pace-the-frontier"></a>
+
+### We Must Pace the Frontier
+
+**2026-09-12** · report · 支撑技术／评测
+
+**日期说明** — 文章页仅标 September 2026；日期经同周媒体覆盖（卫报及二手摘要）钉为 2026-09-12。属 CEO 一手立场文，不是可测量结果。
+
+**机构关系** — 企业一手（CEO Dario Amodei 个人文章）。
+
+**改变对象与反馈复用** — 治理提案而非技术闭环：嵌入式 METR 式第三方评估员（员工级权限，Anthropic 单方面承诺）、民主世界前沿实验室协调、四级全球协议阶梯（第 3 级为 RSI 限速）。
+
+**作者报告结果** — 逐字声明递归自改进“正在整个行业发生，包括在 Anthropic”；提出当模型开始构建未来模型时改进速率可能快得惊人，因此需要限速层级。
+
+**证据边界** — 立场文，无协议、数字或审计；限速层级是提案不是协议；RSI 断言为自报且未经审计。
+
+**代码／权重／数据／许可** — 文章公开于 darioamodei.com；无工件。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI 可移植的是披露纪律：把严格改进闸门、契约守卫与审计轨迹公开到足以让第三方核验所声称的自改进速率。
+
+![文章第一节关切段：递归自改进正在整个行业发生，包括在 Anthropic。](assets/paper-figures/amodei-pace-the-frontier.png)
+
+**原文图／官方图片** — 文章第一节关切段：递归自改进正在整个行业发生，包括在 Anthropic。 · Cropped page screenshot (RSI passage) · [source](https://darioamodei.com/post/we-must-pace-the-frontier)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Essay (official)](https://darioamodei.com/post/we-must-pace-the-frontier)
 
 <a id="genuine-rsi-roadmap-2026"></a>
 
@@ -907,6 +967,36 @@
 
 **一手来源** — [Official Salesforce news story (opened)](https://www.salesforce.com/news/stories/toward-self-improving-agents/)
 
+<a id="bytedance-seed-for-seed"></a>
+
+### Seed2.1 Officially Released: Advancing AI Productivity
+
+**2026-06-23** · report · 自动化／辅助研发
+
+**日期说明** — Seed 官方博客标注 2026-06-23；Seed-for-Seed 段落为一手内容。媒体传闻的 doubao-seed-evolving 滚动升级端点在中英文版正文均未出现，仍仅存于媒体。2026-09-19 发现，关闭一条挂了六天的线索。
+
+**机构关系** — 企业一手（字节 Seed 团队）。
+
+**改变对象与反馈复用** — Seed-for-Seed 计划：Seed2.1 以 agent 身份参与自身开发管线的关键阶段——评测、数据、训练、研究与基建——承担评测系统开发、能力诊断、SFT 数据合成与 RL 框架优化，并以执行/评测/诊断/优化多角色分解形成跨小时到数周的闭环研发工作流。
+
+**作者报告结果** — 已披露方向与做法描述，非可测量闭环：博文称模型参与真实研发任务并反过来加速模型迭代，并把深化该整合、启用自主研究列为下一步。
+
+**证据边界** — 博客级披露，无量化研发加速证据或外部审计；路线图为期望性表述；未发布逐任务工件。
+
+**代码／权重／数据／许可** — 博客公开（中英文）；未发布 Seed-for-Seed 工件。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 分阶段自我参与阶梯（评测→数据→训练）是范围控制模板：nanoRSI 可先让自身循环维护评测 harness，再触碰任何训练环节。
+
+![Seed 进入模型开发循环：agent 在管线的评测、数据、训练与研究阶段承担角色。](assets/paper-figures/bytedance-seed-for-seed.png)
+
+**原文图／官方图片** — Seed 进入模型开发循环：agent 在管线的评测、数据、训练与研究阶段承担角色。 · Seed for Seed R&D workflow diagram · [source](https://seed.bytedance.com/en/blog/seed2-1-officially-released-advancing-ai-productivity)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Official blog (EN)](https://seed.bytedance.com/en/blog/seed2-1-officially-released-advancing-ai-productivity) · [Official blog (ZH)](https://seed.bytedance.com/zh/blog/seed2-1-officially-released-advancing-ai-productivity)
+
 <a id="sakana-rsi-lab"></a>
 
 ### Introducing Sakana AI's Recursive Self-Improvement (RSI) Lab
@@ -931,7 +1021,7 @@
 
 **原文图／官方图片** — Sakana AI 公布的 RSI 路线：Agent 原生模型支撑 The AI Scientist 的自动发现，再到递归自改进（AI 优化 AI 代码），通往民主化 AI——与人类主导的现状对照。 · RSI trajectory diagram (rsi-trajectory.png) · [source](https://sakana.ai/rsi-lab/)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 

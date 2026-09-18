@@ -7,7 +7,7 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [结构化知识库与图](#family-structured-knowledge) | 6 |
-| [经验积累与回放](#family-experience-accumulation) | 6 |
+| [经验积累与回放](#family-experience-accumulation) | 7 |
 | [上下文组织策略](#family-context-policies) | 4 |
 | [探索式记忆构建](#family-exploration-memory) | 1 |
 | [记忆进化评测研究](#family-memory-evolution-studies) | 2 |
@@ -198,7 +198,7 @@
 
 <a id="family-experience-accumulation"></a>
 
-## 经验积累与回放 (6)
+## 经验积累与回放 (7)
 
 <a id="echopath-replayable-memory"></a>
 
@@ -216,7 +216,7 @@
 
 **证据边界** — 最适合稳定环境：视觉重瞄对工具栏重排、本地化、响应式布局、显示缩放与近重复 UI 元素仍然脆弱；界面漂移下的在线稳健性未验证；记忆获取需完整自治首遍而非用户演示。
 
-**代码／权重／数据／许可** — 论文列出 github.com/JackZhao1998/EchoPath；核验时该地址未能解析。
+**代码／权重／数据／许可** — 论文所列仓库 github.com/JackZhao1998/EchoPath 已在 2026-09-17 至 2026-09-19 间删除（API 404 且无重定向，非改名）；未找到迁移。论文仍公开。
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI：把执行级技能存为自带验证出处与生命周期状态的可调用记忆，检索只暴露活跃项——回放即可用十分之一 token 换取大部分收益。
 
@@ -224,7 +224,7 @@
 
 **原文图／官方图片** — EchoPath 框架：验证轨迹变为带验证出处与生命周期状态的参数可控可调用记忆，回放前重瞄当前屏幕。 · Figure 1 (S2.F1) · [source](https://arxiv.org/html/2609.16635v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
@@ -289,6 +289,36 @@
 **开源代码／权重／数据链接** — [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
 **一手来源** — [arXiv record](https://arxiv.org/abs/2608.23552) · [Paper first-publication statement and Factorio evidence](https://arxiv.org/html/2608.23552v1) · [Official launch and update mechanism](https://www.primeintellect.ai/blog/prime-agent) · [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
+
+<a id="simplemem-lifelong-memory"></a>
+
+### SimpleMem: Efficient Lifelong Memory for LLM Agents
+
+**2026-01-05** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 2026-01-05（当前 v3 2026-01-29）；研讨会接收 2026-09-19 经 iclr.cc 核验。
+
+**机构关系** — 学术工作（UNC-Chapel Hill，合著者含伯克利与 UCSC）。
+
+**改变对象与反馈复用** — 终身记忆三段流水线：语义结构化压缩过滤低效用对话、在线语义合成做巩固、检索时按意图规划多视图查询——替代全文上下文或迭代过滤。
+
+**作者报告结果** — GPT-4.1-mini 在 LoCoMo：平均 F1 43.24 vs Mem0 34.20、全文上下文 18.70，每次查询仅 531 token（约为全文/MemGPT 16,910 的 1/30）；LongMemEval-S 83.97% vs Mem0 58.51%；记忆构建 92.6s/样本 vs Mem0 1350.9s。
+
+**证据边界** — 作者自报于长程对话基准；属支撑设施——记忆系统并不改进改进器本身；MIT 代码且社区采用已强（3.8k 星）。
+
+**代码／权重／数据／许可** — MIT 代码位于 github.com/aiming-lab/SimpleMem（核验时 3.8k 星）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 先压缩再巩固的两段式是 nanoRSI 技能记忆的 token 预算杠杆：写入时过滤低效用轨迹、周期性巩固、按意图检索。
+
+![SimpleMem 架构：语义结构化压缩、在线语义合成与意图规划的多视图检索。](assets/paper-figures/simplemem-lifelong-memory.png)
+
+**原文图／官方图片** — SimpleMem 架构：语义结构化压缩、在线语义合成与意图规划的多视图检索。 · Figure 2 (Fig_framework_v2.png) · [source](https://arxiv.org/html/2601.02553v3)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/aiming-lab/SimpleMem)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2601.02553) · [Paper HTML (affiliations, Table 1, Figure 2)](https://arxiv.org/html/2601.02553v3) · [Code repository](https://github.com/aiming-lab/SimpleMem) · [ICLR virtual page](https://iclr.cc/virtual/2026/10018638)
 
 <a id="atlas-pamphlets"></a>
 

@@ -6,16 +6,16 @@
 
 | Family | Records |
 | --- | ---: |
-| [AI-scientist systems](#family-ai-scientists) | 8 |
+| [AI-scientist systems](#family-ai-scientists) | 9 |
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
 | [Company R&D telemetry](#family-company-telemetry) | 6 |
 | [Alignment automation](#family-alignment-automation) | 3 |
 | [Analyses & audits](#family-analyses-audits) | 6 |
-| [Positions, roadmaps & labs](#family-positions-labs) | 4 |
+| [Positions, roadmaps & labs](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
 
-## AI-scientist systems (8)
+## AI-scientist systems (9)
 
 <a id="andromeda2-evidence-grounded-lab"></a>
 
@@ -196,6 +196,36 @@
 **Open code / weights / data links** — [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2607.28568) · [Paper v1](https://arxiv.org/html/2607.28568v1) · [OpenRSI release and repository](https://github.com/FrontisAI/OpenRSI) · [Official 35B model and license](https://huggingface.co/FrontisAI/Frontis-MA1-35B) · [OpenMLE Tasks and mixed licensing](https://huggingface.co/datasets/FrontisAI/OpenMLE-Tasks) · [OpenMLE SFT Traces](https://huggingface.co/datasets/FrontisAI/OpenMLE-SFT-Traces)
+
+<a id="tencent-hyra-research-agent"></a>
+
+### Hyra: 简单有效的科学发现智能体
+
+**2026-07-21** · report · Direct bounded loop
+
+**Publication date** — Official Hunyuan research page dated 2026-07-21; surfaced 2026-09-19 during the company sweep (a two-month-late discovery); artifacts repository created 2026-07-17, last push 2026-08-19.
+
+**Institutional relationship** — Company first-party (Tencent Hunyuan, Hyra Team).
+
+**What changes and how feedback is reused** — A producer-consumer research loop: a Context Agent maintains an Experience Bank and continuously enqueues diverse inspiration contexts; multiple Proposal Agents write sandboxed solutions (solve.sh entry) that run and score in fresh sandboxes and return to the bank; when no evaluator exists, a bi-level loop upgrades the evaluator itself (eval-solution co-evolution).
+
+**Author-reported result** — Reusing Recursive's public setups: NanoChat Autoresearch validation BPB 0.9015 vs 0.9109; NanoGPT Speedrun 76.4s vs 77.5s to 3.28 loss; SOL-ExecBench mean SOL 0.771 vs 0.754 (local run, Evaluation Stack v1.0). Also: 29 of 55 open math problems improved; honest reward-hacking observations (future-token leakage in NanoChat, cached-output timing tricks in SOL-ExecBench) motivate evaluator co-evolution.
+
+**Evidence limits** — Company blog report, no paper; Recursive-comparison numbers are self-run under reused public settings; artifact repository license is non-standard (custom); sunspot/drug-design claims are preliminary simulations.
+
+**Code / weights / data / license** — Research artifacts open-sourced at github.com/Tencent-Hunyuan/Hyra-results (custom non-SPDX license at verification); no model or harness code release located.
+
+**Possible nanoRSI experiment — not implemented here** — The evaluator-upgrade loop is the transplant: when the strict gate starts passing metric-gamed candidates, spend a round improving the evaluator (tighter checks, coarser reward, more headroom) before further candidate search.
+
+![The Hyra loop: ContextAgent maintains the Experience Bank and queues inspirations; ProposalAgents produce solutions that run in fresh sandboxes and return to the bank; eval evolution iterates the evaluator.](assets/paper-figures/tencent-hyra-research-agent.jpg)
+
+**Source figure / official image** — The Hyra loop: ContextAgent maintains the Experience Bank and queues inspirations; ProposalAgents produce solutions that run in fresh sandboxes and return to the bank; eval evolution iterates the evaluator. · Hyra Harness loop diagram · [source](https://hy.tencent.com/research/hyra)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — [Artifacts repository](https://github.com/Tencent-Hunyuan/Hyra-results)
+
+**Primary sources** — [Official research page](https://hy.tencent.com/research/hyra) · [Artifacts repository](https://github.com/Tencent-Hunyuan/Hyra-results)
 
 <a id="nvidia-enpire-physical-autoresearch"></a>
 
@@ -815,7 +845,7 @@
 
 <a id="family-positions-labs"></a>
 
-## Positions, roadmaps & labs (4)
+## Positions, roadmaps & labs (6)
 
 <a id="zhipu-glm-selftraining-filing"></a>
 
@@ -846,6 +876,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [HKEX announcement PDF (primary)](https://ea-cdn.eurolandir.com/press-releases-attachments/4179721/HKEX-EPS_20260913_12330384_0.PDF) · [Zhipu release notes](https://docs.bigmodel.cn/cn/update/new-releases)
+
+<a id="amodei-pace-the-frontier"></a>
+
+### We Must Pace the Frontier
+
+**2026-09-12** · report · Enabling technique / evaluation
+
+**Publication date** — Essay page states September 2026 only; day pinned to 2026-09-12 via same-week press coverage (Guardian, secondary summaries). First-party CEO position, not a measured result.
+
+**Institutional relationship** — Company first-party (Dario Amodei, CEO, personal essay).
+
+**What changes and how feedback is reused** — A governance proposal, not a technical loop: embedded METR-style third-party evaluators with employee-like access (a unilateral Anthropic commitment), coordination among democratic-world frontier labs, and a four-level global-agreement ladder whose Level 3 is an RSI speed limit.
+
+**Author-reported result** — States verbatim that recursive self-improvement "is starting to happen across the industry, including at Anthropic"; proposes that as models build future models the rate of improvement may become staggeringly fast, motivating the speed limit level.
+
+**Evidence limits** — Position essay with no protocol, numbers or audit; pacing levels are proposals, not agreements; the RSI claim is self-reported and unaudited.
+
+**Code / weights / data / license** — Essay public on darioamodei.com; no artifacts.
+
+**Possible nanoRSI experiment — not implemented here** — For nanoRSI the operative transplant is disclosure discipline: publish the strict-improvement gate, contract guard and audit trail that would let a third party verify a claimed self-improvement rate.
+
+![The essay's first-concern passage: recursive self-improvement is starting to happen across the industry, including at Anthropic.](assets/paper-figures/amodei-pace-the-frontier.png)
+
+**Source figure / official image** — The essay's first-concern passage: recursive self-improvement is starting to happen across the industry, including at Anthropic. · Cropped page screenshot (RSI passage) · [source](https://darioamodei.com/post/we-must-pace-the-frontier)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Essay (official)](https://darioamodei.com/post/we-must-pace-the-frontier)
 
 <a id="genuine-rsi-roadmap-2026"></a>
 
@@ -907,6 +967,36 @@
 
 **Primary sources** — [Official Salesforce news story (opened)](https://www.salesforce.com/news/stories/toward-self-improving-agents/)
 
+<a id="bytedance-seed-for-seed"></a>
+
+### Seed2.1 Officially Released: Advancing AI Productivity
+
+**2026-06-23** · report · Automated / assisted R&D
+
+**Publication date** — Official Seed blog dated 2026-06-23; the Seed-for-Seed section is first-party. The separately rumored doubao-seed-evolving rolling-upgrade endpoint does NOT appear in either the EN or ZH version of this post and remains media-only. Surfaced 2026-09-19 closing a six-day-old lead.
+
+**Institutional relationship** — Company first-party (ByteDance Seed team).
+
+**What changes and how feedback is reused** — The Seed-for-Seed initiative: Seed2.1 participates in key stages of its own development pipeline — evaluation, data, training, research and infrastructure — as an agent doing evaluation-system development, capability diagnosis, SFT data synthesis and RL framework optimization, with multi-agent role decomposition (execution/evaluation/diagnosis/optimization) forming closed-loop R&D workflows spanning hours to weeks.
+
+**Author-reported result** — A disclosed direction with described practice, not a measured loop: the post states the model participates in real R&D tasks and in turn accelerates model iteration, and lists deepening this integration and enabling autonomous research as a stated next step.
+
+**Evidence limits** — Blog-level disclosure without quantitative R&D-acceleration evidence or external audit; the roadmap wording is aspirational; no per-task artifacts released.
+
+**Code / weights / data / license** — Blog post public (EN/ZH); no Seed-for-Seed artifacts released.
+
+**Possible nanoRSI experiment — not implemented here** — The staged self-participation ladder (evaluation → data → training) is a scoping template: nanoRSI can let its own loop maintain the evaluation harness first, before touching anything that trains.
+
+![Seed enters the model development loop: agents take roles in evaluation, data, training and research stages of the pipeline.](assets/paper-figures/bytedance-seed-for-seed.png)
+
+**Source figure / official image** — Seed enters the model development loop: agents take roles in evaluation, data, training and research stages of the pipeline. · Seed for Seed R&D workflow diagram · [source](https://seed.bytedance.com/en/blog/seed2-1-officially-released-advancing-ai-productivity)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Official blog (EN)](https://seed.bytedance.com/en/blog/seed2-1-officially-released-advancing-ai-productivity) · [Official blog (ZH)](https://seed.bytedance.com/zh/blog/seed2-1-officially-released-advancing-ai-productivity)
+
 <a id="sakana-rsi-lab"></a>
 
 ### Introducing Sakana AI's Recursive Self-Improvement (RSI) Lab
@@ -931,7 +1021,7 @@
 
 **Source figure / official image** — Sakana AI's published RSI trajectory: agent-native models feeding The AI Scientist's automated discovery, then recursive self-improvement (AI optimizing AI code), toward democratized AI - plotted against the human-led status quo. · RSI trajectory diagram (rsi-trajectory.png) · [source](https://sakana.ai/rsi-lab/)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 

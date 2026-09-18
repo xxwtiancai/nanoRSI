@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [Self-play & curriculum task generation](#family-self-play-curriculum) | 11 |
+| [Self-play & curriculum task generation](#family-self-play-curriculum) | 14 |
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 2 |
-| [Experience distillation & test-time adaptation](#family-experience-distillation) | 4 |
-| [Autonomous training agents & data pipelines](#family-autonomous-training) | 4 |
-| [Enabling adaptation mechanisms](#family-enabling-adaptation) | 5 |
+| [Experience distillation & test-time adaptation](#family-experience-distillation) | 5 |
+| [Autonomous training agents & data pipelines](#family-autonomous-training) | 5 |
+| [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
 
 <a id="family-self-play-curriculum"></a>
 
-## Self-play & curriculum task generation (11)
+## Self-play & curriculum task generation (14)
+
+<a id="stretch-unified-self-taught"></a>
+
+### STRETCH the Boundaries: A Unified Self-Taught Framework for Progressive LLM Evolution
+
+**2026-09-16** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-09-16.
+
+**Institutional relationship** — Academic (School of Computer Science, University of Birmingham).
+
+**What changes and how feedback is reused** — One model alternates Scaffolder and Learner roles in the same parameter space: GRPO-trained question generation whose reward peaks at 50% learner success keeps tasks in the stretch zone, with epoch-level Golden Experience Replay (SFT on successful question/trajectory pairs) stabilizing the dual loop.
+
+**Author-reported result** — Qwen2.5-7B-Instruct on Mano Complex: 67.9 ER / 63.6 SA vs R-Zero 64.8/61.7 and Absolute Zero 63.4/60.1; Complex OR 58.7/55.0 vs StepORLM 57.3/52.6; six self-play epochs, LoRA rank 16, 2×H100.
+
+**Evidence limits** — Author-reported modest margins over R-Zero/AZR on operational-reasoning benchmarks; judge/simulator relies on GPT-4o-mini; code repository has no license file.
+
+**Code / weights / data / license** — Code at github.com/GuanNiPiShi123/STRETCH (no license file at verification — reference only); paper arXiv non-exclusive.
+
+**Possible nanoRSI experiment — not implemented here** — The 50%-success reward peak is a tunable difficulty target for nanoRSI probe-task generation — task streams that stay solvable-half-the-time maximize information per evaluation.
+
+![The dual-loop asynchronous update of STRETCH: the Scaffolder loop aligns question difficulty while the Learner loop improves solving, with golden experience replay between epochs.](assets/paper-figures/stretch-unified-self-taught.png)
+
+**Source figure / official image** — The dual-loop asynchronous update of STRETCH: the Scaffolder loop aligns question difficulty while the Learner loop improves solving, with golden experience replay between epochs. · Figure 2 (Method_v2_cropped.png) · [source](https://arxiv.org/html/2609.18642v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — [Code repository](https://github.com/GuanNiPiShi123/STRETCH)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.18642) · [Paper HTML (affiliations, Table 1, Figure 2)](https://arxiv.org/html/2609.18642v1) · [Code repository](https://github.com/GuanNiPiShi123/STRETCH)
 
 <a id="spade-adaptive-environments"></a>
 
@@ -136,6 +166,66 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [Paper](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf) · [Official report](https://openai.com/index/unlocking-self-improvement-gpt-red/)
+
+<a id="ace-fudan-adversarial-tests"></a>
+
+### ACE: Self-Evolving LLM Coding Framework via Adversarial Unit Test Generation and Preference Optimization
+
+**2026-04-17** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-04-17, v2 2026-05-21 (current); no venue claim on the abs page. Shares the ACE acronym with the unrelated Agentic Context Engineering entry in this catalogue.
+
+**Institutional relationship** — Academic (Fudan School of Data Science).
+
+**What changes and how feedback is reused** — One LLM alternates between a Solver role (writing code) and an Adversary role (crafting adversarial unit tests); execution pass/fail tables drive SFT filtering on the solver and KTO preference optimization on the adversary, iterating multi-round self-improvement without ground-truth code or external reward models.
+
+**Author-reported result** — LoRA dual adapters on a shared backbone: Qwen3-4B after 5 self-evolution rounds reaches CodeContests pass@1 46.7 (instruct 41.7; ReasonFlux-Coder-4B 24.0) and LiveCodeBench 37.5; Qwen2.5-7B OOD LiveCodeBench 38.9 vs ReasonFlux-Coder-7B 33.5 and instruct 30.4.
+
+**Evidence limits** — Author-reported; adversarial tests are only as strong as the adversary policy (no external verification of test quality); no code release located.
+
+**Code / weights / data / license** — arXiv paper public; no code or weights release located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — nanoRSI could let the proposer emit adversarial probe cases alongside candidate edits: execution outcomes of both form the acceptance signal, removing judge-model dependence on the minimal task set.
+
+![A single LLM alternates between Solver and Adversary roles; execution outcomes on ground-truth and adversarial tests drive SFT filtering and KTO preference optimization.](assets/paper-figures/ace-fudan-adversarial-tests.png)
+
+**Source figure / official image** — A single LLM alternates between Solver and Adversary roles; execution outcomes on ground-truth and adversarial tests drive SFT filtering and KTO preference optimization. · Figure 2 (method_pipeline.png) · [source](https://arxiv.org/html/2605.16299v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2605.16299) · [Paper HTML (affiliations, Table 2, Figure 2)](https://arxiv.org/html/2605.16299v2)
+
+<a id="gasp-guided-asymmetric-selfplay"></a>
+
+### GASP: Guided Asymmetric Self-Play For Coding LLMs
+
+**2026-03-16** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-03-16; the abs Comments state acceptance as a Spotlight at the ICLR 2026 Workshop on AI with Recursive Self-Improvement (RSI 2026) and at the Lifelong Agents (LLA 2026) workshop.
+
+**Institutional relationship** — Academic (Tübingen ELLIS/MPI cluster).
+
+**What changes and how feedback is reused** — Asymmetric self-play anchored on real hard problems: for goalpost questions that standard RLVR cannot solve, a teacher generates easier lemma variants then harder lift variants toward the goalpost, forming a curriculum; student solutions are retrained via rejection sampling, all data-free.
+
+**Author-reported result** — Qwen2.5-Coder-7B on LiveCodeBench v5 (216 problems, 3 seeds): pass@20 33.69±0.28 vs AZR 31.15, real-data RL 33.10 and base 29.68; GASP+real-data RL best at 34.46; pass@1 18.26 vs AZR 17.49. Solves 11 of 146 goalposts at pass@100 that all baselines cannot by construction; on HumanEval+ AZR still wins (83.54 vs 79.67).
+
+**Evidence limits** — Gains are modest absolute points on one coder benchmark family; the HumanEval+ regression is reported honestly; no code release located.
+
+**Code / weights / data / license** — arXiv paper public; no code or weights release located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — The goalpost mechanism maps to nanoRSI probe tasks: keep a list of unsolved frozen tasks, let the proposer generate lemma/lift variants toward them, and count goalposts cracked as a search-progress readout.
+
+![Self-play is guided by hard real-data goalpost questions: the teacher first generates an easy lemma variant, then a harder lift variant toward the goalpost.](assets/paper-figures/gasp-guided-asymmetric-selfplay.png)
+
+**Source figure / official image** — Self-play is guided by hard real-data goalpost questions: the teacher first generates an easy lemma variant, then a harder lift variant toward the goalpost. · Figure 1 (overview_fig.png) · [source](https://arxiv.org/html/2603.15957v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2603.15957) · [Paper HTML (affiliations, Table 1, Figure 1)](https://arxiv.org/html/2603.15957v1)
 
 <a id="meta-ssr-self-play"></a>
 
@@ -567,7 +657,37 @@
 
 <a id="family-experience-distillation"></a>
 
-## Experience distillation & test-time adaptation (4)
+## Experience distillation & test-time adaptation (5)
+
+<a id="retireopd-self-retiring-distillation"></a>
+
+### RetireOPD: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning
+
+**2026-09-17** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 2026-09-17; code lives in the ZJU-REAL/SDAR repository (created 2026-05-14 for the group's self-distillation line, active 2026-09-18).
+
+**Institutional relationship** — Academic-led (Zhejiang University) with Alibaba Group co-authors.
+
+**What changes and how feedback is reused** — A skill-conditioned teacher is trained with environmental rewards; a skill-free student learns jointly through RL plus on-policy skill distillation; when teacher-student divergence converges, the teacher automatically retires and training continues with RL alone — skills end up internalized in weights.
+
+**Author-reported result** — Across Qwen2.5 1.5B-7B: ALFWorld success +14.1% to +18.8% and WebShop accuracy +11.8% to +19.0% over the RL (GRPO) baseline; the student surpasses its own skill-conditioned teacher in every setting.
+
+**Evidence limits** — Author-reported on ALFWorld/WebShop; the retirement criterion is a divergence heuristic that could fire early on non-stationary tasks; enabling skill-to-weight transfer rather than a self-improvement loop per se.
+
+**Code / weights / data / license** — Apache-2.0 code at github.com/ZJU-REAL/SDAR (383 stars at verification).
+
+**Possible nanoRSI experiment — not implemented here** — Retirement is the missing lifecycle half of ADOPTION 26: give consolidated skill artifacts an automatic expiry test (does the frozen policy still beat the artifact-free policy?) and retire them when internalized.
+
+![Overview of RetireOPD: skill-conditioned teacher construction, joint skill internalization, and automatic teacher retirement.](assets/paper-figures/retireopd-self-retiring-distillation.png)
+
+**Source figure / official image** — Overview of RetireOPD: skill-conditioned teacher construction, joint skill internalization, and automatic teacher retirement. · Figure 3 (method.png) · [source](https://arxiv.org/html/2609.20784v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — [Code repository](https://github.com/ZJU-REAL/SDAR)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.20784) · [Paper HTML (affiliations, Figure 3, results)](https://arxiv.org/html/2609.20784v1) · [Code repository](https://github.com/ZJU-REAL/SDAR)
 
 <a id="experience-funnel-state-policy"></a>
 
@@ -691,7 +811,7 @@
 
 <a id="family-autonomous-training"></a>
 
-## Autonomous training agents & data pipelines (4)
+## Autonomous training agents & data pipelines (5)
 
 <a id="scienceide-agent-environments"></a>
 
@@ -722,6 +842,36 @@
 **Open code / weights / data links** — [ScienceIDE repository](https://github.com/aitofound/ScienceIDE)
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.19134) · [Paper HTML (author block, Figure 1)](https://arxiv.org/html/2609.19134v1) · [ScienceIDE repository](https://github.com/aitofound/ScienceIDE)
+
+<a id="xpace-world-model-selfimprovement"></a>
+
+### XPACE: Joint World and Action Modeling from Heterogeneous Experience
+
+**2026-09-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-09-15, cs.RO; all sixteen authors are XPENG Robotics.
+
+**Institutional relationship** — Company first-party (XPENG Robotics).
+
+**What changes and how feedback is reused** — A shared video backbone jointly trains policy and world simulator; after self-gradient-forcing adaptation, the simulator renders deviation-recovery trajectories around expert demonstrations, which are filtered and used for DAgger-style policy refinement — a world-model-driven self-improvement loop on a heterogeneous experience pyramid.
+
+**Author-reported result** — Real-robot 3 tasks × 20 trials: 68.3% average success and 0.84 progress vs DreamZero 40.0%/0.68 and GR00T 6.7%/0.36; the self-improvement loop lifts average success 61.7%→86.7% and progress 0.81→0.93 (pouring 50%→95%).
+
+**Evidence limits** — Author-reported on three real-robot manipulation tasks; no code or weights release located; the loop requires a pretrained world model of decent fidelity.
+
+**Code / weights / data / license** — arXiv paper public; no code or weights release located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — The deviation-recovery recipe is an environment-free data generator: replay recorded nanoRSI candidate traces, perturb near accepted solutions, keep repairs that recover — synthetic negatives without new environment runs.
+
+![MoT architecture, operating modes, and the self-improvement loop of XPACE: simulation mode renders recovery data that refines the policy.](assets/paper-figures/xpace-world-model-selfimprovement.png)
+
+**Source figure / official image** — MoT architecture, operating modes, and the self-improvement loop of XPACE: simulation mode renders recovery data that refines the policy. · Figure 4 (model_v3.png) · [source](https://arxiv.org/html/2609.17372v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17372) · [Paper HTML (Figure 4/12, results)](https://arxiv.org/html/2609.17372v1)
 
 <a id="tokenrhythm-neohorse-1"></a>
 
@@ -815,7 +965,67 @@
 
 <a id="family-enabling-adaptation"></a>
 
-## Enabling adaptation mechanisms (5)
+## Enabling adaptation mechanisms (7)
+
+<a id="infinite-parameter-weights-from-live-data"></a>
+
+### Infinite-Parameter LLMs: Generating and Adapting Weights from Live Data
+
+**2026-09-16** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 2026-09-16.
+
+**Institutional relationship** — Company-academic (Boltzbit with Cambridge; Hernández-Lobato jointly affiliated).
+
+**What changes and how feedback is reused** — A hypernetwork encoder compiles run-time interaction data into a latent code with online Bayesian belief updates, then generates LoRA (r=8) weight increments for a frozen base FFN — weights are regenerated from data instead of being selected from a stored bank, giving unbounded parameterization.
+
+**Author-reported result** — Qwen3-8B frozen base, F1 on MS MARCO (ten passages): data-to-weights 48.0 vs in-context 33.6 vs closed-book 16.8; honest boundary on SQuAD (one short clean passage): in-context 85.3 vs data-to-weights 51.8; learned router 53.3 vs dense retrieval 45.3 under dilution.
+
+**Evidence limits** — Paper is CC BY-NC-ND 4.0 (non-commercial — reference only for this Apache-2.0 repository); evaluated on QA-style evidence tasks; no code or weights release located.
+
+**Code / weights / data / license** — arXiv paper public (CC BY-NC-ND 4.0); no code or weights release located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — The dilution boundary motivates a nanoRSI experiment: cache long noisy evidence into compact derived state versus re-reading it in context, and measure the crossover point where the cache wins.
+
+![The architecture organised around a belief over the latent code: live data is read into a belief, and low-rank weight increments are generated on demand.](assets/paper-figures/infinite-parameter-weights-from-live-data.svg)
+
+**Source figure / official image** — The architecture organised around a belief over the latent code: live data is read into a belief, and low-rank weight increments are generated on demand. · Figure 3 (inline SVG) · [source](https://arxiv.org/html/2609.18842v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.18842) · [Paper HTML (affiliations, Table 4, Figure 3)](https://arxiv.org/html/2609.18842v1)
+
+<a id="cera-moa-coevolving-routing"></a>
+
+### CERA-MoA: Co-Evolving Routing Mechanisms with Continually Learning LLM Agents
+
+**2026-09-16** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 2026-09-16; affiliations appear in the paper body (IIIS Tsinghua; SJTU School of Artificial Intelligence; Shanghai Qi Zhi Institute), not on the abs page.
+
+**Institutional relationship** — Academic (Tsinghua IIIS × SJTU × Shanghai Qi Zhi Institute).
+
+**What changes and how feedback is reused** — A predictive familiarity estimator over mid-layer hidden states drives an accumulating adaptive-threshold router that activates the minimal competent subset of continually RL-trained agents, inducing specialization while the routing mechanism itself co-evolves with the learners.
+
+**Author-reported result** — Qwen3-4B across nine in-distribution benchmarks: ID average 63.2 vs AT-GRPO 61.0, RouteMoA 53.1 and the bare model 49.6; OOD average 72.8 vs AT-GRPO 71.5; the adaptive threshold cuts average tokens to 367.77 vs 666.37 for fixed top-2 at similar accuracy.
+
+**Evidence limits** — Author-reported; gains over the strongest baseline are ~2 points; the co-evolution is between router and agents inside one training run, not across self-improvement generations; no code release located.
+
+**Code / weights / data / license** — arXiv paper public (CC BY 4.0); no code release located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — The familiarity estimator is a cheap signal for nanoRSI skill routing: route a task to the smallest skill set whose past rollouts look familiar, and log routing drift as evidence of skill staleness.
+
+![Overview of CERA-MoA: a familiarity-driven adaptive router selects the minimal competent agent subset while agents continually learn.](assets/paper-figures/cera-moa-coevolving-routing.png)
+
+**Source figure / official image** — Overview of CERA-MoA: a familiarity-driven adaptive router selects the minimal competent agent subset while agents continually learn. · Figure 1 (cera-moa.png) · [source](https://arxiv.org/html/2609.18779v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.18779) · [Paper HTML (in-body affiliations, Tables 2/4, Figure 1)](https://arxiv.org/html/2609.18779v1)
 
 <a id="sakana-doc-to-lora"></a>
 
