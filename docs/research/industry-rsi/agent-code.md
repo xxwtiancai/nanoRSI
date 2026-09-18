@@ -6,16 +6,76 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 14 |
-| [Harness search & evolution](#family-harness-search) | 9 |
-| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 5 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 17 |
+| [Harness search & evolution](#family-harness-search) | 11 |
+| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 6 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 5 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 3 |
 | [Safety & governance](#family-safety-governance) | 2 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (14)
+## Skill-file optimization & libraries (17)
+
+<a id="skillaa-attribution-rollback"></a>
+
+### SkillAA: Attribution-Guided Skill-Graph Updating with Targeted Validation and Rollback
+
+**2026-09-17** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-09-17; the repository was created the same day.
+
+**Institutional relationship** — Academic (National Key Laboratory for Novel Software Technology and School of Intelligence Science and Technology, Nanjing University).
+
+**What changes and how feedback is reused** — On a frozen model, contrasting successful and failed rollouts attributes each failure to specific skill-graph objects; repairs edit only the selected local structure, and Local and Big Gates validate candidate changes (with rollback units) before commitment.
+
+**Author-reported result** — With gpt-5.6-sol, SkillAA reaches 81.5% SearchQA, 66.7% LiveMath and 91.2% DocVQA, the highest observed mean in every main setting; ablations support structured representation, attribution-conditioned editing and Local-Gate regression control.
+
+**Evidence limits** — Author-reported without external baseline numbers in the abstract; comparators live in the paper tables; code repository has no license file (all-rights-reserved by default).
+
+**Code / weights / data / license** — Code at github.com/Ziqiao-Shang/SkillAA (no license file at verification — reference only); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — nanoRSI evidence cards already store diagnosis and diffs; SkillAA adds the missing half — attribute each regression to the exact skill section before editing, then gate the edit against rollback units instead of whole-skill rewrites.
+
+![How SkillAA learns from errors: each skill node states when to use it and when not; attribution routes a repair to the specific failing object before gated editing.](assets/paper-figures/skillaa-attribution-rollback.png)
+
+**Source figure / official image** — How SkillAA learns from errors: each skill node states when to use it and when not; attribution routes a repair to the specific failing object before gated editing. · Figure 2 (images/2.png) · [source](https://arxiv.org/html/2609.20455v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — [Code repository](https://github.com/Ziqiao-Shang/SkillAA)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.20455) · [Paper HTML (affiliations, Figure 2, results)](https://arxiv.org/html/2609.20455v1) · [Code repository](https://github.com/Ziqiao-Shang/SkillAA)
+
+<a id="finskillops-sec-filing-qa"></a>
+
+### FINSKILLOPS: A Self-Evolving Multi-Agent System for SEC Filing QA
+
+**2026-09-17** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-09-17; 28 authors across a company and eleven universities; HTML uses an EMNLP template but no venue is claimed.
+
+**Institutional relationship** — Industry-academic consortium led by SimpleWay.AI with McGill/Toronto/UCLA/CUHK/Mila and others.
+
+**What changes and how feedback is reused** — Typed, evidence-grounded failure diagnoses are converted into scoped skill patches that pass targeted validation, regression checks and negative controls before versioned replacement or retirement in a serving/evolution loop for SEC-filing QA.
+
+**Author-reported result** — Evolved skills raise judge-scored correctness from 3.70 to 4.55 on the enhanced benchmark; a separate 12-round operational study promotes only 6 of 33 proposed skills while the monitoring non-correct rate falls from 20.0% to 12.5%.
+
+**Evidence limits** — Author-reported on an in-house financial QA setting with LLM-judge scores; the 6/33 promotion rate is the honest headline — most proposed skills do not survive gating; no code release located.
+
+**Code / weights / data / license** — arXiv paper public; no code release located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — The negative-control admission step (a proposed skill must beat a do-nothing control on the failing slice) and explicit retirement are the two gates nanoRSI skill streams lack; the 6/33 rate is a realistic promotion prior.
+
+![FinSkillOps: the serving pipeline draws on curated filing indexes while the evolution loop turns failed answers into gated registry updates that re-enter serving.](assets/paper-figures/finskillops-sec-filing-qa.png)
+
+**Source figure / official image** — FinSkillOps: the serving pipeline draws on curated filing indexes while the evolution loop turns failed answers into gated registry updates that re-enter serving. · Figure 1 (emnlp-FinEvo-Final.png) · [source](https://arxiv.org/html/2609.19680v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.19680) · [Paper HTML (affiliations, Figure 1, abstract numbers)](https://arxiv.org/html/2609.19680v1)
 
 <a id="evoskill-gui-reflect-revise-reuse"></a>
 
@@ -407,6 +467,36 @@
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2605.10332) · [Paper v2 (affiliations, Figure 2, Tables, ablations)](https://arxiv.org/html/2605.10332v2) · [Code repository (MIT)](https://github.com/air-embodied-brain/EmbodiSkill)
 
+<a id="coevoskills-coevolutionary-verification"></a>
+
+### CoEvoSkills: Self-Evolving Agent Skills via Co-Evolutionary Verification
+
+**2026-04-02** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-04-02 (v3 2026-08-10 current); COLM acceptance stated on the abs page, verified 2026-09-19.
+
+**Institutional relationship** — Academic consortium led by UIC with MBZUAI/McGill, Columbia, Zhejiang and UBC co-authors.
+
+**What changes and how feedback is reused** — A Skill Generator produces multi-file skill packages while a co-evolving Surrogate Verifier filters them using only structured failure feedback; the ground-truth oracle is kept information-isolated (opaque pass/fail only) and its rounds trigger test upgrades, so skill and verifier bootstrap each other without labels.
+
+**Author-reported result** — On SkillsBench with Claude Opus 4.6 + Claude Code: 71.1% pass rate vs 30.6% no-skill (+40.5pp), 53.5% human-curated skills (+17.6pp) and 34.1% for Anthropic Skill-Creator; GPT-5.2 self-evolved 69.8% vs 29.6%; skills evolved by Opus transfer to six other models with +35 to +44pp (e.g. Haiku 4.5: 54.5% vs 10.4%).
+
+**Evidence limits** — Author-reported on one benchmark family; the verifier can be fooled within its feedback budget and the paper measures skill pass rates, not downstream recursive compounding.
+
+**Code / weights / data / license** — Apache-2.0 code at github.com/Zhang-Henry/CoEvoSkills (verified); SkillsBench usage terms follow the paper.
+
+**Possible nanoRSI experiment — not implemented here** — nanoRSI skills starter can adopt the information-isolated verifier pattern: the strict gate sees only structured failure feedback while the oracle emits opaque pass/fail, and oracle invocations trigger verifier test upgrades.
+
+![The Skill Generator and Surrogate Verifier co-evolve through iterative refinement with the ground-truth oracle kept information-isolated.](assets/paper-figures/coevoskills-coevolutionary-verification.png)
+
+**Source figure / official image** — The Skill Generator and Surrogate Verifier co-evolve through iterative refinement with the ground-truth oracle kept information-isolated. · Figure 3 (process.png) · [source](https://arxiv.org/html/2604.01687v3)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — [Code repository](https://github.com/Zhang-Henry/CoEvoSkills)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2604.01687) · [Paper HTML (affiliations, Table 3, Figure 3)](https://arxiv.org/html/2604.01687v3) · [Code repository](https://github.com/Zhang-Henry/CoEvoSkills)
+
 <a id="skillclaw-collective-evolution"></a>
 
 ### SkillClaw: Let Skills Evolve Collectively with Agentic Evolver
@@ -439,7 +529,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (9)
+## Harness search & evolution (11)
 
 <a id="chase-counterfactual-harness"></a>
 
@@ -470,6 +560,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.18366) · [Paper HTML (affiliations, Figure 2, OfficeQA table)](https://arxiv.org/html/2609.18366v1)
+
+<a id="evolvetrade-experience-driven-policy"></a>
+
+### EvolveTrade: Experience-Driven Policy Refinement for Self-Evolving LLM Trading Agents
+
+**2026-09-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-09-15; Sung Ju Hwang is jointly affiliated with KAIST and DeepAuto.ai.
+
+**Institutional relationship** — Academic-led (KAIST) with one company co-author.
+
+**What changes and how feedback is reused** — The trading agent system prompt is treated as a text-parameterized tool-calling policy: an independent Policy Agent rewrites it every five trading days from decision trajectories and portfolio outcomes, with the backbone LLM and tools frozen.
+
+**Author-reported result** — GPT-5-mini, 15 US blue chips, mean of 3 runs: Sharpe 5.12 vs 2.87 and cumulative return 5.10% vs 3.30% for the static tool-calling agent in Nov 2025; 8.43/6.84% in the strongest window; honest negative in Feb 2026 (Sharpe −2.53 vs −1.54 for static); a 50-day long window holds SR 4.00 vs 2.94 with 10 bps fees.
+
+**Evidence limits** — Author-reported backtests on 15 symbols with three seeds; one of three windows loses to the static policy; one backbone (Gemini-2.5-Flash in Apr 2026) shows the static base agent winning outright; no code release located.
+
+**Code / weights / data / license** — arXiv paper public (CC BY 4.0); no code release located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — A minimal self-evolving-agent fixture with honest negatives: policy text changes only every N task batches from accumulated trajectory evidence, and per-window win/loss against the frozen policy is the published readout.
+
+![Concept: the static agent acts on a fixed channel; the static tool-calling agent retrieves but never learns; EvolveTrade closes the loop by refining the prompt-policy from its own experience.](assets/paper-figures/evolvetrade-experience-driven-policy.png)
+
+**Source figure / official image** — Concept: the static agent acts on a fixed channel; the static tool-calling agent retrieves but never learns; EvolveTrade closes the loop by refining the prompt-policy from its own experience. · Figure 1 (concept_evolvetrade.png) · [source](https://arxiv.org/html/2609.17632v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17632) · [Paper HTML (affiliations, Tables 3/4, Figure 1)](https://arxiv.org/html/2609.17632v1)
 
 <a id="modularrsi-modular-harness"></a>
 
@@ -590,6 +710,36 @@
 **Open code / weights / data links** — [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt)
 
 **Primary sources** — [DarwinX paper v1](https://arxiv.org/abs/2608.07545) · [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt) · [Official Beagle architecture figure](https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg)
+
+<a id="rho-retrospective-harness"></a>
+
+### Evolving Agents in the Dark: Retrospective Harness Optimization via Self-Preference
+
+**2026-06-04** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-06-04; surfaced 2026-09-19 during a catch-up sweep of company lines — a June miss, not a new paper.
+
+**Institutional relationship** — Company-academic (MSRA with City University of Hong Kong).
+
+**What changes and how feedback is reused** — Harness optimization without labels or validation feedback: a DPP-selected coreset of past tasks is re-solved in groups, diagnosis cues are distilled from the trajectories, a full-stack harness (instructions, skills, executable tools) is rewritten, and the agent itself ranks candidates pairwise (self-preference) to pick the best of N=3.
+
+**Author-reported result** — Codex (GPT-5.5 high) one optimization round: SWE-Bench Pro 0.59→0.78, Terminal-Bench 2 0.71→0.76, GAIA-2 0.29→0.37; beats feedback-free baselines (Dynamic Cheatsheet/ReasoningBank/Sleep-time Compute) on all three; validation-feedback Meta-Harness needs 10 rounds (≈3.1× compute, labels) to reach 0.80.
+
+**Evidence limits** — Self-preference can mis-rank (ablation: chosen candidates avoid the worst but not always the empirically best); group rollout assumes cleanly resettable environments; authors warn mistaken self-preferences could amplify unsafe behavior.
+
+**Code / weights / data / license** — MIT code at github.com/wbopan/retro-harness (56 stars at verification, last push 2026-06-12).
+
+**Possible nanoRSI experiment — not implemented here** — nanoRSI run archives already store candidate trees; RHO shows how to reuse them label-free — re-solve a difficulty-diverse coreset under each candidate, then self-rank. This extends ADOPTION 22 with a no-oracle mode.
+
+![The RHO pipeline: coreset selection picks a difficulty-diverse subset of past tasks, group rollout re-solves them, and diagnosis plus self-preference ranking rewrite the harness.](assets/paper-figures/rho-retrospective-harness.png)
+
+**Source figure / official image** — The RHO pipeline: coreset selection picks a difficulty-diverse subset of past tasks, group rollout re-solves them, and diagnosis plus self-preference ranking rewrite the harness. · Figure 2 (fig2-pipeline.png) · [source](https://arxiv.org/html/2606.05922v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — [Code repository](https://github.com/wbopan/retro-harness)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2606.05922) · [Paper HTML (affiliations, results, Figure 2)](https://arxiv.org/html/2606.05922v1) · [Code repository](https://github.com/wbopan/retro-harness)
 
 <a id="combee-parallel-prompt-learning"></a>
 
@@ -713,7 +863,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## Self-modifying meta-agents & lineages (5)
+## Self-modifying meta-agents & lineages (6)
+
+<a id="solpi-recursive-autoresearch-loops"></a>
+
+### SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness
+
+**2026-09-17** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2026-09-17; code repository created 2026-09-02 and active through 2026-09-18.
+
+**Institutional relationship** — Company-led (NVIDIA, with NTU and MIT co-authors; NVlabs repository and project page).
+
+**What changes and how feedback is reused** — An RSI-inspired auto-research loop recursively improves the agent harness itself: a research AI proposes harness mechanisms from execution trajectories, an agent swarm explores candidates in parallel with independent review, and only mechanisms that survive held-out validation (EdgeBench never enters the search) are retained — four mechanisms survived.
+
+**Author-reported result** — On the 51-task EdgeBench, SoL-Pi matches Pi performance across GPT-5.6 Sol and Opus 5 while cutting recorded token traffic 44.7-49.0% and API cost by about a third; estimated savings $8.75-13.50/hour vs native Codex and Claude Code, $4.36-5.71/hour vs Pi.
+
+**Evidence limits** — Author-reported efficiency gains at matched task performance; the search itself consumed substantial compute (two-hour swarm runs); generalization beyond EdgeBench-class edge tasks not shown.
+
+**Code / weights / data / license** — MIT code at github.com/NVlabs/SoL-Pi (2,244 stars at verification) and project page nvlabs.github.io/SoL-Pi/.
+
+**Possible nanoRSI experiment — not implemented here** — The hard separation between repository-derived search environments and a never-touched held-out benchmark, plus an independent-review gate before mechanism retention, is directly transplantable to nanoRSI population runs.
+
+![SoL-Pi discovers a more token-efficient harness through automated research: research environments supply tasks while an AI running the base harness iterates mechanisms.](assets/paper-figures/solpi-recursive-autoresearch-loops.png)
+
+**Source figure / official image** — SoL-Pi discovers a more token-efficient harness through automated research: research environments supply tasks while an AI running the base harness iterates mechanisms. · Figure 1 (teaser-funnel-v10.png) · [source](https://arxiv.org/html/2609.20519v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — [Code repository](https://github.com/NVlabs/SoL-Pi)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.20519) · [Paper HTML (affiliations, Figure 1-2, abstract numbers)](https://arxiv.org/html/2609.20519v1) · [Code repository](https://github.com/NVlabs/SoL-Pi) · [Project page](https://nvlabs.github.io/SoL-Pi/)
 
 <a id="nous-hermes-selfrefactor"></a>
 
@@ -821,7 +1001,7 @@
 
 **Evidence limits** — Author-reported by the system's builder; single run; gains non-monotonic (AIDE₈₅ trails AIDE₄₇ on MLE-Bench Lite); the 'first evidence' claim is against Weco's own RSI ladder (Level 1: beating a fair human baseline under fixed budget), not a community-standard definition.
 
-**Code / weights / data / license** — Blog post public; promised PDF report, code and weights not released at last check.
+**Code / weights / data / license** — Blog post public; the promised PDF report, code and weights remain unreleased as of 2026-09-19 (two months after the announcement; blog RSS shows no later post).
 
 **Possible nanoRSI experiment — not implemented here** — Recreate the fixed-budget proposal/reject ladder on a minimal task: outer loop rewrites the inner runner, ~90% rejection is evidence the acceptance gate works, and a private held-out split decides acceptance.
 
@@ -829,7 +1009,7 @@
 
 **Source figure / official image** — Weco AI's outer-loop diagram: AIDE_human rewrites the inner-loop AIDE agent, each rewrite evaluated under a fixed budget with ~90% rejection. · Outer-loop figure (figB) in the blog post · [source](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
@@ -1047,7 +1227,7 @@
 
 **Source figure / official image** — Official Reef loop diagram: serve requests, observe receipt-linked feedback, grow a candidate update, and commit only after selection into version history. · README 'How it works' loop diagram · [source](https://github.com/Human-Agent-Society/reef)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
 
 **Open code / weights / data links** — [Official repository README](https://github.com/Human-Agent-Society/reef) · [Apache-2.0 LICENSE](https://raw.githubusercontent.com/Human-Agent-Society/reef/main/LICENSE)
 

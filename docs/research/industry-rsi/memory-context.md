@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Structured knowledge bases & graphs](#family-structured-knowledge) | 6 |
-| [Experience accumulation & replay](#family-experience-accumulation) | 6 |
+| [Experience accumulation & replay](#family-experience-accumulation) | 7 |
 | [Context organization policies](#family-context-policies) | 4 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
 | [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 2 |
@@ -198,7 +198,7 @@
 
 <a id="family-experience-accumulation"></a>
 
-## Experience accumulation & replay (6)
+## Experience accumulation & replay (7)
 
 <a id="echopath-replayable-memory"></a>
 
@@ -216,7 +216,7 @@
 
 **Evidence limits** — Best suited to stable environments: visual re-aiming stays vulnerable to toolbar rearrangement, localization, responsive layouts, display scaling and near-duplicate UI elements; live robustness under interface drift is not established, and memory acquisition requires a full autonomous first pass rather than user demonstration.
 
-**Code / weights / data / license** — Paper lists github.com/JackZhao1998/EchoPath; the URL did not resolve at verification.
+**Code / weights / data / license** — The paper-listed repository github.com/JackZhao1998/EchoPath was deleted between 2026-09-17 and 2026-09-19 (API 404 with no redirect, not a rename); no relocation found. Paper remains public.
 
 **Possible nanoRSI experiment — not implemented here** — For nanoRSI: store execution-level skills as callable memories carrying their own validation provenance and lifecycle state, and expose only active ones to retrieval — replay then buys most of the win at a tenth of the tokens.
 
@@ -224,7 +224,7 @@
 
 **Source figure / official image** — EchoPath framework: validated trajectories become parameter-controlled callable memories with validation provenance and lifecycle states, re-aimed to the current screen before replay. · Figure 1 (S2.F1) · [source](https://arxiv.org/html/2609.16635v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
@@ -289,6 +289,36 @@
 **Open code / weights / data links** — [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
 **Primary sources** — [arXiv record](https://arxiv.org/abs/2608.23552) · [Paper first-publication statement and Factorio evidence](https://arxiv.org/html/2608.23552v1) · [Official launch and update mechanism](https://www.primeintellect.ai/blog/prime-agent) · [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
+
+<a id="simplemem-lifelong-memory"></a>
+
+### SimpleMem: Efficient Lifelong Memory for LLM Agents
+
+**2026-01-05** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 2026-01-05 (v3 2026-01-29 current); workshop acceptance verified on iclr.cc 2026-09-19.
+
+**Institutional relationship** — Academic (UNC-Chapel Hill with Berkeley and UC Santa Cruz).
+
+**What changes and how feedback is reused** — Lifelong memory as a three-stage pipeline: semantic structured compression filters low-utility dialogue, online semantic synthesis consolidates entries, and intent-planned multi-view queries retrieve at ask time — replacing full-context or iterative filtering.
+
+**Author-reported result** — GPT-4.1-mini on LoCoMo: average F1 43.24 vs Mem0 34.20 and full-context 18.70, at 531 tokens per query (~30× fewer than full-context/MemGPT 16,910); LongMemEval-S 83.97% vs Mem0 58.51%; memory construction 92.6s vs Mem0 1350.9s per sample.
+
+**Evidence limits** — Author-reported on long-term conversation benchmarks; enabling infrastructure — the memory system does not itself improve the improver; MIT code with strong community uptake already (3.8k stars).
+
+**Code / weights / data / license** — MIT code at github.com/aiming-lab/SimpleMem (3.8k stars at verification).
+
+**Possible nanoRSI experiment — not implemented here** — The compression-then-consolidation split is the token-budget lever for nanoRSI skill memory: filter low-utility traces at write time, consolidate periodically, retrieve by intent.
+
+![The SimpleMem architecture: semantic structured compression, online semantic synthesis, and intent-planned multi-view retrieval.](assets/paper-figures/simplemem-lifelong-memory.png)
+
+**Source figure / official image** — The SimpleMem architecture: semantic structured compression, online semantic synthesis, and intent-planned multi-view retrieval. · Figure 2 (Fig_framework_v2.png) · [source](https://arxiv.org/html/2601.02553v3)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+
+**Open code / weights / data links** — [Code repository](https://github.com/aiming-lab/SimpleMem)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2601.02553) · [Paper HTML (affiliations, Table 1, Figure 2)](https://arxiv.org/html/2601.02553v3) · [Code repository](https://github.com/aiming-lab/SimpleMem) · [ICLR virtual page](https://iclr.cc/virtual/2026/10018638)
 
 <a id="atlas-pamphlets"></a>
 

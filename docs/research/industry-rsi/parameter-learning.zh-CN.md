@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [自博弈与课程任务生成](#family-self-play-curriculum) | 11 |
+| [自博弈与课程任务生成](#family-self-play-curriculum) | 14 |
 | [验证器与奖励进化](#family-verifier-reward) | 5 |
 | [技能-权重共进化](#family-skill-weight-coevolution) | 2 |
-| [经验蒸馏与测试时适应](#family-experience-distillation) | 4 |
-| [自主训练智能体与数据管线](#family-autonomous-training) | 4 |
-| [支撑性适应机制](#family-enabling-adaptation) | 5 |
+| [经验蒸馏与测试时适应](#family-experience-distillation) | 5 |
+| [自主训练智能体与数据管线](#family-autonomous-training) | 5 |
+| [支撑性适应机制](#family-enabling-adaptation) | 7 |
 
 <a id="family-self-play-curriculum"></a>
 
-## 自博弈与课程任务生成 (11)
+## 自博弈与课程任务生成 (14)
+
+<a id="stretch-unified-self-taught"></a>
+
+### STRETCH the Boundaries: A Unified Self-Taught Framework for Progressive LLM Evolution
+
+**2026-09-16** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-09-16。
+
+**机构关系** — 学术工作（伯明翰大学计算机学院）。
+
+**改变对象与反馈复用** — 同一模型在同参数空间交替扮演 Scaffolder 与 Learner：GRPO 训练的出题奖励钉在学习者 50% 成功率，把任务保持在拉伸区；epoch 级 Golden Experience Replay（成功题/轨迹对 SFT）稳住双循环。
+
+**作者报告结果** — Qwen2.5-7B-Instruct 在 Mano Complex：67.9 ER / 63.6 SA，对照 R-Zero 64.8/61.7、Absolute Zero 63.4/60.1；Complex OR 58.7/55.0 vs StepORLM 57.3/52.6；六个自博弈 epoch、LoRA rank16、2×H100。
+
+**证据边界** — 作者自报，相对 R-Zero/AZR 在运营推理基准上优势不大；判分/模拟器依赖 GPT-4o-mini；代码仓库无 LICENSE 文件。
+
+**代码／权重／数据／许可** — 代码位于 github.com/GuanNiPiShi123/STRETCH（核验时无 LICENSE——仅可借鉴思想）；论文 arXiv 非独家许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 50% 成功率的奖励峰值可为 nanoRSI 探针任务生成提供可调难度目标——保持半数可解的任务流让每次评估的信息量最大。
+
+![STRETCH 的双循环异步更新：Scaffolder 环对齐题目难度，Learner 环提升解题，epoch 间做黄金经验回放。](assets/paper-figures/stretch-unified-self-taught.png)
+
+**原文图／官方图片** — STRETCH 的双循环异步更新：Scaffolder 环对齐题目难度，Learner 环提升解题，epoch 间做黄金经验回放。 · Figure 2 (Method_v2_cropped.png) · [source](https://arxiv.org/html/2609.18642v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/GuanNiPiShi123/STRETCH)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.18642) · [Paper HTML (affiliations, Table 1, Figure 2)](https://arxiv.org/html/2609.18642v1) · [Code repository](https://github.com/GuanNiPiShi123/STRETCH)
 
 <a id="spade-adaptive-environments"></a>
 
@@ -136,6 +166,66 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [Paper](https://cdn.openai.com/pdf/gpt-red-automated-red-teaming-via-self-play-at-scale.pdf) · [Official report](https://openai.com/index/unlocking-self-improvement-gpt-red/)
+
+<a id="ace-fudan-adversarial-tests"></a>
+
+### ACE: Self-Evolving LLM Coding Framework via Adversarial Unit Test Generation and Preference Optimization
+
+**2026-04-17** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-04-17、v2 2026-05-21（当前）；abs 页无接收声明。与本库无关的 Agentic Context Engineering 条目同名缩写 ACE。
+
+**机构关系** — 学术工作（复旦大学数据科学学院）。
+
+**改变对象与反馈复用** — 单个 LLM 交替扮演 Solver（写代码）与 Adversary（构造对抗单元测试）；执行 pass/fail 布尔表驱动 Solver 侧 SFT 过滤与 Adversary 侧 KTO 偏好优化，多轮递归自改进，无需 ground-truth 代码或外部奖励模型。
+
+**作者报告结果** — 共享底座的双 LoRA 适配器：Qwen3-4B 经 5 轮自进化 CodeContests pass@1 46.7（instruct 41.7、ReasonFlux-Coder-4B 24.0）、LiveCodeBench 37.5；Qwen2.5-7B 在 OOD LiveCodeBench 38.9，对照 ReasonFlux-Coder-7B 33.5、instruct 30.4。
+
+**证据边界** — 作者自报；对抗测试的强度受限于对抗者策略（测试质量无外部核验）；未找到代码发布。
+
+**代码／权重／数据／许可** — arXiv 论文公开；核验时未发现代码或权重发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 可让提案者在候选编辑之外同时产出对抗探针用例：两者的执行结果共同构成验收信号，在最小任务集上去掉对裁判模型的依赖。
+
+![单个 LLM 交替扮演 Solver 与 Adversary；在 ground-truth 与对抗测试上的执行结果驱动 SFT 过滤与 KTO 偏好优化。](assets/paper-figures/ace-fudan-adversarial-tests.png)
+
+**原文图／官方图片** — 单个 LLM 交替扮演 Solver 与 Adversary；在 ground-truth 与对抗测试上的执行结果驱动 SFT 过滤与 KTO 偏好优化。 · Figure 2 (method_pipeline.png) · [source](https://arxiv.org/html/2605.16299v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2605.16299) · [Paper HTML (affiliations, Table 2, Figure 2)](https://arxiv.org/html/2605.16299v2)
+
+<a id="gasp-guided-asymmetric-selfplay"></a>
+
+### GASP: Guided Asymmetric Self-Play For Coding LLMs
+
+**2026-03-16** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-03-16；abs Comments 明确写有 ICLR 2026 递归自改进研讨会（RSI 2026）Spotlight 与 Lifelong Agents（LLA 2026）研讨会接收。
+
+**机构关系** — 学术工作（图宾根 ELLIS/MPI 集群）。
+
+**改变对象与反馈复用** — 锚定真实难题的非对称自博弈：对标准 RLVR 解不出的 goalpost 题，教师先生成较易的 lemma 变体、再生成更难的 lift 变体构成课程；学生解答经拒绝采样回炉训练，全程无需外部数据。
+
+**作者报告结果** — Qwen2.5-Coder-7B 在 LiveCodeBench v5（216 题、3 种子）：pass@20 33.69±0.28，对照 AZR 31.15、真实数据 RL 33.10、底座 29.68；GASP+真实数据 RL 最佳 34.46；pass@1 18.26 vs AZR 17.49。pass@100 解出 146 道 goalpost 中的 11 道（基线按构造为 0）；HumanEval+ 上 AZR 仍胜（83.54 vs 79.67）。
+
+**证据边界** — 增益在单一编码基准族上绝对点数不大；HumanEval+ 的退化论文如实报告；未找到代码发布。
+
+**代码／权重／数据／许可** — arXiv 论文公开；核验时未发现代码或权重发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — goalpost 机制可映射到 nanoRSI 探针任务：维护未解冻结任务清单，让提案者朝它们生成 lemma/lift 变体，把攻破的 goalpost 数作为搜索进度读数。
+
+![自博弈由真实难题 goalpost 引导：教师先生成较易的 lemma 变体，再朝 goalpost 生成更难的 lift 变体。](assets/paper-figures/gasp-guided-asymmetric-selfplay.png)
+
+**原文图／官方图片** — 自博弈由真实难题 goalpost 引导：教师先生成较易的 lemma 变体，再朝 goalpost 生成更难的 lift 变体。 · Figure 1 (overview_fig.png) · [source](https://arxiv.org/html/2603.15957v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2603.15957) · [Paper HTML (affiliations, Table 1, Figure 1)](https://arxiv.org/html/2603.15957v1)
 
 <a id="meta-ssr-self-play"></a>
 
@@ -567,7 +657,37 @@
 
 <a id="family-experience-distillation"></a>
 
-## 经验蒸馏与测试时适应 (4)
+## 经验蒸馏与测试时适应 (5)
+
+<a id="retireopd-self-retiring-distillation"></a>
+
+### RetireOPD: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning
+
+**2026-09-17** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 2026-09-17；代码位于 ZJU-REAL/SDAR 仓库（2026-05-14 为该组自蒸馏线创建，活跃至 2026-09-18）。
+
+**机构关系** — 学术牵头（浙江大学），阿里巴巴合著。
+
+**改变对象与反馈复用** — 先用环境奖励训练技能条件教师；无技能学生通过 RL 加在线策略技能蒸馏联合学习；师生差异收敛后教师自动退役、训练继续纯 RL——技能最终内化进权重。
+
+**作者报告结果** — Qwen2.5 1.5B-7B 全档：ALFWorld 成功率较 RL（GRPO）基线 +14.1%~+18.8%、WebShop 准确率 +11.8%~+19.0%；学生仅在每档设置都超过自己的技能条件教师。
+
+**证据边界** — 作者自报于 ALFWorld/WebShop；退役判据是散度启发式，非平稳任务上可能提前触发；本质是技能到权重的内化支撑而非自改进闭环。
+
+**代码／权重／数据／许可** — Apache-2.0 代码位于 github.com/ZJU-REAL/SDAR（核验时 383 星）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 退役是 ADOPTION 26 缺的生命周期另一半：给巩固后的技能工件一个自动过期测试（冻结策略是否仍胜过无工件策略？），内化完成即退役。
+
+![RetireOPD 总览：技能条件教师构建、联合技能内化与教师自动退役。](assets/paper-figures/retireopd-self-retiring-distillation.png)
+
+**原文图／官方图片** — RetireOPD 总览：技能条件教师构建、联合技能内化与教师自动退役。 · Figure 3 (method.png) · [source](https://arxiv.org/html/2609.20784v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/ZJU-REAL/SDAR)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.20784) · [Paper HTML (affiliations, Figure 3, results)](https://arxiv.org/html/2609.20784v1) · [Code repository](https://github.com/ZJU-REAL/SDAR)
 
 <a id="experience-funnel-state-policy"></a>
 
@@ -691,7 +811,7 @@
 
 <a id="family-autonomous-training"></a>
 
-## 自主训练智能体与数据管线 (4)
+## 自主训练智能体与数据管线 (5)
 
 <a id="scienceide-agent-environments"></a>
 
@@ -722,6 +842,36 @@
 **开源代码／权重／数据链接** — [ScienceIDE repository](https://github.com/aitofound/ScienceIDE)
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.19134) · [Paper HTML (author block, Figure 1)](https://arxiv.org/html/2609.19134v1) · [ScienceIDE repository](https://github.com/aitofound/ScienceIDE)
+
+<a id="xpace-world-model-selfimprovement"></a>
+
+### XPACE: Joint World and Action Modeling from Heterogeneous Experience
+
+**2026-09-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-09-15，cs.RO；十六位作者全部来自小鹏机器人。
+
+**机构关系** — 企业一手成果（小鹏机器人）。
+
+**改变对象与反馈复用** — 共享视频 backbone 联合训练策略与世界模拟器；经 self-gradient-forcing 适配后，模拟器在专家演示周围渲染偏离-恢复轨迹，过滤后用于 DAgger 式策略精调——在异构经验金字塔上形成世界模型驱动的自改进闭环。
+
+**作者报告结果** — 真机 3 任务 × 20 试验：平均成功率 68.3%、进度 0.84，对照 DreamZero 40.0%/0.68、GR00T 6.7%/0.36；自改进闭环把平均成功率 61.7%→86.7%、进度 0.81→0.93（倒茶 50%→95%）。
+
+**证据边界** — 作者自报于三个真机操作任务；未找到代码或权重发布；闭环依赖保真度尚可的预训练世界模型。
+
+**代码／权重／数据／许可** — arXiv 论文公开；核验时未发现代码或权重发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 偏离-恢复配方是一种免环境数据生成器：重放已记录的 nanoRSI 候选轨迹，在接受解附近施加扰动，保留成功恢复的修复——不跑新环境就得到合成负例。
+
+![MoT 架构、运行模式与 XPACE 自改进循环：模拟模式渲染恢复数据用于精调策略。](assets/paper-figures/xpace-world-model-selfimprovement.png)
+
+**原文图／官方图片** — MoT 架构、运行模式与 XPACE 自改进循环：模拟模式渲染恢复数据用于精调策略。 · Figure 4 (model_v3.png) · [source](https://arxiv.org/html/2609.17372v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17372) · [Paper HTML (Figure 4/12, results)](https://arxiv.org/html/2609.17372v1)
 
 <a id="tokenrhythm-neohorse-1"></a>
 
@@ -815,7 +965,67 @@
 
 <a id="family-enabling-adaptation"></a>
 
-## 支撑性适应机制 (5)
+## 支撑性适应机制 (7)
+
+<a id="infinite-parameter-weights-from-live-data"></a>
+
+### Infinite-Parameter LLMs: Generating and Adapting Weights from Live Data
+
+**2026-09-16** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 2026-09-16。
+
+**机构关系** — 企业-学术（Boltzbit 与剑桥；Hernández-Lobato 双重隶属）。
+
+**改变对象与反馈复用** — 超网络编码器把运行时交互数据编译为隐码并在线贝叶斯更新信念，再为冻结基座 FFN 生成 LoRA（r=8）权重增量——权重由数据再生成而非从存储库中选择，参数化无上界。
+
+**作者报告结果** — Qwen3-8B 冻结基座，MS MARCO（十段落）F1：data-to-weights 48.0 vs 上下文内 33.6 vs 闭卷 16.8；SQuAD（单段干净证据）上诚实给出边界：上下文内 85.3 vs data-to-weights 51.8；稀释下学习路由 53.3 vs 稠密检索 45.3。
+
+**证据边界** — 论文为 CC BY-NC-ND 4.0（非商业——对本 Apache-2.0 仓库仅可借鉴思想）；评测限于问答型证据任务；未找到代码或权重发布。
+
+**代码／权重／数据／许可** — arXiv 论文公开（CC BY-NC-ND 4.0）；核验时未发现代码或权重发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 稀释边界启发 nanoRSI 实验：把长而噪的证据缓存为紧凑派生状态 vs 在上下文中重读，测量缓存开始胜出的交叉点。
+
+![围绕隐码信念组织的架构：活数据读入信念，按需生成低秩权重增量。](assets/paper-figures/infinite-parameter-weights-from-live-data.svg)
+
+**原文图／官方图片** — 围绕隐码信念组织的架构：活数据读入信念，按需生成低秩权重增量。 · Figure 3 (inline SVG) · [source](https://arxiv.org/html/2609.18842v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.18842) · [Paper HTML (affiliations, Table 4, Figure 3)](https://arxiv.org/html/2609.18842v1)
+
+<a id="cera-moa-coevolving-routing"></a>
+
+### CERA-MoA: Co-Evolving Routing Mechanisms with Continually Learning LLM Agents
+
+**2026-09-16** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 2026-09-16；机构信息在论文正文（清华交叉信息院、上交人工智能学院、上海期智研究院），abs 页不显示。
+
+**机构关系** — 学术工作（清华交叉信息院 × 上交 × 上海期智研究院）。
+
+**改变对象与反馈复用** — 基于中层隐藏态的预测性熟悉度估计器驱动累积阈值自适应路由，只激活持续 RL 训练的 agent 中最小胜任子集以诱导特化，路由机制本身与学习者共同演化。
+
+**作者报告结果** — Qwen3-4B 九个分布内基准：ID 均值 63.2，对照 AT-GRPO 61.0、RouteMoA 53.1、裸模型 49.6；OOD 均值 72.8 vs 71.5；自适应阈值把平均 token 降到 367.77（固定 top-2 为 666.37），精度相当。
+
+**证据边界** — 作者自报；相对最强基线增益约 2 点；共同演化发生在单次训练内的路由与 agent 之间，而非跨自改进代际；未找到代码发布。
+
+**代码／权重／数据／许可** — arXiv 论文公开（CC BY 4.0）；核验时未发现代码发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 熟悉度估计器是 nanoRSI 技能路由的廉价信号：把任务路由到历史 rollout 看着熟悉的最小技能集，并把路由漂移记为技能过时的证据。
+
+![CERA-MoA 总览：熟悉度驱动的自适应路由选择最小胜任 agent 子集，agent 持续学习。](assets/paper-figures/cera-moa-coevolving-routing.png)
+
+**原文图／官方图片** — CERA-MoA 总览：熟悉度驱动的自适应路由选择最小胜任 agent 子集，agent 持续学习。 · Figure 1 (cera-moa.png) · [source](https://arxiv.org/html/2609.18779v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.18779) · [Paper HTML (in-body affiliations, Tables 2/4, Figure 1)](https://arxiv.org/html/2609.18779v1)
 
 <a id="sakana-doc-to-lora"></a>
 

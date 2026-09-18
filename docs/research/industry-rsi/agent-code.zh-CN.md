@@ -6,16 +6,76 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 14 |
-| [Harness 搜索与进化](#family-harness-search) | 9 |
-| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 5 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 17 |
+| [Harness 搜索与进化](#family-harness-search) | 11 |
+| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 6 |
 | [程序进化与进化搜索](#family-program-evolution) | 5 |
 | [反馈审查与编排](#family-feedback-orchestration) | 3 |
 | [安全与治理](#family-safety-governance) | 2 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (14)
+## 技能文件优化与技能库 (17)
+
+<a id="skillaa-attribution-rollback"></a>
+
+### SkillAA: Attribution-Guided Skill-Graph Updating with Targeted Validation and Rollback
+
+**2026-09-17** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-09-17；代码仓库同日创建。
+
+**机构关系** — 学术工作（南京大学计算机软件新技术全国重点实验室与智能科学与技术学院）。
+
+**改变对象与反馈复用** — 在冻结模型上，对比成功/失败 rollout 把每次失败归因到具体技能图对象；修复只编辑被选中的局部结构，Local 与 Big 双闸门在提交前验证候选变更并支持回滚。
+
+**作者报告结果** — gpt-5.6-sol 下 SkillAA 达 SearchQA 81.5%、LiveMath 66.7%、DocVQA 91.2%，在所有主设置中观测均值最高；消融支持结构化表示、归因条件编辑与 Local-Gate 回归控制的作用。
+
+**证据边界** — 作者自报且摘要无外部基线数字；对照在论文表格内；代码仓库无 LICENSE 文件（默认保留所有权利）。
+
+**代码／权重／数据／许可** — 代码位于 github.com/Ziqiao-Shang/SkillAA（核验时无 LICENSE 文件——仅可借鉴思想）；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 证据卡已存诊断与 diff；SkillAA 补上缺的另一半——编辑前把每次退化归因到确切技能小节，再用回滚单元闸门验证编辑，而非整技能重写。
+
+![SkillAA 如何从错误学习：每个技能节点声明适用与不适用条件；归因把修复路由到具体失败对象后再做闸门编辑。](assets/paper-figures/skillaa-attribution-rollback.png)
+
+**原文图／官方图片** — SkillAA 如何从错误学习：每个技能节点声明适用与不适用条件；归因把修复路由到具体失败对象后再做闸门编辑。 · Figure 2 (images/2.png) · [source](https://arxiv.org/html/2609.20455v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/Ziqiao-Shang/SkillAA)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.20455) · [Paper HTML (affiliations, Figure 2, results)](https://arxiv.org/html/2609.20455v1) · [Code repository](https://github.com/Ziqiao-Shang/SkillAA)
+
+<a id="finskillops-sec-filing-qa"></a>
+
+### FINSKILLOPS: A Self-Evolving Multi-Agent System for SEC Filing QA
+
+**2026-09-17** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-09-17；28 位作者分布于一企业与十一所高校；HTML 用 EMNLP 模板但未声明接收。
+
+**机构关系** — SimpleWay.AI 牵头的产业-学术联合，合作方含麦吉尔、多伦多、UCLA、港中文、Mila 等。
+
+**改变对象与反馈复用** — 类型化、证据接地的失败诊断被转成带作用域的技能补丁，经定向验证、回归检查与阴性对照后，在 SEC 文件问答的服务/进化双环中做版本化替换或退役。
+
+**作者报告结果** — 进化技能把裁判打分的正确性从 3.70 提到 4.55；另一项 12 轮运营研究仅晋升 33 个提案技能中的 6 个，监控非正确率从 20.0% 降至 12.5%。
+
+**证据边界** — 作者自报于自建金融问答场景、评分依赖 LLM 裁判；6/33 晋升率是诚实的头条——多数提案技能未过闸；未找到代码发布。
+
+**代码／权重／数据／许可** — arXiv 论文公开；核验时未发现代码发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 阴性对照准入（提案技能必须在失败切片上胜过不作为对照）与显式退役是 nanoRSI 技能流缺的两道闸；6/33 晋升率是现实的前置参考。
+
+![FinSkillOps：服务管线使用策划的文件索引，进化环把失败回答变成过闸的注册表更新并回流服务。](assets/paper-figures/finskillops-sec-filing-qa.png)
+
+**原文图／官方图片** — FinSkillOps：服务管线使用策划的文件索引，进化环把失败回答变成过闸的注册表更新并回流服务。 · Figure 1 (emnlp-FinEvo-Final.png) · [source](https://arxiv.org/html/2609.19680v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.19680) · [Paper HTML (affiliations, Figure 1, abstract numbers)](https://arxiv.org/html/2609.19680v1)
 
 <a id="evoskill-gui-reflect-revise-reuse"></a>
 
@@ -407,6 +467,36 @@
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2605.10332) · [Paper v2 (affiliations, Figure 2, Tables, ablations)](https://arxiv.org/html/2605.10332v2) · [Code repository (MIT)](https://github.com/air-embodied-brain/EmbodiSkill)
 
+<a id="coevoskills-coevolutionary-verification"></a>
+
+### CoEvoSkills: Self-Evolving Agent Skills via Co-Evolutionary Verification
+
+**2026-04-02** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-04-02（当前 v3 2026-08-10）；COLM 接收见 abs 页 Comments，2026-09-19 核验。
+
+**机构关系** — UIC 牵头的学术联合工作，合著者来自 MBZUAI/麦吉尔、哥伦比亚、浙江大学与 UBC。
+
+**改变对象与反馈复用** — 技能生成器产出多文件技能包，共同进化的代理验证器仅凭结构化失败反馈把关；ground-truth oracle 保持信息隔离（只给不透明 pass/fail）并触发测试升级，技能与验证器在无标注下互相自举。
+
+**作者报告结果** — SkillsBench（Claude Opus 4.6 + Claude Code）：通过率 71.1%，对照无技能 30.6%（+40.5pp）、人工技能 53.5%（+17.6pp）、Anthropic Skill-Creator 34.1%；GPT-5.2 自进化 69.8% vs 29.6%；Opus 进化出的技能迁移到另外六个模型增益 +35~+44pp（如 Haiku 4.5：54.5% vs 10.4%）。
+
+**证据边界** — 作者自报且集中于单一基准族；验证器在其反馈预算内仍可能被欺骗，论文度量技能通过率而非下游递归复利。
+
+**代码／权重／数据／许可** — Apache-2.0 代码位于 github.com/Zhang-Henry/CoEvoSkills（已核验）；SkillsBench 使用条款以论文为准。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI skills starter 可借鉴信息隔离验证器模式：严格闸门只看结构化失败反馈，oracle 只发不透明 pass/fail，oracle 调用触发验证器测试升级。
+
+![技能生成器与代理验证器通过迭代精炼共同进化，ground-truth oracle 保持信息隔离。](assets/paper-figures/coevoskills-coevolutionary-verification.png)
+
+**原文图／官方图片** — 技能生成器与代理验证器通过迭代精炼共同进化，ground-truth oracle 保持信息隔离。 · Figure 3 (process.png) · [source](https://arxiv.org/html/2604.01687v3)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/Zhang-Henry/CoEvoSkills)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2604.01687) · [Paper HTML (affiliations, Table 3, Figure 3)](https://arxiv.org/html/2604.01687v3) · [Code repository](https://github.com/Zhang-Henry/CoEvoSkills)
+
 <a id="skillclaw-collective-evolution"></a>
 
 ### SkillClaw: Let Skills Evolve Collectively with Agentic Evolver
@@ -439,7 +529,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (9)
+## Harness 搜索与进化 (11)
 
 <a id="chase-counterfactual-harness"></a>
 
@@ -470,6 +560,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.18366) · [Paper HTML (affiliations, Figure 2, OfficeQA table)](https://arxiv.org/html/2609.18366v1)
+
+<a id="evolvetrade-experience-driven-policy"></a>
+
+### EvolveTrade: Experience-Driven Policy Refinement for Self-Evolving LLM Trading Agents
+
+**2026-09-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-09-15；Sung Ju Hwang 双重隶属于 KAIST 与 DeepAuto.ai。
+
+**机构关系** — 学术牵头（KAIST），一位企业合著者。
+
+**改变对象与反馈复用** — 交易 agent 的系统提示被当作文本参数化的工具调用策略：独立 Policy Agent 每五个交易日依据决策轨迹与组合实绩改写它，底座 LLM 与工具全程冻结。
+
+**作者报告结果** — GPT-5-mini、15 只美股蓝筹、3 次运行均值：Nov 2025 窗口 Sharpe 5.12 vs 静态工具调用 agent 2.87、累计收益 5.10% vs 3.30%；最强窗口 8.43/6.84%；Feb 2026 诚实负结果（Sharpe −2.53 vs 静态 −1.54）；50 交易日长窗含 10bps 手续费仍 SR 4.00 vs 2.94。
+
+**证据边界** — 作者自报的 15 标的三种子回测；三个窗口之一输给静态策略；Apr 2026 的 Gemini-2.5-Flash 底座上静态基座 agent 反超；未找到代码发布。
+
+**代码／权重／数据／许可** — arXiv 论文公开（CC BY 4.0）；核验时未发现代码发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 一个带诚实负结果的最小自进化 agent 夹具：策略文本仅每 N 个任务批次依据累积轨迹证据改动，逐窗口对冻结策略的胜负就是发布口径。
+
+![概念图：静态 agent 只看固定通道；静态工具调用 agent 会检索但不学习；EvolveTrade 用自身经验精炼提示策略闭环。](assets/paper-figures/evolvetrade-experience-driven-policy.png)
+
+**原文图／官方图片** — 概念图：静态 agent 只看固定通道；静态工具调用 agent 会检索但不学习；EvolveTrade 用自身经验精炼提示策略闭环。 · Figure 1 (concept_evolvetrade.png) · [source](https://arxiv.org/html/2609.17632v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17632) · [Paper HTML (affiliations, Tables 3/4, Figure 1)](https://arxiv.org/html/2609.17632v1)
 
 <a id="modularrsi-modular-harness"></a>
 
@@ -590,6 +710,36 @@
 **开源代码／权重／数据链接** — [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt)
 
 **一手来源** — [DarwinX paper v1](https://arxiv.org/abs/2608.07545) · [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt) · [Official Beagle architecture figure](https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg)
+
+<a id="rho-retrospective-harness"></a>
+
+### Evolving Agents in the Dark: Retrospective Harness Optimization via Self-Preference
+
+**2026-06-04** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-06-04；2026-09-19 在企业线索补扫中发现——属 6 月漏收，不是新论文。
+
+**机构关系** — 企业-学术（微软亚洲研究院与香港城市大学）。
+
+**改变对象与反馈复用** — 无需标注或验证反馈的 harness 优化：DPP 选出的历史任务核心集分组重解，从轨迹蒸馏诊断线索，改写全栈 harness（指令、技能、可执行工具），再由 agent 自身成对排序候选（自偏好）选 N=3 中最优。
+
+**作者报告结果** — Codex（GPT-5.5 high）单轮优化：SWE-Bench Pro 0.59→0.78、Terminal-Bench 2 0.71→0.76、GAIA-2 0.29→0.37；三项全面超过免反馈基线（Dynamic Cheatsheet/ReasoningBank/Sleep-time Compute）；验证反馈型 Meta-Harness 需 10 轮（约 3.1× 算力+标注）才到 0.80。
+
+**证据边界** — 自偏好可能排错（消融：选中候选能避开最差但未必是经验最优）；分组 rollout 假设环境可干净重置；作者警示错误自偏好可能放大不安全行为。
+
+**代码／权重／数据／许可** — MIT 代码位于 github.com/wbopan/retro-harness（核验时 56 星，最后推送 2026-06-12）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 运行档案已存候选树；RHO 展示了免标注复用——在每个候选下重解难度多样的核心集再自排序。这是 ADOPTION 22 的免 oracle 扩展。
+
+![RHO 流水线：核心集选择挑出难度多样的历史任务，分组 rollout 重解，诊断加自偏好排序改写 harness。](assets/paper-figures/rho-retrospective-harness.png)
+
+**原文图／官方图片** — RHO 流水线：核心集选择挑出难度多样的历史任务，分组 rollout 重解，诊断加自偏好排序改写 harness。 · Figure 2 (fig2-pipeline.png) · [source](https://arxiv.org/html/2606.05922v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/wbopan/retro-harness)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2606.05922) · [Paper HTML (affiliations, results, Figure 2)](https://arxiv.org/html/2606.05922v1) · [Code repository](https://github.com/wbopan/retro-harness)
 
 <a id="combee-parallel-prompt-learning"></a>
 
@@ -713,7 +863,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## 自改写元智能体与谱系 (5)
+## 自改写元智能体与谱系 (6)
+
+<a id="solpi-recursive-autoresearch-loops"></a>
+
+### SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness
+
+**2026-09-17** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2026-09-17；代码仓库创建于 2026-09-02，活跃至 2026-09-18。
+
+**机构关系** — 企业牵头（NVIDIA，NTU 与 MIT 合著；NVlabs 仓库与项目页）。
+
+**改变对象与反馈复用** — 受 RSI 启发的自动研究循环递归改进 agent harness 本身：研究 AI 从执行轨迹提出 harness 机制，agent 种群并行探索候选并独立评审，只有通过留出验证的机制被保留（EdgeBench 始终不进搜索）——最终保留四个机制。
+
+**作者报告结果** — 在 51 任务 EdgeBench 上，SoL-Pi 在 GPT-5.6 Sol 与 Opus 5 下性能与 Pi 持平，token 流量降 44.7-49.0%、API 成本约降三分之一；相对原生 Codex/Claude Code 每小时省 $8.75-13.50，相对 Pi 省 $4.36-5.71。
+
+**证据边界** — 作者自报的等性能效率增益；搜索本身耗算力不小（两小时种群运行）；EdgeBench 类边缘任务之外的泛化未展示。
+
+**代码／权重／数据／许可** — MIT 代码位于 github.com/NVlabs/SoL-Pi（核验时 2,244 星）与项目页 nvlabs.github.io/SoL-Pi/。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 仓库衍生搜索环境与永不触碰的留出基准之间的硬隔离，加上机制保留前的独立评审闸门，可直接移植到 nanoRSI 种群运行。
+
+![SoL-Pi 通过自动化研究发现更省 token 的 harness：研究环境供给任务，运行基础 harness 的 AI 迭代机制。](assets/paper-figures/solpi-recursive-autoresearch-loops.png)
+
+**原文图／官方图片** — SoL-Pi 通过自动化研究发现更省 token 的 harness：研究环境供给任务，运行基础 harness 的 AI 迭代机制。 · Figure 1 (teaser-funnel-v10.png) · [source](https://arxiv.org/html/2609.20519v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+
+**开源代码／权重／数据链接** — [Code repository](https://github.com/NVlabs/SoL-Pi)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.20519) · [Paper HTML (affiliations, Figure 1-2, abstract numbers)](https://arxiv.org/html/2609.20519v1) · [Code repository](https://github.com/NVlabs/SoL-Pi) · [Project page](https://nvlabs.github.io/SoL-Pi/)
 
 <a id="nous-hermes-selfrefactor"></a>
 
@@ -821,7 +1001,7 @@
 
 **证据边界** — 由系统构建方自报；单次运行；增益非单调（AIDE₈₅ 在 MLE-Bench Lite 上低于 AIDE₄₇）；'首个证据'是相对 Weco 自设的 RSI 阶梯（Level 1：固定预算下胜过公平人工基线），并非社区统一定义。
 
-**代码／权重／数据／许可** — 博文公开；预告的 PDF 报告、代码与权重在本次核验时未发布。
+**代码／权重／数据／许可** — 博文公开；截至 2026-09-19 承诺的 PDF 报告、代码与权重仍未发布（公告后两个月；博客 RSS 无后续文章）。
 
 **可用于 nanoRSI 的实验方向——本次未实现** — 在最小任务上复刻固定预算的提案/拒绝阶梯：外环改写内环执行器，约九成拒绝率是接受闸门起效的证据，接受由私有留出分割裁决。
 
@@ -829,7 +1009,7 @@
 
 **原文图／官方图片** — Weco AI 外环示意图：AIDE_human 改写内环 AIDE 智能体，每次改写在固定预算下评测，约九成被拒绝。 · Outer-loop figure (figB) in the blog post · [source](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
@@ -1047,7 +1227,7 @@
 
 **原文图／官方图片** — Reef 官方循环图：服务请求、观察与 receipt 关联的反馈、生成候选更新，并在选择后才提交到版本历史。 · README 'How it works' loop diagram · [source](https://github.com/Human-Agent-Society/reef)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
 
 **开源代码／权重／数据链接** — [Official repository README](https://github.com/Human-Agent-Society/reef) · [Apache-2.0 LICENSE](https://raw.githubusercontent.com/Human-Agent-Society/reef/main/LICENSE)
 
