@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "study": "rejected-memory-ab",
+  "created_at": "2026-09-19T03:30:00+08:00",
+  "question": "ADOPTION item 14: does the rejected-edit memory (rejected_recent in the proposal context) stop repeat proposals on a live model?",
+  "design": "OpenEvolve function-minimization task (Apache-2.0 port), two independent workspaces: rejected_memory = true (default) vs false; GLM-5.3-Flash, seed 0, 5 attempts each, frozen final test",
+  "results": {
+    "memon": {"attempts": ["accepted +0.0768", "failed", "rejected -0.0466", "rejected -0.0868", "failed"], "identical_repeats": "0/5", "near_duplicates_jaccard_0.6": 0, "final_baseline": 0.9418, "final_candidate": 0.9944, "model_calls": 5},
+    "memoff": {"attempts": ["failed", "rejected -0.0109", "rejected -0.0100", "accepted +0.0803", "failed"], "identical_repeats": "0/5", "near_duplicates_jaccard_0.6": 0, "final_baseline": 0.9418, "final_candidate": 0.9997, "model_calls": 9}
+  },
+  "finding": "Null result on the hypothesized failure mode: GLM-5.3-Flash produced no identical or near-identical (Jaccard >= 0.6) repeat proposals in either arm at this scale, so the memory's trigger never fired. Both arms still evolved successfully (candidates 0.9944/0.9997 vs baseline 0.9418). The memory stays on by default as a zero-observed-cost safeguard; the toggle [proposer] rejected_memory is shipped.",
+  "limits": "One task, one model, one seed, five attempts per arm; zero observed repeats means no power to detect a reduction. Fixture-level plumbing was validated separately (memoryless scripted proposer 2/2 repeats vs memory-aware 0/2)."
+}

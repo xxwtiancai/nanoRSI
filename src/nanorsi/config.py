@@ -100,6 +100,13 @@ class Config:
     safety: dict
     agent: dict = field(default_factory=dict)
     data: dict = field(default_factory=dict)
+    rejected_memory: bool = True
+
+
+def _flag(value, name: str) -> bool:
+    if not isinstance(value, bool):
+        raise ConfigError(f"{name} must be a boolean")
+    return value
 
 
 def _mapping(value, section: str) -> dict:
@@ -280,4 +287,5 @@ def _build(path, experiment, surface, proposer, evaluator, gate, budget, trainin
         training,
         _mapping(raw.get("safety", {}), "safety"),
         agent, data,
+        _flag(proposer.get("rejected_memory", True), "proposer.rejected_memory"),
     )

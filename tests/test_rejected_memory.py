@@ -97,3 +97,28 @@ class RejectedMemoryTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class RejectedMemoryToggleTests(unittest.TestCase):
+    def test_the_memory_can_be_disabled_per_workspace(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_v2(tmp, steps=2)
+            (root / 'adapters/fixture.py').write_text(MEMORYLESS)
+            config = root / 'nanorsi.toml'
+            config.write_text(config.read_text().replace('[proposer]', '[proposer]\nrejected_memory = false'))
+            self.assertEqual(run_cli('baseline', '--workspace', str(root)).returncode, 0)
+            self.assertEqual(run_cli('step', '--workspace', str(root)).returncode, 0)
+            context = next(json.loads(p.read_text()) for p in (root / '.nanorsi/runs').glob('*/proposal/context.json'))
+            self.assertNotIn('rejected_recent', context)
+            self.assertEqual(run_cli('step', '--workspace', str(root)).returncode, 0)
+            contexts = [json.loads(p.read_text()) for p in (root / '.nanorsi/runs').glob('*/proposal/context.json')]
+            self.assertTrue(all('rejected_recent' not in c for c in contexts))
+
+    def test_a_non_boolean_value_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_v2(tmp)
+            config = root / 'nanorsi.toml'
+            config.write_text(config.read_text().replace('[proposer]', '[proposer]\nrejected_memory = "yes"'))
+            result = run_cli('baseline', '--workspace', str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('boolean', result.stderr)

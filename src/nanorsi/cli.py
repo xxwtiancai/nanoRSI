@@ -119,8 +119,9 @@ def _propose(root, config, git, store, checkout, parent, attempt, feedback, run_
     proposer_commit = git.resolve_ref('nanorsi/gen-0') if config.experiment.arm == 'frozen' else parent['candidate_commit']
     context = {'goal': config.experiment.goal, 'surface': {'allow': config.surface.allow, 'deny': config.surface.deny}, 'attempt_id': attempt,
                'parent_generation': parent['generation'], 'parent_commit': parent['candidate_commit'],
-               'proposer_harness_commit': proposer_commit, 'agent': config.agent, 'train_results': feedback,
-               'rejected_recent': loop.rejected_recent(store.events())}
+               'proposer_harness_commit': proposer_commit, 'agent': config.agent, 'train_results': feedback}
+    if config.rejected_memory:
+        context['rejected_recent'] = loop.rejected_recent(store.events())
     if proposal_context:
         if set(proposal_context) & set(context):
             raise ValueError('proposal context cannot replace fixed parent or agent fields')
