@@ -114,7 +114,7 @@ nanoRSI 不只跑自编演示。以下完整评测任务移植自高星开源 RS
 | K-module 配置 | [OpenEvolve](https://github.com/codelion/openevolve)（Apache-2.0） | GLM-5.3 | 8 | 0/4 → 4/4 个模块 | [研究](examples/results/glm53-real-tasks/README.md) |
 | 技能演进（两臂） | 自编任务 | GLM-5.3-Flash | 190 | 0/3 → 2/3，两臂相同 | [研究](examples/results/live-skills-frozen-selfuse/README.md) |
 
-<p align="center"><img src="docs/assets/readme/real-tasks-results.svg" alt="哑铃图：每个移植任务都在严格改进闸门下从初始程序提升到演进候选；冻结最终测试得分。" width="100%"></p>
+<p align="center"><img src="docs/assets/readme/real-tasks-results.svg" alt="配对条形图：每个移植任务上，演进候选的条都远超初始程序；冻结最终测试得分。" width="100%"></p>
 
 每个被接受的候选都先在验证集上通过相对父代的严格改进闸门，再面对冻结的未见最终面板。失败与被拒尝试同样保留在已发布记录里：正弦任务两次修复模型产出的损坏 diff 后才得到泰勒级数候选；k-module 的赢家是第一代直生候选（种群交叉没有产生赢家）；技能研究的 self-use 臂**与 frozen 提案器打平**而非胜出。另一项[拒绝记忆 A/B 研究](examples/results/rejected-memory-ab/README.md)如实报告了零效应结果。
 

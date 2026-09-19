@@ -118,7 +118,7 @@ nanoRSI does not only run its own authored demos. Complete evaluation tasks from
 | K-module configuration | [OpenEvolve](https://github.com/codelion/openevolve) (Apache-2.0) | GLM-5.3 | 8 | 0/4 → 4/4 modules | [Study](examples/results/glm53-real-tasks/README.md) |
 | Skill evolution, two arms | Authored tasks | GLM-5.3-Flash | 190 | 0/3 → 2/3, both arms | [Study](examples/results/live-skills-frozen-selfuse/README.md) |
 
-<p align="center"><img src="docs/assets/readme/real-tasks-results.svg" alt="Dumbbell chart: every ported task improved from its initial program to the evolved candidate under the strict-improvement gate; frozen final-test scores." width="100%"></p>
+<p align="center"><img src="docs/assets/readme/real-tasks-results.svg" alt="Paired bars: on every ported task, the evolved candidate's bar reaches far beyond the initial program's; frozen final-test scores." width="100%"></p>
 
 Every accepted candidate passed the strict-improvement gate against its parent on validation, then faced a frozen unseen final panel. Failed and rejected attempts stay in the published record: the sine run needed two repairs of corrupt model diffs before its Taylor-series candidate, the k-module winner was a first-generation direct candidate (population crossover produced no winner), and the skills study's self-use arm **tied** the frozen proposer instead of beating it. A separate [rejected-memory A/B study](examples/results/rejected-memory-ab/README.md) honestly reports a null result.
 
