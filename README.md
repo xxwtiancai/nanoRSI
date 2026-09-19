@@ -14,6 +14,7 @@
 
 <p align="center">
   <a href="#quick-start">Quick start</a> ·
+  <a href="#real-tasks-ported-from-upstream-rsi-projects">Real tasks</a> ·
   <a href="#how-it-works">How it works</a> ·
   <a href="#bring-your-model">Bring your model</a> ·
   <a href="#research-with-it">Research</a> ·
@@ -105,6 +106,23 @@ These are separate authored tasks, not one benchmark or RSI score. Recursive pla
 A smaller follow-up study ([live frozen-vs-self-use skills](examples/results/live-skills-frozen-selfuse/README.md), 2026-09-16) asked whether evolved skills transfer to unseen tasks and whether self-use adds anything: both arms improved 0/3 → 2/3 on the frozen test panel; **self-use tied the frozen proposer**, both arms failed the sort-variant task, and the skill audit found zero leakage and zero silent bypass.
 
 <p align="center"><img src="examples/results/v0.4.0/overview.png" alt="Separate live-demo test outcomes and CPU parameter-learning results; these panels are not a combined RSI score." width="100%"></p>
+
+## Real tasks ported from upstream RSI projects
+
+nanoRSI does not only run its own authored demos. Complete evaluation tasks from high-star open RSI projects were ported — licenses checked, initial programs preserved verbatim under attribution headers — and executed end to end on this platform with real model calls, real gate decisions and frozen final panels:
+
+| Ported task | From | Model | Calls | Initial → selected | Evidence |
+| --- | --- | --- | ---: | ---: | --- |
+| Function minimization | [OpenEvolve](https://github.com/codelion/openevolve) (Apache-2.0) | GLM-5.3-Flash | 5 | 0.9418 → 0.9960 | [Study](examples/results/openevolve-fnmin/README.md) |
+| Sine approximation | [ShinkaEvolve](https://github.com/SakanaAI/ShinkaEvolve) (Apache-2.0 · arXiv 2509.19349) | GLM-5.3 | 5 | 0.1049 → 0.999963 (RMSE 4.0e-06) | [Study](examples/results/glm53-real-tasks/README.md) |
+| K-module configuration | [OpenEvolve](https://github.com/codelion/openevolve) (Apache-2.0) | GLM-5.3 | 8 | 0/4 → 4/4 modules | [Study](examples/results/glm53-real-tasks/README.md) |
+| Skill evolution, two arms | Authored tasks | GLM-5.3-Flash | 190 | 0/3 → 2/3, both arms | [Study](examples/results/live-skills-frozen-selfuse/README.md) |
+
+<p align="center"><img src="docs/assets/readme/real-tasks-results.svg" alt="Dumbbell chart: every ported task improved from its initial program to the evolved candidate under the strict-improvement gate; frozen final-test scores." width="100%"></p>
+
+Every accepted candidate passed the strict-improvement gate against its parent on validation, then faced a frozen unseen final panel. Failed and rejected attempts stay in the published record: the sine run needed two repairs of corrupt model diffs before its Taylor-series candidate, the k-module winner was a first-generation direct candidate (population crossover produced no winner), and the skills study's self-use arm **tied** the frozen proposer instead of beating it. A separate [rejected-memory A/B study](examples/results/rejected-memory-ab/README.md) honestly reports a null result.
+
+These are independent nanoRSI runs of upstream tasks, **not** reproductions of upstream author-reported results; each study page lists its seeds, budgets, audits and limits. [Regenerate the chart](docs/assets/readme/render-real-tasks.py) · [All published studies](examples/results/).
 
 ## Measured recursive learning: handwritten digits
 

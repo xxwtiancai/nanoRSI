@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="#快速开始">快速开始</a> · <a href="#一次改进如何发生">工作流程</a> ·
+  <a href="#快速开始">快速开始</a> · <a href="#从上游-rsi-项目移植的真实任务">真实任务</a> · <a href="#一次改进如何发生">工作流程</a> ·
   <a href="#接入你的模型">接入模型</a> · <a href="#可以研究什么">研究方向</a> ·
   <a href="docs/research/industry-rsi/RADAR.md">每日雷达</a> ·
   <a href="docs/research/industry-rsi/README.zh-CN.md">RSI 研究地图</a> · <a href="README.md">English</a>
@@ -102,6 +102,23 @@ nanorsi verify --workspace ./learner-lab
 一个更小的后续研究（[live frozen-vs-self-use 技能实验](examples/results/live-skills-frozen-selfuse/README.md)，2026-09-16）检验演进技能能否迁移到未见任务、self-use 是否有额外收益：两臂都在冻结测试面板上从 0/3 提升到 2/3；**self-use 与 frozen 提案器打平**，两臂都没解出排序变体任务，技能审计零泄漏、零静默旁路。
 
 <p align="center"><img src="examples/results/v0.4.0/overview.png" alt="分别展示真实模型演示和 CPU 参数学习结果；两组面板不构成统一 RSI 总分。" width="100%"></p>
+
+## 从上游 RSI 项目移植的真实任务
+
+nanoRSI 不只跑自编演示。以下完整评测任务移植自高星开源 RSI 项目——移植前核对许可证，初始程序在署名头下逐字保留——并在这套平台上端到端真跑：真实模型调用、真实闸门裁决、冻结最终面板：
+
+| 移植任务 | 来源 | 模型 | 调用次数 | 初始 → 选中 | 证据 |
+| --- | --- | --- | ---: | ---: | --- |
+| 函数最小化 | [OpenEvolve](https://github.com/codelion/openevolve)（Apache-2.0） | GLM-5.3-Flash | 5 | 0.9418 → 0.9960 | [研究](examples/results/openevolve-fnmin/README.md) |
+| 正弦逼近 | [ShinkaEvolve](https://github.com/SakanaAI/ShinkaEvolve)（Apache-2.0 · arXiv 2509.19349） | GLM-5.3 | 5 | 0.1049 → 0.999963（RMSE 4.0e-06） | [研究](examples/results/glm53-real-tasks/README.md) |
+| K-module 配置 | [OpenEvolve](https://github.com/codelion/openevolve)（Apache-2.0） | GLM-5.3 | 8 | 0/4 → 4/4 个模块 | [研究](examples/results/glm53-real-tasks/README.md) |
+| 技能演进（两臂） | 自编任务 | GLM-5.3-Flash | 190 | 0/3 → 2/3，两臂相同 | [研究](examples/results/live-skills-frozen-selfuse/README.md) |
+
+<p align="center"><img src="docs/assets/readme/real-tasks-results.svg" alt="哑铃图：每个移植任务都在严格改进闸门下从初始程序提升到演进候选；冻结最终测试得分。" width="100%"></p>
+
+每个被接受的候选都先在验证集上通过相对父代的严格改进闸门，再面对冻结的未见最终面板。失败与被拒尝试同样保留在已发布记录里：正弦任务两次修复模型产出的损坏 diff 后才得到泰勒级数候选；k-module 的赢家是第一代直生候选（种群交叉没有产生赢家）；技能研究的 self-use 臂**与 frozen 提案器打平**而非胜出。另一项[拒绝记忆 A/B 研究](examples/results/rejected-memory-ab/README.md)如实报告了零效应结果。
+
+这些是 nanoRSI 对上游任务的独立运行，**不是**对上游作者报告结果的复现；各研究页面列明种子、预算、审计与边界。[重新生成图表](docs/assets/readme/render-real-tasks.py) · [全部已发布研究](examples/results/)。
 
 ## 递归学习实测：手写数字
 
