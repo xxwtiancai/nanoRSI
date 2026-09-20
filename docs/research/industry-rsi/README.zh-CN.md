@@ -1,6 +1,6 @@
 # 企业 RSI 研究地图
 
-**2025-09-20 → 2026-09-20** · **144** 条窗口内记录
+**2025-09-21 → 2026-09-21** · **144** 条窗口内记录
 
 按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。每条详情都带一张纳入仓库的论文原图、官方研究图片或原文页截图，并注明定位信息和来源链接；有核验结果时还会单独列出代码、权重或数据链接。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。
 
@@ -55,7 +55,7 @@
 | 2026-09-14 | [ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement](agent-code.zh-CN.md#modularrsi-modular-harness) | Beihang University / University of Manchester / IQuest Research / M-A-P / Langboat / Hohai University | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-09-14 | [EvoOntology: A Self-Evolving Ontology Layer for Data Agents](memory-context.zh-CN.md#evoontology-self-evolving) | Renmin University of China | 结构化知识库与图 | 直接有界闭环 |
 | 2026-09-14 | [The Economics of Recursive Self-Improvement](research-workflows.zh-CN.md#economics-of-rsi-2026) | METR / Stanford University / University of Virginia / Carnegie Mellon University / Columbia University / MIT / Stanford DEL / Epoch AI / Yale University / Elasticity Institute | 分析与审计 | 支撑技术／评测 |
-| 2026-09-14 | [Dream-RSI: Improving Exploration Policies by Dreaming over the Discovery Tree](agent-code.zh-CN.md#dream-rsi-replay-simulator) | University of Maryland, College Park / Google DeepMind / University of Virginia | 程序进化与进化搜索 | 直接有界闭环 |
+| 2026-09-14 | [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](agent-code.zh-CN.md#dream-rsi-replay-simulator) | University of Maryland, College Park / Google DeepMind / University of Virginia | 程序进化与进化搜索 | 直接有界闭环 |
 | 2026-09-14 | [AlgoEvo: Self-Evolving Agentic Search for Automated Algorithm Discovery](agent-code.zh-CN.md#algoevo-agentic-search) | City University of Hong Kong / Huawei Noah's Ark Lab / A*STAR | 程序进化与进化搜索 | 直接有界闭环 |
 | 2026-09-13 | [Zhipu HKEX placing announcement: next-generation GLM with a fully self-trained (recursive self-improvement) system](research-workflows.zh-CN.md#zhipu-glm-selftraining-filing) | Zhipu AI (智谱) | 立场、路线图与实验室 | 自动化／辅助研发 |
 | 2026-09-12 | [We Must Pace the Frontier](research-workflows.zh-CN.md#amodei-pace-the-frontier) | Anthropic | 立场、路线图与实验室 | 支撑技术／评测 |
@@ -84,14 +84,14 @@
 | 2026-08-18 | [Chain-of-Experience for Continual LLM Improvement](memory-context.zh-CN.md#bytedance-chain-of-experience) | ByteDance Seed / UC Santa Cruz | 经验积累与回放 | 直接有界闭环 |
 | 2026-08-14 | [Measuring Autonomous AI Research](research-workflows.zh-CN.md#prime-measuring-autonomous-ai-research) | Prime Intellect | 公司研发遥测 | 自动化／辅助研发 |
 | 2026-08-13 | [Practice Makes Unsafe: Skill Misevolution in Self-Improving LLM Agents](agent-code.zh-CN.md#skill-misevolution-safety) | City University of Hong Kong / University of Adelaide | 安全与治理 | 支撑技术／评测 |
-| 2026-08-13 | [Training AI Scientists to Replicate Research (Faraday on the Replica benchmark)](research-workflows.zh-CN.md#faraday-replica-ai-scientist) | Inherent Laboratories | AI 科学家系统 | 直接有界闭环 |
+| 2026-08-13 | [Training AI Scientists to Replicate Research](research-workflows.zh-CN.md#faraday-replica-ai-scientist) | Inherent Laboratories | AI 科学家系统 | 直接有界闭环 |
 | 2026-08-05 | [Prime Agent: A Self-Improving RLM Harness](memory-context.zh-CN.md#prime-agent) | Prime Intellect / Princeton University / MIT | 经验积累与回放 | 直接有界闭环 |
 | 2026-08-03 | [Qwen3.8-Max: A New Bar for Coding and Cowork (self-evolving harness demonstrations)](agent-code.zh-CN.md#qwen38-max-self-evolving-harness) | Alibaba (Qwen team) | Harness 搜索与进化 | 直接有界闭环 |
-| 2026-08 | [Mendel Godel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution](agent-code.zh-CN.md#mgm-mendel-godel-machine) | University of Electronic Science and Technology of China / Ludwig Maximilian University of Munich / Munich Center for Machine Learning | 自改写元智能体与谱系 | 直接有界闭环 |
+| 2026-08 | [Mendel Gödel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution](agent-code.zh-CN.md#mgm-mendel-godel-machine) | University of Electronic Science and Technology of China / Ludwig Maximilian University of Munich / Munich Center for Machine Learning | 自改写元智能体与谱系 | 直接有界闭环 |
 | 2026-08 | [Meta^n: Recursive Self-Improvement through Emergent Depth](agent-code.zh-CN.md#metan-emergent-depth) | University of Minnesota / Seoul National University | 自改写元智能体与谱系 | 直接有界闭环 |
 | 2026-08 | [Automated Researchers Can Mitigate Well-Characterized Alignment Failures](research-workflows.zh-CN.md#automated-alignment-researchers) | Anthropic Fellows Program | 对齐自动化 | 自动化／辅助研发 |
 | 2026-07-31 | [Self-Play Meets Skill Evolution: Self-Evolving Search Agents that Pose, Solve, and Remember](parameter-learning.zh-CN.md#sesa-self-play-skills) | University of Chinese Academy of Sciences / Institute of Automation, CAS / Peking University / Mininglamp Technology / Tsinghua University / Qilu University of Technology | 自博弈与课程任务生成 | 直接有界闭环 |
-| 2026-07-31 | [Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection](agent-code.zh-CN.md#salesforce-beagle-darwinx) | Salesforce AI Research | Harness 搜索与进化 | 直接有界闭环 |
+| 2026-07-31 | [DarwinX: Evolving Agent Harnesses Through Natural Selection](agent-code.zh-CN.md#salesforce-beagle-darwinx) | Salesforce AI Research | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-07-30 | [Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering](research-workflows.zh-CN.md#frontis-ma1-openmle) | Frontis.AI — Horizon Research / Tsinghua University | AI 科学家系统 | 直接有界闭环 |
 | 2026-07-26 | [From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement](parameter-learning.zh-CN.md#spyrl-self-verifiable-rewards) | Duke University / Adobe Inc. / Pennsylvania State University / National University of Singapore / Oregon State University / Amazon | 自博弈与课程任务生成 | 直接有界闭环 |
 | 2026-07-26 | [AgentDescent: Gradient descent, but the parameters are agents](agent-code.zh-CN.md#agentdescent-agent-gradient) | AgentDescent project (independent, Danyang Chen) | Harness 搜索与进化 | 支撑技术／评测 |
@@ -106,13 +106,13 @@
 | 2026-06-30 | [SkillOpt: Executive Strategy for Self-Evolving Agent Skills](agent-code.zh-CN.md#microsoft-skillopt) | Microsoft Research | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-06-29 | [Autonomous Research Agents: A Survey of AI Scientists and the Verification Gap](research-workflows.zh-CN.md#ai-scientist-verification-gap) | Johns Hopkins University (per author page; affiliations not stated in the audited HTML) | 分析与审计 | 支撑技术／评测 |
 | 2026-06-23 | [Seed2.1 Officially Released: Advancing AI Productivity](research-workflows.zh-CN.md#bytedance-seed-for-seed) | ByteDance Seed | 立场、路线图与实验室 | 自动化／辅助研发 |
-| 2026-06-09 | [Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search](research-workflows.zh-CN.md#amazon-autonomous-post-training) | Amazon | 自主后训练及其评测 | 直接有界闭环 |
+| 2026-06-09 | [A-Evolve-Training: Autonomous Post-Training of a 30B Model](research-workflows.zh-CN.md#amazon-autonomous-post-training) | Amazon | 自主后训练及其评测 | 直接有界闭环 |
 | 2026-06-07 | [SkillHone: A Harness for Continual Agent Skill Evolution Through Persistent Decision History](agent-code.zh-CN.md#tencent-skillhone) | WeChat, Tencent Inc. | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-06-05 | [Introducing Sakana AI's Recursive Self-Improvement (RSI) Lab](research-workflows.zh-CN.md#sakana-rsi-lab) | Sakana AI | 立场、路线图与实验室 | 直接有界闭环 |
 | 2026-06-05 | [Self-Evolving LLM Agents with In-Distribution Optimization](parameter-learning.zh-CN.md#qevolve-in-distribution) | Eindhoven University of Technology / University of Liverpool / MIT-IBM Watson AI Lab | 经验蒸馏与测试时适应 | 直接有界闭环 |
 | 2026-06-04 | [Evolving Agents in the Dark: Retrospective Harness Optimization via Self-Preference](agent-code.zh-CN.md#rho-retrospective-harness) | Microsoft Research Asia / City University of Hong Kong | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-06-04 | [OpenSkill: Open-World Self-Evolution for LLM Agents](agent-code.zh-CN.md#openskill-open-world) | Lehigh University / University of Illinois Chicago / University of British Columbia / Vector Institute / Salesforce AI Research / Massachusetts General Hospital / Harvard Medical School | 技能文件优化与技能库 | 直接有界闭环 |
-| 2026-06 | [ENPIRE: Physical Autoresearch - Self-Improving Coding Agents on Real Robots](research-workflows.zh-CN.md#nvidia-enpire-physical-autoresearch) | NVIDIA / Carnegie Mellon University / UC Berkeley | AI 科学家系统 | 直接有界闭环 |
+| 2026-06 | [ENPIRE: Agentic Robot Policy Self-Improvement in the Real World](research-workflows.zh-CN.md#nvidia-enpire-physical-autoresearch) | NVIDIA / Carnegie Mellon University / UC Berkeley | AI 科学家系统 | 直接有界闭环 |
 | 2026-06 | [On the Generalization Gap in Self-Evolving Language Model Reasoning](research-workflows.zh-CN.md#gengap-self-evolution) | Google Research / Harvard University / Virginia Tech | 分析与审计 | 支撑技术／评测 |
 | 2026-06 | [When AI builds itself](research-workflows.zh-CN.md#anthropic-when-ai-builds-itself) | Anthropic / The Anthropic Institute | 公司研发遥测 | 自动化／辅助研发 |
 | 2026-05-28 | [Self-Trained Verification for Training- and Test-Time Self-Improvement](parameter-learning.zh-CN.md#cmu-stv-self-trained-verification) | Carnegie Mellon University | 验证器与奖励进化 | 直接有界闭环 |
@@ -123,9 +123,9 @@
 | 2026-04-05 | [Combee: Scaling Prompt Learning for Self-Improving Language Model Agents](agent-code.zh-CN.md#combee-parallel-prompt-learning) | Stanford University / UC Berkeley / Tensormesh / Gradient Network | Harness 搜索与进化 | 支撑技术／评测 |
 | 2026-04-02 | [CoEvoSkills: Self-Evolving Agent Skills via Co-Evolutionary Verification](agent-code.zh-CN.md#coevoskills-coevolutionary-verification) | University of Illinois Chicago / MBZUAI / McGill University / Columbia University / Zhejiang University / University of British Columbia | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-04 | [SkillClaw: Let Skills Evolve Collectively with Agentic Evolver](agent-code.zh-CN.md#skillclaw-collective-evolution) | Alibaba (Amap DreamX Team) | 技能文件优化与技能库 | 直接有界闭环 |
-| 2026-04 | [GenericAgent: A Self-Evololving Agent Growing a Skill Tree from a 3.3K-Line Seed](agent-code.zh-CN.md#genericagent-skill-tree) | Advantage AI Agent Lab (Shenzhen Aquaintelling Technology + Fudan University) | Harness 搜索与进化 | 直接有界闭环 |
+| 2026-04 | [GenericAgent: A Token-Efficient Self-Evolving LLM Agent via Contextual Information Density Maximization (V1.0)](agent-code.zh-CN.md#genericagent-skill-tree) | Advantage AI Agent Lab (Shenzhen Aquaintelling Technology + Fudan University) | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-04 | [Automated Weak-to-Strong Researcher](research-workflows.zh-CN.md#automated-w2s) | Anthropic / Anthropic Fellows Program | 对齐自动化 | 自动化／辅助研发 |
-| 2026-04 | [Reinforced Agent: Inference-Time Feedback Architecture for Tool-Calling Agents](agent-code.zh-CN.md#apple-reinforced-agent) | Apple | 反馈审查与编排 | 直接有界闭环 |
+| 2026-04 | [Reinforced Agent: Inference-Time Feedback for Tool-Calling Agents](agent-code.zh-CN.md#apple-reinforced-agent) | Apple | 反馈审查与编排 | 直接有界闭环 |
 | 2026-03-19 | [Hyperagents](agent-code.zh-CN.md#meta-hyperagents-2026) | Meta / University of British Columbia | 自改写元智能体与谱系 | 直接有界闭环 |
 | 2026-03-18 | [MiniMax M2.7: Early Echoes of Self-Evolution](agent-code.zh-CN.md#minimax-m27-self-evolution) | MiniMax | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-03-16 | [GASP: Guided Asymmetric Self-Play For Coding LLMs](parameter-learning.zh-CN.md#gasp-guided-asymmetric-selfplay) | University of Tübingen / Max Planck Institute for Intelligent Systems / ELLIS Institute Tübingen / Tübingen AI Center | 自博弈与课程任务生成 | 直接有界闭环 |
@@ -133,7 +133,7 @@
 | 2026-03-11 | [A3: An Automated Alignment Agent for Safety Finetuning](parameter-learning.zh-CN.md#a3) | Anthropic / Anthropic Fellows Program / Constellation | 验证器与奖励进化 | 直接有界闭环 |
 | 2026-03 | [Meta-Harness: End-to-End Optimization of Model Harnesses](agent-code.zh-CN.md#stanford-meta-harness) | Stanford University / MIT / KRAFTON | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-03 | [PostTrainBench: Can LLM Agents Automate LLM Post-Training?](research-workflows.zh-CN.md#posttrainbench-autonomous-post-training) | ELLIS Institute Tubingen / Max Planck Institute for Intelligent Systems / Tubingen AI Center / University of Tubingen / Thoughtful Lab | 自主后训练及其评测 | 支撑技术／评测 |
-| 2026-03 | [EvoScientist: Self-Evolving Multi-Agent System for End-to-End Scientific Discovery](research-workflows.zh-CN.md#evoscientist-self-evolving) | Huawei Technologies / Vrije Universiteit Amsterdam | AI 科学家系统 | 直接有界闭环 |
+| 2026-03 | [EvoScientist: Towards Multi-Agent Evolving AI Scientists for End-to-End Scientific Discovery](research-workflows.zh-CN.md#evoscientist-self-evolving) | Huawei Technologies / Vrije Universiteit Amsterdam | AI 科学家系统 | 直接有界闭环 |
 | 2026-02-27 | [How Cognition Uses Devin to Build Devin](research-workflows.zh-CN.md#cognition-devin-builds-devin) | Cognition | 公司研发遥测 | 自动化／辅助研发 |
 | 2026-02-18 | [Discovering Multiagent Learning Algorithms with Large Language Models](research-workflows.zh-CN.md#google-alphaevolve-marl-2026) | Google DeepMind | 公司研发遥测 | 自动化／辅助研发 |
 | 2026-02-13 | [Doc-to-LoRA: Learning to Instantly Internalize Contexts](parameter-learning.zh-CN.md#sakana-doc-to-lora) | Sakana AI / Minerva University | 支撑性适应机制 | 支撑技术／评测 |
@@ -144,9 +144,9 @@
 | 2026-01-30 | [From Self-Evolving Synthetic Data to Verifiable-Reward RL: Post-Training Multi-turn Interactive Tool-Using Agents](parameter-learning.zh-CN.md#eigendata-self-evolving-synthesis) | Tsinghua University / Eigen AI | 自主训练智能体与数据管线 | 直接有界闭环 |
 | 2026-01-05 | [SimpleMem: Efficient Lifelong Memory for LLM Agents](memory-context.zh-CN.md#simplemem-lifelong-memory) | University of North Carolina at Chapel Hill / UC Berkeley / UC Santa Cruz | 经验积累与回放 | 支撑技术／评测 |
 | 2025-12-21 | [Toward Training Superintelligent Software Agents through Self-Play SWE-RL](parameter-learning.zh-CN.md#meta-ssr-self-play) | Meta FAIR / University of Illinois Urbana-Champaign / Carnegie Mellon University | 自博弈与课程任务生成 | 直接有界闭环 |
-| 2025-12-18 | [SAGE: Reinforcement Learning for Self-Improving Agent with Skill Library](parameter-learning.zh-CN.md#sage-skill-augmented-grpo) | AWS Agentic AI (Amazon) / University of Wisconsin-Madison | 技能-权重共进化 | 直接有界闭环 |
+| 2025-12-18 | [Reinforcement Learning for Self-Improving Agent with Skill Library](parameter-learning.zh-CN.md#sage-skill-augmented-grpo) | AWS Agentic AI (Amazon) / University of Wisconsin-Madison | 技能-权重共进化 | 直接有界闭环 |
 | 2025-12-04 | [TRINITY: An Evolved LLM Coordinator](parameter-learning.zh-CN.md#sakana-trinity) | Sakana AI / Institute of Science Tokyo / University of Michigan | 支撑性适应机制 | 支撑技术／评测 |
-| 2025-12-04 | [Conductor / Fugu: An LLM Trained to Orchestrate (and Include) Itself](parameter-learning.zh-CN.md#sakana-conductor-fugu) | Sakana AI / University of Michigan / Institute of Science Tokyo | 支撑性适应机制 | 支撑技术／评测 |
+| 2025-12-04 | [Learning to Orchestrate Agents in Natural Language with the Conductor](parameter-learning.zh-CN.md#sakana-conductor-fugu) | Sakana AI / University of Michigan / Institute of Science Tokyo | 支撑性适应机制 | 支撑技术／评测 |
 | 2025-11-27 | [DeepSeekMath-V2: Towards Self-Verifiable Mathematical Reasoning](parameter-learning.zh-CN.md#deepseek-math-v2) | DeepSeek-AI | 验证器与奖励进化 | 直接有界闭环 |
 | 2025-11-25 | [Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory](memory-context.zh-CN.md#evo-memory-remem) | University of Illinois Urbana-Champaign / Google DeepMind | 记忆进化评测研究 | 支撑技术／评测 |
 | 2025-11-20 | [Agent0: Unleashing Self-Evolving Agents from Zero Data via Tool-Integrated Reasoning](parameter-learning.zh-CN.md#salesforce-unc-agent0) | UNC-Chapel Hill / Salesforce Research / Stanford University | 自博弈与课程任务生成 | 直接有界闭环 |
@@ -155,7 +155,7 @@
 | 2025-11-13 | [AgentEvolver: Towards Efficient Self-Evolving Agent System](parameter-learning.zh-CN.md#alibaba-agentevolver) | Alibaba Group — Tongyi Lab | 自博弈与课程任务生成 | 直接有界闭环 |
 | 2025-11-11 | [Feedback Descent: Open-Ended Text Optimization via Pairwise Comparison](agent-code.zh-CN.md#stanford-feedback-descent) | Stanford University | 反馈审查与编排 | 直接有界闭环 |
 | 2025-11-02 | [Continual Learning, Not Training: Online Adaptation for Agents](memory-context.zh-CN.md#atlas-pamphlets) | Arc Intelligence | 经验积累与回放 | 直接有界闭环 |
-| 2025-10-28 | [SPICE: Self-Play in Corpus Environments (adversarial curriculum from raw documents)](parameter-learning.zh-CN.md#meta-spice-self-play) | Meta FAIR / National University of Singapore | 自博弈与课程任务生成 | 直接有界闭环 |
+| 2025-10-28 | [SPICE: Self-Play In Corpus Environments Improves Reasoning](parameter-learning.zh-CN.md#meta-spice-self-play) | Meta FAIR / National University of Singapore | 自博弈与课程任务生成 | 直接有界闭环 |
 | 2025-10-22 | [Discovering state-of-the-art reinforcement learning algorithms](parameter-learning.zh-CN.md#google-discorl-2025) | Google DeepMind | 支撑性适应机制 | 支撑技术／评测 |
 | 2025-10-17 | [EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle](parameter-learning.zh-CN.md#evolver-experience-lifecycle) | Shanghai AI Laboratory / Zhejiang University / East China Normal University / Fudan University / Shanghai Jiao Tong University / University of Science and Technology of China | 经验蒸馏与测试时适应 | 直接有界闭环 |
 | 2025-10-16 | [WebAggregator: Enhancing Compositional Reasoning Capabilities of Deep Research Agent Foundation Models](agent-code.zh-CN.md#tencent-webaggregator) | Tencent AI Lab / The Chinese University of Hong Kong | 程序进化与进化搜索 | 直接有界闭环 |

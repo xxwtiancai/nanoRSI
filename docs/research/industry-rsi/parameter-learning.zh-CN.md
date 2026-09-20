@@ -379,7 +379,7 @@
 
 <a id="meta-spice-self-play"></a>
 
-### SPICE: Self-Play in Corpus Environments (adversarial curriculum from raw documents)
+### SPICE: Self-Play In Corpus Environments Improves Reasoning
 
 **2025-10-28** · paper · 直接有界闭环
 
@@ -401,7 +401,7 @@
 
 **原文图／官方图片** — 图 2：SPICE 总览——同一模型分别扮演挑战者（把文档挖成带可验证答案的问题）与推理者（不看文档作答）；方差塑形奖励使问题始终处于推理者能力边界。 · Figure 2 · [source](https://arxiv.org/html/2510.24684v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
@@ -627,7 +627,7 @@
 
 <a id="sage-skill-augmented-grpo"></a>
 
-### SAGE: Reinforcement Learning for Self-Improving Agent with Skill Library
+### Reinforcement Learning for Self-Improving Agent with Skill Library
 
 **2025-12-18** · paper · 直接有界闭环
 
@@ -649,7 +649,7 @@
 
 **原文图／官方图片** — 图 1：技能库智能体与带技能整合奖励的顺序 rollout——链上前置任务生成的技能被下一任务复用，成功复用把奖励信用回传给技能生成。 · Figure 1 · [source](https://arxiv.org/html/2512.17102v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — [Artifact repository](https://github.com/amazon-science/SAGE)
 
@@ -1149,7 +1149,7 @@
 
 <a id="sakana-conductor-fugu"></a>
 
-### Conductor / Fugu: An LLM Trained to Orchestrate (and Include) Itself
+### Learning to Orchestrate Agents in Natural Language with the Conductor
 
 **2025-12-04** · paper · 支撑技术／评测
 
@@ -1171,7 +1171,7 @@
 
 **原文图／官方图片** — 图 3：Conductor 训练——GRPO 在随机化工人池的完整多智能体 rollout 奖励上更新 7B 协调器，教它写出可递归包含自身的拓扑与指令。 · Figure 3 · [source](https://arxiv.org/html/2512.04388v5)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 

@@ -683,7 +683,7 @@
 
 <a id="salesforce-beagle-darwinx"></a>
 
-### Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection
+### DarwinX: Evolving Agent Harnesses Through Natural Selection
 
 **2026-07-31** · paper · Direct bounded loop
 
@@ -705,7 +705,7 @@
 
 **Source figure / official image** — Official Beagle architecture: benchmark data and agent factories feed evaluation/evolution backends, rollout engines and the DarwinX evolution algorithm. · Official project architecture figure · [source](https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-15.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt)
 
@@ -833,7 +833,7 @@
 
 <a id="genericagent-skill-tree"></a>
 
-### GenericAgent: A Self-Evololving Agent Growing a Skill Tree from a 3.3K-Line Seed
+### GenericAgent: A Token-Efficient Self-Evolving LLM Agent via Contextual Information Density Maximization (V1.0)
 
 **2026-04** · paper · Direct bounded loop
 
@@ -855,7 +855,7 @@
 
 **Source figure / official image** — Figure 2: GenericAgent's unified loop - execution context from task, memory and a two-level skill tree; a curriculum planner scores skills and every task ends with skill consolidation (archive report, update tree, increment counters). · Figure 2 · [source](https://arxiv.org/html/2604.17091v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — [Code repository (MIT)](https://github.com/lsdefine/GenericAgent)
 
@@ -987,7 +987,7 @@
 
 <a id="mgm-mendel-godel-machine"></a>
 
-### Mendel Godel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution
+### Mendel Gödel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution
 
 **2026-08** · paper · Direct bounded loop
 
@@ -1009,7 +1009,7 @@
 
 **Source figure / official image** — Figure 1: Mendel Godel Machine - an archive lineage tree where pi-sampling and phi-evaluation feed three comparative operators: clonal mutation, reaction-norm mutation, and cross-lineage hybridization. · Figure 1 · [source](https://arxiv.org/html/2608.07645v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/RealLcz/MGM)
 
@@ -1141,7 +1141,7 @@
 
 <a id="dream-rsi-replay-simulator"></a>
 
-### Dream-RSI: Improving Exploration Policies by Dreaming over the Discovery Tree
+### Dream-RSI: Recursive Self-Improvement through Evolving Worlds
 
 **2026-09-14** · paper · Direct bounded loop
 
@@ -1163,7 +1163,7 @@
 
 **Source figure / official image** — Figure 1: Dream-RSI's three-stage recursive loop - online exploration builds a discovery tree, the tree becomes a replay simulator, and dreaming-based policy improvement rewrites the exploration policy offline. · Figure 1 · [source](https://arxiv.org/html/2609.14858v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — [Code repository](https://github.com/zhengkid/Dream-RSI)
 
@@ -1355,7 +1355,7 @@
 
 <a id="apple-reinforced-agent"></a>
 
-### Reinforced Agent: Inference-Time Feedback Architecture for Tool-Calling Agents
+### Reinforced Agent: Inference-Time Feedback for Tool-Calling Agents
 
 **2026-04** · paper · Direct bounded loop
 
@@ -1377,7 +1377,7 @@
 
 **Source figure / official image** — Figure 2: feedback architecture - the base agent emits a provisional tool call, the reviewer agent evaluates it before execution, and feedback loops run until approval or a maximum iteration count. · Figure 2 (inline SVG) · [source](https://arxiv.org/html/2604.27233v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
