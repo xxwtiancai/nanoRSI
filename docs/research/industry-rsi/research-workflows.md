@@ -8,9 +8,9 @@
 | --- | ---: |
 | [AI-scientist systems](#family-ai-scientists) | 9 |
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
-| [Company R&D telemetry](#family-company-telemetry) | 6 |
+| [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 6 |
+| [Analyses & audits](#family-analyses-audits) | 9 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
@@ -383,7 +383,37 @@
 
 <a id="family-company-telemetry"></a>
 
-## Company R&D telemetry (6)
+## Company R&D telemetry (7)
+
+<a id="anthropic-measuring-pace"></a>
+
+### Measurements for understanding the pace of AI development inside frontier labs
+
+**2026-09-17** · report · Automated / assisted R&D
+
+**Publication date** — Anthropic Institute article; the page itself shows no date, so it is pinned to 2026-09-17 via the Hacker News submission timestamp (2026-09-17T20:50:01Z) and same-day press coverage; data snapshots are labeled August 2026 (compute week of July 13–20).
+
+**Institutional relationship** — Company first-party (Anthropic Institute).
+
+**What changes and how feedback is reused** — A prototype measurement suite for RSI pacing: an R&D Automation Index cataloguing all Anthropic R&D task types, rating automation on Epoch AI’s AL0–AL5 scale and weighting by person-time; oversight metrics over internal agent platforms; and compute metrics for the share of AI R&D compute spent on safety. Each section urges any AI developer to publish the same measurements with public methodology and third-party verification.
+
+**Author-reported result** — R&D Automation Index (August 2026): Claude leads (AL4+) 26% of Anthropic’s AI R&D work, up from under 1% in February 2026; work at or above AI-collaborates level exceeds 90%; no subset fully autonomous. Oversight: ~30,000 concurrent research/engineering agents on the most-used internal platform; over a billion agent decisions analyzed in August 2026 with the online monitor blocking 0.002% (~1 in 47,000), 100% coverage, human review of blocked actions within a week; the offline monitor flags ~100,000 transcripts/week, ~50 escalated. Compute: ~6% of AI R&D compute and ~12% of AI-driven AI R&D compute went to safety (one conservative week). RSI is defined as a model fully autonomously building its successor.
+
+**Evidence limits** — Self-reported single-company telemetry with internal methodology; index is a prototype; compute snapshot is one deliberately conservative week; no cross-lab comparability yet (the article itself notes the obstacles); author-reported figures are not independently verified here.
+
+**Code / weights / data / license** — Public article with one published chart; no data release or code.
+
+**Possible nanoRSI experiment — not implemented here** — Adopt the disclosure pattern rather than the numbers: alongside any nanoRSI result, publish the automation-level mix of its own pipeline, an oversight interception rate, and the fraction of evaluation budget spent on catching shortcuts — the three telemetry classes this article asks frontier labs to report.
+
+![Anthropic R&D Automation Index: share of model R&D tasks by automation level; the AI-leads series grows from under 1% (February 2026) to 26% (August 2026).](assets/paper-figures/anthropic-rd-automation-index.png)
+
+**Source figure / official image** — Anthropic R&D Automation Index: share of model R&D tasks by automation level; the AI-leads series grows from under 1% (February 2026) to 26% (August 2026). · Article chart: Claude now leads 26% of model R&D tasks (www-cdn.anthropic.com image) · [source](https://www.anthropic.com/institute/measuring-pace-of-ai-development)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Anthropic Institute article](https://www.anthropic.com/institute/measuring-pace-of-ai-development) · [Hacker News submission (date anchor)](https://hn.algolia.com/api/v1/search?query=Measurements%20for%20understanding%20the%20pace%20of%20AI%20development&tags=story)
 
 <a id="openai-research-acceleration-2026"></a>
 
@@ -661,7 +691,67 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (6)
+## Analyses & audits (9)
+
+<a id="harness-value-sham-control"></a>
+
+### How Do Agent Harnesses Create Value? Planning Information and Release Control in Stateful LLM Agents
+
+**2026-09-17** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 submitted 2026-09-17, announced 2026-09-18 (OAI datestamp); single version at verification.
+
+**Institutional relationship** — Academic: CUHK-Shenzhen (two authors) and University of Edinburgh (one author).
+
+**What changes and how feedback is reused** — Decomposes agent-harness value into planning guidance, execution organization and completion checking, and measures each with placebo-style controls on τ²-bench: Fixed (prewritten task-specific plans) versus Sham (shuffled policy text matched in word count and wrapper), so any difference isolates the value of guidance content over mere token volume; plus a read-only terminal verifier for release control.
+
+**Author-reported result** — Across 265 matched cells, Fixed raises oracle-verified success by 7.17 percentage points over Sham (90% task-clustered bootstrap interval 1.15–13.36), concentrated in higher-complexity tasks. The read-only verifier rejects 61% of Retail oracle-invalid episodes while withholding 17% of correct ones, at under one cent per episode; a standalone verifier captures nearly all the false-pass benefit of the full planning-plus-verification stack at a fraction of its cost. Which component dominates depends on the loss assigned to erroneous acceptance.
+
+**Evidence limits** — Two Retail experiments and one Airline pilot on τ²-bench; no code located; single version; planning effect has a wide confidence interval at the cell level.
+
+**Code / weights / data / license** — No code located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — Institutionalize the sham control: any nanoRSI harness or skill improvement must beat a word-count-matched shuffled-text placebo, not only a no-guidance baseline; and keep a read-only verifier as the cheap release-control layer whose withhold rate is reported alongside.
+
+![Planning guidance, terminal verification and scenario value: Minimal, Fixed and Sham supplies differ only in guidance content; oracle scoring fixes the outcome measure.](assets/paper-figures/harness-value-planning.svg)
+
+**Source figure / official image** — Planning guidance, terminal verification and scenario value: Minimal, Fixed and Sham supplies differ only in guidance content; oracle scoring fixes the outcome measure. · Figure 1 (framework_final.svg) · [source](https://arxiv.org/html/2609.20474v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.20474) · [arXiv HTML v1](https://arxiv.org/html/2609.20474v1)
+
+<a id="evolution-or-illusion-budget"></a>
+
+### Evolution or Illusion? Rethinking Evaluation in LLM Evolutionary Search
+
+**2026-09-17** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 submitted 2026-09-17, announced 2026-09-18 (OAI datestamp); single version at verification.
+
+**Institutional relationship** — Industrial research lab (IBM Research; all four authors, corresponding Tal Oved).
+
+**What changes and how feedback is reused** — A measurement protocol for LLM evolutionary search: instead of the field’s single budget configuration (usually one seed for a fixed iteration count), run a full grid of seeds (width) by iterations (depth) and report the seeds-by-iterations frontier, with iso-budget lines making width-depth trade-offs explicit.
+
+**Author-reported result** — On three evolutionary search strategies (EvoX, OpenEvolve, AdaEvolve) across five optimization tasks: the optimal width/depth split varies by strategy, task and total budget; strategy rankings change with budget — one strategy worst at one seed becomes best at forty seeds; on another task the ideal iteration count falls below common practice, so added depth wastes budget that additional seeds could convert into score.
+
+**Evidence limits** — Five tasks chosen as genre-representative; three strategies; no code located; single version; findings are about measurement practice, not a new search method.
+
+**Code / weights / data / license** — No code located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — Make the frontier report a nanoRSI reporting rule: evolve-versus-baseline comparisons state total budget up front and show the seeds-by-iterations grid (or at least three budget points), and no ranking claim is made from a single cell.
+
+![Expected best combined score over the seeds-by-iterations grid for EvoX, OpenEvolve and AdaEvolve; white iso-budget lines and stars mark score-maximizing cells.](assets/paper-figures/evolution-or-illusion-budget-grid.png)
+
+**Source figure / official image** — Expected best combined score over the seeds-by-iterations grid for EvoX, OpenEvolve and AdaEvolve; white iso-budget lines and stars mark score-maximizing cells. · Figure 2 (harness_heatmap.png) · [source](https://arxiv.org/html/2609.19799v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.19799) · [arXiv HTML v1](https://arxiv.org/html/2609.19799v1)
 
 <a id="economics-of-rsi-2026"></a>
 
@@ -692,6 +782,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.15802) · [Paper v1 PDF (Figure 2, Section 2.2, calibration)](https://arxiv.org/pdf/2609.15802)
+
+<a id="evoharnessbench-harness-evolution"></a>
+
+### EvoHarnessBench: Can Your Agents Keep Pace with an Evolving Harness?
+
+**2026-09-03** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 submitted 2026-09-03 (announced 2026-09-14 per OAI datestamp), v2 2026-09-10; metrics cited from v2. Twelve authors; Salesforce Research with UNC Chapel Hill and UW–Madison.
+
+**Institutional relationship** — Industrial research lab with university collaborators (Salesforce Research; UNC Chapel Hill; UW–Madison).
+
+**What changes and how feedback is reused** — A benchmark that puts non-stationarity in the harness instead of the task stream: 17 deterministic multi-stage harness streams built from verifier-based benchmarks (802 tasks, 520 tools, 42 skills, 62 agents) evolve along three capability axes — tools, skills, agents. Two evaluation modes isolate retention of prior competence (deployment evaluation) and usefulness of accumulated experience (self-evolving adaptation), measured with relative forward and backward transfer.
+
+**Author-reported result** — Harness expansion alone degrades previously solved tasks — harness-induced forgetting with relative BWT of −5.3% (tools), −4.0% (skills) and −34.7% (agents, deployment Codex, ALE; the strongest observed). Best adaptation gains: +27.8% (MemToolAgent, tools), +27.5% (GEPA, skills), +110.2% (Meta-Harness, agents). Retention and adaptation can conflict: preserving old competence does not guarantee better adaptation to new capabilities.
+
+**Evidence limits** — Streams are synthesized deterministically from existing verifier-based benchmarks rather than organic product harness histories; results are per-axis snapshots of specific agents; no GitHub repository at verification (project page links Colab notebooks, an online demo and Hugging Face datasets).
+
+**Code / weights / data / license** — Project page (mas-orchestra.salesforceresearch.ai/evoharness) with Colab notebooks, demo and Hugging Face datasets; paper CC BY-SA 4.0; no dedicated code repository located.
+
+**Possible nanoRSI experiment — not implemented here** — Add a harness-expansion regression test to nanoRSI: after admitting a new tool/skill/agent to the frozen loop, re-run the full prior task suite and report backward transfer alongside forward gains, so capability additions that break old competence are visible.
+
+![EvoHarnessBench evaluates agents under outer harness evolution: the supplied harness expands across stages, with deployment evaluation and self-evolving adaptation modes measuring retention and reuse.](assets/paper-figures/evoharnessbench-framework.png)
+
+**Source figure / official image** — EvoHarnessBench evaluates agents under outer harness evolution: the supplied harness expands across stages, with deployment evaluation and self-evolving adaptation modes measuring retention and reuse. · Figure 1 (figs/framework.png) · [source](https://arxiv.org/html/2609.04280v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.04280) · [arXiv HTML v2](https://arxiv.org/html/2609.04280v2) · [Project page](https://mas-orchestra.salesforceresearch.ai/evoharness/)
 
 <a id="self-improving-agents-survey"></a>
 

@@ -1,6 +1,6 @@
 # 企业 RSI 研究地图
 
-**2025-09-19 → 2026-09-19** · **132** 条窗口内记录
+**2025-09-20 → 2026-09-20** · **144** 条窗口内记录
 
 按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。每条详情都带一张纳入仓库的论文原图、官方研究图片或原文页截图，并注明定位信息和来源链接；有核验结果时还会单独列出代码、权重或数据链接。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。
 
@@ -12,19 +12,25 @@
 
 | 分类 | 条目数 | 机制家族 |
 | --- | ---: | --- |
-| [参数与训练数据](parameter-learning.zh-CN.md) | 37 | [自博弈与课程任务生成](parameter-learning.zh-CN.md#family-self-play-curriculum) (14) · [验证器与奖励进化](parameter-learning.zh-CN.md#family-verifier-reward) (5) · [技能-权重共进化](parameter-learning.zh-CN.md#family-skill-weight-coevolution) (2) · [经验蒸馏与测试时适应](parameter-learning.zh-CN.md#family-experience-distillation) (5) · [自主训练智能体与数据管线](parameter-learning.zh-CN.md#family-autonomous-training) (5) · [支撑性适应机制](parameter-learning.zh-CN.md#family-enabling-adaptation) (6) |
-| [Agent 与代码](agent-code.zh-CN.md) | 43 | [技能文件优化与技能库](agent-code.zh-CN.md#family-skill-file-optimization) (17) · [Harness 搜索与进化](agent-code.zh-CN.md#family-harness-search) (11) · [自改写元智能体与谱系](agent-code.zh-CN.md#family-self-modifying-meta-agents) (6) · [程序进化与进化搜索](agent-code.zh-CN.md#family-program-evolution) (4) · [反馈审查与编排](agent-code.zh-CN.md#family-feedback-orchestration) (3) · [安全与治理](agent-code.zh-CN.md#family-safety-governance) (2) |
-| [记忆与上下文](memory-context.zh-CN.md) | 19 | [结构化知识库与图](memory-context.zh-CN.md#family-structured-knowledge) (6) · [经验积累与回放](memory-context.zh-CN.md#family-experience-accumulation) (6) · [上下文组织策略](memory-context.zh-CN.md#family-context-policies) (4) · [探索式记忆构建](memory-context.zh-CN.md#family-exploration-memory) (1) · [记忆进化评测研究](memory-context.zh-CN.md#family-memory-evolution-studies) (2) |
-| [自动化研发与评测](research-workflows.zh-CN.md) | 33 | [AI 科学家系统](research-workflows.zh-CN.md#family-ai-scientists) (9) · [自主后训练及其评测](research-workflows.zh-CN.md#family-autonomous-post-training) (3) · [公司研发遥测](research-workflows.zh-CN.md#family-company-telemetry) (6) · [对齐自动化](research-workflows.zh-CN.md#family-alignment-automation) (3) · [分析与审计](research-workflows.zh-CN.md#family-analyses-audits) (6) · [立场、路线图与实验室](research-workflows.zh-CN.md#family-positions-labs) (6) |
+| [参数与训练数据](parameter-learning.zh-CN.md) | 39 | [自博弈与课程任务生成](parameter-learning.zh-CN.md#family-self-play-curriculum) (14) · [验证器与奖励进化](parameter-learning.zh-CN.md#family-verifier-reward) (5) · [技能-权重共进化](parameter-learning.zh-CN.md#family-skill-weight-coevolution) (2) · [经验蒸馏与测试时适应](parameter-learning.zh-CN.md#family-experience-distillation) (6) · [自主训练智能体与数据管线](parameter-learning.zh-CN.md#family-autonomous-training) (6) · [支撑性适应机制](parameter-learning.zh-CN.md#family-enabling-adaptation) (6) |
+| [Agent 与代码](agent-code.zh-CN.md) | 47 | [技能文件优化与技能库](agent-code.zh-CN.md#family-skill-file-optimization) (17) · [Harness 搜索与进化](agent-code.zh-CN.md#family-harness-search) (13) · [自改写元智能体与谱系](agent-code.zh-CN.md#family-self-modifying-meta-agents) (6) · [程序进化与进化搜索](agent-code.zh-CN.md#family-program-evolution) (5) · [反馈审查与编排](agent-code.zh-CN.md#family-feedback-orchestration) (4) · [安全与治理](agent-code.zh-CN.md#family-safety-governance) (2) |
+| [记忆与上下文](memory-context.zh-CN.md) | 21 | [结构化知识库与图](memory-context.zh-CN.md#family-structured-knowledge) (6) · [经验积累与回放](memory-context.zh-CN.md#family-experience-accumulation) (6) · [上下文组织策略](memory-context.zh-CN.md#family-context-policies) (5) · [探索式记忆构建](memory-context.zh-CN.md#family-exploration-memory) (1) · [记忆进化评测研究](memory-context.zh-CN.md#family-memory-evolution-studies) (3) |
+| [自动化研发与评测](research-workflows.zh-CN.md) | 37 | [AI 科学家系统](research-workflows.zh-CN.md#family-ai-scientists) (9) · [自主后训练及其评测](research-workflows.zh-CN.md#family-autonomous-post-training) (3) · [公司研发遥测](research-workflows.zh-CN.md#family-company-telemetry) (7) · [对齐自动化](research-workflows.zh-CN.md#family-alignment-automation) (3) · [分析与审计](research-workflows.zh-CN.md#family-analyses-audits) (9) · [立场、路线图与实验室](research-workflows.zh-CN.md#family-positions-labs) (6) |
 
 ## 时间索引
 
 | 日期 | 工作 | 机构 | 家族 | 证据类别 |
 | --- | --- | --- | --- | --- |
+| 2026-09-18 | [Reflective Recovery: A Self-Supervised Method for Reasoning by Learning from Mistakes](parameter-learning.zh-CN.md#reflective-recovery) | Zhejiang University / The University of Hong Kong / The Hong Kong University of Science and Technology | 经验蒸馏与测试时适应 | 直接有界闭环 |
 | 2026-09-17 | [SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness](agent-code.zh-CN.md#solpi-recursive-autoresearch-loops) | NVIDIA / Nanyang Technological University / MIT | 自改写元智能体与谱系 | 直接有界闭环 |
 | 2026-09-17 | [SkillAA: Attribution-Guided Skill-Graph Updating with Targeted Validation and Rollback](agent-code.zh-CN.md#skillaa-attribution-rollback) | Nanjing University | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-09-17 | [RetireOPD: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning](parameter-learning.zh-CN.md#retireopd-self-retiring-distillation) | Zhejiang University / Alibaba Group | 经验蒸馏与测试时适应 | 支撑技术／评测 |
+| 2026-09-17 | [How Do Agent Harnesses Create Value? Planning Information and Release Control in Stateful LLM Agents](research-workflows.zh-CN.md#harness-value-sham-control) | The Chinese University of Hong Kong, Shenzhen / University of Edinburgh | 分析与审计 | 支撑技术／评测 |
 | 2026-09-17 | [FINSKILLOPS: A Self-Evolving Multi-Agent System for SEC Filing QA](agent-code.zh-CN.md#finskillops-sec-filing-qa) | SimpleWay.AI / McGill University / University of Toronto / UCLA / The Chinese University of Hong Kong / Mila / University of Manitoba / Université de Montréal / McMaster University / Harvard University / Monash University / University of Hong Kong | 技能文件优化与技能库 | 直接有界闭环 |
+| 2026-09-17 | [Evolution or Illusion? Rethinking Evaluation in LLM Evolutionary Search](research-workflows.zh-CN.md#evolution-or-illusion-budget) | IBM Research | 分析与审计 | 支撑技术／评测 |
+| 2026-09-17 | [Compiled Agency: Frontier General-Purpose Coding Agents Build Winning Game Players from Bare Interaction - from Flappy Bird to StarCraft II and Civilization](agent-code.zh-CN.md#compiled-agency-gauntlet) | New York University / Princeton University | 程序进化与进化搜索 | 支撑技术／评测 |
+| 2026-09-17 | [AutoData: Agentic Search for Pre-training Data Selection](parameter-learning.zh-CN.md#autodata-pretraining-search) | Weco AI / University of Amsterdam | 自主训练智能体与数据管线 | 支撑技术／评测 |
+| 2026-09-17 | [Measurements for understanding the pace of AI development inside frontier labs](research-workflows.zh-CN.md#anthropic-measuring-pace) | Anthropic | 公司研发遥测 | 自动化／辅助研发 |
 | 2026-09-16 | [STRETCH the Boundaries: A Unified Self-Taught Framework for Progressive LLM Evolution](parameter-learning.zh-CN.md#stretch-unified-self-taught) | University of Birmingham | 自博弈与课程任务生成 | 直接有界闭环 |
 | 2026-09-16 | [ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments](parameter-learning.zh-CN.md#scienceide-agent-environments) | PhAI Labs / AItonomy Foundation / Qwen (Alibaba) / University of Oxford / Princeton University / Stanford University / University of California, Berkeley / Georgia Institute of Technology | 自主训练智能体与数据管线 | 支撑技术／评测 |
 | 2026-09-16 | [Infinite-Parameter LLMs: Generating and Adapting Weights from Live Data](parameter-learning.zh-CN.md#infinite-parameter-weights-from-live-data) | Boltzbit Limited / University of Cambridge | 支撑性适应机制 | 支撑技术／评测 |
@@ -34,13 +40,16 @@
 | 2026-09-16 | [Agora: Git as Shared Memory for Collective AutoResearch](research-workflows.zh-CN.md#agora-git-shared-memory) | NVIDIA | AI 科学家系统 | 直接有界闭环 |
 | 2026-09-15 | [XPACE: Joint World and Action Modeling from Heterogeneous Experience](parameter-learning.zh-CN.md#xpace-world-model-selfimprovement) | XPENG Robotics | 自主训练智能体与数据管线 | 直接有界闭环 |
 | 2026-09-15 | [Reflections on Trusting Trust, Revisited: Contaminating Self-Modifying AI Coding Agents with Poisoned Benchmarks](agent-code.zh-CN.md#trusting-trust-self-modifying) | University of Washington / Georgetown University | 安全与治理 | 支撑技术／评测 |
+| 2026-09-15 | [ThinkFlow: Self-Evolving Probabilistic Latent Memory for Lifelong Conversational Agents](memory-context.zh-CN.md#thinkflow-latent-memory) | Pengcheng Laboratory / Harbin Institute of Technology (Shenzhen) / China Unicom Greater Bay Area Innovation Institute | 记忆进化评测研究 | 直接有界闭环 |
 | 2026-09-15 | [ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents](research-workflows.zh-CN.md#sciencebuddy-recursive-in-recursive) | PhAI Labs / Fudan University Zhongshan Hospital / Shanghai Academy of Natural Sciences / Shunwei Capital / University of Oxford / Stanford University / Princeton University | AI 科学家系统 | 直接有界闭环 |
 | 2026-09-15 | [RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views](memory-context.zh-CN.md#repoatlas-evolving-views) | Beihang University / Independent Researcher | 上下文组织策略 | 支撑技术／评测 |
 | 2026-09-15 | [PrimeScientist: Strategic Allocation of Research Effort in Autonomous Research](research-workflows.zh-CN.md#primescientist-effort-allocation) | UC San Diego / Johns Hopkins University | AI 科学家系统 | 支撑技术／评测 |
 | 2026-09-15 | [Refactoring Hermes with 1,393 agents](agent-code.zh-CN.md#nous-hermes-selfrefactor) | Nous Research | 自改写元智能体与谱系 | 直接有界闭环 |
+| 2026-09-15 | [Interactive Memory Learning for Long-Term Conversations](memory-context.zh-CN.md#interactive-memory-learning) | Harbin Institute of Technology (Shenzhen) / Pengcheng Laboratory | 上下文组织策略 | 直接有界闭环 |
 | 2026-09-15 | [Reflect, Revise, Reuse: Training-Free Skill Evolution for GUI Agents](agent-code.zh-CN.md#evoskill-gui-reflect-revise-reuse) | Zhejiang University / University of Electronic Science and Technology of China | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-09-15 | [EvolveTrade: Experience-Driven Policy Refinement for Self-Evolving LLM Trading Agents](agent-code.zh-CN.md#evolvetrade-experience-driven-policy) | KAIST / DeepAuto.ai | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-09-15 | [EchoPath: Execution-Level Replayable Memory for GUI Agents](memory-context.zh-CN.md#echopath-replayable-memory) | Johns Hopkins University / Amazon AGI | 经验积累与回放 | 直接有界闭环 |
+| 2026-09-15 | [AURA: Agentic Diagnosis and Refinement for Production Recommender Systems at Scale](agent-code.zh-CN.md#aura-recommender-refinement) | The Walt Disney Company | 反馈审查与编排 | 直接有界闭环 |
 | 2026-09-14 | [SkillLift: Learning Dense Rubrics from Sparse Oracles for Efficient Skill Evolution](agent-code.zh-CN.md#skilllift-dense-rubrics) | Independent Researcher (Haoxiang Kang) / Fudan University (Ming Wen) | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-09-14 | [RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments](memory-context.zh-CN.md#rsiagent-autonomous-exploration) | Aether AI / University of California San Diego / University of Illinois Chicago | 探索式记忆构建 | 直接有界闭环 |
 | 2026-09-14 | [ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement](agent-code.zh-CN.md#modularrsi-modular-harness) | Beihang University / University of Manchester / IQuest Research / M-A-P / Langboat / Hohai University | Harness 搜索与进化 | 直接有界闭环 |
@@ -61,6 +70,7 @@
 | 2026-09-06 | [MetaRSI / RSI2: A Meta-Recursive Self-Improving System for Recursive Self-Improving Systems Themselves](research-workflows.zh-CN.md#metarsi-composition) | CosmosMind | 自主后训练及其评测 | 直接有界闭环 |
 | 2026-09-04 | [From Interaction Traces to Persistent Skills: Online Evolution for Computer-Use Agents](agent-code.zh-CN.md#persistent-skills-osworld) | University of Electronic Science and Technology of China / Zhejiang University | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-09-03 | [SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation in Traffic Simulation](agent-code.zh-CN.md#simskill-traffic) | Jilin University / Tongji University | 技能文件优化与技能库 | 直接有界闭环 |
+| 2026-09-03 | [EvoHarnessBench: Can Your Agents Keep Pace with an Evolving Harness?](research-workflows.zh-CN.md#evoharnessbench-harness-evolution) | Salesforce Research / University of North Carolina at Chapel Hill / University of Wisconsin–Madison | 分析与审计 | 支撑技术／评测 |
 | 2026-09-02 | [SkillGLoW: Procedural-Family Skill Consolidation for Self-Improving Agents on Long-Horizon Task Streams](agent-code.zh-CN.md#skillglow-procedural-families) | National University of Singapore / Institute of Advanced Intelligence and Computing (IAIC), Singapore | 技能文件优化与技能库 | 直接有界闭环 |
 | 2026-09-01 | [Reef: Continual Learning Infrastructure for Self-Improving Agents](agent-code.zh-CN.md#human-agent-society-reef) | Human-Agent-Society | 反馈审查与编排 | 直接有界闭环 |
 | 2026-09-01 | [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](agent-code.zh-CN.md#bytedance-harnessdev) | ByteDance Seed / Singapore University of Technology and Design / Georgia Institute of Technology / M-A-P / TokenWave.AI | Harness 搜索与进化 | 直接有界闭环 |
@@ -84,8 +94,10 @@
 | 2026-07-31 | [Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection](agent-code.zh-CN.md#salesforce-beagle-darwinx) | Salesforce AI Research | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-07-30 | [Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering](research-workflows.zh-CN.md#frontis-ma1-openmle) | Frontis.AI — Horizon Research / Tsinghua University | AI 科学家系统 | 直接有界闭环 |
 | 2026-07-26 | [From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement](parameter-learning.zh-CN.md#spyrl-self-verifiable-rewards) | Duke University / Adobe Inc. / Pennsylvania State University / National University of Singapore / Oregon State University / Amazon | 自博弈与课程任务生成 | 直接有界闭环 |
+| 2026-07-26 | [AgentDescent: Gradient descent, but the parameters are agents](agent-code.zh-CN.md#agentdescent-agent-gradient) | AgentDescent project (independent, Danyang Chen) | Harness 搜索与进化 | 支撑技术／评测 |
 | 2026-07-23 | [Toward Self-Improving Agents](research-workflows.zh-CN.md#salesforce-toward-self-improving-agents) | Salesforce (AI Labs) | 立场、路线图与实验室 | 支撑技术／评测 |
 | 2026-07-21 | [Hyra: 简单有效的科学发现智能体](research-workflows.zh-CN.md#tencent-hyra-research-agent) | Tencent Hunyuan | AI 科学家系统 | 直接有界闭环 |
+| 2026-07-19 | [PenguinHarness: Harness for RSI. Let AI Build AI](agent-code.zh-CN.md#penguin-harness-self-evolution) | Prism Shadow (PrismShadow AI Team, Yaowei Zheng) | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-07-15 | [GPT-Red: Automated Red Teaming via Self-Play at Scale](parameter-learning.zh-CN.md#gpt-red) | OpenAI | 自博弈与课程任务生成 | 直接有界闭环 |
 | 2026-07-14 | [AIDE²: The First Evidence of Recursive Self-Improvement](agent-code.zh-CN.md#weco-aide2-first-evidence) | Weco AI | 自改写元智能体与谱系 | 直接有界闭环 |
 | 2026-07-14 | [Self-Improvements in Modern Agentic Systems: A Survey](research-workflows.zh-CN.md#self-improving-agents-survey) | Jilin University / KAUST / University of Alberta / IDSIA/USI/SUPSI | 分析与审计 | 支撑技术／评测 |

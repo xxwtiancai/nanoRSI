@@ -7,10 +7,10 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [技能文件优化与技能库](#family-skill-file-optimization) | 17 |
-| [Harness 搜索与进化](#family-harness-search) | 11 |
+| [Harness 搜索与进化](#family-harness-search) | 13 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 6 |
-| [程序进化与进化搜索](#family-program-evolution) | 5 |
-| [反馈审查与编排](#family-feedback-orchestration) | 3 |
+| [程序进化与进化搜索](#family-program-evolution) | 6 |
+| [反馈审查与编排](#family-feedback-orchestration) | 4 |
 | [安全与治理](#family-safety-governance) | 2 |
 
 <a id="family-skill-file-optimization"></a>
@@ -529,7 +529,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (11)
+## Harness 搜索与进化 (13)
 
 <a id="chase-counterfactual-harness"></a>
 
@@ -710,6 +710,66 @@
 **开源代码／权重／数据链接** — [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt)
 
 **一手来源** — [DarwinX paper v1](https://arxiv.org/abs/2608.07545) · [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt) · [Official Beagle architecture figure](https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg)
+
+<a id="agentdescent-agent-gradient"></a>
+
+### AgentDescent: Gradient descent, but the parameters are agents
+
+**2026-07-26** · release · 支撑技术／评测
+
+**日期说明** — PyPI 首个版本 0.1.0 于 2026-07-26；核验时最新为 0.5.0（2026-09-07）。MIT 许可、核心零必装依赖（Python ≥3.9）；方法文档挂 Zenodo DOI 10.5281/zenodo.22348027。README 自述为研究参考实现而非生产系统。
+
+**机构关系** — 独立开源项目（Zenodo 引用作者 Danyang Chen）；核验时 README 与 PyPI 均未写机构归属。
+
+**改变对象与反馈复用** — 多 worker 的自进化算法引擎：worker 并行提出对共享工件的 diff，聚合器把被接受提案合并进 git 版本化账本。策略的键空间决定并发提案能否融合——反思式合并在语义上融合，键控并集永远做不到。内置约二十个已发表自进化算法的忠实移植（GEPA、ACE、ADAS、DGM 等），分歧有文档记录且类似物明确不可作基准引用。
+
+**作者报告结果** — 在 BBH dyck_languages（GLM-5.2，N=4，四种子）上：反思式合并融合 48 次合并机会中的 42 次，键控并集为 0/48。固定滚动预算下：模型调用少 40%（95% CI 27–54%，每个种子方向一致）；对忠实串行对照的 wall-clock 中位加速 6.8×（三种子，3.1–9.5×）；单调用路径保留集精确匹配 0.167→0.583（40 题 HotpotQA，保留 12 题）。
+
+**证据边界** — 自跑基准报告于 README/文档并给区间，未经同行评审；规模小（N=4 滚动、几十题）；引擎本身是基础设施——改进主张属于其复现的被移植算法。
+
+**代码／权重／数据／许可** — MIT 许可；PyPI 包 agentdescent；核心零必装依赖；方法文档有 Zenodo DOI；GitHub Releases 为空（发版走 PyPI）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可移植的是合并策略教训：并行候选编辑同一共享工件时，键控/位置并工会静默丢弃重叠工作——候选合并需要语义（反思式）融合，融合结果应像其他被接受候选一样落入版本化账本。
+
+![agentdescent 架构：worker 并行提出 diff；账本为共享工件做版本管理；聚合器反思并合并；评估反馈进入下一轮。](assets/paper-figures/agentdescent-architecture.png)
+
+**原文图／官方图片** — agentdescent 架构：worker 并行提出 diff；账本为共享工件做版本管理；聚合器反思并合并；评估反馈进入下一轮。 · docs/assets/architecture.png in the repository · [source](https://github.com/Birfy/agentdescent/blob/main/docs/assets/architecture.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — [GitHub repository](https://github.com/Birfy/agentdescent) · [README (results and license)](https://raw.githubusercontent.com/Birfy/agentdescent/main/README.md) · [PyPI release history](https://pypi.org/pypi/agentdescent/json)
+
+**一手来源** — [GitHub repository](https://github.com/Birfy/agentdescent) · [README (results and license)](https://raw.githubusercontent.com/Birfy/agentdescent/main/README.md) · [PyPI release history](https://pypi.org/pypi/agentdescent/json)
+
+<a id="penguin-harness-self-evolution"></a>
+
+### PenguinHarness: Harness for RSI. Let AI Build AI
+
+**2026-07-19** · release · 直接有界闭环
+
+**日期说明** — 首个公开发布 v0.0.1 于 2026-07-19（自称 first public release，由 CI 机器人发布）；核验时最新 v0.2.13 于 2026-09-16（为发布失败的 v0.2.12 的重发）。Apache-2.0；团队署名郑耀威（LlamaFactory 作者）与 PrismShadow AI 团队。
+
+**机构关系** — 独立公司团队（Prism Shadow）；未声称高校归属。
+
+**改变对象与反馈复用** — 本地优先的多智能体 auto-dev 平台（桌面应用、CLI、npm、Docker；宣称支持 1000+ 模型并以 DeepSeek 级开源模型为默认）内置自进化引擎：agent 自评自优——跑基准、找失分点、发布 N+1 版，每轮前有快照、每个请求可在 Trace 视图检查；agent 还可编写并优化自己的技能。
+
+**作者报告结果** — 核验时为自我报告的营销级声明：数据分析最佳准确率、成本为 Claude Code 的 1/70；图表标题称领先数据分析套件并在编码上打平 OpenAI Codex；一个完整 RAG 演示应用在 DeepSeek V4 Pro 上仅花 0.02 美元 token 生成。这些声明未附带基准方法学、套件或原始数字（基准套件公开发布仍在路线图）。
+
+**证据边界** — 头条数字为无公开方法学的自我营销声明；基准套件尚未公开；2.3k 星项目迭代极快（发版以天计）；无同行评审评测。
+
+**代码／权重／数据／许可** — Apache-2.0；npm 包 @prismshadow/penguin-core；Docker 镜像；网站 penguin.ooo；GitHub 发版（核验时最新 v0.2.13）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 在数字可核验之前就值得借鉴其可追溯纪律：每轮自进化前做快照、每个请求可检查，使自改代理的历史可回放——与 nanoRSI 证据账本所强制的性质相同。
+
+![PenguinHarness 自进化引擎海报：跑基准、找失分点、发布 N+1 版，配快照与可检查的 trace。](assets/paper-figures/penguin-self-evolution-poster.webp)
+
+**原文图／官方图片** — PenguinHarness 自进化引擎海报：跑基准、找失分点、发布 N+1 版，配快照与可检查的 trace。 · Official site self-evolution poster (benchmark → find the lost points → ship vN+1) · [source](https://penguin.ooo/assets/evo-poster-en-Bp4EWVlL.webp)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — [GitHub repository](https://github.com/Prism-Shadow/penguin-harness) · [README (mechanism and claims)](https://raw.githubusercontent.com/Prism-Shadow/penguin-harness/main/README.md)
+
+**一手来源** — [GitHub repository](https://github.com/Prism-Shadow/penguin-harness) · [README (mechanism and claims)](https://raw.githubusercontent.com/Prism-Shadow/penguin-harness/main/README.md) · [Website](https://penguin.ooo/)
 
 <a id="rho-retrospective-harness"></a>
 
@@ -1047,7 +1107,37 @@
 
 <a id="family-program-evolution"></a>
 
-## 程序进化与进化搜索 (5)
+## 程序进化与进化搜索 (6)
+
+<a id="compiled-agency-gauntlet"></a>
+
+### Compiled Agency: Frontier General-Purpose Coding Agents Build Winning Game Players from Bare Interaction - from Flappy Bird to StarCraft II and Civilization
+
+**2026-09-17** · paper · 支撑技术／评测
+
+**日期说明** — v1 提交于 2026-07-17，被 arXiv 扣留至 2026-09-17 才公告（OAI datestamp）；按被扣留论文惯例记首次公开日。
+
+**机构关系** — 学术：纽约大学（Joey Xiao）与普林斯顿大学（Haonan Huang，通讯）。
+
+**改变对象与反馈复用** — Gauntlet 是开发-冻结-评测框架：通用编码代理只拿到游戏描述、原始观测/动作接口和一份空策略文件——不给策略、算法或架构。在单次自主会话中与真实游戏交互试错并写出独立控制器，随后冻结并在保留实例上评测，游玩期间零模型调用。冻结产物可检查。
+
+**作者报告结果** — 在一个未公开的程序化 roguelike 上，保留集成功率跨度 0–86%，并呈现清晰的代际门槛：最新一代系统的每个观测会话都胜过上一代的最佳会话。编译出的原始 API 星际争霸 II 控制器击败全部公平内置 AI 与两个作弊变体；单会话程序在保留种子上以完全征服赢得整局文明（Freeciv）——对新手 AI 胜率不高，但号称是无逐回合模型调用、无手工战术层的独立语言代理系统首例。
+
+**证据边界** — Freeciv 胜率仅对新手 AI 且不高；roguelike 结果依赖未公开私设游戏；未找到代码或 harness 发布；核验时仅一版。
+
+**代码／权重／数据／许可** — 核验时未找到代码；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 冻结后评测的契约可直接映射到 nanoRSI 终测：候选冻结后，评测必须在保留种子上零额外模型调用运行，任何运行时自改都会作为契约违例显形。
+
+![Gauntlet 图 1：先前工作由研究者提供观测抽象、记忆、技能与规划器；此处智能架构本身是输出，由模型从裸交互中自建。](assets/paper-figures/compiled-agency-gauntlet.png)
+
+**原文图／官方图片** — Gauntlet 图 1：先前工作由研究者提供观测抽象、记忆、技能与规划器；此处智能架构本身是输出，由模型从裸交互中自建。 · Figure 1 (x1.png) · [source](https://arxiv.org/html/2609.18996v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.18996) · [arXiv HTML v1](https://arxiv.org/html/2609.18996v1)
 
 <a id="dream-rsi-replay-simulator"></a>
 
@@ -1201,7 +1291,37 @@
 
 <a id="family-feedback-orchestration"></a>
 
-## 反馈审查与编排 (3)
+## 反馈审查与编排 (4)
+
+<a id="aura-recommender-refinement"></a>
+
+### AURA: Agentic Diagnosis and Refinement for Production Recommender Systems at Scale
+
+**2026-09-15** · paper · 直接有界闭环
+
+**日期说明** — v1 提交于 2026-09-15，公告日 2026-09-16（OAI datestamp）；被 GenAIECommerce’26（与 RecSys 2026 同期工作坊，9 月 28 日，明尼阿波利斯）接收；作者脚注为华特迪士尼公司（旧金山），三人同等贡献。
+
+**机构关系** — 企业一手（华特迪士尼公司，旧金山）；全体作者同等贡献。
+
+**改变对象与反馈复用** — 面向生产互动日志的端到端 agentic 管线：专职代理从真实用户会话中提炼定性失效模式（会话选择、诊断、大规模定性评估）；第二阶段将诊断与推荐系统的代码、数据和训练管线上下文结合，提出并落地代码级改进。领域细节经由配置层注入，已在两个内部平台间移植；每个 PR 由工程师审核，管线可迭代运行。
+
+**作者报告结果** — 两个平台的生产诊断：评估 96,801 与 101,594 个会话，上游逐会话判 BAD 比例 19.5% 与 4.1%；多数票验证一致率 96.0%（192/200）与 87.6%（176/201）。诚实的早期阴性结果：产出的两个代码级改进未在被诊断队列（1,911 会话）上提升排序，与生产基线的差异在运行间噪声内（±0.1%）。
+
+**证据边界** — 工作坊论文，属初期测试与早期结果；除生产基线噪声外无定量对照；诚实结论是诊断质量尚未转化为排序收益；未找到代码或数据发布。
+
+**代码／权重／数据／许可** — 核验时未找到代码或数据；生产数据本身不公开。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可移植的是配置层解耦：把 nanoRSI 的任务域细节放进配置层，使诊断→代码改进循环可以不改循环本身而切换到新任务族；改进未超过基线噪声时如实记录零结果。
+
+![AURA 管线：会话选择、大规模诊断与定性评估、假设与技术提案，随后代码实现、训练、评估与 A/B 就绪，配 AI 校验、工程师评审与记忆层。](assets/paper-figures/aura-recommender-pipeline.png)
+
+**原文图／官方图片** — AURA 管线：会话选择、大规模诊断与定性评估、假设与技术提案，随后代码实现、训练、评估与 A/B 就绪，配 AI 校验、工程师评审与记忆层。 · Figure 1 (aura_pipeline.png) · [source](https://arxiv.org/html/2609.16625v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.16625) · [arXiv HTML v1](https://arxiv.org/html/2609.16625v1)
 
 <a id="human-agent-society-reef"></a>
 

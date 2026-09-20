@@ -8,9 +8,9 @@
 | --- | ---: |
 | [结构化知识库与图](#family-structured-knowledge) | 6 |
 | [经验积累与回放](#family-experience-accumulation) | 7 |
-| [上下文组织策略](#family-context-policies) | 4 |
+| [上下文组织策略](#family-context-policies) | 5 |
 | [探索式记忆构建](#family-exploration-memory) | 1 |
-| [记忆进化评测研究](#family-memory-evolution-studies) | 2 |
+| [记忆进化评测研究](#family-memory-evolution-studies) | 3 |
 
 <a id="family-structured-knowledge"></a>
 
@@ -412,7 +412,7 @@
 
 <a id="family-context-policies"></a>
 
-## 上下文组织策略 (4)
+## 上下文组织策略 (5)
 
 <a id="repoatlas-evolving-views"></a>
 
@@ -443,6 +443,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.16936) · [Paper HTML (affiliations, Figure 2, selection ablation)](https://arxiv.org/html/2609.16936v1)
+
+<a id="interactive-memory-learning"></a>
+
+### Interactive Memory Learning for Long-Term Conversations
+
+**2026-09-15** · paper · 直接有界闭环
+
+**日期说明** — v1 提交于 2026-09-15，公告日 2026-09-16（OAI datestamp）；核验时仅一版。与同组同日的 ThinkFlow（arXiv:2609.17010）为姊妹篇。
+
+**机构关系** — 学术：哈尔滨工业大学（深圳）与鹏城实验室（通讯作者徐睿峰）。
+
+**改变对象与反馈复用** — 把记忆重新表述为可学习策略而非被动存储。会话合成管线构建专家数据用于快速适配；在线强化学习让 Planner（选择性编码高价值信息）与 Trigger（决定何时检索）共同演化；延迟奖励把未来交互反馈回传到更早的存储决策。
+
+**作者报告结果** — 在 CC/MSC/GC 上，Llama3-Instruct 1B/3B/8B 版 Icml（另有 Gemma3 主干）优于 GPT-4o 长上下文（128K）与六个记忆基线（Mem0、A-Mem、MemoryOS、MemoryBank、LD-Agent、THEANINE）：如 CC BLEU-4 2.37（3B）对 GPT-4o 长上下文 1.79；GC BertScore 40.8 对 36.57；响应质量随交互累积持续提升。消融显示去掉合成数据、Planner、Trigger 或演化各有降分。
+
+**证据边界** — 仅 v1；未找到代码；生成代理指标而非下游任务结果；与 ThinkFlow 为同日姊妹篇，作者重叠。
+
+**代码／权重／数据／许可** — 核验时未找到代码。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 延迟奖励的归因方式可映射到 nanoRSI 技能保留：按下游 episode 结果而非当次闸门裁决给每个记忆/上下文提案打分。
+
+![Icml 框架：通过长期交互，代理利用环境反馈区分高价值记忆与噪声，实现在线自演化。](assets/paper-figures/interactive-memory-learning.png)
+
+**原文图／官方图片** — Icml 框架：通过长期交互，代理利用环境反馈区分高价值记忆与噪声，实现在线自演化。 · Figure 1 (fig1-7.png) · [source](https://arxiv.org/html/2609.17088v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17088) · [arXiv HTML v1](https://arxiv.org/html/2609.17088v1)
 
 <a id="sambanova-stanford-ace"></a>
 
@@ -570,7 +600,37 @@
 
 <a id="family-memory-evolution-studies"></a>
 
-## 记忆进化评测研究 (2)
+## 记忆进化评测研究 (3)
+
+<a id="thinkflow-latent-memory"></a>
+
+### ThinkFlow: Self-Evolving Probabilistic Latent Memory for Lifelong Conversational Agents
+
+**2026-09-15** · paper · 直接有界闭环
+
+**日期说明** — v1 提交于 2026-09-15，公告日 2026-09-16（OAI datestamp）；核验时仅一版。与同组同日的 Interactive Memory Learning（arXiv:2609.17088）为姊妹篇，提交晚一小时。
+
+**机构关系** — 学术合作：鹏城实验室与哈工大（深圳）（通讯作者徐睿峰），一名作者来自中国联通大湾区创新研究院。
+
+**改变对象与反馈复用** — 以端到端潜在记忆取代显式文本记忆：对话流被压缩为解耦的概率潜在记忆技能（连续向量），绕开文本摘要瓶颈。测试时演化分两阶段：教师引导的潜在对齐引导初始状态（冷启动），之后自监督的下一用户话语预测任务在交互中持续精炼记忆，全程无需标注。
+
+**作者报告结果** — 在 PersonaMem（上下文至 1M token，Qwen3-8B 主干）上，ThinkFlow-8B 平均准确率 41.94，较最强可比记忆方法（MemGen 38.86）+2.36，最强任务 +15.32；论文称在该基准可与闭源及 405B 开源模型匹敌。在 CC/MSC/GC 生成任务上优于显式记忆基线（长上下文、RAG 式与 agentic memory），并对显式管线有 token 与时延节省（图 5）。
+
+**证据边界** — 仅 v1；核验时未找到代码；生成结果为代理指标（BLEU/ROUGE/BertScore/Mauve）；PersonaMem 部分基线数字转录自 Jiang et al. (2025a) 而非重跑；与姊妹篇共享作者组与评测风格。
+
+**代码／权重／数据／许可** — 核验时未找到代码、权重或数据；arXiv 论文为 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可移植其免标注演化信号：用记忆技能对下一观测（自监督下一话语预测）的意外度降低来打分，使技能保留闸门不依赖任务标注。
+
+![ThinkFlow 架构与两阶段训练：概率潜在记忆技能、教师引导潜在对齐，随后自监督下一用户话语预测。](assets/paper-figures/thinkflow-latent-memory.png)
+
+**原文图／官方图片** — ThinkFlow 架构与两阶段训练：概率潜在记忆技能、教师引导潜在对齐，随后自监督下一用户话语预测。 · Figure 2 (method.png) · [source](https://arxiv.org/html/2609.17010v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17010) · [arXiv HTML v1](https://arxiv.org/html/2609.17010v1)
 
 <a id="bytedance-s3gym"></a>
 

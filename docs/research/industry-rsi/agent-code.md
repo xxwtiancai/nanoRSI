@@ -7,10 +7,10 @@
 | Family | Records |
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 17 |
-| [Harness search & evolution](#family-harness-search) | 11 |
+| [Harness search & evolution](#family-harness-search) | 13 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 6 |
-| [Program evolution & evolutionary search](#family-program-evolution) | 5 |
-| [Feedback review & orchestration](#family-feedback-orchestration) | 3 |
+| [Program evolution & evolutionary search](#family-program-evolution) | 6 |
+| [Feedback review & orchestration](#family-feedback-orchestration) | 4 |
 | [Safety & governance](#family-safety-governance) | 2 |
 
 <a id="family-skill-file-optimization"></a>
@@ -529,7 +529,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (11)
+## Harness search & evolution (13)
 
 <a id="chase-counterfactual-harness"></a>
 
@@ -710,6 +710,66 @@
 **Open code / weights / data links** — [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt)
 
 **Primary sources** — [DarwinX paper v1](https://arxiv.org/abs/2608.07545) · [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt) · [Official Beagle architecture figure](https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg)
+
+<a id="agentdescent-agent-gradient"></a>
+
+### AgentDescent: Gradient descent, but the parameters are agents
+
+**2026-07-26** · release · Enabling technique / evaluation
+
+**Publication date** — First PyPI release 0.1.0 on 2026-07-26; 0.5.0 (2026-09-07) is the latest at verification. MIT-licensed, zero-required-dependency core (Python ≥3.9); Zenodo DOI 10.5281/zenodo.22348027 carries the methods write-up. The README self-describes as a research reference implementation, not a production system.
+
+**Institutional relationship** — Independent open-source project (author Danyang Chen per the Zenodo citation); no institutional affiliation stated in README or PyPI at verification.
+
+**What changes and how feedback is reused** — A multi-worker engine for self-evolution algorithms: workers propose diffs to a shared artifact in parallel; an aggregator merges accepted proposals into a git-versioned ledger. The key space of the strategy decides whether concurrent proposals can fuse at all — reflective merge fuses semantically where a keyed union never can. Ships faithful ports of about twenty published self-evolution algorithms (GEPA, ACE, ADAS, DGM and others), with divergences documented and analogues explicitly not citable as benchmarks.
+
+**Author-reported result** — On BBH dyck_languages (GLM-5.2, N=4, four seeds): reflective merge fuses 42 of 48 merge opportunities where a keyed union fuses 0 of 48. At a pinned rollout budget: 40% fewer model calls (95% CI 27–54%, same direction on every seed); median 6.8× wall-clock speedup versus a faithful serial control (three seeds, 3.1–9.5×); one-call path held-out exact match 0.167 → 0.583 (40 HotpotQA items, 12 held out).
+
+**Evidence limits** — Self-run benchmarks reported in README/docs with intervals rather than peer review; scale is small (N=4 rollouts, tens of items); the engine is infrastructure — improvement claims belong to the ported algorithms it reproduces.
+
+**Code / weights / data / license** — MIT-licensed; PyPI package agentdescent; core has zero required dependencies; Zenodo DOI for the methods write-up; GitHub Releases empty (releases via PyPI).
+
+**Possible nanoRSI experiment — not implemented here** — The merge-policy lesson is the transplant for nanoRSI population mode: when parallel candidates edit one shared artifact, a keyed/positional union silently drops overlapping work — candidate merging needs semantic (reflective) fusion, and the fused result should land in a versioned ledger like any other accepted candidate.
+
+![agentdescent architecture: workers propose diffs in parallel; the ledger versions the shared artifact; the aggregator reflects and merges; evaluation feeds back the next round.](assets/paper-figures/agentdescent-architecture.png)
+
+**Source figure / official image** — agentdescent architecture: workers propose diffs in parallel; the ledger versions the shared artifact; the aggregator reflects and merges; evaluation feeds back the next round. · docs/assets/architecture.png in the repository · [source](https://github.com/Birfy/agentdescent/blob/main/docs/assets/architecture.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — [GitHub repository](https://github.com/Birfy/agentdescent) · [README (results and license)](https://raw.githubusercontent.com/Birfy/agentdescent/main/README.md) · [PyPI release history](https://pypi.org/pypi/agentdescent/json)
+
+**Primary sources** — [GitHub repository](https://github.com/Birfy/agentdescent) · [README (results and license)](https://raw.githubusercontent.com/Birfy/agentdescent/main/README.md) · [PyPI release history](https://pypi.org/pypi/agentdescent/json)
+
+<a id="penguin-harness-self-evolution"></a>
+
+### PenguinHarness: Harness for RSI. Let AI Build AI
+
+**2026-07-19** · release · Direct bounded loop
+
+**Publication date** — First public release v0.0.1 on 2026-07-19 (self-described first public release, CI-published); v0.2.13 on 2026-09-16 is the latest at verification (a re-cut of a failed v0.2.12). Apache-2.0; team credits Yaowei Zheng (LlamaFactory author) and the PrismShadow AI Team.
+
+**Institutional relationship** — Independent company team (Prism Shadow); no university affiliation claimed.
+
+**What changes and how feedback is reused** — A local-first multi-agent auto-dev platform (desktop app, CLI, npm, Docker; 1000+ models with DeepSeek-class open models as the advertised default) whose native self-evolution engine has an agent evaluate and optimize itself: run the benchmark, find the lost points, ship version N+1, with a snapshot before every round and every request inspectable in a Trace view; agents can also author and optimize their own skills.
+
+**Author-reported result** — Self-reported marketing-grade claims at verification: best accuracy on data analysis at 1/70 of Claude Code’s cost; a chart captioned as leading the data-analysis suite and tying OpenAI Codex on coding; a full RAG demo app generated for $0.02 of tokens on DeepSeek V4 Pro. No benchmark methodology, suite or raw numbers published alongside these claims (public benchmark-suite release is a roadmap item).
+
+**Evidence limits** — Headline numbers are self-reported marketing claims without published methodology; the benchmark suite is not yet public; 2.3k-star project under rapid iteration (release cadence in days); no peer-reviewed evaluation.
+
+**Code / weights / data / license** — Apache-2.0; npm package @prismshadow/penguin-core; Docker images; website penguin.ooo; releases on GitHub (v0.2.13 latest at verification).
+
+**Possible nanoRSI experiment — not implemented here** — The traceability discipline is worth copying even before the claims are verifiable: snapshot before every self-evolution round and keep every request inspectable, so a self-modifying agent’s history is replayable — the same property nanoRSI’s evidence ledger enforces.
+
+![PenguinHarness self-evolution engine poster: run the benchmark, find the lost points, ship version N+1, with snapshots and inspectable traces.](assets/paper-figures/penguin-self-evolution-poster.webp)
+
+**Source figure / official image** — PenguinHarness self-evolution engine poster: run the benchmark, find the lost points, ship version N+1, with snapshots and inspectable traces. · Official site self-evolution poster (benchmark → find the lost points → ship vN+1) · [source](https://penguin.ooo/assets/evo-poster-en-Bp4EWVlL.webp)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — [GitHub repository](https://github.com/Prism-Shadow/penguin-harness) · [README (mechanism and claims)](https://raw.githubusercontent.com/Prism-Shadow/penguin-harness/main/README.md)
+
+**Primary sources** — [GitHub repository](https://github.com/Prism-Shadow/penguin-harness) · [README (mechanism and claims)](https://raw.githubusercontent.com/Prism-Shadow/penguin-harness/main/README.md) · [Website](https://penguin.ooo/)
 
 <a id="rho-retrospective-harness"></a>
 
@@ -1047,7 +1107,37 @@
 
 <a id="family-program-evolution"></a>
 
-## Program evolution & evolutionary search (5)
+## Program evolution & evolutionary search (6)
+
+<a id="compiled-agency-gauntlet"></a>
+
+### Compiled Agency: Frontier General-Purpose Coding Agents Build Winning Game Players from Bare Interaction - from Flappy Bird to StarCraft II and Civilization
+
+**2026-09-17** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 submitted 2026-07-17 but held by arXiv until the 2026-09-17 announcement (OAI datestamp); first public date used, per the held-paper convention.
+
+**Institutional relationship** — Academic: NYU (Joey Xiao) and Princeton (Haonan Huang, corresponding).
+
+**What changes and how feedback is reused** — Gauntlet, a develop-freeze-evaluate framework: a general-purpose coding agent receives only a game description, a raw observation/action interface and an empty policy file — no strategy, algorithm or architecture. In one autonomous session it experiments with the live game and writes a standalone controller, which is frozen and scored on held-out instances with zero model calls during play. The frozen programs are inspectable.
+
+**Author-reported result** — On an unpublished procedural roguelike, held-out success spans 0–86% with a sharp generational threshold: every observed session of a newest-generation system beats the best session of its predecessor. A compiled raw-API StarCraft II controller defeats every fair built-in AI and two cheating variants; single-session programs win complete Civilization (Freeciv) games by total conquest on held-out seeds — modest rates versus novice AI, but claimed as a first for standalone language-agent systems without per-turn model calls or hand-crafted tactical layers.
+
+**Evidence limits** — Freeciv wins are at modest rates against novice AI only; roguelike results depend on an unpublished private game; no code or harness release located; single version at verification.
+
+**Code / weights / data / license** — No code located at verification; CC BY 4.0 paper.
+
+**Possible nanoRSI experiment — not implemented here** — The freeze-then-score contract maps directly onto nanoRSI final testing: once a candidate is frozen, evaluation must run with zero further model calls on held-out seeds, making any runtime self-modification visible as a contract violation.
+
+![Gauntlet Figure 1: in prior work researchers supply observation abstractions, memory, skills and planners; here the intelligence architecture is an output, built by the model from bare interaction.](assets/paper-figures/compiled-agency-gauntlet.png)
+
+**Source figure / official image** — Gauntlet Figure 1: in prior work researchers supply observation abstractions, memory, skills and planners; here the intelligence architecture is an output, built by the model from bare interaction. · Figure 1 (x1.png) · [source](https://arxiv.org/html/2609.18996v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.18996) · [arXiv HTML v1](https://arxiv.org/html/2609.18996v1)
 
 <a id="dream-rsi-replay-simulator"></a>
 
@@ -1201,7 +1291,37 @@
 
 <a id="family-feedback-orchestration"></a>
 
-## Feedback review & orchestration (3)
+## Feedback review & orchestration (4)
+
+<a id="aura-recommender-refinement"></a>
+
+### AURA: Agentic Diagnosis and Refinement for Production Recommender Systems at Scale
+
+**2026-09-15** · paper · Direct bounded loop
+
+**Publication date** — v1 submitted 2026-09-15, announced 2026-09-16 (OAI datestamp); accepted at GenAIECommerce’26 (workshop co-located with RecSys 2026, September 28, Minneapolis); authors footnote The Walt Disney Company, San Francisco, all contributing equally.
+
+**Institutional relationship** — Company first-party (The Walt Disney Company, San Francisco); all authors contributed equally.
+
+**What changes and how feedback is reused** — An end-to-end agentic pipeline over production engagement logs: specialized agents surface qualitative failure patterns for real users (session selection, diagnostics, qualitative evaluation at scale); a second stage combines diagnoses with the recommender’s code, data and training-pipeline context to propose and implement code-level refinements. Domain specifics enter through a configuration layer already ported between two internal platforms; an engineer reviews every pull request and the pipeline runs iteratively.
+
+**Author-reported result** — Deployed diagnostics over two platforms: 96,801 and 101,594 sessions evaluated, 19.5% and 4.1% judged BAD by the upstream per-session judge; majority-vote validation agreement 96.0% (192/200) and 87.6% (176/201). Honest early negative: the two surfaced code-level refinements did not improve ranking on the diagnosed cohort (1,911 sessions) and tracked the production baseline within run-to-run noise (±0.1%).
+
+**Evidence limits** — Workshop paper with initial tests and early results; no quantitative comparator beyond production baseline noise; the honest finding is that diagnosis quality did not yet convert into ranking gains; no code or dataset release located.
+
+**Code / weights / data / license** — No code or dataset located at verification; production data is proprietary by nature.
+
+**Possible nanoRSI experiment — not implemented here** — The porting-configuration split is the transplant: keep nanoRSI task-domain specifics in a config layer so the diagnosis-to-code-refinement loop can be re-pointed at a new task family without touching the loop itself; log the honest nulls when refinements do not beat baseline noise.
+
+![The AURA pipeline: session selection, diagnostics and qualitative evaluation at scale, hypothesis and technical proposal, then code implementation, training, evaluation and A/B readiness with AI validation, engineer review and memory layers.](assets/paper-figures/aura-recommender-pipeline.png)
+
+**Source figure / official image** — The AURA pipeline: session selection, diagnostics and qualitative evaluation at scale, hypothesis and technical proposal, then code implementation, training, evaluation and A/B readiness with AI validation, engineer review and memory layers. · Figure 1 (aura_pipeline.png) · [source](https://arxiv.org/html/2609.16625v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.16625) · [arXiv HTML v1](https://arxiv.org/html/2609.16625v1)
 
 <a id="human-agent-society-reef"></a>
 

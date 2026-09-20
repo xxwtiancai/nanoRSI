@@ -6,6 +6,40 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ---
 
+## 2026-09-20
+
+**New entries (12; catalog 135 → 147)**
+- [thinkflow-latent-memory](memory-context.zh-CN.md#thinkflow-latent-memory) — Pengcheng Lab × HIT Shenzhen × China Unicom GBA (arXiv 2609.17010): probabilistic latent memory skills evolving at test time via self-supervised next-utterance prediction; PersonaMem average 41.94, +2.36 over the best comparable memory method.
+- [interactive-memory-learning](memory-context.zh-CN.md#interactive-memory-learning) — HIT Shenzhen × Pengcheng Lab (arXiv 2609.17088, same group's sibling submission): memory as a learnable policy — Planner and Trigger agents co-evolve under delayed interaction reward; beats GPT-4o long-context and six memory baselines on CC/MSC/GC.
+- [aura-recommender-refinement](agent-code.zh-CN.md#aura-recommender-refinement) — The Walt Disney Company (arXiv 2609.16625, GenAIECommerce'26 @ RecSys): production-log diagnosis agents propose recommender code refinements; the honest finding is two refinements that tracked baseline noise (±0.1%).
+- [evoharnessbench-harness-evolution](research-workflows.zh-CN.md#evoharnessbench-harness-evolution) — Salesforce Research × UNC × UW–Madison (arXiv 2609.04280): 17 harness streams / 802 tasks evolving tools, skills and agents; harness-induced forgetting reaches −34.7% relative BWT on agent expansion.
+- [compiled-agency-gauntlet](agent-code.zh-CN.md#compiled-agency-gauntlet) — NYU × Princeton (arXiv 2609.18996, held from 2026-07-17 to the 09-17 announcement): coding agents write frozen standalone game controllers from bare interaction; beats every fair StarCraft II built-in AI and two cheating variants.
+- [anthropic-measuring-pace](research-workflows.zh-CN.md#anthropic-measuring-pace) — Anthropic Institute (2026-09-17): R&D Automation Index — Claude leads 26% of AI R&D work (from <1% in February), ~30k concurrent agents, 0.002% decision interception, ~6% safety compute share.
+- [autodata-pretraining-search](parameter-learning.zh-CN.md#autodata-pretraining-search) — Weco AI × UvA (arXiv 2609.19754): overnight agent search over data-selection programs with proxy-model feedback beats four human-designed curation pipelines on val-bpb from 125M to 897M.
+- [harness-value-sham-control](research-workflows.zh-CN.md#harness-value-sham-control) — CUHK-Shenzhen × Edinburgh (arXiv 2609.20474): placebo-controlled decomposition of harness value on τ²-bench — task-specific plans beat word-count-matched shuffled text by 7.17pp; a read-only verifier rejects 61% of invalid episodes at under a cent each.
+- [evolution-or-illusion-budget](research-workflows.zh-CN.md#evolution-or-illusion-budget) — IBM Research (arXiv 2609.19799): full seeds×iterations grids over EvoX/OpenEvolve/AdaEvolve show strategy rankings flip with budget; single-cell reporting is not a ranking.
+- [reflective-recovery](parameter-learning.zh-CN.md#reflective-recovery) — ZJU × HKU × HKUST (arXiv 2609.19156, held from 2026-07-24 to the 09-18 announcement): failed-trajectory prefixes become self-supervised recovery data; R1-Distill-Qwen-7B AIME 2025 30.0→37.5%.
+- [agentdescent-agent-gradient](agent-code.zh-CN.md#agentdescent-agent-gradient) — independent, MIT (PyPI 0.1.0 2026-07-26): multi-worker shared-artifact evolution where reflective merge fuses 42/48 versus keyed union 0/48; 40% fewer model calls at pinned budget.
+- [penguin-harness-self-evolution](agent-code.zh-CN.md#penguin-harness-self-evolution) — Prism Shadow / LlamaFactory author (v0.0.1 2026-07-19, Apache-2.0): 2.3k-star auto-dev platform with a benchmark→fix→ship self-evolution engine; claims are marketing-grade, benchmark suite not yet public.
+
+**Updated entries**
+- Window advanced 2025-09-19 → 2025-09-20 / as_of 2026-09-19 → 2026-09-20; no records newly crossed into the archive (the three pre-2025-09-19 records were already archived).
+- [weco-aide2-first-evidence](agent-code.zh-CN.md#weco-aide2-first-evidence): the promised technical PDF is still absent in the third weekly check (weco.ai/research 404, no new blog post since 2026-07-14); AutoData (above) is now the group's citable methods surface. (No catalog field changed; noted here and in COVERAGE.)
+
+**Signals for engineering**
+- Sham-text placebo baseline proposed as a nanoRSI gate requirement (source: harness-value-sham-control) — ADOPTION item 34.
+- Seeds-by-iterations frontier as the reporting rule for evolve-vs-baseline comparisons (source: evolution-or-illusion-budget) — ADOPTION item 35.
+- Reflective (semantic) merge for population candidates editing one artifact (source: agentdescent-agent-gradient) — ADOPTION item 36.
+- Anthropic's disclosure pattern — automation-level mix, oversight interception rate, safety-evaluation budget share — is portable to any self-improvement report (source: anthropic-measuring-pace; the numbers themselves are single-company self-report).
+- Media lead, primary source verified separately: VentureBeat's 2026-09-16 Salesforce DarwinX story adds no new arXiv version over the cataloged [salesforce-beagle-darwinx](agent-code.zh-CN.md#salesforce-beagle-darwinx) v1; "DarwinX v2" wording is not in the paper or the article.
+
+**Coverage and gaps**
+- Searched: arXiv cs.AI/cs.LG/cs.CL/cs.MA listing blocks through Fri 18 Sep 2026 (Sunday run; no new announcement block yet); OpenReview via API2; company pages (Anthropic, Weco, Kimi/Moonshot, Salesforce project pages); GitHub leads (agentdescent, penguin-harness, metabot, rudder, prax-agent, awesome-rsi, wikiskill third-party repro); PyPI release histories.
+- EvoSkillBank (COLM 2026, OpenReview forum I9siUH3wEc) remains blocked: every PDF/attachment endpoint returns a JS challenge in this environment and the in-app browser is unavailable; title, authors, venue and abstract are banked from the API for the next run with a fetch path.
+- Deferred number-verification queue: SIFT (2609.19526), LLM-as-an-Improver (2609.19515), AdaRepair-Mem (2609.20130), EconSkills (2609.19523), FMOS position (2609.19203), Cognitive Extensions (2609.19128), ScienceIDE (2609.19134), RAO (2605.06639), SkillFoundry (2604.03964 / OpenReview).
+- Checked and not promoted: Kimi K3 official pages (no RSI-as-training-mechanism claim; "120+ rounds of recursive self-improvement" wording is product marketing for Kimi Work, kernel-optimization self-use is a labor claim); hermes-agent (latest release is v0.21.3 of 2026-09-14 — the v0.21.4 lead was wrong); metabot/rudder/prax-agent (frameworks without self-improvement measurements); awesome-rsi (CC0 curated list, not a result); wikiskill third-party repro (honest all-negative results, not author-released — RADAR-only note).
+- NeurIPS 2026 acceptance list expected ~2026-09-24; will sweep when public.
+
 ## 2026-09-19
 
 **New entries (17; catalog 118 → 135)**
