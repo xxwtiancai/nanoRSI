@@ -12,9 +12,9 @@ nanoRSI 的可执行行为（区别于本文的研究图景）见[多层级指�
 
 | 等级 | 含义 | 数量 | 例 |
 | --- | --- | --- | --- |
-| `direct-loop` | 修改 → 反馈 → 复用 在持久产物上闭合 | 63 | SkillOpt、DGM 谱系、AgentEvolver、Amazon 自主后训练 |
-| `enabling` | 支撑或分析闭环，自身不闭合 | 15 | Doc-to-LoRA、TRINITY、经济学校准、contextual-drag 分析 |
-| `assisted-rd` | 人类主导的研发提速遥测，无自主闭环 | 7 | OpenAI 研究加速、Devin 构建 Devin |
+| `direct-loop` | 修改 → 反馈 → 复用 在持久产物上闭合 | 99 | SkillOpt、DGM 谱系、AgentEvolver、Amazon 自主后训练 |
+| `enabling` | 支撑或分析闭环，自身不闭合 | 37 | Doc-to-LoRA、TRINITY、经济学校准、contextual-drag 分析 |
+| `assisted-rd` | 人类主导的研发提速遥测，无自主闭环 | 11 | OpenAI 研究加速、Devin 构建 Devin |
 
 两条边界刻意划清。其一，**能力 ≠ 机制**：更强的模型或没有持久自修改闭环的自动化研究演示（Anthropic Fermat 形式化、Google Stellar Colosseum、北大 OpenAI4S）只记为信号，不收录条目。其二，**单次通过不是递归**：NeoHorse-1 自己就把结果定性为"初步尝试而非决定性证明"；资料库逐字保留这类诚实表述。
 

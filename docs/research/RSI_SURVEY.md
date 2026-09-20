@@ -12,9 +12,9 @@ We use **recursive self-improvement (RSI)** in the operational sense established
 
 | Class / 类别 | Meaning | Count | Examples |
 | --- | --- | --- | --- |
-| `direct-loop` | Mutation → feedback → reuse closes on a persistent artifact | 63 | SkillOpt, DGM-lineage systems, AgentEvolver, Amazon autonomous post-training |
-| `enabling` | Supports or analyzes the loop without itself closing one | 15 | Doc-to-LoRA, TRINITY, the economics calibration, contextual-drag analysis |
-| `assisted-rd` | Human-directed R&D acceleration telemetry, no autonomous loop | 7 | OpenAI research acceleration, Devin builds Devin |
+| `direct-loop` | Mutation → feedback → reuse closes on a persistent artifact | 99 | SkillOpt, DGM-lineage systems, AgentEvolver, Amazon autonomous post-training |
+| `enabling` | Supports or analyzes the loop without itself closing one | 37 | Doc-to-LoRA, TRINITY, the economics calibration, contextual-drag analysis |
+| `assisted-rd` | Human-directed R&D acceleration telemetry, no autonomous loop | 11 | OpenAI research acceleration, Devin builds Devin |
 
 Two boundaries are drawn deliberately. First, **capability ≠ mechanism**: a stronger model or an automated-research demonstration without a persistent self-modification loop (Anthropic's Fermat formalization, Google's Stellar Colosseum, PKU's OpenAI4S) is recorded as a signal, not an entry. Second, **one pass is not recursion**: NeoHorse-1 itself frames its result as "an initial attempt … rather than a definitive demonstration"; the catalogue keeps such honesty statements verbatim.
 
