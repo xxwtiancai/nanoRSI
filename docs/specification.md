@@ -21,6 +21,7 @@ One workspace has one accepted incumbent and a bounded proposal budget. Serial s
 | `src/nanorsi/proposer.py` | Context → external proposal → diff/hypothesis/usage |
 | `src/nanorsi/evaluator.py` | External evaluation and versioned result validation |
 | `src/nanorsi/gate.py` | Pure primary-metric and constraint comparison |
+| `src/nanorsi/challenge.py` | Counterfactual challenger: the gate's second stage over validity-preserving variants |
 | `src/nanorsi/lineage.py` | Sequenced HMAC records and hashed artifact references |
 | `src/nanorsi/process.py` | Filtered argv execution, finite timeout, raw output bound and POSIX process-group cleanup |
 | `src/nanorsi/report.py` | Traceable search report and nullable cost coverage |
@@ -63,9 +64,11 @@ Accepted generation counters are independent of attempts. Rejected records retai
 
 ## Inputs, execution and evaluation
 
-Task manifest: `{schema_version:1,tasks:[...]}`. Each task requires unique `task_id`, nonempty `group_id`, split train/validation/test, instruction and relative-path text mappings `input_files`/`expected_files`. Source groups cannot cross splits and each split is nonempty.
+Task manifest: `{schema_version:1,tasks:[...]}`. Each task requires unique `task_id`, nonempty `group_id`, split train/validation/test (optionally also `counterfactual`), instruction and relative-path text mappings `input_files`/`expected_files`. Source groups cannot cross splits and each of train/validation/test is nonempty. Counterfactual tasks form their own groups and must be validity-preserving variants of train/validation tasks, never of test tasks.
 
 Schema-v2 baseline evaluates validation only. Each step samples up to `evaluator.train_limit` train tasks (positive integer, default four), passes their allowed evidence to the proposer, and compares the parent and candidate on matching validation panels. Search episodes are reserved before evaluation, including runs that later fail. Results must match the reserved task/repeat identities. Final-test episodes are accounted separately under the frozen panel. A population candidate reserves `min(train_limit, train_count) + 2 * validation_count` search episodes. The configured limit is passed as `NANORSI_TRAIN_LIMIT`; validation/test selection is unchanged. Nondefault limits change the comparison identity; the default preserves historical comparison hashes.
+
+With `[evaluator] counterfactual_enabled = true` (ADOPTION item 28), a candidate that clears the primary strict-improvement gate is re-scored together with its freshly measured parent on the evaluator's `counterfactual` panel — validity-preserving variants of the minimal task set, authored as task-domain knowledge in the workspace (schema 2: manifest tasks with the `counterfactual` split; schema 1: an evaluator split of the same name). The second stage applies the same gate configuration; a gain that vanishes there is recorded with decision `shortcut`, consumes its attempt, never promotes, and enters the `rejected_recent` memory. Counterfactual evaluations are ordinary budgeted search episodes, and population ranking excludes shortcut-labelled candidates. The panel targets surface-form overfitting (exact-statement hardcoding); transferable degenerate heuristics remain the heldout and final-test controls' responsibility, and the mechanism's live-model catch rate is not yet measured. The `harness-fixture` starter ships the challenger enabled with a variant panel.
 
 The reference evaluator sends only public input to a new Runner process. The Runner loads actual skill bytes from its own snapshot, records their hashes, and performs list/read/write/final actions in a fresh temporary task directory. Declared skills may also expose a fixed `skills/<name>/run.py` through the `skill` action; coding provides a fixed public-test action. The task runner receives no grader labels. Training records additionally include grader feedback for revision; validation/test records do not expose expected files. Local filesystem secrecy still requires a separate isolation service.
 

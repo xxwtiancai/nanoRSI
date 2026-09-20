@@ -9,6 +9,10 @@ private_cases = {
     "gate": [{"statement": "Please route this invoice.", "answer": "billing"}],
     "train": [{"statement": "Invoice #4 needs review.", "answer": "billing"}],
     "heldout": [{"statement": "We need a refund for order 8.", "answer": "support"}],
+    "counterfactual": [
+        {"statement": "Kindly process the enclosed invoice.", "answer": "billing"},
+        {"statement": "The attached invoice needs routing, please.", "answer": "billing"},
+    ],
 }
 
 

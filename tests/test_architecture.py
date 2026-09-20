@@ -30,6 +30,7 @@ EXPECTED_MODULES = {
     "proposer.py",
     "evaluator.py",
     "gate.py",
+    "challenge.py",
     "lineage.py",
     "process.py",
     "report.py",

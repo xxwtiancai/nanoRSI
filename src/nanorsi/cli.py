@@ -8,13 +8,11 @@ import sys
 import uuid
 from pathlib import Path
 
-from . import audit, loop, training
+from . import audit, challenge, loop, training
 from .config import load_config
-from .gate import decide
 from .gitops import Git, GitError
 from .lineage import LineageStore, artifact
 from .locking import Lock
-from . import loop, training
 from .proposer import ProposalError, run_proposer
 from .report import write_report
 from .surface import SurfacePolicy
@@ -111,8 +109,9 @@ def _attempt(root, config, git, store, parent, attempt, run_dir, *, promote=True
             measured_parent = None
         gate = loop.evaluate(root, config, checkout, split, run_dir / 'gate.json', store)
         heldout = loop.evaluate(root, config, checkout, 'heldout', run_dir / 'heldout.json', store) if config.evaluator.heldout_enabled and config.experiment.schema_version == 1 else None
+        cf = challenge.pair_if_accepted(root, config, git, store, parent, checkout, run_dir, measured_parent, gate, heldout)
         return _record(root, config, git, store, parent, proposal, changed, commit, gate, heldout,
-                       attempt, proposer_commit, measured_parent, run_dir, promote=promote, trained=trained)
+                       attempt, proposer_commit, measured_parent, run_dir, promote=promote, trained=trained, cf=cf)
 
 
 def _propose(root, config, git, store, checkout, parent, attempt, feedback, run_dir, proposal_context=None):
@@ -136,11 +135,8 @@ def _propose(root, config, git, store, checkout, parent, attempt, feedback, run_
 
 
 def _record(root, config, git, store, parent, proposal, changed, commit, gate, heldout,
-            attempt, proposer_commit, measured_parent, run_dir, *, promote=True, trained=None):
-    decision = decide(config.gate, parent=measured_parent.metrics if measured_parent else parent['gate_metrics'],
-                      child={**gate.metrics, 'constraints': gate.constraints},
-                      parent_heldout=parent.get('heldout_metrics'), child_heldout=heldout.metrics if heldout else None,
-                      metric=config.evaluator.primary_metric, direction=config.evaluator.direction)
+            attempt, proposer_commit, measured_parent, run_dir, *, promote=True, trained=None, cf=None):
+    decision = challenge.adjudicate(config, parent, measured_parent, gate, heldout, cf)
     generation = parent['generation'] + (decision.decision == 'accepted')
     event = {'event_type': 'generation', 'experiment_id': config.experiment.id,
                           'attempt_id': attempt, 'generation': generation, 'parent_generation': parent['generation'],
@@ -148,6 +144,8 @@ def _record(root, config, git, store, parent, proposal, changed, commit, gate, h
                           'candidate_tree': git.tree_hash(commit), 'changed_paths': changed, 'hypothesis': proposal.hypothesis,
                           'gate_metrics': gate.metrics, 'gate_constraints': gate.constraints,
                           'heldout_metrics': heldout.metrics if heldout else None,
+                          'counterfactual_metrics': cf[1].metrics if cf else None,
+                          'counterfactual_parent_metrics': cf[0].metrics if cf else None,
                           'evaluator_fingerprint': parent['evaluator_fingerprint'], 'manifest_hash': parent['manifest_hash'],
                           'proposer_harness_commit': proposer_commit, 'artifacts': _artifacts(root, run_dir),
                           'parent_gate_metrics': measured_parent.metrics if measured_parent else parent['gate_metrics'],

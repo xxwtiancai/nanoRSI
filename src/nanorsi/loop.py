@@ -26,7 +26,7 @@ def tasks(root, config):
         task, group, split = row.get("task_id"), row.get("group_id"), row.get("split")
         if not isinstance(task, str) or not task or task in seen or not isinstance(group, str) or not group:
             raise ValueError("task and group identities must be nonempty and tasks unique")
-        if split not in {"train", "validation", "test"} or groups.get(group, split) != split:
+        if split not in {"train", "validation", "test", "counterfactual"} or groups.get(group, split) != split:
             raise ValueError("source groups must not cross train/validation/test splits")
         if not isinstance(row.get("instruction"), str) or not row["instruction"]:
             raise ValueError("task instruction required")
@@ -39,7 +39,7 @@ def tasks(root, config):
                     raise ValueError("task files must contain text")
         seen.add(task)
         groups[group], splits = split, splits | {split}
-    if splits != {"train", "validation", "test"}:
+    if not {"train", "validation", "test"} <= splits:
         raise ValueError("train, validation and test must all be nonempty")
     return rows
 
@@ -172,7 +172,7 @@ def rejected_recent(events, limit=5):
     for event in events:
         if not event.get("attempt_id") or event.get("event_type") not in {"generation", "attempt_failed"}:
             continue
-        if event.get("decision") not in {"rejected", "failed", "no-op"}:
+        if event.get("decision") not in {"rejected", "failed", "no-op", "shortcut"}:
             continue
         hypothesis = event.get("hypothesis") or {}
         reason = hypothesis.get("reason") if isinstance(hypothesis, dict) else None

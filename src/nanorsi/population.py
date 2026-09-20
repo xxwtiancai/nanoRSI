@@ -64,6 +64,8 @@ def _candidate(event):
 
 
 def _eligible(candidate, config):
+    if candidate.get('kernel_decision') == 'shortcut':
+        return False
     try:
         score = float(candidate['gate_metrics'][config.evaluator.primary_metric])
     except (KeyError, TypeError, ValueError):

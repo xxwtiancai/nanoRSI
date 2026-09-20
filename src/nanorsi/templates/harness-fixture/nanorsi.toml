@@ -16,6 +16,7 @@ timeout_s = 10
 primary_metric = "score"
 direction = "maximize"
 heldout_enabled = true
+counterfactual_enabled = true
 
 [gate]
 minimum_improvement = 0.1

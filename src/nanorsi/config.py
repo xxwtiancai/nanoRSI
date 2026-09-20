@@ -72,6 +72,7 @@ class EvaluatorConfig:
     direction: str
     heldout_enabled: bool
     train_limit: int = 4
+    counterfactual_enabled: bool = False
 
 
 @dataclass(frozen=True)
@@ -275,6 +276,7 @@ def _build(path, experiment, surface, proposer, evaluator, gate, budget, trainin
             evaluator.get("direction", "maximize"),
             bool(evaluator.get("heldout_enabled", False)),
             _integer(evaluator.get("train_limit", 4), "evaluator.train_limit"),
+            bool(evaluator.get("counterfactual_enabled", False)),
         ),
         GateConfig(
             _number(gate.get("minimum_improvement", 0.0), "gate.minimum_improvement"),

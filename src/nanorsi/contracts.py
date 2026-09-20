@@ -27,6 +27,8 @@ def comparison_hash(root, config):
     evaluator = asdict(config.evaluator)
     if evaluator["train_limit"] == 4:  # Preserve historical default comparison hashes.
         evaluator.pop("train_limit")
+    if not evaluator.get("counterfactual_enabled"):  # A disabled challenger is inert machinery.
+        evaluator.pop("counterfactual_enabled")
     return canonical_hash({
         "contract_version": 2,
         "mode": config.experiment.mode,
