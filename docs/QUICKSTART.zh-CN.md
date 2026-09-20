@@ -161,6 +161,8 @@ nanorsi verify --workspace ./coding-lab
 
 默认 `experiment.arm = "frozen"` 始终用初始技能提出补丁。研究递归复用时，另建工作区，在 **baseline 前**将 TOML 中的 `experiment.arm` 设为 `"self-use"`：最新接受的技能参与提出下一次补丁。两组都修改当前父代。匹配模型、任务、推理设置与预算，并在查看最终结果前冻结两组。声称递归带来收益前，需要重复独立演进实验。两种模式都不训练权重。
 
+两个工作区开关影响提案与准入，都在 baseline 前写进 TOML。`[proposer] rejected_memory = false` 关闭随提案上下文附带的近期拒绝编辑摘要记忆（默认开启）。`[evaluator] counterfactual_enabled = true` 在 `skills` 工作区启用闸门第二段：过闸候选与父代先在清单的反事实变体上重评再准入，增益消失者标记为 `shortcut` 而不晋升——这些挑战评测计入搜索预算。
+
 ## 运行前确定预算
 
 一个 **episode** 指在全新目录中执行一次任务，期间可能调用模型多次。一次**提案尝试**指尝试修改一版可复用技能。

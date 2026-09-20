@@ -72,7 +72,7 @@ def _manifest(path: Path, *, file_validator=None) -> list[dict[str, Any]]:
         if task_id in seen:
             raise ValueError("duplicate task_id")
         seen.add(task_id)
-        if task.get("split") not in {"train", "validation", "test"} or not isinstance(task.get("instruction"), str):
+        if task.get("split") not in {"train", "validation", "test", "counterfactual"} or not isinstance(task.get("instruction"), str):
             raise ValueError("invalid task split or instruction")
         inputs = task.get("input_files")
         expected = task.get("expected_files")

@@ -1098,6 +1098,128 @@
       "instruction": "In fixtures/test-090/table.txt, use the task row for test-090 and change the state cell from draft to ready. Keep pipe separators, spacing, and all other rows unchanged.",
       "split": "test",
       "task_id": "test-090"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-001/condition.txt": "Status: ready\nOwner: crew-lead\nWorkspace: archive/cf-source-00\nReference: cf-001\n"
+      },
+      "group_id": "cf-source-00",
+      "input_files": {
+        "fixtures/cf-001/condition.txt": "Status: draft\nOwner: crew-lead\nWorkspace: archive/cf-source-00\nReference: cf-001\n"
+      },
+      "instruction": "The record cf-001 lives in fixtures/cf-001/condition.txt. Flip the Status value from draft to ready and leave the other lines and their order untouched.",
+      "split": "counterfactual",
+      "task_id": "cf-001"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-002/logbook.md": "# Entry cf-002\nTeam: cf-source-01\nOutcome: open\nEvidence checked: yes\n"
+      },
+      "group_id": "cf-source-01",
+      "input_files": {
+        "fixtures/cf-002/logbook.md": "# Entry cf-002\nTeam: cf-source-01\nOutcome: open\n"
+      },
+      "instruction": "Read fixtures/cf-002/logbook.md, check that the Team line names cf-source-01, then close the entry by appending exactly `Evidence checked: yes` as the last line without touching the lines above it.",
+      "split": "counterfactual",
+      "task_id": "cf-002"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-003/pending.txt": "squad=cf-source-02\nkeep: header verified\nkeep: trailer preserved\n"
+      },
+      "group_id": "cf-source-02",
+      "input_files": {
+        "fixtures/cf-003/pending.txt": "squad=cf-source-02\nkeep: header verified\ndrop: scratch note cf-003\nkeep: trailer preserved\n"
+      },
+      "instruction": "In fixtures/cf-003/pending.txt, delete the single drop line that carries the scratch note for cf-003. Both keep lines stay in place and keep their order.",
+      "split": "counterfactual",
+      "task_id": "cf-003"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-004/ledger.txt": "Entry: cf-004\nAnchor: checked\nReference: cf-004\nSquad: cf-source-03\nClosed: true\n"
+      },
+      "group_id": "cf-source-03",
+      "input_files": {
+        "fixtures/cf-004/ledger.txt": "Entry: cf-004\nAnchor: checked\nSquad: cf-source-03\nClosed: true\n"
+      },
+      "instruction": "Open fixtures/cf-004/ledger.txt and insert `Reference: cf-004` directly above the Squad line (cf-source-03). Treat the Anchor line as the justification and keep every other line as it stands.",
+      "split": "counterfactual",
+      "task_id": "cf-004"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-005/options.ini": "[job]\nref=cf-005\nsquad=cf-source-04\nurgency=high\nphase=audit\n"
+      },
+      "group_id": "cf-source-04",
+      "input_files": {
+        "fixtures/cf-005/options.ini": "[job]\nref=cf-005\nsquad=cf-source-04\nurgency=normal\nphase=audit\n"
+      },
+      "instruction": "For fixtures/cf-005/options.ini, confirm that ref is cf-005 and phase is audit, then raise urgency from normal to high while keeping the INI layout.",
+      "split": "counterfactual",
+      "task_id": "cf-005"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-006/pipeline.txt": "begin: cf-006\nstep: ship\nstep: draft\nsquad: cf-source-05\n"
+      },
+      "group_id": "cf-source-05",
+      "input_files": {
+        "fixtures/cf-006/pipeline.txt": "begin: cf-006\nstep: draft\nstep: ship\nsquad: cf-source-05\n"
+      },
+      "instruction": "In fixtures/cf-006/pipeline.txt, identified by the squad line (cf-source-05), reorder the two step entries so ship comes before draft. Leave the begin and squad lines alone.",
+      "split": "counterfactual",
+      "task_id": "cf-006"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-007/data.txt": "item=cf-007\ntag=ready\nsquad=cf-source-06\n",
+        "fixtures/cf-007/registry.txt": "match=cf-007\ntag=ready\n"
+      },
+      "group_id": "cf-source-06",
+      "input_files": {
+        "fixtures/cf-007/data.txt": "item=cf-007\ntag=stale\nsquad=cf-source-06\n",
+        "fixtures/cf-007/registry.txt": "match=cf-007\ntag=stale\n"
+      },
+      "instruction": "Check fixtures/cf-007/data.txt and fixtures/cf-007/registry.txt; both describe cf-007. Switch the tag field from stale to ready in each file and leave the squad data intact.",
+      "split": "counterfactual",
+      "task_id": "cf-007"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-008/record.yaml": "ref: cf-008\nsquad: cf-source-07\nflags:\n  stage: queued\n  cleared: true\n"
+      },
+      "group_id": "cf-source-07",
+      "input_files": {
+        "fixtures/cf-008/record.yaml": "ref: cf-008\nsquad: cf-source-07\nflags:\n  stage: queued\n  cleared: false\n"
+      },
+      "instruction": "Audit fixtures/cf-008/record.yaml for ref cf-008: flip flags.cleared from false to true only, preserving the YAML indentation and the queued stage.",
+      "split": "counterfactual",
+      "task_id": "cf-008"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-009/briefing.md": "# cf-009\nSquad: cf-source-08\n## Status\nReady for review.\n"
+      },
+      "group_id": "cf-source-08",
+      "input_files": {
+        "fixtures/cf-009/briefing.md": "# cf-009\nSquad: cf-source-08\n## Status\nAwaiting clearance.\n"
+      },
+      "instruction": "Open fixtures/cf-009/briefing.md, verify the top heading is cf-009, and replace the sentence under Status with `Ready for review.` without editing the headings or the squad line.",
+      "split": "counterfactual",
+      "task_id": "cf-009"
+    },
+    {
+      "expected_files": {
+        "fixtures/cf-010/grid.txt": "ref | cf-010\nsquad | cf-source-09\nstage | ready\nassignee | crew-lead\n"
+      },
+      "group_id": "cf-source-09",
+      "input_files": {
+        "fixtures/cf-010/grid.txt": "ref | cf-010\nsquad | cf-source-09\nstage | draft\nassignee | crew-lead\n"
+      },
+      "instruction": "Using the ref row for cf-010 in fixtures/cf-010/grid.txt, change the stage cell from draft to ready. Keep the pipe layout and every other row identical.",
+      "split": "counterfactual",
+      "task_id": "cf-010"
     }
   ]
 }

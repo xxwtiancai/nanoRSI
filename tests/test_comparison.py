@@ -73,22 +73,23 @@ class PrepareManifestTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(first["schema_version"], 1)
         tasks = first["tasks"]
-        self.assertEqual(len(tasks), 90)
-        self.assertEqual({task["split"] for task in tasks}, {"train", "validation", "test"})
+        self.assertEqual(len(tasks), 100)
+        self.assertEqual({task["split"] for task in tasks},
+                         {"train", "validation", "test", "counterfactual"})
         self.assertEqual({split: sum(task["split"] == split for task in tasks)
-                          for split in ("train", "validation", "test")},
-                         {"train": 30, "validation": 30, "test": 30})
-        self.assertEqual(len({task["task_id"] for task in tasks}), 90)
-        groups_by_split = {
-            split: {task["group_id"] for task in tasks if task["split"] == split}
-            for split in ("train", "validation", "test")
-        }
-        self.assertEqual(set.intersection(*groups_by_split.values()), set())
+                          for split in ("train", "validation", "test", "counterfactual")},
+                         {"train": 30, "validation": 30, "test": 30, "counterfactual": 10})
+        self.assertEqual(len({task["task_id"] for task in tasks}), 100)
+        merged: set = set()
+        for split in ("train", "validation", "test", "counterfactual"):
+            group_set = {task["group_id"] for task in tasks if task["split"] == split}
+            self.assertFalse(merged & group_set, split)
+            merged |= group_set
         source_fixtures = {
             json.dumps(task["input_files"], sort_keys=True)
             for task in tasks
         }
-        self.assertEqual(len(source_fixtures), 90)
+        self.assertEqual(len(source_fixtures), 100)
 
     def test_tasks_are_text_edit_fixtures_with_complete_expected_files(self):
         tasks = PREPARE.build_manifest()["tasks"]

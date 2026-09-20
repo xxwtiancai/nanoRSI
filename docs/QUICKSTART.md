@@ -161,6 +161,8 @@ Training feedback informs proposals. Validation controls acceptance. Final-test 
 
 The default `experiment.arm = "frozen"` uses the initial skills to propose every patch. For recursive reuse, create another fresh workspace and set `experiment.arm = "self-use"` in its TOML **before baseline**: its latest accepted skills help propose the next patch. Both arms modify the current parent. Match model, task data, inference settings and budgets; freeze both before viewing final results. Repeat independent evolution runs before claiming a recursive benefit. No weight training occurs in either arm.
 
+Two workspace toggles shape proposals and admission, both set in the TOML before baseline. `[proposer] rejected_memory = false` disables the compact memory of recently rejected edits that accompanies each proposal context (on by default). `[evaluator] counterfactual_enabled = true` arms the gate's second stage in `skills` workspaces: gate-passing candidates are re-scored with their parent on the manifest's counterfactual variants before admission, and gains that vanish there are labelled `shortcut` instead of being promoted — those challenge episodes count against the search budget.
+
 ## Choose a budget before running
 
 An **episode** is one execution of one task in a fresh directory, potentially using several model calls. A **proposal attempt** is one try at changing reusable skills.
