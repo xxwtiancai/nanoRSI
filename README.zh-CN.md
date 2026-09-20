@@ -82,27 +82,6 @@ nanorsi verify --workspace ./learner-lab
 
 **[首次模型实验：API key → 连接检查 → 实验 → 报告](docs/QUICKSTART.zh-CN.md)** · [English tutorial](docs/QUICKSTART.md)
 
-## 真实模型实测
-
-在实现版本 `50556ad` 上，六项小型演示使用 **GLM-5.3-Flash**、种子 0，每个冻结测试条件运行一次。研究共使用 **43 次 API 请求 / 87,812 tokens**，请求上限为 59，关闭 thinking；不包含单独的连接配置探针。请求与返回的模型 ID 均为 `glm-5.3-flash`。[运行设置与服务商用量](examples/results/v0.4.0/live/summary.json)。
-
-| 演示 | 初始版本通过测试 | 选中版本通过测试 | 证据 |
-| --- | ---: | ---: | --- |
-| 程序改进 | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/program/final.json) |
-| Agent：frozen 改进器 | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/agent/final.json) |
-| 递归 Agent：self-use | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/recursive/final.json) |
-| 可执行技能 | 0/1 | 1/1 | [最终结果](examples/results/v0.4.0/live/skills/final.json) |
-| 本地种群 | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/population/final.json) |
-| HTTP 评估：两个 localhost 进程 | 1/4 | 4/4 | [最终结果](examples/results/v0.4.0/live/remote/final.json) |
-
-这些是不同的自编任务，不能合成一个基准或 RSI 总分。改进后的规划器确实参与了下一轮提案，但最终面板上**没有超过 frozen 改进器**。技能演示刻意要求在四个动作内批处理六个文件，no-skills 为 0/1。种群保留了两个分支，拒绝了一次没有额外收益的交叉提案。HTTP 执行仅验证了 localhost。
-
-**远程示例选中的解析器仍无法处理 `(12.5)`，尽管最终得分为 4/4。** [反例、被拒绝尝试、源码快照与证据边界](examples/results/v0.4.0/README.md#known-counterexample)。
-
-一个更小的后续研究（[live frozen-vs-self-use 技能实验](examples/results/live-skills-frozen-selfuse/README.md)，2026-09-16）检验演进技能能否迁移到未见任务、self-use 是否有额外收益：两臂都在冻结测试面板上从 0/3 提升到 2/3；**self-use 与 frozen 提案器打平**，两臂都没解出排序变体任务，技能审计零泄漏、零静默旁路。
-
-<p align="center"><img src="examples/results/v0.4.0/overview.png" alt="分别展示真实模型演示和 CPU 参数学习结果；两组面板不构成统一 RSI 总分。" width="100%"></p>
-
 ## 从上游 RSI 项目移植的真实任务
 
 nanoRSI 不只跑自编演示。以下完整评测任务移植自高星开源 RSI 项目——移植前核对许可证，初始程序在署名头下逐字保留——并在这套平台上端到端真跑：真实模型调用、真实闸门裁决、冻结最终面板：
@@ -112,47 +91,18 @@ nanoRSI 不只跑自编演示。以下完整评测任务移植自高星开源 RS
 | 函数最小化 | [OpenEvolve](https://github.com/codelion/openevolve)（Apache-2.0） | GLM-5.3-Flash | 5 | 0.9418 → 0.9960 | [研究](examples/results/openevolve-fnmin/README.md) |
 | 正弦逼近 | [ShinkaEvolve](https://github.com/SakanaAI/ShinkaEvolve)（Apache-2.0 · arXiv 2509.19349） | GLM-5.3 | 5 | 0.1049 → 0.999963（RMSE 4.0e-06） | [研究](examples/results/glm53-real-tasks/README.md) |
 | K-module 配置 | [OpenEvolve](https://github.com/codelion/openevolve)（Apache-2.0） | GLM-5.3 | 8 | 0/4 → 4/4 个模块 | [研究](examples/results/glm53-real-tasks/README.md) |
-| 技能演进（两臂） | 自编任务 | GLM-5.3-Flash | 190 | 0/3 → 2/3，两臂相同 | [研究](examples/results/live-skills-frozen-selfuse/README.md) |
 
 <p align="center"><img src="docs/assets/readme/real-tasks-results.svg" alt="配对条形图：每个移植任务上，演进候选的条都远超初始程序；冻结最终测试得分。" width="100%"></p>
 
-每个被接受的候选都先在验证集上通过相对父代的严格改进闸门，再面对冻结的未见最终面板。失败与被拒尝试同样保留在已发布记录里：正弦任务两次修复模型产出的损坏 diff 后才得到泰勒级数候选；k-module 的赢家是第一代直生候选（种群交叉没有产生赢家）；技能研究的 self-use 臂**与 frozen 提案器打平**而非胜出。另一项[拒绝记忆 A/B 研究](examples/results/rejected-memory-ab/README.md)如实报告了零效应结果。
+每个被接受的候选都先在验证集上通过相对父代的严格改进闸门，再面对冻结的未见最终面板。失败与被拒尝试同样保留在已发布记录里：正弦任务两次修复模型产出的损坏 diff 后才得到泰勒级数候选；k-module 的赢家是第一代直生候选（种群交叉没有产生赢家）。另一项[拒绝记忆 A/B 研究](examples/results/rejected-memory-ab/README.md)如实报告了零效应结果。
 
 这些是 nanoRSI 对上游任务的独立运行，**不是**对上游作者报告结果的复现；各研究页面列明种子、预算、审计与边界。[重新生成图表](docs/assets/readme/render-real-tasks.py) · [全部已发布研究](examples/results/)。
 
-## 递归学习实测：手写数字
+## 评测标准与内部研究
 
-**SFT 的 self-use 相比 frozen 优先级，平均测试错误率相对下降 35.95%：10.16% → 6.51%。** 对应的是**准确率提高 3.65 个百分点**，10 个训练种子的配对差值全部为正。本次 v0.4.1 研究完成了 **120 次实验、720 轮训练**，实际预算匹配，全部工作区冻结后才开始测试。
+对外展示的实验遵循 RSI 文献的评测方案：任务与指标来自成熟的上游套件（或社区通用基准），得分一律在冻结的留出面板上报告，失败记录全部保留。新实验以常用验证集为目标——候选基准与方案说明见 [ADOPTION.md](docs/research/industry-rsi/ADOPTION.md)。
 
-在同一组 364 张测试图像上，选中检查点的平均准确率为：
-
-| 方法 | Frozen 优先级 | Self-use 优先级 | Uniform | Random 优先级 | Self-use − frozen |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| SFT | 89.835% | 93.489% | 92.582% | 92.390% | +3.654 个百分点 |
-| REINFORCE | 19.286% | 27.473% | 36.236% | 27.005% | +8.187 个百分点 |
-| LoRA | 79.533% | 82.060% | 82.885% | 83.736% | +2.527 个百分点 |
-
-三个主要比较采用 Bonferroni 显著性水平分配的配对百分位 bootstrap 区间（每个区间名义置信度 98.333%），依次为 **[2.198, 5.192]**、**[1.071, 13.462]**、**[0.549, 4.423] 个百分点**。只有 REINFORCE 达到了预先声明的“观测平均提升 ≥5 个百分点且校正区间下界为正”目标；SFT 和 LoRA 未达到。这不等于证明 REINFORCE 的真实增益至少有 5 个百分点。REINFORCE 仍比 uniform 低 8.764 个百分点，LoRA 低 0.824 个百分点。SFT 比 uniform 高 0.907 个百分点、比 random 高 1.099 个百分点；完整结果列出了这些次要比较的描述性 95% 区间。
-
-这里在 CPU 上真正训练了小型线性分类器，数据来自 UCI/scikit-learn 的 1,797 张手写数字子集，自定义划分为 **1,074/359/364 张训练/验证/测试图像**。设置经过仅使用验证集的预实验选择，并在确认实验前锁定。这不是官方 UCI 基准划分，不代表未见书写者泛化，也不是 LLM 微调；区间只描述这一固定划分上的训练种子波动。
-
-<p align="center"><img src="examples/results/recursive-digits-v0.4.1/recursive-gains.png" alt="四种课程策略的手写数字结果、self-use 配对增益及不确定性；REINFORCE 虽优于 frozen，仍落后于 uniform。" width="100%"></p>
-
-**[完整结果、对照与可检查证据](examples/results/recursive-digits-v0.4.1/README.md)** · [中文复现指南](examples/recursive_learning/README.zh-CN.md) · [English guide](examples/recursive_learning/README.md)。可选适配器使用已有 NumPy 安装，不调用模型 API；内核仍为零第三方运行时依赖。
-
-## 历史 CPU 示例（v0.4.0）
-
-已核验面板包含三种方法 × 三个种子 × frozen/self-use 对照：**18 次实验、54 轮训练、20 个接受候选和 34 个拒绝候选**。在相互重叠的合成数值簇上，平均测试准确率为：
-
-| 方法 | 初始版本 | 选中版本：frozen 改进器 | 选中版本：self-use 改进器 |
-| --- | ---: | ---: | ---: |
-| SFT | 46.11% | 85.83% | 85.83% |
-| REINFORCE | 46.11% | 85.56% | 86.39% |
-| LoRA | 46.11% | 85.00% | 84.44% |
-
-这里真正更新了四维输入、三分类 softmax 模型的参数。九组匹配的 self-use 对照中，一组更好、一组更差、七组相同，尚未显示一致的递归优势。LoRA 展示冻结基础权重的更新机制，不宣称在这个小规模上的参数效率优势。API 调用为零，未测量货币成本。
-
-运行 `python examples/parameter_learning/run.py ./parameter-results` 可复现全部 18 次实验。[公开 CPU 结果](examples/results/v0.4.0/parameter-learning/summary.json) · [逐次实验的证据](examples/results/v0.4.0/README.md#cpu-parameter-learning) · [方法与解读](docs/MULTILEVEL.zh-CN.md#学习演示到底训练了什么) · [所有演示命令](examples/README.md)。
+早于该标准的平台工作**不作为基准证据展示**：[v0.4.0 live 研究](examples/results/v0.4.0/README.md)（自编四例冒烟面板与已知解析器反例）、[手写数字研究](examples/results/recursive-digits-v0.4.1/README.md)（UCI 数字子集的自定义非官方划分，配匹配对照）、[技能迁移研究](examples/results/live-skills-frozen-selfuse/README.md)（自编任务；self-use 与 frozen 提案器打平）与 [v0.4.0 CPU 面板](examples/results/v0.4.0/README.md#cpu-parameter-learning)（合成簇）原样保留发布，作为平台验证与受控消融记录——为诚实而保留，不作为效果主张展示。
 
 ## 运行代码改进实验
 
