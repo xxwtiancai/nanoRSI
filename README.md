@@ -86,27 +86,6 @@ Open `learner-lab/reports/report.html`. It compares the initial and selected sav
 
 **[First model run: API key → connection check → experiment → report](docs/QUICKSTART.md)** · [中文入门](docs/QUICKSTART.zh-CN.md)
 
-## Measured live-model demos
-
-On implementation `50556ad`, six small demos used **GLM-5.3-Flash**, seed 0 and one frozen test repeat per condition. The study made **43 API requests / 87,812 tokens** under a 59-request cap with thinking disabled; setup connection probes are excluded. Requested and returned model IDs were `glm-5.3-flash`. [Run settings and provider usage](examples/results/v0.4.0/live/summary.json).
-
-| Demo | Initial test cases passed | Selected test cases passed | Evidence |
-| --- | ---: | ---: | --- |
-| Program | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/program/final.json) |
-| Agent, frozen proposer | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/agent/final.json) |
-| Recursive agent, self-use | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/recursive/final.json) |
-| Executable skill | 0/1 | 1/1 | [Final](examples/results/v0.4.0/live/skills/final.json) |
-| Local population | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/population/final.json) |
-| HTTP evaluation, two localhost processes | 1/4 | 4/4 | [Final](examples/results/v0.4.0/live/remote/final.json) |
-
-These are separate authored tasks, not one benchmark or RSI score. Recursive planning was reused in the next proposal, but **did not outperform the frozen proposer** on the final panel. The skill demo deliberately batches six files within four actions; no-skills scored 0/1. Population retained two branches and rejected a crossover with no gain. HTTP execution was tested on localhost only.
-
-**The selected remote parser still fails on `(12.5)` despite its 4/4 final score.** [Counterexample, rejected attempts, source snapshots and evidence limits](examples/results/v0.4.0/README.md#known-counterexample).
-
-A smaller follow-up study ([live frozen-vs-self-use skills](examples/results/live-skills-frozen-selfuse/README.md), 2026-09-16) asked whether evolved skills transfer to unseen tasks and whether self-use adds anything: both arms improved 0/3 → 2/3 on the frozen test panel; **self-use tied the frozen proposer**, both arms failed the sort-variant task, and the skill audit found zero leakage and zero silent bypass.
-
-<p align="center"><img src="examples/results/v0.4.0/overview.png" alt="Separate live-demo test outcomes and CPU parameter-learning results; these panels are not a combined RSI score." width="100%"></p>
-
 ## Real tasks ported from upstream RSI projects
 
 nanoRSI does not only run its own authored demos. Complete evaluation tasks from high-star open RSI projects were ported — licenses checked, initial programs preserved verbatim under attribution headers — and executed end to end on this platform with real model calls, real gate decisions and frozen final panels:
@@ -116,47 +95,18 @@ nanoRSI does not only run its own authored demos. Complete evaluation tasks from
 | Function minimization | [OpenEvolve](https://github.com/codelion/openevolve) (Apache-2.0) | GLM-5.3-Flash | 5 | 0.9418 → 0.9960 | [Study](examples/results/openevolve-fnmin/README.md) |
 | Sine approximation | [ShinkaEvolve](https://github.com/SakanaAI/ShinkaEvolve) (Apache-2.0 · arXiv 2509.19349) | GLM-5.3 | 5 | 0.1049 → 0.999963 (RMSE 4.0e-06) | [Study](examples/results/glm53-real-tasks/README.md) |
 | K-module configuration | [OpenEvolve](https://github.com/codelion/openevolve) (Apache-2.0) | GLM-5.3 | 8 | 0/4 → 4/4 modules | [Study](examples/results/glm53-real-tasks/README.md) |
-| Skill evolution, two arms | Authored tasks | GLM-5.3-Flash | 190 | 0/3 → 2/3, both arms | [Study](examples/results/live-skills-frozen-selfuse/README.md) |
 
 <p align="center"><img src="docs/assets/readme/real-tasks-results.svg" alt="Paired bars: on every ported task, the evolved candidate's bar reaches far beyond the initial program's; frozen final-test scores." width="100%"></p>
 
-Every accepted candidate passed the strict-improvement gate against its parent on validation, then faced a frozen unseen final panel. Failed and rejected attempts stay in the published record: the sine run needed two repairs of corrupt model diffs before its Taylor-series candidate, the k-module winner was a first-generation direct candidate (population crossover produced no winner), and the skills study's self-use arm **tied** the frozen proposer instead of beating it. A separate [rejected-memory A/B study](examples/results/rejected-memory-ab/README.md) honestly reports a null result.
+Every accepted candidate passed the strict-improvement gate against its parent on validation, then faced a frozen unseen final panel. Failed and rejected attempts stay in the published record: the sine run needed two repairs of corrupt model diffs before its Taylor-series candidate, the k-module winner was a first-generation direct candidate (population crossover produced no winner). A separate [rejected-memory A/B study](examples/results/rejected-memory-ab/README.md) honestly reports a null result.
 
 These are independent nanoRSI runs of upstream tasks, **not** reproductions of upstream author-reported results; each study page lists its seeds, budgets, audits and limits. [Regenerate the chart](docs/assets/readme/render-real-tasks.py) · [All published studies](examples/results/).
 
-## Measured recursive learning: handwritten digits
+## Evaluation standard and internal studies
 
-**SFT self-use reduced mean test error by 35.95% relative to frozen priorities: 10.16% → 6.51%.** That is **+3.65 percentage points of accuracy**, with a positive paired difference in all 10 training seeds. This v0.4.1 study completed **120 runs and 720 training rounds**, with matched actual budgets and every workspace frozen before testing.
+Showcased experiments follow the evaluation protocols of the RSI literature: tasks and metrics come from established upstream suites (or community-standard benchmarks), scores are reported on frozen held-out panels, and every failure stays in the record. New experiments target common validation sets — the candidates and protocol notes live in [ADOPTION.md](docs/research/industry-rsi/ADOPTION.md).
 
-Mean selected-checkpoint test accuracy on the same 364-image panel:
-
-| Method | Frozen priorities | Self-use priorities | Uniform | Random priorities | Self-use − frozen |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| SFT | 89.835% | 93.489% | 92.582% | 92.390% | +3.654 pp |
-| REINFORCE | 19.286% | 27.473% | 36.236% | 27.005% | +8.187 pp |
-| LoRA | 79.533% | 82.060% | 82.885% | 83.736% | +2.527 pp |
-
-The primary paired percentile bootstrap intervals use Bonferroni alpha allocation across the three methods (nominal 98.333% each): **[2.198, 5.192]**, **[1.071, 13.462]** and **[0.549, 4.423] pp**, respectively. Only REINFORCE met the predeclared target of an observed mean gain ≥5 pp with a positive adjusted lower bound; SFT and LoRA did not. This does not establish that REINFORCE's true gain is ≥5 pp. REINFORCE still trailed uniform by 8.764 pp, and LoRA by 0.824 pp. SFT exceeded uniform by 0.907 pp and random priorities by 1.099 pp; these secondary comparisons have descriptive 95% intervals in the full results.
-
-This is real CPU training of a small linear classifier on a custom **1,074/359/364 train/validation/test split** of the 1,797-image UCI/scikit-learn digits subset. Settings were chosen in validation-only pilots and locked before confirmation. It is not the official UCI benchmark, evidence of unseen-writer generalization, or LLM fine-tuning. The intervals describe training-seed variation on this one split.
-
-<p align="center"><img src="examples/results/recursive-digits-v0.4.1/recursive-gains.png" alt="Handwritten-digit results for all four curriculum policies, with paired self-use gains and uncertainty; REINFORCE loses to uniform despite improving over frozen." width="100%"></p>
-
-**[All results, controls and inspectable evidence](examples/results/recursive-digits-v0.4.1/README.md)** · [Reproduce the study](examples/recursive_learning/README.md) · [中文实验指南](examples/recursive_learning/README.zh-CN.md). The optional adapter uses an existing NumPy installation and makes no API calls; the core retains zero third-party runtime dependencies.
-
-## Historical CPU example (v0.4.0)
-
-The verified panel ran three methods × three seeds × frozen/self-use controls: **18 runs, 54 training rounds, 20 accepted and 34 rejected candidates**. Mean test accuracy on overlapping synthetic numeric clusters was:
-
-| Method | Initial | Selected, frozen proposer | Selected, self-use proposer |
-| --- | ---: | ---: | ---: |
-| SFT | 46.11% | 85.83% | 85.83% |
-| REINFORCE | 46.11% | 85.56% | 86.39% |
-| LoRA | 46.11% | 85.00% | 84.44% |
-
-These are real updates to a four-feature, three-class softmax model. The nine paired self-use comparisons had one positive difference, one negative difference and seven ties: the data does not show a consistent recursive advantage. LoRA demonstrates frozen-base updates, not parameter efficiency at this tiny scale. No API calls were made; monetary cost was not measured.
-
-Reproduce all 18 trials with `python examples/parameter_learning/run.py ./parameter-results`. [Published CPU results](examples/results/v0.4.0/parameter-learning/summary.json) · [Per-run evidence](examples/results/v0.4.0/README.md#cpu-parameter-learning) · [Methods and interpretation](docs/MULTILEVEL.md#what-the-learning-demo-actually-trains) · [All demo commands](examples/README.md).
+Earlier platform work predates this standard and is **not benchmark evidence**: the [v0.4.0 live study](examples/results/v0.4.0/README.md) (self-authored four-case smoke panels and a known parser counterexample), the [handwritten-digits study](examples/results/recursive-digits-v0.4.1/README.md) (a custom, non-official split of the UCI digits subset with matched controls), the [skills transfer study](examples/results/live-skills-frozen-selfuse/README.md) (authored tasks; self-use tied the frozen proposer) and the [v0.4.0 CPU panel](examples/results/v0.4.0/README.md#cpu-parameter-learning) (synthetic clusters) remain published unchanged as platform-validation and controlled-ablation records — retained for honesty, not presented as effect claims.
 
 ## Run a coding experiment
 

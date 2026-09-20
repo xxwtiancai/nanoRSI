@@ -2,6 +2,8 @@
 
 [English multilevel guide](../docs/MULTILEVEL.md) · [中文多层级指南](../docs/MULTILEVEL.zh-CN.md) · [API keys and first run](../docs/QUICKSTART.md) · [中文入门](../docs/QUICKSTART.zh-CN.md)
 
+Two tiers of studies live here. **Benchmark track**: complete evaluation tasks ported from upstream RSI projects (OpenEvolve, ShinkaEvolve), scored on their own metrics — these are the effect-evidence experiments and the only ones shown in the README. **Internal studies**: self-authored micro-panels, custom-split and synthetic-task controlled studies — platform validation, not benchmark evidence (evaluation standard: [ADOPTION.md](../docs/research/industry-rsi/ADOPTION.md)).
+
 Run these commands from the repository with Python 3.11+, Git and nanoRSI installed. Every output directory must be new so earlier outcomes are retained. The canonical starters are `artifact`, `harness` and `model`; `program`, `agent` and `learner` remain aliases. Each experiment uses the ordinary CLI and the same protected evaluation contract.
 
 ## Smoke: the whole loop in one command
@@ -20,11 +22,11 @@ Builds a throwaway CPU workspace, runs baseline → gated search (three accepted
 
 [results/glm53-real-tasks](results/glm53-real-tasks/README.md) runs two more upstream tasks with **GLM-5.3**: ShinkaEvolve's sine approximation evolved `return x` into a degree-13 Taylor polynomial (**0.1049 → 0.999963** on a denser held-out grid, RMSE 4e-06) and OpenEvolve's K-Module configuration problem went **0/4 → 4/4** under population search with crossover. Thirteen model calls and ~10k tokens for both studies combined; audits clean.
 
-## Recursive checkpoint reuse on handwritten digits
+## Recursive checkpoint reuse on handwritten digits (internal study, non-benchmark)
 
 The optional [digits study](recursive_learning/README.md) · [中文](recursive_learning/README.zh-CN.md) uses NumPy tooling and a bundled attributed dataset to compare recursive checkpoint-based sampling with frozen, uniform and random controls. It separates all searches/freezes from final testing and checks actual training budgets. [All 120 measured runs](results/recursive-digits-v0.4.1/README.md) retain the stronger and weaker control outcomes. This is a classifier experiment, not LLM fine-tuning.
 
-## CPU parameter learning: no API required
+## CPU parameter learning: no API required (internal study, non-benchmark)
 
 ```bash
 python examples/parameter_learning/run.py ./parameter-results
@@ -36,7 +38,7 @@ The proposer reads its assigned checkpoint, ranks allowed training examples by l
 
 The verified panel had 54 training rounds, 20 accepted and 34 rejected candidates. Mean selected test accuracy was 84.44–86.39%, from an initial 46.11%, on overlapping synthetic numeric clusters. Nine matched self-use comparisons yielded one positive, one negative and seven ties. These are teaching-scale results, not LLM fine-tuning or a consistent recursive advantage. The tiny LoRA adapter has 16 parameters versus 15 in its base matrix; no parameter-efficiency claim is made. [Full table and interpretation](../docs/MULTILEVEL.md#what-the-learning-demo-actually-trains).
 
-## Live model proposals with a request cap
+## Live model proposals with a request cap (internal study, non-benchmark)
 
 Configure API access first. The example below assumes your account supports this exact model on Z.ai's Coding Plan endpoint; replace the external key-file path with your own:
 
