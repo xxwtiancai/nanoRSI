@@ -379,7 +379,7 @@
 
 <a id="meta-spice-self-play"></a>
 
-### SPICE: Self-Play in Corpus Environments (adversarial curriculum from raw documents)
+### SPICE: Self-Play In Corpus Environments Improves Reasoning
 
 **2025-10-28** · paper · Direct bounded loop
 
@@ -401,7 +401,7 @@
 
 **Source figure / official image** — Figure 2: SPICE overview - one model plays Challenger (mines a document into a question with a verifiable answer) and Reasoner (answers without the document); variance-shaped reward keeps questions at the Reasoner's frontier. · Figure 2 · [source](https://arxiv.org/html/2510.24684v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
@@ -627,7 +627,7 @@
 
 <a id="sage-skill-augmented-grpo"></a>
 
-### SAGE: Reinforcement Learning for Self-Improving Agent with Skill Library
+### Reinforcement Learning for Self-Improving Agent with Skill Library
 
 **2025-12-18** · paper · Direct bounded loop
 
@@ -649,7 +649,7 @@
 
 **Source figure / official image** — Figure 1: the Skill Library Agent and sequential rollout with skill-integrated reward - skills generated on an earlier task in the chain are reused on the next, and successful reuse pays reward credit back to skill generation. · Figure 1 · [source](https://arxiv.org/html/2512.17102v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — [Artifact repository](https://github.com/amazon-science/SAGE)
 
@@ -1149,7 +1149,7 @@
 
 <a id="sakana-conductor-fugu"></a>
 
-### Conductor / Fugu: An LLM Trained to Orchestrate (and Include) Itself
+### Learning to Orchestrate Agents in Natural Language with the Conductor
 
 **2025-12-04** · paper · Enabling technique / evaluation
 
@@ -1171,7 +1171,7 @@
 
 **Source figure / official image** — Figure 3: Conductor training - GRPO updates the 7B coordinator on rewards from full multi-agent rollouts over randomized worker pools, teaching it to write topology + instructions that can recursively include itself. · Figure 3 · [source](https://arxiv.org/html/2512.04388v5)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 

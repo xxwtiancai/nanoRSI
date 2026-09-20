@@ -139,7 +139,7 @@
 
 <a id="faraday-replica-ai-scientist"></a>
 
-### Training AI Scientists to Replicate Research (Faraday on the Replica benchmark)
+### Training AI Scientists to Replicate Research
 
 **2026-08-13** · paper · Direct bounded loop
 
@@ -161,7 +161,7 @@
 
 **Source figure / official image** — Figure 1: training Faraday on Replica - papers are redacted into replication tasks, rollouts run in containers, rubric judges are auto-generated, and multi-sample judging produces rewards plus turn-level credit for GRPO. · Figure 1 · [source](https://arxiv.org/html/2608.13331v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
@@ -229,7 +229,7 @@
 
 <a id="nvidia-enpire-physical-autoresearch"></a>
 
-### ENPIRE: Physical Autoresearch - Self-Improving Coding Agents on Real Robots
+### ENPIRE: Agentic Robot Policy Self-Improvement in the Real World
 
 **2026-06** · paper · Direct bounded loop
 
@@ -251,7 +251,7 @@
 
 **Source figure / official image** — Figure 2: the ENPIRE framework - agents construct environments with automatic reset and verification as immutable Gym APIs, improve policies guided by real-world signals, roll out on robots, and evolve hypotheses across decentralized teams coordinating via Git. · Figure 2 · [source](https://arxiv.org/html/2606.19980v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
@@ -259,7 +259,7 @@
 
 <a id="evoscientist-self-evolving"></a>
 
-### EvoScientist: Self-Evolving Multi-Agent System for End-to-End Scientific Discovery
+### EvoScientist: Towards Multi-Agent Evolving AI Scientists for End-to-End Scientific Discovery
 
 **2026-03** · paper · Direct bounded loop
 
@@ -281,7 +281,7 @@
 
 **Source figure / official image** — Figure 1: EvoScientist overview - researcher, engineer and evolution-manager agents over two persistent memories (ideation and experimentation), with three self-evolution mechanisms updating knowledge after each task. · Figure 1 · [source](https://arxiv.org/html/2603.08127v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/EvoScientist/EvoScientist)
 
@@ -323,11 +323,11 @@
 
 <a id="amazon-autonomous-post-training"></a>
 
-### Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search
+### A-Evolve-Training: Autonomous Post-Training of a 30B Model
 
 **2026-06-09** · paper · Direct bounded loop
 
-**Publication date** — arXiv v1: 2026-06-09; v3: 2026-09-08 (numbers cited from v3). Media coverage mislabeled the work 'NVIDIA' because it post-trains a Nemotron model; authors are Amazon.
+**Publication date** — arXiv v1 2026-06-09 (announced 2026-06-09; then titled "Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search"); v2 2026-09-08 retitles the paper to "A-Evolve-Training: Autonomous Post-Training of a 30B Model". Metrics cited are from the v1 text; title updated to the current arXiv title during the 2026-09-21 authority audit.
 
 **Institutional relationship** — All authors (Zhan Shi, Bing He, Yisi Sang, Benoit Dumoulin, Hanqing Lu) are at Amazon.
 
@@ -345,7 +345,7 @@
 
 **Source figure / official image** — Figure 2: autonomous post-training infrastructure - an immutable operator-audited substrate forked into N candidate sandboxes per round; memory-free workers explore, a reviewer aggregates into a fixed-schema summary, and a constitutionally bounded orchestrator updates only the next round's research policy. · Figure 2 · [source](https://arxiv.org/html/2606.20657v3)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-16.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 

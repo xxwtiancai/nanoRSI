@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-20",
-  "window_start": "2025-09-20",
+  "as_of": "2026-09-21",
+  "window_start": "2025-09-21",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -3391,7 +3391,7 @@
     },
     {
       "id": "salesforce-beagle-darwinx",
-      "title": "Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection",
+      "title": "DarwinX: Evolving Agent Harnesses Through Natural Selection",
       "organizations": [
         "Salesforce AI Research"
       ],
@@ -3457,7 +3457,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-15",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "official-project-figure",
         "asset": "assets/paper-figures/beagle-architecture.svg",
@@ -4621,7 +4621,7 @@
     },
     {
       "id": "sage-skill-augmented-grpo",
-      "title": "SAGE: Reinforcement Learning for Self-Improving Agent with Skill Library",
+      "title": "Reinforcement Learning for Self-Improving Agent with Skill Library",
       "organizations": [
         "AWS Agentic AI (Amazon)",
         "University of Wisconsin-Madison"
@@ -4677,7 +4677,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/sage-skill-augmented-grpo.png",
@@ -4757,7 +4757,7 @@
     },
     {
       "id": "meta-spice-self-play",
-      "title": "SPICE: Self-Play in Corpus Environments (adversarial curriculum from raw documents)",
+      "title": "SPICE: Self-Play In Corpus Environments Improves Reasoning",
       "organizations": [
         "Meta FAIR",
         "National University of Singapore"
@@ -4808,7 +4808,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/meta-spice-self-play.png",
@@ -4823,7 +4823,7 @@
     },
     {
       "id": "sakana-conductor-fugu",
-      "title": "Conductor / Fugu: An LLM Trained to Orchestrate (and Include) Itself",
+      "title": "Learning to Orchestrate Agents in Natural Language with the Conductor",
       "organizations": [
         "Sakana AI",
         "University of Michigan",
@@ -4896,7 +4896,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-17",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/sakana-conductor.svg",
@@ -5258,7 +5258,7 @@
     },
     {
       "id": "mgm-mendel-godel-machine",
-      "title": "Mendel Godel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution",
+      "title": "Mendel Gödel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution",
       "organizations": [
         "University of Electronic Science and Technology of China",
         "Ludwig Maximilian University of Munich",
@@ -5315,7 +5315,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/mgm-mendel-godel-machine.png",
@@ -5400,7 +5400,7 @@
     },
     {
       "id": "genericagent-skill-tree",
-      "title": "GenericAgent: A Self-Evololving Agent Growing a Skill Tree from a 3.3K-Line Seed",
+      "title": "GenericAgent: A Token-Efficient Self-Evolving LLM Agent via Contextual Information Density Maximization (V1.0)",
       "organizations": [
         "Advantage AI Agent Lab (Shenzhen Aquaintelling Technology + Fudan University)"
       ],
@@ -5455,7 +5455,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/genericagent-skill-tree.png",
@@ -5470,7 +5470,7 @@
     },
     {
       "id": "dream-rsi-replay-simulator",
-      "title": "Dream-RSI: Improving Exploration Policies by Dreaming over the Discovery Tree",
+      "title": "Dream-RSI: Recursive Self-Improvement through Evolving Worlds",
       "organizations": [
         "University of Maryland, College Park",
         "Google DeepMind",
@@ -5527,7 +5527,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/dream-rsi-replay-simulator.png",
@@ -5542,7 +5542,7 @@
     },
     {
       "id": "apple-reinforced-agent",
-      "title": "Reinforced Agent: Inference-Time Feedback Architecture for Tool-Calling Agents",
+      "title": "Reinforced Agent: Inference-Time Feedback for Tool-Calling Agents",
       "organizations": [
         "Apple"
       ],
@@ -5603,7 +5603,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/apple-reinforced-agent.svg",
@@ -5618,7 +5618,7 @@
     },
     {
       "id": "faraday-replica-ai-scientist",
-      "title": "Training AI Scientists to Replicate Research (Faraday on the Replica benchmark)",
+      "title": "Training AI Scientists to Replicate Research",
       "organizations": [
         "Inherent Laboratories"
       ],
@@ -5668,7 +5668,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/faraday-replica-ai-scientist.png",
@@ -6027,7 +6027,7 @@
     },
     {
       "id": "amazon-autonomous-post-training",
-      "title": "Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search",
+      "title": "A-Evolve-Training: Autonomous Post-Training of a 30B Model",
       "organizations": [
         "Amazon"
       ],
@@ -6036,14 +6036,19 @@
       "published": "2026-06-09",
       "kind": "paper",
       "date_note": {
-        "en": "arXiv v1: 2026-06-09; v3: 2026-09-08 (numbers cited from v3). Media coverage mislabeled the work 'NVIDIA' because it post-trains a Nemotron model; authors are Amazon.",
-        "zh": "arXiv v1：2026-06-09；v3：2026-09-08（数字引自 v3）。媒体报道曾误标为'NVIDIA'（因后训练的是 Nemotron 模型）；作者为 Amazon。"
+        "en": "arXiv v1 2026-06-09 (announced 2026-06-09; then titled \"Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search\"); v2 2026-09-08 retitles the paper to \"A-Evolve-Training: Autonomous Post-Training of a 30B Model\". Metrics cited are from the v1 text; title updated to the current arXiv title during the 2026-09-21 authority audit.",
+        "zh": "arXiv v1 于 2026-06-09（当时题为 \"Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search\"）；v2 于 2026-09-08 将论文更名为 \"A-Evolve-Training: Autonomous Post-Training of a 30B Model\"。所引指标出自 v1 文本；标题在 2026-09-21 权威性审计中更新为当前 arXiv 题名。"
       },
       "additional_events": [
         {
           "date": "2026-09-08",
           "kind": "paper",
           "label": "arXiv v3"
+        },
+        {
+          "date": "2026-09-08",
+          "kind": "paper",
+          "label": "v2 revision retitles the paper (A-Evolve-Training)"
         }
       ],
       "affiliation": {
@@ -6083,7 +6088,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/amazon-autonomous-post-training.png",
@@ -6098,7 +6103,7 @@
     },
     {
       "id": "evoscientist-self-evolving",
-      "title": "EvoScientist: Self-Evolving Multi-Agent System for End-to-End Scientific Discovery",
+      "title": "EvoScientist: Towards Multi-Agent Evolving AI Scientists for End-to-End Scientific Discovery",
       "organizations": [
         "Huawei Technologies",
         "Vrije Universiteit Amsterdam"
@@ -6154,7 +6159,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/evoscientist-self-evolving.png",
@@ -6169,7 +6174,7 @@
     },
     {
       "id": "nvidia-enpire-physical-autoresearch",
-      "title": "ENPIRE: Physical Autoresearch - Self-Improving Coding Agents on Real Robots",
+      "title": "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World",
       "organizations": [
         "NVIDIA",
         "Carnegie Mellon University",
@@ -6226,7 +6231,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-21",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/nvidia-enpire-physical-autoresearch.png",

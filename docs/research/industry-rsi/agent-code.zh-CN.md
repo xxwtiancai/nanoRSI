@@ -683,7 +683,7 @@
 
 <a id="salesforce-beagle-darwinx"></a>
 
-### Beagle / DarwinX: Evolving Agent Harnesses Through Natural Selection
+### DarwinX: Evolving Agent Harnesses Through Natural Selection
 
 **2026-07-31** · paper · 直接有界闭环
 
@@ -705,7 +705,7 @@
 
 **原文图／官方图片** — Beagle 官方架构图：基准数据与 agent 工厂进入评测／进化后端、rollout 引擎及 DarwinX 进化算法。 · Official project architecture figure · [source](https://github.com/SalesforceAIResearch/Beagle/blob/main/docs/assets/beagle-architecture.svg)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-15.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — [Official Beagle repository](https://github.com/SalesforceAIResearch/Beagle) · [Beagle Apache-2.0 license](https://github.com/SalesforceAIResearch/Beagle/blob/main/LICENSE.txt)
 
@@ -833,7 +833,7 @@
 
 <a id="genericagent-skill-tree"></a>
 
-### GenericAgent: A Self-Evololving Agent Growing a Skill Tree from a 3.3K-Line Seed
+### GenericAgent: A Token-Efficient Self-Evolving LLM Agent via Contextual Information Density Maximization (V1.0)
 
 **2026-04** · paper · 直接有界闭环
 
@@ -855,7 +855,7 @@
 
 **原文图／官方图片** — 图 2：GenericAgent 统一循环——由任务、记忆与两层技能树构造执行上下文；课程规划器为技能打分，每个任务以技能固化（归档报告、更新树、递增计数）收尾。 · Figure 2 · [source](https://arxiv.org/html/2604.17091v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — [Code repository (MIT)](https://github.com/lsdefine/GenericAgent)
 
@@ -987,7 +987,7 @@
 
 <a id="mgm-mendel-godel-machine"></a>
 
-### Mendel Godel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution
+### Mendel Gödel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution
 
 **2026-08** · paper · 直接有界闭环
 
@@ -1009,7 +1009,7 @@
 
 **原文图／官方图片** — 图 1：孟德尔哥德尔机——档案谱系树上，采样与评估喂给三个比较算子：克隆变异、反应规范变异、跨谱系杂交。 · Figure 1 · [source](https://arxiv.org/html/2608.07645v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/RealLcz/MGM)
 
@@ -1141,7 +1141,7 @@
 
 <a id="dream-rsi-replay-simulator"></a>
 
-### Dream-RSI: Improving Exploration Policies by Dreaming over the Discovery Tree
+### Dream-RSI: Recursive Self-Improvement through Evolving Worlds
 
 **2026-09-14** · paper · 直接有界闭环
 
@@ -1163,7 +1163,7 @@
 
 **原文图／官方图片** — 图 1：Dream-RSI 三阶段递归环——在线探索构建发现树，树成为回放模拟器，'做梦'式策略改进离线改写探索策略。 · Figure 1 · [source](https://arxiv.org/html/2609.14858v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — [Code repository](https://github.com/zhengkid/Dream-RSI)
 
@@ -1355,7 +1355,7 @@
 
 <a id="apple-reinforced-agent"></a>
 
-### Reinforced Agent: Inference-Time Feedback Architecture for Tool-Calling Agents
+### Reinforced Agent: Inference-Time Feedback for Tool-Calling Agents
 
 **2026-04** · paper · 直接有界闭环
 
@@ -1377,7 +1377,7 @@
 
 **原文图／官方图片** — 图 2：反馈架构——基础智能体给出临时工具调用，审查智能体在执行前评估，反馈循环直到批准或达到最大迭代。 · Figure 2 (inline SVG) · [source](https://arxiv.org/html/2604.27233v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 

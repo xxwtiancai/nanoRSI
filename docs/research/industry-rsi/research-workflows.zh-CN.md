@@ -139,7 +139,7 @@
 
 <a id="faraday-replica-ai-scientist"></a>
 
-### Training AI Scientists to Replicate Research (Faraday on the Replica benchmark)
+### Training AI Scientists to Replicate Research
 
 **2026-08-13** · paper · 直接有界闭环
 
@@ -161,7 +161,7 @@
 
 **原文图／官方图片** — 图 1：在 Replica 上训练 Faraday——论文抠成复现任务、容器内 rollout、自动生成 rubric 裁判、多样本评判产出奖励与轮次级信用供 GRPO 使用。 · Figure 1 · [source](https://arxiv.org/html/2608.13331v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
@@ -229,7 +229,7 @@
 
 <a id="nvidia-enpire-physical-autoresearch"></a>
 
-### ENPIRE: Physical Autoresearch - Self-Improving Coding Agents on Real Robots
+### ENPIRE: Agentic Robot Policy Self-Improvement in the Real World
 
 **2026-06** · paper · 直接有界闭环
 
@@ -251,7 +251,7 @@
 
 **原文图／官方图片** — 图 2：ENPIRE 框架——智能体把带自动复位与验证的环境构建为不可变 Gym API，在真实信号引导下改进策略、机器人 rollout、并在经 Git 协同的去中心化团队间进化假设。 · Figure 2 · [source](https://arxiv.org/html/2606.19980v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
@@ -259,7 +259,7 @@
 
 <a id="evoscientist-self-evolving"></a>
 
-### EvoScientist: Self-Evolving Multi-Agent System for End-to-End Scientific Discovery
+### EvoScientist: Towards Multi-Agent Evolving AI Scientists for End-to-End Scientific Discovery
 
 **2026-03** · paper · 直接有界闭环
 
@@ -281,7 +281,7 @@
 
 **原文图／官方图片** — 图 1：EvoScientist 总览——研究员、工程师与进化管理者三智能体跑在想法与实验双持久记忆上，三种自进化机制逐任务更新知识。 · Figure 1 · [source](https://arxiv.org/html/2603.08127v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/EvoScientist/EvoScientist)
 
@@ -323,11 +323,11 @@
 
 <a id="amazon-autonomous-post-training"></a>
 
-### Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search
+### A-Evolve-Training: Autonomous Post-Training of a 30B Model
 
 **2026-06-09** · paper · 直接有界闭环
 
-**日期说明** — arXiv v1：2026-06-09；v3：2026-09-08（数字引自 v3）。媒体报道曾误标为'NVIDIA'（因后训练的是 Nemotron 模型）；作者为 Amazon。
+**日期说明** — arXiv v1 于 2026-06-09（当时题为 "Fully Autonomous Post-Training of a 30B Model with Multi-Round Agentic Search"）；v2 于 2026-09-08 将论文更名为 "A-Evolve-Training: Autonomous Post-Training of a 30B Model"。所引指标出自 v1 文本；标题在 2026-09-21 权威性审计中更新为当前 arXiv 题名。
 
 **机构关系** — 全部作者（Zhan Shi、Bing He、Yisi Sang、Benoit Dumoulin、Hanqing Lu）均属 Amazon。
 
@@ -345,7 +345,7 @@
 
 **原文图／官方图片** — 图 2：自主后训练基础设施——不可变、经运营审计的基座每轮分叉出 N 个候选沙箱；无记忆工人探索，评审者聚合为固定 schema 摘要，宪法约束的编排者只更新下一轮的研究策略。 · Figure 2 · [source](https://arxiv.org/html/2606.20657v3)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-16.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 

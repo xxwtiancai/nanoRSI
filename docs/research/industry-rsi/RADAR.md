@@ -6,6 +6,25 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ---
 
+## 2026-09-21
+
+**New entries**
+- No qualified new findings: this was a user-directed authority audit of the existing corpus, not a sweep day (the 2026-09-20 sweep ran hours earlier).
+
+**Updated entries (13 title corrections; all verified against arXiv OAI-PMH/abs by this run)**
+- [amazon-autonomous-post-training](research-workflows.zh-CN.md#amazon-autonomous-post-training) — retitled to the current arXiv title "A-Evolve-Training: Autonomous Post-Training of a 30B Model"; the v2 revision (2026-09-08) renamed the paper, and the v1 title plus retitle are now documented in date_note with a v2 additional event.
+- [salesforce-beagle-darwinx](agent-code.zh-CN.md#salesforce-beagle-darwinx) — "Beagle / DarwinX: …" was a compound display title; the record title is now the verbatim paper title (DarwinX), Beagle stays in prose and its release event.
+- [sakana-conductor-fugu](parameter-learning.zh-CN.md#sakana-conductor-fugu) — verbatim Conductor paper title; the Fugu product remains covered by sources and events.
+- [meta-spice-self-play](parameter-learning.zh-CN.md#meta-spice-self-play), [genericagent-skill-tree](agent-code.zh-CN.md#genericagent-skill-tree), [dream-rsi-replay-simulator](agent-code.zh-CN.md#dream-rsi-replay-simulator), [nvidia-enpire-physical-autoresearch](research-workflows.zh-CN.md#nvidia-enpire-physical-autoresearch), [evoscientist-self-evolving](research-workflows.zh-CN.md#evoscientist-self-evolving), [apple-reinforced-agent](agent-code.zh-CN.md#apple-reinforced-agent), [sage-skill-augmented-grpo](parameter-learning.zh-CN.md#sage-skill-augmented-grpo), [faraday-replica-ai-scientist](research-workflows.zh-CN.md#faraday-replica-ai-scientist), [mgm-mendel-godel-machine](agent-code.zh-CN.md#mgm-mendel-godel-machine) — glosses, paraphrases, dropped diacritics and added words removed; titles now match the arXiv original verbatim.
+- Window advanced 2025-09-20 → 2025-09-21 / as_of 2026-09-20 → 2026-09-21; nothing newly archived.
+
+**Signals for engineering**
+- Authority-audit method now in the toolbox: OAI-PMH `GetRecord` supplies canonical titles and announcement datestamps for every arXiv-sourced entry (122 of 147); the remaining report/release entries keep their official-page titles by design.
+
+**Coverage and gaps**
+- Audited this run, beyond the title sweep: all 393 unique source URLs across 147 records are reachable (0 dead links; two transient timeouts rechecked live); the living survey previously synthesized only 86 of 147 entries in prose — all 61 missing entries are now woven into both language versions with per-family counts resynced (40/48/22/37; 99/37/11; ADOPTION 36 items); experiments/results READMEs spot-checked against their summary.json files (ported-task numbers, digits intervals, the self-use tie, the rejected-memory null and the (12.5) counterexample all match and remain displayed).
+- Known backlog, unchanged by this audit: 30 initial-audit entries (last verified 2026-09-13) await claim-level re-verification in a future sweep; media-only leads remain excluded by rule.
+
 ## 2026-09-20
 
 **New entries (12; catalog 135 → 147)**
