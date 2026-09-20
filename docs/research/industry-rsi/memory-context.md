@@ -8,9 +8,9 @@
 | --- | ---: |
 | [Structured knowledge bases & graphs](#family-structured-knowledge) | 6 |
 | [Experience accumulation & replay](#family-experience-accumulation) | 7 |
-| [Context organization policies](#family-context-policies) | 4 |
+| [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
-| [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 2 |
+| [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 3 |
 
 <a id="family-structured-knowledge"></a>
 
@@ -412,7 +412,7 @@
 
 <a id="family-context-policies"></a>
 
-## Context organization policies (4)
+## Context organization policies (5)
 
 <a id="repoatlas-evolving-views"></a>
 
@@ -443,6 +443,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.16936) · [Paper HTML (affiliations, Figure 2, selection ablation)](https://arxiv.org/html/2609.16936v1)
+
+<a id="interactive-memory-learning"></a>
+
+### Interactive Memory Learning for Long-Term Conversations
+
+**2026-09-15** · paper · Direct bounded loop
+
+**Publication date** — v1 submitted 2026-09-15, announced 2026-09-16 (OAI datestamp); single version at verification. Sibling submission to ThinkFlow (arXiv:2609.17010) from the same group.
+
+**Institutional relationship** — Academic: Harbin Institute of Technology (Shenzhen) and Pengcheng Laboratory (corresponding author Ruifeng Xu).
+
+**What changes and how feedback is reused** — Reframes memory as a learnable policy rather than a passive store. A session-synthesis pipeline builds expert data for fast adaptation; online RL co-evolves a Planner (selectively encodes high-value information) and a Trigger (decides when to retrieve); a delayed-reward mechanism propagates future interaction feedback back to earlier storage decisions.
+
+**Author-reported result** — On CC/MSC/GC, Icml at Llama3-Instruct 1B/3B/8B (also Gemma3 backbones) beats GPT-4o long-context (128K) and six memory baselines (Mem0, A-Mem, MemoryOS, MemoryBank, LD-Agent, THEANINE): e.g. CC BLEU-4 2.37 (3B) vs 1.79 for GPT-4o long-context; GC BertScore 40.8 vs 36.57; response quality keeps improving as interactions accumulate. Ablations show removing synthetic data, the Planner, the Trigger or evolution each degrades scores.
+
+**Evidence limits** — v1 only; no code located; proxy generation metrics rather than downstream task outcomes; same-day sibling of ThinkFlow with overlapping authors.
+
+**Code / weights / data / license** — No code located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — Delayed-reward credit assignment maps to nanoRSI skill retention: score each proposed memory/context edit by downstream episode outcomes instead of the immediate gate verdict.
+
+![The Icml framework: through long-term interactions the agent uses environmental feedback to distinguish high-value memories from noise for online self-evolution.](assets/paper-figures/interactive-memory-learning.png)
+
+**Source figure / official image** — The Icml framework: through long-term interactions the agent uses environmental feedback to distinguish high-value memories from noise for online self-evolution. · Figure 1 (fig1-7.png) · [source](https://arxiv.org/html/2609.17088v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17088) · [arXiv HTML v1](https://arxiv.org/html/2609.17088v1)
 
 <a id="sambanova-stanford-ace"></a>
 
@@ -570,7 +600,37 @@
 
 <a id="family-memory-evolution-studies"></a>
 
-## Memory-evolution studies & benchmarks (2)
+## Memory-evolution studies & benchmarks (3)
+
+<a id="thinkflow-latent-memory"></a>
+
+### ThinkFlow: Self-Evolving Probabilistic Latent Memory for Lifelong Conversational Agents
+
+**2026-09-15** · paper · Direct bounded loop
+
+**Publication date** — v1 submitted 2026-09-15, announced 2026-09-16 (OAI datestamp); single version at verification. Sibling submission to Interactive Memory Learning (arXiv:2609.17088) from the same group, one hour later the same day.
+
+**Institutional relationship** — Academic consortium: Pengcheng Laboratory and HIT Shenzhen (corresponding author Ruifeng Xu), with one author from the China Unicom Greater Bay Area Innovation Institute.
+
+**What changes and how feedback is reused** — Replaces explicit textual memory with end-to-end latent memory: conversation flows are compressed into disentangled probabilistic latent memory skills (continuous vectors), avoiding the text-summary bottleneck. Test-time evolution has two phases: teacher-guided latent alignment bootstraps the initial state (cold start), then a self-supervised next-user-utterance prediction task keeps refining the memory during interaction with no labels.
+
+**Author-reported result** — On PersonaMem (contexts up to 1M tokens, Qwen3-8B backbone), ThinkFlow-8B averages 41.94 accuracy, +2.36 over the best comparable memory method (MemGen 38.86) and +15.32 on its strongest task; the paper says it rivals closed-source and 405B open models there. On CC/MSC/GC generation it outperforms explicit-memory baselines (long-context, RAG-style and agentic memory), with token and latency savings over explicit pipelines (Figure 5).
+
+**Evidence limits** — v1 only; no code located at verification; generation results use proxy metrics (BLEU/ROUGE/BertScore/Mauve); some PersonaMem baseline numbers are transcribed from Jiang et al. (2025a) rather than re-run; sibling paper shares the author group and evaluation style.
+
+**Code / weights / data / license** — No code, weights or data located at verification; arXiv paper under CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Transplant the label-free evolution signal: score a memory skill by whether it reduces surprise on the next observation (self-supervised next-utterance prediction), so skill retention gates need no task labels.
+
+![ThinkFlow architecture and two-phase training: probabilistic latent memory skills, teacher-guided latent alignment, then self-supervised next-user-utterance prediction.](assets/paper-figures/thinkflow-latent-memory.png)
+
+**Source figure / official image** — ThinkFlow architecture and two-phase training: probabilistic latent memory skills, teacher-guided latent alignment, then self-supervised next-user-utterance prediction. · Figure 2 (method.png) · [source](https://arxiv.org/html/2609.17010v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17010) · [arXiv HTML v1](https://arxiv.org/html/2609.17010v1)
 
 <a id="bytedance-s3gym"></a>
 

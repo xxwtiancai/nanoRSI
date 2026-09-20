@@ -9,8 +9,8 @@
 | [Self-play & curriculum task generation](#family-self-play-curriculum) | 14 |
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 2 |
-| [Experience distillation & test-time adaptation](#family-experience-distillation) | 5 |
-| [Autonomous training agents & data pipelines](#family-autonomous-training) | 5 |
+| [Experience distillation & test-time adaptation](#family-experience-distillation) | 6 |
+| [Autonomous training agents & data pipelines](#family-autonomous-training) | 6 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
 
 <a id="family-self-play-curriculum"></a>
@@ -657,7 +657,37 @@
 
 <a id="family-experience-distillation"></a>
 
-## Experience distillation & test-time adaptation (5)
+## Experience distillation & test-time adaptation (6)
+
+<a id="reflective-recovery"></a>
+
+### Reflective Recovery: A Self-Supervised Method for Reasoning by Learning from Mistakes
+
+**2026-09-18** · paper · Direct bounded loop
+
+**Publication date** — v1 submitted 2026-07-24 but held by arXiv until the 2026-09-18 announcement (OAI datestamp); first public date used, per the held-paper convention.
+
+**Institutional relationship** — Academic: Qirui Chen (Zhejiang University and HKU), Renjie Pi (HKUST), Jiahui Gao and Lingpeng Kong (HKU).
+
+**What changes and how feedback is reused** — Turns failed reasoning trajectories into recovery training data: initial segments of failed attempts are paired with prompts and used to steer the model toward correct solutions. Because the segments contain errors, the model learns to detect and fix mistakes without external critics or reward models — addressing the Scaling Collapse of imitation learning, where adding more perfect examples stops helping on a limited problem set.
+
+**Author-reported result** — On DeepSeek-R1-Distill-Qwen-7B, accuracy rises from 30.0% to 37.5% on AIME 2025 and from 37.6% to 47.8% on Minerva (comparator: the same base model without the method); the paper reports this breaks the scaling-collapse barrier and yields emergent self-correction behavior.
+
+**Evidence limits** — Single 7B backbone family reported in the abstract-level numbers; no code located; held until September so community scrutiny is recent; gains measured on math reasoning benchmarks only in the cited results.
+
+**Code / weights / data / license** — No code located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — Feed nanoRSI’s rejected-candidate archive back as training-style signal: pair the failing prefix of each rejected proposal with the eventually accepted fix, so the proposer policy learns recovery from its own mistakes without new labels.
+
+![Reflective Recovery pipeline: failure trajectory collection splits rollouts into positives and negatives; failing prefixes are truncated at the error step and resampled into recovery training data.](assets/paper-figures/reflective-recovery-pipeline.png)
+
+**Source figure / official image** — Reflective Recovery pipeline: failure trajectory collection splits rollouts into positives and negatives; failing prefixes are truncated at the error step and resampled into recovery training data. · Figure 1 (x1.png) · [source](https://arxiv.org/html/2609.19156v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.19156) · [arXiv HTML v1](https://arxiv.org/html/2609.19156v1)
 
 <a id="retireopd-self-retiring-distillation"></a>
 
@@ -811,7 +841,37 @@
 
 <a id="family-autonomous-training"></a>
 
-## Autonomous training agents & data pipelines (5)
+## Autonomous training agents & data pipelines (6)
+
+<a id="autodata-pretraining-search"></a>
+
+### AutoData: Agentic Search for Pre-training Data Selection
+
+**2026-09-17** · paper · Enabling technique / evaluation
+
+**Publication date** — v1 submitted 2026-09-17, announced 2026-09-18 (OAI datestamp); four of five authors including corresponding author Yuxiang Wu are Weco AI, extending the AIDE lineage from model and training-code optimization into the data pipeline.
+
+**Institutional relationship** — Company first-party with university collaborator (Weco AI; Yan Meng from University of Amsterdam).
+
+**What changes and how feedback is reused** — Frames pre-training data selection as heuristic engineering: an AIDE-style LLM agent searches a program space of scoring, stratification and stochastic selection rules over a feature-annotated document pool. Each candidate selection trains a small proxy model; validation feedback (val-bpb or downstream CORE) iterates the search, which completes overnight; the returned selection algorithm is then applied at larger scales without re-tuning.
+
+**Author-reported result** — Overnight-searched selection algorithms beat human-designed curation pipelines — DCDS, perplexity filtering, RegMix and the default ClimbMix ordering — achieving the best val-bpb from 125M to 897M with statistically significant improvement over all baselines, and improving downstream CORE; recipes transfer across scales without re-tuning.
+
+**Evidence limits** — Search validated on proxy scales up to 897M against proxy objectives; feature pool depends on per-document annotation quality; no code located at verification.
+
+**Code / weights / data / license** — No code located at verification.
+
+**Possible nanoRSI experiment — not implemented here** — Port the pattern to skill-bank curation: let an agent search compact selector programs over the skill library (score, stratify, stochastically keep), with a small frozen evaluator as feedback, and keep the winning selector as the bank’s garbage collector.
+
+![AutoData overview: an LLM agent proposes data-selection functions over a feature-annotated document pool; each selected subset pre-trains a proxy model whose validation feedback refines the next proposal.](assets/paper-figures/autodata-selection-loop.svg)
+
+**Source figure / official image** — AutoData overview: an LLM agent proposes data-selection functions over a feature-annotated document pool; each selected subset pre-trains a proxy model whose validation feedback refines the next proposal. · Figure 1 (overview.svg) · [source](https://arxiv.org/html/2609.19754v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.19754) · [arXiv HTML v1](https://arxiv.org/html/2609.19754v1)
 
 <a id="scienceide-agent-environments"></a>
 

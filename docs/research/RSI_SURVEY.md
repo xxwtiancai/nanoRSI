@@ -2,7 +2,7 @@
 
 **[简体中文](RSI_SURVEY.zh-CN.md)** · [Industry research map (date-verified entries)](industry-rsi/README.md) · [中文研究地图](industry-rsi/README.zh-CN.md) · [Daily radar log](industry-rsi/RADAR.md) · [Adoption backlog](industry-rsi/ADOPTION.md)
 
-This is a **living survey**: it synthesizes the 135 date-verified entries in the [catalogue](industry-rsi/catalog.json) (rolling window **2025-09-19 → 2026-09-19**, as of **2026-09-19**) into one analytical document, and it is regenerated in step with the daily midnight radar sweep. Every claim below traces to a catalogue entry; author results are **not** local reproductions, and this survey does not assert that general recursive self-improvement has been achieved. Current composition: **94 direct-loop** mechanisms, **31 enabling** techniques and analyses, **10 assisted-R&D** reports, across four change surfaces — 38 parameter-learning, 44 agent-code, 20 memory-context, 33 research-workflows — further grouped into **23 mechanism families** that the category pages render as sections.
+This is a **living survey**: it synthesizes the 147 date-verified entries in the [catalogue](industry-rsi/catalog.json) (rolling window **2025-09-20 → 2026-09-20**, as of **2026-09-20**) into one analytical document, and it is regenerated in step with the daily midnight radar sweep. Every claim below traces to a catalogue entry; author results are **not** local reproductions, and this survey does not assert that general recursive self-improvement has been achieved. Current composition: **99 direct-loop** mechanisms, **37 enabling** techniques and analyses, **11 assisted-R&D** reports, across four change surfaces — 40 parameter-learning, 48 agent-code, 22 memory-context, 37 research-workflows — further grouped into **23 mechanism families** that the category pages render as sections.
 
 For nanoRSI's executable behavior (as opposed to the research landscape here), see the [multilevel guide](../MULTILEVEL.md) and [security model](../SECURITY.md).
 
@@ -12,9 +12,9 @@ We use **recursive self-improvement (RSI)** in the operational sense established
 
 | Class / 类别 | Meaning | Count | Examples |
 | --- | --- | --- | --- |
-| `direct-loop` | Mutation → feedback → reuse closes on a persistent artifact | 63 | SkillOpt, DGM-lineage systems, AgentEvolver, Amazon autonomous post-training |
-| `enabling` | Supports or analyzes the loop without itself closing one | 15 | Doc-to-LoRA, TRINITY, the economics calibration, contextual-drag analysis |
-| `assisted-rd` | Human-directed R&D acceleration telemetry, no autonomous loop | 7 | OpenAI research acceleration, Devin builds Devin |
+| `direct-loop` | Mutation → feedback → reuse closes on a persistent artifact | 99 | SkillOpt, DGM-lineage systems, AgentEvolver, Amazon autonomous post-training |
+| `enabling` | Supports or analyzes the loop without itself closing one | 37 | Doc-to-LoRA, TRINITY, the economics calibration, contextual-drag analysis |
+| `assisted-rd` | Human-directed R&D acceleration telemetry, no autonomous loop | 11 | OpenAI research acceleration, Devin builds Devin |
 
 Two boundaries are drawn deliberately. First, **capability ≠ mechanism**: a stronger model or an automated-research demonstration without a persistent self-modification loop (Anthropic's Fermat formalization, Google's Stellar Colosseum, PKU's OpenAI4S) is recorded as a signal, not an entry. Second, **one pass is not recursion**: NeoHorse-1 itself frames its result as "an initial attempt … rather than a definitive demonstration"; the catalogue keeps such honesty statements verbatim.
 

@@ -9,8 +9,8 @@
 | [自博弈与课程任务生成](#family-self-play-curriculum) | 14 |
 | [验证器与奖励进化](#family-verifier-reward) | 5 |
 | [技能-权重共进化](#family-skill-weight-coevolution) | 2 |
-| [经验蒸馏与测试时适应](#family-experience-distillation) | 5 |
-| [自主训练智能体与数据管线](#family-autonomous-training) | 5 |
+| [经验蒸馏与测试时适应](#family-experience-distillation) | 6 |
+| [自主训练智能体与数据管线](#family-autonomous-training) | 6 |
 | [支撑性适应机制](#family-enabling-adaptation) | 7 |
 
 <a id="family-self-play-curriculum"></a>
@@ -657,7 +657,37 @@
 
 <a id="family-experience-distillation"></a>
 
-## 经验蒸馏与测试时适应 (5)
+## 经验蒸馏与测试时适应 (6)
+
+<a id="reflective-recovery"></a>
+
+### Reflective Recovery: A Self-Supervised Method for Reasoning by Learning from Mistakes
+
+**2026-09-18** · paper · 直接有界闭环
+
+**日期说明** — v1 提交于 2026-07-24，被 arXiv 扣留至 2026-09-18 才公告（OAI datestamp）；按被扣留论文惯例记首次公开日。
+
+**机构关系** — 学术：Qirui Chen（浙江大学与港大）、Renjie Pi（港科大）、Jiahui Gao 与孔令鹏（港大）。
+
+**改变对象与反馈复用** — 把失败推理轨迹转化为恢复训练数据：失败尝试的初始片段与提示配对，用于引导模型走向正确解。因片段含错误，模型无需外部评论家或奖励模型即可学会检测并修复错误——针对模仿学习的规模塌缩：问题集有限时增加完美样本不再带来提升。
+
+**作者报告结果** — 在 DeepSeek-R1-Distill-Qwen-7B 上，AIME 2025 准确率从 30.0% 升至 37.5%，Minerva 从 37.6% 升至 47.8%（对照为未使用该方法的同一基模型）；论文称这打破了规模塌缩屏障并产生涌现式自我纠错行为。
+
+**证据边界** — 摘要级数字仅报告单一 7B 主干家族；未找到代码；九月才公开、社区审视尚新；所引结果仅在数学推理基准上测得。
+
+**代码／权重／数据／许可** — 核验时未找到代码。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把 nanoRSI 的被拒候选档案回灌为训练式信号：将每个被拒提案的失败前缀与最终被接受的修复配对，使提案策略从自身错误学恢复，无需新标注。
+
+![Reflective Recovery 管线：失败轨迹收集把滚动分为正负例；失败前缀在出错步截断并重采样为恢复训练数据。](assets/paper-figures/reflective-recovery-pipeline.png)
+
+**原文图／官方图片** — Reflective Recovery 管线：失败轨迹收集把滚动分为正负例；失败前缀在出错步截断并重采样为恢复训练数据。 · Figure 1 (x1.png) · [source](https://arxiv.org/html/2609.19156v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.19156) · [arXiv HTML v1](https://arxiv.org/html/2609.19156v1)
 
 <a id="retireopd-self-retiring-distillation"></a>
 
@@ -811,7 +841,37 @@
 
 <a id="family-autonomous-training"></a>
 
-## 自主训练智能体与数据管线 (5)
+## 自主训练智能体与数据管线 (6)
+
+<a id="autodata-pretraining-search"></a>
+
+### AutoData: Agentic Search for Pre-training Data Selection
+
+**2026-09-17** · paper · 支撑技术／评测
+
+**日期说明** — v1 提交于 2026-09-17，公告日 2026-09-18（OAI datestamp）；五名作者中四名（含通讯作者吴宇翔）来自 Weco AI，把 AIDE 谱系从模型与训练代码优化延伸到数据管线。
+
+**机构关系** — 企业一手联合高校（Weco AI；Yan Meng 来自阿姆斯特丹大学）。
+
+**改变对象与反馈复用** — 把预训练数据选择表述为启发式工程：AIDE 式 LLM 代理在带特征标注的文档池上搜索由打分、分层与随机选择规则组成的程序空间。每个候选选集训练一个小代理模型，验证反馈（val-bpb 或下游 CORE）驱动搜索迭代，一夜完成；返回的选择算法随后无需重调即可放大到更大规模。
+
+**作者报告结果** — 一夜搜索所得选择算法优于人工设计管线——DCDS、困惑度过滤、RegMix 与默认 ClimbMix 排序——在 125M 到 897M 上取得最优 val-bpb，对全部基线的改善具统计显著性，并提升下游 CORE；配方跨规模迁移无需重调。
+
+**证据边界** — 搜索在至多 897M 的代理规模上以代理目标验证；特征池依赖逐文档标注质量；核验时未找到代码。
+
+**代码／权重／数据／许可** — 核验时未找到代码。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把该模式移植到技能库治理：让代理在技能库上搜索紧凑的选择器程序（打分、分层、随机保留），以小型冻结评估器为反馈，把胜出选择器留作技能库的垃圾回收器。
+
+![AutoData 概览：LLM 代理在带特征标注的文档池上提出数据选择函数；每个选集预训练一个代理模型，其验证反馈用于改进下一轮提案。](assets/paper-figures/autodata-selection-loop.svg)
+
+**原文图／官方图片** — AutoData 概览：LLM 代理在带特征标注的文档池上提出数据选择函数；每个选集预训练一个代理模型，其验证反馈用于改进下一轮提案。 · Figure 1 (overview.svg) · [source](https://arxiv.org/html/2609.19754v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.19754) · [arXiv HTML v1](https://arxiv.org/html/2609.19754v1)
 
 <a id="scienceide-agent-environments"></a>
 

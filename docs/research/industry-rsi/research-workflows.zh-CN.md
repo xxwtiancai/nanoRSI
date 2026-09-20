@@ -8,9 +8,9 @@
 | --- | ---: |
 | [AI 科学家系统](#family-ai-scientists) | 9 |
 | [自主后训练及其评测](#family-autonomous-post-training) | 3 |
-| [公司研发遥测](#family-company-telemetry) | 6 |
+| [公司研发遥测](#family-company-telemetry) | 7 |
 | [对齐自动化](#family-alignment-automation) | 3 |
-| [分析与审计](#family-analyses-audits) | 6 |
+| [分析与审计](#family-analyses-audits) | 9 |
 | [立场、路线图与实验室](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
@@ -383,7 +383,37 @@
 
 <a id="family-company-telemetry"></a>
 
-## 公司研发遥测 (6)
+## 公司研发遥测 (7)
+
+<a id="anthropic-measuring-pace"></a>
+
+### Measurements for understanding the pace of AI development inside frontier labs
+
+**2026-09-17** · report · 自动化／辅助研发
+
+**日期说明** — Anthropic Institute 文章；页面本身无日期，经 Hacker News 提交时间戳（2026-09-17T20:50:01Z）与当日媒体报道钉为 2026-09-17；数据快照标注 2026 年 8 月（算力为 7 月 13–20 当周）。
+
+**机构关系** — 企业一手（Anthropic Institute）。
+
+**改变对象与反馈复用** — 一套 RSI 节奏度量原型：R&D 自动化指数盘点全部研发任务类型，按 Epoch AI 的 AL0–AL5 分级并按人力时间加权；对内部代理平台的监督指标；以及安全占用 AI 研发算力份额的算力指标。每节都呼吁任何 AI 开发者以公开方法学与第三方核验发布同类度量。
+
+**作者报告结果** — R&D 自动化指数（2026 年 8 月）：Claude 以领导级（AL4+）承担 Anthropic 26% 的 AI 研发工作，自 2026 年 2 月的不足 1% 上升；达到 AI 协作级以上的工作超过 90%；无任何子集完全自主。监督：最常用内部平台约 30,000 个并发研发/工程代理；8 月分析了超过 10 亿次代理决策，在线监督器拦截 0.002%（约 1/47,000），覆盖率 100%，被拦动作一周内有人复核；离线监督器每周标记约 100,000 份转写、约 50 份升级人工。算力：约 6% 的 AI 研发算力与约 12% 的 AI 驱动 AI 研发算力用于安全（保守取一周）。RSI 被定义为完全自主构建后继者的模型。
+
+**证据边界** — 单公司自报遥测，方法学内部掌握；指数为原型；算力快照仅取刻意保守的一周；尚无跨实验室可比性（文章自述其障碍）；数字未经独立核验。
+
+**代码／权重／数据／许可** — 公开文章与一张已发布图表；无数据或代码发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可借鉴的是披露模式而非数字：随任何 nanoRSI 结果发布自身管线的自动化等级构成、监督拦截率、以及用于抓捷径的评测预算占比——即该文要求前沿实验室公布的三类遥测。
+
+![Anthropic R&D 自动化指数：按自动化等级的模型研发任务占比；AI 领导级从 2026 年 2 月的不足 1% 增至 8 月的 26%。](assets/paper-figures/anthropic-rd-automation-index.png)
+
+**原文图／官方图片** — Anthropic R&D 自动化指数：按自动化等级的模型研发任务占比；AI 领导级从 2026 年 2 月的不足 1% 增至 8 月的 26%。 · Article chart: Claude now leads 26% of model R&D tasks (www-cdn.anthropic.com image) · [source](https://www.anthropic.com/institute/measuring-pace-of-ai-development)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Anthropic Institute article](https://www.anthropic.com/institute/measuring-pace-of-ai-development) · [Hacker News submission (date anchor)](https://hn.algolia.com/api/v1/search?query=Measurements%20for%20understanding%20the%20pace%20of%20AI%20development&tags=story)
 
 <a id="openai-research-acceleration-2026"></a>
 
@@ -661,7 +691,67 @@
 
 <a id="family-analyses-audits"></a>
 
-## 分析与审计 (6)
+## 分析与审计 (9)
+
+<a id="harness-value-sham-control"></a>
+
+### How Do Agent Harnesses Create Value? Planning Information and Release Control in Stateful LLM Agents
+
+**2026-09-17** · paper · 支撑技术／评测
+
+**日期说明** — v1 提交于 2026-09-17，公告日 2026-09-18（OAI datestamp）；核验时仅一版。
+
+**机构关系** — 学术：香港中文大学（深圳）两名作者与爱丁堡大学一名作者。
+
+**改变对象与反馈复用** — 把 agent harness 的价值分解为规划引导、执行组织与完成检查，并在 τ²-bench 上用安慰剂式对照逐项度量：Fixed（预写的任务专属计划）对 Sham（词数与外壳匹配的打乱策略文本），差异即分离引导内容价值与单纯 token 量；另配只读终端验证器做放行控制。
+
+**作者报告结果** — 在 265 个匹配单元上，Fixed 较 Sham 提升 oracle 验证成功率 7.17 个百分点（90% 任务聚类自助区间 1.15–13.36），集中于更高复杂度任务。只读验证器拒绝 61% 的 Retail oracle 无效 episode、误扣 17% 的正确 episode，每例成本不足一美分；单独的验证器以零头成本捕获完整规划+验证栈几乎全部的误放行收益。哪个组件占优取决于误接受的损失权重。
+
+**证据边界** — 仅 τ²-bench 上两组 Retail 实验与一组 Airline 试点；未找到代码；仅一版；规划效应在单元级置信区间较宽。
+
+**代码／权重／数据／许可** — 核验时未找到代码。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把安慰剂对照制度化：任何 nanoRSI harness 或技能改进都必须胜过词数匹配的打乱文本安慰剂，而不只是无引导基线；并保留只读验证器作为廉价放行控制层，同时报告其误扣率。
+
+![规划引导、终端验证与场景价值：Minimal、Fixed 与 Sham 的差别只在引导内容；oracle 评分固定结果度量。](assets/paper-figures/harness-value-planning.svg)
+
+**原文图／官方图片** — 规划引导、终端验证与场景价值：Minimal、Fixed 与 Sham 的差别只在引导内容；oracle 评分固定结果度量。 · Figure 1 (framework_final.svg) · [source](https://arxiv.org/html/2609.20474v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.20474) · [arXiv HTML v1](https://arxiv.org/html/2609.20474v1)
+
+<a id="evolution-or-illusion-budget"></a>
+
+### Evolution or Illusion? Rethinking Evaluation in LLM Evolutionary Search
+
+**2026-09-17** · paper · 支撑技术／评测
+
+**日期说明** — v1 提交于 2026-09-17，公告日 2026-09-18（OAI datestamp）；核验时仅一版。
+
+**机构关系** — 企业研究院（IBM Research；四位作者全部，通讯 Tal Oved）。
+
+**改变对象与反馈复用** — 面向 LLM 进化搜索的测量协议：不以领域惯用的单一预算配置（通常单种子固定迭代数）报告，而是跑满种子（宽度）×迭代（深度）网格，报告种子-迭代前沿，用等预算线使宽深权衡显式化。
+
+**作者报告结果** — 在三种进化搜索策略（EvoX、OpenEvolve、AdaEvolve）与五个优化任务上：最优宽深拆分随策略、任务与总预算变化；策略排名随预算改变——某策略单种子最差、四十种子时最佳；另一任务的理想迭代数低于惯用值，追加深度浪费了本可由更多种子转化为分数的预算。
+
+**证据边界** — 五个任务取自该领域常报集合；三种策略；未找到代码；仅一版；结论关乎测量实践而非新搜索方法。
+
+**代码／权重／数据／许可** — 核验时未找到代码。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把前沿报告立为 nanoRSI 报告规则：进化对基线的比较先声明总预算，给出种子×迭代网格（或至少三个预算点），任何排名结论不得出自单一单元。
+
+![EvoX、OpenEvolve、AdaEvolve 在种子×迭代网格上的期望最优综合分；白色等预算线与星标为得分最大化单元。](assets/paper-figures/evolution-or-illusion-budget-grid.png)
+
+**原文图／官方图片** — EvoX、OpenEvolve、AdaEvolve 在种子×迭代网格上的期望最优综合分；白色等预算线与星标为得分最大化单元。 · Figure 2 (harness_heatmap.png) · [source](https://arxiv.org/html/2609.19799v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.19799) · [arXiv HTML v1](https://arxiv.org/html/2609.19799v1)
 
 <a id="economics-of-rsi-2026"></a>
 
@@ -692,6 +782,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.15802) · [Paper v1 PDF (Figure 2, Section 2.2, calibration)](https://arxiv.org/pdf/2609.15802)
+
+<a id="evoharnessbench-harness-evolution"></a>
+
+### EvoHarnessBench: Can Your Agents Keep Pace with an Evolving Harness?
+
+**2026-09-03** · paper · 支撑技术／评测
+
+**日期说明** — v1 提交于 2026-09-03（OAI datestamp 公告日 2026-09-14），v2 于 2026-09-10；指标引自 v2。共 12 位作者；Salesforce Research 联合北卡罗来纳大学教堂山分校与威斯康星大学麦迪逊分校。
+
+**机构关系** — 企业研究院联合高校（Salesforce Research；北卡教堂山；威斯康星麦迪逊）。
+
+**改变对象与反馈复用** — 把非平稳性放进 harness 而非任务流的基准：17 条由带验证器的基准确定性构建的多阶段 harness 流（802 任务、520 工具、42 技能、62 代理）沿工具、技能、代理三个能力轴演化。两种评测模式分别隔离先前能力保持（部署评测）与积累经验效用（自进化适配），用相对前向/后向转移度量。
+
+**作者报告结果** — 仅扩展 harness 就会损害已解任务——harness 诱发遗忘，相对 BWT 为 −5.3%（工具）、−4.0%（技能）、−34.7%（代理，部署版 Codex，ALE 环境，为观测最强）。最佳适配增益：+27.8%（MemToolAgent，工具）、+27.5%（GEPA，技能）、+110.2%（Meta-Harness，代理）。保持与适配会冲突：保住旧能力不保证更好适配新能力。
+
+**证据边界** — harness 流由既有带验证器基准确定性合成，而非真实产品 harness 演化史；结果是特定代理的分轴快照；核验时无 GitHub 仓库（项目页链接 Colab 笔记本、在线演示与 Hugging Face 数据集）。
+
+**代码／权重／数据／许可** — 项目页（mas-orchestra.salesforceresearch.ai/evoharness）含 Colab 笔记本、演示与 Hugging Face 数据集；论文 CC BY-SA 4.0；未找到专门代码仓库。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 为 nanoRSI 增加 harness 扩展回归测试：新工具/技能/代理进入冻结循环后，重跑全部先前任务并随前向增益一并报告后向转移，让破坏旧能力的新增能力可见。
+
+![EvoHarnessBench 在外层 harness 演化下评测代理：外部供给的 harness 逐阶段扩张，部署评测与自进化适配两种模式分别度量能力保持与复用。](assets/paper-figures/evoharnessbench-framework.png)
+
+**原文图／官方图片** — EvoHarnessBench 在外层 harness 演化下评测代理：外部供给的 harness 逐阶段扩张，部署评测与自进化适配两种模式分别度量能力保持与复用。 · Figure 1 (figs/framework.png) · [source](https://arxiv.org/html/2609.04280v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.04280) · [arXiv HTML v2](https://arxiv.org/html/2609.04280v2) · [Project page](https://mas-orchestra.salesforceresearch.ai/evoharness/)
 
 <a id="self-improving-agents-survey"></a>
 

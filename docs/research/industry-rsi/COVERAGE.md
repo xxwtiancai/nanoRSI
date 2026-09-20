@@ -12,12 +12,12 @@ The university and collaborator relationships appear in each record. A company n
 | --- | --- |
 | OpenAI | [GPT-Red](parameter-learning.zh-CN.md#gpt-red), [Codex development assistance](research-workflows.zh-CN.md#codex-builds-codex), [research acceleration report](research-workflows.zh-CN.md#openai-research-acceleration-2026) |
 | Google DeepMind / Google | [SIMA 2](parameter-learning.zh-CN.md#google-sima2-2025), [DiscoRL](parameter-learning.zh-CN.md#google-discorl-2025), [AlphaEvolve MARL](research-workflows.zh-CN.md#google-alphaevolve-marl-2026), [Procedural Graphs](memory-context.zh-CN.md#procedural-graphs-google) |
-| Anthropic / Fellows Program / Institute | [A3](parameter-learning.zh-CN.md#a3), [weak-to-strong researcher](research-workflows.zh-CN.md#automated-w2s), [alignment researchers](research-workflows.zh-CN.md#automated-alignment-researchers), [TASTE](research-workflows.zh-CN.md#taste), [When AI builds itself](research-workflows.zh-CN.md#anthropic-when-ai-builds-itself) — 2026-06 institute essay with internal RSI telemetry |
+| Anthropic / Fellows Program / Institute | [A3](parameter-learning.zh-CN.md#a3), [weak-to-strong researcher](research-workflows.zh-CN.md#automated-w2s), [alignment researchers](research-workflows.zh-CN.md#automated-alignment-researchers), [TASTE](research-workflows.zh-CN.md#taste), [When AI builds itself](research-workflows.zh-CN.md#anthropic-when-ai-builds-itself) — 2026-06 institute essay with internal RSI telemetry; [pace measurements](research-workflows.zh-CN.md#anthropic-measuring-pace) — 2026-09-17 R&D Automation Index (Claude leads 26%), oversight and safety-compute telemetry |
 | Meta + universities | [Hyperagents](agent-code.zh-CN.md#meta-hyperagents-2026) |
 | Microsoft + collaborators | [ACON](memory-context.zh-CN.md#microsoft-acon-2025), [LEGOMem](memory-context.zh-CN.md#microsoft-legomem-2025), [SkillOpt](agent-code.zh-CN.md#microsoft-skillopt) |
 | Sakana AI + collaborators | [ShinkaEvolve](agent-code.zh-CN.md#sakana-shinkaevolve), [TRINITY](parameter-learning.zh-CN.md#sakana-trinity), [Doc-to-LoRA](parameter-learning.zh-CN.md#sakana-doc-to-lora), [RSI Lab](research-workflows.zh-CN.md#sakana-rsi-lab) — dedicated recursive-self-improvement group announced 2026-06-05 |
 | SambaNova + Stanford / Berkeley | [ACE](memory-context.zh-CN.md#sambanova-stanford-ace) |
-| Salesforce (Research / AI Labs) + UNC / Stanford | [Agent0](parameter-learning.zh-CN.md#salesforce-unc-agent0), [self-improving agents story](research-workflows.zh-CN.md#salesforce-toward-self-improving-agents) |
+| Salesforce (Research / AI Labs) + UNC / Stanford | [Agent0](parameter-learning.zh-CN.md#salesforce-unc-agent0), [self-improving agents story](research-workflows.zh-CN.md#salesforce-toward-self-improving-agents), [EvoHarnessBench](research-workflows.zh-CN.md#evoharnessbench-harness-evolution) — harness-evolution benchmark quantifying harness-induced forgetting (with UNC/UW–Madison, 2026-09) |
 | Prime Intellect + collaborators | [Prime Agent](memory-context.zh-CN.md#prime-agent), [autonomous research evaluation](research-workflows.zh-CN.md#prime-measuring-autonomous-ai-research) |
 | Cognition | [Devin builds Devin](research-workflows.zh-CN.md#cognition-devin-builds-devin) |
 | Alibaba / Tongyi / Qwen | [AgentEvolver](parameter-learning.zh-CN.md#alibaba-agentevolver), [Qwen3.8-Max self-evolving harness](agent-code.zh-CN.md#qwen38-max-self-evolving-harness) |
@@ -38,7 +38,7 @@ The university and collaborator relationships appear in each record. A company n
 | Jilin + Tongji | [SimSkill](agent-code.zh-CN.md#simskill-traffic) — gap-driven self-evolving agent for SUMO traffic simulation |
 | HUST + USTC + Microsoft Research + AIR Tsinghua + Nanjing | [EmbodiSkill](agent-code.zh-CN.md#embodiskill-skill-aware-reflection) — skill-aware reflection splitting defect edits from lapse re-emphasis |
 | Aether AI + UCSD + UIC | [RSIAgent](memory-context.zh-CN.md#rsiagent-autonomous-exploration) — broad-then-deep autonomous exploration freezing a causal memory |
-| Weco AI | [AIDE²](agent-code.zh-CN.md#weco-aide2-first-evidence) — the AIDE lineage's bi-level self-rewriting loop with a fixed-budget reject ladder; report only until the promised PDF lands |
+| Weco AI | [AIDE²](agent-code.zh-CN.md#weco-aide2-first-evidence) — the AIDE lineage's bi-level self-rewriting loop with a fixed-budget reject ladder; report only until the promised PDF lands; [AutoData](parameter-learning.zh-CN.md#autodata-pretraining-search) — with UvA, agentic search over pre-training data-selection programs (2026-09-17) |
 | Nous Research / Hermes | [Hermes self-refactor](agent-code.zh-CN.md#nous-hermes-selfrefactor) — the agent reworks its own ~1M-line codebase with 1,393 worktree-isolated subagents and auto-saved skills (2026-09-15); promoted from the tracked-leads table once the dated first-party post appeared |
 | Intrepid Labs (Toronto) | [Andromeda 2](research-workflows.zh-CN.md#andromeda2-evidence-grounded-lab) — evidence-grounded autonomous formulation lab |
 | UC San Diego + Johns Hopkins | [PrimeScientist](research-workflows.zh-CN.md#primescientist-effort-allocation) — strategic effort allocation for autonomous research |
@@ -110,6 +110,14 @@ The university and collaborator relationships appear in each record. A company n
 | Anthropic (CEO essay) | [We Must Pace the Frontier](research-workflows.zh-CN.md#amodei-pace-the-frontier) — first-party statement that RSI is starting across the industry including at Anthropic, with a proposed RSI speed-limit level (2026-09-12) |
 | Tencent Hunyuan | [Hyra](research-workflows.zh-CN.md#tencent-hyra-research-agent) — the Hunyuan Research Agent with an Experience Bank loop and eval-solution co-evolution (2026-07-21) |
 | ByteDance Seed | [Seed-for-Seed](research-workflows.zh-CN.md#bytedance-seed-for-seed) — the model participating in its own development pipeline (evaluation, data, training, research, infrastructure), disclosed 2026-06-23 |
+| IBM Research | [Evolution or Illusion](research-workflows.zh-CN.md#evolution-or-illusion-budget) — seeds-by-iterations evaluation protocol showing budget-dependent rankings in evolutionary search (2026-09-17) |
+| The Walt Disney Company | [AURA](agent-code.zh-CN.md#aura-recommender-refinement) — production recommender diagnosis-to-code-refinement pipeline with honest null results (2026-09-15) |
+| AgentDescent (independent) | [AgentDescent](agent-code.zh-CN.md#agentdescent-agent-gradient) — MIT-licensed multi-worker engine with reflective merge for shared-artifact evolution (2026-07-26) |
+| Prism Shadow | [PenguinHarness](agent-code.zh-CN.md#penguin-harness-self-evolution) — Apache-2.0 auto-dev platform with a benchmark→fix→ship self-evolution engine; marketing-grade claims, benchmarks not yet public (2026-07-19) |
+| Pengcheng Laboratory + HIT Shenzhen (+ China Unicom GBA Institute) | [ThinkFlow](memory-context.zh-CN.md#thinkflow-latent-memory), [Interactive Memory Learning](memory-context.zh-CN.md#interactive-memory-learning) — sibling latent-memory and memory-policy papers from one group (2026-09-15) |
+| CUHK-Shenzhen + Edinburgh | [harness-value](research-workflows.zh-CN.md#harness-value-sham-control) — placebo-controlled decomposition of agent-harness value (2026-09-17) |
+| NYU + Princeton | [Compiled Agency](agent-code.zh-CN.md#compiled-agency-gauntlet) — coding agents compile standalone game controllers from bare interaction (2026-09-17) |
+| Zhejiang University + HKU + HKUST | [Reflective Recovery](parameter-learning.zh-CN.md#reflective-recovery) — self-supervised recovery training from failed trajectories (2026-09-18) |
 
 ## Checked but not promoted to a dated main entry / 已检索但未强行收录
 
