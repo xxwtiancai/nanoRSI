@@ -88,7 +88,7 @@ Twelve Python utility repairs use semantic unittest grading. Public tests give d
 PYTHONPATH=src python examples/local_tasks/prepare.py /tmp/nanorsi-manifest.json
 ```
 
-The 90 fixtures contain 30 tasks per train/validation/test split. Each task has input files and expected final files; source groups do not cross split boundaries. These deterministic fixtures check file-editing and experiment protocols. They do not establish general agent capability. For the older scripted whole-experiment demos, create `artifact-fixture` or `harness-fixture`; `model-contract` retains the schema-1 external-training contract.
+The 100 fixtures contain 30 tasks per train/validation/test split plus ten counterfactual variants (one per task family: renamed files and fields, reordered lines, reworded instructions, same rule) for the gate's challenger. Each task has input files and expected final files; source groups do not cross split boundaries. These deterministic fixtures check file-editing and experiment protocols. They do not establish general agent capability. For the older scripted whole-experiment demos, create `artifact-fixture` or `harness-fixture`; `model-contract` retains the schema-1 external-training contract.
 
 ## Compare matching final reports
 

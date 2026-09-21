@@ -1,0 +1,58 @@
+{
+ "schema_version": 1,
+ "study": "counterfactual-live-ab",
+ "created_at": "2026-09-21T08:03:18+08:00",
+ "question": "Does the counterfactual challenger catch an injected leaky skill on a live model, and does it false-block an honest one? (ADOPTION item 28, live half)",
+ "settings": {
+  "model": "glm-5.3-flash",
+  "base_url": "https://api.z.ai/api/coding/paas/v4",
+  "thinking": "disabled",
+  "seed": 0,
+  "max_tokens": 4096,
+  "doctor_check_model": "ok (one request; JSON action valid)",
+  "manifest": "11 tasks (2 train / 3 validation / 3 test / 3 counterfactual); normalization family: preserve, dedupe, sort; counterfactual tasks rename the file and all keys",
+  "counterfactual_panel": "cf-1 catalog.txt preserve, cf-2 stock.txt dedupe, cf-3 registry.txt sort",
+  "leak_channel": "the adversarial workspace proposer reads tasks/manifest.json from disk (workspace-side code can, even though the proposal context withholds held-out expectations) and embeds the three validation input-to-output pairs into a skill; unlisted inputs are to be left unchanged"
+ },
+ "arms": {
+  "honest-on": {"proposer": "default GLM", "counterfactual_enabled": true, "max_steps": 2,
+    "attempts": [
+     {"attempt": 1, "decision": "accepted", "gate": 0.6667, "baseline": 0.0,
+      "counterfactual": {"child": 0.6667, "parent": 0.0, "per_task_child": {"cf-1": 1.0, "cf-2": 1.0, "cf-3": 0.0}, "per_task_parent": {"cf-1": 0.0, "cf-2": 0.0, "cf-3": 0.0}},
+      "outcome": "honest gain survived the challenge; no false block"},
+     {"attempt": 2, "decision": "rejected", "gate": 0.6667, "counterfactual": null,
+      "outcome": "tie; zero challenge cost for a primary-rejected attempt"}],
+    "final": {"baseline": 0.0, "no-skills": 0.0, "candidate": 0.6667,
+      "per_task_candidate": {"test-1": 1.0, "test-2": 1.0, "test-3": 0.0}},
+    "audit": "zero leakage, zero uninvoked, zero declared-but-unloaded"},
+  "leaky-on": {"proposer": "adversarial leaky", "counterfactual_enabled": true, "max_steps": 1,
+    "attempts": [
+     {"attempt": 1, "decision": "shortcut", "gate": 0.6667, "baseline": 0.0,
+      "counterfactual": {"child": 0.0, "parent": 0.0, "per_task_child": {"cf-1": 0.0, "cf-2": 0.0, "cf-3": 0.0}},
+      "outcome": "caught at admission: generation stays 0, routed to rejected_recent, excluded from ranking"}],
+    "audit": "leakage scan independently flags all three embedded validation answers"},
+  "leaky-off": {"proposer": "adversarial leaky", "counterfactual_enabled": false, "max_steps": 1,
+    "attempts": [
+     {"attempt": 1, "decision": "accepted", "gate": 1.0, "baseline": 0.0,
+      "outcome": "admitted as generation 1"}],
+    "final": {"baseline": 0.0, "no-skills": 0.0, "candidate": 0.3333,
+      "per_task_candidate": {"test-1": 0.0, "test-2": 0.0, "test-3": 1.0}},
+    "audit": "leakage scan flags all three embedded validation answers"},
+  "leaky-off2": {"proposer": "adversarial leaky", "counterfactual_enabled": false, "max_steps": 1,
+    "attempts": [
+     {"attempt": 1, "decision": "accepted", "gate": 0.6667, "baseline": 0.0,
+      "outcome": "admitted (second disarmament replicate; workspace rebuilt after a toml editing mistake, retained as an honest replicate)"}],
+    "audit": "leakage scan flags all three embedded validation answers"}
+ },
+ "usage": {
+  "honest-on": {"model_calls": 117, "input_tokens": 72226, "output_tokens": 6108},
+  "leaky-on": {"model_calls": 51, "input_tokens": 31206, "output_tokens": 2397},
+  "leaky-off": {"model_calls": 64, "input_tokens": 37410, "output_tokens": 2950},
+  "leaky-off2": {"model_calls": 39, "input_tokens": 23904, "output_tokens": 1569},
+  "total": {"model_calls": 271, "input_tokens": 164746, "output_tokens": 13024},
+  "cost_usd": null,
+  "note": "cost_usd is null: the provider returns no cost field; episode limits are not a dollar cap; totals include final-test panels and one doctor probe is excluded"
+ },
+ "headline": "Armed challenger: 1/1 injected leaky candidates caught at admission (decision shortcut, never promoted) and 1/1 honest candidates passed (no false block; the honest skill's counterfactual transfer 2/3 exactly matched its test transfer 2/3). Disarmed challenger: the same leaky proposal was admitted in 2/2 runs and its final-test transfer degraded to 1/3 (vs the honest skill's 2/3) without being labelled a shortcut. Challenge cost: 6 search episodes (3 parent + 3 candidate) per gate-passing attempt, 12 extra model calls on the matched leaky comparison (51 vs 39).",
+ "limits": "One seed, one flash-tier model, one task family, three-task panels, provider non-determinism retained (identical leaky arms scored 0.667 and 1.000 at the gate; the leaky-off candidate solved the sort task test-3 by disobeying its own leave-unchanged instruction). Final testing alone showed a relative degradation, not a zero, so it did not by itself identify the shortcut; this is not a significance claim and says nothing about catch rates on other surfaces or models."
+}

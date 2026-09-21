@@ -1,0 +1,31 @@
+{
+  "candidate_commit": "aa7f78be031f5377de6bbc2007e4384729620847",
+  "declared_but_unloaded": [],
+  "declared_skills": [
+    "inspect",
+    "edit",
+    "verify"
+  ],
+  "executable_skills": [],
+  "generation": 1,
+  "leakage": [],
+  "markdown_only_always_in_context": [
+    "edit",
+    "inspect",
+    "verify"
+  ],
+  "panel_cases": 3,
+  "panel_status": "ok",
+  "schema_version": 1,
+  "skill_files": [
+    "edit/SKILL.md",
+    "inspect/SKILL.md",
+    "verify/SKILL.md"
+  ],
+  "surface_files": [
+    "target/agent/skills/edit/SKILL.md",
+    "target/agent/skills/inspect/SKILL.md",
+    "target/agent/skills/verify/SKILL.md"
+  ],
+  "uninvoked_scripts": []
+}

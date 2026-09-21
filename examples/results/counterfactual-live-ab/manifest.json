@@ -1,0 +1,137 @@
+{
+ "schema_version": 1,
+ "tasks": [
+  {
+   "task_id": "train-1",
+   "group_id": "train-1",
+   "split": "train",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "Origin : 3\n  Pear  : 26 \nMELON   :44\n  fig :  19\nPlum : 82\n"
+   },
+   "expected_files": {
+    "inventory.txt": "origin=3\npear=26\nmelon=44\nfig=19\nplum=82\n"
+   }
+  },
+  {
+   "task_id": "train-2",
+   "group_id": "train-2",
+   "split": "train",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "Batch : 7\n  Olive  : 53 \nmelon   :38\n  OLIVE :  91\nYam : 64\n"
+   },
+   "expected_files": {
+    "inventory.txt": "batch=7\nolive=53\nmelon=38\nyam=64\n"
+   }
+  },
+  {
+   "task_id": "validation-1",
+   "group_id": "validation-1",
+   "split": "validation",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "Root : 21\n  Quince  : 77 \nAPRICOT   :5\n  leek :  48\nPumpkin : 63\n  Basil  : 30 \n"
+   },
+   "expected_files": {
+    "inventory.txt": "root=21\nquince=77\napricot=5\nleek=48\npumpkin=63\nbasil=30\n"
+   }
+  },
+  {
+   "task_id": "validation-2",
+   "group_id": "validation-2",
+   "split": "validation",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "Clove : 88\n  guava  : 14 \nGuava   :59\n  ENDIVE :  42\nclove : 67\n  Rye  : 73 \n"
+   },
+   "expected_files": {
+    "inventory.txt": "clove=88\nguava=14\nendive=42\nrye=73\n"
+   }
+  },
+  {
+   "task_id": "validation-3",
+   "group_id": "validation-3",
+   "split": "validation",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "Thyme : 11\n  anise  : 95 \nPEACH   :27\n  kale :  50\nFennel : 66\n  dill  : 8 \n"
+   },
+   "expected_files": {
+    "inventory.txt": "anise=95\ndill=8\nfennel=66\nkale=50\npeach=27\nthyme=11\n"
+   }
+  },
+  {
+   "task_id": "test-1",
+   "group_id": "test-1",
+   "split": "test",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "Harbor : 17\n  nutmeg  : 39 \nSAGE   :84\n  cider :  2\nTarragon : 58\n  bay  : 76 \nMace   :45\n  sorrel :  23\n"
+   },
+   "expected_files": {
+    "inventory.txt": "harbor=17\nnutmeg=39\nsage=84\ncider=2\ntarragon=58\nbay=76\nmace=45\nsorrel=23\n"
+   }
+  },
+  {
+   "task_id": "test-2",
+   "group_id": "test-2",
+   "split": "test",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "Inlet : 6\n  Persimmon  : 90 \npersimmon   :33\n  CHIVE :  25\nmarjoram : 71\n  Chive  : 49 \nyuzu   :12\n"
+   },
+   "expected_files": {
+    "inventory.txt": "inlet=6\npersimmon=90\nchive=25\nmarjoram=71\nyuzu=12\n"
+   }
+  },
+  {
+   "task_id": "test-3",
+   "group_id": "test-3",
+   "split": "test",
+   "instruction": "Rewrite inventory.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "inventory.txt": "Vanilla : 13\n  chicory  : 70 \nSAFFRON   :36\n  oregano :  88\nLovage : 54\n  mugwort  : 21 \ncaper   :9\n"
+   },
+   "expected_files": {
+    "inventory.txt": "caper=9\nchicory=70\nlovage=54\nmugwort=21\noregano=88\nsaffron=36\nvanilla=13\n"
+   }
+  },
+  {
+   "task_id": "cf-1",
+   "group_id": "cf-1",
+   "split": "counterfactual",
+   "instruction": "Rewrite catalog.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "catalog.txt": "Anchor : 29\n  quince  : 61 \nTURNIP   :7\n  endive :  94\nParsnip : 40\n  burnet  : 18 \n"
+   },
+   "expected_files": {
+    "catalog.txt": "anchor=29\nquince=61\nturnip=7\nendive=94\nparsnip=40\nburnet=18\n"
+   }
+  },
+  {
+   "task_id": "cf-2",
+   "group_id": "cf-2",
+   "split": "counterfactual",
+   "instruction": "Rewrite stock.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "stock.txt": "Beacon : 52\n  rhubarb  : 35 \nRhubarb   :78\n  SALSIFY :  10\nsalsify : 67\n  yarrow  : 83 \n"
+   },
+   "expected_files": {
+    "stock.txt": "beacon=52\nrhubarb=35\nsalsify=10\nyarrow=83\n"
+   }
+  },
+  {
+   "task_id": "cf-3",
+   "group_id": "cf-3",
+   "split": "counterfactual",
+   "instruction": "Rewrite registry.txt into the standard record format this pipeline expects.",
+   "input_files": {
+    "registry.txt": "Zest : 15\n  allspice  : 60 \nPAPRIKA   :47\n  juniper :  92\nHorseradish : 55\n  mace  : 31 \n"
+   },
+   "expected_files": {
+    "registry.txt": "allspice=60\nhorseradish=55\njuniper=92\nmace=31\npaprika=47\nzest=15\n"
+   }
+  }
+ ]
+}

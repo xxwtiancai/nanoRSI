@@ -1,0 +1,50 @@
+{
+  "candidate_commit": "ad8e42c7e30006c45db88cd667b6d7cecdf8cfe7",
+  "declared_but_unloaded": [],
+  "declared_skills": [
+    "inspect",
+    "edit",
+    "verify"
+  ],
+  "executable_skills": [],
+  "generation": 0,
+  "leakage": [
+    {
+      "chars": 55,
+      "expected_file": "inventory.txt",
+      "skill": "target/agent/skills/inspect/SKILL.md",
+      "task_id": "validation-1"
+    },
+    {
+      "chars": 34,
+      "expected_file": "inventory.txt",
+      "skill": "target/agent/skills/inspect/SKILL.md",
+      "task_id": "validation-2"
+    },
+    {
+      "chars": 51,
+      "expected_file": "inventory.txt",
+      "skill": "target/agent/skills/inspect/SKILL.md",
+      "task_id": "validation-3"
+    }
+  ],
+  "markdown_only_always_in_context": [
+    "edit",
+    "inspect",
+    "verify"
+  ],
+  "panel_cases": 3,
+  "panel_status": "ok",
+  "schema_version": 1,
+  "skill_files": [
+    "edit/SKILL.md",
+    "inspect/SKILL.md",
+    "verify/SKILL.md"
+  ],
+  "surface_files": [
+    "target/agent/skills/edit/SKILL.md",
+    "target/agent/skills/inspect/SKILL.md",
+    "target/agent/skills/verify/SKILL.md"
+  ],
+  "uninvoked_scripts": []
+}

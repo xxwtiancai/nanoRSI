@@ -1,0 +1,1103 @@
+{
+  "arm": "frozen",
+  "comparison_hash": "5fbdb16df2997f2094f56c67ab198f79de735d78acd9b495acb4322519b0eb20",
+  "conditions": [
+    "baseline",
+    "no-skills",
+    "candidate"
+  ],
+  "experiment_id": "skills-lab",
+  "manifest_hash": "3f3ee6b5b6e68619a64172afbae0dd6a9cc1db4829408db6171f8923a4856d00",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "harness",
+  "repeats": 1,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 6934,
+          "group_id": "test-1",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {
+            "edit": "8c8783a5ccd9b1d5cfb55275b8b5d46cf71722bbc1214bca1fc82b6125bbb8d8",
+            "inspect": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c",
+            "verify": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+          },
+          "status": "task_failure",
+          "task_id": "test-1",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "bytes": 274,
+              "event": "skill_loaded",
+              "name": "inspect",
+              "sha256": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c"
+            },
+            {
+              "bytes": 213,
+              "event": "skill_loaded",
+              "name": "edit",
+              "sha256": "8c8783a5ccd9b1d5cfb55275b8b5d46cf71722bbc1214bca1fc82b6125bbb8d8"
+            },
+            {
+              "bytes": 267,
+              "event": "skill_loaded",
+              "name": "verify",
+              "sha256": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+            },
+            {
+              "count": 3,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 1691,
+            "model_calls": 3,
+            "output_tokens": 164
+          }
+        },
+        {
+          "duration_ms": 11729,
+          "group_id": "test-2",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {
+            "edit": "8c8783a5ccd9b1d5cfb55275b8b5d46cf71722bbc1214bca1fc82b6125bbb8d8",
+            "inspect": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c",
+            "verify": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+          },
+          "status": "task_failure",
+          "task_id": "test-2",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "bytes": 274,
+              "event": "skill_loaded",
+              "name": "inspect",
+              "sha256": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c"
+            },
+            {
+              "bytes": 213,
+              "event": "skill_loaded",
+              "name": "edit",
+              "sha256": "8c8783a5ccd9b1d5cfb55275b8b5d46cf71722bbc1214bca1fc82b6125bbb8d8"
+            },
+            {
+              "bytes": 267,
+              "event": "skill_loaded",
+              "name": "verify",
+              "sha256": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+            },
+            {
+              "count": 3,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 3
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 4
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 2342,
+            "model_calls": 4,
+            "output_tokens": 243
+          }
+        },
+        {
+          "duration_ms": 8650,
+          "group_id": "test-3",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {
+            "edit": "8c8783a5ccd9b1d5cfb55275b8b5d46cf71722bbc1214bca1fc82b6125bbb8d8",
+            "inspect": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c",
+            "verify": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+          },
+          "status": "task_failure",
+          "task_id": "test-3",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "bytes": 274,
+              "event": "skill_loaded",
+              "name": "inspect",
+              "sha256": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c"
+            },
+            {
+              "bytes": 213,
+              "event": "skill_loaded",
+              "name": "edit",
+              "sha256": "8c8783a5ccd9b1d5cfb55275b8b5d46cf71722bbc1214bca1fc82b6125bbb8d8"
+            },
+            {
+              "bytes": 267,
+              "event": "skill_loaded",
+              "name": "verify",
+              "sha256": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+            },
+            {
+              "count": 3,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": null,
+              "tool": "list",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 3
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 4
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 2227,
+            "model_calls": 4,
+            "output_tokens": 176
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 27464,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 6260,
+        "model_calls": 11,
+        "output_tokens": 583
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 7459,
+          "group_id": "test-1",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-1",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 772,
+            "model_calls": 3,
+            "output_tokens": 135
+          }
+        },
+        {
+          "duration_ms": 8631,
+          "group_id": "test-2",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-2",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 731,
+            "model_calls": 3,
+            "output_tokens": 151
+          }
+        },
+        {
+          "duration_ms": 8035,
+          "group_id": "test-3",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-3",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "count": 0,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 740,
+            "model_calls": 3,
+            "output_tokens": 148
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "no-skills",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 24279,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2243,
+        "model_calls": 9,
+        "output_tokens": 434
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 5987,
+          "group_id": "test-1",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "edit": "bc70a76f05d40d3014e40f7096b3d0ebcd3d0ac57a909d2a5402675f1ba9e142",
+            "inspect": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c",
+            "verify": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+          },
+          "status": "ok",
+          "task_id": "test-1",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "bytes": 274,
+              "event": "skill_loaded",
+              "name": "inspect",
+              "sha256": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c"
+            },
+            {
+              "bytes": 852,
+              "event": "skill_loaded",
+              "name": "edit",
+              "sha256": "bc70a76f05d40d3014e40f7096b3d0ebcd3d0ac57a909d2a5402675f1ba9e142"
+            },
+            {
+              "bytes": 267,
+              "event": "skill_loaded",
+              "name": "verify",
+              "sha256": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+            },
+            {
+              "count": 3,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 2072,
+            "model_calls": 3,
+            "output_tokens": 113
+          }
+        },
+        {
+          "duration_ms": 7541,
+          "group_id": "test-2",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "edit": "bc70a76f05d40d3014e40f7096b3d0ebcd3d0ac57a909d2a5402675f1ba9e142",
+            "inspect": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c",
+            "verify": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+          },
+          "status": "ok",
+          "task_id": "test-2",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "bytes": 274,
+              "event": "skill_loaded",
+              "name": "inspect",
+              "sha256": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c"
+            },
+            {
+              "bytes": 852,
+              "event": "skill_loaded",
+              "name": "edit",
+              "sha256": "bc70a76f05d40d3014e40f7096b3d0ebcd3d0ac57a909d2a5402675f1ba9e142"
+            },
+            {
+              "bytes": 267,
+              "event": "skill_loaded",
+              "name": "verify",
+              "sha256": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+            },
+            {
+              "count": 3,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 2018,
+            "model_calls": 3,
+            "output_tokens": 141
+          }
+        },
+        {
+          "duration_ms": 5696,
+          "group_id": "test-3",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {
+            "edit": "bc70a76f05d40d3014e40f7096b3d0ebcd3d0ac57a909d2a5402675f1ba9e142",
+            "inspect": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c",
+            "verify": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+          },
+          "status": "task_failure",
+          "task_id": "test-3",
+          "trace": [
+            {
+              "bytes": 32090,
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ff465f20405b440a85fe79220d4e296be69482f9d70fb04dc482a1740b721a61"
+            },
+            {
+              "bytes": 274,
+              "event": "skill_loaded",
+              "name": "inspect",
+              "sha256": "031d74fcc85f3bc34434b3a46b02c1668df0ffb3367f41716bdf83b1733bb93c"
+            },
+            {
+              "bytes": 852,
+              "event": "skill_loaded",
+              "name": "edit",
+              "sha256": "bc70a76f05d40d3014e40f7096b3d0ebcd3d0ac57a909d2a5402675f1ba9e142"
+            },
+            {
+              "bytes": 267,
+              "event": "skill_loaded",
+              "name": "verify",
+              "sha256": "4021864593b0fe5b4401c7bb0c8d5deac039ad000455d98932a0ec5362cc7508"
+            },
+            {
+              "count": 3,
+              "event": "skills_loaded"
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 1
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "write",
+              "turn": 1
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 2
+            },
+            {
+              "event": "tool",
+              "path": "inventory.txt",
+              "tool": "read",
+              "turn": 2
+            },
+            {
+              "event": "model_call",
+              "ok": true,
+              "turn": 3
+            },
+            {
+              "event": "final"
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 2051,
+            "model_calls": 3,
+            "output_tokens": 97
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 19368,
+      "metrics": {
+        "score": 0.6666666666666666
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 6141,
+        "model_calls": 9,
+        "output_tokens": 351
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.0,
+    "known_count": 0,
+    "known_usd": null,
+    "total_count": 11,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "a8afaf328c874e26af2eacb46c7cb7a0",
+      "phase": "search",
+      "receipt": "18b41dda63a175d01f81d182f380896b1319679e122ebc58488b7f806a461184",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/baseline/5af6055e05/gate.json",
+          "sha256": "091a8f55234156636660154e057db33c606f37502e031f6d362c61d450606a4b"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 31693,
+      "event_type": "evaluation_finished",
+      "invocation_id": "a8afaf328c874e26af2eacb46c7cb7a0",
+      "phase": "search",
+      "receipt": "75e1c08ca5b8ced29fc2b5bd2c881d2a6ac0736733e17410706ac5e1cdcd8d8c",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action",
+          "invalid_action_retry"
+        ],
+        "input_tokens": 6850,
+        "model_calls": 12,
+        "output_tokens": 697
+      }
+    },
+    {
+      "episodes": 2,
+      "event_type": "evaluation_started",
+      "invocation_id": "0dec47f426f141c9b251a2e8f332a5e0",
+      "phase": "search",
+      "receipt": "77b2d8d9edd8fb05c9ffc90f7749e0c4570446d71d2c281428b0c6fffd7a5236",
+      "seq": 6,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/c10005b687/train.json",
+          "sha256": "a901814935a6eca4fa516289aeac57a412e668408f338bf06e68e1f02b15357f"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 37554,
+      "event_type": "evaluation_finished",
+      "invocation_id": "0dec47f426f141c9b251a2e8f332a5e0",
+      "phase": "search",
+      "receipt": "dec65d00012f825e0f7c577b3494ed25be50ef83d40e330e1d2e8c61491d3559",
+      "seq": 7,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action",
+          "invalid_action_retry"
+        ],
+        "input_tokens": 5416,
+        "model_calls": 10,
+        "output_tokens": 467
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "5a729598d7d54ecfb3709b721174c812",
+      "phase": "search",
+      "receipt": "82cc28578bb4027759daf81bbdcffcaf7cf8dd4bbbdda84e01f42010eea0d9c5",
+      "seq": 10,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/c10005b687/parent.json",
+          "sha256": "7a4c0cb80d3f709480029a059a50747a25a50b6087118348202a8e7c713e4122"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 44992,
+      "event_type": "evaluation_finished",
+      "invocation_id": "5a729598d7d54ecfb3709b721174c812",
+      "phase": "search",
+      "receipt": "48ea2600d916ec8cc25c352053fbc1d25e1f460dd7e189b4625352b7d10132a4",
+      "seq": 11,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 6771,
+        "model_calls": 12,
+        "output_tokens": 553
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "427ca6831ebe4f66966b8cfc496167bf",
+      "phase": "search",
+      "receipt": "27fc4af72bb9da5015b017cca770cd86f2827fe7886f589e0eaf4f6a17d20bc8",
+      "seq": 12,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/c10005b687/gate.json",
+          "sha256": "90447049294bf3d2c1078ade34d8faff7fdec648d60bd3ae7af50f89e08b3f4d"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 39690,
+      "event_type": "evaluation_finished",
+      "invocation_id": "427ca6831ebe4f66966b8cfc496167bf",
+      "phase": "search",
+      "receipt": "6a412e0a7a309a4c677acbd721920ee2a176992a26e5aff37f13dad1fed687bf",
+      "seq": 13,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 5988,
+        "model_calls": 9,
+        "output_tokens": 317
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "3b960404858f43a2ac3323ac0d1f1877",
+      "phase": "search",
+      "receipt": "d313ec2dcf37460f94f380d4b01d53c312a05b008d00c0036911104a2659b14e",
+      "seq": 14,
+      "split": "counterfactual"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/c10005b687/cf-parent.json",
+          "sha256": "0d2895792d400cfa323b0d2fea00526c1bb553591fe2731d413b0a7c7f7f6258"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 45227,
+      "event_type": "evaluation_finished",
+      "invocation_id": "3b960404858f43a2ac3323ac0d1f1877",
+      "phase": "search",
+      "receipt": "5f6091501032b216b663fe4f957c9eaeec2122dbc7b52d65fb04bb9a521d8ff0",
+      "seq": 15,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 5555,
+        "model_calls": 10,
+        "output_tokens": 489
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "4903d22037e14f8e893900c908fff6f4",
+      "phase": "search",
+      "receipt": "fddeaac13711db200d1f84bb496bd9e232b6886409c1475e3a0d7b615761f5a8",
+      "seq": 16,
+      "split": "counterfactual"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/c10005b687/cf-child.json",
+          "sha256": "15e26a774bf7d3beeb01b272588de983ce671af67b8e2c7eb401ad538285adc8"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 19766,
+      "event_type": "evaluation_finished",
+      "invocation_id": "4903d22037e14f8e893900c908fff6f4",
+      "phase": "search",
+      "receipt": "963c3e133d5bf3afe1f9fd69c170671623c6555f20f70363600e38a840fd3aec",
+      "seq": 17,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 6018,
+        "model_calls": 9,
+        "output_tokens": 384
+      }
+    },
+    {
+      "episodes": 2,
+      "event_type": "evaluation_started",
+      "invocation_id": "c316f12634714a3780dd9b249f04356e",
+      "phase": "search",
+      "receipt": "04b9ab64e6c415ea39a023bb006fb1aa6add1f75805d41b382ef9692da3b0186",
+      "seq": 20,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/220832b088/train.json",
+          "sha256": "23565c053c0a3ae80815d4798cf8721c732bd22c84185ca2d92d4239de104078"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 12846,
+      "event_type": "evaluation_finished",
+      "invocation_id": "c316f12634714a3780dd9b249f04356e",
+      "phase": "search",
+      "receipt": "84ca9c2940ab4a441d9e9a9c1baaf8c22b2b2db65fec15e141c615cfedfd92bc",
+      "seq": 21,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 3874,
+        "model_calls": 6,
+        "output_tokens": 260
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "de579a3a590d4fa9b7847031f6fd20fa",
+      "phase": "search",
+      "receipt": "4cf456dee0bf09198ebe658314551c537dd7c6bbd8e9fd2c89d65c3d69470637",
+      "seq": 24,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/220832b088/parent.json",
+          "sha256": "62536a94038ac28b9d645b844107e5527a144eb0ecef2cac8244e06955c9da27"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 17758,
+      "event_type": "evaluation_finished",
+      "invocation_id": "de579a3a590d4fa9b7847031f6fd20fa",
+      "phase": "search",
+      "receipt": "b1b7253443413fd5a79ee493928c8456abb06b51f35dfdcaf95172fa3b276995",
+      "seq": 25,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 5988,
+        "model_calls": 9,
+        "output_tokens": 310
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "643ab2b4b4ed4038958b1b6de3258c8c",
+      "phase": "search",
+      "receipt": "fb5c768c60157ace9f8d7c9136b4171dc20fc3b00bc55b95f2a8d40773456764",
+      "seq": 26,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/220832b088/gate.json",
+          "sha256": "d163015a28040fe79ba0dca021c29b8cb59f2c43dd8114f3257864be7cb128ea"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 26733,
+      "event_type": "evaluation_finished",
+      "invocation_id": "643ab2b4b4ed4038958b1b6de3258c8c",
+      "phase": "search",
+      "receipt": "eb7432d1da26731e719134db96769f81f0b17a47d7e9c8d90d37e12a59b28235",
+      "seq": 27,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 6429,
+        "model_calls": 9,
+        "output_tokens": 556
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "30ea7bd0638d974d29d8cce33b79f15c0e22db6e916821587e4ba3b06a448ada",
+      "seq": 9,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2330,
+        "model_calls": 1,
+        "output_tokens": 334
+      }
+    },
+    {
+      "attempt_id": 2,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "788712bbdc8723caed9955b2b04b0b89e477a62b8d3737e20cea406da3990887",
+      "seq": 23,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 2363,
+        "model_calls": 1,
+        "output_tokens": 373
+      }
+    }
+  ],
+  "seed": 0,
+  "test_cost_usd": {
+    "coverage": 0.0,
+    "known_count": 0,
+    "known_usd": null,
+    "total_count": 3,
+    "total_usd": null
+  }
+}
