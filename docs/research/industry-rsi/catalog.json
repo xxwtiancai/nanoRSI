@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-21",
-  "window_start": "2025-09-21",
+  "as_of": "2026-09-22",
+  "window_start": "2025-09-22",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -207,7 +207,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-17",
+      "last_verified": "2026-09-22",
       "additional_events": [
         {
           "date": "2026-09-08",
@@ -7732,9 +7732,15 @@
           "zh": "Anthropic 内部下一步判断指标：2026 年 4 月模型所选下一步在 64% 的迂回时刻胜过人类，五个月前为 51%。"
         }
       },
-      "additional_events": [],
+      "additional_events": [
+        {
+          "date": "2026-09-18",
+          "kind": "report",
+          "label": "The official essay page added a September 18 update with a Claude Code cross-task success chart through September 2026; this is internal capability telemetry, not a reproduced recursive-improvement experiment."
+        }
+      ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-18"
+      "last_verified": "2026-09-22"
     },
     {
       "id": "nous-hermes-selfrefactor",

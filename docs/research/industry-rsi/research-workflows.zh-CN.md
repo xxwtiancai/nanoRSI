@@ -439,7 +439,7 @@
 
 **原文图／官方图片** — 2026 年 9 月 6 日博文开头：OpenAI 宣布达成上年秋天设定的"自动研究实习生"目标，并"正朝着 2028 年 3 月前创建自动 AI 研究员取得强劲进展"。 · Article opening (date, title, first paragraphs) · [source](https://openai.com/index/research-acceleration-view-inside-openai/)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-17.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-22.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
@@ -499,7 +499,7 @@
 
 **原文图／官方图片** — Anthropic 内部下一步判断指标：2026 年 4 月模型所选下一步在 64% 的迂回时刻胜过人类，五个月前为 51%。 · In-essay chart 'Can the model pick a better next step than the human?' · [source](https://www.anthropic.com/institute/recursive-self-improvement)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-22.
 
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 

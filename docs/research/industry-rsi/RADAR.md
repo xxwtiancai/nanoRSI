@@ -6,6 +6,22 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ---
 
+## 2026-09-22
+
+**New entries**
+- No qualified new findings: the latest official/company and tracked-project sweep produced no new record that met the original-figure, license, and independently described open-material gates.
+
+**Updated entries**
+- [anthropic-when-ai-builds-itself](research-workflows.zh-CN.md#anthropic-when-ai-builds-itself) — verified the official page's September 18 update, which adds a Claude Code cross-task success chart through September 2026; recorded as a later company-telemetry event, not as direct proof of recursive self-improvement.
+- [openai-research-acceleration-2026](research-workflows.md#openai-research-acceleration-2026) — rechecked the September 6 official report and its current research index entry; the automated-research-intern milestone remains unchanged and is still classified as assisted R&D with self-reported, non-reproducible telemetry.
+
+**Signals for engineering**
+- The current evidence supports keeping nanoRSI's reporting split between capability/automation telemetry and direct mutation→feedback→reuse loops; do not convert either company's internal success curves into a runtime feature or a general RSI claim ([anthropic-when-ai-builds-itself](research-workflows.zh-CN.md#anthropic-when-ai-builds-itself), [openai-research-acceleration-2026](research-workflows.md#openai-research-acceleration-2026)).
+
+**Coverage and gaps**
+- Searched official OpenAI, Anthropic, Google DeepMind and GitHub project pages; arXiv RSI/self-evolution search results; GitHub topic leads; tracked RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, OpenRSI, ShinkaEvolve and Hermes release/activity pages; nanoRSI issues, PRs, CI and security endpoints.
+- No new code/weights/data release was verified for the tracked projects. Code scanning has no analysis and Dependabot is disabled for nanoRSI; secret scanning remains at zero alerts. NeurIPS 2026 acceptance and the queued OpenReview/COLM provenance audit remain open gaps.
+
 ## 2026-09-21
 
 **New entries**

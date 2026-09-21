@@ -439,7 +439,7 @@
 
 **Source figure / official image** — Opening of the September 6, 2026 post: OpenAI states it reached the automated-research-intern goal announced the previous fall and is 'making strong progress toward creating an automated AI researcher by March of 2028'. · Article opening (date, title, first paragraphs) · [source](https://openai.com/index/research-acceleration-view-inside-openai/)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-17.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-22.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
@@ -499,7 +499,7 @@
 
 **Source figure / official image** — Anthropic's internal next-step judgment metric: the model's chosen next step beat the human's on 64% of detour moments by 2026-04, up from 51% five months earlier. · In-essay chart 'Can the model pick a better next step than the human?' · [source](https://www.anthropic.com/institute/recursive-self-improvement)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-22.
 
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
