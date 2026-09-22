@@ -1,6 +1,6 @@
 # Industry RSI research map
 
-**2025-09-22 → 2026-09-22** · **144** in-window records
+**2025-09-23 → 2026-09-23** · **145** in-window records
 
 A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a locally stored paper figure, official research image or source-page screenshot, with its locator and source URL, plus an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.
 
@@ -13,7 +13,7 @@ A selective, primary-source catalogue of company and company–university papers
 | Category | Records | Mechanism families |
 | --- | ---: | --- |
 | [Parameters and training data](parameter-learning.md) | 39 | [Self-play & curriculum task generation](parameter-learning.md#family-self-play-curriculum) (14) · [Verifier- and reward-centric loops](parameter-learning.md#family-verifier-reward) (5) · [Skill-weight co-evolution](parameter-learning.md#family-skill-weight-coevolution) (2) · [Experience distillation & test-time adaptation](parameter-learning.md#family-experience-distillation) (6) · [Autonomous training agents & data pipelines](parameter-learning.md#family-autonomous-training) (6) · [Enabling adaptation mechanisms](parameter-learning.md#family-enabling-adaptation) (6) |
-| [Agents and code](agent-code.md) | 47 | [Skill-file optimization & libraries](agent-code.md#family-skill-file-optimization) (17) · [Harness search & evolution](agent-code.md#family-harness-search) (13) · [Self-modifying meta-agents & lineages](agent-code.md#family-self-modifying-meta-agents) (6) · [Program evolution & evolutionary search](agent-code.md#family-program-evolution) (5) · [Feedback review & orchestration](agent-code.md#family-feedback-orchestration) (4) · [Safety & governance](agent-code.md#family-safety-governance) (2) |
+| [Agents and code](agent-code.md) | 48 | [Skill-file optimization & libraries](agent-code.md#family-skill-file-optimization) (17) · [Harness search & evolution](agent-code.md#family-harness-search) (14) · [Self-modifying meta-agents & lineages](agent-code.md#family-self-modifying-meta-agents) (6) · [Program evolution & evolutionary search](agent-code.md#family-program-evolution) (5) · [Feedback review & orchestration](agent-code.md#family-feedback-orchestration) (4) · [Safety & governance](agent-code.md#family-safety-governance) (2) |
 | [Memory and context](memory-context.md) | 21 | [Structured knowledge bases & graphs](memory-context.md#family-structured-knowledge) (6) · [Experience accumulation & replay](memory-context.md#family-experience-accumulation) (6) · [Context organization policies](memory-context.md#family-context-policies) (5) · [Exploration-driven memory construction](memory-context.md#family-exploration-memory) (1) · [Memory-evolution studies & benchmarks](memory-context.md#family-memory-evolution-studies) (3) |
 | [Automated research and evaluation](research-workflows.md) | 37 | [AI-scientist systems](research-workflows.md#family-ai-scientists) (9) · [Autonomous post-training & its evaluation](research-workflows.md#family-autonomous-post-training) (3) · [Company R&D telemetry](research-workflows.md#family-company-telemetry) (7) · [Alignment automation](research-workflows.md#family-alignment-automation) (3) · [Analyses & audits](research-workflows.md#family-analyses-audits) (9) · [Positions, roadmaps & labs](research-workflows.md#family-positions-labs) (6) |
 
@@ -21,6 +21,7 @@ A selective, primary-source catalogue of company and company–university papers
 
 | Date | Work | Organizations | Family | Evidence class |
 | --- | --- | --- | --- | --- |
+| 2026-09-21 | [RRSI: Regularized Recursive Self-Improvement of Agent Harnesses](agent-code.md#rrsi-regularized-harness-evolution) | Google Cloud AI Research / Stanford University / Washington University in St. Louis / UNC-Chapel Hill | Harness search & evolution | Direct bounded loop |
 | 2026-09-18 | [Reflective Recovery: A Self-Supervised Method for Reasoning by Learning from Mistakes](parameter-learning.md#reflective-recovery) | Zhejiang University / The University of Hong Kong / The Hong Kong University of Science and Technology | Experience distillation & test-time adaptation | Direct bounded loop |
 | 2026-09-17 | [SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness](agent-code.md#solpi-recursive-autoresearch-loops) | NVIDIA / Nanyang Technological University / MIT | Self-modifying meta-agents & lineages | Direct bounded loop |
 | 2026-09-17 | [SkillAA: Attribution-Guided Skill-Graph Updating with Targeted Validation and Rollback](agent-code.md#skillaa-attribution-rollback) | Nanjing University | Skill-file optimization & libraries | Direct bounded loop |

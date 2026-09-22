@@ -1,6 +1,6 @@
 # 企业 RSI 研究地图
 
-**2025-09-22 → 2026-09-22** · **144** 条窗口内记录
+**2025-09-23 → 2026-09-23** · **145** 条窗口内记录
 
 按一手来源整理企业及产学合作的论文、系统与公开成果，属于精选资料库，并非穷尽式综述。每条详情都带一张纳入仓库的论文原图、官方研究图片或原文页截图，并注明定位信息和来源链接；有核验结果时还会单独列出代码、权重或数据链接。分类与 nanoRSI 应用方向是我们的解读；除非条目链接了本地复现证据，数值均为作者报告。这些异构结果不能合成排行榜，也不能证明通用 RSI 已解决。
 
@@ -13,7 +13,7 @@
 | 分类 | 条目数 | 机制家族 |
 | --- | ---: | --- |
 | [参数与训练数据](parameter-learning.zh-CN.md) | 39 | [自博弈与课程任务生成](parameter-learning.zh-CN.md#family-self-play-curriculum) (14) · [验证器与奖励进化](parameter-learning.zh-CN.md#family-verifier-reward) (5) · [技能-权重共进化](parameter-learning.zh-CN.md#family-skill-weight-coevolution) (2) · [经验蒸馏与测试时适应](parameter-learning.zh-CN.md#family-experience-distillation) (6) · [自主训练智能体与数据管线](parameter-learning.zh-CN.md#family-autonomous-training) (6) · [支撑性适应机制](parameter-learning.zh-CN.md#family-enabling-adaptation) (6) |
-| [Agent 与代码](agent-code.zh-CN.md) | 47 | [技能文件优化与技能库](agent-code.zh-CN.md#family-skill-file-optimization) (17) · [Harness 搜索与进化](agent-code.zh-CN.md#family-harness-search) (13) · [自改写元智能体与谱系](agent-code.zh-CN.md#family-self-modifying-meta-agents) (6) · [程序进化与进化搜索](agent-code.zh-CN.md#family-program-evolution) (5) · [反馈审查与编排](agent-code.zh-CN.md#family-feedback-orchestration) (4) · [安全与治理](agent-code.zh-CN.md#family-safety-governance) (2) |
+| [Agent 与代码](agent-code.zh-CN.md) | 48 | [技能文件优化与技能库](agent-code.zh-CN.md#family-skill-file-optimization) (17) · [Harness 搜索与进化](agent-code.zh-CN.md#family-harness-search) (14) · [自改写元智能体与谱系](agent-code.zh-CN.md#family-self-modifying-meta-agents) (6) · [程序进化与进化搜索](agent-code.zh-CN.md#family-program-evolution) (5) · [反馈审查与编排](agent-code.zh-CN.md#family-feedback-orchestration) (4) · [安全与治理](agent-code.zh-CN.md#family-safety-governance) (2) |
 | [记忆与上下文](memory-context.zh-CN.md) | 21 | [结构化知识库与图](memory-context.zh-CN.md#family-structured-knowledge) (6) · [经验积累与回放](memory-context.zh-CN.md#family-experience-accumulation) (6) · [上下文组织策略](memory-context.zh-CN.md#family-context-policies) (5) · [探索式记忆构建](memory-context.zh-CN.md#family-exploration-memory) (1) · [记忆进化评测研究](memory-context.zh-CN.md#family-memory-evolution-studies) (3) |
 | [自动化研发与评测](research-workflows.zh-CN.md) | 37 | [AI 科学家系统](research-workflows.zh-CN.md#family-ai-scientists) (9) · [自主后训练及其评测](research-workflows.zh-CN.md#family-autonomous-post-training) (3) · [公司研发遥测](research-workflows.zh-CN.md#family-company-telemetry) (7) · [对齐自动化](research-workflows.zh-CN.md#family-alignment-automation) (3) · [分析与审计](research-workflows.zh-CN.md#family-analyses-audits) (9) · [立场、路线图与实验室](research-workflows.zh-CN.md#family-positions-labs) (6) |
 
@@ -21,6 +21,7 @@
 
 | 日期 | 工作 | 机构 | 家族 | 证据类别 |
 | --- | --- | --- | --- | --- |
+| 2026-09-21 | [RRSI: Regularized Recursive Self-Improvement of Agent Harnesses](agent-code.zh-CN.md#rrsi-regularized-harness-evolution) | Google Cloud AI Research / Stanford University / Washington University in St. Louis / UNC-Chapel Hill | Harness 搜索与进化 | 直接有界闭环 |
 | 2026-09-18 | [Reflective Recovery: A Self-Supervised Method for Reasoning by Learning from Mistakes](parameter-learning.zh-CN.md#reflective-recovery) | Zhejiang University / The University of Hong Kong / The Hong Kong University of Science and Technology | 经验蒸馏与测试时适应 | 直接有界闭环 |
 | 2026-09-17 | [SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness](agent-code.zh-CN.md#solpi-recursive-autoresearch-loops) | NVIDIA / Nanyang Technological University / MIT | 自改写元智能体与谱系 | 直接有界闭环 |
 | 2026-09-17 | [SkillAA: Attribution-Guided Skill-Graph Updating with Targeted Validation and Rollback](agent-code.zh-CN.md#skillaa-attribution-rollback) | Nanjing University | 技能文件优化与技能库 | 直接有界闭环 |

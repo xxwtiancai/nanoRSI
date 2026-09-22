@@ -1,9 +1,87 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-22",
-  "window_start": "2025-09-22",
+  "as_of": "2026-09-23",
+  "window_start": "2025-09-23",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
+    {
+      "additional_events": [],
+      "local_reproduction": "not-run",
+      "last_verified": "2026-09-23",
+      "id": "rrsi-regularized-harness-evolution",
+      "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+      "organizations": [
+        "Google Cloud AI Research",
+        "Stanford University",
+        "Washington University in St. Louis",
+        "UNC-Chapel Hill"
+      ],
+      "category": "agent-code",
+      "relationship": "direct-loop",
+      "family": "harness-search",
+      "published": "2026-09-21",
+      "kind": "paper",
+      "date_note": {
+        "en": "arXiv v1 was first publicly announced on 2026-09-21; the repository was created on 2026-09-16 and its first README update is dated 2026-09-21. The paper date is used for the research record.",
+        "zh": "arXiv v1 于 2026-09-21 首次公开；代码仓库创建于 2026-09-16，README 首次更新日期为 2026-09-21。本条以论文首发日作为研究记录日期。"
+      },
+      "affiliation": {
+        "en": "Google Cloud AI Research is the principal research affiliation; the author list also includes Stanford University, Washington University in St. Louis and UNC-Chapel Hill. The paper notes that Peng Xia did this work while a student researcher at Google Cloud AI Research.",
+        "zh": "主要研究归属为 Google Cloud AI Research；作者列表还包括 Stanford University、Washington University in St. Louis 与 UNC-Chapel Hill。论文注明 Peng Xia 在 Google Cloud AI Research 担任学生研究员期间完成该工作。"
+      },
+      "mechanism": {
+        "en": "Evolves a frozen-model agent harness through a bounded proposal→feedback→selection loop. Proposal-side controls anneal the number of bundled edits, use full edit history to assign credit and redirect stalled search toward untried components. Selection-side controls screen benchmark-specific logic, calibrate a noise-adjusted floor from repeated base evaluations, require added inference cost to be paid by measured gain, and prune components with no recent positive contribution. Accepted harness commits become the next incumbent; model weights remain frozen.",
+        "zh": "在冻结模型上运行有界的提案→反馈→选择 harness 闭环。提案侧逐轮降低一次可捆绑的编辑数，使用完整编辑历史分配信用，并在停滞时把搜索转向尚未尝试的组件；选择侧筛查基准特化逻辑，以重复基线评测校准噪声门槛，要求新增推理成本由可测增益支付，并裁剪近期没有正贡献的组件。被接受的 harness 提交成为下一代 incumbent；模型权重保持冻结。"
+      },
+      "result": {
+        "en": "With Claude Opus 4.8 frozen as policy and the same evolve budget, RRSI reports Terminal-Bench 2.1 74.2→80.2 (+6.0) and SWE-bench Verified 82.0→83.8 (+1.8), plus JobBench 36.0→40.7, GDPval 48.8→52.3 and APEX-Agents 34.2→37.9 on held-out/out-of-distribution evaluation. The paper reports up to +4.7 points out of distribution and 30% fewer policy tokens than unregularized evolution; with unseen Gemini 3.1 Flash Lite on the evolved coding harness, 11.2→14.6 (+3.4). These are author results, not nanoRSI reproductions.",
+        "zh": "在冻结 Claude Opus 4.8、匹配进化预算的条件下，RRSI 报告 Terminal-Bench 2.1 从 74.2→80.2（+6.0），SWE-bench Verified 从 82.0→83.8（+1.8）；留出/分布外评测中 JobBench 36.0→40.7、GDPval 48.8→52.3、APEX-Agents 34.2→37.9。论文报告分布外最高 +4.7 分，并比未正则化进化少 30% policy token；用未参与搜索的 Gemini 3.1 Flash Lite 评估进化后的 coding harness 时为 11.2→14.6（+3.4）。这些是作者结果，不是 nanoRSI 复现结果。"
+      },
+      "limits": {
+        "en": "The backbone, proposer, analyst and leakage critic are provider-hosted models; the benchmarks and several runner environments are external and expensive. The method still depends on a finite evolve set, fixed regularization hyperparameters and noisy automated feedback. The paper explicitly does not study model-weight updates, and the public repository has no released weights or bundled benchmark-data snapshot.",
+        "zh": "主干模型、提案器、分析器和泄漏评论器依赖托管模型；基准及若干运行环境为外部且成本较高。方法仍依赖有限进化集、固定正则化超参数和带噪自动反馈。论文明确不研究模型权重更新；公开仓库没有发布权重，也没有随仓库提供完整基准数据快照。"
+      },
+      "availability": {
+        "en": "Code: public at google-research/rrsi under Apache-2.0, including the search core and domain adapters. Weights: none released; experiments call hosted Claude/Gemini models. Data: benchmark sources and environment checkouts are external, with pinned commits or setup instructions rather than a redistributable bundle. License: repository Apache-2.0; third-party components retain their own licenses.",
+        "zh": "代码：google-research/rrsi 公开，Apache-2.0，包含搜索核心与领域适配器。权重：未发布；实验调用托管的 Claude/Gemini 模型。数据：基准来源和环境 checkout 为外部资源，以固定提交或安装说明提供，而非可再分发的数据包。许可：仓库为 Apache-2.0；第三方组件保留各自许可。"
+      },
+      "application": {
+        "en": "Run a small offline ablation on nanoRSI's existing harness/skill candidate gate: compare current strict-improvement selection with a regularized arm that (1) estimates a noise band from repeated frozen evaluations, (2) records component-level edit credit across rounds, (3) caps bundled edits with a decreasing budget and (4) rejects extra measured cost without compensating gain. Keep the current arm, seeds, rejected candidates and held-out fixture panel frozen; report transfer, cost and rejection reasons before considering any default change.",
+        "zh": "在 nanoRSI 现有 harness/skill 候选闸门上做小型离线消融：把当前严格改进选择与一个正则化臂比较，后者（1）由重复冻结评测估计噪声带，（2）跨轮记录组件级编辑信用，（3）用递减预算限制一次捆绑编辑数，（4）没有补偿性增益时拒绝新增测得成本。冻结当前臂、种子、被拒候选和留出 fixture 面板；在考虑改变默认行为前报告迁移、成本和拒绝原因。"
+      },
+      "sources": [
+        {
+          "label": "arXiv paper and HTML",
+          "url": "https://arxiv.org/html/2609.24972v1",
+          "kind": "paper"
+        },
+        {
+          "label": "Google Research repository",
+          "url": "https://github.com/google-research/rrsi",
+          "kind": "repository"
+        },
+        {
+          "label": "Repository license",
+          "url": "https://raw.githubusercontent.com/google-research/rrsi/main/LICENSE",
+          "kind": "license"
+        },
+        {
+          "label": "Project page",
+          "url": "https://regularized-rsi.com/",
+          "kind": "project-page"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/rrsi-pipeline.png",
+        "source_url": "https://arxiv.org/html/2609.24972v1",
+        "locator": "Figure 2 (pipeline.png): proposal-side and selection-side regularization",
+        "caption": {
+          "en": "RRSI's original Figure 2: proposal-side regularization limits and explores harness edits, while selection-side regularization screens leakage, noise, cost and structural persistence before an edit becomes incumbent state.",
+          "zh": "RRSI 原始 Figure 2：提案侧限制并引导 harness 编辑搜索，选择侧在编辑成为 incumbent 状态前筛查泄漏、噪声、成本与结构持续性。"
+        }
+      }
+    },
     {
       "id": "genuine-rsi-roadmap-2026",
       "title": "The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement",

@@ -6,6 +6,24 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ---
 
+## 2026-09-23
+
+**New entries**
+- [rrsi-regularized-harness-evolution](agent-code.md#rrsi-regularized-harness-evolution) — Google Cloud AI Research et al. (arXiv 2609.24972): proposal- and selection-side regularization for frozen-model harness evolution, with an original Figure 2 pipeline, Apache-2.0 code, and held-out transfer results.
+
+**Updated entries**
+- None.
+
+**Signals for engineering**
+- RRSI makes the next nanoRSI experiment concrete: compare the current strict-improvement gate against a separately toggled regularized arm with repeated-base noise calibration, edit-history credit, annealed edit cardinality, cost-aware acceptance and held-out transfer. This is ADOPTION item 38; no default behavior changed and no upstream code was copied.
+- The paper's gains are harness-level and model weights remain frozen. Treat the reported +1.8 SWE-bench Verified and up to +4.7 out-of-distribution points as author results, not nanoRSI evidence or a general RSI claim.
+
+**Coverage & gaps**
+- Searched arXiv RSI/self-evolution results and direct HTML figures, the new RRSI repository, license and project page, official OpenAI/Anthropic/Google DeepMind pages, GitHub tracked-project activity, and nanoRSI CI/issues/PR/security endpoints.
+- RRSI code is Apache-2.0, but its benchmark runners and hosted-model setup are external; no local reproduction or model/API request was run. nanoRSI code scanning still has no analysis and Dependabot is disabled; secret scanning remains at zero alerts. OpenReview/COLM provenance work and per-lab pages remain gaps.
+
+---
+
 ## 2026-09-22
 
 **New entries**

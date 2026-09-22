@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 17 |
-| [Harness search & evolution](#family-harness-search) | 13 |
+| [Harness search & evolution](#family-harness-search) | 14 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 6 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 6 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 4 |
@@ -529,7 +529,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (13)
+## Harness search & evolution (14)
+
+<a id="rrsi-regularized-harness-evolution"></a>
+
+### RRSI: Regularized Recursive Self-Improvement of Agent Harnesses
+
+**2026-09-21** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 was first publicly announced on 2026-09-21; the repository was created on 2026-09-16 and its first README update is dated 2026-09-21. The paper date is used for the research record.
+
+**Institutional relationship** — Google Cloud AI Research is the principal research affiliation; the author list also includes Stanford University, Washington University in St. Louis and UNC-Chapel Hill. The paper notes that Peng Xia did this work while a student researcher at Google Cloud AI Research.
+
+**What changes and how feedback is reused** — Evolves a frozen-model agent harness through a bounded proposal→feedback→selection loop. Proposal-side controls anneal the number of bundled edits, use full edit history to assign credit and redirect stalled search toward untried components. Selection-side controls screen benchmark-specific logic, calibrate a noise-adjusted floor from repeated base evaluations, require added inference cost to be paid by measured gain, and prune components with no recent positive contribution. Accepted harness commits become the next incumbent; model weights remain frozen.
+
+**Author-reported result** — With Claude Opus 4.8 frozen as policy and the same evolve budget, RRSI reports Terminal-Bench 2.1 74.2→80.2 (+6.0) and SWE-bench Verified 82.0→83.8 (+1.8), plus JobBench 36.0→40.7, GDPval 48.8→52.3 and APEX-Agents 34.2→37.9 on held-out/out-of-distribution evaluation. The paper reports up to +4.7 points out of distribution and 30% fewer policy tokens than unregularized evolution; with unseen Gemini 3.1 Flash Lite on the evolved coding harness, 11.2→14.6 (+3.4). These are author results, not nanoRSI reproductions.
+
+**Evidence limits** — The backbone, proposer, analyst and leakage critic are provider-hosted models; the benchmarks and several runner environments are external and expensive. The method still depends on a finite evolve set, fixed regularization hyperparameters and noisy automated feedback. The paper explicitly does not study model-weight updates, and the public repository has no released weights or bundled benchmark-data snapshot.
+
+**Code / weights / data / license** — Code: public at google-research/rrsi under Apache-2.0, including the search core and domain adapters. Weights: none released; experiments call hosted Claude/Gemini models. Data: benchmark sources and environment checkouts are external, with pinned commits or setup instructions rather than a redistributable bundle. License: repository Apache-2.0; third-party components retain their own licenses.
+
+**Possible nanoRSI experiment — not implemented here** — Run a small offline ablation on nanoRSI's existing harness/skill candidate gate: compare current strict-improvement selection with a regularized arm that (1) estimates a noise band from repeated frozen evaluations, (2) records component-level edit credit across rounds, (3) caps bundled edits with a decreasing budget and (4) rejects extra measured cost without compensating gain. Keep the current arm, seeds, rejected candidates and held-out fixture panel frozen; report transfer, cost and rejection reasons before considering any default change.
+
+![RRSI's original Figure 2: proposal-side regularization limits and explores harness edits, while selection-side regularization screens leakage, noise, cost and structural persistence before an edit becomes incumbent state.](assets/paper-figures/rrsi-pipeline.png)
+
+**Source figure / official image** — RRSI's original Figure 2: proposal-side regularization limits and explores harness edits, while selection-side regularization screens leakage, noise, cost and structural persistence before an edit becomes incumbent state. · Figure 2 (pipeline.png): proposal-side and selection-side regularization · [source](https://arxiv.org/html/2609.24972v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-23.
+
+**Open code / weights / data links** — [Google Research repository](https://github.com/google-research/rrsi) · [Repository license](https://raw.githubusercontent.com/google-research/rrsi/main/LICENSE)
+
+**Primary sources** — [arXiv paper and HTML](https://arxiv.org/html/2609.24972v1) · [Google Research repository](https://github.com/google-research/rrsi) · [Repository license](https://raw.githubusercontent.com/google-research/rrsi/main/LICENSE) · [Project page](https://regularized-rsi.com/)
 
 <a id="chase-counterfactual-harness"></a>
 
