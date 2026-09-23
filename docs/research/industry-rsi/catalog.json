@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-23",
-  "window_start": "2025-09-23",
+  "as_of": "2026-09-24",
+  "window_start": "2025-09-24",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -7852,8 +7852,8 @@
         "zh": "无能力对照——测的是代码健康度而非任务表现；评审抓到测试漏掉的真实回归（删除公开命名、约 65 处异常处理被重写）；首次运行因鉴权 token 过期中断；模块数与部分入口导入时间变差。"
       },
       "availability": {
-        "en": "Blog post public; the Hermes agent repository is public but README's MIT claim has no LICENSE file — treat as all-rights-reserved for reuse.",
-        "zh": "博文公开；Hermes 智能体仓库公开，但 README 声明的 MIT 没有 LICENSE 文件——复用按保留所有权利对待。"
+        "en": "Blog post public; the Hermes Agent repository is public and now has a checked LICENSE file identified by GitHub as MIT. This covers the repository code only; the report's hosted run, models and any generated artifacts are separate and were not audited for redistribution.",
+        "zh": "博文公开；Hermes Agent 仓库公开，当前已核验到 LICENSE 文件，GitHub 识别为 MIT。该许可只覆盖仓库代码；报告中的托管运行、模型及生成物另行处理，本轮未审计其再分发条件。"
       },
       "application": {
         "en": "nanoRSI already has worktree-per-candidate evaluation; the missing piece to copy is auto-recording postmortem lessons into a skill file that later runs load, closing the loop between one-off failures and persistent procedure memory.",
@@ -7864,6 +7864,16 @@
           "label": "Nous Research blog report",
           "url": "https://nousresearch.com/refactoring-hermes-with-1393-agents/",
           "kind": "official-report"
+        },
+        {
+          "label": "Hermes Agent repository",
+          "url": "https://github.com/NousResearch/hermes-agent",
+          "kind": "repository"
+        },
+        {
+          "label": "Repository LICENSE",
+          "url": "https://github.com/NousResearch/hermes-agent/blob/main/LICENSE",
+          "kind": "license"
         }
       ],
       "visual": {
@@ -7878,7 +7888,7 @@
       },
       "additional_events": [],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-18"
+      "last_verified": "2026-09-24"
     },
     {
       "id": "scienceide-agent-environments",

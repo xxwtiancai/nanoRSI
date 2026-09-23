@@ -1001,7 +1001,7 @@
 
 **Evidence limits** — No capability control — the measured object is code health, not task performance; reviewers caught regressions the tests missed (removed public names, an exception-handling rewrite across ~65 sites); the first attempt died on auth-token expiry; module count and some import times worsened.
 
-**Code / weights / data / license** — Blog post public; the Hermes agent repository is public but README's MIT claim has no LICENSE file — treat as all-rights-reserved for reuse.
+**Code / weights / data / license** — Blog post public; the Hermes Agent repository is public and now has a checked LICENSE file identified by GitHub as MIT. This covers the repository code only; the report's hosted run, models and any generated artifacts are separate and were not audited for redistribution.
 
 **Possible nanoRSI experiment — not implemented here** — nanoRSI already has worktree-per-candidate evaluation; the missing piece to copy is auto-recording postmortem lessons into a skill file that later runs load, closing the loop between one-off failures and persistent procedure memory.
 
@@ -1009,11 +1009,11 @@
 
 **Source figure / official image** — Official banner of Nous Research's account of Hermes autonomously refactoring its own ~1M-line codebase with 1,393 subagents. · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-24.
 
-**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+**Open code / weights / data links** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
-**Primary sources** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
+**Primary sources** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/) · [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
 <a id="mgm-mendel-godel-machine"></a>
 

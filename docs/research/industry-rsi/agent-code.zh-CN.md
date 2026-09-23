@@ -1001,7 +1001,7 @@
 
 **证据边界** — 无能力对照——测的是代码健康度而非任务表现；评审抓到测试漏掉的真实回归（删除公开命名、约 65 处异常处理被重写）；首次运行因鉴权 token 过期中断；模块数与部分入口导入时间变差。
 
-**代码／权重／数据／许可** — 博文公开；Hermes 智能体仓库公开，但 README 声明的 MIT 没有 LICENSE 文件——复用按保留所有权利对待。
+**代码／权重／数据／许可** — 博文公开；Hermes Agent 仓库公开，当前已核验到 LICENSE 文件，GitHub 识别为 MIT。该许可只覆盖仓库代码；报告中的托管运行、模型及生成物另行处理，本轮未审计其再分发条件。
 
 **可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 已有每候选 worktree 评测；要补的是把事后教训自动写入技能文件供后续运行加载，让一次性失败与持久流程记忆之间闭环。
 
@@ -1009,11 +1009,11 @@
 
 **原文图／官方图片** — Nous Research 官方文章题图：Hermens 用 1,393 个子智能体自主重构自身约百万行代码库。 · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-18.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-24.
 
-**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+**开源代码／权重／数据链接** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
-**一手来源** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
+**一手来源** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/) · [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
 <a id="mgm-mendel-godel-machine"></a>
 

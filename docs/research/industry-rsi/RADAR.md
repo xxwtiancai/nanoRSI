@@ -6,6 +6,22 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ---
 
+## 2026-09-24
+
+**New entries**
+- None: the current sweep produced no additional record that clears the existing primary-figure, classification and independently audited open-material gate.
+
+**Updated entries**
+- [nous-hermes-selfrefactor](agent-code.zh-CN.md#nous-hermes-selfrefactor) — rechecked the NousResearch/hermes-agent repository after its 2026-09-23 maintenance commit: a visible `LICENSE` is now present and GitHub identifies it as MIT. The catalogue now links the repository and license separately; this does not turn the hosted self-refactor report into a capability-controlled RSI result.
+
+**Signals for engineering**
+- No default runtime change was justified. The RRSI-inspired regularized selector remains an opt-in experiment only after the current arm, noise estimate, held-out panel, matched budgets and false-block accounting are frozen; ADOPTION item 38 is the executable next step.
+- Hermes activity remains a portability signal for inspectable postmortem-to-skill memory, not evidence that nanoRSI should copy its hosted orchestration or model stack.
+
+**Coverage and gaps**
+- Rechecked tracked RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve and Hermes activity; reviewed new ScienceBuddy, Dream-RSI and CoAutoResearch activity, plus official OpenAI, Anthropic and Google DeepMind research pages and current arXiv RSI/self-evolution leads.
+- No new weights or data release was verified for the tracked projects. nanoRSI has 0 open issues and 0 open PRs; latest main CI for `887c5fd` is green, secret scanning is 0, code scanning has no analysis, and Dependabot is disabled. OpenReview/COLM provenance and the next NeurIPS acceptance sweep remain gaps.
+
 ## 2026-09-23
 
 **New entries**
