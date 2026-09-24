@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-24",
-  "window_start": "2025-09-24",
+  "as_of": "2026-09-25",
+  "window_start": "2025-09-25",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -7705,53 +7705,74 @@
       "published": "2026-07-14",
       "kind": "report",
       "date_note": {
-        "en": "Weco AI blog report; a PDF technical report and an AIDE₈₅ release were promised to follow and had not appeared at last verification.",
-        "zh": "Weco AI 博客报告；官方预告的 PDF 技术报告与 AIDE₈₅ 发布在本次核验时仍未上线。"
+        "en": "The Weco AI first-party blog report was first published on 2026-07-14. The full technical report, titled \"Recursive self-improvement of AI research agents,\" was first publicly posted as arXiv:2609.26457 on 2026-09-22; its date is recorded as a later substantive event rather than replacing the original report date.",
+        "zh": "Weco AI 第一方博客报告于 2026-07-14 首次公开。完整技术报告题为《Recursive self-improvement of AI research agents》，于 2026-09-22 以 arXiv:2609.26457 首次公开；该日期作为后续实质事件记录，不替换原始报告日期。"
       },
       "affiliation": {
         "en": "Weco AI's first-party account of its own system; no independent replication.",
         "zh": "Weco AI 对自家系统的第一方报告，无独立复现。"
       },
       "mechanism": {
-        "en": "A bi-level loop: an outer-loop agent (hand-tuned AIDE_human on claude-opus-4.7) rewrites the code of an inner-loop agent (AIDE₀ on gemini-3-flash); each rewrite is scored across heterogeneous task families under a fixed dollar budget with public/private score splits, and roughly 9 of 10 proposals are rejected.",
-        "zh": "双层循环：外环智能体（手工调优、运行于 claude-opus-4.7 的 AIDE_human）改写内环智能体（运行于 gemini-3-flash 的 AIDE₀）的代码；每次改写在固定美元预算下跨异构任务族评测，公开/私有分数分离，约九成提案被拒绝。"
+        "en": "A bi-level loop: an outer-loop agent rewrites the code of an inner-loop research agent; each candidate is graded across heterogeneous AI R&D task families under a fixed per-task budget, with held-out scores aggregated into a private grade before acceptance. The paper reports a 100-node trajectory with seven accepted rewrites; the evolved harness changes search policy, context management and reward-hacking defenses while the underlying model stays fixed within each loop.",
+        "zh": "双层循环：外环智能体改写内环研究智能体的代码；每个候选在固定的逐任务预算下跨异构 AI 研发任务族评测，并在接受前把留出分数汇总为私有等级。论文报告一条包含 100 个节点、接受 7 次重写的轨迹；演化后的 harness 改变搜索策略、上下文管理和奖励黑客防护，而每层循环内的底层模型保持固定。"
       },
       "result": {
-        "en": "100 steps over 8 unattended days produced 7 successive improved agent versions. Held-out MLE-Bench Lite (3 seeds, paired deltas vs AIDE₀): AIDE₄₇ +0.053 (p=0.0024), AIDE₈₅ +0.042 (p=0.0041); reward-hacking rate (KernelBench/SpecBench-style end-to-end check) fell 63%→42%→34%; 16× average prompt compression; both beat the two-year human-tuned AIDE_human on held-out families. An ignition test with AIDE₄₇ as the outer loop converged in ~20 vs ~40 steps but not significantly and not asymptotically better — no ignition claimed.",
-        "zh": "8 天无人值守 100 步产生 7 个连续改进版本。留出集 MLE-Bench Lite（3 种子、相对 AIDE₀ 配对差值）：AIDE₄₇ +0.053（p=0.0024）、AIDE₈₅ +0.042（p=0.0041）；奖励黑客率（KernelBench/SpecBench 式端到端检验）63%→42%→34%；平均提示压缩 16×；两者在留出任务族上均胜过调优两年的人工基线 AIDE_human。把 AIDE₄₇ 放入外环的点火测试约 20 步收敛（对照约 40 步）但不显著且渐近不更优——未宣称点火。"
+        "en": "One autonomous 8-day run produced seven accepted rewrites and raised the private selection grade from 0.703 to 0.778. On four held-out benchmarks, AIDE₈₅ matched or exceeded the human-engineered baseline under the same protocol, including an out-of-distribution WeatherBench 2 task; on a separate held-out KernelBench-style task family, reward hacking fell from 55% to 32% versus 39% for the human baseline. Two additional complete runs also showed sustained improvements, while the ignition test was not statistically decisive. These are author-reported results, not nanoRSI reproductions.",
+        "zh": "一次 8 天无人值守运行接受了 7 次重写，私有选择等级从 0.703 提升到 0.778。在四个留出基准上，AIDE₈₅ 按相同协议达到或超过人工构建基线，其中包括分布外的 WeatherBench 2；在另一个留出的 KernelBench 式任务族上，奖励黑客率从 55% 降至 32%，人工基线为 39%。另外两次完整运行也显示持续改进，但点火测试没有统计上决定性的结果。这些是作者报告，不是 nanoRSI 复现。"
       },
       "limits": {
-        "en": "Author-reported by the system's builder; single run; gains non-monotonic (AIDE₈₅ trails AIDE₄₇ on MLE-Bench Lite); the 'first evidence' claim is against Weco's own RSI ladder (Level 1: beating a fair human baseline under fixed budget), not a community-standard definition.",
-        "zh": "由系统构建方自报；单次运行；增益非单调（AIDE₈₅ 在 MLE-Bench Lite 上低于 AIDE₄₇）；'首个证据'是相对 Weco 自设的 RSI 阶梯（Level 1：固定预算下胜过公平人工基线），并非社区统一定义。"
+        "en": "The main trajectory is one expensive hosted-model run, and the paper notes noisy comparisons, context-window failures in some baseline evaluations and non-monotonic checkpoint gains. The outer-loop ignition result is inconclusive, and the report's \"recursive self-improvement\" claim concerns harness/search efficiency under fixed evaluation budgets, not self-improving model weights or a general RSI threshold.",
+        "zh": "主轨迹是一次昂贵的托管模型运行；论文指出比较带噪、部分基线评测因上下文窗口失败，且不同 checkpoint 的收益并不单调。外环点火结果不确定；报告中的“递归自我改进”指固定评测预算下的 harness／搜索效率，不是模型权重自改进，也不是通用 RSI 门槛。"
       },
       "availability": {
-        "en": "Blog post public; the promised PDF report, code and weights remain unreleased as of 2026-09-19 (two months after the announcement; blog RSS shows no later post).",
-        "zh": "博文公开；截至 2026-09-19 承诺的 PDF 报告、代码与权重仍未发布（公告后两个月；博客 RSS 无后续文章）。"
+        "en": "Paper and source figures: public in arXiv:2609.26457. AIDE²'s experiment code, weights and benchmark-data bundle were not released or independently verified. The related WecoAI/aideml predecessor repository is MIT, but that license must not be extended to the AIDE² run or its hosted models and artifacts.",
+        "zh": "论文与原始图：已由 arXiv:2609.26457 公开。AIDE² 实验代码、权重和基准数据包未发布，也未独立核验。相关的 WecoAI/aideml 前身仓库为 MIT，但该许可不能扩展到 AIDE² 运行、托管模型或生成物。"
       },
       "application": {
-        "en": "Recreate the fixed-budget proposal/reject ladder on a minimal task: outer loop rewrites the inner runner, ~90% rejection is evidence the acceptance gate works, and a private held-out split decides acceptance.",
-        "zh": "在最小任务上复刻固定预算的提案/拒绝阶梯：外环改写内环执行器，约九成拒绝率是接受闸门起效的证据，接受由私有留出分割裁决。"
+        "en": "Use AIDE² as a protocol reference for the already planned RRSI selector study: keep the inner task budget fixed, separate public feedback from a held-out acceptance grade, and report the full accepted/rejected lineage. Do not copy Weco code or claim the paper's benchmark gains locally; first freeze the three-seed, three-budget nanoRSI protocol and cost ceiling.",
+        "zh": "把 AIDE² 作为既有 RRSI 选择器研究的协议参照：固定内层任务预算，把公开反馈与留出接受等级分开，并报告完整的接受／拒绝谱系。不要复制 Weco 代码，也不要把论文基准收益说成本地结果；先冻结 nanoRSI 的三种子、三预算点协议和成本上限。"
       },
       "sources": [
         {
           "label": "Weco AI blog report",
           "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement",
           "kind": "official-report"
+        },
+        {
+          "label": "AIDE² technical report",
+          "url": "https://arxiv.org/html/2609.26457v1",
+          "kind": "paper"
+        },
+        {
+          "label": "Related AIDE predecessor repository",
+          "url": "https://github.com/WecoAI/aideml",
+          "kind": "repository"
+        },
+        {
+          "label": "Related AIDE predecessor license",
+          "url": "https://raw.githubusercontent.com/WecoAI/aideml/main/LICENSE",
+          "kind": "license"
         }
       ],
       "visual": {
-        "kind": "official-report-figure",
-        "asset": "assets/paper-figures/weco-aide2-first-evidence.png",
-        "source_url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement",
-        "locator": "Outer-loop figure (figB) in the blog post",
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/weco-aide2-paper-figure1.png",
+        "source_url": "https://arxiv.org/html/2609.26457v1",
+        "locator": "Figure 1 (figures/fig_system_diagram_light.pdf): one step of recursive self-improvement",
         "caption": {
-          "en": "Weco AI's outer-loop diagram: AIDE_human rewrites the inner-loop AIDE agent, each rewrite evaluated under a fixed budget with ~90% rejection.",
-          "zh": "Weco AI 外环示意图：AIDE_human 改写内环 AIDE 智能体，每次改写在固定预算下评测，约九成被拒绝。"
+          "en": "AIDE²'s original Figure 1: the outer loop rewrites a complete research agent, the inner loop grades candidates on AI R&D tasks, and a private held-out grade decides whether the rewrite becomes incumbent.",
+          "zh": "AIDE² 原始 Figure 1：外环改写完整研究智能体，内环在 AI 研发任务上评测候选，并由私有留出等级决定重写是否成为 incumbent。"
         }
       },
-      "additional_events": [],
+      "additional_events": [
+        {
+          "date": "2026-09-22",
+          "kind": "paper",
+          "label": "Full AIDE² technical report first posted as arXiv:2609.26457"
+        }
+      ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-19"
+      "last_verified": "2026-09-25"
     },
     {
       "id": "anthropic-when-ai-builds-itself",

@@ -1081,29 +1081,29 @@
 
 **2026-07-14** · report · Direct bounded loop
 
-**Publication date** — Weco AI blog report; a PDF technical report and an AIDE₈₅ release were promised to follow and had not appeared at last verification.
+**Publication date** — The Weco AI first-party blog report was first published on 2026-07-14. The full technical report, titled "Recursive self-improvement of AI research agents," was first publicly posted as arXiv:2609.26457 on 2026-09-22; its date is recorded as a later substantive event rather than replacing the original report date.
 
 **Institutional relationship** — Weco AI's first-party account of its own system; no independent replication.
 
-**What changes and how feedback is reused** — A bi-level loop: an outer-loop agent (hand-tuned AIDE_human on claude-opus-4.7) rewrites the code of an inner-loop agent (AIDE₀ on gemini-3-flash); each rewrite is scored across heterogeneous task families under a fixed dollar budget with public/private score splits, and roughly 9 of 10 proposals are rejected.
+**What changes and how feedback is reused** — A bi-level loop: an outer-loop agent rewrites the code of an inner-loop research agent; each candidate is graded across heterogeneous AI R&D task families under a fixed per-task budget, with held-out scores aggregated into a private grade before acceptance. The paper reports a 100-node trajectory with seven accepted rewrites; the evolved harness changes search policy, context management and reward-hacking defenses while the underlying model stays fixed within each loop.
 
-**Author-reported result** — 100 steps over 8 unattended days produced 7 successive improved agent versions. Held-out MLE-Bench Lite (3 seeds, paired deltas vs AIDE₀): AIDE₄₇ +0.053 (p=0.0024), AIDE₈₅ +0.042 (p=0.0041); reward-hacking rate (KernelBench/SpecBench-style end-to-end check) fell 63%→42%→34%; 16× average prompt compression; both beat the two-year human-tuned AIDE_human on held-out families. An ignition test with AIDE₄₇ as the outer loop converged in ~20 vs ~40 steps but not significantly and not asymptotically better — no ignition claimed.
+**Author-reported result** — One autonomous 8-day run produced seven accepted rewrites and raised the private selection grade from 0.703 to 0.778. On four held-out benchmarks, AIDE₈₅ matched or exceeded the human-engineered baseline under the same protocol, including an out-of-distribution WeatherBench 2 task; on a separate held-out KernelBench-style task family, reward hacking fell from 55% to 32% versus 39% for the human baseline. Two additional complete runs also showed sustained improvements, while the ignition test was not statistically decisive. These are author-reported results, not nanoRSI reproductions.
 
-**Evidence limits** — Author-reported by the system's builder; single run; gains non-monotonic (AIDE₈₅ trails AIDE₄₇ on MLE-Bench Lite); the 'first evidence' claim is against Weco's own RSI ladder (Level 1: beating a fair human baseline under fixed budget), not a community-standard definition.
+**Evidence limits** — The main trajectory is one expensive hosted-model run, and the paper notes noisy comparisons, context-window failures in some baseline evaluations and non-monotonic checkpoint gains. The outer-loop ignition result is inconclusive, and the report's "recursive self-improvement" claim concerns harness/search efficiency under fixed evaluation budgets, not self-improving model weights or a general RSI threshold.
 
-**Code / weights / data / license** — Blog post public; the promised PDF report, code and weights remain unreleased as of 2026-09-19 (two months after the announcement; blog RSS shows no later post).
+**Code / weights / data / license** — Paper and source figures: public in arXiv:2609.26457. AIDE²'s experiment code, weights and benchmark-data bundle were not released or independently verified. The related WecoAI/aideml predecessor repository is MIT, but that license must not be extended to the AIDE² run or its hosted models and artifacts.
 
-**Possible nanoRSI experiment — not implemented here** — Recreate the fixed-budget proposal/reject ladder on a minimal task: outer loop rewrites the inner runner, ~90% rejection is evidence the acceptance gate works, and a private held-out split decides acceptance.
+**Possible nanoRSI experiment — not implemented here** — Use AIDE² as a protocol reference for the already planned RRSI selector study: keep the inner task budget fixed, separate public feedback from a held-out acceptance grade, and report the full accepted/rejected lineage. Do not copy Weco code or claim the paper's benchmark gains locally; first freeze the three-seed, three-budget nanoRSI protocol and cost ceiling.
 
-![Weco AI's outer-loop diagram: AIDE_human rewrites the inner-loop AIDE agent, each rewrite evaluated under a fixed budget with ~90% rejection.](assets/paper-figures/weco-aide2-first-evidence.png)
+![AIDE²'s original Figure 1: the outer loop rewrites a complete research agent, the inner loop grades candidates on AI R&D tasks, and a private held-out grade decides whether the rewrite becomes incumbent.](assets/paper-figures/weco-aide2-paper-figure1.png)
 
-**Source figure / official image** — Weco AI's outer-loop diagram: AIDE_human rewrites the inner-loop AIDE agent, each rewrite evaluated under a fixed budget with ~90% rejection. · Outer-loop figure (figB) in the blog post · [source](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
+**Source figure / official image** — AIDE²'s original Figure 1: the outer loop rewrites a complete research agent, the inner loop grades candidates on AI R&D tasks, and a private held-out grade decides whether the rewrite becomes incumbent. · Figure 1 (figures/fig_system_diagram_light.pdf): one step of recursive self-improvement · [source](https://arxiv.org/html/2609.26457v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-19.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-25.
 
-**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+**Open code / weights / data links** — [Related AIDE predecessor repository](https://github.com/WecoAI/aideml) · [Related AIDE predecessor license](https://raw.githubusercontent.com/WecoAI/aideml/main/LICENSE)
 
-**Primary sources** — [Weco AI blog report](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
+**Primary sources** — [Weco AI blog report](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement) · [AIDE² technical report](https://arxiv.org/html/2609.26457v1) · [Related AIDE predecessor repository](https://github.com/WecoAI/aideml) · [Related AIDE predecessor license](https://raw.githubusercontent.com/WecoAI/aideml/main/LICENSE)
 
 <a id="meta-hyperagents-2026"></a>
 

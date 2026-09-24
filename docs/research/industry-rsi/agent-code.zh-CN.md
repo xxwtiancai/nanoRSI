@@ -1081,29 +1081,29 @@
 
 **2026-07-14** · report · 直接有界闭环
 
-**日期说明** — Weco AI 博客报告；官方预告的 PDF 技术报告与 AIDE₈₅ 发布在本次核验时仍未上线。
+**日期说明** — Weco AI 第一方博客报告于 2026-07-14 首次公开。完整技术报告题为《Recursive self-improvement of AI research agents》，于 2026-09-22 以 arXiv:2609.26457 首次公开；该日期作为后续实质事件记录，不替换原始报告日期。
 
 **机构关系** — Weco AI 对自家系统的第一方报告，无独立复现。
 
-**改变对象与反馈复用** — 双层循环：外环智能体（手工调优、运行于 claude-opus-4.7 的 AIDE_human）改写内环智能体（运行于 gemini-3-flash 的 AIDE₀）的代码；每次改写在固定美元预算下跨异构任务族评测，公开/私有分数分离，约九成提案被拒绝。
+**改变对象与反馈复用** — 双层循环：外环智能体改写内环研究智能体的代码；每个候选在固定的逐任务预算下跨异构 AI 研发任务族评测，并在接受前把留出分数汇总为私有等级。论文报告一条包含 100 个节点、接受 7 次重写的轨迹；演化后的 harness 改变搜索策略、上下文管理和奖励黑客防护，而每层循环内的底层模型保持固定。
 
-**作者报告结果** — 8 天无人值守 100 步产生 7 个连续改进版本。留出集 MLE-Bench Lite（3 种子、相对 AIDE₀ 配对差值）：AIDE₄₇ +0.053（p=0.0024）、AIDE₈₅ +0.042（p=0.0041）；奖励黑客率（KernelBench/SpecBench 式端到端检验）63%→42%→34%；平均提示压缩 16×；两者在留出任务族上均胜过调优两年的人工基线 AIDE_human。把 AIDE₄₇ 放入外环的点火测试约 20 步收敛（对照约 40 步）但不显著且渐近不更优——未宣称点火。
+**作者报告结果** — 一次 8 天无人值守运行接受了 7 次重写，私有选择等级从 0.703 提升到 0.778。在四个留出基准上，AIDE₈₅ 按相同协议达到或超过人工构建基线，其中包括分布外的 WeatherBench 2；在另一个留出的 KernelBench 式任务族上，奖励黑客率从 55% 降至 32%，人工基线为 39%。另外两次完整运行也显示持续改进，但点火测试没有统计上决定性的结果。这些是作者报告，不是 nanoRSI 复现。
 
-**证据边界** — 由系统构建方自报；单次运行；增益非单调（AIDE₈₅ 在 MLE-Bench Lite 上低于 AIDE₄₇）；'首个证据'是相对 Weco 自设的 RSI 阶梯（Level 1：固定预算下胜过公平人工基线），并非社区统一定义。
+**证据边界** — 主轨迹是一次昂贵的托管模型运行；论文指出比较带噪、部分基线评测因上下文窗口失败，且不同 checkpoint 的收益并不单调。外环点火结果不确定；报告中的“递归自我改进”指固定评测预算下的 harness／搜索效率，不是模型权重自改进，也不是通用 RSI 门槛。
 
-**代码／权重／数据／许可** — 博文公开；截至 2026-09-19 承诺的 PDF 报告、代码与权重仍未发布（公告后两个月；博客 RSS 无后续文章）。
+**代码／权重／数据／许可** — 论文与原始图：已由 arXiv:2609.26457 公开。AIDE² 实验代码、权重和基准数据包未发布，也未独立核验。相关的 WecoAI/aideml 前身仓库为 MIT，但该许可不能扩展到 AIDE² 运行、托管模型或生成物。
 
-**可用于 nanoRSI 的实验方向——本次未实现** — 在最小任务上复刻固定预算的提案/拒绝阶梯：外环改写内环执行器，约九成拒绝率是接受闸门起效的证据，接受由私有留出分割裁决。
+**可用于 nanoRSI 的实验方向——本次未实现** — 把 AIDE² 作为既有 RRSI 选择器研究的协议参照：固定内层任务预算，把公开反馈与留出接受等级分开，并报告完整的接受／拒绝谱系。不要复制 Weco 代码，也不要把论文基准收益说成本地结果；先冻结 nanoRSI 的三种子、三预算点协议和成本上限。
 
-![Weco AI 外环示意图：AIDE_human 改写内环 AIDE 智能体，每次改写在固定预算下评测，约九成被拒绝。](assets/paper-figures/weco-aide2-first-evidence.png)
+![AIDE² 原始 Figure 1：外环改写完整研究智能体，内环在 AI 研发任务上评测候选，并由私有留出等级决定重写是否成为 incumbent。](assets/paper-figures/weco-aide2-paper-figure1.png)
 
-**原文图／官方图片** — Weco AI 外环示意图：AIDE_human 改写内环 AIDE 智能体，每次改写在固定预算下评测，约九成被拒绝。 · Outer-loop figure (figB) in the blog post · [source](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
+**原文图／官方图片** — AIDE² 原始 Figure 1：外环改写完整研究智能体，内环在 AI 研发任务上评测候选，并由私有留出等级决定重写是否成为 incumbent。 · Figure 1 (figures/fig_system_diagram_light.pdf): one step of recursive self-improvement · [source](https://arxiv.org/html/2609.26457v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-19.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-25.
 
-**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+**开源代码／权重／数据链接** — [Related AIDE predecessor repository](https://github.com/WecoAI/aideml) · [Related AIDE predecessor license](https://raw.githubusercontent.com/WecoAI/aideml/main/LICENSE)
 
-**一手来源** — [Weco AI blog report](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement)
+**一手来源** — [Weco AI blog report](https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement) · [AIDE² technical report](https://arxiv.org/html/2609.26457v1) · [Related AIDE predecessor repository](https://github.com/WecoAI/aideml) · [Related AIDE predecessor license](https://raw.githubusercontent.com/WecoAI/aideml/main/LICENSE)
 
 <a id="meta-hyperagents-2026"></a>
 

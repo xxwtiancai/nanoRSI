@@ -1,6 +1,6 @@
 # Industry RSI research map
 
-**2025-09-24 → 2026-09-24** · **145** in-window records
+**2025-09-25 → 2026-09-25** · **145** in-window records
 
 A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a locally stored paper figure, official research image or source-page screenshot, with its locator and source URL, plus an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.
 

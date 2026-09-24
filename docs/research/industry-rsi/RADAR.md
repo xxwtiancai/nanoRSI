@@ -6,6 +6,22 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ---
 
+## 2026-09-25
+
+**New entries**
+- None: the AIDE² item already existed; today's primary-source upgrade is recorded as a later substantive event on [weco-aide2-first-evidence](agent-code.md#weco-aide2-first-evidence).
+
+**Updated entries**
+- [weco-aide2-first-evidence](agent-code.md#weco-aide2-first-evidence) — replaced the stale “promised PDF absent” status with the 2026-09-22 arXiv technical report (2609.26457), added its original Figure 1, four held-out benchmark protocol, fixed-budget selection details, related AIDE predecessor/license links, and the explicit boundary that AIDE² code, weights and data were not released.
+
+**Signals for engineering**
+- AIDE² strengthens the existing ADOPTION 38 protocol: keep public feedback separate from a private held-out acceptance grade, fix the per-task budget, retain the complete proposal/rejection lineage, and report noisy or inconclusive ignition results rather than treating a single trajectory as general RSI evidence.
+- No default runtime change is justified; the RRSI selector remains opt-in until the three-seed, three-budget study and cost ceiling are frozen.
+
+**Coverage & gaps**
+- Searched the arXiv cs.AI/cs.LG/cs.CL/cs.MA leads, Weco AI's first-party AIDE² report and technical report, WecoAI/aideml repository/license, official OpenAI and Anthropic research pages, tracked RSIHub/Anton/SEAL/DGM/OpenEvolve/ACE/FrontisAI/OpenRSI/ShinkaEvolve/Hermes activity, and nanoRSI issues/PRs/CI/security endpoints.
+- No portable upstream runtime change, AIDE² implementation/weights/data release, or licensed dependency was verified. nanoRSI has 0 open issues and 0 open PRs; main CI is green, secret scanning is 0, code scanning has no analysis, and Dependabot is disabled. OpenReview/COLM provenance and the next NeurIPS acceptance sweep remain gaps.
+
 ## 2026-09-24
 
 **New entries**
