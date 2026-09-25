@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-25",
-  "window_start": "2025-09-25",
+  "as_of": "2026-09-26",
+  "window_start": "2025-09-26",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -7895,6 +7895,11 @@
           "label": "Repository LICENSE",
           "url": "https://github.com/NousResearch/hermes-agent/blob/main/LICENSE",
           "kind": "license"
+        },
+        {
+          "label": "Hermes Agent v0.21.5 release",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24",
+          "kind": "official-report"
         }
       ],
       "visual": {
@@ -7907,9 +7912,15 @@
           "zh": "Nous Research 官方文章题图：Hermens 用 1,393 个子智能体自主重构自身约百万行代码库。"
         }
       },
-      "additional_events": [],
+      "additional_events": [
+        {
+          "date": "2026-09-24",
+          "kind": "release",
+          "label": "Hermes Agent v0.21.5: reliability and hosted-deployment patch release"
+        }
+      ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-24"
+      "last_verified": "2026-09-26"
     },
     {
       "id": "scienceide-agent-environments",

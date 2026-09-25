@@ -4,6 +4,22 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-09-26
+
+**New entries**
+- None: the primary-source sweep found no new record that clears the existing original-visual, classification and independently audited open-material gate.
+
+**Updated entries**
+- [nous-hermes-selfrefactor](agent-code.zh-CN.md#nous-hermes-selfrefactor) — verified Hermes Agent v0.21.5 (2026-09-24) and recorded it as a later release event. The release is a reliability/hosted-deployment patch, not a new capability-controlled RSI result.
+
+**Signals for engineering**
+- Hermes's latest file-operation and initialization fixes reinforce the value of byte-preserving mutation boundaries and bounded concurrent setup, but nanoRSI already has separate Git/worktree and evidence-boundary tests; no unreviewed upstream code was copied.
+- RRSI remains the highest-value portable research direction: freeze the current arm, repeated-evaluation noise band, matched budget points and false-block accounting before implementing its opt-in selector arm (ADOPTION item 38).
+
+**Coverage & gaps**
+- Rechecked official OpenAI, Anthropic and Google DeepMind research pages; arXiv RSI/self-evolution leads including RRSI, AIDE² and SoL-Pi; GitHub activity/releases for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent and google-research/rrsi; and nanoRSI issues, PRs, CI and security endpoints.
+- No new licensed portable runtime change, released weights/data bundle, or independently reproducible enterprise RSI result was verified. nanoRSI remains at 0 open issues/PRs, green main CI, 0 secret-scanning alerts; code scanning has no analysis and Dependabot is disabled. OpenReview/COLM provenance and the next NeurIPS acceptance sweep remain gaps.
+
 ---
 
 ## 2026-09-25
