@@ -4,6 +4,22 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-09-27
+
+**New entries**
+- None: the primary-source sweep found no new record that clears the existing original-visual, classification and independently audited open-material gate.
+
+**Updated entries**
+- None. The catalogue rolling window advances to 2025-09-27 → 2026-09-27; existing records remain retained in the archive.
+
+**Signals for engineering**
+- Hermes Agent's latest commits (2026-09-26) add platform E2E contract coverage and fail-fast configuration diagnostics; these are reliability/test-boundary improvements, not a new self-improvement loop, and nanoRSI should not copy the hosted adapter stack.
+- ShinkaEvolve's latest substantive head remains 2026-08-21; OpenRSI's remains 2026-09-17. Neither supplied a new license-cleared, portable runtime change for nanoRSI. Keep the RRSI selector study opt-in until the noise band, matched budget points, held-out panel and false-block accounting are frozen.
+
+**Coverage & gaps**
+- Rechecked official OpenAI, Anthropic and Google DeepMind research pages; arXiv RSI/self-evolution leads; GitHub activity for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent and google-research/rrsi; the EvoSkillBank OpenReview forum/PDF; and nanoRSI issues, PRs, CI and security endpoints.
+- EvoSkillBank remains blocked by OpenReview browser verification, so its original pipeline figure/page, code/license, weights and data cannot be verified. nanoRSI has 0 open issues/PRs, green main CI and 0 secret-scanning alerts; code scanning has no analysis and Dependabot is disabled. No upstream code was copied and no model/API request or paid run was made.
+
 ## 2026-09-26
 
 **New entries**
