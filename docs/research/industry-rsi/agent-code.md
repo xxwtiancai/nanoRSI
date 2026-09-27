@@ -555,7 +555,7 @@
 
 **Source figure / official image** — RRSI's original Figure 2: proposal-side regularization limits and explores harness edits, while selection-side regularization screens leakage, noise, cost and structural persistence before an edit becomes incumbent state. · Figure 2 (pipeline.png): proposal-side and selection-side regularization · [source](https://arxiv.org/html/2609.24972v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-23.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-28.
 
 **Open code / weights / data links** — [Google Research repository](https://github.com/google-research/rrsi) · [Repository license](https://raw.githubusercontent.com/google-research/rrsi/main/LICENSE)
 
@@ -1009,7 +1009,7 @@
 
 **Source figure / official image** — Official banner of Nous Research's account of Hermes autonomously refactoring its own ~1M-line codebase with 1,393 subagents. · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-26.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-28.
 
 **Open code / weights / data links** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
@@ -1099,7 +1099,7 @@
 
 **Source figure / official image** — AIDE²'s original Figure 1: the outer loop rewrites a complete research agent, the inner loop grades candidates on AI R&D tasks, and a private held-out grade decides whether the rewrite becomes incumbent. · Figure 1 (figures/fig_system_diagram_light.pdf): one step of recursive self-improvement · [source](https://arxiv.org/html/2609.26457v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-25.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-28.
 
 **Open code / weights / data links** — [Related AIDE predecessor repository](https://github.com/WecoAI/aideml) · [Related AIDE predecessor license](https://raw.githubusercontent.com/WecoAI/aideml/main/LICENSE)
 

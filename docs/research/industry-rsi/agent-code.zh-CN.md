@@ -555,7 +555,7 @@
 
 **原文图／官方图片** — RRSI 原始 Figure 2：提案侧限制并引导 harness 编辑搜索，选择侧在编辑成为 incumbent 状态前筛查泄漏、噪声、成本与结构持续性。 · Figure 2 (pipeline.png): proposal-side and selection-side regularization · [source](https://arxiv.org/html/2609.24972v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-23.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-28.
 
 **开源代码／权重／数据链接** — [Google Research repository](https://github.com/google-research/rrsi) · [Repository license](https://raw.githubusercontent.com/google-research/rrsi/main/LICENSE)
 
@@ -1009,7 +1009,7 @@
 
 **原文图／官方图片** — Nous Research 官方文章题图：Hermens 用 1,393 个子智能体自主重构自身约百万行代码库。 · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-26.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-28.
 
 **开源代码／权重／数据链接** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
@@ -1099,7 +1099,7 @@
 
 **原文图／官方图片** — AIDE² 原始 Figure 1：外环改写完整研究智能体，内环在 AI 研发任务上评测候选，并由私有留出等级决定重写是否成为 incumbent。 · Figure 1 (figures/fig_system_diagram_light.pdf): one step of recursive self-improvement · [source](https://arxiv.org/html/2609.26457v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-25.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-28.
 
 **开源代码／权重／数据链接** — [Related AIDE predecessor repository](https://github.com/WecoAI/aideml) · [Related AIDE predecessor license](https://raw.githubusercontent.com/WecoAI/aideml/main/LICENSE)
 

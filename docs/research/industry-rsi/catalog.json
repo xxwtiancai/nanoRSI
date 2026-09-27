@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-27",
-  "window_start": "2025-09-27",
+  "as_of": "2026-09-28",
+  "window_start": "2025-09-28",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
       "additional_events": [],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-23",
+      "last_verified": "2026-09-28",
       "id": "rrsi-regularized-harness-evolution",
       "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
       "organizations": [
@@ -3666,8 +3666,8 @@
         "zh": "对 nanoRSI：把改进预算拆成广度测绘阶段（大量廉价探针任务沉淀因果模式）与目标任务上的深度利用阶段，随后在最终测试前冻结记忆——与 nanoRSI 的冻结纪律天然对齐的两段式调度。"
       },
       "availability": {
-        "en": "Code released under Apache-2.0 at github.com/AetherLabsAI/RSIAgent (repo created 2026-09-13, 143 stars at verification); project page aetherlabsai.github.io/RSIAgent. No weights or data release located.",
-        "zh": "代码以 Apache-2.0 发布于 github.com/AetherLabsAI/RSIAgent（仓库创建于 2026-09-13，核验时 143 星）；项目页 aetherlabsai.github.io/RSIAgent。未找到权重或数据发布。"
+        "en": "Code released under Apache-2.0 at github.com/AetherLabsAI/RSIAgent; the repository's latest 2026-09-16 changes are presentation/media updates, not a new runtime release. Project page: aetherlabsai.github.io/RSIAgent. No weights or data release located.",
+        "zh": "代码以 Apache-2.0 发布于 github.com/AetherLabsAI/RSIAgent；仓库最新的 2026-09-16 变更是展示／媒体更新，不是新的运行时发布。项目页：aetherlabsai.github.io/RSIAgent。未找到权重或数据发布。"
       },
       "sources": [
         {
@@ -3687,7 +3687,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-16",
+      "last_verified": "2026-09-28",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/rsiagent-autonomous-exploration.png",
@@ -7772,7 +7772,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-25"
+      "last_verified": "2026-09-28"
     },
     {
       "id": "anthropic-when-ai-builds-itself",
@@ -7920,7 +7920,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-26"
+      "last_verified": "2026-09-28"
     },
     {
       "id": "scienceide-agent-environments",

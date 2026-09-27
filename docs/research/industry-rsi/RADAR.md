@@ -4,6 +4,26 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-09-28
+
+**New entries**
+
+- None: the primary-source sweep found no new record that clears the existing original-visual, classification and independently audited open-material gate.
+
+**Updated entries**
+
+- [rsiagent-autonomous-exploration](memory-context.md#rsiagent-autonomous-exploration) — rechecked the Apache-2.0 repository and project page through 2026-09-16; the newest repository changes are README/media presentation updates, so no new paper, release, weights or data event was added.
+- [rrsi-regularized-harness-evolution](agent-code.md#rrsi-regularized-harness-evolution), [weco-aide2-first-evidence](agent-code.md#weco-aide2-first-evidence) and [nous-hermes-selfrefactor](agent-code.md#nous-hermes-selfrefactor) — rechecked current public source/release states; no new reproducible capability result or portable runtime change was verified.
+
+**Signals for engineering**
+
+- The strongest actionable direction remains ADOPTION item 38: freeze the RRSI selector protocol's repeated-frozen noise band, matched budget points, held-out panel and false-block accounting before implementing the opt-in arm. Hermes's 2026-09-27 commits are bot-mode launcher/test reliability maintenance, not evidence for copying its hosted stack.
+
+**Coverage & gaps**
+
+- Rechecked official OpenAI, Anthropic and Google DeepMind research pages; arXiv RSI/self-evolution leads including RSIAgent, RRSI and AIDE²; GitHub activity/releases for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent, AetherLabsAI/RSIAgent and google-research/rrsi; and nanoRSI issues, PRs, CI and security endpoints.
+- EvoSkillBank remains blocked by OpenReview browser verification, so its original pipeline figure/page, code/license, weights and data cannot be verified. nanoRSI has 0 open issues/PRs, green main CI and 0 secret-scanning alerts; code scanning has no analysis and Dependabot is disabled. No upstream code was copied and no model/API request or paid run was made.
+
 ## 2026-09-27
 
 **New entries**
