@@ -4,6 +4,25 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-09-29
+
+**New entries**
+
+- None: the primary-source sweep found no new record that clears the existing original-visual, classification and independently audited open-material gate.
+
+**Updated entries**
+
+- [rrsi-regularized-harness-evolution](agent-code.md#rrsi-regularized-harness-evolution), [rsiagent-autonomous-exploration](memory-context.md#rsiagent-autonomous-exploration), [sakana-shinkaevolve](agent-code.md#sakana-shinkaevolve) and [nous-hermes-selfrefactor](agent-code.md#nous-hermes-selfrefactor) — rechecked current repositories and release states through 2026-09-29. Hermes has 2026-09-28 desktop/controller reliability fixes; no new recursive capability, weights or data release was verified.
+
+**Signals for engineering**
+
+- Keep ADOPTION item 38 as the next engineering direction: freeze the RRSI selector study's repeated-frozen noise band, matched budget points, held-out panel and false-block accounting before implementing an opt-in arm. Hermes's latest fixes support reliability awareness but do not justify copying its hosted stack.
+
+**Coverage & gaps**
+
+- Rechecked official OpenAI, Anthropic and Google DeepMind research pages; arXiv RSI/self-evolution leads including RRSI, RSIAgent and AIDE²; GitHub activity/releases for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent, AetherLabsAI/RSIAgent and google-research/rrsi; and nanoRSI issues, PRs, CI and security endpoints.
+- nanoRSI has 0 open issues/PRs and the latest three main CI runs are green. GitHub security alert endpoints returned 401 in this unauthenticated check, so secret scanning, code scanning and Dependabot status remain unverified today. EvoSkillBank remains blocked by OpenReview browser verification. No upstream code was copied and no model/API request or paid run was made.
+
 ## 2026-09-28
 
 **New entries**

@@ -592,7 +592,7 @@
 
 **Source figure / official image** — Figure 2: RSIAgent method overview - broad recursive self-exploration banks per-group experience memories, deep recursive self-exploration refines them on the target task with verifier feedback, and the frozen memory is reused at test time. · Figure 2 · [source](https://arxiv.org/html/2609.15364v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-28.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-29.
 
 **Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
 

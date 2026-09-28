@@ -592,7 +592,7 @@
 
 **原文图／官方图片** — 图 2：RSIAgent 方法总览——广度递归自探索按任务组沉淀经验记忆，深度递归自探索在目标任务上借验证器反馈精炼，冻结后的记忆供测试期复用。 · Figure 2 · [source](https://arxiv.org/html/2609.15364v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-28.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-29.
 
 **开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/AetherLabsAI/RSIAgent)
 

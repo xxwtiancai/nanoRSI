@@ -555,7 +555,7 @@
 
 **Source figure / official image** — RRSI's original Figure 2: proposal-side regularization limits and explores harness edits, while selection-side regularization screens leakage, noise, cost and structural persistence before an edit becomes incumbent state. · Figure 2 (pipeline.png): proposal-side and selection-side regularization · [source](https://arxiv.org/html/2609.24972v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-28.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-29.
 
 **Open code / weights / data links** — [Google Research repository](https://github.com/google-research/rrsi) · [Repository license](https://raw.githubusercontent.com/google-research/rrsi/main/LICENSE)
 
@@ -1099,7 +1099,7 @@
 
 **Source figure / official image** — AIDE²'s original Figure 1: the outer loop rewrites a complete research agent, the inner loop grades candidates on AI R&D tasks, and a private held-out grade decides whether the rewrite becomes incumbent. · Figure 1 (figures/fig_system_diagram_light.pdf): one step of recursive self-improvement · [source](https://arxiv.org/html/2609.26457v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-28.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-29.
 
 **Open code / weights / data links** — [Related AIDE predecessor repository](https://github.com/WecoAI/aideml) · [Related AIDE predecessor license](https://raw.githubusercontent.com/WecoAI/aideml/main/LICENSE)
 
@@ -1313,7 +1313,7 @@
 
 **Source figure / official image** — Figure 1: ShinkaEvolve archive, rejection sampling, program mutation and fitness evaluation loop. · Figure 1 · [source](https://arxiv.org/html/2509.19349v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-13.
+**nanoRSI reproduction** — not-run. Last source check: 2026-09-29.
 
 **Open code / weights / data links** — [Official code and license](https://github.com/SakanaAI/ShinkaEvolve)
 

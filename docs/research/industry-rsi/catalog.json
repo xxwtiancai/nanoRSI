@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-28",
-  "window_start": "2025-09-28",
+  "as_of": "2026-09-29",
+  "window_start": "2025-09-29",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
       "additional_events": [],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-28",
+      "last_verified": "2026-09-29",
       "id": "rrsi-regularized-harness-evolution",
       "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
       "organizations": [
@@ -2967,7 +2967,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-13",
+      "last_verified": "2026-09-29",
       "additional_events": [],
       "visual": {
         "kind": "paper-figure",
@@ -3687,7 +3687,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-28",
+      "last_verified": "2026-09-29",
       "visual": {
         "kind": "paper-figure",
         "asset": "assets/paper-figures/rsiagent-autonomous-exploration.png",
@@ -7772,7 +7772,7 @@
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-28"
+      "last_verified": "2026-09-29"
     },
     {
       "id": "anthropic-when-ai-builds-itself",
