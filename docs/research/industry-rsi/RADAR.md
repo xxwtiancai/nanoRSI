@@ -4,6 +4,26 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-10-07
+
+**New entries**
+
+- [si2ca-recursive-trajectory-curation](agent-code.md#si2ca-recursive-trajectory-curation) — the Self-Improving-Coding-Agents project publicly released code and trajectory data on 2026-09-11; its official Figure 1 shows turn-level self-judgement/self-likelihood selection plus a recursive strategy-discovery loop. It is classified as a direct bounded loop over trajectory/strategy state, not model-weight RSI.
+
+**Updated entries**
+
+- None. The catalogue window advances to 2025-10-07 → 2026-10-07; prior records remain retained.
+
+**Signals for engineering**
+
+- SI2CA's portable idea is the inspectable outer strategy-discovery contract: compare no search, fixed strategy and recursive branch-timing proposals under fixed executor/evaluator, matched calls/tokens/seeds, and keep accepted/rejected strategies separate from held-out success and trajectory length. This extends ADOPTION item 2; no SI2CA training or serving stack was copied.
+- RRSI remains the higher-priority selector study: its repeated-frozen noise band, matched budget points, held-out panel and false-block accounting are still not frozen, so no default selector change is justified.
+
+**Coverage & gaps**
+
+- Rechecked official OpenAI, Anthropic and Google DeepMind research indexes; the Anthropic September 25 Nine Loops page and October 1 Claude-shaped science page; arXiv/GitHub leads for SI2CA, SkillRL, SESA, ScienceBuddy, A-Evolve and tracked RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent and google-research/rrsi.
+- SI2CA code, Apache-2.0 license, method PDF/figure, README tables and CC-BY-4.0 Hugging Face trajectory data were opened and checked. No new nanoRSI runtime change, dependency, model/API request, upstream execution, training run or paid request was made. OpenReview provenance for EvoSkillBank remains unavailable; code scanning still has no analysis and Dependabot remains disabled.
+
 ## 2026-09-29
 
 **New entries**

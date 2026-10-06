@@ -7,7 +7,7 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [技能文件优化与技能库](#family-skill-file-optimization) | 17 |
-| [Harness 搜索与进化](#family-harness-search) | 14 |
+| [Harness 搜索与进化](#family-harness-search) | 15 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 6 |
 | [程序进化与进化搜索](#family-program-evolution) | 6 |
 | [反馈审查与编排](#family-feedback-orchestration) | 4 |
@@ -529,7 +529,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (14)
+## Harness 搜索与进化 (15)
 
 <a id="rrsi-regularized-harness-evolution"></a>
 
@@ -650,6 +650,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.14857) · [arXiv HTML v1](https://arxiv.org/html/2609.14857v1)
+
+<a id="si2ca-recursive-trajectory-curation"></a>
+
+### (Self-Improving)² Coding Agents: Curating High-Quality Trajectories via Recursive Self-Improvement
+
+**2026-09-11** · release · 直接有界闭环
+
+**日期说明** — 官方仓库 README 将代码与轨迹数据公开日期标为 2026-09-11。仓库提供方法 PDF 并报告论文表格，但未核验到独立的 arXiv 或出版方记录；因此本条使用有日期的公开发布日，不虚构论文日期。
+
+**机构关系** — 公开材料标识了 Self-Improving-Coding-Agents 项目及其贡献者，但没有说明独立的公司或大学归属。机构字段有意保留这一不确定性。
+
+**改变对象与反馈复用** — 在 turn 层，冻结的后端模型生成多个候选动作，并用 self-judgement（基于特权信息的评分表加权打分）或 self-likelihood（长度归一化条件似然）选择动作。独立的递归策略发现环读取历史提案、策略、结果及接受/拒绝候选，提出何时以及如何分支，在验证任务上评估策略，并且只有在准确率提高或准确率相当但轨迹更短时保留。后续 SFT 阶段使用筛选后的轨迹；这里改变的是持久轨迹/策略状态，不是自主更新模型权重的闭环。
+
+**作者报告结果** — README 报告的作者结果包括 SWE-bench Verified（500 题）：Qwen3.5-35B-A3B 的 self-judgement 为 70.0%，标准组为 65.8%（+4.2），self-likelihood 为 66.8%；Qwen3.5-122B-A10B 的 self-judgement 为 71.0%，标准组为 67.0%（+4.0），self-likelihood 为 69.8%。SWE-bench Pro（731 题）上，122B self-judgement 为 58.5%，标准组为 48.0%（+10.5）。DeepSWE（113 题）上，四次 Terra 运行报告 67.5±2.5%，标准组为 64.4±2.0%，平均 turn 数为 52.3 对 59.3。这些是项目报告结果，不是 nanoRSI 复现结果。
+
+**证据边界** — 公开来源是带方法图和 README 表格的发布仓库，而不是已单独核验的论文成品。完整基准运行需要模型端点或大型本地模型、兼容 Docker 的任务沙箱、外部基准输入和大量计算；README 中 DeepSWE 的 Terra 比较使用四次独立运行，而 Luna 只有一次。因此这些增益不能证明通用 RSI、模型权重自改进或向 nanoRSI 的迁移。
+
+**代码／权重／数据／许可** — 代码：Self-Improving-Coding-Agents/SI2CA 公开，Apache-2.0。权重：未核验到项目自有 checkpoint 发布；说明使用外部 Qwen 权重或 API/本地服务端点。数据：SI2CA-Training-Trajectories 在 Hugging Face 公开，数据卡声明 CC-BY-4.0；基准任务镜像和源输入仍是外部资源或另行许可。代码与数据许可彼此独立。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 只复用可检查的部分：在 nanoRSI 现有 evidence ledger 上增加有界策略发现臂，固定执行器、评估器和冻结留出任务。在匹配调用、token 和种子的条件下比较无策略搜索、固定策略及递归提出分支时机三组；记录每个策略的接受/拒绝，以及轨迹变短时留出集成功率是否保持。不引入 SI2CA 的训练栈，也不把其基准增益当作本地证据。
+
+![SI2CA 官方 Figure 1：turn 层 self-judgement/self-likelihood 选择，以及围绕历史、提案、评估和接受/拒绝结果运行的外层递归策略发现环。](assets/paper-figures/si2ca-method.png)
+
+**原文图／官方图片** — SI2CA 官方 Figure 1：turn 层 self-judgement/self-likelihood 选择，以及围绕历史、提案、评估和接受/拒绝结果运行的外层递归策略发现环。 · README Figure 1; linked editable method overview PDF · [source](https://github.com/Self-Improving-Coding-Agents/SI2CA/blob/main/docs/static/images/method.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-07.
+
+**开源代码／权重／数据链接** — [Official repository README](https://github.com/Self-Improving-Coding-Agents/SI2CA) · [Repository license](https://raw.githubusercontent.com/Self-Improving-Coding-Agents/SI2CA/main/LICENSE) · [Training trajectories dataset](https://huggingface.co/datasets/Self-Improving-Coding-Agents/SI2CA-Training-Trajectories)
+
+**一手来源** — [Official repository README](https://github.com/Self-Improving-Coding-Agents/SI2CA) · [Method overview PDF](https://raw.githubusercontent.com/Self-Improving-Coding-Agents/SI2CA/main/data/method_editable.pdf) · [Repository license](https://raw.githubusercontent.com/Self-Improving-Coding-Agents/SI2CA/main/LICENSE) · [Training trajectories dataset](https://huggingface.co/datasets/Self-Improving-Coding-Agents/SI2CA-Training-Trajectories) · [Dataset card](https://huggingface.co/datasets/Self-Improving-Coding-Agents/SI2CA-Training-Trajectories#dataset-card-for-si2ca-training-trajectories)
 
 <a id="bytedance-harnessdev"></a>
 

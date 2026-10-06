@@ -1,9 +1,89 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-29",
-  "window_start": "2025-09-29",
+  "as_of": "2026-10-07",
+  "window_start": "2025-10-07",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
+    {
+      "additional_events": [],
+      "local_reproduction": "not-run",
+      "last_verified": "2026-10-07",
+      "id": "si2ca-recursive-trajectory-curation",
+      "title": "(Self-Improving)² Coding Agents: Curating High-Quality Trajectories via Recursive Self-Improvement",
+      "organizations": [
+        "Self-Improving-Coding-Agents project"
+      ],
+      "category": "agent-code",
+      "relationship": "direct-loop",
+      "family": "harness-search",
+      "published": "2026-09-11",
+      "kind": "release",
+      "date_note": {
+        "en": "The official repository README dates the public code and trajectory-data release to 2026-09-11. The repository provides a method PDF and reports paper tables, but no separately verified arXiv or publisher record was found; this entry therefore uses the dated public release rather than inventing a paper date.",
+        "zh": "官方仓库 README 将代码与轨迹数据公开日期标为 2026-09-11。仓库提供方法 PDF 并报告论文表格，但未核验到独立的 arXiv 或出版方记录；因此本条使用有日期的公开发布日，不虚构论文日期。"
+      },
+      "affiliation": {
+        "en": "The public materials identify the Self-Improving-Coding-Agents project and contributors, but do not state a separate company or university affiliation. The organization field intentionally preserves that uncertainty.",
+        "zh": "公开材料标识了 Self-Improving-Coding-Agents 项目及其贡献者，但没有说明独立的公司或大学归属。机构字段有意保留这一不确定性。"
+      },
+      "mechanism": {
+        "en": "At the turn level, a frozen backend model generates multiple candidate actions and selects them with self-judgement (rubric-weighted scoring with privileged information) or self-likelihood (length-normalized conditional likelihood). A separate recursive strategy-discovery loop reads past proposals, strategies, outcomes and accepted/rejected candidates, proposes when and how to branch, evaluates the strategy on validation tasks, and retains it only when accuracy improves or trajectories become shorter at comparable accuracy. The later SFT stage uses curated trajectories; this is persistent trajectory/strategy state, not an autonomous model-weight update loop.",
+        "zh": "在 turn 层，冻结的后端模型生成多个候选动作，并用 self-judgement（基于特权信息的评分表加权打分）或 self-likelihood（长度归一化条件似然）选择动作。独立的递归策略发现环读取历史提案、策略、结果及接受/拒绝候选，提出何时以及如何分支，在验证任务上评估策略，并且只有在准确率提高或准确率相当但轨迹更短时保留。后续 SFT 阶段使用筛选后的轨迹；这里改变的是持久轨迹/策略状态，不是自主更新模型权重的闭环。"
+      },
+      "result": {
+        "en": "The README reports author results on SWE-bench Verified (500 tasks): Qwen3.5-35B-A3B self-judgement 70.0% versus 65.8% standard (+4.2) and self-likelihood 66.8%; Qwen3.5-122B-A10B self-judgement 71.0% versus 67.0% (+4.0) and self-likelihood 69.8%. On SWE-bench Pro (731 tasks), 122B self-judgement is 58.5% versus 48.0% (+10.5). On DeepSWE (113 tasks), four Terra runs report 67.5±2.5% versus 64.4±2.0% standard, with mean turns 52.3 versus 59.3. These are project-reported results, not nanoRSI reproductions.",
+        "zh": "README 报告的作者结果包括 SWE-bench Verified（500 题）：Qwen3.5-35B-A3B 的 self-judgement 为 70.0%，标准组为 65.8%（+4.2），self-likelihood 为 66.8%；Qwen3.5-122B-A10B 的 self-judgement 为 71.0%，标准组为 67.0%（+4.0），self-likelihood 为 69.8%。SWE-bench Pro（731 题）上，122B self-judgement 为 58.5%，标准组为 48.0%（+10.5）。DeepSWE（113 题）上，四次 Terra 运行报告 67.5±2.5%，标准组为 64.4±2.0%，平均 turn 数为 52.3 对 59.3。这些是项目报告结果，不是 nanoRSI 复现结果。"
+      },
+      "limits": {
+        "en": "The public source is a release repository with a method diagram and README tables rather than a separately verified paper artifact. Full benchmark execution needs model endpoints or large self-hosted models, Docker-compatible task sandboxes, external benchmark inputs and substantial compute; the README's DeepSWE comparison uses four independent runs for Terra but one run for Luna. The reported gains therefore do not establish general RSI, model-weight self-improvement or transfer to nanoRSI.",
+        "zh": "公开来源是带方法图和 README 表格的发布仓库，而不是已单独核验的论文成品。完整基准运行需要模型端点或大型本地模型、兼容 Docker 的任务沙箱、外部基准输入和大量计算；README 中 DeepSWE 的 Terra 比较使用四次独立运行，而 Luna 只有一次。因此这些增益不能证明通用 RSI、模型权重自改进或向 nanoRSI 的迁移。"
+      },
+      "availability": {
+        "en": "Code: public in Self-Improving-Coding-Agents/SI2CA under Apache-2.0. Weights: no project checkpoint release was verified; the instructions use external Qwen checkpoints or API/self-hosted endpoints. Data: SI2CA-Training-Trajectories is public on Hugging Face and its dataset card declares CC-BY-4.0; benchmark task images and source inputs remain external or separately licensed. License: code and data terms are distinct.",
+        "zh": "代码：Self-Improving-Coding-Agents/SI2CA 公开，Apache-2.0。权重：未核验到项目自有 checkpoint 发布；说明使用外部 Qwen 权重或 API/本地服务端点。数据：SI2CA-Training-Trajectories 在 Hugging Face 公开，数据卡声明 CC-BY-4.0；基准任务镜像和源输入仍是外部资源或另行许可。代码与数据许可彼此独立。"
+      },
+      "application": {
+        "en": "Reuse only the inspectable part: add a bounded strategy-discovery arm to nanoRSI's existing evidence ledger, with fixed executor/evaluator and frozen held-out tasks. Compare no strategy search, fixed strategy and recursive proposal of branch timing under matched calls, tokens and seeds; record every accepted/rejected strategy and whether shorter traces preserve held-out success. Do not import SI2CA's training stack or call the reported benchmark gains local evidence.",
+        "zh": "只复用可检查的部分：在 nanoRSI 现有 evidence ledger 上增加有界策略发现臂，固定执行器、评估器和冻结留出任务。在匹配调用、token 和种子的条件下比较无策略搜索、固定策略及递归提出分支时机三组；记录每个策略的接受/拒绝，以及轨迹变短时留出集成功率是否保持。不引入 SI2CA 的训练栈，也不把其基准增益当作本地证据。"
+      },
+      "sources": [
+        {
+          "label": "Official repository README",
+          "url": "https://github.com/Self-Improving-Coding-Agents/SI2CA",
+          "kind": "repository"
+        },
+        {
+          "label": "Method overview PDF",
+          "url": "https://raw.githubusercontent.com/Self-Improving-Coding-Agents/SI2CA/main/data/method_editable.pdf",
+          "kind": "official-report"
+        },
+        {
+          "label": "Repository license",
+          "url": "https://raw.githubusercontent.com/Self-Improving-Coding-Agents/SI2CA/main/LICENSE",
+          "kind": "license"
+        },
+        {
+          "label": "Training trajectories dataset",
+          "url": "https://huggingface.co/datasets/Self-Improving-Coding-Agents/SI2CA-Training-Trajectories",
+          "kind": "repository"
+        },
+        {
+          "label": "Dataset card",
+          "url": "https://huggingface.co/datasets/Self-Improving-Coding-Agents/SI2CA-Training-Trajectories#dataset-card-for-si2ca-training-trajectories",
+          "kind": "official-report"
+        }
+      ],
+      "visual": {
+        "kind": "official-project-figure",
+        "asset": "assets/paper-figures/si2ca-method.png",
+        "source_url": "https://github.com/Self-Improving-Coding-Agents/SI2CA/blob/main/docs/static/images/method.png",
+        "locator": "README Figure 1; linked editable method overview PDF",
+        "caption": {
+          "en": "Official SI2CA Figure 1: turn-level self-judgement/self-likelihood selection and the outer recursive strategy-discovery loop over history, proposals, evaluation and accepted/rejected outcomes.",
+          "zh": "SI2CA 官方 Figure 1：turn 层 self-judgement/self-likelihood 选择，以及围绕历史、提案、评估和接受/拒绝结果运行的外层递归策略发现环。"
+        }
+      }
+    },
     {
       "additional_events": [],
       "local_reproduction": "not-run",

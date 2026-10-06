@@ -1,5 +1,16 @@
 [
  {
+  "id": "si2ca-recursive-trajectory-curation",
+  "kind": "official-project-figure",
+  "asset": "assets/paper-figures/si2ca-method.png",
+  "source_url": "https://github.com/Self-Improving-Coding-Agents/SI2CA/blob/main/docs/static/images/method.png",
+  "locator": "README Figure 1; linked editable method overview PDF",
+  "caption": {
+   "en": "Official SI2CA Figure 1: turn-level self-judgement/self-likelihood selection and the outer recursive strategy-discovery loop over history, proposals, evaluation and accepted/rejected outcomes.",
+   "zh": "SI2CA 官方 Figure 1：turn 层 self-judgement/self-likelihood 选择，以及围绕历史、提案、评估和接受/拒绝结果运行的外层递归策略发现环。"
+  }
+ },
+ {
   "id": "human-agent-society-reef",
   "kind": "official-report-figure",
   "asset": "assets/paper-figures/reef-continual-loop.svg",

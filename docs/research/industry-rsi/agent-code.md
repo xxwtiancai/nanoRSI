@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 17 |
-| [Harness search & evolution](#family-harness-search) | 14 |
+| [Harness search & evolution](#family-harness-search) | 15 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 6 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 6 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 4 |
@@ -529,7 +529,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (14)
+## Harness search & evolution (15)
 
 <a id="rrsi-regularized-harness-evolution"></a>
 
@@ -650,6 +650,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.14857) · [arXiv HTML v1](https://arxiv.org/html/2609.14857v1)
+
+<a id="si2ca-recursive-trajectory-curation"></a>
+
+### (Self-Improving)² Coding Agents: Curating High-Quality Trajectories via Recursive Self-Improvement
+
+**2026-09-11** · release · Direct bounded loop
+
+**Publication date** — The official repository README dates the public code and trajectory-data release to 2026-09-11. The repository provides a method PDF and reports paper tables, but no separately verified arXiv or publisher record was found; this entry therefore uses the dated public release rather than inventing a paper date.
+
+**Institutional relationship** — The public materials identify the Self-Improving-Coding-Agents project and contributors, but do not state a separate company or university affiliation. The organization field intentionally preserves that uncertainty.
+
+**What changes and how feedback is reused** — At the turn level, a frozen backend model generates multiple candidate actions and selects them with self-judgement (rubric-weighted scoring with privileged information) or self-likelihood (length-normalized conditional likelihood). A separate recursive strategy-discovery loop reads past proposals, strategies, outcomes and accepted/rejected candidates, proposes when and how to branch, evaluates the strategy on validation tasks, and retains it only when accuracy improves or trajectories become shorter at comparable accuracy. The later SFT stage uses curated trajectories; this is persistent trajectory/strategy state, not an autonomous model-weight update loop.
+
+**Author-reported result** — The README reports author results on SWE-bench Verified (500 tasks): Qwen3.5-35B-A3B self-judgement 70.0% versus 65.8% standard (+4.2) and self-likelihood 66.8%; Qwen3.5-122B-A10B self-judgement 71.0% versus 67.0% (+4.0) and self-likelihood 69.8%. On SWE-bench Pro (731 tasks), 122B self-judgement is 58.5% versus 48.0% (+10.5). On DeepSWE (113 tasks), four Terra runs report 67.5±2.5% versus 64.4±2.0% standard, with mean turns 52.3 versus 59.3. These are project-reported results, not nanoRSI reproductions.
+
+**Evidence limits** — The public source is a release repository with a method diagram and README tables rather than a separately verified paper artifact. Full benchmark execution needs model endpoints or large self-hosted models, Docker-compatible task sandboxes, external benchmark inputs and substantial compute; the README's DeepSWE comparison uses four independent runs for Terra but one run for Luna. The reported gains therefore do not establish general RSI, model-weight self-improvement or transfer to nanoRSI.
+
+**Code / weights / data / license** — Code: public in Self-Improving-Coding-Agents/SI2CA under Apache-2.0. Weights: no project checkpoint release was verified; the instructions use external Qwen checkpoints or API/self-hosted endpoints. Data: SI2CA-Training-Trajectories is public on Hugging Face and its dataset card declares CC-BY-4.0; benchmark task images and source inputs remain external or separately licensed. License: code and data terms are distinct.
+
+**Possible nanoRSI experiment — not implemented here** — Reuse only the inspectable part: add a bounded strategy-discovery arm to nanoRSI's existing evidence ledger, with fixed executor/evaluator and frozen held-out tasks. Compare no strategy search, fixed strategy and recursive proposal of branch timing under matched calls, tokens and seeds; record every accepted/rejected strategy and whether shorter traces preserve held-out success. Do not import SI2CA's training stack or call the reported benchmark gains local evidence.
+
+![Official SI2CA Figure 1: turn-level self-judgement/self-likelihood selection and the outer recursive strategy-discovery loop over history, proposals, evaluation and accepted/rejected outcomes.](assets/paper-figures/si2ca-method.png)
+
+**Source figure / official image** — Official SI2CA Figure 1: turn-level self-judgement/self-likelihood selection and the outer recursive strategy-discovery loop over history, proposals, evaluation and accepted/rejected outcomes. · README Figure 1; linked editable method overview PDF · [source](https://github.com/Self-Improving-Coding-Agents/SI2CA/blob/main/docs/static/images/method.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-07.
+
+**Open code / weights / data links** — [Official repository README](https://github.com/Self-Improving-Coding-Agents/SI2CA) · [Repository license](https://raw.githubusercontent.com/Self-Improving-Coding-Agents/SI2CA/main/LICENSE) · [Training trajectories dataset](https://huggingface.co/datasets/Self-Improving-Coding-Agents/SI2CA-Training-Trajectories)
+
+**Primary sources** — [Official repository README](https://github.com/Self-Improving-Coding-Agents/SI2CA) · [Method overview PDF](https://raw.githubusercontent.com/Self-Improving-Coding-Agents/SI2CA/main/data/method_editable.pdf) · [Repository license](https://raw.githubusercontent.com/Self-Improving-Coding-Agents/SI2CA/main/LICENSE) · [Training trajectories dataset](https://huggingface.co/datasets/Self-Improving-Coding-Agents/SI2CA-Training-Trajectories) · [Dataset card](https://huggingface.co/datasets/Self-Improving-Coding-Agents/SI2CA-Training-Trajectories#dataset-card-for-si2ca-training-trajectories)
 
 <a id="bytedance-harnessdev"></a>
 
