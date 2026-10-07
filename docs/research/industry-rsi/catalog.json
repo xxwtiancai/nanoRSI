@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-07",
-  "window_start": "2025-10-07",
+  "as_of": "2026-10-08",
+  "window_start": "2025-10-08",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -10700,6 +10700,74 @@
           "zh": "PenguinHarness 自进化引擎海报：跑基准、找失分点、发布 N+1 版，配快照与可检查的 trace。"
         }
       }
+    },
+    {
+      "id": "rsi-master-autonomous-model-improvement",
+      "title": "RSI-Master: Structuring Experiments to Guide Autonomous Model Improvement",
+      "organizations": [
+        "Shanghai Jiao Tong University",
+        "University of Science and Technology of China",
+        "Shanghai AI Laboratory",
+        "Zhejiang University",
+        "University of California, Berkeley"
+      ],
+      "category": "agent-code",
+      "family": "harness-search",
+      "relationship": "direct-loop",
+      "published": "2026-09-28",
+      "kind": "paper",
+      "date_note": {
+        "en": "arXiv v1 was first publicly announced on 2026-09-28 (2609.35561). The catalogue uses that first-public date rather than later indexing or revision dates.",
+        "zh": "arXiv v1 于 2026-09-28 首次公开（2609.35561）。本条使用首发日期，不把后续索引或修订日期当作新成果日期。"
+      },
+      "affiliation": {
+        "en": "The paper's author affiliations span Shanghai Jiao Tong University, University of Science and Technology of China, Shanghai AI Laboratory, Zhejiang University and UC Berkeley; the catalogue records the paper affiliations rather than treating the base model or benchmark as an institutional relationship.",
+        "zh": "论文作者归属包括上海交通大学、中国科学技术大学、上海人工智能实验室、浙江大学与加州大学伯克利分校；本条记录论文归属，不把基础模型或基准使用关系当作机构关系。"
+      },
+      "mechanism": {
+        "en": "RSI-Master changes the research harness around a frozen or separately trained model: an Experiment OS restricts low-level actions to inspectable CLI operations and structured artifacts, while a reviewer-guided research DAG lets workers explore distinct post-training directions and reviewers compare evidence before adding workers or promoting a recipe. The changing object is the experiment/research process and its persistent evidence, not an autonomous general model-weight loop.",
+        "zh": "RSI-Master 改变的是围绕冻结或另行训练模型的研究 harness：Experiment OS 将低层操作限制为可检查的 CLI 动作与结构化产物，reviewer-guided research DAG 让 worker 探索不同后训练方向，并由 reviewer 在增加 worker 或提升配方前比较证据。改变对象是实验/研究流程及其持久证据，不是通用的自主模型权重闭环。"
+      },
+      "result": {
+        "en": "On PostTrainBench with Qwen3-4B-Base, the paper reports 54.49 average score versus 46.53 for its strongest agent baseline and a 0.0% hacking rate. At 35B, it reports 41.21 versus 37.36 for a human-developed Instruct model on LiveCodeBench-v6, plus gains on SciCode and a nonzero HorizonMath result. These are author-reported results under the paper's model, benchmark and compute conditions, not nanoRSI reproductions.",
+        "zh": "在 Qwen3-4B-Base 的 PostTrainBench 上，论文报告平均分 54.49，对比最强 agent 基线 46.53，hacking rate 为 0.0%。35B 规模上，论文报告 LiveCodeBench-v6 为 41.21，对比人工开发 Instruct 模型 37.36，并在 SciCode 上有提升、在 HorizonMath 上取得非零结果。这些是论文在其模型、基准与计算条件下的作者结果，不是 nanoRSI 复现。"
+      },
+      "limits": {
+        "en": "The abstract and HTML expose the method and headline metrics, but no independently verified official code repository, released weights or redistributable benchmark-data bundle was located in this pass. The reported hacking rate depends on the authors' action restrictions and evaluator; the paper does not establish general RSI or transfer to nanoRSI. Full reproduction would require the named models, post-training datasets, benchmark environments and substantial compute.",
+        "zh": "本次核验可从摘要与 HTML 读取方法和主要指标，但未找到可独立核验的官方代码仓库、发布权重或可再分发的基准数据包。报告的 hacking rate 依赖作者的动作限制与评测器；论文不能证明通用 RSI 或向 nanoRSI 迁移。完整复现需要指定模型、后训练数据、基准环境和大量计算。"
+      },
+      "availability": {
+        "en": "Code: no official public repository verified. Weights: no RSI-Master checkpoint release verified. Data: no bundled PostTrainBench/HorizonMath data release verified; benchmark sources remain external. License: no project code or data license could be audited because no official repository/data bundle was located.",
+        "zh": "代码：未核验到官方公开仓库。权重：未核验到 RSI-Master checkpoint 发布。数据：未核验到随项目发布的 PostTrainBench/HorizonMath 数据包，基准来源仍是外部资源。许可：由于未找到官方代码或数据包，无法审计项目代码/数据许可。"
+      },
+      "application": {
+        "en": "Reuse only the portable control pattern: add an opt-in, offline research-DAG/evidence-ledger comparison around nanoRSI's existing evaluator. Compare a single direction, fixed multi-direction schedule and reviewer-gated direction expansion under matched calls, tokens, seeds and held-out tasks; record every worker proposal, reviewer decision, action restriction and rejected promotion. Do not claim the paper's benchmark gains locally and do not import unlicensed code.",
+        "zh": "只复用可移植的控制模式：在 nanoRSI 现有评测器外增加可选、离线的 research-DAG/evidence-ledger 对照。在匹配调用、token、种子和留出任务下比较单一方向、固定多方向调度与 reviewer 闸门扩展方向；记录每个 worker 提案、reviewer 决策、动作限制和被拒提升。不把论文基准增益写成本地结果，也不引入未获许可的代码。"
+      },
+      "sources": [
+        {
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2609.35561",
+          "kind": "paper"
+        },
+        {
+          "label": "arXiv HTML v2 and Figure 2",
+          "url": "https://arxiv.org/html/2609.35561v2",
+          "kind": "paper"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/rsi-master-overview.png",
+        "source_url": "https://arxiv.org/html/2609.35561v2",
+        "locator": "Figure 2: RSI-Master methodology, Research Evolution and Experiment OS",
+        "caption": {
+          "en": "RSI-Master's original Figure 2: a reviewer-guided research DAG is coupled to an Experiment OS with restricted actions and structured training, evidence, evaluation and review artifacts.",
+          "zh": "RSI-Master 原始 Figure 2：reviewer 引导的 research DAG 与 Experiment OS 相连，后者限制动作并生成结构化训练、证据、评测和审查产物。"
+        }
+      },
+      "last_verified": "2026-10-08",
+      "local_reproduction": "not-run"
     }
   ]
 }

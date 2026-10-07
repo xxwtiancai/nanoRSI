@@ -6,6 +6,7 @@
 
 | 日期 | 工作 | 已核验代码／权重／数据 | 许可与证据说明 |
 | --- | --- | --- | --- |
+| 2026-09-28 | [RSI-Master: Structuring Experiments to Guide Autonomous Model Improvement](agent-code.zh-CN.md#rsi-master-autonomous-model-improvement) | 未核验到公开资产链接 | 代码：未核验到官方公开仓库。权重：未核验到 RSI-Master checkpoint 发布。数据：未核验到随项目发布的 PostTrainBench/HorizonMath 数据包，基准来源仍是外部资源。许可：由于未找到官方代码或数据包，无法审计项目代码/数据许可。 |
 | 2026-09-21 | [RRSI: Regularized Recursive Self-Improvement of Agent Harnesses](agent-code.zh-CN.md#rrsi-regularized-harness-evolution) | [Google Research repository](https://github.com/google-research/rrsi) · [Repository license](https://raw.githubusercontent.com/google-research/rrsi/main/LICENSE) | 代码：google-research/rrsi 公开，Apache-2.0，包含搜索核心与领域适配器。权重：未发布；实验调用托管的 Claude/Gemini 模型。数据：基准来源和环境 checkout 为外部资源，以固定提交或安装说明提供，而非可再分发的数据包。许可：仓库为 Apache-2.0；第三方组件保留各自许可。 |
 | 2026-09-18 | [Reflective Recovery: A Self-Supervised Method for Reasoning by Learning from Mistakes](parameter-learning.zh-CN.md#reflective-recovery) | 未核验到公开资产链接 | 核验时未找到代码。 |
 | 2026-09-17 | [SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness](agent-code.zh-CN.md#solpi-recursive-autoresearch-loops) | [Code repository](https://github.com/NVlabs/SoL-Pi) | MIT 代码位于 github.com/NVlabs/SoL-Pi（核验时 2,244 星）与项目页 nvlabs.github.io/SoL-Pi/。 |

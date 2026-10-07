@@ -7,7 +7,7 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [技能文件优化与技能库](#family-skill-file-optimization) | 17 |
-| [Harness 搜索与进化](#family-harness-search) | 15 |
+| [Harness 搜索与进化](#family-harness-search) | 16 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 6 |
 | [程序进化与进化搜索](#family-program-evolution) | 6 |
 | [反馈审查与编排](#family-feedback-orchestration) | 4 |
@@ -529,7 +529,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (15)
+## Harness 搜索与进化 (16)
+
+<a id="rsi-master-autonomous-model-improvement"></a>
+
+### RSI-Master: Structuring Experiments to Guide Autonomous Model Improvement
+
+**2026-09-28** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-09-28 首次公开（2609.35561）。本条使用首发日期，不把后续索引或修订日期当作新成果日期。
+
+**机构关系** — 论文作者归属包括上海交通大学、中国科学技术大学、上海人工智能实验室、浙江大学与加州大学伯克利分校；本条记录论文归属，不把基础模型或基准使用关系当作机构关系。
+
+**改变对象与反馈复用** — RSI-Master 改变的是围绕冻结或另行训练模型的研究 harness：Experiment OS 将低层操作限制为可检查的 CLI 动作与结构化产物，reviewer-guided research DAG 让 worker 探索不同后训练方向，并由 reviewer 在增加 worker 或提升配方前比较证据。改变对象是实验/研究流程及其持久证据，不是通用的自主模型权重闭环。
+
+**作者报告结果** — 在 Qwen3-4B-Base 的 PostTrainBench 上，论文报告平均分 54.49，对比最强 agent 基线 46.53，hacking rate 为 0.0%。35B 规模上，论文报告 LiveCodeBench-v6 为 41.21，对比人工开发 Instruct 模型 37.36，并在 SciCode 上有提升、在 HorizonMath 上取得非零结果。这些是论文在其模型、基准与计算条件下的作者结果，不是 nanoRSI 复现。
+
+**证据边界** — 本次核验可从摘要与 HTML 读取方法和主要指标，但未找到可独立核验的官方代码仓库、发布权重或可再分发的基准数据包。报告的 hacking rate 依赖作者的动作限制与评测器；论文不能证明通用 RSI 或向 nanoRSI 迁移。完整复现需要指定模型、后训练数据、基准环境和大量计算。
+
+**代码／权重／数据／许可** — 代码：未核验到官方公开仓库。权重：未核验到 RSI-Master checkpoint 发布。数据：未核验到随项目发布的 PostTrainBench/HorizonMath 数据包，基准来源仍是外部资源。许可：由于未找到官方代码或数据包，无法审计项目代码/数据许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 只复用可移植的控制模式：在 nanoRSI 现有评测器外增加可选、离线的 research-DAG/evidence-ledger 对照。在匹配调用、token、种子和留出任务下比较单一方向、固定多方向调度与 reviewer 闸门扩展方向；记录每个 worker 提案、reviewer 决策、动作限制和被拒提升。不把论文基准增益写成本地结果，也不引入未获许可的代码。
+
+![RSI-Master 原始 Figure 2：reviewer 引导的 research DAG 与 Experiment OS 相连，后者限制动作并生成结构化训练、证据、评测和审查产物。](assets/paper-figures/rsi-master-overview.png)
+
+**原文图／官方图片** — RSI-Master 原始 Figure 2：reviewer 引导的 research DAG 与 Experiment OS 相连，后者限制动作并生成结构化训练、证据、评测和审查产物。 · Figure 2: RSI-Master methodology, Research Evolution and Experiment OS · [source](https://arxiv.org/html/2609.35561v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-08.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.35561) · [arXiv HTML v2 and Figure 2](https://arxiv.org/html/2609.35561v2)
 
 <a id="rrsi-regularized-harness-evolution"></a>
 

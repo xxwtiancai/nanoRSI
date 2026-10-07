@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 17 |
-| [Harness search & evolution](#family-harness-search) | 15 |
+| [Harness search & evolution](#family-harness-search) | 16 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 6 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 6 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 4 |
@@ -529,7 +529,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (15)
+## Harness search & evolution (16)
+
+<a id="rsi-master-autonomous-model-improvement"></a>
+
+### RSI-Master: Structuring Experiments to Guide Autonomous Model Improvement
+
+**2026-09-28** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 was first publicly announced on 2026-09-28 (2609.35561). The catalogue uses that first-public date rather than later indexing or revision dates.
+
+**Institutional relationship** — The paper's author affiliations span Shanghai Jiao Tong University, University of Science and Technology of China, Shanghai AI Laboratory, Zhejiang University and UC Berkeley; the catalogue records the paper affiliations rather than treating the base model or benchmark as an institutional relationship.
+
+**What changes and how feedback is reused** — RSI-Master changes the research harness around a frozen or separately trained model: an Experiment OS restricts low-level actions to inspectable CLI operations and structured artifacts, while a reviewer-guided research DAG lets workers explore distinct post-training directions and reviewers compare evidence before adding workers or promoting a recipe. The changing object is the experiment/research process and its persistent evidence, not an autonomous general model-weight loop.
+
+**Author-reported result** — On PostTrainBench with Qwen3-4B-Base, the paper reports 54.49 average score versus 46.53 for its strongest agent baseline and a 0.0% hacking rate. At 35B, it reports 41.21 versus 37.36 for a human-developed Instruct model on LiveCodeBench-v6, plus gains on SciCode and a nonzero HorizonMath result. These are author-reported results under the paper's model, benchmark and compute conditions, not nanoRSI reproductions.
+
+**Evidence limits** — The abstract and HTML expose the method and headline metrics, but no independently verified official code repository, released weights or redistributable benchmark-data bundle was located in this pass. The reported hacking rate depends on the authors' action restrictions and evaluator; the paper does not establish general RSI or transfer to nanoRSI. Full reproduction would require the named models, post-training datasets, benchmark environments and substantial compute.
+
+**Code / weights / data / license** — Code: no official public repository verified. Weights: no RSI-Master checkpoint release verified. Data: no bundled PostTrainBench/HorizonMath data release verified; benchmark sources remain external. License: no project code or data license could be audited because no official repository/data bundle was located.
+
+**Possible nanoRSI experiment — not implemented here** — Reuse only the portable control pattern: add an opt-in, offline research-DAG/evidence-ledger comparison around nanoRSI's existing evaluator. Compare a single direction, fixed multi-direction schedule and reviewer-gated direction expansion under matched calls, tokens, seeds and held-out tasks; record every worker proposal, reviewer decision, action restriction and rejected promotion. Do not claim the paper's benchmark gains locally and do not import unlicensed code.
+
+![RSI-Master's original Figure 2: a reviewer-guided research DAG is coupled to an Experiment OS with restricted actions and structured training, evidence, evaluation and review artifacts.](assets/paper-figures/rsi-master-overview.png)
+
+**Source figure / official image** — RSI-Master's original Figure 2: a reviewer-guided research DAG is coupled to an Experiment OS with restricted actions and structured training, evidence, evaluation and review artifacts. · Figure 2: RSI-Master methodology, Research Evolution and Experiment OS · [source](https://arxiv.org/html/2609.35561v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-08.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.35561) · [arXiv HTML v2 and Figure 2](https://arxiv.org/html/2609.35561v2)
 
 <a id="rrsi-regularized-harness-evolution"></a>
 

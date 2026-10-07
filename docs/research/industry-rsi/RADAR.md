@@ -4,6 +4,26 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-10-08
+
+**New entries**
+
+- [rsi-master-autonomous-model-improvement](agent-code.md#rsi-master-autonomous-model-improvement) — RSI-Master (arXiv 2609.35561) couples an Experiment OS with a reviewer-guided research DAG. It is catalogued as a direct bounded loop over experiment/research state, not general model-weight RSI; no official code, weights or data bundle was verified.
+
+**Updated entries**
+
+- None. The catalogue window advances to 2025-10-08 → 2026-10-08; prior records remain retained.
+
+**Signals for engineering**
+
+- RSI-Master strengthens the existing self-built-harness/acceptance-audit direction: compare single-direction, fixed multi-direction and reviewer-gated direction expansion with matched calls, tokens, seeds and held-out tasks, while logging restricted actions, worker proposals, review decisions and rejected promotions. This remains a proposed offline experiment, not an implemented default.
+- ReSAIL and Turbo Harness remain research leads only in this pass: their primary papers were opened, but no independently verified official code/data/license bundle was found that justified a nanoRSI port.
+
+**Coverage & gaps**
+
+- Rechecked official OpenAI, Anthropic and Google DeepMind research indexes; arXiv HTML/abstracts for RSI-Master, ReSAIL and Turbo Harness; GitHub activity for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent and google-research/rrsi; and nanoRSI issues, PRs, CI and security endpoints.
+- RSI-Master Figure 2 was downloaded from the arXiv HTML source and visually inspected. No upstream code was copied, no model/API request or paid run was made, and no nanoRSI runtime/dependency change was justified. Security coverage remains incomplete where GitHub endpoints are unavailable or disabled.
+
 ## 2026-10-07
 
 **New entries**

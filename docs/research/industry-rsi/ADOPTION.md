@@ -1,5 +1,7 @@
 # From research to experiments / 从研究到可运行实验
 
+**2026-10-08 status note:** RSI-Master adds a useful audit boundary to the existing self-built-harness direction: restricted actions, reviewer decisions and rejected promotions must be recorded. This remains a proposed offline comparison; no default behavior changed and no local effect claim was added. / **2026-10-08 状态说明：** RSI-Master 为现有自建 harness 方向补充了审计边界：必须记录受限动作、reviewer 决策和被拒提升。这仍是拟议的离线对照；未改变默认行为，也未加入本地效果主张。
+
 [Research map](README.md) · [中文入口](README.zh-CN.md)
 
 These are **proposed experiments**, prioritized for nanoRSI's small inspectable core. This catalogue update does not implement them or reproduce the cited systems. Existing behavior is documented in the [multilevel guide](../../MULTILEVEL.md) / [中文指南](../../MULTILEVEL.zh-CN.md); existing [digits results](../../../examples/results/recursive-digits-v0.4.1/README.md) remain a separate local study.
