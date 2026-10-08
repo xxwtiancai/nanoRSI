@@ -460,5 +460,16 @@
    "en": "Figure 2: SkillAdam's rollout, persistent issue-tracker and volatility-driven edit-budget loop for stable skill updates.",
    "zh": "图 2：SkillAdam 通过 rollout、持久问题跟踪器和波动驱动编辑预算稳定技能更新的闭环。"
   }
+ },
+ {
+  "id": "sera-self-evaluating-recursive-agents",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/sera-training.png",
+  "source_url": "https://arxiv.org/html/2610.04902v1",
+  "locator": "Figure 2 (training.png): recursive execution, leaf-coverage credit and rubric-generation credit assignment",
+  "caption": {
+   "en": "SERA's original Figure 2: recursive execution and three alternating training stages assign credit to execution, delegation/leaf coverage and rubric generation.",
+   "zh": "SERA 原始 Figure 2：递归执行与三个交替训练阶段分别为执行、委派/叶覆盖率和 rubric 生成分配信用。"
+  }
  }
 ]

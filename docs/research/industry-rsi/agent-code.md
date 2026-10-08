@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 17 |
-| [Harness search & evolution](#family-harness-search) | 16 |
+| [Harness search & evolution](#family-harness-search) | 17 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 6 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 6 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 4 |
@@ -529,7 +529,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (16)
+## Harness search & evolution (17)
+
+<a id="sera-self-evaluating-recursive-agents"></a>
+
+### Self-Evaluating Recursive Agents
+
+**2026-10-04** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 was first publicly announced on 2026-10-04 (2610.04902). The authors' official implementation repository was pushed on 2026-10-03 and was checked separately as an implementation companion, not treated as an earlier paper date.
+
+**Institutional relationship** — The catalogue records the paper's author affiliations as listed in the arXiv source; the GitHub repository is identified by its author account and is not treated as an institutional endorsement.
+
+**What changes and how feedback is reused** — SERA trains one shared recursive policy to decompose tasks, execute subtasks and evaluate them. Before delegation, a parent writes a weighted rubric; rubric-generation training ranks verified successful and failed continuations, execution uses the learned rubric as a dense subtask signal, and leaf-coverage credit rewards useful decomposition. The changing object is the policy's recursive training and evaluation behavior, with rubric-guided tree selection as an inference-time reuse path; this is a bounded recursive-agent method, not evidence of unrestricted model self-replacement.
+
+**Author-reported result** — The paper reports three-run mean success rates of 74.31% on 632 TextCraft-Synth tasks and 65.07% on 1,400 TextWorld-Sync tasks for public checkpoints. It reports gains over recursive-agent baselines of 5.38 and 13.14 points on the two benchmarks, and a further 2.43-point TextWorld-Sync gain from rubric-guided inference-time tree selection. These are author-reported results under the paper's models, tasks, training and compute conditions, not nanoRSI reproductions.
+
+**Evidence limits** — The method depends on substantial training infrastructure (AReaL, Ray, PyTorch/vLLM and optional external judges), and the public repository has no root LICENSE file; only a third-party Platoon MIT notice was visible in the checked tree. The repository bundles benchmark files and links public Hugging Face checkpoints, but dataset/checkpoint terms are not a single project-wide license. The reported gains test recursive-agent training and selection on two task families, not general recursive self-improvement or transfer to nanoRSI.
+
+**Code / weights / data / license** — Code: official implementation at OliverLeeXZ/SERA, with no root project license verified; third-party notices are under Runtime/licenses. Weights: public TextCraft-step250 and TextWorld-step400 checkpoints are linked from the README at Hugging Face. Data: training, validation and evaluation files plus TextWorld generation code are bundled in the repository, with source notices retained where present. License: project-wide code/data licensing remains unverified; do not copy the implementation into nanoRSI without a license review.
+
+**Possible nanoRSI experiment — not implemented here** — Use only the portable control idea: for a future recursive-agent track, compare an external judge, a fixed rubric and a learned rubric under the same executor, task panel, seeds and token budget; separately log rubric-generation cost, decomposition/leaf coverage, execution success, selector decisions and held-out transfer. This can extend the existing verifier/control studies, but the AReaL training stack and SERA code are not a nanoRSI dependency and no default behavior changes here.
+
+![SERA's original Figure 2: recursive execution and three alternating training stages assign credit to execution, delegation/leaf coverage and rubric generation.](assets/paper-figures/sera-training.png)
+
+**Source figure / official image** — SERA's original Figure 2: recursive execution and three alternating training stages assign credit to execution, delegation/leaf coverage and rubric generation. · Figure 2 (training.png): recursive execution, leaf-coverage credit and rubric-generation credit assignment · [source](https://arxiv.org/html/2610.04902v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-09.
+
+**Open code / weights / data links** — [Official implementation](https://github.com/OliverLeeXZ/SERA) · [Third-party notices in implementation](https://github.com/OliverLeeXZ/SERA/tree/main/Runtime/licenses)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.04902) · [arXiv HTML v1 and Figure 2](https://arxiv.org/html/2610.04902v1) · [Official implementation](https://github.com/OliverLeeXZ/SERA) · [Official checkpoint page](https://huggingface.co/Litux12138/SERA) · [Third-party notices in implementation](https://github.com/OliverLeeXZ/SERA/tree/main/Runtime/licenses)
 
 <a id="rsi-master-autonomous-model-improvement"></a>
 

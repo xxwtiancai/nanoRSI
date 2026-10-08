@@ -4,6 +4,26 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-10-09
+
+**New entries**
+
+- [sera-self-evaluating-recursive-agents](agent-code.md#sera-self-evaluating-recursive-agents) — SERA (arXiv 2610.04902) trains one recursive policy to decompose, execute and evaluate subtasks with frozen pre-delegation rubrics, leaf-coverage credit and rubric-guided tree selection. It is catalogued as a direct bounded loop over recursive-agent training/evaluation state, not general model-weight RSI.
+
+**Updated entries**
+
+- [rrsi-regularized-harness-evolution](agent-code.md#rrsi-regularized-harness-evolution) — the official repository's open issues now document four concrete selector/reproducibility boundaries: cached evaluations must not override a recorded gate failure; text-only diffs must not receive structural novelty credit; zero token counts are observed zero cost rather than missing cost; and the published ablation controls/edit-budget endpoint remain underspecified. These are upstream open issues, not merged fixes or nanoRSI claims.
+
+**Signals for engineering**
+
+- SERA makes a bounded recursive-agent comparison more concrete: keep the executor and task panel fixed while comparing an external judge, a fixed rubric and a learned rubric, and log rubric-generation cost separately from leaf coverage, execution success and held-out transfer. This extends ADOPTION item 5; no AReaL stack or SERA code is being added to nanoRSI.
+- RRSI's open issues strengthen the reason to freeze an opt-in selector protocol before implementation: rejection state must be authoritative, cost accounting must distinguish `0` from missing, and structural credit must follow the actual diff rather than a declared label. These translate to nanoRSI evidence-ledger regression tests, not an upstream code port.
+
+**Coverage & gaps**
+
+- Rechecked official OpenAI, Anthropic and Google DeepMind research indexes; arXiv HTML/abstract for SERA; the official OliverLeeXZ/SERA repository, bundled data/runtime notices, Hugging Face checkpoint page and Figure 2; GitHub activity for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent and google-research/rrsi; and nanoRSI issues, PRs, CI and security endpoints.
+- SERA's root project license was not verified (only a third-party MIT notice was visible), so no implementation was copied. The paper figure was downloaded from the arXiv HTML source and visually inspected. No model/API request, upstream training run or paid run was made; SERA's checkpoints and benchmark results remain author materials, not local reproduction.
+
 ## 2026-10-08
 
 **New entries**
