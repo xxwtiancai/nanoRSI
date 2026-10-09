@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-09",
-  "window_start": "2025-10-09",
+  "as_of": "2026-10-10",
+  "window_start": "2025-10-10",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -7980,6 +7980,11 @@
           "label": "Hermes Agent v0.21.5 release",
           "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24",
           "kind": "official-report"
+        },
+        {
+          "label": "Hermes Agent v0.21.6 release",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.21.6",
+          "kind": "official-report"
         }
       ],
       "visual": {
@@ -7997,10 +8002,15 @@
           "date": "2026-09-24",
           "kind": "release",
           "label": "Hermes Agent v0.21.5: reliability and hosted-deployment patch release"
+        },
+        {
+          "date": "2026-10-08",
+          "kind": "release",
+          "label": "Hermes Agent v0.21.6: stable-release pipeline and security hardening"
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-09-28"
+      "last_verified": "2026-10-10"
     },
     {
       "id": "scienceide-agent-environments",

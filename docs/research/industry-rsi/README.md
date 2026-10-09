@@ -1,6 +1,6 @@
 # Industry RSI research map
 
-**2025-10-09 → 2026-10-09** · **144** in-window records
+**2025-10-10 → 2026-10-10** · **142** in-window records
 
 A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a locally stored paper figure, official research image or source-page screenshot, with its locator and source URL, plus an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.
 
@@ -12,9 +12,9 @@ A selective, primary-source catalogue of company and company–university papers
 
 | Category | Records | Mechanism families |
 | --- | ---: | --- |
-| [Parameters and training data](parameter-learning.md) | 38 | [Self-play & curriculum task generation](parameter-learning.md#family-self-play-curriculum) (13) · [Verifier- and reward-centric loops](parameter-learning.md#family-verifier-reward) (5) · [Skill-weight co-evolution](parameter-learning.md#family-skill-weight-coevolution) (2) · [Experience distillation & test-time adaptation](parameter-learning.md#family-experience-distillation) (6) · [Autonomous training agents & data pipelines](parameter-learning.md#family-autonomous-training) (6) · [Enabling adaptation mechanisms](parameter-learning.md#family-enabling-adaptation) (6) |
+| [Parameters and training data](parameter-learning.md) | 37 | [Self-play & curriculum task generation](parameter-learning.md#family-self-play-curriculum) (13) · [Verifier- and reward-centric loops](parameter-learning.md#family-verifier-reward) (5) · [Skill-weight co-evolution](parameter-learning.md#family-skill-weight-coevolution) (2) · [Experience distillation & test-time adaptation](parameter-learning.md#family-experience-distillation) (5) · [Autonomous training agents & data pipelines](parameter-learning.md#family-autonomous-training) (6) · [Enabling adaptation mechanisms](parameter-learning.md#family-enabling-adaptation) (6) |
 | [Agents and code](agent-code.md) | 51 | [Skill-file optimization & libraries](agent-code.md#family-skill-file-optimization) (17) · [Harness search & evolution](agent-code.md#family-harness-search) (17) · [Self-modifying meta-agents & lineages](agent-code.md#family-self-modifying-meta-agents) (6) · [Program evolution & evolutionary search](agent-code.md#family-program-evolution) (5) · [Feedback review & orchestration](agent-code.md#family-feedback-orchestration) (4) · [Safety & governance](agent-code.md#family-safety-governance) (2) |
-| [Memory and context](memory-context.md) | 18 | [Structured knowledge bases & graphs](memory-context.md#family-structured-knowledge) (6) · [Experience accumulation & replay](memory-context.md#family-experience-accumulation) (6) · [Context organization policies](memory-context.md#family-context-policies) (2) · [Exploration-driven memory construction](memory-context.md#family-exploration-memory) (1) · [Memory-evolution studies & benchmarks](memory-context.md#family-memory-evolution-studies) (3) |
+| [Memory and context](memory-context.md) | 17 | [Structured knowledge bases & graphs](memory-context.md#family-structured-knowledge) (6) · [Experience accumulation & replay](memory-context.md#family-experience-accumulation) (5) · [Context organization policies](memory-context.md#family-context-policies) (2) · [Exploration-driven memory construction](memory-context.md#family-exploration-memory) (1) · [Memory-evolution studies & benchmarks](memory-context.md#family-memory-evolution-studies) (3) |
 | [Automated research and evaluation](research-workflows.md) | 37 | [AI-scientist systems](research-workflows.md#family-ai-scientists) (9) · [Autonomous post-training & its evaluation](research-workflows.md#family-autonomous-post-training) (3) · [Company R&D telemetry](research-workflows.md#family-company-telemetry) (7) · [Alignment automation](research-workflows.md#family-alignment-automation) (3) · [Analyses & audits](research-workflows.md#family-analyses-audits) (9) · [Positions, roadmaps & labs](research-workflows.md#family-positions-labs) (6) |
 
 ## Timeline
@@ -163,13 +163,13 @@ A selective, primary-source catalogue of company and company–university papers
 | 2025-10-22 | [Discovering state-of-the-art reinforcement learning algorithms](parameter-learning.md#google-discorl-2025) | Google DeepMind | Enabling adaptation mechanisms | Enabling technique / evaluation |
 | 2025-10-17 | [EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle](parameter-learning.md#evolver-experience-lifecycle) | Shanghai AI Laboratory / Zhejiang University / East China Normal University / Fudan University / Shanghai Jiao Tong University / University of Science and Technology of China | Experience distillation & test-time adaptation | Direct bounded loop |
 | 2025-10-16 | [WebAggregator: Enhancing Compositional Reasoning Capabilities of Deep Research Agent Foundation Models](agent-code.md#tencent-webaggregator) | Tencent AI Lab / The Chinese University of Hong Kong | Program evolution & evolutionary search | Direct bounded loop |
-| 2025-10-09 | [Self-Improving LLM Agents at Test-Time](parameter-learning.md#ttsi-test-time-self-improvement) | University of Illinois Urbana-Champaign | Experience distillation & test-time adaptation | Direct bounded loop |
-| 2025-10-09 | [Training-Free Group Relative Policy Optimization](memory-context.md#tencent-training-free-grpo) | Tencent Youtu Lab / Fudan University / Xiamen University | Experience accumulation & replay | Direct bounded loop |
 
 ## Archive — outside the current window
 
 | Date | Work | Organizations | Family | Evidence class |
 | --- | --- | --- | --- | --- |
+| 2025-10-09 | [Self-Improving LLM Agents at Test-Time](parameter-learning.md#ttsi-test-time-self-improvement) | University of Illinois Urbana-Champaign | Experience distillation & test-time adaptation | Direct bounded loop |
+| 2025-10-09 | [Training-Free Group Relative Policy Optimization](memory-context.md#tencent-training-free-grpo) | Tencent Youtu Lab / Fudan University / Xiamen University | Experience accumulation & replay | Direct bounded loop |
 | 2025-10-06 | [Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models](memory-context.md#sambanova-stanford-ace) | Stanford University / SambaNova Systems / UC Berkeley | Context organization policies | Direct bounded loop |
 | 2025-10-06 | [LEGOMem: Modular Procedural Memory for Multi-agent LLM Systems for Workflow Automation](memory-context.md#microsoft-legomem-2025) | Microsoft | Context organization policies | Enabling technique / evaluation |
 | 2025-10-01 | [ACON: Optimizing Context Compression for Long-horizon LLM Agents](memory-context.md#microsoft-acon-2025) | Microsoft / KAIST / University of Cambridge | Context organization policies | Direct bounded loop |

@@ -4,6 +4,25 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-10-10
+
+**New entries**
+
+- None. The post-2026-10-09 primary-source sweep found no new RSI record that clears the original-visual, classification and independently audited open-material gate.
+
+**Updated entries**
+
+- [nous-hermes-selfrefactor](agent-code.md#nous-hermes-selfrefactor) — verified Hermes Agent v0.21.6 (2026-10-08), whose release notes describe a new stable release pipeline plus dashboard authentication, request-size, redirect, email-gateway and Git-filter hardening. These are reliability/security changes around a self-refactoring agent, not a new recursive capability result.
+
+**Signals for engineering**
+
+- Hermes's Git-filter hardening is directly relevant to nanoRSI's worktree-per-candidate execution boundary: treat repository-controlled clean/smudge/process filters as untrusted code and retain the existing bounded, auditable Git administration path. This is a safety review direction, not a dependency or code port. ([nous-hermes-selfrefactor](agent-code.md#nous-hermes-selfrefactor))
+
+**Coverage & gaps**
+
+- Rechecked official OpenAI, Anthropic and Google DeepMind research indexes; recent arXiv RSI/self-evolution results; GitHub activity/releases for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent and google-research/rrsi; and nanoRSI issues, PRs, CI and security endpoints.
+- Hermes v0.21.6 is a verified public release, but its release notes do not provide a new controlled RSI capability comparison. No new qualified paper or project was added. Code scanning still has no analysis and Dependabot is disabled; secret scanning returned zero alerts. No upstream code was copied, and no model/API request, training run, paid request or external post occurred.
+
 ## 2026-10-09
 
 **New entries**
