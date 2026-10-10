@@ -4,6 +4,25 @@ The radar log is the daily heartbeat of nanoRSI's research track: one dated entr
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
 
+## 2026-10-11
+
+**New entries**
+
+- None. The post-2026-10-10 primary-source sweep found no new RSI record that clears the original-visual, classification and independently audited open-material gate.
+
+**Updated entries**
+
+- None. ShinkaEvolve's latest visible activity remains security/workflow maintenance, Hermes Agent's latest commits are hand-off test robustness changes, and google-research/rrsi has no later capability release to record.
+
+**Signals for engineering**
+
+- Keep [RRSI regularized harness evolution](agent-code.md#rrsi-regularized-harness-evolution) as the next concrete direction, but freeze the matched selector study before implementation: repeated-frozen noise band, three seeds, three budget points, held-out panel, cost accounting and false-blocks. This is a protocol gate, not a claim of local benefit.
+
+**Coverage & gaps**
+
+- Rechecked official OpenAI, Anthropic and Google DeepMind research indexes; recent arXiv RSI/self-evolution results; GitHub activity/releases for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent and google-research/rrsi; and nanoRSI issues, PRs, CI and security endpoints.
+- No new qualifying paper, project release, weight/data release or portable licensed runtime change was verified. Code scanning still has no analysis and Dependabot is disabled; secret scanning returned zero alerts. No upstream code was copied, and no model/API request, training run, paid request or external post occurred.
+
 ## 2026-10-10
 
 **New entries**

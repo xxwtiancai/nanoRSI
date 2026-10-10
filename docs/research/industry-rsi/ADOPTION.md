@@ -2,6 +2,8 @@
 
 **2026-10-08 status note:** RSI-Master adds a useful audit boundary to the existing self-built-harness direction: restricted actions, reviewer decisions and rejected promotions must be recorded. This remains a proposed offline comparison; no default behavior changed and no local effect claim was added. / **2026-10-08 状态说明：** RSI-Master 为现有自建 harness 方向补充了审计边界：必须记录受限动作、reviewer 决策和被拒提升。这仍是拟议的离线对照；未改变默认行为，也未加入本地效果主张。
 
+**2026-10-11 status note:** The post-2026-10-10 audit found no new license-cleared runtime or controlled RSI result. Keep item 38 (RRSI-style regularized harness transition) as the next implementation direction, but do not add the selector arm until its three-seed × three-budget protocol, repeated-frozen noise band, held-out panel and false-block accounting are frozen. / **2026-10-11 状态说明：** 10 月 10 日之后的核验没有发现新的、许可清晰的运行时变化或受控 RSI 结果。继续把第 38 项（RRSI 式正则化 harness 转移）作为下一项实现方向，但在冻结三种子 × 三预算协议、重复冻结噪声带、留出面板和误拦统计前，不加入选择器实验臂。
+
 [Research map](README.md) · [中文入口](README.zh-CN.md)
 
 These are **proposed experiments**, prioritized for nanoRSI's small inspectable core. This catalogue update does not implement them or reproduce the cited systems. Existing behavior is documented in the [multilevel guide](../../MULTILEVEL.md) / [中文指南](../../MULTILEVEL.zh-CN.md); existing [digits results](../../../examples/results/recursive-digits-v0.4.1/README.md) remain a separate local study.
