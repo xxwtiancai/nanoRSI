@@ -49,9 +49,9 @@ else:
 """
 
 
-def _write_pack(target: Path) -> dict[str, str]:
+def _write_pack(target: Path, with_manifest: bool = True) -> dict[str, str]:
     paths = {}
-    for path in prepare.write_pack(target):
+    for path in prepare.write_pack(target, with_manifest=with_manifest):
         paths[path.name] = path.read_text()
     return paths
 
@@ -64,7 +64,7 @@ class ALFWorldPackTests(unittest.TestCase):
         import tempfile
         cls._tmp = tempfile.TemporaryDirectory()
         cls.root = Path(cls._tmp.name)
-        cls.pack = _write_pack(cls.root / "out")
+        cls.pack = _write_pack(cls.root / "out", with_manifest=HAS_GAMES)
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -73,9 +73,10 @@ class ALFWorldPackTests(unittest.TestCase):
     def test_pack_is_deterministic(self) -> None:
         import tempfile
         with tempfile.TemporaryDirectory() as other:
-            second = _write_pack(Path(other) / "out")
+            second = _write_pack(Path(other) / "out", with_manifest=HAS_GAMES)
         self.assertEqual(self.pack, second)
 
+    @unittest.skipUnless(HAS_GAMES, "local ALFWorld games required for manifest selection")
     def test_manifest_splits_and_groups(self) -> None:
         from collections import Counter
         manifest = json.loads(self.pack["manifest.json"])

@@ -435,11 +435,14 @@ def build_manifest() -> dict:
     return {"schema_version": 1, "tasks": tasks}
 
 
-def write_pack(output: Path) -> list[Path]:
+def write_pack(output: Path, with_manifest: bool = True) -> list[Path]:
     directory = output / "alfworld"
     (directory / "target" / "agent" / "skills" / "alfworld").mkdir(parents=True, exist_ok=True)
-    manifest_path = directory / "manifest.json"
-    manifest_path.write_text(json.dumps(build_manifest(), indent=1, ensure_ascii=False) + "\n")
+    paths = []
+    if with_manifest:
+        manifest_path = directory / "manifest.json"
+        manifest_path.write_text(json.dumps(build_manifest(), indent=1, ensure_ascii=False) + "\n")
+        paths.append(manifest_path)
     runner_path = directory / "target" / "agent" / "run.py"
     runner_path.write_text(RUNNER.replace("__ALF_PYTHON__", ALF_PYTHON)
                            .replace("__GAME_STEPS__", str(GAME_STEPS)))
@@ -451,7 +454,7 @@ def write_pack(output: Path) -> list[Path]:
     evaluator_path = directory / "evaluator" / "evaluate.py"
     evaluator_path.parent.mkdir(parents=True, exist_ok=True)
     evaluator_path.write_text(evaluator)
-    return [manifest_path, runner_path, skill_path, evaluator_path]
+    return paths + [runner_path, skill_path, evaluator_path]
 
 
 def main(argv: list[str] | None = None) -> int:
