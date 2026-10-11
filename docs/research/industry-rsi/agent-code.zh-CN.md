@@ -6,16 +6,76 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 17 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 19 |
 | [Harness 搜索与进化](#family-harness-search) | 17 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 7 |
-| [程序进化与进化搜索](#family-program-evolution) | 7 |
+| [程序进化与进化搜索](#family-program-evolution) | 8 |
 | [反馈审查与编排](#family-feedback-orchestration) | 4 |
 | [安全与治理](#family-safety-governance) | 3 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (17)
+## 技能文件优化与技能库 (19)
+
+<a id="skillmorph-trajectory-fault-localization"></a>
+
+### Trajectory-Guided Fault Localization for Agent Skill Evolution
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-08 提交（2610.11858）；截至 2026-10-12 仅有'20 页 3 图'信息，未标注会议。
+
+**机构关系** — 四位作者来自南京大学（李中、张天为通讯作者），一位来自香港理工大学；内核生成落地在 Ascend CANN 生态的 AI 算子开发团队，评测用 NPUKernelBench。
+
+**改变对象与反馈复用** — SkillMorph 把技能修订锚定在行为证据上：抽象化执行轨迹，跨重复运行与任务比较失败与成功证据，用演化循环之间的差异定位可疑动作，再在相应技能内定位编辑点并生成针对性修订——而不是仅凭结果反馈重写整条技能。
+
+**作者报告结果** — 在 490 个 SWE-Skills-Bench 任务（1,470 次运行）上：SkillMorph 95.51% pass@3 / 92.24% 逐试精度 / 88.37% pass3，对照原始技能 82.45/75.44/67.96、四个技能演化基线中最强的 CAP-Evolve 92.24/89.39/84.90。在 15 个任务的 CannBot AscendC 内核基准上：三项指标均为 93.33，对照原始技能 80.00/66.67/46.67、CAP-Evolve 93.33/84.44/73.33。消融：去掉定位后 SWE 总体降至 91.22/87.35/82.24；单次运行变体 90.20。内核生成部署产生的 6 个技能修订拉取请求被开发团队接受。
+
+**证据边界** — 未找到公开代码、基准或技能语料（HTML 中的 GitHub 链接指向 cap-evolve 等基线）；CannBot 仅 15 个任务，93.33 的天花板落在小面板上；逐试精度与 pass@3 由作者自己的 harness 计算；6 个被接受的 PR 作为落地证据计数，未对算子质量做受控前后对照。
+
+**代码／权重／数据／许可** — 代码：arXiv 页与 HTML 均未找到。权重：不适用。数据：SWE-Skills-Bench 被描述为公开精选技能；CannBot 与 NPUKernelBench 的发布状态除引用外未核验。许可：论文为 arXiv 默认许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 技能轨道可检验的思路：重写技能前，先对重复运行的抽象化失败/成功轨迹做差异对比，对可疑动作排序，并把编辑限制在这些动作回溯到的技能区域——与同评测预算下的整技能重写对照，并把编辑点精确率作为诚实的附加指标报告。
+
+![论文原图 3：SkillMorph 循环抽象化执行轨迹、跨运行对照失败与成功证据、隔离可疑动作，并把修订定位到负责的技能区域。](assets/paper-figures/skillmorph-overview.png)
+
+**原文图／官方图片** — 论文原图 3：SkillMorph 循环抽象化执行轨迹、跨运行对照失败与成功证据、隔离可疑动作，并把修订定位到负责的技能区域。 · Figure 3 (overview-final.png): SkillMorph overview - trajectory abstraction, failure/success comparison, suspicious-action ranking and localized skill revision · [source](https://arxiv.org/html/2610.11858v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-12.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11858) · [arXiv HTML v1](https://arxiv.org/html/2610.11858v1)
+
+<a id="roborsi-robot-self-evolution"></a>
+
+### RoboRSI: Stable, efficient, and reusable robot self-evolution in complex real-world environments
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-08 提交（2610.12424，cs.RO 交叉 cs.AI）。官方项目页标注 2026 年 9 月，配套仓库创建于 2026-08-29；按本库论文惯例，条目日期取 arXiv v1 日期。
+
+**机构关系** — 十一位作者，Cewu Lu 与 Chuan Wen 为通讯作者；项目页与 BibTeX 署名 Noematrix 团队（lab.noematrix.ai）。arXiv HTML 未排印高校机构，故除 Noematrix Lab 外的机构信息此处未独立核验。
+
+**改变对象与反馈复用** — 自顶向下技能精炼（TSR）把任务分解为复合、原子与基础技能，各带职责范围与显式输入输出契约，使执行失败可归因到负责分支，修订也只落在该分支。Manager 组织技能层级，Planner 组合执行计划，Engineer 执行，Reviewer 在发布前验证；人类通过目标与纠正进行导向；稳定序列固化为可复用复合技能。
+
+**作者报告结果** — 在实体移动操作机上，多物体家庭清理经 104 轮自演化长成；约一天的迭代对照项目页所述 2024 年参考（两名工程师、约一个月、2000-3000 行任务代码）。仿真中在 LIBERO、LIBERO-PRO、LIBERO-Plus 与 RoboTwin 上取得最高成功率，较最强基线高 2.7-11.0 个百分点；LIBERO 累计 95/120（初始 32/120），RoboTwin 36/50（初始 9/50）。在 840 个 LIBERO-Plus 扰动实例上，固定系统过 261（31.1%），自适应 pass@2 过 398（47.4%）。600 局的固化消融把通过率从 21.5% 提到 29.0%（+7.5 点），中位 token 下降 29.4%。
+
+**证据边界** — 实体结果来自单一移动操作平台上的两场景清理任务集；人类通过目标与纠正参与导向，自主性有界；基线差距（2.7-11.0 点）为作者在自有评测下报告；'一天对一个月'的对照引用团队自身 2024 年实践而非受控研究；一个图文件名提示 ICLR 2027 投稿，但未声称也未核验录用。
+
+**代码／权重／数据／许可** — 代码：github.com/nssmd/RoboRSI，仓库内核验为 Apache-2.0（123 星，创建于 2026-08-29，最后推送 2026-10-10）；项目页 lab.noematrix.ai/blog/2-roborsi/ 带完整工具轨迹视频。权重：未核验到机器人策略检查点发布。数据：未核验到技能层级与评测日志发布。许可：Apache-2.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI 可移植的纪律是契约约束的修订：给每条技能显式输入输出契约使失败归因到分支，把编辑限制在该分支内，并要求 Reviewer 式验证后技能才能回到库中——再测量同面板上约束编辑是否以更少回归胜过整文件重写，与既有反事实面板互相印证。
+
+![论文原图 2：RoboRSI 框架——Manager 组织任务的技能层级，Planner 组合执行计划，Engineer 执行，Reviewer 把通过验证的技能修订闸回技能库。](assets/paper-figures/roborsi-framework.png)
+
+**原文图／官方图片** — 论文原图 2：RoboRSI 框架——Manager 组织任务的技能层级，Planner 组合执行计划，Engineer 执行，Reviewer 把通过验证的技能修订闸回技能库。 · Figure 2 (2027_ICLR_Framework2.0.png): Manager organizes the skill hierarchy, Planner composes the plan, Engineer executes, Reviewer validates before release · [source](https://arxiv.org/html/2610.12424v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-12.
+
+**开源代码／权重／数据链接** — [Apache-2.0 code release](https://github.com/nssmd/RoboRSI) · [Apache-2.0 license](https://github.com/nssmd/RoboRSI/blob/main/LICENSE)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12424) · [arXiv HTML v1](https://arxiv.org/html/2610.12424v1) · [Apache-2.0 code release](https://github.com/nssmd/RoboRSI) · [Apache-2.0 license](https://github.com/nssmd/RoboRSI/blob/main/LICENSE) · [Noematrix Lab project page](https://lab.noematrix.ai/blog/2-roborsi/)
 
 <a id="skillaa-attribution-rollback"></a>
 
@@ -1257,7 +1317,7 @@
 
 <a id="family-program-evolution"></a>
 
-## 程序进化与进化搜索 (7)
+## 程序进化与进化搜索 (8)
 
 <a id="evoalloc-resource-allocation-evolution"></a>
 
@@ -1288,6 +1348,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12086) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12086v1)
+
+<a id="agar-rl-substrate-program-evolution"></a>
+
+### AGAR: a reinforcement learning substrate for LLM program evolution
+
+**2026-10-06** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-06 提交（2610.09215，cs.AI 交叉 cs.MA）；截至 2026-10-12 无后续版本。
+
+**机构关系** — 作者栏列出中国科学院大学、百度、清华大学、中国科学院自动化研究所与上海大学；由百度方作者提交。
+
+**改变对象与反馈复用** — 把 LLM 程序演化形式化为马尔可夫决策过程，其动作是模型被条件化的模块化前缀而非它输出的程序。常见循环里五个手设常量——父代选择、变异强度、多样性保持、记忆、以及不分部件归因的标量分数——分别替换为挂接到不同组件的 RL 估计器（信用分配、价值估计、自适应探索、经验记忆）。任一估计器可替换或关闭而不改动控制器，使每个迁移机制可逐一审计；后端模型不做梯度训练。
+
+**作者报告结果** — 19 个任务、两个后端（DeepSeek-V4-Flash、GLM-5.2）、三个种子、同一 harness 下，逐任务归一化的同预算最优分数：DeepSeek-V4-Flash 后端 OpenEvolve 0.855+-0.193、ShinkaEvolve 0.919+-0.138、AGAR-Base 0.949+-0.107、AGAR-Combo 0.990+-0.024；GLM-5.2 后端 OpenEvolve 0.897+-0.131、ShinkaEvolve 0.929+-0.093、AGAR-Base 0.979+-0.045、AGAR-Combo 0.972+-0.052。DeepSeek 后端下两个 AGAR 实例均高于两条基线；GLM 下 Base 领先、Combo 紧随。增益集中在竞赛编程族；五个近天花板任务压低方差。该形式化还把既有系统解读为隐式零折扣，因为适应度外在于个体。
+
+**证据边界** — 仅三个种子，作者自述只支持定性结论；两个任务（ahc015、ahc027）的 AGAR 种子不足三个；OpenEvolve 与 ShinkaEvolve 在各自 harness 下运行、任务规格由 AGAR 作者移植，harness 对齐并不严格；未找到公开代码、权重或数据，迁移消融声明无法独立复跑。
+
+**代码／权重／数据／许可** — 代码：arXiv 页与 HTML 中均未找到（正文中的 GitHub 链接指向 OpenEvolve、slime 等既有系统而非 AGAR）。权重：不适用（API 后端）。数据：未核验到任务套件发布。许可：论文为 arXiv 默认许可；无代码许可可核验。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI 可直接移植的思路是逐机制可审计性：把演化循环的选择器、变异强度、多样性与记忆拆成可独立开关的组件，在同一 harness 下报告每个迁移估计器逐一关闭的消融，而不是整体移植框架。适应度零折扣的解读也是研究设计里值得写明的廉价检查。
+
+![论文原图 1：程序演化写成 MDP——状态是种群的混合粒度视图，动作是条件化 LLM 的模块化前缀，信用分配、价值估计、自适应探索与经验记忆分别挂接到基底的不同组件。](assets/paper-figures/agar-framework-mdp.png)
+
+**原文图／官方图片** — 论文原图 1：程序演化写成 MDP——状态是种群的混合粒度视图，动作是条件化 LLM 的模块化前缀，信用分配、价值估计、自适应探索与经验记忆分别挂接到基底的不同组件。 · Figure 1 (framework_mdp.png, rotated upright for readability): the mixed-granularity state, the policy whose action is the modular prefix, and where RL estimators attach · [source](https://arxiv.org/html/2610.09215v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-12.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.09215) · [arXiv HTML v1](https://arxiv.org/html/2610.09215v1)
 
 <a id="compiled-agency-gauntlet"></a>
 

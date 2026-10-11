@@ -10,7 +10,7 @@
 | [验证器与奖励进化](#family-verifier-reward) | 5 |
 | [技能-权重共进化](#family-skill-weight-coevolution) | 2 |
 | [经验蒸馏与测试时适应](#family-experience-distillation) | 7 |
-| [自主训练智能体与数据管线](#family-autonomous-training) | 6 |
+| [自主训练智能体与数据管线](#family-autonomous-training) | 7 |
 | [支撑性适应机制](#family-enabling-adaptation) | 7 |
 
 <a id="family-self-play-curriculum"></a>
@@ -871,7 +871,37 @@
 
 <a id="family-autonomous-training"></a>
 
-## 自主训练智能体与数据管线 (6)
+## 自主训练智能体与数据管线 (7)
+
+<a id="agentic-ttt-test-time-policy"></a>
+
+### Agentic-TTT: Training test-time policy for test-time training
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-08 提交（2610.12002）；截至 2026-10-12 未标注会议。
+
+**机构关系** — 两位作者（Jiahao Lu、Mohan Kankanhalli）均署名 NUS AI Institute 与新加坡国立大学。
+
+**改变对象与反馈复用** — 把测试时训练（TTT）过程封装为可调用工具，由学习到的测试时策略决定是否适配、调用哪个 TTT 算法、以及能否复用已有的参数级技能而非新训练。累积的技能构成不断变化的部署环境，策略由自身决策产生的效用增益训练；计算惩罚（lambda_comp）引导它做选择性适配而非均匀抑制。
+
+**作者报告结果** — 在作者基准上，学习策略的效用较骨干模型接近翻倍，在惩罚下学会效用与计算的权衡，并外推到策略训练未见的领域：在 G1（代码、通用推理、逻辑游戏）、G2（数学、网格谜题、医学问答）或其并集 G3 上训练的策略，在所有组均未见过的 Passage 与 LongBook 问答上评测。方法路由与技能操作分布随任务变化；加大惩罚会选择性重分配 TTT 方法使用而非将其关闭。
+
+**证据边界** — 效用以作者自组的基准衡量，'接近翻倍'相对于该面板；未找到代码或基准发布；策略本身是单独训练的组件，若不报告摊销则增益包含其训练成本；TTT 算法按原样使用，并不宣称改进任何单个算法。
+
+**代码／权重／数据／许可** — 代码：未找到。权重：未核验到策略检查点发布。数据：未核验到基准发布。许可：论文为 arXiv 默认许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 的最小类似物：把既有微调/自训练步骤封装为可调用工具，置于一个小型可学习路由器之后，路由器额外拥有空操作与复用选项，用固定面板上的逐决策效用增量训练，并摊销报告路由器自身成本——对照固定总是适配的控制组，检验增益来自适配选择而非适配本身。
+
+![论文原图 1：学习到的策略在测试时训练方法空间与参数增量技能库之间导航，决定新构建适配还是复用既有技能。](assets/paper-figures/agentic-ttt-teaser.png)
+
+**原文图／官方图片** — 论文原图 1：学习到的策略在测试时训练方法空间与参数增量技能库之间导航，决定新构建适配还是复用既有技能。 · Figure 1 (agentic-ttt-teaser.png): the learned policy governing when and how to (a) build or (b) reuse parameter-level adaptations at test time · [source](https://arxiv.org/html/2610.12002v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-12.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12002) · [arXiv HTML v1](https://arxiv.org/html/2610.12002v1)
 
 <a id="autodata-pretraining-search"></a>
 
