@@ -1,0 +1,13 @@
+The ALFWorld task pack plays games from the ALFWorld text environment
+(https://github.com/alfworld/alfworld, MIT License, Copyright 2020 Mohit Shridhar,
+Xingdi Yuan, Marc-Alexandre Côté, Yonatan Bisk, Adam Trischler, Matthew Hausknecht),
+which builds on TextWorld (MIT) and AI2-THOR / ALFRED data. The game files are
+generated upstream by `alfworld-download` (json_2.1.1, ALFRED data) and are not
+redistributed in this repository; only deterministic game-path selection is encoded
+here, so each machine regenerates the identical pack from its local ALFWorld cache.
+The runner, evaluator overlay and initial skill authored by nanoRSI are original
+and contain no upstream code. ALFWorld reference: "ALFWorld: Aligning Text and
+Embodied Environments for Interactive Learning" (ICLR 2021, arXiv:2010.03768).
+Evaluating this pack requires a Python 3.12 interpreter with alfworld installed
+(textworld textgen is incompatible with Python 3.13 under PEP 667); the runner
+re-execs itself under that interpreter (NANORSI_ALF_PYTHON).

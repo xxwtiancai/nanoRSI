@@ -8,14 +8,16 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-import sys
 import tempfile
 import unittest
 
 PACK = Path(__file__).resolve().parent.parent / "examples" / "bbh_tasks"
-sys.path.insert(0, str(PACK))
 
-import prepare  # noqa: E402
+import importlib.util  # noqa: E402
+
+_spec = importlib.util.spec_from_file_location("bbh_pack_prepare", PACK / "prepare.py")
+prepare = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(prepare)
 
 
 def _build_once(target: Path) -> dict[str, dict]:

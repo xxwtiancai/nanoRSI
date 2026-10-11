@@ -1,0 +1,46 @@
+diff --git a/target/agent/skills/alfworld/SKILL.md b/target/agent/skills/alfworld/SKILL.md
+--- a/target/agent/skills/alfworld/SKILL.md
++++ b/target/agent/skills/alfworld/SKILL.md
+@@ -1,9 +1,9 @@
+-# ALFWorld operating skill (initial version)
++# ALFWorld operating skill
+ 
+-You are completing household tasks in a text simulator. Reusable guidance may
+-be added to this file; it is loaded before every episode.
++You are completing household tasks in a text simulator. This guidance is
++loaded before every episode.
+ 
+-Current guidance (v0):
++Current guidance (v1):
+ 
+ - Read the task sentence in the observation first; it names the object and the
+   destination (for example a ladle on a countertop).
+@@ -14,3 +14,28 @@
+   clean needs the sinkbasin; use turns a lamp on while holding nothing else.
+ - The observation lists admissible commands; prefer exact strings from it.
+ - When the stated task is complete, reply {"action": "stop"}.
++
++## Task patterns and success conditions
++
++- "look at X in the light of Y": you must be HOLDING X when you use lamp Y.
++  Never put X down first; find X, take it, go to lamp Y, then `use Y`. Only the
++  `use` action while holding the object satisfies the goal.
++- "put X in/on Y" (simple placement): find X, take it, go to Y, place it with
++  one placement command. Do not perform extra moves after a successful
++  placement.
++- "heat/cool/clean then place": take X, go to the appliance, apply the
++  transform verb (heat/cool/clean) with the exact receptacle name, then go to
++  the destination and place once.
++
++## Efficiency rules
++
++- Issue exactly one placement command (`put ... in/on ...`); if it succeeds,
++  go directly to stop instead of issuing a redundant `move ... to ...`.
++- Only open a receptacle (fridge, microwave, drawer, cabinet) if `open` is
++  needed to see or reach inside; `heat ... with microwave` and
++  `cool ... with fridge` work without opening.
++- While searching for an object or a lamp, prefer locations named in the task
++  sentence and nearby likely receptacles; stop exploring as soon as the target
++  appears in an observation.
++- If an action is reported invalid, do not retry it verbatim; check the
++  admissible command list and use the exact alternative string.

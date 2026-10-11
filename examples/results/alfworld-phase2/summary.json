@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "study": "alfworld-phase2",
+  "created_at": "2026-10-11T23:30:00+08:00",
+  "question": "ADOPTION item 37 phase 2: can nanoRSI run complete, real agent tasks (ALFWorld games, engine-scored) end to end, and does gated skill evolution improve a strong base agent on them?",
+  "task_source": {
+    "benchmark": "ALFWorld (alfworld/alfworld, MIT; TextWorld engine, MIT; ALFRED data)",
+    "notice": "examples/alfworld_tasks/NOTICE",
+    "pack_generator": "examples/alfworld_tasks/prepare.py",
+    "games": "local alfworld-download json_2.1.1 cache; deterministic selection 4 train / 6 validation (train split) + 6 seen (valid_seen) + 6 unseen (valid_unseen); games not redistributed",
+    "adaptations": "authored game runner (re-exec under a Python 3.12 + alfworld interpreter), evaluator overlay grading the engine won flag, initial operating skill; stock proposer/adapters/model bridge untouched"
+  },
+  "settings": {
+    "mode": "skills (agent task episodes)",
+    "arm": "frozen",
+    "seed": 0,
+    "model": "glm-5.3",
+    "thinking": "disabled",
+    "max_steps_per_game": 24,
+    "max_attempts": 3,
+    "final_repeats": 1,
+    "workspace_rebuilds": 3,
+    "rebuild_reasons": "(1) runner missing propose mode - three attempts burned; (2) alfworld skill not registered in [agent] skills and thinking not disabled - bridge returned empty content and the proposer saw an empty surface; both bugs were fixed in the generator and are covered by tests"
+  },
+  "baseline_validation": {
+    "with_initial_skill": 0.8333,
+    "same_games_without_skill_earlier_workspace": 0.8333,
+    "first_workspace_baseline": 0.6667,
+    "note": "two baseline runs of the same six validation games differ by one game (0.667 vs 0.833) - the observed panel noise band is +/-1 game (0.167), larger than plausible single-edit skill effects at this agent strength"
+  },
+  "search_outcomes": [
+    {"attempt": 1, "decision": "rejected", "validation": "0.8333 -> 0.6667", "gate_reason": "improvement below minimum: -0.166667", "proposal": "placement single-command rule and stop-after-placement guidance (attempt1-proposal.diff)"},
+    {"attempt": 2, "decision": "rejected", "validation": "0.8333 -> 0.8333", "gate_reason": "improvement below minimum: 0.000000", "proposal": "task-type templates and location priors (attempt2-proposal.diff)"},
+    {"attempt": 3, "decision": "rejected", "validation": "0.8333 -> 0.8333", "gate_reason": "improvement below minimum: 0.000000", "proposal": "further guidance consolidation (attempt3-proposal.diff)"}
+  ],
+  "final_panel_test_12_games": {
+    "baseline_initial_skill": 1.0,
+    "no_skills": 1.0,
+    "candidate": 1.0,
+    "split": "6 seen layouts + 6 unseen layouts; every condition solved 12/12",
+    "interpretation": "ceiling effect: glm-5.3 solves this frozen test subset with or without the initial skill, so skill evolution has no measurable headroom here; the null is about this regime, not about guidance editing in general"
+  },
+  "train_panels": "attempt train panels 4/4, 4/4, 3/4 - the proposer received feedback from at most 4 games per attempt (thin signal by design of this small pack)",
+  "usage": {
+    "proposer": {"model_calls": 3, "input_tokens": 10673, "output_tokens": 1897},
+    "final_test_total": {"model_calls": 327},
+    "episodes_total_workspace3": "baseline 10 games + 3 attempts x 10 games + final 36 game-conditions",
+    "cost_usd": null
+  },
+  "audit": "zero expected-answer leakage, zero silent bypass, panel ok; verify lineage ok. Game tasks have no expected_files content, so the leakage screen is structural here: answers exist only as winning action sequences inside the engine",
+  "honest_negative": "No accepted improvement in this study. The gate correctly blocked one harmful edit and two ties. Combined with the 12/12 ceiling on all final conditions, the small-pack + strong-agent regime cannot demonstrate skill-evolution gains; the platform capability (real agent tasks, engine-scored, frozen contract) is what this study establishes.",
+  "limits": "One seed, one repeat, three attempts, 4 train / 6 validation / 12 test games, one strong model tier. Panel noise (+/-1 game) exceeds single-edit effects; splits are small by cost necessity; author-reported ALFWorld numbers (ReAct/Reflexion/ExpeL etc.) use different models, splits and budgets and are not reproduced. Follow-ups queued: larger train split and more attempts, flash-tier agent for headroom, noise-band-aware gating (ADOPTION 38 protocol), harder task-type mix."
+}
