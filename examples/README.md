@@ -22,6 +22,10 @@ Builds a throwaway CPU workspace, runs baseline → gated search (three accepted
 
 [results/glm53-real-tasks](results/glm53-real-tasks/README.md) runs two more upstream tasks with **GLM-5.3**: ShinkaEvolve's sine approximation evolved `return x` into a degree-13 Taylor polynomial (**0.1049 → 0.999963** on a denser held-out grid, RMSE 4e-06) and OpenEvolve's K-Module configuration problem went **0/4 → 4/4** under population search with crossover. Thirteen model calls and ~10k tokens for both studies combined; audits clean.
 
+## Public benchmark tasks: BIG-Bench-Hard phase 1
+
+[bbh_tasks](bbh_tasks/README.md) ports two MIT-licensed [BIG-Bench-Hard](https://github.com/suzgunmirac/BIG-Bench-Hard) tasks (`dyck_languages`, `boolean_expressions`) as deterministic program-evolution packs: 250 examples each, 50/50/150 frozen split, exact-match grading by the stock program evaluator, authored weak initial solvers. The [live study](results/bbh-phase1/README.md) (GLM-5.3-Flash, ten proposer calls) evolved them on the 150-example unseen test panels from **0.6933 → 1.0000** (nesting-order stack match) and **0.7333 → 0.9800** (precedence parser with one diagnosed short-circuit bug, retained honestly) — the first effect evidence on a public benchmark rather than self-authored panels (ADOPTION item 37, phase 1).
+
 ## Recursive checkpoint reuse on handwritten digits (internal study, non-benchmark)
 
 The optional [digits study](recursive_learning/README.md) · [中文](recursive_learning/README.zh-CN.md) uses NumPy tooling and a bundled attributed dataset to compare recursive checkpoint-based sampling with frozen, uniform and random controls. It separates all searches/freezes from final testing and checks actual training budgets. [All 120 measured runs](results/recursive-digits-v0.4.1/README.md) retain the stronger and weaker control outcomes. This is a classifier experiment, not LLM fine-tuning.

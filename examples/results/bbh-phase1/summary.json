@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "study": "bbh-phase1",
+  "created_at": "2026-10-11T20:00:00+08:00",
+  "question": "ADOPTION item 37 phase 1: can nanoRSI, on complete public-benchmark tasks (BIG-Bench-Hard), evolve a program from a weak initial solver to a measurably better one under the strict-improvement gate, with frozen final panels?",
+  "task_source": {
+    "benchmark": "BIG-Bench-Hard (suzgunmirac/BIG-Bench-Hard)",
+    "license": "MIT",
+    "pinned_commit": "9ee07bd481feebf959a6b59d61ea57bdcf30964d (main, 2022-10-22)",
+    "notice": "examples/bbh_tasks/NOTICE",
+    "pack_generator": "examples/bbh_tasks/prepare.py",
+    "adaptations": "data vendored verbatim; per-task records.json/summary.json wrapping; deterministic 50/50/150 split by sorted input; initial solvers authored by nanoRSI as deliberately weak classical heuristics (BBH ships data, not programs); stock program evaluator unmodified (exact-match grading)"
+  },
+  "settings": {
+    "mode": "program (artifact template)",
+    "arm": "frozen",
+    "seed": 0,
+    "model": "glm-5.3-flash",
+    "base_url": "https://api.z.ai/api/coding/paas/v4",
+    "thinking": "disabled",
+    "max_steps": 5,
+    "max_episodes": 800,
+    "final_repeats": 1
+  },
+  "tasks": [
+    {
+      "id": "bbh-dyck-languages",
+      "task": "dyck_languages (complete the bracket sequence)",
+      "initial_solver": "counts unmatched opens per bracket type, closes in fixed type order (nesting ignored)",
+      "search_outcomes": [
+        {"attempt": 1, "decision": "accepted", "validation": "0.78 -> 1.00 (+0.22)", "note": "replaced count-order closing with reversed(stack) nesting order"},
+        {"attempt": 2, "decision": "failed", "reason": "provider model_timeout"},
+        {"attempt": 3, "decision": "failed", "reason": "provider model_invalid_response"},
+        {"attempt": 4, "decision": "failed", "reason": "provider model_timeout"},
+        {"attempt": 5, "decision": "failed", "reason": "provider model_timeout"}
+      ],
+      "final_panel_test_split_150": {"baseline": 0.6933, "candidate": 1.0},
+      "usage": {"model_calls": 5, "input_tokens": 2143, "output_tokens": 2593}
+    },
+    {
+      "id": "bbh-boolean-expressions",
+      "task": "boolean_expressions (evaluate nested boolean expression)",
+      "initial_solver": "left-to-right fold with recursive parentheses, operator precedence ignored",
+      "search_outcomes": [
+        {"attempt": 1, "decision": "failed", "reason": "provider model_invalid_response"},
+        {"attempt": 2, "decision": "failed", "reason": "provider model_invalid_response"},
+        {"attempt": 3, "decision": "accepted", "validation": "0.90 -> 0.92 (+0.02)", "note": "rewrote solver as recursive-descent parser with not/and/or precedence"},
+        {"attempt": 4, "decision": "rejected", "reason": "improvement below minimum: 0.000000 (tie)"},
+        {"attempt": 5, "decision": "failed", "reason": "proposal and training change no files"}
+      ],
+      "final_panel_test_split_150": {"baseline": 0.7333, "candidate": 0.98},
+      "residual_bug": "3/150 test misses share one pattern: the evolved parser uses Python short-circuit or/and to combine sub-parses, so a truthy left side skips calling the continuation parser and leaves tokens unconsumed (verified leftover ['False', ')', 'or', 'True'] on not ( True or False ) or True); the oracle precedence parser reaches 1.0 on all 250 examples",
+      "usage": {"model_calls": 5, "input_tokens": 6133, "output_tokens": 17141}
+    }
+  ],
+  "audit": "both workspaces: zero expected-answer leakage, zero silent bypass, verify passes; program mode has no executable-skills surface",
+  "usage_total": {"model_calls": 10, "input_tokens": 8276, "output_tokens": 19734, "cost_usd": null, "note": "two doctor --check-model probes (one per workspace) are excluded per study convention"},
+  "limits": "Single runs, single seed, one flash-tier model, one accepted generation per task. The initial solvers are authored weak heuristics, so gains measure improvement over that starting point, not over BBH leaderboard systems; upstream author-reported BBH numbers are not reproduced. Validation is 50 examples (gate granularity 0.02); the dyck run accepted on attempt 1 and later attempts were provider failures retained honestly. The bool candidate retains a diagnosed short-circuit bug (0.98, not 1.0). These are independent nanoRSI runs of public benchmark tasks."
+}

@@ -1,0 +1,21 @@
+{
+  "candidate_commit": "4f091fd0a01771c26ef7b2ae057df98ad49fc946",
+  "declared_but_unloaded": [],
+  "declared_skills": [],
+  "executable_skills": [],
+  "generation": 1,
+  "leakage": [],
+  "markdown_only_always_in_context": [],
+  "panel_cases": 50,
+  "panel_status": "ok",
+  "schema_version": 1,
+  "skill_files": [
+    "edit/SKILL.md",
+    "inspect/SKILL.md",
+    "verify/SKILL.md"
+  ],
+  "surface_files": [
+    "target/program.py"
+  ],
+  "uninvoked_scripts": []
+}
