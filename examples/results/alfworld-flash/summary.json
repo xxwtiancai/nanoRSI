@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "study": "alfworld-flash",
+  "created_at": "2026-10-12T05:30:00+08:00",
+  "question": "Follow-up to the GLM-5.3 ceiling null: with a flash-tier agent (more headroom) and a larger train/validation split, does gated skill evolution on real ALFWorld games produce a gate-accepted improvement that transfers to the frozen seen/unseen test panel?",
+  "task_source": {
+    "benchmark": "ALFWorld (alfworld/alfworld, MIT; TextWorld engine; ALFRED data)",
+    "notice": "examples/alfworld_tasks/NOTICE",
+    "pack_generator": "examples/alfworld_tasks/prepare.py --train 8 --validation 8 (test-per-split default 6)",
+    "test_panel_comparability": "the 6 seen + 6 unseen frozen test games are IDENTICAL to the GLM-5.3 phase-2 study (selection depends only on test-per-split)",
+    "leakage": "train/validation games come from the train data split; test games from valid_seen/valid_unseen directories - disjoint by construction"
+  },
+  "settings": {
+    "mode": "skills (agent task episodes)",
+    "arm": "frozen",
+    "seed": 0,
+    "model": "glm-5.3-flash",
+    "thinking": "disabled",
+    "max_steps_per_game": 24,
+    "max_attempts": 4,
+    "splits": "8 train / 8 validation / 6+6 test",
+    "final_repeats": 1
+  },
+  "search_outcomes": [
+    {"attempt": 1, "decision": "rejected", "validation": "0.875 -> 0.875", "gate_reason": "tie"},
+    {"attempt": 2, "decision": "rejected", "validation": "0.875 -> 0.625", "gate_reason": "-0.25 harmful"},
+    {"attempt": 3, "decision": "rejected", "validation": "0.875 -> 0.875", "gate_reason": "tie"},
+    {"attempt": 4, "decision": "accepted", "validation": "0.875 -> 1.000", "gate_reason": "+0.125 above minimum",
+     "hypothesis": "the lost episode exhausted its budget opening cabinet after cabinet without reserving steps for cleaning and delivery; add open-before-contents awareness, likely-first search order and step budgeting"}
+  ],
+  "accepted_skill_changes": [
+    "closed receptacles hide contents: go to + open before examining (mechanics)",
+    "likely-first search order: countertops/sink/table/fridge before exhaustive cabinets (location priors)",
+    "step budgeting: reserve the last two actions for delivery, change strategy after half the budget (horizon awareness)",
+    "no revisiting searched receptacles (memory discipline)",
+    "goal-type pipelines for pick/place, heat/cool/clean and look-in-light tasks (task decomposition)"
+  ],
+  "final_panel_test_12_games": {
+    "baseline_initial_skill": {"score": 0.8333, "seen": "4/6", "unseen": "6/6", "lost": ["test-000", "test-001"]},
+    "no_skills": {"score": 0.9167, "seen": "5/6", "unseen": "6/6", "lost": ["test-002"]},
+    "candidate_evolved": {"score": 1.0, "seen": "6/6", "unseen": "6/6"},
+    "reading": "the evolved skill beats the initial-skill condition by two games (+0.167, both recovered on seen layouts) and the no-skills condition by one game; the initial v0 skill itself was mildly harmful versus bare (its explore-one-at-a-time advice encourages the exhaustive search that wastes the step budget) - all three numbers are one-repeat observations inside a +/-1-game noise band"
+  },
+  "usage": {
+    "proposer": {"model_calls": 5, "input_tokens": 20464, "output_tokens": 2998},
+    "final_test_total": {"model_calls": 414},
+    "cost_usd": null,
+    "episode_note": "candidate episodes also finished cheaper (115 calls vs 152 baseline / 147 no-skills in the final panel) - the budgeting guidance shortens episodes"
+  },
+  "audit": "zero expected-answer leakage, zero silent bypass, generation 1 audited; verify lineage ok",
+  "limits": "One seed, one repeat, four attempts, flash tier only, small splits. The candidate-vs-no-skills gap (one game) is within panel noise; the two-game candidate-vs-initial-skill gain and the validation +0.125 are the gated evidence. Same-repeat comparison to the GLM-5.3 study is observational (different agent tier). No claim that skill evolution generally beats no-skills; the mechanism finding is that a failed episode distilled into mechanics/priors/budgeting guidance passed the strict gate and transferred to frozen games."
+}

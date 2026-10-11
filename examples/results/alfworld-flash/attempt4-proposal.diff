@@ -1,0 +1,23 @@
+--- a/target/agent/skills/alfworld/SKILL.md
++++ b/target/agent/skills/alfworld/SKILL.md
+@@ -13,4 +13,27 @@ Current guidance (v0):
+ - The observation lists admissible commands; prefer exact strings from it.
++- Closed receptacles (fridge, cabinets, drawers, microwave) hide their
++  contents: after "go to" you must "open" them before the contents appear.
++  Budget two actions (go to + open) for every closed receptacle you check.
++- Search in likely-first order instead of exhaustively. In kitchens, items
++  are most often on countertops, near the sink, on the dining table, or in
++  the fridge/microwave; check those before opening every cabinet. In living
++  areas, check sofas, coffee tables, tv stands, and side tables.
++- Budget your actions. Episodes have a step limit (usually around 24). A
++  full pick-and-place task needs: search steps + take + any transform
++  (heat/cool/clean) + go to destination + put/move. Reserve at least the
++  last two actions for delivery; if more than half the budget is spent
++  still searching, change strategy rather than continuing the same sweep.
++- Do not examine or revisit receptacles you already searched; move to a new
++  candidate each step.
++- The goal type tells you the pipeline: "pick X then place in Y" needs
++  take, optional heat/cool/clean, then move/put at Y. "look at X in light"
++  needs take X, go to the lamp, then use the lamp while holding X. "two of
++  the same object" means find and deliver two copies before stopping.
+ - When the stated task is complete, reply {"action": "stop"}.

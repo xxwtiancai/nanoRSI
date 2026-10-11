@@ -1,0 +1,94 @@
+{
+  "changes": [
+    {
+      "attempt_id": 1,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "All train episodes were won but with wasted exploration steps (e.g., 9-10 searches before finding the object). Adding goal-type plan templates, likely-location search order, open-before-give-up, and one-instance-at-a-time sequencing should shorten unseen episodes and avoid partial two-object tasks, without changing any successful patterns."
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": 0.0,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement below minimum: 0.000000"
+    },
+    {
+      "attempt_id": 2,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "The lost episode burned its entire step budget walking through cabinets without opening them and never retrieved the kettle. Adding task-type pipelines, likely-location search order, mandatory open-after-arrive for closed receptacles, and already-located skip rules should cut wasted exploration steps on unseen episodes of all goal types."
+      },
+      "metric": {
+        "candidate": 0.625,
+        "delta": -0.25,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement below minimum: -0.250000"
+    },
+    {
+      "attempt_id": 3,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "The lost kettle episode spent 20 steps searching cabinets before checking tables, then ran out of steps right after cleaning without placing the object. Adding likely-location search order, mandatory open-after-go for closed receptacles, task-type pipelines, and an explicit finish-placement-under-step-pressure rule should cut wasted exploration steps and prevent episodes ending with the goal object still in inventory."
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": 0.0,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement below minimum: 0.000000"
+    },
+    {
+      "attempt_id": 4,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "accepted",
+      "diagnosis": {
+        "reason": "The lost episode exhausted its budget opening cabinet after cabinet without reserving steps for cleaning and delivery. Adding open-before-contents awareness, likely-first search order, step budgeting with a reserved delivery phase, no-revisit rule, and goal-type pipelines should cut wasted exploration and ensure tasks finish within the step limit on unseen episodes."
+      },
+      "metric": {
+        "candidate": 1.0,
+        "delta": 0.125,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement 0.125000"
+    }
+  ],
+  "decisions": {
+    "accepted": 1,
+    "rejected": 3
+  },
+  "revision_count": 4,
+  "schema_version": 1
+}

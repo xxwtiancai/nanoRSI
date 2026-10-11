@@ -1,0 +1,3722 @@
+{
+  "arm": "frozen",
+  "comparison_hash": "604635d7d4dec670879a8e12dbc44061130f337db017b17d12f2e555d4402e7e",
+  "conditions": [
+    "baseline",
+    "no-skills",
+    "candidate"
+  ],
+  "experiment_id": "skills-lab",
+  "manifest_hash": "74991e2b2255642e70a04ed7f31444207a751bb28361f863ccbd22076a22a3be",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "harness",
+  "repeats": 1,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 5278,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "task_failure",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "use desklamp 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "stop",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "event": "episode_end",
+              "steps": 2,
+              "won": false
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 3052,
+            "model_calls": 3,
+            "output_tokens": 33
+          }
+        },
+        {
+          "duration_ms": 41635,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "task_failure",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to drawer 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open drawer 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to shelf 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to shelf 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to shelf 3",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to shelf 4",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to shelf 5",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to shelf 6",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to shelf 7",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to shelf 8",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "go to shelf 9",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to shelf 10",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "go to shelf 11",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to shelf 12",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "go to shelf 13",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 17
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 18
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 19
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 20
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 21
+            },
+            {
+              "command": "open cabinet 4",
+              "event": "action",
+              "step": 22
+            },
+            {
+              "command": "go to cabinet 5",
+              "event": "action",
+              "step": 23
+            },
+            {
+              "event": "episode_end",
+              "steps": 24,
+              "won": false
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [
+              "invalid_action_retry"
+            ],
+            "input_tokens": 119611,
+            "model_calls": 25,
+            "output_tokens": 332
+          }
+        },
+        {
+          "duration_ms": 26986,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to drawer 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open drawer 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to drawer 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "open drawer 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to drawer 3",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open drawer 3",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to drawer 4",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "open drawer 4",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to drawer 5",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "open drawer 5",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "go to drawer 6",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "open drawer 6",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "go to drawer 7",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "open drawer 7",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "go to tvstand 1",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to coffeetable 1",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "take watch 1 from coffeetable 1",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "command": "go to sidetable 1",
+              "event": "action",
+              "step": 17
+            },
+            {
+              "command": "move watch 1 to sidetable 1",
+              "event": "action",
+              "step": 18
+            },
+            {
+              "event": "episode_end",
+              "steps": 19,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 46851,
+            "model_calls": 19,
+            "output_tokens": 234
+          }
+        },
+        {
+          "duration_ms": 27611,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to sinkbasin 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to bathtubbasin 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "open cabinet 4",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "go to toilet 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to garbagecan 1",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "take soapbar 4 from garbagecan 1",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "clean soapbar 4 with sinkbasin 1",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 17
+            },
+            {
+              "command": "move soapbar 4 to cabinet 1",
+              "event": "action",
+              "step": 18
+            },
+            {
+              "event": "episode_end",
+              "steps": 19,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 50227,
+            "model_calls": 19,
+            "output_tokens": 269
+          }
+        },
+        {
+          "duration_ms": 35362,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-004",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to cabinet 5",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "open cabinet 5",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to cabinet 6",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "open cabinet 6",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to cabinet 7",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "open cabinet 7",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to cabinet 8",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "open cabinet 8",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to cabinet 9",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "open cabinet 9",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 17
+            },
+            {
+              "command": "go to countertop 2",
+              "event": "action",
+              "step": 18
+            },
+            {
+              "command": "take plate 1 from countertop 2",
+              "event": "action",
+              "step": 19
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 20
+            },
+            {
+              "command": "cool plate 1 with fridge 1",
+              "event": "action",
+              "step": 21
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 22
+            },
+            {
+              "command": "move plate 1 to countertop 1",
+              "event": "action",
+              "step": 23
+            },
+            {
+              "event": "episode_end",
+              "steps": 24,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 121761,
+            "model_calls": 24,
+            "output_tokens": 301
+          }
+        },
+        {
+          "duration_ms": 15372,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-005",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open fridge 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to countertop 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to diningtable 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "take tomato 1 from diningtable 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "heat tomato 1 with microwave 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "move tomato 1 to fridge 1",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "event": "episode_end",
+              "steps": 10,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 30288,
+            "model_calls": 10,
+            "output_tokens": 132
+          }
+        },
+        {
+          "duration_ms": 7375,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-006",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to desk 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "take alarmclock 1 from desk 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "use desklamp 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "event": "episode_end",
+              "steps": 5,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 5747,
+            "model_calls": 5,
+            "output_tokens": 76
+          }
+        },
+        {
+          "duration_ms": 5716,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-007",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "take pencil 1 from desk 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to shelf 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "move pencil 1 to shelf 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "event": "episode_end",
+              "steps": 4,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 4129,
+            "model_calls": 4,
+            "output_tokens": 54
+          }
+        },
+        {
+          "duration_ms": 15157,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-008",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "take bowl 1 from cabinet 4",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "clean bowl 1 with sinkbasin 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "move bowl 1 to cabinet 1",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "event": "episode_end",
+              "steps": 11,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 24693,
+            "model_calls": 11,
+            "output_tokens": 145
+          }
+        },
+        {
+          "duration_ms": 24812,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-009",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to sinkbasin 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "open cabinet 4",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to toilet 1",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "take soapbar 1 from toilet 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "clean soapbar 1 with sinkbasin 1",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "move soapbar 1 to cabinet 2",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "event": "episode_end",
+              "steps": 17,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 37113,
+            "model_calls": 17,
+            "output_tokens": 221
+          }
+        },
+        {
+          "duration_ms": 19457,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-010",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open fridge 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "take potato 1 from countertop 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "cool potato 1 with fridge 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "open microwave 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "move potato 1 to microwave 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "event": "episode_end",
+              "steps": 9,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 18369,
+            "model_calls": 9,
+            "output_tokens": 125
+          }
+        },
+        {
+          "duration_ms": 9843,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "fb2fd85d0696b04aedb32f4745a3fcf998e5cf9391382aec0f4092d91faee5db"
+          },
+          "status": "ok",
+          "task_id": "test-011",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to coffeemachine 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "take mug 2 from countertop 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "heat mug 2 with microwave 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to coffeemachine 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "move mug 2 to coffeemachine 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "event": "episode_end",
+              "steps": 6,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 9342,
+            "model_calls": 6,
+            "output_tokens": 88
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 235825,
+      "metrics": {
+        "score": 0.8333333333333334
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action_retry"
+        ],
+        "input_tokens": 471183,
+        "model_calls": 152,
+        "output_tokens": 2010
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 4680,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "take alarmclock 2 from desk 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "use desklamp 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "event": "episode_end",
+              "steps": 3,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 2309,
+            "model_calls": 3,
+            "output_tokens": 41
+          }
+        },
+        {
+          "duration_ms": 15679,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to coffeetable 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to coffeetable 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to sofa 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to armchair 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to armchair 2",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to diningtable 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "take creditcard 1 from diningtable 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to drawer 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "open drawer 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "move creditcard 1 to drawer 1",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "event": "episode_end",
+              "steps": 10,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 23943,
+            "model_calls": 10,
+            "output_tokens": 135
+          }
+        },
+        {
+          "duration_ms": 33763,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to drawer 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open drawer 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to drawer 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "open drawer 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to drawer 3",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open drawer 3",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "open drawer 4",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to drawer 5",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "open drawer 5",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "open drawer 6",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "go to drawer 7",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "open drawer 7",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "go to sidetable 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to sidetable 2",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "go to sidetable 3",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to tvstand 1",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "go to sofa 1",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "command": "take box 1 from sofa 1",
+              "event": "action",
+              "step": 17
+            },
+            {
+              "command": "examine box 1",
+              "event": "action",
+              "step": 18
+            },
+            {
+              "command": "move box 1 to sofa 1",
+              "event": "action",
+              "step": 19
+            },
+            {
+              "command": "go to sofa 2",
+              "event": "action",
+              "step": 20
+            },
+            {
+              "command": "go to armchair 1",
+              "event": "action",
+              "step": 21
+            },
+            {
+              "command": "go to coffeetable 1",
+              "event": "action",
+              "step": 22
+            },
+            {
+              "command": "take watch 1 from coffeetable 1",
+              "event": "action",
+              "step": 23
+            },
+            {
+              "event": "episode_end",
+              "steps": 24,
+              "won": false
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 67068,
+            "model_calls": 24,
+            "output_tokens": 299
+          }
+        },
+        {
+          "duration_ms": 24822,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to bathtubbasin 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to sinkbasin 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "open cabinet 4",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to shelf 1",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "take soapbar 1 from shelf 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "clean soapbar 1 with sinkbasin 1",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "move soapbar 1 to cabinet 1",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "event": "episode_end",
+              "steps": 17,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 37803,
+            "model_calls": 17,
+            "output_tokens": 223
+          }
+        },
+        {
+          "duration_ms": 33940,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-004",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to cabinet 5",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "open cabinet 5",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to cabinet 6",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "open cabinet 6",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to cabinet 7",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "open cabinet 7",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to cabinet 8",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "open cabinet 8",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to cabinet 9",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "open cabinet 9",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 17
+            },
+            {
+              "command": "go to countertop 2",
+              "event": "action",
+              "step": 18
+            },
+            {
+              "command": "take plate 1 from countertop 2",
+              "event": "action",
+              "step": 19
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 20
+            },
+            {
+              "command": "cool plate 1 with fridge 1",
+              "event": "action",
+              "step": 21
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 22
+            },
+            {
+              "command": "move plate 1 to countertop 1",
+              "event": "action",
+              "step": 23
+            },
+            {
+              "event": "episode_end",
+              "steps": 24,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 116313,
+            "model_calls": 24,
+            "output_tokens": 294
+          }
+        },
+        {
+          "duration_ms": 16503,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-005",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open fridge 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to countertop 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to diningtable 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "take tomato 1 from diningtable 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "heat tomato 1 with microwave 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "move tomato 1 to fridge 1",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "event": "episode_end",
+              "steps": 10,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 28018,
+            "model_calls": 10,
+            "output_tokens": 137
+          }
+        },
+        {
+          "duration_ms": 6741,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-006",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to desk 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "take alarmclock 1 from desk 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "use desklamp 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "event": "episode_end",
+              "steps": 5,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 4612,
+            "model_calls": 5,
+            "output_tokens": 65
+          }
+        },
+        {
+          "duration_ms": 5964,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-007",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "take pencil 1 from desk 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to shelf 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "move pencil 1 to shelf 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "event": "episode_end",
+              "steps": 4,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 3221,
+            "model_calls": 4,
+            "output_tokens": 54
+          }
+        },
+        {
+          "duration_ms": 15886,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-008",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "take bowl 1 from cabinet 4",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "clean bowl 1 with sinkbasin 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "move bowl 1 to cabinet 1",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "event": "episode_end",
+              "steps": 10,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 18410,
+            "model_calls": 10,
+            "output_tokens": 132
+          }
+        },
+        {
+          "duration_ms": 24947,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-009",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to sinkbasin 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "open cabinet 4",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "go to toilet 1",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "take soapbar 1 from toilet 1",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "clean soapbar 1 with sinkbasin 1",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "move soapbar 1 to cabinet 2",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "event": "episode_end",
+              "steps": 16,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 29306,
+            "model_calls": 16,
+            "output_tokens": 208
+          }
+        },
+        {
+          "duration_ms": 14094,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-010",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open fridge 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "take potato 1 from countertop 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "cool potato 1 with fridge 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "open microwave 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "move potato 1 to microwave 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "event": "episode_end",
+              "steps": 9,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 16326,
+            "model_calls": 9,
+            "output_tokens": 125
+          }
+        },
+        {
+          "duration_ms": 23310,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {},
+          "status": "ok",
+          "task_id": "test-011",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "take cup 1 from cabinet 3",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "heat cup 1 with microwave 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to coffeemachine 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "look",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "move cup 1 to countertop 1",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "take mug 2 from countertop 1",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "heat mug 2 with microwave 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to coffeemachine 1",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "move mug 2 to coffeemachine 1",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "event": "episode_end",
+              "steps": 15,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 39033,
+            "model_calls": 15,
+            "output_tokens": 272
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "no-skills",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 221482,
+      "metrics": {
+        "score": 0.9166666666666666
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 386362,
+        "model_calls": 147,
+        "output_tokens": 1985
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 4966,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "take alarmclock 2 from desk 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "use desklamp 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "event": "episode_end",
+              "steps": 3,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 3920,
+            "model_calls": 3,
+            "output_tokens": 41
+          }
+        },
+        {
+          "duration_ms": 26406,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to coffeetable 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to coffeetable 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to sofa 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to shelf 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to shelf 2",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to armchair 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to armchair 2",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to drawer 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "open drawer 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to drawer 2",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "open drawer 2",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to drawer 3",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "open drawer 3",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to diningtable 1",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "take creditcard 1 from diningtable 1",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to drawer 1",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "move creditcard 1 to drawer 1",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "event": "episode_end",
+              "steps": 17,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 69927,
+            "model_calls": 17,
+            "output_tokens": 217
+          }
+        },
+        {
+          "duration_ms": 5908,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to coffeetable 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "take watch 1 from coffeetable 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to sidetable 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "move watch 1 to sidetable 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "event": "episode_end",
+              "steps": 4,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 5226,
+            "model_calls": 4,
+            "output_tokens": 60
+          }
+        },
+        {
+          "duration_ms": 28442,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to sinkbasin 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to bathtubbasin 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "open cabinet 4",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "go to toilet 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to garbagecan 1",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "take soapbar 4 from garbagecan 1",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "clean soapbar 4 with sinkbasin 1",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 17
+            },
+            {
+              "command": "move soapbar 4 to cabinet 1",
+              "event": "action",
+              "step": 18
+            },
+            {
+              "event": "episode_end",
+              "steps": 19,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 56144,
+            "model_calls": 19,
+            "output_tokens": 249
+          }
+        },
+        {
+          "duration_ms": 10890,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-004",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to countertop 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "take plate 1 from countertop 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "cool plate 1 with fridge 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to countertop 3",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "move plate 1 to countertop 3",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "event": "episode_end",
+              "steps": 7,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 17367,
+            "model_calls": 7,
+            "output_tokens": 98
+          }
+        },
+        {
+          "duration_ms": 18165,
+          "group_id": "test-seen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-005",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open fridge 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to countertop 2",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to countertop 3",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to diningtable 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "take tomato 1 from diningtable 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "heat tomato 1 with microwave 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "move tomato 1 to fridge 1",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "event": "episode_end",
+              "steps": 11,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 39396,
+            "model_calls": 11,
+            "output_tokens": 145
+          }
+        },
+        {
+          "duration_ms": 7198,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-006",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to desk 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "take alarmclock 1 from desk 2",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "use desklamp 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "event": "episode_end",
+              "steps": 5,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 7297,
+            "model_calls": 5,
+            "output_tokens": 65
+          }
+        },
+        {
+          "duration_ms": 6263,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-007",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to desk 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "take pencil 1 from desk 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to shelf 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "move pencil 1 to shelf 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "event": "episode_end",
+              "steps": 4,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 5369,
+            "model_calls": 4,
+            "output_tokens": 54
+          }
+        },
+        {
+          "duration_ms": 18612,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-008",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to countertop 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to countertop 3",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "take bowl 1 from cabinet 4",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "clean bowl 1 with sinkbasin 1",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "move bowl 1 to cabinet 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "event": "episode_end",
+              "steps": 13,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 40673,
+            "model_calls": 13,
+            "output_tokens": 171
+          }
+        },
+        {
+          "duration_ms": 26457,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-009",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "go to sinkbasin 2",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "open cabinet 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "go to cabinet 2",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "open cabinet 2",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "go to cabinet 3",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "open cabinet 3",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "command": "go to cabinet 4",
+              "event": "action",
+              "step": 9
+            },
+            {
+              "command": "open cabinet 4",
+              "event": "action",
+              "step": 10
+            },
+            {
+              "command": "go to toilet 1",
+              "event": "action",
+              "step": 11
+            },
+            {
+              "command": "take soapbar 1 from toilet 1",
+              "event": "action",
+              "step": 12
+            },
+            {
+              "command": "go to sinkbasin 1",
+              "event": "action",
+              "step": 13
+            },
+            {
+              "command": "clean soapbar 1 with sinkbasin 1",
+              "event": "action",
+              "step": 14
+            },
+            {
+              "command": "go to cabinet 1",
+              "event": "action",
+              "step": 15
+            },
+            {
+              "command": "move soapbar 1 to cabinet 1",
+              "event": "action",
+              "step": 16
+            },
+            {
+              "event": "episode_end",
+              "steps": 17,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 43057,
+            "model_calls": 17,
+            "output_tokens": 233
+          }
+        },
+        {
+          "duration_ms": 14060,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-010",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "open fridge 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "take potato 1 from countertop 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to fridge 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "cool potato 1 with fridge 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 6
+            },
+            {
+              "command": "open microwave 1",
+              "event": "action",
+              "step": 7
+            },
+            {
+              "command": "move potato 1 to microwave 1",
+              "event": "action",
+              "step": 8
+            },
+            {
+              "event": "episode_end",
+              "steps": 9,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 21159,
+            "model_calls": 9,
+            "output_tokens": 117
+          }
+        },
+        {
+          "duration_ms": 10221,
+          "group_id": "test-unseen",
+          "repeat_id": 0,
+          "score": 1.0,
+          "skill_hashes": {
+            "alfworld": "8f997576b75e88437b50d644a2d3c7079651742958e03772da3ef7a84067dfa0"
+          },
+          "status": "ok",
+          "task_id": "test-011",
+          "trace": [
+            {
+              "event": "runner_loaded",
+              "path": "target/agent/run.py",
+              "sha256": "ac6ac9f7fb8303a366af664f365828c417240b42213a3efbdc9fbb586e6890fd"
+            },
+            {
+              "command": "go to countertop 1",
+              "event": "action",
+              "step": 0
+            },
+            {
+              "command": "take mug 2 from countertop 1",
+              "event": "action",
+              "step": 1
+            },
+            {
+              "command": "go to microwave 1",
+              "event": "action",
+              "step": 2
+            },
+            {
+              "command": "heat mug 2 with microwave 1",
+              "event": "action",
+              "step": 3
+            },
+            {
+              "command": "go to coffeemachine 1",
+              "event": "action",
+              "step": 4
+            },
+            {
+              "command": "move mug 2 to coffeemachine 1",
+              "event": "action",
+              "step": 5
+            },
+            {
+              "event": "episode_end",
+              "steps": 6,
+              "won": true
+            }
+          ],
+          "usage": {
+            "cost_usd": null,
+            "errors": [],
+            "input_tokens": 11307,
+            "model_calls": 6,
+            "output_tokens": 87
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": null,
+      "duration_ms": 178800,
+      "metrics": {
+        "score": 1.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 320842,
+        "model_calls": 115,
+        "output_tokens": 1537
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.0,
+    "known_count": 0,
+    "known_usd": null,
+    "total_count": 17,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "0a52ef4ca6ff4a699e8eb177f4a252d8",
+      "phase": "search",
+      "receipt": "4405a0fc66e320a034d9cfc79e2e5279e19a3101bd4819595d41083869f78512",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/baseline/b186a4d53a/gate.json",
+          "sha256": "919f7b45ac71c7c964646ede4306881ca66ef65f3b67d64186efe75cac689da6"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 134113,
+      "event_type": "evaluation_finished",
+      "invocation_id": "0a52ef4ca6ff4a699e8eb177f4a252d8",
+      "phase": "search",
+      "receipt": "790186997ccd213fbe75ccd87678e064d58807d0bfd4c2a28019acca37fa5607",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 266448,
+        "model_calls": 90,
+        "output_tokens": 1186
+      }
+    },
+    {
+      "episodes": 4,
+      "event_type": "evaluation_started",
+      "invocation_id": "b4c4ea268d07491ebb39826060fdfab0",
+      "phase": "search",
+      "receipt": "42cc43926e7a681a602931969d6e2a641b6ed4482cbe109ba71e7e407e7d03af",
+      "seq": 6,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/763684c721/train.json",
+          "sha256": "04488a6edd9b6630775fca508b0d4e81f313daa1ff2272137c856b5fb7d40e66"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 58371,
+      "event_type": "evaluation_finished",
+      "invocation_id": "b4c4ea268d07491ebb39826060fdfab0",
+      "phase": "search",
+      "receipt": "eb422ac580cffd8faddb862114dad55f4a1172b45e806603fdd5558716d13a2c",
+      "seq": 7,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 103993,
+        "model_calls": 39,
+        "output_tokens": 544
+      }
+    },
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "4da2b28d5c984395a09c4ca8eed75c9b",
+      "phase": "search",
+      "receipt": "27aa53d2d6f6b6a2d27c73c435cb0d5be3ffca2a15a0ae69e5b4a1efe7d0c376",
+      "seq": 10,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/763684c721/parent.json",
+          "sha256": "694e901d3ee732e43249dddc48b0aaf70b339c50c307bc790862f4fcee5804de"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 140701,
+      "event_type": "evaluation_finished",
+      "invocation_id": "4da2b28d5c984395a09c4ca8eed75c9b",
+      "phase": "search",
+      "receipt": "15ab5224e3bdf218607bbde62a8158430b33b1563ee33fc983d4a966156c4c39",
+      "seq": 11,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action_retry",
+          "invalid_action_retry"
+        ],
+        "input_tokens": 275948,
+        "model_calls": 96,
+        "output_tokens": 1295
+      }
+    },
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "028f5a26ccfa4a8c8e2e9a536e7beb11",
+      "phase": "search",
+      "receipt": "ed733a1ec7992ecbf410e8b7400efa8a456724645b9e1f4900fe771b4019b5e1",
+      "seq": 12,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/763684c721/gate.json",
+          "sha256": "b565d63ac8bf6191691762600ed3821b6786e690dae760d9999e6239864f36ee"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 115093,
+      "event_type": "evaluation_finished",
+      "invocation_id": "028f5a26ccfa4a8c8e2e9a536e7beb11",
+      "phase": "search",
+      "receipt": "59709156495203c97ee8501941b9a3934dace20dec691bbf4cdaf2af807be7df",
+      "seq": 13,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 244413,
+        "model_calls": 76,
+        "output_tokens": 1009
+      }
+    },
+    {
+      "episodes": 4,
+      "event_type": "evaluation_started",
+      "invocation_id": "1169c392698f4cf6bb897f9fbb81c135",
+      "phase": "search",
+      "receipt": "4070b429b8a93dd831bddca5606979e1a0499b133ac3f0682f1448c52cfb9ea0",
+      "seq": 16,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/6b95acfe3b/train.json",
+          "sha256": "184dd579b73ee3d931177eaf08f363997928d42152995519cd4f004f104be6d4"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 78867,
+      "event_type": "evaluation_finished",
+      "invocation_id": "1169c392698f4cf6bb897f9fbb81c135",
+      "phase": "search",
+      "receipt": "132ac90b603e0159e80ae6ee6f88e1162039977071150be6f2c9c444dd9c153a",
+      "seq": 17,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 202102,
+        "model_calls": 54,
+        "output_tokens": 722
+      }
+    },
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "dde5655e85cc4c6a886fd58324390e2e",
+      "phase": "search",
+      "receipt": "ef24c61a565d3b4186ace68d6f2eecf6e8a2cb2a33fe0a6b41075d1bc695173e",
+      "seq": 20,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/6b95acfe3b/parent.json",
+          "sha256": "51530c502cd88b94455bcb8a20152c637a235f976f69e0a8decba94608477d8d"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 138434,
+      "event_type": "evaluation_finished",
+      "invocation_id": "dde5655e85cc4c6a886fd58324390e2e",
+      "phase": "search",
+      "receipt": "eda8cf0d6314ae8f66623c636cd36e230b150ec7dc3771cb3fe1a35e5d3eccbc",
+      "seq": 21,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 273122,
+        "model_calls": 93,
+        "output_tokens": 1187
+      }
+    },
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "0a12eb787c24403f9e921dab19c2a405",
+      "phase": "search",
+      "receipt": "ae936706dd698a1fcedc004559dbe71cc46df277451c8ae0f737a135ad278b06",
+      "seq": 22,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/6b95acfe3b/gate.json",
+          "sha256": "f9ca2891a0c908c14fb5959dcdf9f450ea9cd5606191591eecc739a23eff7a0e"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 70570,
+      "event_type": "evaluation_finished",
+      "invocation_id": "0a12eb787c24403f9e921dab19c2a405",
+      "phase": "search",
+      "receipt": "a3c25e5f31fe6774952dab72f3fadaa1031767cd2b7953949cca4223099f0ee5",
+      "seq": 23,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action_retry",
+          "invalid_action",
+          "invalid_action_retry",
+          "invalid_action",
+          "invalid_action_retry",
+          "invalid_action_retry",
+          "invalid_action"
+        ],
+        "input_tokens": 106765,
+        "model_calls": 44,
+        "output_tokens": 735
+      }
+    },
+    {
+      "episodes": 4,
+      "event_type": "evaluation_started",
+      "invocation_id": "56d8ee2c5d074a5c9b4fb16dec9561e1",
+      "phase": "search",
+      "receipt": "1ddbba741a08c3976d7017107bc7d42a69c9cedb91c848bf4f02812ce3238322",
+      "seq": 26,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/ba4beb589e/train.json",
+          "sha256": "f8bb63de52a54db45ac79f7e562a01700b159100c803eba1892044f5fdf88277"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 85135,
+      "event_type": "evaluation_finished",
+      "invocation_id": "56d8ee2c5d074a5c9b4fb16dec9561e1",
+      "phase": "search",
+      "receipt": "1a46af08f7d57944508a121403d0a8f86c3e49abb8d31e0aa21be349a3c1e308",
+      "seq": 27,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 207373,
+        "model_calls": 56,
+        "output_tokens": 756
+      }
+    },
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "aafff37db7454c9191290d4f45cc6d17",
+      "phase": "search",
+      "receipt": "2a4e4d655ffbc21915f8ecccdcdda86ae0bb62fa07a1753741406b71947de70b",
+      "seq": 30,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/ba4beb589e/parent.json",
+          "sha256": "8efa9735292f5b7d49b8f57fe0a88fbb45a3f29f5c5fcff5ce1fd96c99dfeb81"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 134523,
+      "event_type": "evaluation_finished",
+      "invocation_id": "aafff37db7454c9191290d4f45cc6d17",
+      "phase": "search",
+      "receipt": "54fba5e2bba0c19fcad398f90fc84b90f0de0f17c0d87919be26389537216650",
+      "seq": 31,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action_retry"
+        ],
+        "input_tokens": 259223,
+        "model_calls": 88,
+        "output_tokens": 1177
+      }
+    },
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "1ebbb917edaf4554a4f78737136f0f9f",
+      "phase": "search",
+      "receipt": "71e6f3334ed7bfd2ae78928548f8cc14c06a08087769d92f935428cd5177edaf",
+      "seq": 32,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/ba4beb589e/gate.json",
+          "sha256": "126ec2318cc900b673430d656c221ded3fd90cb0cd1e628e7d57c0d94e302726"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 123071,
+      "event_type": "evaluation_finished",
+      "invocation_id": "1ebbb917edaf4554a4f78737136f0f9f",
+      "phase": "search",
+      "receipt": "f73de6155ea314faba379d04dcba8e171716dec4bdb592ed7dc5ed3d26f819b0",
+      "seq": 33,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action_retry",
+          "invalid_action_retry"
+        ],
+        "input_tokens": 256699,
+        "model_calls": 79,
+        "output_tokens": 1087
+      }
+    },
+    {
+      "episodes": 4,
+      "event_type": "evaluation_started",
+      "invocation_id": "25d1c6989c97400a9fdf653a795e52d6",
+      "phase": "search",
+      "receipt": "10fce420c0d4bb7418b2ab6102c4731fdd7e156a1776957fee9c1f5ce465c702",
+      "seq": 36,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/74015f60c3/train.json",
+          "sha256": "4c95952ad49260688ce402b87da5ae744a1c2f97cc885e8887535db7505fbe05"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 87486,
+      "event_type": "evaluation_finished",
+      "invocation_id": "25d1c6989c97400a9fdf653a795e52d6",
+      "phase": "search",
+      "receipt": "27b15c1475d7bcb665c642cee870fe4452bcf133d02bc716996b0c21bac76829",
+      "seq": 37,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action_retry"
+        ],
+        "input_tokens": 209554,
+        "model_calls": 57,
+        "output_tokens": 770
+      }
+    },
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "1ee54d66a04b41fa896c00da3d68024d",
+      "phase": "search",
+      "receipt": "2fde6f25bf67a5a1c64abf2852cefa0b1ed7b072a00d23e30282fb2c63223de6",
+      "seq": 40,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/74015f60c3/parent.json",
+          "sha256": "5c253d690bb931a13442048112320c4eb94e2ce1b78da2c53438ca09f2a77ed2"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 133815,
+      "event_type": "evaluation_finished",
+      "invocation_id": "1ee54d66a04b41fa896c00da3d68024d",
+      "phase": "search",
+      "receipt": "7ff108bf443660f6a8a8b32927007b467274865a31a3bbb005bbb540c612b4dd",
+      "seq": 41,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 257668,
+        "model_calls": 87,
+        "output_tokens": 1139
+      }
+    },
+    {
+      "episodes": 8,
+      "event_type": "evaluation_started",
+      "invocation_id": "2bbb78fe2a6847dfb4e91bc3ce422983",
+      "phase": "search",
+      "receipt": "ce879354a734f12d9f1a4e91a76cb207b4fc966262cbdadb806c80487d902fb2",
+      "seq": 42,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/74015f60c3/gate.json",
+          "sha256": "d2fadbdba028c864e7da02757f7019278c52b106e2c3c311417ad5cc372c1de3"
+        }
+      },
+      "cost_usd": null,
+      "duration_ms": 110092,
+      "event_type": "evaluation_finished",
+      "invocation_id": "2bbb78fe2a6847dfb4e91bc3ce422983",
+      "phase": "search",
+      "receipt": "aadfe3051101eedba30db391e8b301bab7423f39c724e95a7ab6ca38d01c2aae",
+      "seq": 43,
+      "status": "ok",
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 162636,
+        "model_calls": 68,
+        "output_tokens": 922
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "1b804705a67269f5a79e91ec9acf0e0f3fc65e0a22a96e8b797f218960d8600f",
+      "seq": 9,
+      "usage": {
+        "cost_usd": null,
+        "errors": [
+          "invalid_action_retry"
+        ],
+        "input_tokens": 7426,
+        "model_calls": 2,
+        "output_tokens": 920
+      }
+    },
+    {
+      "attempt_id": 2,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "ccca4c83b2d0435c373b054f1cc7f0a00fdbe875badc453800c3000fef1ed27e",
+      "seq": 19,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 4199,
+        "model_calls": 1,
+        "output_tokens": 845
+      }
+    },
+    {
+      "attempt_id": 3,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "bde5524f004588d6b480ff6b854e999938b395f7ed8bf625a66821c14205be60",
+      "seq": 29,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 4379,
+        "model_calls": 1,
+        "output_tokens": 568
+      }
+    },
+    {
+      "attempt_id": 4,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "616f648ae2d437e208772c9dfb00a04afc17e76534cd192f162d0873c467b6b5",
+      "seq": 39,
+      "usage": {
+        "cost_usd": null,
+        "errors": [],
+        "input_tokens": 4460,
+        "model_calls": 1,
+        "output_tokens": 665
+      }
+    }
+  ],
+  "seed": 0,
+  "test_cost_usd": {
+    "coverage": 0.0,
+    "known_count": 0,
+    "known_usd": null,
+    "total_count": 3,
+    "total_usd": null
+  }
+}

@@ -28,7 +28,10 @@ Builds a throwaway CPU workspace, runs baseline → gated search (three accepted
 
 ## Real agent tasks: ALFWorld phase 2
 
-[alfworld_tasks](alfworld_tasks/README.md) ports the self-improving-agent literature's canonical benchmark — [ALFWorld](https://github.com/alfworld/alfworld) text games (MIT), engine-scored, seen/unseen layout splits — as complete agent episodes: the GLM-5.3 agent explores rooms and manipulates objects while the **operating skill** is the mutable, evolved surface. The [live study](results/alfworld-phase2/README.md) ran the full gated lifecycle on real games and reports an honest null at the ceiling: baseline 0.833 validation, all three proposed guidance edits gate-rejected (one harmful, two ties), and every condition 12/12 on the frozen final panel — GLM-5.3 already solves this subset without skills, so evolution has no headroom here. The study establishes the real-agent-task capability, a literature-aligned protocol, and the measured ±1-game noise band that motivates the noise-aware gating queued in ADOPTION item 38.
+[alfworld_tasks](alfworld_tasks/README.md) ports the self-improving-agent literature's canonical benchmark — [ALFWorld](https://github.com/alfworld/alfworld) text games (MIT), engine-scored, seen/unseen layout splits — as complete agent episodes: the agent explores rooms and manipulates objects while the **operating skill** is the mutable, evolved surface. Two studies on the *identical* frozen test panels (6 seen + 6 unseen games):
+
+- **GLM-5.3** ([study](results/alfworld-phase2/README.md)) found the honest ceiling: baseline 0.833 validation, all three guidance edits gate-rejected, every condition 12/12 on the final panel — no headroom at that tier, and a measured ±1-game panel noise band.
+- **GLM-5.3-Flash with a larger split** ([study](results/alfworld-flash/README.md), `--train 8 --validation 8`) found the gain: a skill distilled from one failed training episode (closed-receptacle mechanics, likely-first search, step budgeting) passed the strict gate at **0.875 → 1.000** validation and transferred to the frozen panel at **1.000 vs 0.833** for the initial-skill condition and 0.917 for no-skills, with cheaper episodes — the first gate-accepted, transfer-measured improvement on a real agent benchmark.
 
 ## Recursive checkpoint reuse on handwritten digits (internal study, non-benchmark)
 
