@@ -33,7 +33,10 @@ import os
 import sys
 
 _ALF_PYTHON = os.environ.get("NANORSI_ALF_PYTHON", "__ALF_PYTHON__")
-if sys.version_info[:2] != (3, 12) and os.environ.get("NANORSI_ALF_REEXEC") != "1":
+if (sys.version_info[:2] != (3, 12) and os.environ.get("NANORSI_ALF_REEXEC") != "1"
+        and os.path.isfile(_ALF_PYTHON)):
+    # Re-exec only when the ALFWorld interpreter exists; propose mode runs fine
+    # without it, and a missing interpreter surfaces as a task-mode import error.
     os.environ["NANORSI_ALF_REEXEC"] = "1"
     os.execv(_ALF_PYTHON, [_ALF_PYTHON, sys.argv[0]] + sys.argv[1:])
 
