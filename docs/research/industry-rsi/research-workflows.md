@@ -10,7 +10,7 @@
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 9 |
+| [Analyses & audits](#family-analyses-audits) | 12 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
@@ -281,7 +281,7 @@
 
 **Source figure / official image** — Figure 1: EvoScientist overview - researcher, engineer and evolution-manager agents over two persistent memories (ideation and experimentation), with three self-evolution mechanisms updating knowledge after each task. · Figure 1 · [source](https://arxiv.org/html/2603.08127v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-21.
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-12.
 
 **Open code / weights / data links** — [Code repository (Apache-2.0)](https://github.com/EvoScientist/EvoScientist)
 
@@ -691,7 +691,97 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (9)
+## Analyses & audits (12)
+
+<a id="study-contracts-research-agents"></a>
+
+### What Output-Only Review Cannot Verify: Study Contracts for Research Agents
+
+**2026-10-08** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-08 (2610.11754); comments state '15 pages, 4 tables. Preprint. Not peer reviewed. Companion manuscripts prepared in parallel'.
+
+**Institutional relationship** — Both authors (Eitan Waks, Ben Glocker) at the Department of Computing, Imperial College London.
+
+**What changes and how feedback is reused** — Study contracts bind three things an output-only review cannot see - declared experimental choices, run obligations, and claim scope - to recorded execution evidence, and distinguish this contract-relative verification from scientific truth. A deterministic checker applies a registered, fault-specific rule to approved and executed objects; the diagnostic deliberately withholds pair context and the registry-selected fault label from judge aliases to measure the information boundary between artifact-only and contract-grounded review.
+
+**Author-reported result** — Using eight self-authored clean/mutated pairs, the deterministic checker applying a registered fault-specific rule detected all eight registered mutations. Across eighteen recorded judge aliases given individually metadata-filtered packages without pair context or the fault label, 104 of 144 mutated evaluation cases received defect flags, 32 abstentions and eight terminal failures, with no explicit clean decisions on mutated cases. Some packages retained approval and execution fields including digests.
+
+**Evidence limits** — The authors state the results characterize a deliberately information-asymmetric development setting and do not isolate the effect of authoritative information from differences in task specification and rule selection, nor compare verifier quality or agent reward hacking; full-information comparisons, legitimate-adaptation controls and closed-loop agent evaluations are named as necessary future tests. The mutation set is self-authored; no public code or data accompanies the preprint.
+
+**Code / weights / data / license** — Code: none found; GitHub links in the HTML reference prior systems (deltaml-bench-vivaria, agent-flight-recorder). Weights/Data: not applicable or not released. License: paper under arXiv default licensing.
+
+**Possible nanoRSI experiment — not implemented here** — The idea maps one-to-one onto nanoRSI's evidence ledger: before admitting a claimed improvement, bind the declared choice, run obligations and claim scope to recorded execution evidence, and treat 'verifiable against the contract' as a property distinct from 'true' - concretely, gate on digests of approved versus executed objects and report judge decisions under withheld-label conditions as an honesty probe.
+
+![The paper reports no pipeline figure; the record keeps a cropped screenshot of the arXiv abstract page showing the title, authors at Imperial College London, the v1 date and the contract-verification framing.](assets/paper-figures/study-contracts-abs-crop.png)
+
+**Source figure / official image** — The paper reports no pipeline figure; the record keeps a cropped screenshot of the arXiv abstract page showing the title, authors at Imperial College London, the v1 date and the contract-verification framing. · arXiv abstract page, title/authors/v1-date/abstract crop (2026-10-12); the preprint prints no figures · [source](https://arxiv.org/abs/2610.11754)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-12.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11754) · [arXiv HTML v1](https://arxiv.org/html/2610.11754v1)
+
+<a id="automated-research-evaluation-survey"></a>
+
+### How Is Automated Research Evaluated? A Survey of Benchmarks and Evaluation Practices
+
+**2026-10-08** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-08 (2610.11877) with comments 'Accepted to Findings of AACL-IJCNLP 2026'; the acceptance is a later venue event, first public date is the arXiv v1.
+
+**Institutional relationship** — NLPCT Lab, Department of Artificial Intelligence, University of Macau (eight authors; Liulei Zhang and Chuyue Huang equal contribution, Derek F. Wong corresponding).
+
+**What changes and how feedback is reused** — A survey of how automated-research systems are evaluated across six targets - literature synthesis, research ideation, executable workflows, scholarly writing and communication, automatic peer review, and end-to-end research - comparing task construction, evidence sources, evaluators and scoring procedures, and organizing representative works by claim strength.
+
+**Author-reported result** — Three recurring lessons: output checks, process checks and human studies provide complementary information; evaluator calibration is specific to the property being assessed; and resource budgets and attempt selection are integral to interpreting performance comparisons. The survey identifies diagnostic evaluation designs, documented gaps in supporting evidence, and offers reporting and audit recommendations.
+
+**Evidence limits** — A survey: no new experiments; coverage is the stated six targets and the included benchmark set; claim-strength placement of individual works is the authors' reading; CC BY 4.0 licensed but no accompanying code or dataset.
+
+**Code / weights / data / license** — Code: none. Weights: not applicable. Data: none beyond the paper. License: CC BY 4.0 stated on the arXiv page.
+
+**Possible nanoRSI experiment — not implemented here** — Use its claim-strength ladder as a self-check template when nanoRSI reports effect studies: state which claims rest on output checks only, which add process evidence, and which carry budget and attempt-selection accounting - matching the survey's third lesson to the evidence ledger's existing budget fields.
+
+![Original Figure 1: representative automated-research works arranged on a claim-strength pyramid from surface plausibility to stronger evidence classes, with hexagon segments marking each work's primary evaluation targets.](assets/paper-figures/research-eval-claims-pyramid.svg)
+
+**Source figure / official image** — Original Figure 1: representative automated-research works arranged on a claim-strength pyramid from surface plausibility to stronger evidence classes, with hexagon segments marking each work's primary evaluation targets. · Figure 1 (claim_strength_pyramid_2026-09-28_final3.svg): representative works by claim strength, hexagon segments marking primary evaluation targets · [source](https://arxiv.org/html/2610.11877v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-12.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11877) · [arXiv HTML v1](https://arxiv.org/html/2610.11877v1)
+
+<a id="rsigym-rsi-environment"></a>
+
+### RSIGym: A Flexible Environment for Recursive Self-Improvement
+
+**2026-10-07** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-07 (2610.10310); the companion repository was created 2026-10-05, three days before the paper. No venue stated.
+
+**Institutional relationship** — Author affiliations in the arXiv HTML list Evolvent AI and the National University of Singapore (Fanqing Meng and Michael Qizhe Shieh among the corresponding authors); the repository and website are run by Evolvent AI.
+
+**What changes and how feedback is reused** — An agent-native 'Everything as a Service' research environment: training, inference, rollout, evaluation and sandbox execution are exposed as services behind shared permission and budget accounting. A research agent iterates generate-data, train-checkpoint, evaluate, analyze-and-revise loops over a target system under three tracks - Data, Harness, or Joint - and submits a selected model-plus-harness for official evaluation. RSI-Index scores a run as the mean fraction of the remaining performance gap closed across five benchmark domains.
+
+**Author-reported result** — Across six frontier research models in independent Joint runs under a 500-dollar platform-service budget per benchmark run, Opus 5 achieves the highest RSI-Index of 0.4809, with its submitted systems raising SWE-bench Verified from 17.67% to 50.33% and AIME from 31.67% to 97.78%. Additional experiments cover DSH (data-settings-and-harness) refinement, doubled budgets (500 to 1,000 dollars) and restricted network access; no agent is best everywhere across domains.
+
+**Evidence limits** — RSI-Index is the benchmark's own metric and the initial systems are weak on some panels (17.67% SWE-bench Verified start), so 'fraction of remaining gap closed' rewards large jumps from low starts; all numbers are author-run under their own service accounting; the paper's 'open-source' claim resolves to a repository with no license file, which under this catalogue's convention is all-rights-reserved (ideas only, no code reuse); per-agent spend beyond the headline budget is not independently audited.
+
+**Code / weights / data / license** — Code: github.com/evolvent-ai/RSIGym public (created 2026-10-05, 64 stars as of 2026-10-12) but no LICENSE file was found at any standard path - treat as all-rights-reserved despite the open-source claim. Weights: not applicable (frontier models via API). Data: results and trajectories advertised on the project site; release depth not independently verified. License: none detected.
+
+**Possible nanoRSI experiment — not implemented here** — The reporting discipline worth copying is budget-normalized improvement: state initial and submitted scores per panel plus the service budget each run consumed, so nanoRSI experiments report gain-per-cost rather than gain alone; the 'no agent best everywhere' finding also argues for per-domain breakdowns in any frozen-selector study.
+
+![Original Figure 1: inside a lightweight container the research agent iterates a research loop - generate data, train a checkpoint, evaluate, analyze and revise - over training, inference, rollout, evaluation and sandbox services under a shared budget.](assets/paper-figures/rsigym-overview.png)
+
+**Source figure / official image** — Original Figure 1: inside a lightweight container the research agent iterates a research loop - generate data, train a checkpoint, evaluate, analyze and revise - over training, inference, rollout, evaluation and sandbox services under a shared budget. · Figure 1 (inline TikZ SVG, captured from the arXiv HTML rendering): the research agent's loop over EaaS services inside a lightweight container · [source](https://arxiv.org/html/2610.10310v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-12.
+
+**Open code / weights / data links** — [RSIGym repository](https://github.com/evolvent-ai/RSIGym)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.10310) · [arXiv HTML v1](https://arxiv.org/html/2610.10310v1) · [RSIGym repository](https://github.com/evolvent-ai/RSIGym)
 
 <a id="harness-value-sham-control"></a>
 

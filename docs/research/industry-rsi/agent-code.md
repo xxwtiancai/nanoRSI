@@ -6,16 +6,76 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 17 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 19 |
 | [Harness search & evolution](#family-harness-search) | 17 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 7 |
-| [Program evolution & evolutionary search](#family-program-evolution) | 7 |
+| [Program evolution & evolutionary search](#family-program-evolution) | 8 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 4 |
 | [Safety & governance](#family-safety-governance) | 3 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (17)
+## Skill-file optimization & libraries (19)
+
+<a id="skillmorph-trajectory-fault-localization"></a>
+
+### Trajectory-Guided Fault Localization for Agent Skill Evolution
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08 (2610.11858); no venue or page count beyond '20 pages, 3 figures' as of 2026-10-12.
+
+**Institutional relationship** — Four authors at Nanjing University (Zhong Li and Tian Zhang corresponding) and one at The Hong Kong Polytechnic University; the kernel-generation deployment is with an AI operator-development team in the Ascend CANN ecosystem, evaluated on NPUKernelBench.
+
+**What changes and how feedback is reused** — SkillMorph evolves agent skills by grounding revisions in behavioral evidence: it abstracts execution trajectories, compares failure versus success evidence across repeated runs and tasks, uses the diffs between evolution loops to identify suspicious actions, then localizes edit sites within the responsible skills and generates targeted revisions - rather than rewriting whole skills from outcome feedback alone.
+
+**Author-reported result** — On 490 SWE-Skills-Bench tasks (1,470 runs): SkillMorph 95.51% pass@3 / 92.24% trial-level accuracy / 88.37% pass3, versus base skills 82.45/75.44/67.96 and the best of four skill-evolution baselines (CAP-Evolve) 92.24/89.39/84.90. On the 15-task CannBot AscendC kernel benchmark: 93.33 on all three metrics versus base 80.00/66.67/46.67 and CAP-Evolve 93.33/84.44/73.33. Ablations: removing localization drops SWE overall to 91.22/87.35/82.24; single-run variant 90.20. Six skill-revision pull requests from the kernel-generation deployment were accepted by the development team.
+
+**Evidence limits** — No public code, benchmark or skill corpus was found (GitHub links in the HTML point to baselines such as cap-evolve); CannBot has 15 tasks so its 93.33 ceiling sits on a small panel; trial-level accuracy and pass@3 are computed on the authors' own harness; the six accepted PRs are counted as deployment evidence without a controlled before/after on operator quality.
+
+**Code / weights / data / license** — Code: none found on the arXiv page or HTML. Weights: not applicable. Data: SWE-Skills-Bench is described as public curated skills; CannBot and NPUKernelBench release status not verified beyond citations. License: paper under arXiv default licensing.
+
+**Possible nanoRSI experiment — not implemented here** — The idea nanoRSI can test on its skills track: before rewriting a skill, diff abstracted failure versus success trajectories across repeated runs, rank suspicious actions, and restrict the edit to the skill region those actions trace to - comparing against whole-skill rewrite with the same evaluation budget and reporting edit-site precision as an honest extra metric.
+
+![Original Figure 3: the SkillMorph loop abstracts execution trajectories, contrasts failure and success evidence across runs, isolates suspicious actions and localizes the revision to the responsible skill region.](assets/paper-figures/skillmorph-overview.png)
+
+**Source figure / official image** — Original Figure 3: the SkillMorph loop abstracts execution trajectories, contrasts failure and success evidence across runs, isolates suspicious actions and localizes the revision to the responsible skill region. · Figure 3 (overview-final.png): SkillMorph overview - trajectory abstraction, failure/success comparison, suspicious-action ranking and localized skill revision · [source](https://arxiv.org/html/2610.11858v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-12.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11858) · [arXiv HTML v1](https://arxiv.org/html/2610.11858v1)
+
+<a id="roborsi-robot-self-evolution"></a>
+
+### RoboRSI: Stable, efficient, and reusable robot self-evolution in complex real-world environments
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08 (2610.12424, cs.RO cross cs.AI). The official project page is dated September 2026 and the companion repository was created 2026-08-29; following the catalogue's paper convention the record date is the arXiv v1 date.
+
+**Institutional relationship** — Eleven authors with Cewu Lu and Chuan Wen as corresponding authors; the project page and BibTeX credit the Noematrix Team (lab.noematrix.ai). The arXiv HTML prints no university affiliations, so institutional detail beyond Noematrix Lab is not independently verified here.
+
+**What changes and how feedback is reused** — Top-Down Skill Refinement (TSR) decomposes tasks into compound, atomic and base skills with scoped responsibilities and explicit input-output contracts, so an execution failure is attributed to the responsible branch and revision is restricted to that branch. A Manager organizes the skill hierarchy, a Planner composes execution plans, an Engineer executes, and a Reviewer validates before release, with humans steering via objectives and corrections; stable sequences are consolidated into reusable compound skills.
+
+**Author-reported result** — On a physical mobile manipulator, multi-object household cleanup develops over 104 self-evolution rounds, with roughly one day of iteration contrasting with the project page's 2024 reference of two engineers, about a month and 2,000-3,000 lines of task code. In simulation, top success rates on LIBERO, LIBERO-PRO, LIBERO-Plus and RoboTwin, beating the strongest baseline by 2.7-11.0 percentage points; LIBERO cumulative 95/120 from 32/120, RoboTwin 36/50 from 9/50. On 840 LIBERO-Plus perturbation instances the fixed system passes 261 (31.1%) versus adaptive pass@2 398 (47.4%). A 600-episode consolidation ablation improves pass rate 21.5% to 29.0% (+7.5 points) with median tokens down 29.4%.
+
+**Evidence limits** — Physical results are one mobile-manipulator platform on a two-scene cleanup task set; humans steer via objectives and corrections, so autonomy is bounded; baseline margins (2.7-11.0 points) are author-reported under their own evaluation; the one-day-versus-one-month comparison references the team's own 2024 practice rather than a controlled study; a figure filename suggests an ICLR 2027 submission, but no acceptance is claimed or verified.
+
+**Code / weights / data / license** — Code: github.com/nssmd/RoboRSI, Apache-2.0 verified in the repository (123 stars, created 2026-08-29, last push 2026-10-10); project page with full tool-trace videos at lab.noematrix.ai/blog/2-roborsi/. Weights: robot policy checkpoints not verified as released. Data: skill hierarchies and evaluation logs not verified as released. License: Apache-2.0.
+
+**Possible nanoRSI experiment — not implemented here** — The portable discipline for nanoRSI is contract-scoped revision: give each skill an explicit input-output contract so failures attribute to a branch, restrict edits to that branch, and require a Reviewer-style validation before a skill re-enters the library - then measure whether scoped edits beat whole-file rewrites on the same panel with fewer regressions, mirroring the counterfactual panel already in place.
+
+![Original Figure 2: the RoboRSI framework - the Manager organizes the task's skill hierarchy, the Planner composes an execution plan, the Engineer runs it, and the Reviewer gates validated skill revisions back into the library.](assets/paper-figures/roborsi-framework.png)
+
+**Source figure / official image** — Original Figure 2: the RoboRSI framework - the Manager organizes the task's skill hierarchy, the Planner composes an execution plan, the Engineer runs it, and the Reviewer gates validated skill revisions back into the library. · Figure 2 (2027_ICLR_Framework2.0.png): Manager organizes the skill hierarchy, Planner composes the plan, Engineer executes, Reviewer validates before release · [source](https://arxiv.org/html/2610.12424v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-12.
+
+**Open code / weights / data links** — [Apache-2.0 code release](https://github.com/nssmd/RoboRSI) · [Apache-2.0 license](https://github.com/nssmd/RoboRSI/blob/main/LICENSE)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12424) · [arXiv HTML v1](https://arxiv.org/html/2610.12424v1) · [Apache-2.0 code release](https://github.com/nssmd/RoboRSI) · [Apache-2.0 license](https://github.com/nssmd/RoboRSI/blob/main/LICENSE) · [Noematrix Lab project page](https://lab.noematrix.ai/blog/2-roborsi/)
 
 <a id="skillaa-attribution-rollback"></a>
 
@@ -1257,7 +1317,7 @@
 
 <a id="family-program-evolution"></a>
 
-## Program evolution & evolutionary search (7)
+## Program evolution & evolutionary search (8)
 
 <a id="evoalloc-resource-allocation-evolution"></a>
 
@@ -1288,6 +1348,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12086) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12086v1)
+
+<a id="agar-rl-substrate-program-evolution"></a>
+
+### AGAR: a reinforcement learning substrate for LLM program evolution
+
+**2026-10-06** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-06 (2610.09215, cs.AI cross-listed cs.MA); no later version as of 2026-10-12.
+
+**Institutional relationship** — Author block lists the University of the Chinese Academy of Sciences, Baidu, Tsinghua University, the Institute of Automation of the Chinese Academy of Sciences and Shanghai University; submitted by a Baidu-listed author.
+
+**What changes and how feedback is reused** — LLM program evolution is formalized as a Markov decision process whose action is the modular prefix the model is conditioned on, not the program it emits. The five hand-set constants of usual loops - parent selection, mutation strength, diversity keeping, memory, and a scalar score with no per-part credit - are replaced by RL estimators attached to distinct components (credit assignment, value estimation, adaptive exploration, experience memory). Any estimator can be replaced or switched off without touching the controller, making each transferred mechanism auditable one at a time; the backend model receives no gradient training.
+
+**Author-reported result** — Across 19 tasks, two backends (DeepSeek-V4-Flash, GLM-5.2) and three seeds under one harness, best-at-budget scores normalized per task: with DeepSeek-V4-Flash, OpenEvolve 0.855+-0.193, ShinkaEvolve 0.919+-0.138, AGAR-Base 0.949+-0.107, AGAR-Combo 0.990+-0.024; with GLM-5.2, OpenEvolve 0.897+-0.131, ShinkaEvolve 0.929+-0.093, AGAR-Base 0.979+-0.045, AGAR-Combo 0.972+-0.052. Both AGAR instantiations rank above both baselines on DeepSeek; on GLM Base leads with Combo close behind. Gains concentrate in the competitive-programming family; five near-ceiling tasks suppress variance. The formalization also reads prior systems as implicitly zero-discount because fitness is exogenous.
+
+**Evidence limits** — Three seeds, which the authors themselves say supports qualitative conclusions only; two tasks (ahc015, ahc027) completed fewer than three AGAR seeds; OpenEvolve and ShinkaEvolve ran under their own harnesses with task specifications ported by the AGAR authors, so harness parity is not exact; no public code, weights or data were found, so the transfer-ablation claim cannot be independently re-run.
+
+**Code / weights / data / license** — Code: none found on the arXiv page or in the HTML (the GitHub links in the text reference OpenEvolve, slime and other prior systems, not AGAR). Weights: not applicable (API backends). Data: task suite not published as far as verified. License: paper under arXiv default licensing; no code license to verify.
+
+**Possible nanoRSI experiment — not implemented here** — The directly portable idea for nanoRSI is per-mechanism auditability: split the evolution loop's selector, mutation strength, diversity and memory into separately switchable components and report an ablation where each transferred estimator is switched off one at a time under one harness, instead of porting a whole framework. The zero-discount reading of fitness is also a cheap check to state in study design.
+
+![Original Figure 1: program evolution written as an MDP - the state is a mixed-granularity view of the population, the action is the modular prompt prefix the LLM is conditioned on, and credit assignment, value estimation, adaptive exploration and experience memory attach to distinct substrate components.](assets/paper-figures/agar-framework-mdp.png)
+
+**Source figure / official image** — Original Figure 1: program evolution written as an MDP - the state is a mixed-granularity view of the population, the action is the modular prompt prefix the LLM is conditioned on, and credit assignment, value estimation, adaptive exploration and experience memory attach to distinct substrate components. · Figure 1 (framework_mdp.png, rotated upright for readability): the mixed-granularity state, the policy whose action is the modular prefix, and where RL estimators attach · [source](https://arxiv.org/html/2610.09215v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-12.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.09215) · [arXiv HTML v1](https://arxiv.org/html/2610.09215v1)
 
 <a id="compiled-agency-gauntlet"></a>
 

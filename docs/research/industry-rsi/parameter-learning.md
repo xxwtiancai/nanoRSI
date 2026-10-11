@@ -10,7 +10,7 @@
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 2 |
 | [Experience distillation & test-time adaptation](#family-experience-distillation) | 7 |
-| [Autonomous training agents & data pipelines](#family-autonomous-training) | 6 |
+| [Autonomous training agents & data pipelines](#family-autonomous-training) | 7 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
 
 <a id="family-self-play-curriculum"></a>
@@ -871,7 +871,37 @@
 
 <a id="family-autonomous-training"></a>
 
-## Autonomous training agents & data pipelines (6)
+## Autonomous training agents & data pipelines (7)
+
+<a id="agentic-ttt-test-time-policy"></a>
+
+### Agentic-TTT: Training test-time policy for test-time training
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08 (2610.12002); no venue stated as of 2026-10-12.
+
+**Institutional relationship** — Both authors (Jiahao Lu, Mohan Kankanhalli) list the NUS AI Institute and the National University of Singapore.
+
+**What changes and how feedback is reused** — Test-time training (TTT) procedures are turned into callable tools and a learned test-time policy decides whether to adapt at all, which TTT algorithm to invoke, and whether an existing parameter-level skill can be reused instead of training a new one. Accumulated skills form a changing deployment environment, and the policy is trained from the utility gains its own decisions produce; a compute penalty (lambda_comp) steers it toward selective adaptation rather than uniform suppression.
+
+**Author-reported result** — On the authors' benchmark the learned policy nearly doubles utility over the backbone model, learns to trade utility against compute under the penalty, and extrapolates to domains unseen during policy training: policies trained on G1 (Code, General Reasoning, Logic Games), G2 (Math, Grid Puzzles, Medical QA) or their union G3 are evaluated on Passage and LongBook QA, unseen by all groups. Method-routing and skill-operation distributions shift by task; increasing the penalty selectively reallocates TTT method use rather than disabling it.
+
+**Evidence limits** — Utility is measured on the authors' own benchmark composition, so 'nearly doubles' is relative to that panel; no code or benchmark release was found; the policy itself is a separately trained component, so gains include its training cost unless amortization is reported; TTT algorithms are used as given, with no claim of improving any single algorithm.
+
+**Code / weights / data / license** — Code: none found. Weights: policy checkpoints not published as far as verified. Data: benchmark not released as far as verified. License: paper under arXiv default licensing.
+
+**Possible nanoRSI experiment — not implemented here** — A minimal nanoRSI analogue: treat existing fine-tuning/self-training steps as callable tools behind a small learned router that also has a no-op and a reuse option, train it from per-decision utility deltas on a fixed panel, and report the router's own cost amortized - testing whether adaptation selection, not adaptation itself, carries the gain against a fixed always-adapt control.
+
+![Original Figure 1: a learned policy navigates the space of test-time training methods and a skill library of parameter deltas, deciding between building a new adaptation and reusing an existing skill.](assets/paper-figures/agentic-ttt-teaser.png)
+
+**Source figure / official image** — Original Figure 1: a learned policy navigates the space of test-time training methods and a skill library of parameter deltas, deciding between building a new adaptation and reusing an existing skill. · Figure 1 (agentic-ttt-teaser.png): the learned policy governing when and how to (a) build or (b) reuse parameter-level adaptations at test time · [source](https://arxiv.org/html/2610.12002v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-12.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12002) · [arXiv HTML v1](https://arxiv.org/html/2610.12002v1)
 
 <a id="autodata-pretraining-search"></a>
 

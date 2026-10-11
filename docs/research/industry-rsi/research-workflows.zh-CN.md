@@ -10,7 +10,7 @@
 | [自主后训练及其评测](#family-autonomous-post-training) | 3 |
 | [公司研发遥测](#family-company-telemetry) | 7 |
 | [对齐自动化](#family-alignment-automation) | 3 |
-| [分析与审计](#family-analyses-audits) | 9 |
+| [分析与审计](#family-analyses-audits) | 12 |
 | [立场、路线图与实验室](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
@@ -281,7 +281,7 @@
 
 **原文图／官方图片** — 图 1：EvoScientist 总览——研究员、工程师与进化管理者三智能体跑在想法与实验双持久记忆上，三种自进化机制逐任务更新知识。 · Figure 1 · [source](https://arxiv.org/html/2603.08127v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-09-21.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-12.
 
 **开源代码／权重／数据链接** — [Code repository (Apache-2.0)](https://github.com/EvoScientist/EvoScientist)
 
@@ -691,7 +691,97 @@
 
 <a id="family-analyses-audits"></a>
 
-## 分析与审计 (9)
+## 分析与审计 (12)
+
+<a id="study-contracts-research-agents"></a>
+
+### What Output-Only Review Cannot Verify: Study Contracts for Research Agents
+
+**2026-10-08** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 于 2026-10-08 提交（2610.11754）；备注注明'15 页 4 表。预印本，未经同行评审。配套手稿并行准备中'。
+
+**机构关系** — 两位作者（Eitan Waks、Ben Glocker）均来自帝国理工学院计算系。
+
+**改变对象与反馈复用** — 研究契约把输出评审看不到的三样东西——声明的实验选择、运行义务、声明范围——绑定到留存的执行证据，并把这种'相对契约的验证'与科学真理区分开。确定性检查器对已批准与已执行对象施加一条注册的、针对特定故障的规则；诊断刻意对评审者隐去配对上下文与注册表选定的故障标签，以量测'仅看产物'与'基于契约'评审之间的信息边界。
+
+**作者报告结果** — 在八对自制的干净/变异研究上，施加注册故障规则的确定性检查器检出全部八处注册变异。十八个有记录的评审者别名各拿到经元数据过滤的包（无配对上下文、无故障标签），144 个变异评测案例中 104 个收到缺陷标记，32 次弃权、8 次终端失败，对变异案例无显式判净。部分包保留了含摘要在内的批准与执行字段。
+
+**证据边界** — 作者自述结果刻画的是刻意信息不对称的开发环境，未把权威信息的影响与任务设定及规则选择的差异分离，也未比较验证器质量或智能体奖励作弊；全文信息对照、合法适配控制与闭环智能体评测被列为必要的后续检验。变异集为自造；预印本未附公开代码或数据。
+
+**代码／权重／数据／许可** — 代码：未找到；HTML 中的 GitHub 链接指向既有系统（deltaml-bench-vivaria、agent-flight-recorder）。权重/数据：不适用或未发布。许可：论文为 arXiv 默认许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 该思路与 nanoRSI 证据账本一一对应：在承认一项声称的改进前，把声明的选择、运行义务与声明范围绑定到留存的执行证据，并把'对契约可验'当作不同于'为真'的属性——具体做法是对已批准与已执行对象按摘要闸门，并以隐去标签条件下的评审决策作为诚实性探针。
+
+![论文无流程图；本条保留 arXiv 摘要页截图裁剪，含标题、帝国理工作者、v1 日期与契约验证的表述。](assets/paper-figures/study-contracts-abs-crop.png)
+
+**原文图／官方图片** — 论文无流程图；本条保留 arXiv 摘要页截图裁剪，含标题、帝国理工作者、v1 日期与契约验证的表述。 · arXiv abstract page, title/authors/v1-date/abstract crop (2026-10-12); the preprint prints no figures · [source](https://arxiv.org/abs/2610.11754)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-12.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11754) · [arXiv HTML v1](https://arxiv.org/html/2610.11754v1)
+
+<a id="automated-research-evaluation-survey"></a>
+
+### How Is Automated Research Evaluated? A Survey of Benchmarks and Evaluation Practices
+
+**2026-10-08** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 于 2026-10-08 提交（2610.11877），备注'被 Findings of AACL-IJCNLP 2026 接收'；录用为后续会议事件，首次公开日期取 arXiv v1。
+
+**机构关系** — 澳门大学人工智能系 NLPCT 实验室（八位作者；Zhang Liulei 与 Huang Chuyue 同等贡献，Wong Derek F. 通讯）。
+
+**改变对象与反馈复用** — 综述自动化研究系统在六个目标上的评测方式——文献综合、研究构思、可执行工作流、学术写作与传播、自动同行评审、端到端研究——比较任务构造、证据来源、评测者与打分流程，并按声明强度组织代表性工作。
+
+**作者报告结果** — 三条反复出现的经验：输出检查、过程检查与人类研究提供互补信息；评测者校准依赖于被评属性本身；资源预算与尝试选择是解读性能对比的内在组成部分。综述识别出诊断性评测设计、支持证据的已记录缺口，并给出报告与审计建议。
+
+**证据边界** — 综述性质：无新实验；覆盖范围为所述六个目标与纳入的基准集合；个别工作的声明强度归置属作者判断；论文 CC BY 4.0 许可，但无配套代码或数据集。
+
+**代码／权重／数据／许可** — 代码：无。权重：不适用。数据：仅论文本身。许可：arXiv 页面标注 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把其声明强度阶梯用作 nanoRSI 效果研究的自查模板：写明哪些结论只依赖输出检查、哪些附加过程证据、哪些带预算与尝试选择记账——把综述第三条经验对齐到证据账本既有的预算字段。
+
+![论文原图 1：代表性自动化研究工作按声明强度金字塔排布，从表面合理性到更强的证据层级，六边形扇区标出各工作的主要评测目标。](assets/paper-figures/research-eval-claims-pyramid.svg)
+
+**原文图／官方图片** — 论文原图 1：代表性自动化研究工作按声明强度金字塔排布，从表面合理性到更强的证据层级，六边形扇区标出各工作的主要评测目标。 · Figure 1 (claim_strength_pyramid_2026-09-28_final3.svg): representative works by claim strength, hexagon segments marking primary evaluation targets · [source](https://arxiv.org/html/2610.11877v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-12.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11877) · [arXiv HTML v1](https://arxiv.org/html/2610.11877v1)
+
+<a id="rsigym-rsi-environment"></a>
+
+### RSIGym: A Flexible Environment for Recursive Self-Improvement
+
+**2026-10-07** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 于 2026-10-07 提交（2610.10310）；配套仓库创建于 2026-10-05，早论文三天。未标注会议。
+
+**机构关系** — arXiv HTML 中的作者机构列出 Evolvent AI 与新加坡国立大学（Fanqing Meng、Michael Qizhe Shieh 为通讯作者之一）；仓库与网站由 Evolvent AI 运营。
+
+**改变对象与反馈复用** — 一个代理原生的'一切即服务'研究环境：训练、推理、采样、评测与沙箱执行以服务形式暴露，共享权限与预算记账。研究代理在三种轨道——数据、harness 或联合——下对目标系统迭代'生成数据-训练检查点-评测-分析修订'循环，并提交选定的模型加 harness 接受官方评测。RSI-Index 把一次运行记为五个基准域上闭合剩余性能差距的平均比例。
+
+**作者报告结果** — 六个前沿研究模型在每基准运行 500 美元平台服务预算的独立联合轨道下，Opus 5 取得最高 RSI-Index 0.4809，其提交系统把 SWE-bench Verified 从 17.67% 提到 50.33%、AIME 从 31.67% 提到 97.78%。附加实验覆盖 DSH（数据设定与 harness）精炼、预算翻倍（500 到 1,000 美元）与受限网络；没有任何代理在所有域上最佳。
+
+**证据边界** — RSI-Index 是该基准自有指标，且初始系统在部分面板很弱（SWE-bench Verified 起点 17.67%），'闭合剩余差距比例'会奖励低起点的大跳变；全部数字为作者在自有服务记账下运行；论文'开源'声明对应的仓库无许可证文件，按本库惯例视同保留所有权利（只取思想，不复用代码）；各代理除预算标题外的花费未独立审计。
+
+**代码／权重／数据／许可** — 代码：github.com/evolvent-ai/RSIGym 公开（创建于 2026-10-05，截至 2026-10-12 共 64 星），但标准路径下均无 LICENSE 文件——尽管声称开源，仍按保留所有权利对待。权重：不适用（前沿模型走 API）。数据：项目站宣称提供结果与轨迹；发布深度未独立核验。许可：未检测到。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 值得借鉴的报告纪律是预算归一化改进：逐面板写明初始与提交分数及每次运行消耗的服务预算，使 nanoRSI 实验报告单位成本增益而非仅增益；'没有代理处处最佳'的发现也支持任何冻结选择器研究都做分域拆解。
+
+![论文原图 1：轻量容器内，研究代理在共享预算下围绕训练、推理、采样、评测与沙箱服务迭代研究循环——生成数据、训练检查点、评测、分析与修订。](assets/paper-figures/rsigym-overview.png)
+
+**原文图／官方图片** — 论文原图 1：轻量容器内，研究代理在共享预算下围绕训练、推理、采样、评测与沙箱服务迭代研究循环——生成数据、训练检查点、评测、分析与修订。 · Figure 1 (inline TikZ SVG, captured from the arXiv HTML rendering): the research agent's loop over EaaS services inside a lightweight container · [source](https://arxiv.org/html/2610.10310v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-12.
+
+**开源代码／权重／数据链接** — [RSIGym repository](https://github.com/evolvent-ai/RSIGym)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.10310) · [arXiv HTML v1](https://arxiv.org/html/2610.10310v1) · [RSIGym repository](https://github.com/evolvent-ai/RSIGym)
 
 <a id="harness-value-sham-control"></a>
 
