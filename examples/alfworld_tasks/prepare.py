@@ -425,26 +425,37 @@ def _game_task(game: Path, split: str, index: int, group: str) -> dict:
             "expected_files": {"game-report.json": ""}}
 
 
-def build_manifest() -> dict:
+def build_manifest(train_count: int = TRAIN_COUNT, validation_count: int = VALIDATION_COUNT,
+                   test_per_split: int = TEST_PER_SPLIT) -> dict:
+    """Deterministic game selection; defaults are pinned by tests and studies.
+
+    The test split selection depends only on test_per_split (stride over the
+    sorted valid_seen / valid_unseen games), so validation-size changes keep
+    the frozen test panels comparable across studies.
+    """
     train_games = _games("train")
     tasks = ([_game_task(game, "train", i, "train-games")
-              for i, game in enumerate(_sample(train_games, TRAIN_COUNT, 0))]
+              for i, game in enumerate(_sample(train_games, train_count, 0))]
              + [_game_task(game, "validation", i, "validation-games")
-                for i, game in enumerate(_sample(train_games, VALIDATION_COUNT, 1))]
+                for i, game in enumerate(_sample(train_games, validation_count, 1))]
              + [_game_task(game, "test", i, "test-seen")
-                for i, game in enumerate(_sample(_games("valid_seen"), TEST_PER_SPLIT, 0))]
-             + [_game_task(game, "test", TEST_PER_SPLIT + i, "test-unseen")
-                for i, game in enumerate(_sample(_games("valid_unseen"), TEST_PER_SPLIT, 0))])
+                for i, game in enumerate(_sample(_games("valid_seen"), test_per_split, 0))]
+             + [_game_task(game, "test", test_per_split + i, "test-unseen")
+                for i, game in enumerate(_sample(_games("valid_unseen"), test_per_split, 0))])
     return {"schema_version": 1, "tasks": tasks}
 
 
-def write_pack(output: Path, with_manifest: bool = True) -> list[Path]:
+def write_pack(output: Path, with_manifest: bool = True, train_count: int = TRAIN_COUNT,
+               validation_count: int = VALIDATION_COUNT,
+               test_per_split: int = TEST_PER_SPLIT) -> list[Path]:
     directory = output / "alfworld"
     (directory / "target" / "agent" / "skills" / "alfworld").mkdir(parents=True, exist_ok=True)
     paths = []
     if with_manifest:
         manifest_path = directory / "manifest.json"
-        manifest_path.write_text(json.dumps(build_manifest(), indent=1, ensure_ascii=False) + "\n")
+        manifest_path.write_text(json.dumps(
+            build_manifest(train_count, validation_count, test_per_split),
+            indent=1, ensure_ascii=False) + "\n")
         paths.append(manifest_path)
     runner_path = directory / "target" / "agent" / "run.py"
     runner_path.write_text(RUNNER.replace("__ALF_PYTHON__", ALF_PYTHON)
@@ -463,8 +474,15 @@ def write_pack(output: Path, with_manifest: bool = True) -> list[Path]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Write the deterministic ALFWorld task pack.")
     parser.add_argument("output", nargs="?", default=Path(__file__).with_name("out"))
+    parser.add_argument("--train", type=int, default=TRAIN_COUNT,
+                        help="train games (default 4; record non-default values in the study)")
+    parser.add_argument("--validation", type=int, default=VALIDATION_COUNT,
+                        help="validation games (default 6)")
+    parser.add_argument("--test-per-split", type=int, default=TEST_PER_SPLIT,
+                        help="test games per seen/unseen split (default 6)")
     args = parser.parse_args(argv)
-    for path in write_pack(Path(args.output)):
+    for path in write_pack(Path(args.output), train_count=args.train,
+                           validation_count=args.validation, test_per_split=args.test_per_split):
         print(path)
     return 0
 
