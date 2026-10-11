@@ -11,6 +11,14 @@ from .lineage import LineageStore
 CASE_FIELDS = ("task_id", "group_id", "repeat_id", "score", "status")
 
 
+def _counts(records: list[dict]) -> dict:
+    counts = {}
+    for record in records:
+        decision = record.get("decision")
+        counts[decision] = counts.get(decision, 0) + 1
+    return {name: counts[name] for name in sorted(counts)}
+
+
 def _artifact_text(root: Path, event: dict, key: str) -> dict | None:
     entry = (event.get("artifacts") or {}).get(key)
     if not entry:
@@ -69,6 +77,7 @@ def _revision(root: Path, config, event: dict) -> dict:
             "proposer_harness_commit": event.get("proposer_harness_commit"),
             "metric": {"name": metric, "direction": config.evaluator.direction,
                        "parent": parent_value, "candidate": child_value, "delta": delta},
+            "gate_constraints": event.get("gate_constraints"),
             "diff": _diff_summary(_artifact_text(root, event, "proposal/proposal.diff")),
             "evaluator": {"parent_cases": _cases(_artifact_text(root, event, "parent.json")),
                           "candidate_cases": _cases(_artifact_text(root, event, "gate.json"))}}
@@ -118,6 +127,10 @@ def _markdown(records: list[dict]) -> str:
              "One record per proposal revision: diagnosis, candidate diff, redacted per-case",
              "evaluator evidence and the accept/reject decision, with artifact integrity flags.",
              "Structured data: `evidence.jsonl`; raw journal: `lineage.jsonl`.", ""]
+    if records:
+        lines.extend(["## Gate summary", "",
+                      "Read-only counts derived from the same verified lineage revisions:", "",
+                      "- " + ", ".join(f"{name}: {count}" for name, count in _counts(records).items()), ""])
     if not records:
         lines.extend(["No recorded revisions yet.", ""])
     else:
@@ -132,6 +145,22 @@ def _markdown(records: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def _gate_summary(records: list[dict]) -> dict:
+    """Return auditable gate facts without adding a second source of truth."""
+    changes = []
+    for record in records:
+        changes.append({"attempt_id": record.get("attempt_id"),
+                        "decision": record.get("decision"),
+                        "reason": record.get("reason"),
+                        "diagnosis": record.get("diagnosis"),
+                        "changed_paths": record.get("surface") or [],
+                        "constraints": record.get("gate_constraints"),
+                        "metric": record.get("metric")})
+    return {"schema_version": 1, "revision_count": len(records),
+            "decisions": _counts(records),
+            "changes": changes}
+
+
 def write_ledger(root: Path) -> dict:
     if not (root / "nanorsi.toml").is_file():
         return {"jsonl": None, "markdown": None, "revisions": 0, "skipped": "no nanorsi.toml in workspace"}
@@ -140,6 +169,8 @@ def write_ledger(root: Path) -> dict:
     reports.mkdir(parents=True, exist_ok=True)
     jsonl = reports / "evidence.jsonl"
     jsonl.write_text("".join(json.dumps(record, sort_keys=True, allow_nan=False) + "\n" for record in records), encoding="utf-8")
+    summary = reports / "gate-summary.json"
+    summary.write_text(json.dumps(_gate_summary(records), sort_keys=True, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     markdown = reports / "evidence.md"
     markdown.write_text(_markdown(records), encoding="utf-8")
-    return {"jsonl": str(jsonl), "markdown": str(markdown), "revisions": len(records)}
+    return {"jsonl": str(jsonl), "markdown": str(markdown), "summary": str(summary), "revisions": len(records)}

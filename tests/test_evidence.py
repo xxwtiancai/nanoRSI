@@ -81,6 +81,26 @@ class EvidenceLedgerTests(unittest.TestCase):
             self.call(root, 'verify')
             self.assertEqual(write_ledger(root)['revisions'], 3)
 
+    def test_ledger_writes_read_only_gate_summary(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_v2(tmp)
+            self.call(root, 'run')
+            result = write_ledger(root)
+            summary_path = root / 'reports/gate-summary.json'
+            self.assertEqual(result['summary'], str(summary_path))
+            summary = json.loads(summary_path.read_text())
+            self.assertEqual(summary['schema_version'], 1)
+            self.assertEqual(summary['decisions'], {'accepted': 1, 'no-op': 2})
+            self.assertEqual(len(summary['changes']), 3)
+            accepted = summary['changes'][0]
+            self.assertEqual(accepted['attempt_id'], 1)
+            self.assertEqual(accepted['changed_paths'], ['target/agent/skills/inspect/SKILL.md'])
+            self.assertEqual(accepted['metric']['delta'], 1.0)
+            self.assertEqual(accepted['constraints'], {'tests_passed': True})
+            markdown = (root / 'reports/evidence.md').read_text()
+            self.assertIn('## Gate summary', markdown)
+            self.assertIn('accepted: 1', markdown)
+
 
 if __name__ == '__main__':
     unittest.main()
