@@ -6,22 +6,33 @@ Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [R
 
 ## 2026-10-11
 
+Two passes on this calendar day: the midnight run (committed 03:06) reported no qualifying findings; an evening re-sweep of the same sources found that the 2026-10-09 arXiv announcement had not been fully opened in the morning and catalogued four primary-verified records below. Both passes are part of this one daily entry.
+
 **New entries**
 
-- None. The post-2026-10-10 primary-source sweep found no new RSI record that clears the original-visual, classification and independently audited open-material gate.
+- [mass-multi-agent-self-supervision](parameter-learning.md#mass-multi-agent-self-supervision) — MASS (arXiv 2610.12176, UC Berkeley × Sakana AI) alternates multi-agent workflow search with post-training on self-generated multi-agent trajectories; two cycles from Qwen3.6-27B give 1.2–1.6× score per output token on four research benchmarks with author-reported negative transfer on Terminal-Bench 2.0 and SWE-bench Verified. Public code carries no open-source license (NOTICE.md), so ideas only.
+- [sift-fast-tree-search](agent-code.md#sift-fast-tree-search) — SIFT (arXiv 2609.19526, first public 2026-09-17, MIT × Sakana AI) screens self-modification candidates with an LLM-judge pairwise ranking aggregated by regularized Bradley–Terry before expensive evaluations; 35.1% on full Polyglot vs DGM 30.7%, while its judge-less variant scores below DGM. Media coverage (2026-10-02) was traced back to the paper, not catalogued from media.
+- [evoalloc-resource-allocation-evolution](agent-code.md#evoalloc-resource-allocation-evolution) — EvoAlloc (arXiv 2610.12086, KAUST, one author also Sakana AI) evolves the evaluation-allocation strategy of LLM program evolution from consolidated experience plus counterfactual exploration, reaching baseline-level performance with 59–82% fewer full evaluations.
+- [cace-bench-admission-gate](agent-code.md#cace-bench-admission-gate) — harness-only, compliance-bounded self-evolution with a measured admission gate (arXiv 2610.10629, Digital Economy Lab); simulation-based (seeded-search proposer, no live LLM) but with MIT code, a synthetic Hugging Face dataset and a dated reference run. Gate admitted 144/7,449 changes with no held-out regressions vs 309 harmful admissions under an unbounded screen.
 
 **Updated entries**
 
-- None. ShinkaEvolve's latest visible activity remains security/workflow maintenance, Hermes Agent's latest commits are hand-off test robustness changes, and google-research/rrsi has no later capability release to record.
+- None beyond the four additions; existing records were not changed.
 
 **Signals for engineering**
 
-- Keep [RRSI regularized harness evolution](agent-code.md#rrsi-regularized-harness-evolution) as the next concrete direction, but freeze the matched selector study before implementation: repeated-frozen noise band, three seeds, three budget points, held-out panel, cost accounting and false-blocks. This is a protocol gate, not a claim of local benefit.
+- SIFT's judge-dependent gain maps directly onto the frozen selector study (ADOPTION items 38–39): a pairwise-judge + Bradley–Terry pre-rank is only usable if compared against full-evaluation gating with false-admit/false-block accounting and judge cost as a reported axis. ([sift-fast-tree-search](agent-code.md#sift-fast-tree-search))
+- cace-bench validates promoting gate statistics — admission/rejection counts, per-change recorded cause and test, harmful-admission counterfactuals — to first-class evidence-ledger fields; recorded as ADOPTION item 40, reporting-only first. ([cace-bench-admission-gate](agent-code.md#cace-bench-admission-gate))
+- EvoAlloc's counterfactual exploration (occasionally evaluate candidates the allocator denied) is a concrete false-block measurement compatible with nanoRSI's counterfactual panel. ([evoalloc-resource-allocation-evolution](agent-code.md#evoalloc-resource-allocation-evolution))
+- MASS's negative Terminal-Bench/SWE-bench transfer across improvement cycles motivates keeping domain-separated held-out panels so open-ended-task gains are not over-read. ([mass-multi-agent-self-supervision](parameter-learning.md#mass-multi-agent-self-supervision))
+- OpenEvolve merged two post-midnight fixes (partial judge-ensemble feedback retention, small-island inspiration slots) with no new release — still v0.4.0; Hermes Agent landed signed-reasoning replay and plugin-catalog CI fixes. Both are maintenance, recorded as signals only.
 
 **Coverage & gaps**
 
-- Rechecked official OpenAI, Anthropic and Google DeepMind research indexes; recent arXiv RSI/self-evolution results; GitHub activity/releases for RSIHub, Anton, SEAL, DGM, OpenEvolve, ACE, FrontisAI/OpenRSI, ShinkaEvolve, Hermes Agent and google-research/rrsi; and nanoRSI issues, PRs, CI and security endpoints.
-- No new qualifying paper, project release, weight/data release or portable licensed runtime change was verified. Code scanning still has no analysis and Dependabot is disabled; secret scanning returned zero alerts. No upstream code was copied, and no model/API request, training run, paid request or external post occurred.
+- Evening re-sweep: full 2026-10-09 cs.AI announcement including entries beyond the first listing page (the morning pass had not opened these), cs.MA announcements of 2026-10-08/09, primary verification of four papers (abstract plus HTML, figures downloaded and visually inspected), the Sakana AI publication index, and media leads (VentureBeat's 2026-10-02 SIFT coverage) traced back to primary sources. Listing-page titles were re-verified against abstract pages after two scrambles (2610.11754 and 2610.12126 are different papers than the listing suggested).
+- Verified leads queued for the next runs, not yet catalogued: study-contracts verification for research agents (2610.11754, Waks & Glocker), automated-research evaluation survey (2610.11877, Findings of AACL-IJCNLP 2026), trajectory-guided fault localization for skill evolution (2610.11858), RoboRSI (2610.12249), Agentic-TTT (2610.12002), AGAR RL substrate for program evolution (2610.09215), Society of Researchers (2610.10468), Station open-ended discovery (2610.08793), and the preprints.org five-level RSI grading manuscript.
+- Not covered this pass: RSIHub's repository name could not be resolved via the API (404) and remains unchecked; OpenAI/Anthropic/Google DeepMind indexes were relied on from the morning pass plus web search with no new primary result surfacing on a Sunday; Chinese university lab pages and 机器之心/量子位 were not individually opened.
+- No src/ changes, no model/API requests, no training or paid runs. Figure assets were downloaded from arXiv HTML sources and the cace-bench visual is a cropped screenshot of its arXiv abstract page; all four were visually inspected.
 
 ## 2026-10-10
 

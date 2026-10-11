@@ -9,7 +9,7 @@
 | [Self-play & curriculum task generation](#family-self-play-curriculum) | 14 |
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 2 |
-| [Experience distillation & test-time adaptation](#family-experience-distillation) | 6 |
+| [Experience distillation & test-time adaptation](#family-experience-distillation) | 7 |
 | [Autonomous training agents & data pipelines](#family-autonomous-training) | 6 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
 
@@ -657,7 +657,37 @@
 
 <a id="family-experience-distillation"></a>
 
-## Experience distillation & test-time adaptation (6)
+## Experience distillation & test-time adaptation (7)
+
+<a id="mass-multi-agent-self-supervision"></a>
+
+### Recursive Self-Improvement through Multi-Agent Self-Supervision
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 was submitted on 2026-10-08 (2610.12176) and announced in the 2026-10-09 listing. The official implementation repository was created on 2026-09-29 and is treated as an implementation companion, not an earlier paper date.
+
+**Institutional relationship** — Author affiliations are listed in the paper source: UC Berkeley and Sakana AI; the first author did the work during a Sakana AI internship, and the project page is published by Sakana AI.
+
+**What changes and how feedback is reused** — MASS alternates two phases. First, with weights frozen, RHI search evolves multi-agent workflow topologies (agent roles, information routing, structural guardrails) encoded as a textual workflow prompt; the same language model acts as executor, self-evaluator and self-optimizer in the inner loop. Second, the model is fine-tuned on self-generated trajectories from the selected multi-agent workflows, and the updated model becomes executor, optimizer and evaluator of the next cycle, closing a recursive bootstrap under homogeneous self-supervision.
+
+**Author-reported result** — Author-reported, starting from Qwen3.6-27B in the qwen-code 0.20.0 scaffold over two MASS cycles: score per output token reaches 1.2-1.6x the base model on MLR-Bench, DSBench, ScienceAgentBench and AstaBench; external-judge win rate against the base on three held-out test tasks rises from 53.9% (cycle 1) to 69.9% (cycle 2); raw scores improve on MLR-Bench (1.71 to 2.25), ScienceAgentBench (28.8% to 31.7%) and AstaBench reports delivered (50% to 76%), stay roughly flat on DSBench (0.473 to 0.482), and decline on Terminal-Bench 2.0 (0.375 to 0.352) and SWE-bench Verified (0.626 to 0.611). A student trained on multi-agent traces beats a single-agent student trained on 1.4x more tokens, and evaluator agreement with external judges rises from 73% to 93%.
+
+**Evidence limits** — Gains concentrate on open-ended research-agent benchmarks while Terminal-Bench and SWE-bench transfer is negative, which the authors also report; homogeneous self-supervision shares one model's blind spots across executor/evaluator/optimizer roles, and the paper itself flags safety concerns of self-evaluating loops. Results require post-training infrastructure (LoRA fine-tuning) and are author-reported under their models, tasks and compute, not a nanoRSI reproduction.
+
+**Code / weights / data / license** — Code: official research implementation is public at SakanaAI/mass, but its NOTICE.md states that no public open-source license has been assigned to the MASS-specific code, so treat it as unlicensed and copy nothing. Weights: not distributed with the repository. Data: benchmarks are obtained from upstream public sources (ScienceAgentBench, MLR-Bench, AstaBench, DSBench and others); generated artifacts are not distributed. License: no project license verified; ideas only.
+
+**Possible nanoRSI experiment — not implemented here** — Two portable ideas, without adding any MASS code or training stack: (1) test a multi-role self-supervision scaffold in the skills/harness track - one model prompted as executor, evaluator and optimizer over the same workspace - against a single-agent scaffold under matched calls, tokens and seeds; (2) the reported negative transfer on terminal/SWE suites motivates keeping domain-separated held-out panels so workflow gains on open-ended tasks are not over-read. Both fit the existing controlled-comparison protocol; no default nanoRSI behavior changes here.
+
+![Original Figure 1: the inner loop generates a workspace under a textual multi-agent workflow prompt, the self-evaluator feeds back and the self-optimizer revises the workflow; post-training on selected trajectories yields the next cycle's model.](assets/paper-figures/mass-rsi-overview.png)
+
+**Source figure / official image** — Original Figure 1: the inner loop generates a workspace under a textual multi-agent workflow prompt, the self-evaluator feeds back and the self-optimizer revises the workflow; post-training on selected trajectories yields the next cycle's model. · Figure 1 (ICLRpaper_new11.png): inner loop of agent/evaluator/optimizer sharing one LM and the outer cycle of workflow search plus post-training · [source](https://arxiv.org/html/2610.12176v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-11.
+
+**Open code / weights / data links** — [Official research implementation](https://github.com/SakanaAI/mass) · [Repository NOTICE on licensing](https://github.com/SakanaAI/mass/blob/main/NOTICE.md)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12176) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12176v1) · [Official MASS project page](https://pub.sakana.ai/mass/) · [Official research implementation](https://github.com/SakanaAI/mass) · [Repository NOTICE on licensing](https://github.com/SakanaAI/mass/blob/main/NOTICE.md)
 
 <a id="reflective-recovery"></a>
 

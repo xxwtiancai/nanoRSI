@@ -8,10 +8,10 @@
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 17 |
 | [Harness search & evolution](#family-harness-search) | 17 |
-| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 6 |
-| [Program evolution & evolutionary search](#family-program-evolution) | 6 |
+| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 7 |
+| [Program evolution & evolutionary search](#family-program-evolution) | 7 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 4 |
-| [Safety & governance](#family-safety-governance) | 2 |
+| [Safety & governance](#family-safety-governance) | 3 |
 
 <a id="family-skill-file-optimization"></a>
 
@@ -1043,7 +1043,7 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## Self-modifying meta-agents & lineages (6)
+## Self-modifying meta-agents & lineages (7)
 
 <a id="solpi-recursive-autoresearch-loops"></a>
 
@@ -1074,6 +1074,36 @@
 **Open code / weights / data links** — [Code repository](https://github.com/NVlabs/SoL-Pi)
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.20519) · [Paper HTML (affiliations, Figure 1-2, abstract numbers)](https://arxiv.org/html/2609.20519v1) · [Code repository](https://github.com/NVlabs/SoL-Pi) · [Project page](https://nvlabs.github.io/SoL-Pi/)
+
+<a id="sift-fast-tree-search"></a>
+
+### Self Improvement via Fast Tree-search
+
+**2026-09-17** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 was submitted on 2026-09-17 (2609.19526) with no later versions as of 2026-10-11. Media coverage (VentureBeat, 2026-10-02) appeared later and is used only as a lead; it is not a first-release date.
+
+**Institutional relationship** — The paper HTML lists Xinghong Fu at MIT (corresponding) and Aravinth Kulanthaivelu and Yutaro Yamada at Sakana AI. Media coverage of the same work is treated as a lead, not a source.
+
+**What changes and how feedback is reused** — Coding agents recursively modify their own implementations along a tree search. SIFT adds a cheap supervision signal inside this loop: an LLM-as-a-judge makes pairwise comparisons between a candidate patch and earlier versions, win-loss records are aggregated by a regularized Bradley-Terry model into strength scores, and rank-based parent sampling biases expansion toward stronger nodes. Expensive downstream benchmark evaluations are reserved for the most promising nodes, and a disaggregated pipeline variant expands nodes that already show a strong judge signal before full evaluation completes.
+
+**Author-reported result** — Author-reported on the full Polyglot benchmark: SIFT with an o3-mini agent and a gpt-5.4 judge reaches 35.1%, versus 30.7% for DGM (o3-mini) and 14.2% for the base agent; repeating the o3-mini configuration yields 32.0-35.6%, and a Qwen3-Coder-30B configuration reaches 32.0%. o3-mini runs finish under 50 CPU hours and 5 hours wall clock, and the Qwen3 configuration under 250 CPU hours and 7 hours. The paper also reports that discovered agent harnesses transfer across coding models. These are author-reported numbers under their benchmarks and API budgets, not a nanoRSI reproduction.
+
+**Evidence limits** — The headline gain rides on the judge model: SIFT with judge set to None scores 29.8%, below DGM's 30.7%, and the gpt-5-mini judge configuration scores 31.6%, so judge quality and cost are the load-bearing choice. Evaluation centers on Polyglot with TerminalBench as a secondary suite, and no code, weights or data release was found in the checked paper page. Wall-clock and API-cost numbers depend on the authors' 2026 API pricing and infrastructure.
+
+**Code / weights / data / license** — Code: no repository link found on the checked abstract or HTML page. Weights: not applicable/distributed. Data: no data release found. License: paper is CC BY 4.0 on arXiv; implementation licensing is not verifiable without a release. 'Not verified' is not 'does not exist'.
+
+**Possible nanoRSI experiment — not implemented here** — The portable piece is a cheap pre-gate: pairwise LLM-judge comparisons aggregated by Bradley-Terry as a low-cost ranking of proposals before any full panel evaluation, explicitly compared against full-evaluation gating with false-admit/false-block accounting and judge-cost logging. This slots into the frozen RRSI-style selector study and the counterfactual panel; it is a proposed controlled experiment, not a default nanoRSI behavior.
+
+![Original Figure 1: one SIFT expansion step - a sampled node self-improves, the judge compares it against earlier versions, and win-loss records feed Bradley-Terry strength scores used for rank-based parent sampling.](assets/paper-figures/sift-tree-search-pipeline.png)
+
+**Source figure / official image** — Original Figure 1: one SIFT expansion step - a sampled node self-improves, the judge compares it against earlier versions, and win-loss records feed Bradley-Terry strength scores used for rank-based parent sampling. · Figure 1 (figures/pipeline_full_bigfont.png): node expansion with judge comparison, Bradley-Terry aggregation and rank-based parent sampling · [source](https://arxiv.org/html/2609.19526v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-11.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.19526) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2609.19526v1)
 
 <a id="nous-hermes-selfrefactor"></a>
 
@@ -1227,7 +1257,37 @@
 
 <a id="family-program-evolution"></a>
 
-## Program evolution & evolutionary search (6)
+## Program evolution & evolutionary search (7)
+
+<a id="evoalloc-resource-allocation-evolution"></a>
+
+### EvoAlloc: A Self-Evolving Resource Allocation Agent for Efficient Program Evolution
+
+**2026-10-08** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 was submitted on 2026-10-08 (2610.12086) and announced in the 2026-10-09 listing. No code or project page is linked from the paper page as of the check date.
+
+**Institutional relationship** — The paper header lists the KAUST Center of Excellence for Generative AI for all authors, with one author (Wenyi Wang) co-affiliated with Sakana AI.
+
+**What changes and how feedback is reused** — EvoAlloc learns to spend evaluation compute inside LLM-based program evolution. An allocation agent decides which candidates receive full evaluation; its strategy is revised by consolidating past search and allocation outcomes into reusable experience, and counterfactual exploration occasionally evaluates candidates it had denied resources to reveal their outcomes and enrich future strategy updates. The mutating surface is the allocator's strategy/experience state within the search loop, not the model weights.
+
+**Author-reported result** — Author-reported across coding and agent-harness optimization benchmarks (including ADAS-AIME and circle-packing setups in the appendix): reaching baseline-level performance requires 59-82% fewer full evaluations and 61-89% fewer total LLM tokens; under the same full-evaluation budget, adaptive allocation achieves 8.7-12.0% higher final performance. These are author-reported numbers under their benchmarks and budgets, not a nanoRSI reproduction.
+
+**Evidence limits** — The study optimizes evaluation cost, not final-state capability ceilings; no public code, weights or data release was found in the checked paper page, so reproduction depends on the authors' materials. Benchmark coverage is the authors' coding and harness suites, and the counterfactual-exploration rate introduces another sensitive hyperparameter the paper analyzes but nanoRSI has not verified.
+
+**Code / weights / data / license** — Code: no repository link found on the checked abstract or HTML page. Weights: not applicable/distributed. Data: no dataset release found. License: not verifiable without a release. 'Not verified' is not 'does not exist'.
+
+**Possible nanoRSI experiment — not implemented here** — Two portable directions for nanoRSI's bounded evaluation budget: (1) an experience-updated allocator that decides which candidate proposals get full panel evaluation, compared against fixed round-robin under matched total tokens and evaluations; (2) counterfactual exploration as a false-block measurement - occasionally evaluate proposals the selector denied, mirroring the counterfactual panel already used for gate validation. Both are opt-in study designs; no scheduler change is made by default.
+
+![Original Figure 1: (a) the allocation agent selects candidates for full evaluation, (b) outcomes are consolidated into strategy-updating experience, and (c) counterfactual exploration evaluates denied candidates to enrich later updates.](assets/paper-figures/evoalloc-allocation-loop.png)
+
+**Source figure / official image** — Original Figure 1: (a) the allocation agent selects candidates for full evaluation, (b) outcomes are consolidated into strategy-updating experience, and (c) counterfactual exploration evaluates denied candidates to enrich later updates. · Figure 1 (figures/fig1.png): strategy-guided allocation, experience-driven strategy evolution and counterfactual exploration · [source](https://arxiv.org/html/2610.12086v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-11.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12086) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12086v1)
 
 <a id="compiled-agency-gauntlet"></a>
 
@@ -1535,7 +1595,37 @@
 
 <a id="family-safety-governance"></a>
 
-## Safety & governance (2)
+## Safety & governance (3)
+
+<a id="cace-bench-admission-gate"></a>
+
+### The Harness as the Only Mutable Surface: Compliance-Bounded Self-Evolution of LLM Agents in Credit Pipelines, with a Measured Admission Gate
+
+**2026-10-07** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 was submitted on 2026-10-07 (2610.10629). The companion cace-bench repository existed earlier (created 2026-07-02) with versioned releases and a Zenodo DOI; it is recorded as the audited open-material companion, not an earlier paper date.
+
+**Institutional relationship** — Single author listed at Digital Economy Lab; the benchmark and reference implementation are released under MIT with a Zenodo DOI and a Hugging Face dataset. The lab could not be independently characterized beyond the paper and repository.
+
+**What changes and how feedback is reused** — Only the runtime harness of an LLM credit-pipeline agent is mutable - instruction text, tool-call logic and primitive composition - while model weights stay fixed, so every adaptation is a reviewable diff with an attached cause and test. A dual-loop engine gates deployment: an admission gate logs a hash-chained record (registered choice, run obligations, claim scope) before a change is admitted, and the gate's admission/rejection statistics are themselves reported as a measured control against an unbounded screen baseline.
+
+**Author-reported result** — Author-reported simulation across three shift families at three severities with 10 seeds each: the gated loop admitted 144 of 7,449 candidate changes with none worsening held-out error, restoring false-positive rate to oracle level without raising missed flags in all low/mid-severity cells; replacing the gate with an unbounded recent-trace screen admitted 309 harmful changes and left missed flags above 10% in 49 of 90 runs; on pre-shift labels the gate rejected everything. Structural shifts required primitive replacement that the fixed tolerance blocked in half of the highest-severity seeds. All numbers come from a simulated agent plus a seeded-search proposer, not real language-model calls.
+
+**Evidence limits** — The evaluation is a simulation with a seeded-search proposer and a simulated agent rather than a live LLM loop; the domain is credit compliance mapped to EU AI Act provisions for high-risk credit scoring, and the lab is single-author and could not be characterized beyond its own materials. Harmful-admission counts depend on the synthetic shift families and severities chosen by the author.
+
+**Code / weights / data / license** — Code: MIT-licensed reference implementation and generator at rav11l/cace-bench (v0.6.0, Zenodo DOI 10.5281/zenodo.23207546), including a dated reference run on 23,000 synthetic cases. Data: fully synthetic benchmark published at Hugging Face (rav11l/cace-bench), no real personal data. Weights: not applicable. License: MIT verified in the repository.
+
+**Possible nanoRSI experiment — not implemented here** — The portable idea is measured-gate reporting: expose admission/rejection counts, harmful-admission counterfactuals and pre-deployment rejection behavior as first-class evidence-ledger fields for nanoRSI's own gate, matching the counterfactual challenger study already in place. Harness-only mutation with frozen contracts and per-change recorded cause/test is close to nanoRSI's existing design; treat this as validation of the reporting shape, not a code dependency.
+
+![The paper reports no pipeline figure; the record keeps a cropped source-page screenshot of the arXiv abstract page showing the title, single author, v1 date and the admission-gate abstract.](assets/paper-figures/cace-bench-abs-crop.png)
+
+**Source figure / official image** — The paper reports no pipeline figure; the record keeps a cropped source-page screenshot of the arXiv abstract page showing the title, single author, v1 date and the admission-gate abstract. · arXiv abstract page, title/authors/submission-date/abstract crop (2026-10-11) · [source](https://arxiv.org/abs/2610.10629)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-11.
+
+**Open code / weights / data links** — [MIT benchmark and reference implementation](https://github.com/rav11l/cace-bench) · [MIT license and NOTICE](https://github.com/rav11l/cace-bench/blob/main/LICENSE)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.10629) · [arXiv HTML v1](https://arxiv.org/html/2610.10629v1) · [MIT benchmark and reference implementation](https://github.com/rav11l/cace-bench) · [MIT license and NOTICE](https://github.com/rav11l/cace-bench/blob/main/LICENSE) · [Synthetic dataset on Hugging Face](https://huggingface.co/datasets/rav11l/cace-bench)
 
 <a id="trusting-trust-self-modifying"></a>
 

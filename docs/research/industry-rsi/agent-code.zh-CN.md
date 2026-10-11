@@ -8,10 +8,10 @@
 | --- | ---: |
 | [技能文件优化与技能库](#family-skill-file-optimization) | 17 |
 | [Harness 搜索与进化](#family-harness-search) | 17 |
-| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 6 |
-| [程序进化与进化搜索](#family-program-evolution) | 6 |
+| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 7 |
+| [程序进化与进化搜索](#family-program-evolution) | 7 |
 | [反馈审查与编排](#family-feedback-orchestration) | 4 |
-| [安全与治理](#family-safety-governance) | 2 |
+| [安全与治理](#family-safety-governance) | 3 |
 
 <a id="family-skill-file-optimization"></a>
 
@@ -1043,7 +1043,7 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## 自改写元智能体与谱系 (6)
+## 自改写元智能体与谱系 (7)
 
 <a id="solpi-recursive-autoresearch-loops"></a>
 
@@ -1074,6 +1074,36 @@
 **开源代码／权重／数据链接** — [Code repository](https://github.com/NVlabs/SoL-Pi)
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.20519) · [Paper HTML (affiliations, Figure 1-2, abstract numbers)](https://arxiv.org/html/2609.20519v1) · [Code repository](https://github.com/NVlabs/SoL-Pi) · [Project page](https://nvlabs.github.io/SoL-Pi/)
+
+<a id="sift-fast-tree-search"></a>
+
+### Self Improvement via Fast Tree-search
+
+**2026-09-17** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-09-17 提交（2609.19526），截至 2026-10-11 无后续版本。媒体报道（VentureBeat，2026-10-02）晚于首发，仅作线索回溯使用，不作为首发日期。
+
+**机构关系** — 论文 HTML 列出 MIT 的 Xinghong Fu（通讯）与 Sakana AI 的 Aravinth Kulanthaivelu、Yutaro Yamada。媒体对该工作的报道仅作线索，不作为来源。
+
+**改变对象与反馈复用** — 编码智能体在树搜索中递归修改自身实现。SIFT 在该循环内加入廉价监督信号：LLM 裁判对候选补丁与历史版本做两两比较，胜负记录经正则化 Bradley-Terry 模型聚合为强度分数，并按排名进行父节点采样使扩展偏向更强节点；昂贵的下游基准评测只留给最有希望的节点，另有一个解耦流水线变体允许在完整评测结束前扩展已获得强裁判信号的节点。
+
+**作者报告结果** — 作者报告的完整 Polyglot 基准结果：o3-mini 智能体加 gpt-5.4 裁判的 SIFT 达 35.1%，对照 DGM（o3-mini）30.7%、基础智能体 14.2%；o3-mini 配置重复运行为 32.0-35.6%，Qwen3-Coder-30B 配置达 32.0%。o3-mini 运行在 50 CPU 小时、5 小时墙钟内完成，Qwen3 配置在 250 CPU 小时、7 小时内完成。论文还报告发现的智能体 harness 可跨编码模型迁移。以上均为作者在其基准与 API 预算下的报告，不是 nanoRSI 复现。
+
+**证据边界** — 主要增益依赖裁判模型：裁判为 None 的 SIFT 仅 29.8%（低于 DGM 的 30.7%），gpt-5-mini 裁判配置为 31.6%，裁判质量与成本是承重点。评测以 Polyglot 为主、TerminalBench 为辅，且核验的论文页面未发现代码、权重或数据发布。墙钟与 API 成本数字依赖作者 2026 年的 API 价格与基础设施。
+
+**代码／权重／数据／许可** — 代码：核验的摘要与 HTML 页面未发现仓库链接。权重：未涉及/未分发。数据：未发现数据发布。许可：论文在 arXiv 上为 CC BY 4.0；无发布则无法核验实现许可。'未核验'不等于'不存在'。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可移植部分是廉价预闸门：用两两 LLM 裁判比较加 Bradley-Terry 聚合，在任何完整面板评测前对提案做低成本排序，并与完整评测闸门显式对照，记录误准入/误拦截与裁判成本。这可以纳入已冻结的 RRSI 式选择器研究与反事实面板；属于拟议受控实验，不是 nanoRSI 默认行为。
+
+![论文原始 Figure 1：SIFT 单步扩展——被采样节点自我改进，裁判将其与历史版本比较，胜负记录进入 Bradley-Terry 强度分数并用于按排名的父节点采样。](assets/paper-figures/sift-tree-search-pipeline.png)
+
+**原文图／官方图片** — 论文原始 Figure 1：SIFT 单步扩展——被采样节点自我改进，裁判将其与历史版本比较，胜负记录进入 Bradley-Terry 强度分数并用于按排名的父节点采样。 · Figure 1 (figures/pipeline_full_bigfont.png): node expansion with judge comparison, Bradley-Terry aggregation and rank-based parent sampling · [source](https://arxiv.org/html/2609.19526v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-11.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.19526) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2609.19526v1)
 
 <a id="nous-hermes-selfrefactor"></a>
 
@@ -1227,7 +1257,37 @@
 
 <a id="family-program-evolution"></a>
 
-## 程序进化与进化搜索 (6)
+## 程序进化与进化搜索 (7)
+
+<a id="evoalloc-resource-allocation-evolution"></a>
+
+### EvoAlloc: A Self-Evolving Resource Allocation Agent for Efficient Program Evolution
+
+**2026-10-08** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 于 2026-10-08 提交（2610.12086），在 2026-10-09 列表公告。截至核验日，论文页面未链接代码或项目页。
+
+**机构关系** — 论文页眉将全体作者列为 KAUST 生成式 AI 卓越中心，其中作者 Wenyi Wang 兼属 Sakana AI。
+
+**改变对象与反馈复用** — EvoAlloc 学习在 LLM 程序演化中分配评测算力：一个分配智能体决定哪些候选获得完整评测，其策略通过把历史搜索与分配结果巩固为可复用经验来修订，并以反事实探索偶尔评测曾被拒绝资源的候选、揭示其结果以充实后续策略更新。被改变的对象是搜索循环内分配器的策略/经验状态，不是模型权重。
+
+**作者报告结果** — 作者报告的跨编码与智能体 harness 优化基准（附录含 ADAS-AIME 与 circle-packing 设置）结果：达到基线水平性能所需完整评测减少 59-82%、总 LLM token 减少 61-89%；在相同完整评测预算下，自适应分配取得 8.7-12.0% 更高的最终性能。以上为作者在其基准与预算下的报告，不是 nanoRSI 复现。
+
+**证据边界** — 该研究优化的是评测成本而非最终能力上限；核验的论文页面未发现公开代码、权重或数据发布，复现依赖作者材料。基准覆盖为作者的编码与 harness 套件，反事实探索率是论文分析了但 nanoRSI 未核验的敏感超参数。
+
+**代码／权重／数据／许可** — 代码：核验的摘要与 HTML 页面未发现仓库链接。权重：未涉及/未分发。数据：未发现数据集发布。许可：无发布即无法核验。'未核验'不等于'不存在'。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI 有界评测预算的两个可移植方向：(1) 经验更新的分配器决定哪些候选提案进入完整面板评测，在匹配总 token 与评测次数下与固定轮转对照；(2) 把反事实探索用作误拦截量测——偶尔评测被选择器拒绝的提案，与既有的闸门反事实面板互相印证。两者均为可选择的实验设计，默认不改动任何调度器。
+
+![论文原始 Figure 1：(a) 分配智能体选择进入完整评测的候选；(b) 结果被巩固为更新策略的经验；(c) 反事实探索评测曾被拒绝的候选以充实后续更新。](assets/paper-figures/evoalloc-allocation-loop.png)
+
+**原文图／官方图片** — 论文原始 Figure 1：(a) 分配智能体选择进入完整评测的候选；(b) 结果被巩固为更新策略的经验；(c) 反事实探索评测曾被拒绝的候选以充实后续更新。 · Figure 1 (figures/fig1.png): strategy-guided allocation, experience-driven strategy evolution and counterfactual exploration · [source](https://arxiv.org/html/2610.12086v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-11.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12086) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12086v1)
 
 <a id="compiled-agency-gauntlet"></a>
 
@@ -1535,7 +1595,37 @@
 
 <a id="family-safety-governance"></a>
 
-## 安全与治理 (2)
+## 安全与治理 (3)
+
+<a id="cace-bench-admission-gate"></a>
+
+### The Harness as the Only Mutable Surface: Compliance-Bounded Self-Evolution of LLM Agents in Credit Pipelines, with a Measured Admission Gate
+
+**2026-10-07** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-07 提交（2610.10629）。配套 cace-bench 仓库更早创建（2026-07-02）并带版本发布与 Zenodo DOI；本条将其作为已核验的开放材料配套记录，不当作更早的论文日期。
+
+**机构关系** — 论文为单作者，署名 Digital Economy Lab；基准与参考实现以 MIT 发布，带 Zenodo DOI 与 Hugging Face 数据集。除论文与仓库外，未能进一步独立核实该实验室背景。
+
+**改变对象与反馈复用** — 只有 LLM 信贷流水线智能体的运行时 harness 可变——指令文本、工具调用逻辑与原语组合——模型权重保持冻结，因此每次适配都是可评审的 diff 并附带原因与测试。双环引擎控制部署：准入闸门在变更获准前记录哈希链式证据（注册的选择、运行义务、声明范围），且闸门自身的准入/拒绝统计作为量测控制与无界筛选基线对照报告。
+
+**作者报告结果** — 作者报告的仿真结果（三类漂移 × 三档严重度 × 各 10 个种子）：带闸门循环准入 7,449 个候选变更中的 144 个，无一恶化留出误差，在全部低/中严重度单元把误报率恢复到 oracle 水平且未增加漏检；把闸门换成无界的近期轨迹筛选则准入 309 个有害变更，90 次运行中 49 次漏检超过 10%；对漂移前标签闸门拒绝一切。结构性漂移需要原语替换，固定容差在最高严重度种子的一半中被卡住。所有数字来自模拟智能体加种子化搜索提案器，不是真实语言模型调用。
+
+**证据边界** — 评测是基于种子化搜索提案器与模拟智能体的仿真，不是真实 LLM 循环；领域是对映到欧盟 AI Act 高风险信贷条款的合规场景；实验室为单作者，除其自有材料外无法进一步核实。有害准入计数依赖作者选择的合成漂移族与严重度设置。
+
+**代码／权重／数据／许可** — 代码：rav11l/cace-bench 提供 MIT 许可的参考实现与生成器（v0.6.0，Zenodo DOI 10.5281/zenodo.23207546），含一次 23,000 个合成案例的带日期参考运行。数据：全合成基准发布于 Hugging Face（rav11l/cace-bench），无真实个人数据。权重：不适用。许可：仓库内核验为 MIT。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可移植思路是'量测闸门'报告：把准入/拒绝计数、有害准入反事实与部署前拒绝行为作为 nanoRSI 自身闸门证据账本的一等字段，与既有反事实挑战者研究互相印证。冻结契约下的 harness-only 变更与逐变更记录原因/测试已接近 nanoRSI 现有设计；把这视为对报告形态的印证，而不是代码依赖。
+
+![论文未包含流程图；本条保留 arXiv 摘要页的裁剪截图，呈现标题、单作者、v1 日期与准入闸门摘要。](assets/paper-figures/cace-bench-abs-crop.png)
+
+**原文图／官方图片** — 论文未包含流程图；本条保留 arXiv 摘要页的裁剪截图，呈现标题、单作者、v1 日期与准入闸门摘要。 · arXiv abstract page, title/authors/submission-date/abstract crop (2026-10-11) · [source](https://arxiv.org/abs/2610.10629)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-11.
+
+**开源代码／权重／数据链接** — [MIT benchmark and reference implementation](https://github.com/rav11l/cace-bench) · [MIT license and NOTICE](https://github.com/rav11l/cace-bench/blob/main/LICENSE)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.10629) · [arXiv HTML v1](https://arxiv.org/html/2610.10629v1) · [MIT benchmark and reference implementation](https://github.com/rav11l/cace-bench) · [MIT license and NOTICE](https://github.com/rav11l/cace-bench/blob/main/LICENSE) · [Synthetic dataset on Hugging Face](https://huggingface.co/datasets/rav11l/cace-bench)
 
 <a id="trusting-trust-self-modifying"></a>
 

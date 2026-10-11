@@ -10862,6 +10862,295 @@
       },
       "last_verified": "2026-10-09",
       "local_reproduction": "not-run"
+    },
+    {
+      "id": "mass-multi-agent-self-supervision",
+      "title": "Recursive Self-Improvement through Multi-Agent Self-Supervision",
+      "organizations": [
+        "UC Berkeley",
+        "Sakana AI"
+      ],
+      "published": "2026-10-08",
+      "kind": "paper",
+      "date_note": {
+        "en": "arXiv v1 was submitted on 2026-10-08 (2610.12176) and announced in the 2026-10-09 listing. The official implementation repository was created on 2026-09-29 and is treated as an implementation companion, not an earlier paper date.",
+        "zh": "arXiv v1 于 2026-10-08 提交（2610.12176），在 2026-10-09 列表公告。官方实现仓库创建于 2026-09-29，本条仅作为实现配套核验，不当作更早的论文日期。"
+      },
+      "category": "parameter-learning",
+      "family": "experience-distillation",
+      "relationship": "direct-loop",
+      "affiliation": {
+        "en": "Author affiliations are listed in the paper source: UC Berkeley and Sakana AI; the first author did the work during a Sakana AI internship, and the project page is published by Sakana AI.",
+        "zh": "论文原文列出的机构为 UC Berkeley 与 Sakana AI；一作在 Sakana AI 实习期间完成本工作，项目页由 Sakana AI 发布。"
+      },
+      "mechanism": {
+        "en": "MASS alternates two phases. First, with weights frozen, RHI search evolves multi-agent workflow topologies (agent roles, information routing, structural guardrails) encoded as a textual workflow prompt; the same language model acts as executor, self-evaluator and self-optimizer in the inner loop. Second, the model is fine-tuned on self-generated trajectories from the selected multi-agent workflows, and the updated model becomes executor, optimizer and evaluator of the next cycle, closing a recursive bootstrap under homogeneous self-supervision.",
+        "zh": "MASS 交替两个阶段：第一阶段冻结权重，用 RHI 搜索演化多智能体工作流拓扑（角色、信息路由与结构护栏），并将其编码为文本化 workflow 提示，同一个语言模型在内环中同时担任执行器、自评估器与自优化器；第二阶段用选出的多智能体工作流产生的自生成轨迹微调模型，更新后的模型进入下一周期继续担任执行器/优化器/评估器，构成同源自监督下的递归自举。"
+      },
+      "result": {
+        "en": "Author-reported, starting from Qwen3.6-27B in the qwen-code 0.20.0 scaffold over two MASS cycles: score per output token reaches 1.2-1.6x the base model on MLR-Bench, DSBench, ScienceAgentBench and AstaBench; external-judge win rate against the base on three held-out test tasks rises from 53.9% (cycle 1) to 69.9% (cycle 2); raw scores improve on MLR-Bench (1.71 to 2.25), ScienceAgentBench (28.8% to 31.7%) and AstaBench reports delivered (50% to 76%), stay roughly flat on DSBench (0.473 to 0.482), and decline on Terminal-Bench 2.0 (0.375 to 0.352) and SWE-bench Verified (0.626 to 0.611). A student trained on multi-agent traces beats a single-agent student trained on 1.4x more tokens, and evaluator agreement with external judges rises from 73% to 93%.",
+        "zh": "作者报告的结果：以 Qwen3.6-27B 为起点、qwen-code 0.20.0 脚手架、两轮 MASS 周期后，MLR-Bench、DSBench、ScienceAgentBench 与 AstaBench 上单位输出 token 得分为基座的 1.2-1.6 倍；在三个留出测试任务上对外部裁判的胜率从第一周期的 53.9% 升至第二周期的 69.9%；原始分数在 MLR-Bench（1.71 到 2.25）、ScienceAgentBench（28.8% 到 31.7%）、AstaBench 交付率（50% 到 76%）上提升，DSBench 基本持平（0.473 到 0.482），Terminal-Bench 2.0（0.375 到 0.352）与 SWE-bench Verified（0.626 到 0.611）下降。多智能体轨迹训练的学生超过用 1.4 倍 token 训练的单智能体学生，评估器与外部裁判的一致率从 73% 升至 93%。"
+      },
+      "limits": {
+        "en": "Gains concentrate on open-ended research-agent benchmarks while Terminal-Bench and SWE-bench transfer is negative, which the authors also report; homogeneous self-supervision shares one model's blind spots across executor/evaluator/optimizer roles, and the paper itself flags safety concerns of self-evaluating loops. Results require post-training infrastructure (LoRA fine-tuning) and are author-reported under their models, tasks and compute, not a nanoRSI reproduction.",
+        "zh": "增益集中在开放式研究型基准上，Terminal-Bench 与 SWE-bench 的迁移为负（作者同样如实报告）；同源自监督使执行器/评估器/优化器共享同一模型的盲区，论文自身也提示了自评估循环的安全问题。结果依赖后训练基础设施（LoRA 微调），且为作者在其模型、任务与算力条件下的报告，不是 nanoRSI 复现。"
+      },
+      "availability": {
+        "en": "Code: official research implementation is public at SakanaAI/mass, but its NOTICE.md states that no public open-source license has been assigned to the MASS-specific code, so treat it as unlicensed and copy nothing. Weights: not distributed with the repository. Data: benchmarks are obtained from upstream public sources (ScienceAgentBench, MLR-Bench, AstaBench, DSBench and others); generated artifacts are not distributed. License: no project license verified; ideas only.",
+        "zh": "代码：官方研究实现公开于 SakanaAI/mass，但其 NOTICE.md 声明未对 MASS 专有代码分配任何公共开源许可证，应视为无许可、零复制。权重：不随仓库分发。数据：基准取自上游公开来源（ScienceAgentBench、MLR-Bench、AstaBench、DSBench 等），生成产物不分发。许可：未核验到项目级许可；只取思想。"
+      },
+      "application": {
+        "en": "Two portable ideas, without adding any MASS code or training stack: (1) test a multi-role self-supervision scaffold in the skills/harness track - one model prompted as executor, evaluator and optimizer over the same workspace - against a single-agent scaffold under matched calls, tokens and seeds; (2) the reported negative transfer on terminal/SWE suites motivates keeping domain-separated held-out panels so workflow gains on open-ended tasks are not over-read. Both fit the existing controlled-comparison protocol; no default nanoRSI behavior changes here.",
+        "zh": "两个可移植思路，不引入任何 MASS 代码或训练栈：(1) 在 skills/harness 轨道测试多角色自监督脚手架——同一模型以执行器/评估器/优化器三种提示作用于同一工作区——在匹配调用、token 与种子下与单智能体脚手架对照；(2) 其 terminal/SWE 套件上的负迁移提示保持按域分离的留出面板，避免把开放式任务上的工作流增益过度外推。两者都符合现有受控对照协议；本轮不改变 nanoRSI 默认行为。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.12176"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1 and Figure 1",
+          "url": "https://arxiv.org/html/2610.12176v1"
+        },
+        {
+          "kind": "project-page",
+          "label": "Official MASS project page",
+          "url": "https://pub.sakana.ai/mass/"
+        },
+        {
+          "kind": "repository",
+          "label": "Official research implementation",
+          "url": "https://github.com/SakanaAI/mass"
+        },
+        {
+          "kind": "license",
+          "label": "Repository NOTICE on licensing",
+          "url": "https://github.com/SakanaAI/mass/blob/main/NOTICE.md"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/mass-rsi-overview.png",
+        "source_url": "https://arxiv.org/html/2610.12176v1",
+        "locator": "Figure 1 (ICLRpaper_new11.png): inner loop of agent/evaluator/optimizer sharing one LM and the outer cycle of workflow search plus post-training",
+        "caption": {
+          "en": "Original Figure 1: the inner loop generates a workspace under a textual multi-agent workflow prompt, the self-evaluator feeds back and the self-optimizer revises the workflow; post-training on selected trajectories yields the next cycle's model.",
+          "zh": "论文原始 Figure 1：内环在文本化多智能体工作流提示下生成工作区，自评估器给出反馈、自优化器修订工作流；对选出轨迹做后训练得到下一周期模型。"
+        }
+      },
+      "last_verified": "2026-10-11",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "sift-fast-tree-search",
+      "title": "Self Improvement via Fast Tree-search",
+      "organizations": [
+        "MIT",
+        "Sakana AI"
+      ],
+      "published": "2026-09-17",
+      "kind": "paper",
+      "date_note": {
+        "en": "arXiv v1 was submitted on 2026-09-17 (2609.19526) with no later versions as of 2026-10-11. Media coverage (VentureBeat, 2026-10-02) appeared later and is used only as a lead; it is not a first-release date.",
+        "zh": "arXiv v1 于 2026-09-17 提交（2609.19526），截至 2026-10-11 无后续版本。媒体报道（VentureBeat，2026-10-02）晚于首发，仅作线索回溯使用，不作为首发日期。"
+      },
+      "category": "agent-code",
+      "family": "self-modifying-meta-agents",
+      "relationship": "direct-loop",
+      "affiliation": {
+        "en": "The paper HTML lists Xinghong Fu at MIT (corresponding) and Aravinth Kulanthaivelu and Yutaro Yamada at Sakana AI. Media coverage of the same work is treated as a lead, not a source.",
+        "zh": "论文 HTML 列出 MIT 的 Xinghong Fu（通讯）与 Sakana AI 的 Aravinth Kulanthaivelu、Yutaro Yamada。媒体对该工作的报道仅作线索，不作为来源。"
+      },
+      "mechanism": {
+        "en": "Coding agents recursively modify their own implementations along a tree search. SIFT adds a cheap supervision signal inside this loop: an LLM-as-a-judge makes pairwise comparisons between a candidate patch and earlier versions, win-loss records are aggregated by a regularized Bradley-Terry model into strength scores, and rank-based parent sampling biases expansion toward stronger nodes. Expensive downstream benchmark evaluations are reserved for the most promising nodes, and a disaggregated pipeline variant expands nodes that already show a strong judge signal before full evaluation completes.",
+        "zh": "编码智能体在树搜索中递归修改自身实现。SIFT 在该循环内加入廉价监督信号：LLM 裁判对候选补丁与历史版本做两两比较，胜负记录经正则化 Bradley-Terry 模型聚合为强度分数，并按排名进行父节点采样使扩展偏向更强节点；昂贵的下游基准评测只留给最有希望的节点，另有一个解耦流水线变体允许在完整评测结束前扩展已获得强裁判信号的节点。"
+      },
+      "result": {
+        "en": "Author-reported on the full Polyglot benchmark: SIFT with an o3-mini agent and a gpt-5.4 judge reaches 35.1%, versus 30.7% for DGM (o3-mini) and 14.2% for the base agent; repeating the o3-mini configuration yields 32.0-35.6%, and a Qwen3-Coder-30B configuration reaches 32.0%. o3-mini runs finish under 50 CPU hours and 5 hours wall clock, and the Qwen3 configuration under 250 CPU hours and 7 hours. The paper also reports that discovered agent harnesses transfer across coding models. These are author-reported numbers under their benchmarks and API budgets, not a nanoRSI reproduction.",
+        "zh": "作者报告的完整 Polyglot 基准结果：o3-mini 智能体加 gpt-5.4 裁判的 SIFT 达 35.1%，对照 DGM（o3-mini）30.7%、基础智能体 14.2%；o3-mini 配置重复运行为 32.0-35.6%，Qwen3-Coder-30B 配置达 32.0%。o3-mini 运行在 50 CPU 小时、5 小时墙钟内完成，Qwen3 配置在 250 CPU 小时、7 小时内完成。论文还报告发现的智能体 harness 可跨编码模型迁移。以上均为作者在其基准与 API 预算下的报告，不是 nanoRSI 复现。"
+      },
+      "limits": {
+        "en": "The headline gain rides on the judge model: SIFT with judge set to None scores 29.8%, below DGM's 30.7%, and the gpt-5-mini judge configuration scores 31.6%, so judge quality and cost are the load-bearing choice. Evaluation centers on Polyglot with TerminalBench as a secondary suite, and no code, weights or data release was found in the checked paper page. Wall-clock and API-cost numbers depend on the authors' 2026 API pricing and infrastructure.",
+        "zh": "主要增益依赖裁判模型：裁判为 None 的 SIFT 仅 29.8%（低于 DGM 的 30.7%），gpt-5-mini 裁判配置为 31.6%，裁判质量与成本是承重点。评测以 Polyglot 为主、TerminalBench 为辅，且核验的论文页面未发现代码、权重或数据发布。墙钟与 API 成本数字依赖作者 2026 年的 API 价格与基础设施。"
+      },
+      "availability": {
+        "en": "Code: no repository link found on the checked abstract or HTML page. Weights: not applicable/distributed. Data: no data release found. License: paper is CC BY 4.0 on arXiv; implementation licensing is not verifiable without a release. 'Not verified' is not 'does not exist'.",
+        "zh": "代码：核验的摘要与 HTML 页面未发现仓库链接。权重：未涉及/未分发。数据：未发现数据发布。许可：论文在 arXiv 上为 CC BY 4.0；无发布则无法核验实现许可。'未核验'不等于'不存在'。"
+      },
+      "application": {
+        "en": "The portable piece is a cheap pre-gate: pairwise LLM-judge comparisons aggregated by Bradley-Terry as a low-cost ranking of proposals before any full panel evaluation, explicitly compared against full-evaluation gating with false-admit/false-block accounting and judge-cost logging. This slots into the frozen RRSI-style selector study and the counterfactual panel; it is a proposed controlled experiment, not a default nanoRSI behavior.",
+        "zh": "可移植部分是廉价预闸门：用两两 LLM 裁判比较加 Bradley-Terry 聚合，在任何完整面板评测前对提案做低成本排序，并与完整评测闸门显式对照，记录误准入/误拦截与裁判成本。这可以纳入已冻结的 RRSI 式选择器研究与反事实面板；属于拟议受控实验，不是 nanoRSI 默认行为。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2609.19526"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1 and Figure 1",
+          "url": "https://arxiv.org/html/2609.19526v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/sift-tree-search-pipeline.png",
+        "source_url": "https://arxiv.org/html/2609.19526v1",
+        "locator": "Figure 1 (figures/pipeline_full_bigfont.png): node expansion with judge comparison, Bradley-Terry aggregation and rank-based parent sampling",
+        "caption": {
+          "en": "Original Figure 1: one SIFT expansion step - a sampled node self-improves, the judge compares it against earlier versions, and win-loss records feed Bradley-Terry strength scores used for rank-based parent sampling.",
+          "zh": "论文原始 Figure 1：SIFT 单步扩展——被采样节点自我改进，裁判将其与历史版本比较，胜负记录进入 Bradley-Terry 强度分数并用于按排名的父节点采样。"
+        }
+      },
+      "last_verified": "2026-10-11",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "evoalloc-resource-allocation-evolution",
+      "title": "EvoAlloc: A Self-Evolving Resource Allocation Agent for Efficient Program Evolution",
+      "organizations": [
+        "King Abdullah University of Science and Technology",
+        "Sakana AI"
+      ],
+      "published": "2026-10-08",
+      "kind": "paper",
+      "date_note": {
+        "en": "arXiv v1 was submitted on 2026-10-08 (2610.12086) and announced in the 2026-10-09 listing. No code or project page is linked from the paper page as of the check date.",
+        "zh": "arXiv v1 于 2026-10-08 提交（2610.12086），在 2026-10-09 列表公告。截至核验日，论文页面未链接代码或项目页。"
+      },
+      "category": "agent-code",
+      "family": "program-evolution",
+      "relationship": "enabling",
+      "affiliation": {
+        "en": "The paper header lists the KAUST Center of Excellence for Generative AI for all authors, with one author (Wenyi Wang) co-affiliated with Sakana AI.",
+        "zh": "论文页眉将全体作者列为 KAUST 生成式 AI 卓越中心，其中作者 Wenyi Wang 兼属 Sakana AI。"
+      },
+      "mechanism": {
+        "en": "EvoAlloc learns to spend evaluation compute inside LLM-based program evolution. An allocation agent decides which candidates receive full evaluation; its strategy is revised by consolidating past search and allocation outcomes into reusable experience, and counterfactual exploration occasionally evaluates candidates it had denied resources to reveal their outcomes and enrich future strategy updates. The mutating surface is the allocator's strategy/experience state within the search loop, not the model weights.",
+        "zh": "EvoAlloc 学习在 LLM 程序演化中分配评测算力：一个分配智能体决定哪些候选获得完整评测，其策略通过把历史搜索与分配结果巩固为可复用经验来修订，并以反事实探索偶尔评测曾被拒绝资源的候选、揭示其结果以充实后续策略更新。被改变的对象是搜索循环内分配器的策略/经验状态，不是模型权重。"
+      },
+      "result": {
+        "en": "Author-reported across coding and agent-harness optimization benchmarks (including ADAS-AIME and circle-packing setups in the appendix): reaching baseline-level performance requires 59-82% fewer full evaluations and 61-89% fewer total LLM tokens; under the same full-evaluation budget, adaptive allocation achieves 8.7-12.0% higher final performance. These are author-reported numbers under their benchmarks and budgets, not a nanoRSI reproduction.",
+        "zh": "作者报告的跨编码与智能体 harness 优化基准（附录含 ADAS-AIME 与 circle-packing 设置）结果：达到基线水平性能所需完整评测减少 59-82%、总 LLM token 减少 61-89%；在相同完整评测预算下，自适应分配取得 8.7-12.0% 更高的最终性能。以上为作者在其基准与预算下的报告，不是 nanoRSI 复现。"
+      },
+      "limits": {
+        "en": "The study optimizes evaluation cost, not final-state capability ceilings; no public code, weights or data release was found in the checked paper page, so reproduction depends on the authors' materials. Benchmark coverage is the authors' coding and harness suites, and the counterfactual-exploration rate introduces another sensitive hyperparameter the paper analyzes but nanoRSI has not verified.",
+        "zh": "该研究优化的是评测成本而非最终能力上限；核验的论文页面未发现公开代码、权重或数据发布，复现依赖作者材料。基准覆盖为作者的编码与 harness 套件，反事实探索率是论文分析了但 nanoRSI 未核验的敏感超参数。"
+      },
+      "availability": {
+        "en": "Code: no repository link found on the checked abstract or HTML page. Weights: not applicable/distributed. Data: no dataset release found. License: not verifiable without a release. 'Not verified' is not 'does not exist'.",
+        "zh": "代码：核验的摘要与 HTML 页面未发现仓库链接。权重：未涉及/未分发。数据：未发现数据集发布。许可：无发布即无法核验。'未核验'不等于'不存在'。"
+      },
+      "application": {
+        "en": "Two portable directions for nanoRSI's bounded evaluation budget: (1) an experience-updated allocator that decides which candidate proposals get full panel evaluation, compared against fixed round-robin under matched total tokens and evaluations; (2) counterfactual exploration as a false-block measurement - occasionally evaluate proposals the selector denied, mirroring the counterfactual panel already used for gate validation. Both are opt-in study designs; no scheduler change is made by default.",
+        "zh": "对 nanoRSI 有界评测预算的两个可移植方向：(1) 经验更新的分配器决定哪些候选提案进入完整面板评测，在匹配总 token 与评测次数下与固定轮转对照；(2) 把反事实探索用作误拦截量测——偶尔评测被选择器拒绝的提案，与既有的闸门反事实面板互相印证。两者均为可选择的实验设计，默认不改动任何调度器。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.12086"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1 and Figure 1",
+          "url": "https://arxiv.org/html/2610.12086v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/evoalloc-allocation-loop.png",
+        "source_url": "https://arxiv.org/html/2610.12086v1",
+        "locator": "Figure 1 (figures/fig1.png): strategy-guided allocation, experience-driven strategy evolution and counterfactual exploration",
+        "caption": {
+          "en": "Original Figure 1: (a) the allocation agent selects candidates for full evaluation, (b) outcomes are consolidated into strategy-updating experience, and (c) counterfactual exploration evaluates denied candidates to enrich later updates.",
+          "zh": "论文原始 Figure 1：(a) 分配智能体选择进入完整评测的候选；(b) 结果被巩固为更新策略的经验；(c) 反事实探索评测曾被拒绝的候选以充实后续更新。"
+        }
+      },
+      "last_verified": "2026-10-11",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "cace-bench-admission-gate",
+      "title": "The Harness as the Only Mutable Surface: Compliance-Bounded Self-Evolution of LLM Agents in Credit Pipelines, with a Measured Admission Gate",
+      "organizations": [
+        "Digital Economy Lab"
+      ],
+      "published": "2026-10-07",
+      "kind": "paper",
+      "date_note": {
+        "en": "arXiv v1 was submitted on 2026-10-07 (2610.10629). The companion cace-bench repository existed earlier (created 2026-07-02) with versioned releases and a Zenodo DOI; it is recorded as the audited open-material companion, not an earlier paper date.",
+        "zh": "arXiv v1 于 2026-10-07 提交（2610.10629）。配套 cace-bench 仓库更早创建（2026-07-02）并带版本发布与 Zenodo DOI；本条将其作为已核验的开放材料配套记录，不当作更早的论文日期。"
+      },
+      "category": "agent-code",
+      "family": "safety-governance",
+      "relationship": "direct-loop",
+      "affiliation": {
+        "en": "Single author listed at Digital Economy Lab; the benchmark and reference implementation are released under MIT with a Zenodo DOI and a Hugging Face dataset. The lab could not be independently characterized beyond the paper and repository.",
+        "zh": "论文为单作者，署名 Digital Economy Lab；基准与参考实现以 MIT 发布，带 Zenodo DOI 与 Hugging Face 数据集。除论文与仓库外，未能进一步独立核实该实验室背景。"
+      },
+      "mechanism": {
+        "en": "Only the runtime harness of an LLM credit-pipeline agent is mutable - instruction text, tool-call logic and primitive composition - while model weights stay fixed, so every adaptation is a reviewable diff with an attached cause and test. A dual-loop engine gates deployment: an admission gate logs a hash-chained record (registered choice, run obligations, claim scope) before a change is admitted, and the gate's admission/rejection statistics are themselves reported as a measured control against an unbounded screen baseline.",
+        "zh": "只有 LLM 信贷流水线智能体的运行时 harness 可变——指令文本、工具调用逻辑与原语组合——模型权重保持冻结，因此每次适配都是可评审的 diff 并附带原因与测试。双环引擎控制部署：准入闸门在变更获准前记录哈希链式证据（注册的选择、运行义务、声明范围），且闸门自身的准入/拒绝统计作为量测控制与无界筛选基线对照报告。"
+      },
+      "result": {
+        "en": "Author-reported simulation across three shift families at three severities with 10 seeds each: the gated loop admitted 144 of 7,449 candidate changes with none worsening held-out error, restoring false-positive rate to oracle level without raising missed flags in all low/mid-severity cells; replacing the gate with an unbounded recent-trace screen admitted 309 harmful changes and left missed flags above 10% in 49 of 90 runs; on pre-shift labels the gate rejected everything. Structural shifts required primitive replacement that the fixed tolerance blocked in half of the highest-severity seeds. All numbers come from a simulated agent plus a seeded-search proposer, not real language-model calls.",
+        "zh": "作者报告的仿真结果（三类漂移 × 三档严重度 × 各 10 个种子）：带闸门循环准入 7,449 个候选变更中的 144 个，无一恶化留出误差，在全部低/中严重度单元把误报率恢复到 oracle 水平且未增加漏检；把闸门换成无界的近期轨迹筛选则准入 309 个有害变更，90 次运行中 49 次漏检超过 10%；对漂移前标签闸门拒绝一切。结构性漂移需要原语替换，固定容差在最高严重度种子的一半中被卡住。所有数字来自模拟智能体加种子化搜索提案器，不是真实语言模型调用。"
+      },
+      "limits": {
+        "en": "The evaluation is a simulation with a seeded-search proposer and a simulated agent rather than a live LLM loop; the domain is credit compliance mapped to EU AI Act provisions for high-risk credit scoring, and the lab is single-author and could not be characterized beyond its own materials. Harmful-admission counts depend on the synthetic shift families and severities chosen by the author.",
+        "zh": "评测是基于种子化搜索提案器与模拟智能体的仿真，不是真实 LLM 循环；领域是对映到欧盟 AI Act 高风险信贷条款的合规场景；实验室为单作者，除其自有材料外无法进一步核实。有害准入计数依赖作者选择的合成漂移族与严重度设置。"
+      },
+      "availability": {
+        "en": "Code: MIT-licensed reference implementation and generator at rav11l/cace-bench (v0.6.0, Zenodo DOI 10.5281/zenodo.23207546), including a dated reference run on 23,000 synthetic cases. Data: fully synthetic benchmark published at Hugging Face (rav11l/cace-bench), no real personal data. Weights: not applicable. License: MIT verified in the repository.",
+        "zh": "代码：rav11l/cace-bench 提供 MIT 许可的参考实现与生成器（v0.6.0，Zenodo DOI 10.5281/zenodo.23207546），含一次 23,000 个合成案例的带日期参考运行。数据：全合成基准发布于 Hugging Face（rav11l/cace-bench），无真实个人数据。权重：不适用。许可：仓库内核验为 MIT。"
+      },
+      "application": {
+        "en": "The portable idea is measured-gate reporting: expose admission/rejection counts, harmful-admission counterfactuals and pre-deployment rejection behavior as first-class evidence-ledger fields for nanoRSI's own gate, matching the counterfactual challenger study already in place. Harness-only mutation with frozen contracts and per-change recorded cause/test is close to nanoRSI's existing design; treat this as validation of the reporting shape, not a code dependency.",
+        "zh": "可移植思路是'量测闸门'报告：把准入/拒绝计数、有害准入反事实与部署前拒绝行为作为 nanoRSI 自身闸门证据账本的一等字段，与既有反事实挑战者研究互相印证。冻结契约下的 harness-only 变更与逐变更记录原因/测试已接近 nanoRSI 现有设计；把这视为对报告形态的印证，而不是代码依赖。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.10629"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.10629v1"
+        },
+        {
+          "kind": "repository",
+          "label": "MIT benchmark and reference implementation",
+          "url": "https://github.com/rav11l/cace-bench"
+        },
+        {
+          "kind": "license",
+          "label": "MIT license and NOTICE",
+          "url": "https://github.com/rav11l/cace-bench/blob/main/LICENSE"
+        },
+        {
+          "kind": "project-page",
+          "label": "Synthetic dataset on Hugging Face",
+          "url": "https://huggingface.co/datasets/rav11l/cace-bench"
+        }
+      ],
+      "visual": {
+        "kind": "official-report-screenshot-crop",
+        "asset": "assets/paper-figures/cace-bench-abs-crop.png",
+        "source_url": "https://arxiv.org/abs/2610.10629",
+        "locator": "arXiv abstract page, title/authors/submission-date/abstract crop (2026-10-11)",
+        "caption": {
+          "en": "The paper reports no pipeline figure; the record keeps a cropped source-page screenshot of the arXiv abstract page showing the title, single author, v1 date and the admission-gate abstract.",
+          "zh": "论文未包含流程图；本条保留 arXiv 摘要页的裁剪截图，呈现标题、单作者、v1 日期与准入闸门摘要。"
+        }
+      },
+      "last_verified": "2026-10-11",
+      "local_reproduction": "not-run"
     }
   ]
 }

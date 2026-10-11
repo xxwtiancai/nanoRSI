@@ -471,5 +471,49 @@
    "en": "SERA's original Figure 2: recursive execution and three alternating training stages assign credit to execution, delegation/leaf coverage and rubric generation.",
    "zh": "SERA 原始 Figure 2：递归执行与三个交替训练阶段分别为执行、委派/叶覆盖率和 rubric 生成分配信用。"
   }
+ },
+ {
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/mass-rsi-overview.png",
+  "source_url": "https://arxiv.org/html/2610.12176v1",
+  "locator": "Figure 1 (ICLRpaper_new11.png): inner loop of agent/evaluator/optimizer sharing one LM and the outer cycle of workflow search plus post-training",
+  "caption": {
+   "en": "Original Figure 1: the inner loop generates a workspace under a textual multi-agent workflow prompt, the self-evaluator feeds back and the self-optimizer revises the workflow; post-training on selected trajectories yields the next cycle's model.",
+   "zh": "论文原始 Figure 1：内环在文本化多智能体工作流提示下生成工作区，自评估器给出反馈、自优化器修订工作流；对选出轨迹做后训练得到下一周期模型。"
+  },
+  "id": "mass-multi-agent-self-supervision"
+ },
+ {
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/sift-tree-search-pipeline.png",
+  "source_url": "https://arxiv.org/html/2609.19526v1",
+  "locator": "Figure 1 (figures/pipeline_full_bigfont.png): node expansion with judge comparison, Bradley-Terry aggregation and rank-based parent sampling",
+  "caption": {
+   "en": "Original Figure 1: one SIFT expansion step - a sampled node self-improves, the judge compares it against earlier versions, and win-loss records feed Bradley-Terry strength scores used for rank-based parent sampling.",
+   "zh": "论文原始 Figure 1：SIFT 单步扩展——被采样节点自我改进，裁判将其与历史版本比较，胜负记录进入 Bradley-Terry 强度分数并用于按排名的父节点采样。"
+  },
+  "id": "sift-fast-tree-search"
+ },
+ {
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/evoalloc-allocation-loop.png",
+  "source_url": "https://arxiv.org/html/2610.12086v1",
+  "locator": "Figure 1 (figures/fig1.png): strategy-guided allocation, experience-driven strategy evolution and counterfactual exploration",
+  "caption": {
+   "en": "Original Figure 1: (a) the allocation agent selects candidates for full evaluation, (b) outcomes are consolidated into strategy-updating experience, and (c) counterfactual exploration evaluates denied candidates to enrich later updates.",
+   "zh": "论文原始 Figure 1：(a) 分配智能体选择进入完整评测的候选；(b) 结果被巩固为更新策略的经验；(c) 反事实探索评测曾被拒绝的候选以充实后续更新。"
+  },
+  "id": "evoalloc-resource-allocation-evolution"
+ },
+ {
+  "kind": "official-report-screenshot-crop",
+  "asset": "assets/paper-figures/cace-bench-abs-crop.png",
+  "source_url": "https://arxiv.org/abs/2610.10629",
+  "locator": "arXiv abstract page, title/authors/submission-date/abstract crop (2026-10-11)",
+  "caption": {
+   "en": "The paper reports no pipeline figure; the record keeps a cropped source-page screenshot of the arXiv abstract page showing the title, single author, v1 date and the admission-gate abstract.",
+   "zh": "论文未包含流程图；本条保留 arXiv 摘要页的裁剪截图，呈现标题、单作者、v1 日期与准入闸门摘要。"
+  },
+  "id": "cace-bench-admission-gate"
  }
 ]
