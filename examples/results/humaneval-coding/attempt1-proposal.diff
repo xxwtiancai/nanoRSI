@@ -1,0 +1,29 @@
+diff --git a/target/agent/skills/inspect/SKILL.md b/target/agent/skills/inspect/SKILL.md
+index d6e7e9a 0000000
+--- a/target/agent/skills/inspect/SKILL.md
++++ b/target/agent/skills/inspect/SKILL.md
+@@ -5,3 +5,8 @@ Read the task instruction, solution.py, and the exposed public tests. Identify
+ Use the bounded public-test operation to reproduce the failure when useful.
+ Treat examples as evidence for the full contract, not as a list of answers.
+ Keep enough turns for an edit and a verification run.
++
++When the wording is ambiguous (e.g. "even digits" vs "even integers", "between"
++inclusive vs exclusive), resolve it against the stated examples. If a plausible
++implementation contradicts any example, the examples win and the implementation
++must be reworked. Also check boundary values, empty inputs, and any values
++mentioned only in the prose (such as "If the array is empty ...").
+diff --git a/target/agent/skills/verify/SKILL.md b/target/agent/skills/verify/SKILL.md
+index 6ba18c1 0000000
+--- a/target/agent/skills/verify/SKILL.md
++++ b/target/agent/skills/verify/SKILL.md
+@@ -7,3 +7,8 @@ connect it to a specific branch or assumption, and fix that cause within the
+ remaining turns. Inspect the final source against the instruction, especially
+ behavior not exercised by public examples. Finish with a concise account of
+ what changed and the tests actually run. Passing public tests does not prove
+ private tests pass; report only results you observed.
++
++Before finishing, mentally execute (or run via doctest/python -c) every example
++in the docstring and instruction against the final implementation, including
++edge cases like empty inputs and arguments given in a different order. Public
++tests here may only check that the function exists, so this self-check is often
++the only real validation available.

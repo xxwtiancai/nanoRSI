@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "study": "humaneval-coding",
+  "created_at": "2026-10-13T02:30:00+08:00",
+  "question": "On the field's most recognizable code benchmark (HumanEval, MIT, stock coding template), does gated skill evolution improve a flash-tier agent - measured on the revised study standard (36-problem frozen panel, 3 final-test repeats, no-skills as primary comparison)?",
+  "task_source": {
+    "benchmark": "HumanEval (openai/human-eval, MIT)",
+    "notice": "examples/humaneval_tasks/NOTICE",
+    "pack_generator": "examples/humaneval_tasks/prepare.py (20/25/36)",
+    "upstream_exclusions": ["HumanEval/32", "HumanEval/38", "HumanEval/50"],
+    "adaptations": "prompt + pass stub input; existence-only public test (prompt-only semantics); upstream test block wrapped in unittest with explicit check(candidate); reference solutions never enter the workspace"
+  },
+  "settings": {
+    "mode": "coding (stock template, zero custom evaluator code)",
+    "arm": "frozen",
+    "seed": 0,
+    "model": "glm-5.3-flash",
+    "thinking": "disabled",
+    "max_attempts": 3,
+    "final_repeats": 3
+  },
+  "search_outcomes": [
+    {"attempt": 1, "decision": "rejected", "parent_remeasured": 1.0, "candidate": 1.0, "gate_reason": "tie: the baseline skills re-measured at 25/25 (vs 22/25 at the baseline event)"},
+    {"attempt": 2, "decision": "rejected", "parent_remeasured": 1.0, "candidate": 0.84, "gate_reason": "-0.16 harmful"},
+    {"attempt": 3, "decision": "failed", "reason": "episode budget reached: attempts consume train(20) + parent re-measure(25) + candidate(25) = 70 episodes each, not 45 as budgeted"}
+  ],
+  "final_panel_test_36_problems_x3_repeats": {
+    "baseline_initial_skills": {"scores": [0.9444, 0.9722, 0.9722], "mean": 0.963},
+    "no_skills": {"scores": [0.9722, 0.9722, 0.9722], "mean": 0.9722},
+    "candidate": {"scores": [0.9167, 0.9444, 0.9722], "mean": 0.9444},
+    "reading": "ceiling with a properly-powered measurement: flash solves 96-97 percent of the frozen panel; no-skills is the strongest condition; candidate carries the SAME initial skills as baseline (nothing was accepted), so their 0.019 mean gap is a direct measurement of condition-level noise - identical-skill conditions differ by about one problem per repeat"
+  },
+  "noise_findings": {
+    "validation_parent_remeasure": "the same baseline skills scored 0.88 (baseline event) then 1.0 (fresh re-measure) on the 25-problem validation - a +/-3-problem swing",
+    "final_identical_condition_gap": "baseline vs candidate (identical skills, independent draws): 0.963 vs 0.9444 mean, +/-1 problem per repeat",
+    "implication": "single-edit skill effects at this tier are far below measurement noise; the noise-band-aware gate (ADOPTION 38) is the prerequisite for any acceptance claim in this regime"
+  },
+  "usage": {
+    "proposer": {"model_calls": 3, "input_tokens": 63788, "output_tokens": 2340},
+    "final_test_total": {"model_calls": 985},
+    "cost_usd": null
+  },
+  "audit": "zero expected-answer leakage (references never entered the workspace by construction), zero silent bypass; verify lineage ok",
+  "limits": "One seed, three attempts, flash tier, a 36-of-161 deterministic subsample with the public-test deviation documented in the pack README. The honest result is a well-measured null at the ceiling - not evidence that skill evolution cannot help on harder code benchmarks (the pack exists precisely to host such studies, e.g. via a weaker agent or harder suites on the same protocol)."
+}
