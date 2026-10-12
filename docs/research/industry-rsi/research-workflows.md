@@ -10,7 +10,7 @@
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 12 |
+| [Analyses & audits](#family-analyses-audits) | 13 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
@@ -691,7 +691,7 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (12)
+## Analyses & audits (13)
 
 <a id="study-contracts-research-agents"></a>
 
@@ -752,6 +752,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11877) · [arXiv HTML v1](https://arxiv.org/html/2610.11877v1)
+
+<a id="testjack-evaluator-evolution-audit"></a>
+
+### TestJack: Should you trust the results in coding benchmarks? Agentic Coding Benchmarks Auditing via Evaluator Evolution
+
+**2026-10-07** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-07; no revisions. Artifact under anonymous.4open.science.
+
+**Institutional relationship** — Columbia University (Shuangjie Yao, Baishakhi Ray), UC Berkeley (Hao Wang, Koushik Sen, Dawn Song) and George Mason University (Simin Chen).
+
+**What changes and how feedback is reused** — Instead of strengthening a benchmark once before any trials, each trial is audited dynamically: tests are generated against the prompt requirements a patch might violate, kept only if the ground-truth patch passes them, and any failure is re-checked, so every confirmed failure is backed by a replayable test. A lightweight variant audits a random sample of trials in depth and reuses the resulting tests across all trials of a task.
+
+**Author-reported result** — Auditing 4,487 benchmark-passing trials from 8,862 total across five benchmarks and six frontier backends refutes 1,545 (34.4%) for violating task requirements, dropping the overall resolution rate from 50.6% to 33.2% (per-benchmark refutation: DeepSWE 43.5%, SkillsBench 18.2%, SWE-Marathon 53.6%, SWE-bench Verified 7.6%, SWE-bench Pro 29.2%). The lightweight variant reaches 72.4% recall of refutations at 15.4% of the cost (~$4,037 saved per full audit run, precision ~49.2%), a 7.3x recall advantage over SWE-ABS at comparable precision; task analysis alone gets 13.4% recall.
+
+**Evidence limits** — Assumes task well-formedness (three violation classes excluded); the lightweight sampler can miss defects in never-sampled trials under finite budget; shared witness tests transfer poorly across distinct failure modes and uniform sampling wastes budget on clean tasks; lower precision partly reflects underspecified prompts; GPU-requiring and ultra-long-horizon tasks excluded.
+
+**Code / weights / data / license** — Code: anonymous.4open.science/r/testjack-C1A7 (anonymous artifact, not de-anonymized at verification). Data: audited trials not published as far as verified. License: paper under CC BY-SA 4.0; artifact license not stated.
+
+**Possible nanoRSI experiment — not implemented here** — Feeds nanoRSI evaluator integrity directly: for the coding track, generate requirement-grounded tests that the reference solution must pass before they join the frozen panel, and keep every rejected candidate backed by a replayable test - making the gate's false-block rate auditable instead of assumed. The sample-then-reuse variant matches nanoRSI's episode-budget constraints.
+
+![Original Figure 3: overview of TestJack - left, per-trial auditing via prompt-grounded differential testing with an audit agent and a reviewer agent; right, the lightweight approach with a randomized trial-auditing loop that reuses witness tests across trials.](assets/paper-figures/testjack-auditing-overview.svg)
+
+**Source figure / official image** — Original Figure 3: overview of TestJack - left, per-trial auditing via prompt-grounded differential testing with an audit agent and a reviewer agent; right, the lightweight approach with a randomized trial-auditing loop that reuses witness tests across trials. · Figure 3 (method_fig.svg): per-trial auditing via prompt-grounded differential testing, and the randomized lightweight auditing loop · [source](https://arxiv.org/html/2610.10619v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.10619) · [arXiv HTML v1](https://arxiv.org/html/2610.10619v1)
 
 <a id="rsigym-rsi-environment"></a>
 

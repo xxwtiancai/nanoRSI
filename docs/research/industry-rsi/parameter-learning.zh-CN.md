@@ -683,11 +683,11 @@
 
 **原文图／官方图片** — 论文原始 Figure 1：内环在文本化多智能体工作流提示下生成工作区，自评估器给出反馈、自优化器修订工作流；对选出轨迹做后训练得到下一周期模型。 · Figure 1 (ICLRpaper_new11.png): inner loop of agent/evaluator/optimizer sharing one LM and the outer cycle of workflow search plus post-training · [source](https://arxiv.org/html/2610.12176v1)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-11.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
 
 **开源代码／权重／数据链接** — [Official research implementation](https://github.com/SakanaAI/mass) · [Repository NOTICE on licensing](https://github.com/SakanaAI/mass/blob/main/NOTICE.md)
 
-**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12176) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12176v1) · [Official MASS project page](https://pub.sakana.ai/mass/) · [Official research implementation](https://github.com/SakanaAI/mass) · [Repository NOTICE on licensing](https://github.com/SakanaAI/mass/blob/main/NOTICE.md)
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12176) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12176v1) · [Official MASS project page](https://pub.sakana.ai/mass/) · [Official research implementation](https://github.com/SakanaAI/mass) · [Repository NOTICE on licensing](https://github.com/SakanaAI/mass/blob/main/NOTICE.md) · [Sakana AI MASS post](https://sakana.ai/mass/)
 
 <a id="reflective-recovery"></a>
 

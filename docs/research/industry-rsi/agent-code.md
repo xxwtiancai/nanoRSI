@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 19 |
-| [Harness search & evolution](#family-harness-search) | 17 |
-| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 7 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 20 |
+| [Harness search & evolution](#family-harness-search) | 19 |
+| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 8 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 8 |
-| [Feedback review & orchestration](#family-feedback-orchestration) | 4 |
+| [Feedback review & orchestration](#family-feedback-orchestration) | 5 |
 | [Safety & governance](#family-safety-governance) | 3 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (19)
+## Skill-file optimization & libraries (20)
+
+<a id="visskill-visual-skill-cards"></a>
+
+### ViSkill: Reinforcing VLM Agents with Evolving Visual-Native Skills
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; no revisions.
+
+**Institutional relationship** — All authors from Zhejiang University (ZJU-REAL lab); corresponding author Yongliang Shen.
+
+**What changes and how feedback is reused** — Skill-augmented agents usually linearize spatial layouts into text; ViSkill instead stores successful interactions as visual skill cards that VLM agents retrieve to guide both inference and reward shaping, while the policy is trained with PPO on those trajectories; eligible trajectories are distilled back into the skill library, closing a mutually reinforcing loop between skill evolution and policy optimization. An optional cold-start mechanism seeds the library.
+
+**Author-reported result** — On Sokoban / FrozenLake / PrimitiveSkill the base method reaches 0.82 / 0.84 / 1.00 success (overall 0.89) and with cold start 0.88 / 0.85 / 1.00 (overall 0.91), above AtlasVA 0.87, VAGEN 0.80, GPT-5 0.70, o3 0.69, Claude 4.5 Sonnet 0.58, Qwen2.5-VL-72B 0.40 and Qwen2.5-VL-3B 0.09 overall, converging faster than standard PPO. Ablations: removing policy optimization drops Sokoban to 0.29; a text-skill variant drops to 0.63; retrieval threshold 0.8 and distillation diversity 0.9 are the reported optima; evolved skill libraries transfer to the unoptimized base model.
+
+**Evidence limits** — Evaluation is limited to VAGEN-framework environments; benefit in more complex or open-ended settings is unvalidated. The skill-guided reward assumes partial progress reaches states present in the retrieved skill, giving limited guidance when valid solutions traverse disjoint state paths.
+
+**Code / weights / data / license** — Code: github.com/ZJU-REAL/ViSkill, MIT license (raw LICENSE verified, copyright RAGEN.AI). Data: environments from the VAGEN framework. License: MIT; paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — The modality point generalizes beyond vision: nanoRSI skills are text files, and this is measured evidence that storing experience in the native representation the executor operates on (not a lossy serialization) changes what skill evolution can express - worth a minimal A/B on a digits/panel task where skill artifacts can be data files instead of prose.
+
+![Original Figure 2: overview of ViSkill - the agent retrieves a visual skill card from the library to guide interaction and reward shaping, collects the trajectory, and distills eligible trajectories into new skills, with the policy jointly optimized by PPO.](assets/paper-figures/visskill-visual-skill-cards.png)
+
+**Source figure / official image** — Original Figure 2: overview of ViSkill - the agent retrieves a visual skill card from the library to guide interaction and reward shaping, collects the trajectory, and distills eligible trajectories into new skills, with the policy jointly optimized by PPO. · Figure 2 (method.png): the agent retrieves a visual skill from the library to guide interaction, collects trajectories, and distills eligible trajectories into new skills while PPO optimizes the policy · [source](https://arxiv.org/html/2610.12403v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
+
+**Open code / weights / data links** — [GitHub repository (MIT)](https://github.com/ZJU-REAL/ViSkill)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12403) · [arXiv HTML v1](https://arxiv.org/html/2610.12403v1) · [GitHub repository (MIT)](https://github.com/ZJU-REAL/ViSkill)
 
 <a id="skillmorph-trajectory-fault-localization"></a>
 
@@ -589,7 +619,67 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (17)
+## Harness search & evolution (19)
+
+<a id="harness-ceiling-failure-composition"></a>
+
+### Harness Evolution Hits a Ceiling: When Weight Training Should Begin
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; no revisions. DOI pending at verification time.
+
+**Institutional relationship** — Two independent researchers (equal contribution, both corresponding), with UC Berkeley, Purdue University and Stanford University co-authors.
+
+**What changes and how feedback is reused** — Trajectories under the seed harness are labelled by first failure signal into a failure composition; process failures (blocked calls, loops, exhausted budgets) are routed to a self-evolving harness loop where an LLM proposes edits and a judge verifies, while content failures are routed to weight training: LoRA or full fine-tuning on trajectories collected under the evolved harness. The two levers are evaluated in a crossed design (seed vs evolved harness x base vs adapter weights) on held-out tasks, with per-round fresh anchors instead of self-reported scores.
+
+**Author-reported result** — On DeepPlanning (48 dev / 72 held-out), harness evolution lifts Qwen3.5-4B held-out score 0.16->0.30 and Qwen3.5-9B 0.32->0.44 (4-rollout means against fresh anchors); LoRA adapters trained on evolved-harness trajectories add +0.13 on the seed harness for both sizes, and the 9B adapter cuts content-failure share from ~25-28% to ~5%. A placebo adapter on answer-shuffled data scores below base. The loop transfers to WebArena-Lite (+0.088 on 117 unseen tasks, 0.256->0.344) where adapters add nothing. Across eight models from six families the harness lever pays nothing on three smaller models and the authors report frontier-model readings (GLM 5.3 0.512 dev / 0.488 held-out, no control).
+
+**Evidence limits** — Diagnosis needs trajectory-level process signals plus a task-level scorer; some ablation cells used only two rollouts; the placebo control exists only for the 9B model; no comparison against matched-budget test-time search baselines; the benchmark LLM-based plan-to-JSON conversion inflates scores by ~0.025 on audited answers; two comparisons cross nights and a few early lines were re-measured; frontier-model runs lack per-run data and noise estimates.
+
+**Code / weights / data / license** — Code: none found on the arXiv page or in the HTML (per-run frontier readings said to be released with code, no repository yet). Weights: LoRA adapters not published. Data: DeepPlanning benchmark not published as far as verified. License: arXiv default licensing.
+
+**Possible nanoRSI experiment — not implemented here** — The diagnose-then-intervene rule is directly testable in nanoRSI: label each episode failure as process vs content, route only process failures to harness/skill edits, and report whether the gate-accepted set changes composition versus an all-failures selector. The crossed evaluation (harness state x weight state) and fresh-anchor re-measurement are the reporting shape items 38-39 already ask for.
+
+![Original Figure 1: trajectories under the seed harness are labelled by first failure signal and the failure composition chooses the lever - a self-evolving harness loop for process failures, weight training (LoRA/full fine-tuning) on evolved-harness trajectories for content failures - evaluated in a crossed seed/evolved x base/adapter design.](assets/paper-figures/harness-ceiling-failure-composition.png)
+
+**Source figure / official image** — Original Figure 1: trajectories under the seed harness are labelled by first failure signal and the failure composition chooses the lever - a self-evolving harness loop for process failures, weight training (LoRA/full fine-tuning) on evolved-harness trajectories for content failures - evaluated in a crossed seed/evolved x base/adapter design. · Figure 1 (inline TikZ in the arXiv HTML; captured as a browser screenshot of the rendered figure element because the source stores it as an SVG fragment with foreignObject text) · [source](https://arxiv.org/html/2610.11655v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11655) · [arXiv HTML v1](https://arxiv.org/html/2610.11655v1)
+
+<a id="eledger-worldabduct-harness-evolution"></a>
+
+### Safe, Persistent, and Evolving Agent Harness for Understanding Partially Observable Worlds
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; no revisions. Repository name E-LEDGER-WorldAbduct.
+
+**Institutional relationship** — HKUST (Yisen Gao, Qing Zong, Yangqiu Song), LIGHTSPEED (Yue Guo) and an independent corresponding researcher (Yiwen Guo).
+
+**What changes and how feedback is reused** — E-Ledger is a multi-agent harness with a code approval layer that checks every action against policy before execution and maintains a ledger of verified hidden rules plus evidence-backed dynamic state. WorldAbduct evolves that harness by abduction: execution trajectories are diagnosed across four views (state consistency, world-observation gap, policy-gate correctness, goal judgment) to hypothesize latent rules, which are verified through targeted abductive interactions before entering the ledger.
+
+**Author-reported result** — On the enterprise World of Workflows benchmark, WorldAbduct achieves the top safe task completion rate across four backbones (DeepSeek-V4-Pro 80 STCR / 85 TCR / 95 PSR; GLM-5.3-Flash 75/80/95; Kimi-K3 70/75/95; GPT-5.6-Terra 65/65/100), beating the strongest evolution baseline MemoHarness by 5-15 percentage points (GLM: 75 vs 65 STCR; DeepSeek: 80 vs 75; GPT-5.6: 65 vs 50). Ablations: removing the static world layer drops GLM STCR 75.0->40.0; removing abduction lowers PSR 95->85. Of 54 frozen ledger facts, 49 fully correct, 5 partially correct, none incorrect. The abductive evolution transfers to ScienceWorld (71.7 success) and DiscoveryWorld (93.8 success, ~1/3 of ReAct steps).
+
+**Evidence limits** — WorldAbduct uses more interaction steps and cost than lighter baselines (GPT-5.6: 22.4 steps / $3.75 vs 13.4 / $1.72 for WorldEvolver); GPT-5.6-Terra conservatism caps task-completion gains; 6 of 64 abduction checks stayed unresolved; enterprise benchmark is self-constructed.
+
+**Code / weights / data / license** — Code: github.com/HKUST-KnowComp/E-LEDGER-WorldAbduct - public but NO license file found in the repository, so treat as all-rights-reserved: ideas only, no code reuse. Data: WOW benchmark in repo under the same no-license condition. License: paper CC BY 4.0; repository unlicensed.
+
+**Possible nanoRSI experiment — not implemented here** — The ledger discipline is the transferable pattern: hypothesized rules enter durable state only after a targeted verification interaction, and the harness revision is driven by a four-view failure diagnosis - a structured version of nanoRSI's fail-then-distill skill loop with an explicit admission check per rule.
+
+![Original Figure 2: overview of E-Ledger (top) - the multi-agent runtime loop with task agent, policy-context agent, code approval gate, state tracking and the world ledger - and WorldAbduct (bottom), the four-view trajectory diagnosis that hypothesizes and verifies latent rules to evolve the harness.](assets/paper-figures/eledger-worldabduct-overview.png)
+
+**Source figure / official image** — Original Figure 2: overview of E-Ledger (top) - the multi-agent runtime loop with task agent, policy-context agent, code approval gate, state tracking and the world ledger - and WorldAbduct (bottom), the four-view trajectory diagnosis that hypothesizes and verifies latent rules to evolve the harness. · Figure 2 (frame.png): E-Ledger multi-agent runtime with the code approval layer and world ledger (top) and the WorldAbduct four-view abductive evolution pipeline (bottom) · [source](https://arxiv.org/html/2610.11552v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
+
+**Open code / weights / data links** — [GitHub repository (no license file)](https://github.com/HKUST-KnowComp/E-LEDGER-WorldAbduct)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11552) · [arXiv HTML v1](https://arxiv.org/html/2610.11552v1) · [GitHub repository (no license file)](https://github.com/HKUST-KnowComp/E-LEDGER-WorldAbduct)
 
 <a id="sera-self-evaluating-recursive-agents"></a>
 
@@ -1103,7 +1193,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## Self-modifying meta-agents & lineages (7)
+## Self-modifying meta-agents & lineages (8)
+
+<a id="agentevolver-ntu-self-evolution"></a>
+
+### AgentEvolver: System-Wide Self-Evolution Through Task Execution
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; no revisions. Project page and repository linked from the title block.
+
+**Institutional relationship** — School of Computing, Nanyang Technological University, Singapore (four authors incl. Bo An) and Singapore Management University (Xinrun Wang).
+
+**What changes and how feedback is reused** — Capabilities are built during task execution with the foundation model fixed: eight entity families (operations, methods, agents, control flow, interfaces and supporting state among them) expose their components to revision through a common versioned lifecycle - structural admission, functional evaluation, then activation. A shared Runtime coordinates task orchestration with persistent planning and recoverable context, and version management links each evaluated change to the active capability set it becomes.
+
+**Author-reported result** — On SWE-bench Pro Public the system reports an 82.08% resolution rate with evolution, above its own non-evolving baseline (author comparison; the paper stresses distinguishing component improvement from final-task success). Six application cases show capabilities carrying over into website, game and research tasks, alongside recorded incomplete objectives and one unsuccessful strategy; independent-task transfer and total development cost are stated as open questions.
+
+**Evidence limits** — The headline number is against the system's own non-evolving configuration, not an external SOTA agent; capability carry-over is examined on six self-selected application cases; independent-task transfer and total development cost are explicitly left open; the paper itself separates component improvement from final-task success.
+
+**Code / weights / data / license** — Code: github.com/DVampire/AgentEvolver, MIT license (verified via raw LICENSE). Project page: dvampire.github.io/AgentEvolver. Data: benchmark usage external. License: MIT.
+
+**Possible nanoRSI experiment — not implemented here** — The versioned-lifecycle-per-entity design is a concrete schema for nanoRSI's skills track: give every edited artifact (skill file, runner, evaluator config) the same admission->evaluation->activation lifecycle with version links recorded in the evidence ledger, so a capability can be traced to the change that produced it - the audit nanoRSI already runs on accepted generations, extended to the activation step.
+
+![Original Figure 2: AgentEvolver system architecture - the Runtime connects task orchestration, eight capability families and the self-evolution loop; version management links evaluated changes to active capabilities, with shared planning, context and evidence infrastructure.](assets/paper-figures/agentevolver-architecture.png)
+
+**Source figure / official image** — Original Figure 2: AgentEvolver system architecture - the Runtime connects task orchestration, eight capability families and the self-evolution loop; version management links evaluated changes to active capabilities, with shared planning, context and evidence infrastructure. · Figure 2, page 5 of the PDF (rendered at 150 dpi and cropped): the Runtime connecting task orchestration, the eight capability families and the self-evolution loop · [source](https://arxiv.org/pdf/2610.11613)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
+
+**Open code / weights / data links** — [GitHub repository (MIT)](https://github.com/DVampire/AgentEvolver)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11613) · [arXiv PDF v1 (no HTML rendering exists)](https://arxiv.org/pdf/2610.11613) · [GitHub repository (MIT)](https://github.com/DVampire/AgentEvolver) · [project page](https://dvampire.github.io/AgentEvolver/)
 
 <a id="solpi-recursive-autoresearch-loops"></a>
 
@@ -1189,7 +1309,7 @@
 
 **Source figure / official image** — Official banner of Nous Research's account of Hermes autonomously refactoring its own ~1M-line codebase with 1,393 subagents. · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-10-10.
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
 
 **Open code / weights / data links** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
@@ -1561,7 +1681,37 @@
 
 <a id="family-feedback-orchestration"></a>
 
-## Feedback review & orchestration (4)
+## Feedback review & orchestration (5)
+
+<a id="whoverifies-coevolving-graders"></a>
+
+### Who Verifies the Verifier? Co-Evolving Inspectable Graders with Self-Improving Agents
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; accepted at the NeurIPS 2026 workshop "Who Verifies the Agents? Toward Reliable Agent Development".
+
+**Institutional relationship** — Authors at AWS Forward Deployed Engineering and HSBC Technology Center, China (one author carries both lines); corresponding author at AWS.
+
+**What changes and how feedback is reused** — The verifier itself is the evolving object: an inspectable expression composed of small, mostly deterministic drawback detectors synthesized from clustered failures. Detectors are gated at birth and the expression is selected for agreement with an anchored ten-item reference set plus consensus over unlabeled outputs - never for the agent's score. The co-evolving system (Double Ratchet) pairs this verifier with a lifecycle-managed skill loop; when evolved skills gamed a report rubric, an outer judge caught it only after being given the task contract, and one added detector fixed the gaming.
+
+**Author-reported result** — On MBPP+ the evolved verifier reaches 0.625+-0.050 held-out agreement on every seed versus 0.417+-0.058 for the hand-authored seed (+0.21) and 0.55+-0.04 for the bare LLM judge it contains. Double Ratchet retains 88-110% of the lift that ground-truth or hand rubrics provide (MBPP+ 106%, Spider 110%, report generation 88%) across code generation, enterprise text-to-SQL and reference-free report generation. Removing the anchor guards collapses the verifier into an always-pass grader that still trains skills as well - downstream task score cannot certify a self-evolved verifier. Reward hacking on the report rubric fell from ~30% valueless tags to ~1% after the fix; task-aware outer-judge win rate 0.515->0.770.
+
+**Evidence limits** — A mechanism study, not a scaling result: three task families, one model family, low hundreds of rounds, held-out sets of tens of items, a single outer judge with no human panel; the skill loop touched its locked rollback/eval set in 23 of 2,900 rounds (absolute skill levels optimistic); semantically wrong but cleanly executing outputs (Spider) remain hard to detect; the outer judge itself was wrong until given the task contract.
+
+**Code / weights / data / license** — Code: none found on the arXiv page or in the HTML. Data: not published as far as verified (MBPP+ and Spider are external benchmarks). License: paper under CC BY-NC-SA 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Directly shapes nanoRSI gate instrumentation: report verifier-validity (held-out agreement with an anchored reference set) alongside downstream score, keep an always-pass grader arm as the honest null, and record detector-level provenance for every accepted gate change - extending item 40's measured-gate fields with a validity axis the skill score cannot certify.
+
+![Original Figure 1: what evolves - the verifier selected on MBPP+ shown verbatim as an expression over typed drawback detectors across cost tiers, with per-leaf verdicts on a held-out attempt, the ten-anchored-example premise on the left, the consuming skill loop on the right and anchor guards below.](assets/paper-figures/whoverifies-verifier-expression.svg)
+
+**Source figure / official image** — Original Figure 1: what evolves - the verifier selected on MBPP+ shown verbatim as an expression over typed drawback detectors across cost tiers, with per-leaf verdicts on a held-out attempt, the ten-anchored-example premise on the left, the consuming skill loop on the right and anchor guards below. · Figure 1 (hero_wv.svg): the selected MBPP+ verifier as an expression over typed detectors, with the anchored premise, the consuming skill loop and the anchor guards · [source](https://arxiv.org/html/2610.11464v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11464) · [arXiv HTML v1](https://arxiv.org/html/2610.11464v1)
 
 <a id="aura-recommender-refinement"></a>
 

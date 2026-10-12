@@ -6,7 +6,7 @@
 
 | Family | Records |
 | --- | ---: |
-| [Structured knowledge bases & graphs](#family-structured-knowledge) | 6 |
+| [Structured knowledge bases & graphs](#family-structured-knowledge) | 7 |
 | [Experience accumulation & replay](#family-experience-accumulation) | 7 |
 | [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
@@ -14,7 +14,37 @@
 
 <a id="family-structured-knowledge"></a>
 
-## Structured knowledge bases & graphs (6)
+## Structured knowledge bases & graphs (7)
+
+<a id="memento3-reflective-rulebooks"></a>
+
+### Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; no revisions.
+
+**Institutional relationship** — Authors from University College London, Huawei Noah's Ark Lab (UK) and the University of Liverpool; corresponding author at UCL.
+
+**What changes and how feedback is reused** — A frozen LLM agent keeps an explicit world model: a natural-language rulebook of revisable hypotheses about environment dynamics, held as persistent semantic memory. A continual loop of observation, reflection, rule revision, compilation and verification compiles the rulebook into executable code used for prediction and planning; updates are accepted only when the LLM judges them faithful and a cell-exact replay reproduces the observed transitions. A population extension maintains parallel world models against self-confirming hypotheses.
+
+**Author-reported result** — On the 25 public ARC-AGI-3 games with Claude Opus 5 (reasoning effort extra-high) the agent clears every level of all 25 games (183 levels) with mean RHAE 100.0, using 7,518 actions = 0.44x the 17,135-action human baseline (per-game ratios 0.20-0.67, median 0.42), +59.3 mean RHAE over the same model on the ARC Prize Standard harness; listed baselines: baseline1 harness 99.0, NOOA 85.1, OPINE-World 78.4, DreamTeam 38.1, Continual Harness 20.5. Rulebook ablation across three games: actions -9%, agent turns -18%. A population of two world models on one game cuts actions 899->597. A Pong controller learned this way wins 21:0 within three episodes (9,504 emulator frames) with no LLM calls at execution, where GDI/LASER reach 21 at ~2e8 frames, EfficientZero-V2 20.8 at 4e5 frames, and the same LLM without the world model scores -19.
+
+**Evidence limits** — Finite interaction histories admit multiple consistent world models (version-space ambiguity) - replay rejects inconsistent programs but cannot pick the correct rule among consistent alternatives; a single committed hypothesis can be self-confirming; rulebook fidelity is a semantic condition judged by the LLM, not an exact check; each ARC-AGI-3 run costs substantial time and money so ablations cover only three games; the authors note public-set saturation with stronger models, so completion alone cannot isolate the architectural contribution.
+
+**Code / weights / data / license** — Code: none found on the arXiv page or in the HTML body. Data: ARC-AGI-3 public games (external benchmark). License: paper under CC BY 4.0; no code license to verify.
+
+**Possible nanoRSI experiment — not implemented here** — The acceptance rule is the portable part for nanoRSI skills: a skill/world-model edit is admitted only when an exact replay of recorded episodes reproduces the observed transitions - a deterministic re-execution check on top of the LLM judge, compatible with the existing evidence ledger and counterfactual panel. The population-of-world-models idea maps to maintaining several skill hypotheses instead of committing to one revised skill.
+
+![Original Figure 2: continual world-model learning with a frozen LLM - the agent loops through observation, reflection, rule revision, compilation and verification, keeping the rulebook as persistent semantic memory that is compiled into an executable model.](assets/paper-figures/memento3-rulebook-worldmodel.png)
+
+**Source figure / official image** — Original Figure 2: continual world-model learning with a frozen LLM - the agent loops through observation, reflection, rule revision, compilation and verification, keeping the rulebook as persistent semantic memory that is compiled into an executable model. · Figure 2 (codeasmodel-overview.png): the continual loop of observation, reflection, rule revision, compilation and verification around a frozen LLM · [source](https://arxiv.org/html/2610.11794v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11794) · [arXiv HTML v1](https://arxiv.org/html/2610.11794v1)
 
 <a id="evoontology-self-evolving"></a>
 

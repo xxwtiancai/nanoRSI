@@ -6,7 +6,7 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [结构化知识库与图](#family-structured-knowledge) | 6 |
+| [结构化知识库与图](#family-structured-knowledge) | 7 |
 | [经验积累与回放](#family-experience-accumulation) | 7 |
 | [上下文组织策略](#family-context-policies) | 5 |
 | [探索式记忆构建](#family-exploration-memory) | 1 |
@@ -14,7 +14,37 @@
 
 <a id="family-structured-knowledge"></a>
 
-## 结构化知识库与图 (6)
+## 结构化知识库与图 (7)
+
+<a id="memento3-reflective-rulebooks"></a>
+
+### Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-08；无修订。
+
+**机构关系** — 作者来自伦敦大学学院、华为诺亚方舟实验室（英国）与利物浦大学；通讯作者在 UCL。
+
+**改变对象与反馈复用** — 冻结参数的 LLM agent 维护显式世界模型：以自然语言规则书承载关于环境动力学的可修订假设，作为持久语义记忆。观察-反思-规则修订-编译-校验的持续循环把规则书编译为可执行代码用于预测与规划；只有当 LLM 判定更新忠实且逐格重放复现观测转移时才接受。种群扩展维护多个平行世界模型以对抗自我确认假设。
+
+**作者报告结果** — 在 ARC-AGI-3 全部 25 个公开游戏上（Claude Opus 5，推理力度 extra-high），agent 清空 25 局全部 183 关，平均 RHAE 100.0，共 7,518 步动作为人类基线 17,135 步的 0.44 倍（逐局比值 0.20-0.67，中位 0.42），比同一模型在 ARC Prize Standard harness 上高 59.3 平均 RHAE；列出的基线：baseline1 harness 99.0、NOOA 85.1、OPINE-World 78.4、DreamTeam 38.1、Continual Harness 20.5。三局规则书消融：动作 -9%、agent 轮次 -18%。双世界模型种群在一局上把动作从 899 降到 597。以此学出的 Pong 控制器在三局内 21:0 全胜（9,504 帧模拟器帧），执行期零 LLM 调用；对照 GDI/LASER 约 2e8 帧到 21、EfficientZero-V2 4e5 帧到 20.8、同一 LLM 无世界模型得 -19。
+
+**证据边界** — 有限交互历史容许多个一致的世界模型（变体空间歧义）——重放能拒绝不一致的程序，但无法在一致候选中挑出正确规则；单一承诺假设可能自我确认；规则书忠实性是 LLM 判定的语义条件而非精确检查；ARC-AGI-3 每次运行时间与金钱成本高，消融只覆盖三局；作者注明公开集随模型变强趋于饱和，仅凭通关无法分离架构贡献。
+
+**代码／权重／数据／许可** — 代码：arXiv 页与 HTML 正文均未找到。数据：ARC-AGI-3 公开游戏（外部基准）。许可：论文 CC BY 4.0；无代码许可可核验。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI 技能可移植的是其接受规则：技能/世界模型编辑只有在已记录 episode 的精确重放复现观测转移时才准入——在 LLM judge 之上叠加确定性重执行检查，与既有证据账本及反事实面板兼容。世界模型种群的思想对应维护多个技能假设而非承诺单一修订技能。
+
+![论文原图 2：冻结 LLM 的持续世界模型学习——agent 循环执行观察、反思、规则修订、编译与校验，把规则书作为持久语义记忆并编译为可执行模型。](assets/paper-figures/memento3-rulebook-worldmodel.png)
+
+**原文图／官方图片** — 论文原图 2：冻结 LLM 的持续世界模型学习——agent 循环执行观察、反思、规则修订、编译与校验，把规则书作为持久语义记忆并编译为可执行模型。 · Figure 2 (codeasmodel-overview.png): the continual loop of observation, reflection, rule revision, compilation and verification around a frozen LLM · [source](https://arxiv.org/html/2610.11794v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11794) · [arXiv HTML v1](https://arxiv.org/html/2610.11794v1)
 
 <a id="evoontology-self-evolving"></a>
 

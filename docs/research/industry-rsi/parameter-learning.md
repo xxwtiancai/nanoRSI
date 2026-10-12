@@ -683,11 +683,11 @@
 
 **Source figure / official image** — Original Figure 1: the inner loop generates a workspace under a textual multi-agent workflow prompt, the self-evaluator feeds back and the self-optimizer revises the workflow; post-training on selected trajectories yields the next cycle's model. · Figure 1 (ICLRpaper_new11.png): inner loop of agent/evaluator/optimizer sharing one LM and the outer cycle of workflow search plus post-training · [source](https://arxiv.org/html/2610.12176v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-10-11.
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
 
 **Open code / weights / data links** — [Official research implementation](https://github.com/SakanaAI/mass) · [Repository NOTICE on licensing](https://github.com/SakanaAI/mass/blob/main/NOTICE.md)
 
-**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12176) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12176v1) · [Official MASS project page](https://pub.sakana.ai/mass/) · [Official research implementation](https://github.com/SakanaAI/mass) · [Repository NOTICE on licensing](https://github.com/SakanaAI/mass/blob/main/NOTICE.md)
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12176) · [arXiv HTML v1 and Figure 1](https://arxiv.org/html/2610.12176v1) · [Official MASS project page](https://pub.sakana.ai/mass/) · [Official research implementation](https://github.com/SakanaAI/mass) · [Repository NOTICE on licensing](https://github.com/SakanaAI/mass/blob/main/NOTICE.md) · [Sakana AI MASS post](https://sakana.ai/mass/)
 
 <a id="reflective-recovery"></a>
 

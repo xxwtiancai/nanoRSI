@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 19 |
-| [Harness 搜索与进化](#family-harness-search) | 17 |
-| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 7 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 20 |
+| [Harness 搜索与进化](#family-harness-search) | 19 |
+| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 8 |
 | [程序进化与进化搜索](#family-program-evolution) | 8 |
-| [反馈审查与编排](#family-feedback-orchestration) | 4 |
+| [反馈审查与编排](#family-feedback-orchestration) | 5 |
 | [安全与治理](#family-safety-governance) | 3 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (19)
+## 技能文件优化与技能库 (20)
+
+<a id="visskill-visual-skill-cards"></a>
+
+### ViSkill: Reinforcing VLM Agents with Evolving Visual-Native Skills
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-08；无修订。
+
+**机构关系** — 全部作者来自浙江大学（ZJU-REAL 实验室）；通讯作者 Yongliang Shen。
+
+**改变对象与反馈复用** — 技能增强的 agent 通常把空间布局线性化为文本；ViSkill 改为把成功交互存成视觉技能卡，供 VLM agent 检索以同时引导推理与奖励塑形，同时策略用 PPO 在这些轨迹上训练；合格轨迹再蒸馏回技能库，形成技能演化与策略优化互相增强的闭环。可选冷启动机制为库播种。
+
+**作者报告结果** — 在 Sokoban / FrozenLake / PrimitiveSkill 上，基础方法成功率达 0.82 / 0.84 / 1.00（总 0.89），冷启动后 0.88 / 0.85 / 1.00（总 0.91），高于 AtlasVA 0.87、VAGEN 0.80、GPT-5 0.70、o3 0.69、Claude 4.5 Sonnet 0.58、Qwen2.5-VL-72B 0.40 与 Qwen2.5-VL-3B 0.09 的总成绩，且比标准 PPO 收敛更快。消融：去掉策略优化 Sokoban 跌到 0.29；文本技能变体跌到 0.63；检索阈值 0.8、蒸馏多样性 0.9 为报告最优；演化出的技能库可迁移到未优化基座模型。
+
+**证据边界** — 评估仅限 VAGEN 框架环境；更复杂或开放场景的收益未验证。技能引导奖励假设部分进展会到达检索技能中出现的状态，当有效解穿越不相交状态路径时引导有限。
+
+**代码／权重／数据／许可** — 代码：github.com/ZJU-REAL/ViSkill，MIT 许可（raw LICENSE 核验，版权 RAGEN.AI）。数据：环境来自 VAGEN 框架。许可：MIT；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 模态这一点超出视觉本身：nanoRSI 技能是文本文件，而这是「以执行器原生表示（而非有损序列化）存储经验会改变技能演化可表达内容」的实测证据——值得在技能产物可以是数据文件而非散文的数字/面板任务上做一次最小 A/B。
+
+![论文原图 2：ViSkill 总览——agent 从库中检索视觉技能卡以引导交互与奖励塑形，收集轨迹并把合格轨迹蒸馏为新技能，策略由 PPO 联合优化。](assets/paper-figures/visskill-visual-skill-cards.png)
+
+**原文图／官方图片** — 论文原图 2：ViSkill 总览——agent 从库中检索视觉技能卡以引导交互与奖励塑形，收集轨迹并把合格轨迹蒸馏为新技能，策略由 PPO 联合优化。 · Figure 2 (method.png): the agent retrieves a visual skill from the library to guide interaction, collects trajectories, and distills eligible trajectories into new skills while PPO optimizes the policy · [source](https://arxiv.org/html/2610.12403v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
+
+**开源代码／权重／数据链接** — [GitHub repository (MIT)](https://github.com/ZJU-REAL/ViSkill)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12403) · [arXiv HTML v1](https://arxiv.org/html/2610.12403v1) · [GitHub repository (MIT)](https://github.com/ZJU-REAL/ViSkill)
 
 <a id="skillmorph-trajectory-fault-localization"></a>
 
@@ -589,7 +619,67 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (17)
+## Harness 搜索与进化 (19)
+
+<a id="harness-ceiling-failure-composition"></a>
+
+### Harness Evolution Hits a Ceiling: When Weight Training Should Begin
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-08；无修订。核验时 DOI 待注册。
+
+**机构关系** — 两位独立研究者（同等贡献、共同通讯），合作者来自加州大学伯克利分校、普渡大学与斯坦福大学。
+
+**改变对象与反馈复用** — 种子 harness 下的轨迹按首个失败信号标注为失败构成；过程性失败（调用受阻、循环、预算耗尽）分流给自演化 harness 循环（LLM 提议编辑、judge 校验），内容性失败分流给权重训练：在演化后 harness 采集的轨迹上做 LoRA 或全量微调。两个杠杆用交叉设计（种子/演化 harness x 基座/适配器权重）在保留任务上评估，并以逐轮全新锚点取代自报分数。
+
+**作者报告结果** — 在 DeepPlanning（48 开发 / 72 保留）上，harness 演化把 Qwen3.5-4B 保留分从 0.16 提到 0.30、Qwen3.5-9B 从 0.32 提到 0.44（对全新锚点的四轮均值）；在演化后 harness 轨迹上训练的 LoRA 适配器在种子 harness 上再加 +0.13（两个尺寸均是），9B 适配器把内容性失败份额从约 25-28% 压到约 5%。答案乱序数据上的安慰剂适配器低于基座。该循环迁移到 WebArena-Lite（117 个未见任务 +0.088，0.256->0.344），适配器在该域无增益。横跨六家族八个模型，harness 杠杆在其中三个较小模型上无收益；作者另报前沿模型读数（GLM 5.3 开发 0.512 / 保留 0.488，无对照）。
+
+**证据边界** — 诊断需要轨迹级过程信号加任务级评分器；部分消融格子只用两轮 rollout；安慰剂对照仅存在于 9B 模型；未与同预算的测试时搜索基线比较；基准的 LLM 计划转 JSON 环节使审计答案上的分数虚高约 0.025；两处比较跨夜、少数早期线重测过；前沿模型运行缺逐次数据与噪声估计。
+
+**代码／权重／数据／许可** — 代码：arXiv 页与 HTML 中均未找到（称逐次前沿读数将随代码发布，暂无仓库）。权重：LoRA 适配器未发布。数据：未核验到 DeepPlanning 基准发布。许可：arXiv 默认许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 先诊断后干预的规则可在 nanoRSI 直接检验：把每次失败标注为过程性或内容性，只把过程性失败路由给 harness/技能编辑，并报告过闸集合的构成是否相对全失败选择器改变。交叉评估（harness 状态 x 权重状态）与全新锚点复测正是条目 38-39 已要求的报告形态。
+
+![论文原图 1：种子 harness 下的轨迹按首个失败信号标注，失败构成决定杠杆——过程性失败走自演化 harness 循环，内容性失败在演化后 harness 轨迹上做权重训练（LoRA/全量微调）——并以种子/演化 x 基座/适配器交叉设计评估。](assets/paper-figures/harness-ceiling-failure-composition.png)
+
+**原文图／官方图片** — 论文原图 1：种子 harness 下的轨迹按首个失败信号标注，失败构成决定杠杆——过程性失败走自演化 harness 循环，内容性失败在演化后 harness 轨迹上做权重训练（LoRA/全量微调）——并以种子/演化 x 基座/适配器交叉设计评估。 · Figure 1 (inline TikZ in the arXiv HTML; captured as a browser screenshot of the rendered figure element because the source stores it as an SVG fragment with foreignObject text) · [source](https://arxiv.org/html/2610.11655v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11655) · [arXiv HTML v1](https://arxiv.org/html/2610.11655v1)
+
+<a id="eledger-worldabduct-harness-evolution"></a>
+
+### Safe, Persistent, and Evolving Agent Harness for Understanding Partially Observable Worlds
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-08；无修订。仓库名 E-LEDGER-WorldAbduct。
+
+**机构关系** — 港科大（Yisen Gao、Qing Zong、Yangqiu Song）、LIGHTSPEED（Yue Guo）与独立通讯研究者（Yiwen Guo）。
+
+**改变对象与反馈复用** — E-Ledger 是带代码审批层的多 agent harness：每个动作先过策略检查再执行，并维护已验证隐藏规则加证据支撑动态状态的账本。WorldAbduct 用溯因演化该 harness：跨四个视图（状态一致性、世界-观测差、策略闸正确性、目标判断）诊断执行轨迹以假设潜规则，经定向溯因交互验证后才写入账本。
+
+**作者报告结果** — 在企业 World of Workflows 基准上，WorldAbduct 在四个后端上均取得最高安全任务完成率（DeepSeek-V4-Pro 80 STCR / 85 TCR / 95 PSR；GLM-5.3-Flash 75/80/95；Kimi-K3 70/75/95；GPT-5.6-Terra 65/65/100），比最强演化基线 MemoHarness 高 5-15 个百分点（GLM：75 对 65 STCR；DeepSeek：80 对 75；GPT-5.6：65 对 50）。消融：去掉静态世界层 GLM STCR 从 75.0 跌到 40.0；去掉溯因 PSR 从 95 降到 85。账本冻结的 54 条事实中 49 条全对、5 条部分正确、0 条错误。溯因演化迁移到 ScienceWorld（71.7 成功率）与 DiscoveryWorld（93.8 成功率，约 ReAct 三分之一步数）。
+
+**证据边界** — WorldAbduct 比轻量基线用更多交互步数与成本（GPT-5.6：22.4 步 / 3.75 美元，对 WorldEvolver 13.4 步 / 1.72 美元）；GPT-5.6-Terra 保守性限制了任务完成率增益；64 次溯因检查中 6 次未解决；企业基准为自建。
+
+**代码／权重／数据／许可** — 代码：github.com/HKUST-KnowComp/E-LEDGER-WorldAbduct——公开但仓库未找到任何 LICENSE 文件，按保留所有权利处理：只取思想，不复用代码。数据：WOW 基准在同一无许可条件的仓库内。许可：论文 CC BY 4.0；仓库无许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 账本纪律是可移植模式：假设规则只有经定向验证交互后才进入持久状态，harness 修订由四视图失败诊断驱动——是 nanoRSI「失败后蒸馏」技能循环带逐规则显式准入检查的结构化版本。
+
+![论文原图 2：E-Ledger 总览（上）——任务 agent、策略上下文 agent、代码审批闸、状态跟踪与世界账本构成的多 agent 运行循环；WorldAbduct（下）——经四视图轨迹诊断假设并验证潜规则以演化 harness。](assets/paper-figures/eledger-worldabduct-overview.png)
+
+**原文图／官方图片** — 论文原图 2：E-Ledger 总览（上）——任务 agent、策略上下文 agent、代码审批闸、状态跟踪与世界账本构成的多 agent 运行循环；WorldAbduct（下）——经四视图轨迹诊断假设并验证潜规则以演化 harness。 · Figure 2 (frame.png): E-Ledger multi-agent runtime with the code approval layer and world ledger (top) and the WorldAbduct four-view abductive evolution pipeline (bottom) · [source](https://arxiv.org/html/2610.11552v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
+
+**开源代码／权重／数据链接** — [GitHub repository (no license file)](https://github.com/HKUST-KnowComp/E-LEDGER-WorldAbduct)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11552) · [arXiv HTML v1](https://arxiv.org/html/2610.11552v1) · [GitHub repository (no license file)](https://github.com/HKUST-KnowComp/E-LEDGER-WorldAbduct)
 
 <a id="sera-self-evaluating-recursive-agents"></a>
 
@@ -1103,7 +1193,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## 自改写元智能体与谱系 (7)
+## 自改写元智能体与谱系 (8)
+
+<a id="agentevolver-ntu-self-evolution"></a>
+
+### AgentEvolver: System-Wide Self-Evolution Through Task Execution
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-08；无修订。标题栏给出项目页与仓库链接。
+
+**机构关系** — 新加坡南洋理工大学计算学院（含 Bo An 在内四位作者）与新加坡管理大学（Xinrun Wang）。
+
+**改变对象与反馈复用** — 在任务执行过程中、基础模型不变的前提下构建能力：八个实体族（操作、方法、agent、控制流、接口与支撑状态等）把各自组件交给统一的带版本生命周期——结构准入、功能评估、随后激活。共享 Runtime 协调任务编排、持久规划与可恢复上下文，版本管理把每次评估过的变更链接到它所进入的生效能力集。
+
+**作者报告结果** — 在 SWE-bench Pro Public 上，系统报告开启演化后解决率 82.08%，高于其自身未演化基线（作者对照；论文强调区分组件改进与最终任务成功）。六个应用案例显示能力迁移到网站、游戏与研究任务，同时如实记录了未完成目标与一次失败策略；独立任务迁移与总开发成本列为开放问题。
+
+**证据边界** — 头条数字是与系统自身未演化配置比较，而非外部 SOTA agent；能力迁移只在六个自选应用案例上考察；独立任务迁移与总开发成本明确留作开放问题；论文自身即区分组件改进与最终任务成功。
+
+**代码／权重／数据／许可** — 代码：github.com/DVampire/AgentEvolver，MIT 许可（经 raw LICENSE 核验）。项目页：dvampire.github.io/AgentEvolver。数据：使用外部基准。许可：MIT。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 逐实体带版本生命周期的设计是 nanoRSI 技能轨的具体模式：给每个被编辑产物（技能文件、runner、评测器配置）同一套准入->评估->激活生命周期并把版本链接写入证据账本，使能力可回溯到产生它的变更——把 nanoRSI 已对接受代数做的审计延伸到激活一步。
+
+![论文原图 2：AgentEvolver 系统架构——Runtime 连接任务编排、八个能力族与自演化循环；版本管理把评估过的变更链接到生效能力，并共享规划、上下文与证据基础设施。](assets/paper-figures/agentevolver-architecture.png)
+
+**原文图／官方图片** — 论文原图 2：AgentEvolver 系统架构——Runtime 连接任务编排、八个能力族与自演化循环；版本管理把评估过的变更链接到生效能力，并共享规划、上下文与证据基础设施。 · Figure 2, page 5 of the PDF (rendered at 150 dpi and cropped): the Runtime connecting task orchestration, the eight capability families and the self-evolution loop · [source](https://arxiv.org/pdf/2610.11613)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
+
+**开源代码／权重／数据链接** — [GitHub repository (MIT)](https://github.com/DVampire/AgentEvolver)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11613) · [arXiv PDF v1 (no HTML rendering exists)](https://arxiv.org/pdf/2610.11613) · [GitHub repository (MIT)](https://github.com/DVampire/AgentEvolver) · [project page](https://dvampire.github.io/AgentEvolver/)
 
 <a id="solpi-recursive-autoresearch-loops"></a>
 
@@ -1189,7 +1309,7 @@
 
 **原文图／官方图片** — Nous Research 官方文章题图：Hermens 用 1,393 个子智能体自主重构自身约百万行代码库。 · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-10.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
 
 **开源代码／权重／数据链接** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
@@ -1561,7 +1681,37 @@
 
 <a id="family-feedback-orchestration"></a>
 
-## 反馈审查与编排 (4)
+## 反馈审查与编排 (5)
+
+<a id="whoverifies-coevolving-graders"></a>
+
+### Who Verifies the Verifier? Co-Evolving Inspectable Graders with Self-Improving Agents
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-08；被 NeurIPS 2026 workshop "Who Verifies the Agents? Toward Reliable Agent Development" 接收。
+
+**机构关系** — 作者来自 AWS Forward Deployed Engineering 与 HSBC 中国科技中心（一位作者双隶属）；通讯作者在 AWS。
+
+**改变对象与反馈复用** — 把校验器本身作为演化对象：一个由小型、多为确定性的缺陷检测器合成的可检查表达式，检测器从聚类失败中合成、出生即受闸门约束，表达式按与锚定的十例参照集的一致性加未标注输出上的共识来选择——绝不按 agent 分数选择。协同演化系统（Double Ratchet）把该校验器与带生命周期的技能循环配对；当演化技能钻报告评分空子时，外层 judge 在拿到任务契约后才抓到，新增一个检测器即修复。
+
+**作者报告结果** — 在 MBPP+ 上，演化校验器每个种子都达到 0.625+-0.050 保留一致率，高于手写种子 0.417+-0.058（+0.21）与其内含的裸 LLM judge 0.55+-0.04。Double Ratchet 在代码生成、企业 text-to-SQL 与无参照报告生成上保有真值或手写评分所提供增益的 88-110%（MBPP+ 106%、Spider 110%、报告 88%）。去掉锚定守卫后校验器塌缩为全通过评分器，却仍把技能训练得一样好——下游任务分数不能给自演化校验器作证。报告评分上的钻空子从约 30% 无价值标签降到修复后约 1%；任务感知外层 judge 胜率 0.515->0.770。
+
+**证据边界** — 这是机制研究而非规模结果：三个任务族、一个模型族、数百轮、几十例保留集、单一外层 judge 且无人工小组；技能循环在 2900 轮中的 23 轮触碰了锁定的回滚/评估集（技能绝对水平偏乐观）；干净执行但语义错误的输出（Spider）仍难检测；外层 judge 在拿到任务契约之前自己也判错。
+
+**代码／权重／数据／许可** — 代码：arXiv 页与 HTML 均未找到。数据：未核验到发布（MBPP+ 与 Spider 为外部基准）。许可：论文 CC BY-NC-SA 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 直接塑造 nanoRSI 闸门量测：除下游分数外一并报告校验器效度（与锚定参照集的保留一致率），保留全通过评分器臂作为诚实零假设，并为每次过闸变更记录检测器级来源——把条目 40 的量测闸门字段扩展出技能分数无法作证的效度轴。
+
+![论文原图 1：演化的对象——在 MBPP+ 上选出的校验器按原样展示为跨成本分层类型化检测器上的表达式，保留集尝试的逐叶判定，左侧为十例锚定前提，右侧为消费方技能循环，下方为锚定守卫。](assets/paper-figures/whoverifies-verifier-expression.svg)
+
+**原文图／官方图片** — 论文原图 1：演化的对象——在 MBPP+ 上选出的校验器按原样展示为跨成本分层类型化检测器上的表达式，保留集尝试的逐叶判定，左侧为十例锚定前提，右侧为消费方技能循环，下方为锚定守卫。 · Figure 1 (hero_wv.svg): the selected MBPP+ verifier as an expression over typed detectors, with the anchored premise, the consuming skill loop and the anchor guards · [source](https://arxiv.org/html/2610.11464v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11464) · [arXiv HTML v1](https://arxiv.org/html/2610.11464v1)
 
 <a id="aura-recommender-refinement"></a>
 
