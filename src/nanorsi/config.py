@@ -80,6 +80,7 @@ class GateConfig:
     minimum_improvement: float
     required_constraints: list[str]
     max_heldout_regression: float
+    noise_band: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -282,6 +283,7 @@ def _build(path, experiment, surface, proposer, evaluator, gate, budget, trainin
             _number(gate.get("minimum_improvement", 0.0), "gate.minimum_improvement"),
             [str(x) for x in gate.get("required_constraints", [])],
             _number(gate.get("max_heldout_regression", 0.0), "gate.max_heldout_regression"),
+            _number(gate.get("noise_band", 0.0), "gate.noise_band"),
         ),
         BudgetConfig(_integer(budget.get("max_steps", 1), "budget.max_steps"),
                      _integer(budget.get("max_output_bytes", 1_000_000), "budget.max_output_bytes"),

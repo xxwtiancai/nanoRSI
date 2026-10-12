@@ -29,6 +29,11 @@ def comparison_hash(root, config):
         evaluator.pop("train_limit")
     if not evaluator.get("counterfactual_enabled"):  # A disabled challenger is inert machinery.
         evaluator.pop("counterfactual_enabled")
+    if config.gate.noise_band == 0.0:  # An opt-in noise gate is inert at its historical default.
+        gate = asdict(config.gate)
+        gate.pop("noise_band")
+    else:
+        gate = asdict(config.gate)
     return canonical_hash({
         "contract_version": 2,
         "mode": config.experiment.mode,
@@ -40,7 +45,7 @@ def comparison_hash(root, config):
         "initial_checkpoint": source_hash(contained_path(root, config.training["checkpoint"])) if config.training else None,
         "agent": agent, "training": config.training,
         "surface": asdict(config.surface), "proposer": asdict(config.proposer),
-        "evaluator": evaluator, "gate": asdict(config.gate),
+        "evaluator": evaluator, "gate": gate,
         "budget": asdict(config.budget), "safety": config.safety,
     })
 

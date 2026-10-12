@@ -29,6 +29,7 @@ class ConfigTests(unittest.TestCase):
 
                 [gate]
                 minimum_improvement = 0.1
+                noise_band = 0.03
 
                 [budget]
                 max_steps = 3
@@ -40,6 +41,7 @@ class ConfigTests(unittest.TestCase):
             self.assertEqual(config.experiment.mode, "artifact")
             self.assertEqual(config.surface.allow, ["target/**"])
             self.assertEqual(config.gate.minimum_improvement, 0.1)
+            self.assertEqual(config.gate.noise_band, 0.03)
             self.assertEqual(config.evaluator.timeout_s, 60)
 
     def test_rejects_unknown_top_level_sections(self):

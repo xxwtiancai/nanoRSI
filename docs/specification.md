@@ -25,6 +25,7 @@ One workspace has one accepted incumbent and a bounded proposal budget. Serial s
 | `src/nanorsi/lineage.py` | Sequenced HMAC records and hashed artifact references |
 | `src/nanorsi/process.py` | Filtered argv execution, finite timeout, raw output bound and POSIX process-group cleanup |
 | `src/nanorsi/report.py` | Traceable search report and nullable cost coverage |
+| `src/nanorsi/noise.py` | Read-only repeated-evaluation noise-band derivation for opt-in gates |
 | `src/nanorsi/evidence.py` | Per-revision evidence ledger: diagnosis, diff, redacted case outcomes, decision, artifact integrity flags |
 | `src/nanorsi/audit.py` | Fresh-session skill audit: expected-answer leakage and silent-bypass detection on accepted generations |
 | `src/nanorsi/templates.py` | Exportable workspace starters |

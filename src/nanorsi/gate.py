@@ -8,6 +8,7 @@ class GateConfig:
     minimum_improvement: float = 0.0
     required_constraints: list[str] | None = None
     max_heldout_regression: float = 0.0
+    noise_band: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -43,8 +44,12 @@ def decide(
     missing = [name for name in config.required_constraints or [] if not child_constraints.get(name)]
     if missing:
         return GateDecision("inconclusive", "failed constraints: " + ", ".join(missing), delta)
-    if improvement <= 0 or improvement < config.minimum_improvement:
-        return GateDecision("rejected", f"improvement below minimum: {improvement:.6f}", delta)
+    threshold = max(config.minimum_improvement, config.noise_band)
+    if improvement <= 0 or improvement < threshold:
+        reason = (f"improvement below minimum: {improvement:.6f}" if config.noise_band <= 0
+                  else f"improvement below noise-adjusted minimum: {improvement:.6f} "
+                       f"(band {config.noise_band:.6f})")
+        return GateDecision("rejected", reason, delta)
     if parent_heldout is not None and child_heldout is not None:
         old = _metric(parent_heldout, metric)
         new = _metric(child_heldout, metric)

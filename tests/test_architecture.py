@@ -34,6 +34,7 @@ EXPECTED_MODULES = {
     "lineage.py",
     "process.py",
     "report.py",
+    "noise.py",
     "evidence.py",
     "audit.py",
     "templates.py",

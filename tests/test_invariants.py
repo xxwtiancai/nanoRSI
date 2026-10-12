@@ -83,6 +83,27 @@ class GateDecisionInvariants(unittest.TestCase):
         self.assertEqual(exactly.decision, "accepted")
         self.assertEqual(below.decision, "rejected")
 
+    def test_noise_band_rejects_improvements_inside_repeated_frozen_noise(self):
+        decision = decide(
+            GateConfig(noise_band=0.1),
+            parent={"score": 1.0},
+            child={"score": 1.09},
+            parent_heldout=None,
+            child_heldout=None,
+        )
+        self.assertEqual(decision.decision, "rejected")
+        self.assertIn("noise-adjusted minimum", decision.reason)
+
+    def test_noise_band_does_not_override_a_larger_explicit_minimum(self):
+        decision = decide(
+            GateConfig(minimum_improvement=0.2, noise_band=0.1),
+            parent={"score": 1.0},
+            child={"score": 1.15},
+            parent_heldout=None,
+            child_heldout=None,
+        )
+        self.assertEqual(decision.decision, "rejected")
+
     def test_minimize_direction_mirrors_maximize_with_swapped_roles(self):
         down = decide(GateConfig(), parent={"loss": 2.0}, child={"loss": 1.5}, parent_heldout=None, child_heldout=None,
                       metric="loss", direction="minimize")
