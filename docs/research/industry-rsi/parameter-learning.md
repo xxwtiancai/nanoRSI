@@ -8,7 +8,7 @@
 | --- | ---: |
 | [Self-play & curriculum task generation](#family-self-play-curriculum) | 14 |
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
-| [Skill-weight co-evolution](#family-skill-weight-coevolution) | 2 |
+| [Skill-weight co-evolution](#family-skill-weight-coevolution) | 3 |
 | [Experience distillation & test-time adaptation](#family-experience-distillation) | 7 |
 | [Autonomous training agents & data pipelines](#family-autonomous-training) | 7 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
@@ -593,7 +593,37 @@
 
 <a id="family-skill-weight-coevolution"></a>
 
-## Skill-weight co-evolution (2)
+## Skill-weight co-evolution (3)
+
+<a id="sguid-skill-bank-selection"></a>
+
+### Which Skill to Distill? SGUID: Selecting a Compact Skill Bank for Model-Skill Co-Evolution
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; no revisions. Code promised upon paper acceptance, not yet released.
+
+**Institutional relationship** — New York University and Amazon (Yuhan Liu, Xiyao Ma, Zhongkai Sun, Xu Han, Chengyuan Ma, Benjamin Z. Yao, Chenlei Guo).
+
+**What changes and how feedback is reused** — Each co-evolution round curates a candidate skill bank from the current policy's verifier-checked rollouts, runs a distillation with the full bank while logging per-skill training-dynamics signals, keeps only skills with a positive early-phase contribution, at least h positive signals late and a contribution-decay rate bounded by tau, then restarts from the round's base weights and distills only the compact bank; the updated policy's rollouts seed the next round's bank. Selection is the stabilizer: unfiltered skill updates hurt the model.
+
+**Author-reported result** — Across 6,400 logged retrievals, fewer than 25% of retrieved skills give useful distillation signals (21.2% Qwen3-1.7B, 19.7% Qwen3-4B, 6.4% Qwen3-8B). Distilling 6 selected skills matches or beats full-bank distillation (banks up to 11x larger) on 3 of 4 models (Olmo-3-7B, Qwen3-1.7B/4B/8B on AIME24/AIME25/HMMT25), and on all four after a second round with 3 newly selected skills (Qwen3-8B 64.3 -> 66.3). Filtering decides stability: on Qwen3-4B unfiltered skill updates cost -0.3 HMMT25 while SGUID gains +0.5 then +1.1 across rounds.
+
+**Evidence limits** — Only single-turn math reasoning is tested; skills are examined as training-time conditioning, not inference-time patches (possible train-test mismatch left open); co-evolving skills useful for both training and inference is future work; code not yet released (planned upon acceptance), selected banks listed in Appendix B.
+
+**Code / weights / data / license** — No public code yet ("upon paper acceptance"). Paper under arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — Per-skill utility logging is implementable in nanoRSI's skills track as an audit: tag each gate decision with the skills present in context and measure how often each skill coincides with accepted vs rejected candidates. The <25% active finding predicts most library skills are inert; the same measurement would ground a pruning policy before any selector study (ADOPTION items 38-39) and mirrors the audit command's silent-bypass check.
+
+![Original Figure 1: the SGUID co-evolution loop at round r - the current policy rolls out to curate a candidate skill bank, training-dynamics signals select a compact bank, and distilling it internalizes the skills into the next policy.](assets/paper-figures/sguid-skill-selection-loop.png)
+
+**Source figure / official image** — Original Figure 1: the SGUID co-evolution loop at round r - the current policy rolls out to curate a candidate skill bank, training-dynamics signals select a compact bank, and distilling it internalizes the skills into the next policy. · Figure 1 (sguid_overview_cropped.png): overview of SGUID at co-evolution round r - curate, select, internalize · [source](https://arxiv.org/html/2610.12367v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-14.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12367) · [arXiv HTML v1](https://arxiv.org/html/2610.12367v1)
 
 <a id="skillrl-skill-augmented-rl"></a>
 

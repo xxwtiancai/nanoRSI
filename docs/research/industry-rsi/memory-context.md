@@ -6,15 +6,15 @@
 
 | Family | Records |
 | --- | ---: |
-| [Structured knowledge bases & graphs](#family-structured-knowledge) | 7 |
-| [Experience accumulation & replay](#family-experience-accumulation) | 7 |
+| [Structured knowledge bases & graphs](#family-structured-knowledge) | 8 |
+| [Experience accumulation & replay](#family-experience-accumulation) | 8 |
 | [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
 | [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 3 |
 
 <a id="family-structured-knowledge"></a>
 
-## Structured knowledge bases & graphs (7)
+## Structured knowledge bases & graphs (8)
 
 <a id="memento3-reflective-rulebooks"></a>
 
@@ -45,6 +45,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.11794) · [arXiv HTML v1](https://arxiv.org/html/2610.11794v1)
+
+<a id="evobelief-falsifiable-world-models"></a>
+
+### EvoBelief: Falsifiable World Models for Self-Improving LLM Agents
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; no revisions. Part of the work done during an internship at Amazon.
+
+**Institutional relationship** — Tulane University (Janet Wang, Yi Xiang, Chandan K. Reddy and others) and Amazon (Jiang Guo and others).
+
+**What changes and how feedback is reused** — The LLM stays frozen; a self-evolving world model encodes environment knowledge as falsifiable hypotheses linked to their evidence. Prediction mismatches or decision-critical unknowns open an evidence loop: hypotheses are formed from surprises, validated through later observations and designed experiments, and counterexamples narrow or retire rules; only validated rules guide later predictions and plans, with no parameter update anywhere in the loop. A commitment gate bounds rule churn.
+
+**Author-reported result** — ALFWorld without memory vs a matched Frozen World Model: +23.9 (Claude Haiku 4.5: 66.42 vs 42.54) and +31.3 (GPT-5.4: 76.12 vs 44.78); ScienceWorld 64.44/71.11. MiniGrid with a silent key switch after episode 20: EvoBelief 61.67->95.00 (MG-C family) vs Frozen WM near 0-50%; held-out seeds 69.6% vs 1.3%; permuted-label control 80.8% vs 7.1%. DiscoveryWorld Reactor Lab (GPT-5.4): 83.3% Normal and 58.3% Challenge-tier completion versus 0% for every evaluated baseline (ReAct, WorldEvolver, Hypothesizer). Ablations: removing experiments or learned rules collapses success to ~0%; shadow rules never executed reach 57.08%; removing the commitment gate is a null (68.33 vs 69.58).
+
+**Evidence limits** — Text-only environments; stochastic settings would need statistical tests replacing count thresholds; costly or irreversible interventions need risk limits beyond the current gate; episodic memory overlaps with beliefs; the commitment-gate ablation is null on deterministic MiniGrid; on Plant Nutrients the completion-difference confidence interval vs the strongest baseline includes zero.
+
+**Code / weights / data / license** — No code, weights or data released (none linked on arXiv). Paper under arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — Counterexample-triggered rule retirement is a cheap integrity sweep for nanoRSI skill libraries: every frozen-panel failure should attempt to falsify the skills it used, not only distill a new one; validation-before-guidance extends ADOPTION item 46's replay-verified admission from memory edits to rule-like skills.
+
+![Original Figure 2: the EvoBelief decision loop - current state and world model predict action consequences; mismatches or decision-critical unknowns open an evidence loop where hypotheses are validated by observations and experiments before validated rules guide predictions and plans.](assets/paper-figures/evobelief-belief-revision-loop.svg)
+
+**Source figure / official image** — Original Figure 2: the EvoBelief decision loop - current state and world model predict action consequences; mismatches or decision-critical unknowns open an evidence loop where hypotheses are validated by observations and experiments before validated rules guide predictions and plans. · Figure 2 (evobelief-workflow.svg): verified belief revision closing the loop from experience to later behavior · [source](https://arxiv.org/html/2610.12789v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-14.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12789) · [arXiv HTML v1](https://arxiv.org/html/2610.12789v1)
 
 <a id="evoontology-self-evolving"></a>
 
@@ -228,7 +258,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## Experience accumulation & replay (7)
+## Experience accumulation & replay (8)
+
+<a id="reharness-agentic-continual-learning"></a>
+
+### Recurrent Harness for Agentic Continual Learning
+
+**2026-10-08** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-08; no revisions. First author's work done during an internship at Meta MRS Research.
+
+**Institutional relationship** — Meta MRS Research (Zhiyun Lu, Jianyu Wang, Yang Song, Qifan Wang, Bailin Wang), MIT (Yuxin Xiao, internship at Meta MRS Research) and Yale University (Yangtian Zhang).
+
+**What changes and how feedback is reused** — The harness state is the set of textual reflections written from past trajectories. Standard stateful harnesses only propagate forward (write reflections, retrieve them), letting an overgeneralized reflection persist and mislead later instances. ReHarness adds a backward revision agent: after each trajectory it rewrites the retrieved reflections using the current outcome only as feedback, while any new content must stay grounded in the reflection's source trajectory - preventing leakage; revised reflections replace the retrieved ones and serve as demonstrations for writing the next reflection, closing a recurrent forward-read / backward-revise / forward-write loop under a strictly online streaming protocol.
+
+**Author-reported result** — Mean normalized gain 0.240 across CL-Bench, MemoryBench and MemoryArena x Claude Opus 4.8, GPT-5.5 and Gemini 3.7 Flash, best or tied-first in 8 of 9 combinations, vs Top-K Raw 0.168, Full Raw 0.164, GEPA-Online 0.092, Mem0 0.131, DoT 0.071, ACE 0.043 and RBank 0.034; gains statistically significant against every baseline (Wilcoxon with Bonferroni, e.g. p_adj=0.039 vs Top-K Raw). Token cost on CL-Bench with Claude: ~41.57M tokens ($254) vs ~142.12M ($314) for Full Raw; highest stability and plasticity under distribution shift on CL-Bench.
+
+**Evidence limits** — Underperforms on exploitable poker where rewards are noisy stochastic signals for revision; still stores raw trajectories for future revision, adding storage overhead.
+
+**Code / weights / data / license** — No code or data released (none linked on arXiv or in the HTML). Paper under arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — Source-grounded backward revision maps onto nanoRSI's skills track: a rejected candidate should revise the specific skill it used, with revision content constrained to the failure evidence - the grounding constraint is the same anti-shortcut discipline the counterfactual panel enforces, and revision magnitude over time (their Figure 4a) is an auditable convergence signal for the evidence ledger.
+
+![Original Figure 1: (a) a traditional stateful harness propagates information only through forward write and read, letting an overgeneralized reflection persist; (b) ReHarness adds backward revision that refines retrieved reflections using downstream feedback, preventing the same error from propagating.](assets/paper-figures/reharness-recurrent-harness.svg)
+
+**Source figure / official image** — Original Figure 1: (a) a traditional stateful harness propagates information only through forward write and read, letting an overgeneralized reflection persist; (b) ReHarness adds backward revision that refines retrieved reflections using downstream feedback, preventing the same error from propagating. · Figure 1 (pipeline.svg): from stateful agent harnesses to ReHarness, panels (a) forward-only propagation vs (b) backward revision of retrieved reflections · [source](https://arxiv.org/html/2610.12668v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-14.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.12668) · [arXiv HTML v1](https://arxiv.org/html/2610.12668v1)
 
 <a id="echopath-replayable-memory"></a>
 

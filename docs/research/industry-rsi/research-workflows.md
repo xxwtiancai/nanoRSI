@@ -10,7 +10,7 @@
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 13 |
+| [Analyses & audits](#family-analyses-audits) | 15 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
@@ -691,7 +691,67 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (13)
+## Analyses & audits (15)
+
+<a id="mc-evobench-experience-audit"></a>
+
+### MC-EvoBench: Auditing Experience-Driven Self-Improvement in Minecraft Agents
+
+**2026-10-09** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-09; 39 pages, 6 figures; no revisions.
+
+**Institutional relationship** — Shanghai Jiao Tong University, University of the Chinese Academy of Sciences, South China University of Technology, Huazhong University of Science and Technology, Beihang University, CUHK-Shenzhen and USTC (Linfeng Zhang).
+
+**What changes and how feedback is reused** — A controlled benchmark that isolates genuine capability change from carry-over resources, exposure and luck: paired evaluation runs a source interaction, freezes a declared agent artifact (memory, prompts, checkpoints), resets the target world and inventory, and admits only that artifact across the boundary. Three graph-aligned probe families (wood-species crafting, wooden-tool and stone-tool transfer) compare no-prior, related, unrelated and shuffled source conditions under matched budgets and five seeds, reporting TSR, WGP and VMP with provenance; the catalog holds 80 tasks, 111 state nodes and 369 typed edges in 19 registered evolution chains.
+
+**Author-reported result** — No stable transfer was found: on the stone-tool probe the related condition scores TSR/WGP/VMP 0.050/0.021/0.200 vs 0.150/0.082/0.533 for no-prior (related is worse than no prior); the only positive contrast is wood-species WGP deltaR +0.040, and its GATG mean +0.050 hinges on a single seed (+1.0, falling to -0.19 without it); all 95% confidence intervals include zero. Related sources consumed more resources (source TSR 0.100-0.150, the only nonzero condition; 24.8 LLM calls vs 16.4/16.0) yet produced no target gain. Controllers beat planner-backed variants (STEVE-1 8.4/6.4/25.5 avg TSR/WGP/VMP; no-op and GPT-planned JARVIS-1 ~1.5/0.6/0); early execution bottlenecks leave later capabilities unobserved (of 42 attempts, ~20-23 reach plank crafting, <=2 reach a crafting table).
+
+**Evidence limits** — Conclusions are limited to the tested agents, probes, five paired seeds (wide confidence intervals), budgets and public instances; results do not rule out gains from a different agent, artifact, task distribution or source budget; no real-world safety or capability claims.
+
+**Code / weights / data / license** — Code: github.com/xzw-ustc/mc-bench-open-source, MIT license (80 tasks, 19 capability chains, 12 environment configs, synthetic dry-runs plus real MineRL support, docs and tests; 1 commit, no release yet). Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — The paired source-to-reset-target protocol where only a declared artifact crosses is the embodied analogue of nanoRSI's train/validation/frozen split; its single-seed dependence (+0.050 collapsing to -0.19) quantifies exactly why the radar requires seed-dispersed evidence before believing a transfer claim, and its no-prior/related/unrelated/shuffled conditions are a ready-made control grid for any nanoRSI skill-transfer study.
+
+![Original Figure 2: MC-EvoBench's paired evaluation flow - source interaction produces a frozen declared artifact, the target world and inventory are reset, and only that artifact crosses the boundary before verification; the catalog organizes tasks, states, relations and chains.](assets/paper-figures/mc-evobench-paired-evaluation.png)
+
+**Source figure / official image** — Original Figure 2: MC-EvoBench's paired evaluation flow - source interaction produces a frozen declared artifact, the target world and inventory are reset, and only that artifact crosses the boundary before verification; the catalog organizes tasks, states, relations and chains. · Figure 2 (overview.png): benchmark design - panel (a) paired evaluation from source interaction and artifact formation to reset target and verification; panel (b) task/state/relation/chain catalog organization · [source](https://arxiv.org/html/2610.13829v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-14.
+
+**Open code / weights / data links** — [GitHub repository (MIT)](https://github.com/xzw-ustc/mc-bench-open-source)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.13829) · [arXiv HTML v1](https://arxiv.org/html/2610.13829v1) · [GitHub repository (MIT)](https://github.com/xzw-ustc/mc-bench-open-source)
+
+<a id="agentswe-commission-audit"></a>
+
+### AgentSWE: Can Coding Agents Build the Agent You Actually Want?
+
+**2026-10-09** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-09; no revisions. Repository under the VectorSpaceLab organization (BAAI).
+
+**Institutional relationship** — Beijing Academy of Artificial Intelligence (Jiahao Wang and others), Institute of Automation, Chinese Academy of Sciences (Hongjin Qian, Jiajun Zhang) and Renmin University of China (Yuyang Hu, Zheng Liu).
+
+**What changes and how feedback is reused** — A commission-based benchmark for agent-building agents: 25 tasks across three lifecycle stages - Creation of a complete agent from a natural-language requirement (10 tasks from an empty workspace), Editing of production agent codebases such as Aider, OpenHands and Codex (10), and Optimization toward a measurable target on benchmarks like BrowseComp and OSWorld (5). Builders iterate only against illustrative development cases; the frozen submission is graded on held-out cases spanning the full requirement, using requirement-derived rubrics and pass/fail gates, with delivery selection happening at build time before the held-out cases are ever run.
+
+**Author-reported result** — Across models and harnesses, none comes close to delivering the requirement: the 50 Creation runs average 11.2 out of 100 and 20 of them score zero; the demonstrated-versus-delivered gap is the norm, not the exception. Recurring failure modes: overfitting to the visible development cases, hollow runtimes behind complete-looking code, and unsupported completion claims (code quality predicting little of held-out Result score).
+
+**Evidence limits** — 25 tasks with rubric-based grading; Editing and Optimization stages cover a fixed set of production codebases and targets; held-out evaluation is expensive (runtime execution of every frozen delivery).
+
+**Code / weights / data / license** — Code: github.com/VectorSpaceLab/AgentSWE, Apache-2.0 (tasks, runners, tools, installable CLI with setup/run/freeze commands, pinned Docker environments via Harbor); held-out cases ship in the repository so results are reproducible; an AgentSWE-Lite subset (8 tasks) runs with only a DeepSeek API key; 34 stars at verification.
+
+**Possible nanoRSI experiment — not implemented here** — The demonstrated-versus-delivered gap is the external framing of nanoRSI's frozen-panel discipline: builders see development cases, the frozen submission meets held-out grading - the same shape as nanorsi baseline/freeze/final-test. Its finding that code-level quality barely predicts held-out Result score supports reporting behavior-level evidence (not diff aesthetics) in the evidence ledger, and its unsupported-completion-claims failure mode is what the verify command exists to catch.
+
+![Original Figure 1: existing benchmarks grade the patch a coding agent writes, while AgentSWE grades the delivered agent against held-out cases spanning the full natural-language requirement across Creation, Editing and Optimization.](assets/paper-figures/agentswe-commission-evaluation.svg)
+
+**Source figure / official image** — Original Figure 1: existing benchmarks grade the patch a coding agent writes, while AgentSWE grades the delivered agent against held-out cases spanning the full natural-language requirement across Creation, Editing and Optimization. · Figure 1 (fig1-agentswe-overview.svg): AgentSWE at a glance - patch-grading vs commission-based delivery evaluation · [source](https://arxiv.org/html/2610.13361v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-14.
+
+**Open code / weights / data links** — [GitHub repository (Apache-2.0)](https://github.com/VectorSpaceLab/AgentSWE)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.13361) · [arXiv HTML v1](https://arxiv.org/html/2610.13361v1) · [GitHub repository (Apache-2.0)](https://github.com/VectorSpaceLab/AgentSWE)
 
 <a id="study-contracts-research-agents"></a>
 

@@ -6,15 +6,15 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [结构化知识库与图](#family-structured-knowledge) | 7 |
-| [经验积累与回放](#family-experience-accumulation) | 7 |
+| [结构化知识库与图](#family-structured-knowledge) | 8 |
+| [经验积累与回放](#family-experience-accumulation) | 8 |
 | [上下文组织策略](#family-context-policies) | 5 |
 | [探索式记忆构建](#family-exploration-memory) | 1 |
 | [记忆进化评测研究](#family-memory-evolution-studies) | 3 |
 
 <a id="family-structured-knowledge"></a>
 
-## 结构化知识库与图 (7)
+## 结构化知识库与图 (8)
 
 <a id="memento3-reflective-rulebooks"></a>
 
@@ -45,6 +45,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.11794) · [arXiv HTML v1](https://arxiv.org/html/2610.11794v1)
+
+<a id="evobelief-falsifiable-world-models"></a>
+
+### EvoBelief: Falsifiable World Models for Self-Improving LLM Agents
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-08；无修订。部分工作在 Amazon 实习期间完成。
+
+**机构关系** — 杜兰大学（Janet Wang、Yi Xiang、Chandan K. Reddy 等）与 Amazon（Jiang Guo 等）。
+
+**改变对象与反馈复用** — LLM 全程冻结；自演化世界模型把环境知识编码为与证据挂钩的可证伪假设。预测失配或决策关键未知会开启证据环：从意外中形成假设，经后续观测与设计实验验证，反例收窄或废除规则；只有验证过的规则才引导之后的预测与规划，整个闭环无任何参数更新。承诺闸约束规则翻动。
+
+**作者报告结果** — ALFWorld 无记忆设定对匹配的冻结世界模型：+23.9（Claude Haiku 4.5：66.42 对 42.54）、+31.3（GPT-5.4：76.12 对 44.78）；ScienceWorld 64.44/71.11。MiniGrid 第 20 集后静默换钥匙：EvoBelief 61.67→95.00（MG-C 族），冻结世界模型近 0-50%；留出种子 69.6% 对 1.3%；标签置换对照 80.8% 对 7.1%。DiscoveryWorld 反应器实验室（GPT-5.4）：Normal 档 83.3%、Challenge 档 58.3% 完成，所有被评基线（ReAct、WorldEvolver、Hypothesizer）均为 0%。消融：去掉实验或学到的规则成功率塌到约 0%；从未执行的影子规则 57.08%；去掉承诺闸是零效应（68.33 对 69.58）。
+
+**证据边界** — 纯文本环境；随机场景需用统计检验替代计数阈值；昂贵或不可逆的干预需要超出当前闸的风险限制；情景记忆与信念有重叠；承诺闸消融在确定性 MiniGrid 上为零效应；Plant Nutrients 上对最强基线的完成率差置信区间含零。
+
+**代码／权重／数据／许可** — 未发布代码、权重或数据（arXiv 页无链接）。论文按 arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 反例触发的规则废除是 nanoRSI 技能库的廉价完整性清扫：每次冻结面板失败都应尝试证伪当时使用的技能，而不只蒸馏新技能；先验证后引导把 ADOPTION 第 46 项的回放验证准入从记忆编辑扩展到规则型技能。
+
+![论文原图 2：EvoBelief 决策环——当前状态与世界模型预测动作后果；失配或决策关键未知开启证据环，假设经观测与实验验证后，验证过的规则才引导预测与规划。](assets/paper-figures/evobelief-belief-revision-loop.svg)
+
+**原文图／官方图片** — 论文原图 2：EvoBelief 决策环——当前状态与世界模型预测动作后果；失配或决策关键未知开启证据环，假设经观测与实验验证后，验证过的规则才引导预测与规划。 · Figure 2 (evobelief-workflow.svg): verified belief revision closing the loop from experience to later behavior · [source](https://arxiv.org/html/2610.12789v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-14.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12789) · [arXiv HTML v1](https://arxiv.org/html/2610.12789v1)
 
 <a id="evoontology-self-evolving"></a>
 
@@ -228,7 +258,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## 经验积累与回放 (7)
+## 经验积累与回放 (8)
+
+<a id="reharness-agentic-continual-learning"></a>
+
+### Recurrent Harness for Agentic Continual Learning
+
+**2026-10-08** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-08；无修订。第一作者的工作在 Meta MRS Research 实习期间完成。
+
+**机构关系** — Meta MRS Research（Zhiyun Lu、Jianyu Wang、Yang Song、Qifan Wang、Bailin Wang）、MIT（Yuxin Xiao，实习于 Meta MRS Research）与耶鲁大学（Yangtian Zhang）。
+
+**改变对象与反馈复用** — harness 状态是从历史轨迹写出的文本反思集合。常规有状态 harness 只向前传播（写反思、检索反思），一条过度泛化的反思会持续误导后续实例。ReHarness 增加反向修订 agent：每条轨迹结束后只用当次结果作反馈重写被检索的反思，任何新内容必须锚定该反思的源轨迹——防止泄漏；修订后的反思替换原件并作为写下一条反思的示范，在严格在线流式协议下闭合「向前读 / 向后改 / 向前写」的循环。
+
+**作者报告结果** — 在 CL-Bench、MemoryBench、MemoryArena × Claude Opus 4.8、GPT-5.5、Gemini 3.7 Flash 上平均归一化增益 0.240，9 个组合中 8 个最佳或并列最佳，对照 Top-K Raw 0.168、Full Raw 0.164、GEPA-Online 0.092、Mem0 0.131、DoT 0.071、ACE 0.043、RBank 0.034；对所有基线的增益均统计显著（Wilcoxon 加 Bonferroni，如对 Top-K Raw p_adj=0.039）。CL-Bench + Claude 的 token 成本约 41.57M（254 美元），对 Full Raw 约 142.12M（314 美元）；CL-Bench 分布漂移下稳定性与可塑性最高。
+
+**证据边界** — 在可利用的扑克任务上表现不佳——那里奖励对修订而言是噪声随机信号；仍需存原始轨迹供后续修订，带来存储开销。
+
+**代码／权重／数据／许可** — 未发布代码或数据（arXiv 页与 HTML 均无链接）。论文按 arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 锚定源轨迹的反向修订可映射到 nanoRSI 技能轨：被拒候选应修订它实际使用的那条技能，修订内容限定在失败证据内——该锚定约束与反事实面板的反捷径纪律同源；修订幅度随时间收敛（其图 4a）是证据账本可审计的收敛信号。
+
+![论文原图 1：(a) 传统有状态 harness 只经向前写与读传播信息，过度泛化的反思得以存续；(b) ReHarness 增加用下游反馈精化被检索反思的反向修订，阻止同一错误继续传播。](assets/paper-figures/reharness-recurrent-harness.svg)
+
+**原文图／官方图片** — 论文原图 1：(a) 传统有状态 harness 只经向前写与读传播信息，过度泛化的反思得以存续；(b) ReHarness 增加用下游反馈精化被检索反思的反向修订，阻止同一错误继续传播。 · Figure 1 (pipeline.svg): from stateful agent harnesses to ReHarness, panels (a) forward-only propagation vs (b) backward revision of retrieved reflections · [source](https://arxiv.org/html/2610.12668v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-14.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.12668) · [arXiv HTML v1](https://arxiv.org/html/2610.12668v1)
 
 <a id="echopath-replayable-memory"></a>
 

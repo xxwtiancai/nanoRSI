@@ -7,8 +7,8 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [技能文件优化与技能库](#family-skill-file-optimization) | 20 |
-| [Harness 搜索与进化](#family-harness-search) | 19 |
-| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 8 |
+| [Harness 搜索与进化](#family-harness-search) | 20 |
+| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 9 |
 | [程序进化与进化搜索](#family-program-evolution) | 8 |
 | [反馈审查与编排](#family-feedback-orchestration) | 5 |
 | [安全与治理](#family-safety-governance) | 3 |
@@ -619,7 +619,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (19)
+## Harness 搜索与进化 (20)
+
+<a id="evo2-weight-harness-coevolution"></a>
+
+### Evo²: Evolving the Evolver through Weight-Harness Co-Evolution
+
+**2026-10-09** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-09；无修订。arXiv HTML 把六位作者的共用机构渲染成 LaTeX 占位符（"\thepa"）；PDF 扉页明确为 Google DeepMind 与 UIUC。
+
+**机构关系** — Google DeepMind（Shujian Zhang、Wenxuan Zhou、John Lambert、Beck Chen、Andrew Hard、Rajiv Mathews）与 UIUC（Bo Li；Chejian Xu 以学生研究员身份在 Google DeepMind 完成）。
+
+**改变对象与反馈复用** — 单一策略在 harness 上扮演双角色：Proposer 写 harness 编辑、Reflector 诊断其效果并引导修订，交叉操作在搜索树分支间迁移策略。权重更新把闭环收到演化器自身：EvoTIDE（树引导交错双角色演化）用编辑抽取与前缀续写恢复可用训练轨迹，按每个角色决策引起的任务性能差给奖励（畸形输出记负奖励、只有留下机制确实运行的痕迹证据才计增益），再以 SFT 热启动加交错 GRPO 在 Proposer 与 Reflector 组间训练，每轮对位角色用冻结快照。
+
+**作者报告结果** — 以 Qwen3.8-27B 同时充当执行器与演化器：Polyglot 82.1%、SWE-bench Verified 48.3%，对最强基线 62.6%（GEA）与 41.0%（HGM）；LiveCodeBench 58.0 对 56.0；演化出的 harness 无需再演化即跨基准迁移（6 个迁移方向中 5 个最佳，如 SWE 演化 harness 在 Polyglot 72.4）。在 60 题专有 SWE 子集上把 GPT-5-mini 从 24.4% 提到 48.3%、Claude Haiku 4.5 到 47.8%。记忆任务：LoCoMo F1 60.4 对 HGM 56.2；LongMemEval 71.5 对 64.4。训练演化器有效：训练对未训练消融 Polyglot +16.3（p=.001）、SWE +5.0（p=.086）、LoCoMo +9.3、LongMemEval +10.6；交叉再加约 4.1（Polyglot）；演化后 harness 调用更少（36 对 43）。
+
+**证据边界** — SWE-bench 消融增益（+5.0）在 p<.05 下不显著（p=.086）；自演化主表只用一个开源执行器家族（Qwen3.8-27B）加专有子集；论文无显式局限章节；未发布代码或工件。
+
+**代码／权重／数据／许可** — 论文未随附代码、权重或数据（arXiv 页与 HTML 均无链接）。论文按 arXiv 非独占许可（HTML 许可块标 CC BY 4.0）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 双角色分解可映射到 nanoRSI 的提案器/闸门分工：一个策略既提编辑又反思闸门结果，按角色的性能差奖励可直接从既有冻结面板证据账本算出，无需新闸门行为。harness 对权重的交叉报告（以训练演化器消融为对照）正是 ADOPTION 第 38 项已要求的形态。
+
+![论文原图 1：Evo² 把 harness 演化与统一 Proposer-Reflector 策略的训练连接起来——harness 编辑及其执行结果成为演化器的训练数据，更新后的权重再引导后续 harness 搜索。](assets/paper-figures/evo2-weight-harness-coevolution.png)
+
+**原文图／官方图片** — 论文原图 1：Evo² 把 harness 演化与统一 Proposer-Reflector 策略的训练连接起来——harness 编辑及其执行结果成为演化器的训练数据，更新后的权重再引导后续 harness 搜索。 · Figure 1 (fig1.png): weight-harness co-evolution overview with the shared Proposer-Reflector policy, harness edits and execution outcomes training the evolver weights, and crossover search · [source](https://arxiv.org/html/2610.13025v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-14.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.13025) · [arXiv HTML v1](https://arxiv.org/html/2610.13025v1) · [arXiv PDF v1 (affiliations)](https://arxiv.org/pdf/2610.13025)
 
 <a id="harness-ceiling-failure-composition"></a>
 
@@ -1193,7 +1223,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## 自改写元智能体与谱系 (8)
+## 自改写元智能体与谱系 (9)
+
+<a id="rsi-anything-world-model-rsi"></a>
+
+### RSI-Anything: Unlocking Recursive Self-Improvement with World Models
+
+**2026-10-09** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-09；仓库 2026-10-08 建立并随论文公布；无修订。
+
+**机构关系** — PhAI Labs（Zhenfei Yin、Yingcheng Wu）、港中文（Pheng Ann Heng、Taoyong Cui）、澳门大学、上海交通大学、复旦大学、牛津大学、斯坦福大学与北京大学；通讯含 Ling Yang。
+
+**改变对象与反馈复用** — 构建在 JEPA-Anything 预测基座上，世界模型预测同时引导动作选择与学习数据选择，替代昂贵的外部反馈。观测到的反馈更新策略/工作流；当策略演化使世界模型可靠性下降时有条件地再适配，组件与兼容性检查决定更新后的策略-模型对是否保留。想象轨迹须经门控指标（候选合法、效用过阈、不确定度低于上限、证据标签属允许来源）才进入训练集，证据分层为 E0 规则检查 / E1 模型预测 / E2 仿真器 / E3 外部测量。
+
+**作者报告结果** — 代码修复（200 道 CodeContests、固定 coder）：隐藏测试成功率 26.3%（静态验证器）/ 26.0%（随机选择）→ 29.2%（固定世界模型）→ 31.2%（世界模型适配后）；排序准确率 66.5%→72.8%，Brier 0.488→0.358。GUI：click-checkboxes 51%→99%，平均动作数降 39.4%（5.30→3.21），重复点击 237→0；OSWorld 相对 RLAnything +5.5%、对初始 agent +18.4%。实验室规划：LabHorizon F200 Level-2 五个 4B 策略版本从 21.80% 提到 46.01%，最终版本超过 Actor-Simulator-Selector 参照（46.01 对 45.32），并优于 Grok 4.3、Gemini 3.1 Pro、GPT-5.5、Kimi K2.6。反应优化：40 次 LC-MS 实验预算下平均最佳收率 96.15%，对贝叶斯优化 82.16%。另有端到端免疫科学应用把工作流演化与治疗假设生成耦合。
+
+**证据边界** — 单任务内策略与世界模型持续互改进的联合多轮评估仍待做；实验室结果只评协议对齐的规划、不含物理执行；化学仅覆盖报告预算下两组 Suzuki-Miyaura 筛选；免疫科学治疗假设待实验检验。
+
+**代码／权重／数据／许可** — 代码：github.com/Gen-Verse/RSI-Anything，Apache-2.0（核验时 571 星；含代码修复、GUI、实验室规划与反应优化各任务目录、测试与文档）。数据：Hugging Face 上的 Gen-Verse/RSI-Anything 分域数据集。论文按 arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对自生成训练数据的分层证据准入闸（E0-E3 标签加合法性、效用与不确定度检查）是 nanoRSI 反事实面板纪律的具体 schema；世界模型作为廉价预验证器、可靠性下降时再适配，可直接用作冻结选择器研究（ADOPTION 38-39 项）的低成本预排序臂。
+
+![论文原图 2：RSI-Anything 循环——世界模型预测引导动作与学习数据选择，观测反馈更新策略/工作流并有条件地再适配世界模型，组件与兼容性检查决定保留哪个策略-模型对。](assets/paper-figures/rsi-anything-world-model-rsi.png)
+
+**原文图／官方图片** — 论文原图 2：RSI-Anything 循环——世界模型预测引导动作与学习数据选择，观测反馈更新策略/工作流并有条件地再适配世界模型，组件与兼容性检查决定保留哪个策略-模型对。 · Figure 2 (figure1_v12_2026-10-09.png): RSI-Anything couples prediction-guided action with retained system updates, with domain instantiations in panel b · [source](https://arxiv.org/html/2610.13912v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-14.
+
+**开源代码／权重／数据链接** — [GitHub repository (Apache-2.0)](https://github.com/Gen-Verse/RSI-Anything)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.13912) · [arXiv HTML v1](https://arxiv.org/html/2610.13912v1) · [GitHub repository (Apache-2.0)](https://github.com/Gen-Verse/RSI-Anything)
 
 <a id="agentevolver-ntu-self-evolution"></a>
 

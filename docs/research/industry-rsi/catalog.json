@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-13",
-  "window_start": "2025-10-13",
+  "as_of": "2026-10-14",
+  "window_start": "2025-10-14",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -12130,6 +12130,494 @@
         }
       },
       "last_verified": "2026-10-13",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "evo2-weight-harness-coevolution",
+      "title": "Evo²: Evolving the Evolver through Weight-Harness Co-Evolution",
+      "organizations": [
+        "Google DeepMind",
+        "University of Illinois, Urbana-Champaign"
+      ],
+      "published": "2026-10-09",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "harness-search",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-09; no revisions. The arXiv HTML renders the shared affiliation of six authors as a LaTeX placeholder (\"\\thepa\"); the PDF title page states Google DeepMind and UIUC.",
+        "zh": "arXiv v1 提交于 2026-10-09；无修订。arXiv HTML 把六位作者的共用机构渲染成 LaTeX 占位符（\"\\thepa\"）；PDF 扉页明确为 Google DeepMind 与 UIUC。"
+      },
+      "affiliation": {
+        "en": "Google DeepMind (Shujian Zhang, Wenxuan Zhou, John Lambert, Beck Chen, Andrew Hard, Rajiv Mathews) and UIUC (Bo Li; Chejian Xu as a student researcher at Google DeepMind).",
+        "zh": "Google DeepMind（Shujian Zhang、Wenxuan Zhou、John Lambert、Beck Chen、Andrew Hard、Rajiv Mathews）与 UIUC（Bo Li；Chejian Xu 以学生研究员身份在 Google DeepMind 完成）。"
+      },
+      "mechanism": {
+        "en": "One policy serves two roles over the harness: a Proposer writes harness edits and a Reflector diagnoses their effects and guides revision, with crossover moving strategies between search-tree branches. Weight updates close the loop on the evolver itself: EvoTIDE (Tree-guided Interleaved Dual-role Evolution) recovers usable training trajectories via edit extraction and prefix continuation, rewards each role's decisions by the task-performance delta they cause (with negative rewards for malformed outputs and gains credited only with trace evidence the mechanism ran), then trains with an SFT warm start and interleaved GRPO over Proposer and Reflector groups against a frozen counterpart snapshot per round.",
+        "zh": "单一策略在 harness 上扮演双角色：Proposer 写 harness 编辑、Reflector 诊断其效果并引导修订，交叉操作在搜索树分支间迁移策略。权重更新把闭环收到演化器自身：EvoTIDE（树引导交错双角色演化）用编辑抽取与前缀续写恢复可用训练轨迹，按每个角色决策引起的任务性能差给奖励（畸形输出记负奖励、只有留下机制确实运行的痕迹证据才计增益），再以 SFT 热启动加交错 GRPO 在 Proposer 与 Reflector 组间训练，每轮对位角色用冻结快照。"
+      },
+      "result": {
+        "en": "With Qwen3.8-27B as both executor and evolver: 82.1% Polyglot and 48.3% SWE-bench Verified vs 62.6% (GEA) and 41.0% (HGM) for the strongest baselines; LiveCodeBench 58.0 vs 56.0; evolved harnesses transfer cross-benchmark without further evolution (5 of 6 transfer directions best, e.g. SWE-evolved harness 72.4 on Polyglot). On a 60-task proprietary SWE subset the framework lifts GPT-5-mini from 24.4% to 48.3% and Claude Haiku 4.5 to 47.8%. Memory tasks: LoCoMo F1 60.4 vs HGM 56.2; LongMemEval 71.5 vs 64.4. Training the evolver matters: trained vs untrained ablation +16.3 Polyglot (p=.001), +5.0 SWE (p=.086), +9.3 LoCoMo, +10.6 LongMemEval; crossover adds ~4.1 Polyglot; the evolved harness also uses fewer calls (36 vs 43).",
+        "zh": "以 Qwen3.8-27B 同时充当执行器与演化器：Polyglot 82.1%、SWE-bench Verified 48.3%，对最强基线 62.6%（GEA）与 41.0%（HGM）；LiveCodeBench 58.0 对 56.0；演化出的 harness 无需再演化即跨基准迁移（6 个迁移方向中 5 个最佳，如 SWE 演化 harness 在 Polyglot 72.4）。在 60 题专有 SWE 子集上把 GPT-5-mini 从 24.4% 提到 48.3%、Claude Haiku 4.5 到 47.8%。记忆任务：LoCoMo F1 60.4 对 HGM 56.2；LongMemEval 71.5 对 64.4。训练演化器有效：训练对未训练消融 Polyglot +16.3（p=.001）、SWE +5.0（p=.086）、LoCoMo +9.3、LongMemEval +10.6；交叉再加约 4.1（Polyglot）；演化后 harness 调用更少（36 对 43）。"
+      },
+      "limits": {
+        "en": "The SWE-bench ablation gain (+5.0) is not significant at p<.05 (p=.086); the self-evolution tables use one open executor family (Qwen3.8-27B) plus proprietary subsets; the paper carries no explicit limitations section; no code or artifacts are released.",
+        "zh": "SWE-bench 消融增益（+5.0）在 p<.05 下不显著（p=.086）；自演化主表只用一个开源执行器家族（Qwen3.8-27B）加专有子集；论文无显式局限章节；未发布代码或工件。"
+      },
+      "availability": {
+        "en": "No code, weights or data released with the paper (none linked on arXiv or in the HTML). Paper under arXiv's non-exclusive license (CC BY 4.0 per HTML license block).",
+        "zh": "论文未随附代码、权重或数据（arXiv 页与 HTML 均无链接）。论文按 arXiv 非独占许可（HTML 许可块标 CC BY 4.0）。"
+      },
+      "application": {
+        "en": "The dual-role decomposition maps onto nanoRSI's proposer/gate split: one policy both proposes edits and reflects on gate outcomes, and the per-role performance-delta reward is computable from the existing frozen-panel evidence ledger without new gate behavior. The crossed harness-vs-weights reporting (with the trained-evolver ablation as the control) is the shape ADOPTION item 38 already requires.",
+        "zh": "双角色分解可映射到 nanoRSI 的提案器/闸门分工：一个策略既提编辑又反思闸门结果，按角色的性能差奖励可直接从既有冻结面板证据账本算出，无需新闸门行为。harness 对权重的交叉报告（以训练演化器消融为对照）正是 ADOPTION 第 38 项已要求的形态。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.13025"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.13025v1"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv PDF v1 (affiliations)",
+          "url": "https://arxiv.org/pdf/2610.13025"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/evo2-weight-harness-coevolution.png",
+        "source_url": "https://arxiv.org/html/2610.13025v1",
+        "locator": "Figure 1 (fig1.png): weight-harness co-evolution overview with the shared Proposer-Reflector policy, harness edits and execution outcomes training the evolver weights, and crossover search",
+        "caption": {
+          "en": "Original Figure 1: Evo² connects harness evolution with the training of a unified Proposer-Reflector policy - harness edits and their execution outcomes become training data for the evolver, whose updated weights guide subsequent harness search.",
+          "zh": "论文原图 1：Evo² 把 harness 演化与统一 Proposer-Reflector 策略的训练连接起来——harness 编辑及其执行结果成为演化器的训练数据，更新后的权重再引导后续 harness 搜索。"
+        }
+      },
+      "last_verified": "2026-10-14",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "rsi-anything-world-model-rsi",
+      "title": "RSI-Anything: Unlocking Recursive Self-Improvement with World Models",
+      "organizations": [
+        "PhAI Labs",
+        "The Chinese University of Hong Kong",
+        "University of Macau",
+        "Shanghai Jiao Tong University",
+        "Fudan University",
+        "University of Oxford",
+        "Stanford University",
+        "Peking University"
+      ],
+      "published": "2026-10-09",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "self-modifying-meta-agents",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-09; repository created 2026-10-08 and announced with the paper; no revisions.",
+        "zh": "arXiv v1 提交于 2026-10-09；仓库 2026-10-08 建立并随论文公布；无修订。"
+      },
+      "affiliation": {
+        "en": "PhAI Labs (Zhenfei Yin, Yingcheng Wu), CUHK (Pheng Ann Heng, Taoyong Cui), University of Macau, Shanghai Jiao Tong University, Fudan University, University of Oxford, Stanford University and Peking University; Ling Yang (corresponding).",
+        "zh": "PhAI Labs（Zhenfei Yin、Yingcheng Wu）、港中文（Pheng Ann Heng、Taoyong Cui）、澳门大学、上海交通大学、复旦大学、牛津大学、斯坦福大学与北京大学；通讯含 Ling Yang。"
+      },
+      "mechanism": {
+        "en": "Built on the JEPA-Anything predictive foundation, world-model predictions steer both action selection and the selection of learning data, substituting for costly external feedback. Observed feedback updates the policy/workflow; when the world model's reliability degrades as the policy evolves it is conditionally re-adaptated, and component plus compatibility checks decide whether an updated policy-model pair is retained. Imagined trajectories enter the training set only through a gated indicator (candidate valid, utility above threshold, uncertainty under cap, evidence label in permitted sources) with evidence tiered E0 rule checks / E1 model predictions / E2 simulators / E3 external measurements.",
+        "zh": "构建在 JEPA-Anything 预测基座上，世界模型预测同时引导动作选择与学习数据选择，替代昂贵的外部反馈。观测到的反馈更新策略/工作流；当策略演化使世界模型可靠性下降时有条件地再适配，组件与兼容性检查决定更新后的策略-模型对是否保留。想象轨迹须经门控指标（候选合法、效用过阈、不确定度低于上限、证据标签属允许来源）才进入训练集，证据分层为 E0 规则检查 / E1 模型预测 / E2 仿真器 / E3 外部测量。"
+      },
+      "result": {
+        "en": "Code repair (200 CodeContests tasks, fixed coder): hidden-test success 26.3% static verifier / 26.0% random selection -> 29.2% with a fixed world model -> 31.2% after world-model adaptation; ranking accuracy 66.5%->72.8%, Brier 0.488->0.358. GUI: click-checkboxes 51%->99%, mean actions down 39.4% (5.30->3.21), repeated clicks 237->0; OSWorld +5.5% relative vs RLAnything, +18.4% vs the initial agent. Lab planning: LabHorizon F200 Level-2 improves 21.80%->46.01% across five 4B policy versions, the final version edging the Actor-Simulator-Selector reference (46.01 vs 45.32) and beating Grok 4.3, Gemini 3.1 Pro, GPT-5.5 and Kimi K2.6. Reaction optimization: 96.15% vs 82.16% mean best observed yield for Bayesian optimization under a 40-experiment LC-MS budget. An end-to-end immune-science application couples workflow evolution with therapeutic hypothesis generation.",
+        "zh": "代码修复（200 道 CodeContests、固定 coder）：隐藏测试成功率 26.3%（静态验证器）/ 26.0%（随机选择）→ 29.2%（固定世界模型）→ 31.2%（世界模型适配后）；排序准确率 66.5%→72.8%，Brier 0.488→0.358。GUI：click-checkboxes 51%→99%，平均动作数降 39.4%（5.30→3.21），重复点击 237→0；OSWorld 相对 RLAnything +5.5%、对初始 agent +18.4%。实验室规划：LabHorizon F200 Level-2 五个 4B 策略版本从 21.80% 提到 46.01%，最终版本超过 Actor-Simulator-Selector 参照（46.01 对 45.32），并优于 Grok 4.3、Gemini 3.1 Pro、GPT-5.5、Kimi K2.6。反应优化：40 次 LC-MS 实验预算下平均最佳收率 96.15%，对贝叶斯优化 82.16%。另有端到端免疫科学应用把工作流演化与治疗假设生成耦合。"
+      },
+      "limits": {
+        "en": "Joint multiround evaluation of sustained mutual policy-world-model improvement within a single task is still needed; laboratory results assess protocol-aligned planning, not physical execution; chemistry covers two Suzuki-Miyaura screens at the reported budgets; the immune-science therapeutic hypothesis awaits experimental testing.",
+        "zh": "单任务内策略与世界模型持续互改进的联合多轮评估仍待做；实验室结果只评协议对齐的规划、不含物理执行；化学仅覆盖报告预算下两组 Suzuki-Miyaura 筛选；免疫科学治疗假设待实验检验。"
+      },
+      "availability": {
+        "en": "Code: github.com/Gen-Verse/RSI-Anything, Apache-2.0 (571 stars at verification; task folders for code repair, GUI, lab planning and reaction optimization, tests and docs). Data: per-domain resources on Hugging Face (Gen-Verse/RSI-Anything datasets). Paper under arXiv non-exclusive license.",
+        "zh": "代码：github.com/Gen-Verse/RSI-Anything，Apache-2.0（核验时 571 星；含代码修复、GUI、实验室规划与反应优化各任务目录、测试与文档）。数据：Hugging Face 上的 Gen-Verse/RSI-Anything 分域数据集。论文按 arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "The evidence-tiered admission gate for self-generated training data (E0-E3 labels with validity, utility and uncertainty checks) is a concrete schema for nanoRSI's counterfactual-panel discipline; the world model as a cheap pre-verifier with reliability-triggered re-adaptation is directly usable as the low-cost pre-rank arm of the frozen selector study (ADOPTION items 38-39).",
+        "zh": "对自生成训练数据的分层证据准入闸（E0-E3 标签加合法性、效用与不确定度检查）是 nanoRSI 反事实面板纪律的具体 schema；世界模型作为廉价预验证器、可靠性下降时再适配，可直接用作冻结选择器研究（ADOPTION 38-39 项）的低成本预排序臂。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.13912"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.13912v1"
+        },
+        {
+          "kind": "repository",
+          "label": "GitHub repository (Apache-2.0)",
+          "url": "https://github.com/Gen-Verse/RSI-Anything"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/rsi-anything-world-model-rsi.png",
+        "source_url": "https://arxiv.org/html/2610.13912v1",
+        "locator": "Figure 2 (figure1_v12_2026-10-09.png): RSI-Anything couples prediction-guided action with retained system updates, with domain instantiations in panel b",
+        "caption": {
+          "en": "Original Figure 2: the RSI-Anything loop - world-model predictions guide actions and learning-data selection, observed feedback updates policy/workflow and conditionally re-adapts the world model, and component plus compatibility checks decide which policy-model pair is retained.",
+          "zh": "论文原图 2：RSI-Anything 循环——世界模型预测引导动作与学习数据选择，观测反馈更新策略/工作流并有条件地再适配世界模型，组件与兼容性检查决定保留哪个策略-模型对。"
+        }
+      },
+      "last_verified": "2026-10-14",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "evobelief-falsifiable-world-models",
+      "title": "EvoBelief: Falsifiable World Models for Self-Improving LLM Agents",
+      "organizations": [
+        "Tulane University",
+        "Amazon"
+      ],
+      "published": "2026-10-08",
+      "kind": "paper",
+      "category": "memory-context",
+      "family": "structured-knowledge",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-08; no revisions. Part of the work done during an internship at Amazon.",
+        "zh": "arXiv v1 提交于 2026-10-08；无修订。部分工作在 Amazon 实习期间完成。"
+      },
+      "affiliation": {
+        "en": "Tulane University (Janet Wang, Yi Xiang, Chandan K. Reddy and others) and Amazon (Jiang Guo and others).",
+        "zh": "杜兰大学（Janet Wang、Yi Xiang、Chandan K. Reddy 等）与 Amazon（Jiang Guo 等）。"
+      },
+      "mechanism": {
+        "en": "The LLM stays frozen; a self-evolving world model encodes environment knowledge as falsifiable hypotheses linked to their evidence. Prediction mismatches or decision-critical unknowns open an evidence loop: hypotheses are formed from surprises, validated through later observations and designed experiments, and counterexamples narrow or retire rules; only validated rules guide later predictions and plans, with no parameter update anywhere in the loop. A commitment gate bounds rule churn.",
+        "zh": "LLM 全程冻结；自演化世界模型把环境知识编码为与证据挂钩的可证伪假设。预测失配或决策关键未知会开启证据环：从意外中形成假设，经后续观测与设计实验验证，反例收窄或废除规则；只有验证过的规则才引导之后的预测与规划，整个闭环无任何参数更新。承诺闸约束规则翻动。"
+      },
+      "result": {
+        "en": "ALFWorld without memory vs a matched Frozen World Model: +23.9 (Claude Haiku 4.5: 66.42 vs 42.54) and +31.3 (GPT-5.4: 76.12 vs 44.78); ScienceWorld 64.44/71.11. MiniGrid with a silent key switch after episode 20: EvoBelief 61.67->95.00 (MG-C family) vs Frozen WM near 0-50%; held-out seeds 69.6% vs 1.3%; permuted-label control 80.8% vs 7.1%. DiscoveryWorld Reactor Lab (GPT-5.4): 83.3% Normal and 58.3% Challenge-tier completion versus 0% for every evaluated baseline (ReAct, WorldEvolver, Hypothesizer). Ablations: removing experiments or learned rules collapses success to ~0%; shadow rules never executed reach 57.08%; removing the commitment gate is a null (68.33 vs 69.58).",
+        "zh": "ALFWorld 无记忆设定对匹配的冻结世界模型：+23.9（Claude Haiku 4.5：66.42 对 42.54）、+31.3（GPT-5.4：76.12 对 44.78）；ScienceWorld 64.44/71.11。MiniGrid 第 20 集后静默换钥匙：EvoBelief 61.67→95.00（MG-C 族），冻结世界模型近 0-50%；留出种子 69.6% 对 1.3%；标签置换对照 80.8% 对 7.1%。DiscoveryWorld 反应器实验室（GPT-5.4）：Normal 档 83.3%、Challenge 档 58.3% 完成，所有被评基线（ReAct、WorldEvolver、Hypothesizer）均为 0%。消融：去掉实验或学到的规则成功率塌到约 0%；从未执行的影子规则 57.08%；去掉承诺闸是零效应（68.33 对 69.58）。"
+      },
+      "limits": {
+        "en": "Text-only environments; stochastic settings would need statistical tests replacing count thresholds; costly or irreversible interventions need risk limits beyond the current gate; episodic memory overlaps with beliefs; the commitment-gate ablation is null on deterministic MiniGrid; on Plant Nutrients the completion-difference confidence interval vs the strongest baseline includes zero.",
+        "zh": "纯文本环境；随机场景需用统计检验替代计数阈值；昂贵或不可逆的干预需要超出当前闸的风险限制；情景记忆与信念有重叠；承诺闸消融在确定性 MiniGrid 上为零效应；Plant Nutrients 上对最强基线的完成率差置信区间含零。"
+      },
+      "availability": {
+        "en": "No code, weights or data released (none linked on arXiv). Paper under arXiv non-exclusive license.",
+        "zh": "未发布代码、权重或数据（arXiv 页无链接）。论文按 arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "Counterexample-triggered rule retirement is a cheap integrity sweep for nanoRSI skill libraries: every frozen-panel failure should attempt to falsify the skills it used, not only distill a new one; validation-before-guidance extends ADOPTION item 46's replay-verified admission from memory edits to rule-like skills.",
+        "zh": "反例触发的规则废除是 nanoRSI 技能库的廉价完整性清扫：每次冻结面板失败都应尝试证伪当时使用的技能，而不只蒸馏新技能；先验证后引导把 ADOPTION 第 46 项的回放验证准入从记忆编辑扩展到规则型技能。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.12789"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.12789v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/evobelief-belief-revision-loop.svg",
+        "source_url": "https://arxiv.org/html/2610.12789v1",
+        "locator": "Figure 2 (evobelief-workflow.svg): verified belief revision closing the loop from experience to later behavior",
+        "caption": {
+          "en": "Original Figure 2: the EvoBelief decision loop - current state and world model predict action consequences; mismatches or decision-critical unknowns open an evidence loop where hypotheses are validated by observations and experiments before validated rules guide predictions and plans.",
+          "zh": "论文原图 2：EvoBelief 决策环——当前状态与世界模型预测动作后果；失配或决策关键未知开启证据环，假设经观测与实验验证后，验证过的规则才引导预测与规划。"
+        }
+      },
+      "last_verified": "2026-10-14",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "reharness-agentic-continual-learning",
+      "title": "Recurrent Harness for Agentic Continual Learning",
+      "organizations": [
+        "Meta",
+        "Massachusetts Institute of Technology",
+        "Yale University"
+      ],
+      "published": "2026-10-08",
+      "kind": "paper",
+      "category": "memory-context",
+      "family": "experience-accumulation",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-08; no revisions. First author's work done during an internship at Meta MRS Research.",
+        "zh": "arXiv v1 提交于 2026-10-08；无修订。第一作者的工作在 Meta MRS Research 实习期间完成。"
+      },
+      "affiliation": {
+        "en": "Meta MRS Research (Zhiyun Lu, Jianyu Wang, Yang Song, Qifan Wang, Bailin Wang), MIT (Yuxin Xiao, internship at Meta MRS Research) and Yale University (Yangtian Zhang).",
+        "zh": "Meta MRS Research（Zhiyun Lu、Jianyu Wang、Yang Song、Qifan Wang、Bailin Wang）、MIT（Yuxin Xiao，实习于 Meta MRS Research）与耶鲁大学（Yangtian Zhang）。"
+      },
+      "mechanism": {
+        "en": "The harness state is the set of textual reflections written from past trajectories. Standard stateful harnesses only propagate forward (write reflections, retrieve them), letting an overgeneralized reflection persist and mislead later instances. ReHarness adds a backward revision agent: after each trajectory it rewrites the retrieved reflections using the current outcome only as feedback, while any new content must stay grounded in the reflection's source trajectory - preventing leakage; revised reflections replace the retrieved ones and serve as demonstrations for writing the next reflection, closing a recurrent forward-read / backward-revise / forward-write loop under a strictly online streaming protocol.",
+        "zh": "harness 状态是从历史轨迹写出的文本反思集合。常规有状态 harness 只向前传播（写反思、检索反思），一条过度泛化的反思会持续误导后续实例。ReHarness 增加反向修订 agent：每条轨迹结束后只用当次结果作反馈重写被检索的反思，任何新内容必须锚定该反思的源轨迹——防止泄漏；修订后的反思替换原件并作为写下一条反思的示范，在严格在线流式协议下闭合「向前读 / 向后改 / 向前写」的循环。"
+      },
+      "result": {
+        "en": "Mean normalized gain 0.240 across CL-Bench, MemoryBench and MemoryArena x Claude Opus 4.8, GPT-5.5 and Gemini 3.7 Flash, best or tied-first in 8 of 9 combinations, vs Top-K Raw 0.168, Full Raw 0.164, GEPA-Online 0.092, Mem0 0.131, DoT 0.071, ACE 0.043 and RBank 0.034; gains statistically significant against every baseline (Wilcoxon with Bonferroni, e.g. p_adj=0.039 vs Top-K Raw). Token cost on CL-Bench with Claude: ~41.57M tokens ($254) vs ~142.12M ($314) for Full Raw; highest stability and plasticity under distribution shift on CL-Bench.",
+        "zh": "在 CL-Bench、MemoryBench、MemoryArena × Claude Opus 4.8、GPT-5.5、Gemini 3.7 Flash 上平均归一化增益 0.240，9 个组合中 8 个最佳或并列最佳，对照 Top-K Raw 0.168、Full Raw 0.164、GEPA-Online 0.092、Mem0 0.131、DoT 0.071、ACE 0.043、RBank 0.034；对所有基线的增益均统计显著（Wilcoxon 加 Bonferroni，如对 Top-K Raw p_adj=0.039）。CL-Bench + Claude 的 token 成本约 41.57M（254 美元），对 Full Raw 约 142.12M（314 美元）；CL-Bench 分布漂移下稳定性与可塑性最高。"
+      },
+      "limits": {
+        "en": "Underperforms on exploitable poker where rewards are noisy stochastic signals for revision; still stores raw trajectories for future revision, adding storage overhead.",
+        "zh": "在可利用的扑克任务上表现不佳——那里奖励对修订而言是噪声随机信号；仍需存原始轨迹供后续修订，带来存储开销。"
+      },
+      "availability": {
+        "en": "No code or data released (none linked on arXiv or in the HTML). Paper under arXiv non-exclusive license.",
+        "zh": "未发布代码或数据（arXiv 页与 HTML 均无链接）。论文按 arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "Source-grounded backward revision maps onto nanoRSI's skills track: a rejected candidate should revise the specific skill it used, with revision content constrained to the failure evidence - the grounding constraint is the same anti-shortcut discipline the counterfactual panel enforces, and revision magnitude over time (their Figure 4a) is an auditable convergence signal for the evidence ledger.",
+        "zh": "锚定源轨迹的反向修订可映射到 nanoRSI 技能轨：被拒候选应修订它实际使用的那条技能，修订内容限定在失败证据内——该锚定约束与反事实面板的反捷径纪律同源；修订幅度随时间收敛（其图 4a）是证据账本可审计的收敛信号。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.12668"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.12668v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/reharness-recurrent-harness.svg",
+        "source_url": "https://arxiv.org/html/2610.12668v1",
+        "locator": "Figure 1 (pipeline.svg): from stateful agent harnesses to ReHarness, panels (a) forward-only propagation vs (b) backward revision of retrieved reflections",
+        "caption": {
+          "en": "Original Figure 1: (a) a traditional stateful harness propagates information only through forward write and read, letting an overgeneralized reflection persist; (b) ReHarness adds backward revision that refines retrieved reflections using downstream feedback, preventing the same error from propagating.",
+          "zh": "论文原图 1：(a) 传统有状态 harness 只经向前写与读传播信息，过度泛化的反思得以存续；(b) ReHarness 增加用下游反馈精化被检索反思的反向修订，阻止同一错误继续传播。"
+        }
+      },
+      "last_verified": "2026-10-14",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "mc-evobench-experience-audit",
+      "title": "MC-EvoBench: Auditing Experience-Driven Self-Improvement in Minecraft Agents",
+      "organizations": [
+        "Shanghai Jiao Tong University",
+        "University of the Chinese Academy of Sciences",
+        "South China University of Technology",
+        "Huazhong University of Science and Technology",
+        "Beihang University",
+        "The Chinese University of Hong Kong, Shenzhen",
+        "University of Science and Technology of China"
+      ],
+      "published": "2026-10-09",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "analyses-audits",
+      "relationship": "enabling",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-09; 39 pages, 6 figures; no revisions.",
+        "zh": "arXiv v1 提交于 2026-10-09；39 页 6 图；无修订。"
+      },
+      "affiliation": {
+        "en": "Shanghai Jiao Tong University, University of the Chinese Academy of Sciences, South China University of Technology, Huazhong University of Science and Technology, Beihang University, CUHK-Shenzhen and USTC (Linfeng Zhang).",
+        "zh": "上海交通大学、中国科学院大学、华南理工大学、华中科技大学、北京航空航天大学、港中文（深圳）与中国科学技术大学（Linfeng Zhang）。"
+      },
+      "mechanism": {
+        "en": "A controlled benchmark that isolates genuine capability change from carry-over resources, exposure and luck: paired evaluation runs a source interaction, freezes a declared agent artifact (memory, prompts, checkpoints), resets the target world and inventory, and admits only that artifact across the boundary. Three graph-aligned probe families (wood-species crafting, wooden-tool and stone-tool transfer) compare no-prior, related, unrelated and shuffled source conditions under matched budgets and five seeds, reporting TSR, WGP and VMP with provenance; the catalog holds 80 tasks, 111 state nodes and 369 typed edges in 19 registered evolution chains.",
+        "zh": "一个把真实能力变化与携带资源、曝光与运气隔离的受控基准：配对评估先跑源交互，冻结声明的 agent 工件（记忆、提示、检查点），重置目标世界与物品栏，只允许该工件跨边界。三个图对齐探针族（木种合成、木器与石器迁移）在匹配预算与五个种子下比较无先验、相关、无关与打乱源四种条件，报告带出处的 TSR、WGP、VMP；目录含 80 任务、111 状态节点、369 条类型化边，组成 19 条注册演化链。"
+      },
+      "result": {
+        "en": "No stable transfer was found: on the stone-tool probe the related condition scores TSR/WGP/VMP 0.050/0.021/0.200 vs 0.150/0.082/0.533 for no-prior (related is worse than no prior); the only positive contrast is wood-species WGP deltaR +0.040, and its GATG mean +0.050 hinges on a single seed (+1.0, falling to -0.19 without it); all 95% confidence intervals include zero. Related sources consumed more resources (source TSR 0.100-0.150, the only nonzero condition; 24.8 LLM calls vs 16.4/16.0) yet produced no target gain. Controllers beat planner-backed variants (STEVE-1 8.4/6.4/25.5 avg TSR/WGP/VMP; no-op and GPT-planned JARVIS-1 ~1.5/0.6/0); early execution bottlenecks leave later capabilities unobserved (of 42 attempts, ~20-23 reach plank crafting, <=2 reach a crafting table).",
+        "zh": "未发现稳定迁移：石器探针上相关条件 TSR/WGP/VMP 为 0.050/0.021/0.200，低于无先验的 0.150/0.082/0.533（相关反而更差）；唯一正向对比是木种 WGP deltaR +0.040，其 GATG 均值 +0.050 系于单一种子（+1.0，去掉后 -0.19）；全部 95% 置信区间含零。相关源消耗更多资源（源 TSR 0.100-0.150，唯一非零条件；LLM 调用 24.8 对 16.4/16.0）却无目标增益。控制器型优于规划器型（STEVE-1 平均 TSR/WGP/VMP 8.4/6.4/25.5；no-op 与 GPT 规划的 JARVIS-1 约 1.5/0.6/0）；早期执行瓶颈使后段能力无法被观测（42 次尝试中约 20-23 到达木板合成，<=2 到达工作台）。"
+      },
+      "limits": {
+        "en": "Conclusions are limited to the tested agents, probes, five paired seeds (wide confidence intervals), budgets and public instances; results do not rule out gains from a different agent, artifact, task distribution or source budget; no real-world safety or capability claims.",
+        "zh": "结论限于被测 agent、探针、五个配对种子（置信区间宽）、预算与公开实例；不排除其他 agent、工件、任务分布或源预算下有增益；不作真实世界安全或能力声明。"
+      },
+      "availability": {
+        "en": "Code: github.com/xzw-ustc/mc-bench-open-source, MIT license (80 tasks, 19 capability chains, 12 environment configs, synthetic dry-runs plus real MineRL support, docs and tests; 1 commit, no release yet). Paper CC BY 4.0.",
+        "zh": "代码：github.com/xzw-ustc/mc-bench-open-source，MIT 许可（80 任务、19 条能力链、12 套环境配置、支持合成干跑与真实 MineRL，含文档与测试；1 次提交，尚无发布）。论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "The paired source-to-reset-target protocol where only a declared artifact crosses is the embodied analogue of nanoRSI's train/validation/frozen split; its single-seed dependence (+0.050 collapsing to -0.19) quantifies exactly why the radar requires seed-dispersed evidence before believing a transfer claim, and its no-prior/related/unrelated/shuffled conditions are a ready-made control grid for any nanoRSI skill-transfer study.",
+        "zh": "只允许声明工件跨界的「源交互 → 重置目标」配对协议是 nanoRSI 训练/验证/冻结切分的具身对应物；其单种子依赖（+0.050 去掉后 -0.19）正量化了雷达为何要求种子分散的证据才相信迁移声明；其无先验/相关/无关/打乱四条件是任何 nanoRSI 技能迁移研究的现成对照网格。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.13829"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.13829v1"
+        },
+        {
+          "kind": "repository",
+          "label": "GitHub repository (MIT)",
+          "url": "https://github.com/xzw-ustc/mc-bench-open-source"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/mc-evobench-paired-evaluation.png",
+        "source_url": "https://arxiv.org/html/2610.13829v1",
+        "locator": "Figure 2 (overview.png): benchmark design - panel (a) paired evaluation from source interaction and artifact formation to reset target and verification; panel (b) task/state/relation/chain catalog organization",
+        "caption": {
+          "en": "Original Figure 2: MC-EvoBench's paired evaluation flow - source interaction produces a frozen declared artifact, the target world and inventory are reset, and only that artifact crosses the boundary before verification; the catalog organizes tasks, states, relations and chains.",
+          "zh": "论文原图 2：MC-EvoBench 配对评估流——源交互产生冻结的声明工件，目标世界与物品栏重置，只允许该工件跨界后进入验证；目录按任务、状态、关系与链组织。"
+        }
+      },
+      "last_verified": "2026-10-14",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "sguid-skill-bank-selection",
+      "title": "Which Skill to Distill? SGUID: Selecting a Compact Skill Bank for Model-Skill Co-Evolution",
+      "organizations": [
+        "New York University",
+        "Amazon"
+      ],
+      "published": "2026-10-08",
+      "kind": "paper",
+      "category": "parameter-learning",
+      "family": "skill-weight-coevolution",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-08; no revisions. Code promised upon paper acceptance, not yet released.",
+        "zh": "arXiv v1 提交于 2026-10-08；无修订。代码承诺论文录用后发布，尚未放出。"
+      },
+      "affiliation": {
+        "en": "New York University and Amazon (Yuhan Liu, Xiyao Ma, Zhongkai Sun, Xu Han, Chengyuan Ma, Benjamin Z. Yao, Chenlei Guo).",
+        "zh": "纽约大学与 Amazon（Yuhan Liu、Xiyao Ma、Zhongkai Sun、Xu Han、Chengyuan Ma、Benjamin Z. Yao、Chenlei Guo）。"
+      },
+      "mechanism": {
+        "en": "Each co-evolution round curates a candidate skill bank from the current policy's verifier-checked rollouts, runs a distillation with the full bank while logging per-skill training-dynamics signals, keeps only skills with a positive early-phase contribution, at least h positive signals late and a contribution-decay rate bounded by tau, then restarts from the round's base weights and distills only the compact bank; the updated policy's rollouts seed the next round's bank. Selection is the stabilizer: unfiltered skill updates hurt the model.",
+        "zh": "每轮协同演化先从当前策略经验证器检查的 rollout 中策展候选技能库，带全库跑一次蒸馏并记录逐技能训练动态信号，只保留早期贡献为正、后期正信号不少于 h、贡献衰减率被 tau 界住的技能，再从本轮基础权重重启、只蒸馏精选小库；更新后策略的 rollout 为下一轮库供种。选择是稳定器：不过滤的技能更新会伤模型。"
+      },
+      "result": {
+        "en": "Across 6,400 logged retrievals, fewer than 25% of retrieved skills give useful distillation signals (21.2% Qwen3-1.7B, 19.7% Qwen3-4B, 6.4% Qwen3-8B). Distilling 6 selected skills matches or beats full-bank distillation (banks up to 11x larger) on 3 of 4 models (Olmo-3-7B, Qwen3-1.7B/4B/8B on AIME24/AIME25/HMMT25), and on all four after a second round with 3 newly selected skills (Qwen3-8B 64.3 -> 66.3). Filtering decides stability: on Qwen3-4B unfiltered skill updates cost -0.3 HMMT25 while SGUID gains +0.5 then +1.1 across rounds.",
+        "zh": "6,400 次检索日志中，少于 25% 的被检索技能产生有用蒸馏信号（Qwen3-1.7B 21.2%、Qwen3-4B 19.7%、Qwen3-8B 6.4%）。蒸馏 6 条精选技能在 4 个模型中的 3 个上（Olmo-3-7B、Qwen3-1.7B/4B/8B，AIME24/AIME25/HMMT25）追平或超过全库蒸馏（库最多大 11 倍），第二轮加选 3 条后在全部 4 个模型上成立（Qwen3-8B 64.3→66.3）。过滤决定稳定性：Qwen3-4B 上未过滤的技能更新损失 -0.3 HMMT25，SGUID 逐轮 +0.5、+1.1。"
+      },
+      "limits": {
+        "en": "Only single-turn math reasoning is tested; skills are examined as training-time conditioning, not inference-time patches (possible train-test mismatch left open); co-evolving skills useful for both training and inference is future work; code not yet released (planned upon acceptance), selected banks listed in Appendix B.",
+        "zh": "只测了单轮数学推理；技能只作为训练期条件考察、未作推理期补丁（训练-测试失配留作开放问题）；训练与推理都有用的技能协同演化是未来工作；代码尚未发布（计划录用后放出），精选库列于附录 B。"
+      },
+      "availability": {
+        "en": "No public code yet (\"upon paper acceptance\"). Paper under arXiv non-exclusive license.",
+        "zh": "尚无公开代码（\"论文录用后\"发布）。论文按 arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "Per-skill utility logging is implementable in nanoRSI's skills track as an audit: tag each gate decision with the skills present in context and measure how often each skill coincides with accepted vs rejected candidates. The <25% active finding predicts most library skills are inert; the same measurement would ground a pruning policy before any selector study (ADOPTION items 38-39) and mirrors the audit command's silent-bypass check.",
+        "zh": "逐技能效用日志可在 nanoRSI 技能轨落地为审计：给每次闸门决定标注当时上下文中的技能，统计各技能与接受/拒绝候选的共现频率。<25% 活跃率的发现预示库中多数技能是惰性的；该测量可在选择器研究（ADOPTION 38-39 项）之前先给修剪策略提供依据，并与 audit 命令的静默旁路检查相呼应。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.12367"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.12367v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/sguid-skill-selection-loop.png",
+        "source_url": "https://arxiv.org/html/2610.12367v1",
+        "locator": "Figure 1 (sguid_overview_cropped.png): overview of SGUID at co-evolution round r - curate, select, internalize",
+        "caption": {
+          "en": "Original Figure 1: the SGUID co-evolution loop at round r - the current policy rolls out to curate a candidate skill bank, training-dynamics signals select a compact bank, and distilling it internalizes the skills into the next policy.",
+          "zh": "论文原图 1：第 r 轮 SGUID 协同演化循环——当前策略 rollout 策展候选技能库，训练动态信号选出紧凑库，蒸馏把技能内化进下一个策略。"
+        }
+      },
+      "last_verified": "2026-10-14",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "agentswe-commission-audit",
+      "title": "AgentSWE: Can Coding Agents Build the Agent You Actually Want?",
+      "organizations": [
+        "Beijing Academy of Artificial Intelligence",
+        "Institute of Automation, Chinese Academy of Sciences",
+        "Renmin University of China"
+      ],
+      "published": "2026-10-09",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "analyses-audits",
+      "relationship": "enabling",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-09; no revisions. Repository under the VectorSpaceLab organization (BAAI).",
+        "zh": "arXiv v1 提交于 2026-10-09；无修订。仓库挂在 VectorSpaceLab 组织（智源）名下。"
+      },
+      "affiliation": {
+        "en": "Beijing Academy of Artificial Intelligence (Jiahao Wang and others), Institute of Automation, Chinese Academy of Sciences (Hongjin Qian, Jiajun Zhang) and Renmin University of China (Yuyang Hu, Zheng Liu).",
+        "zh": "北京智源人工智能研究院（Jiahao Wang 等）、中国科学院自动化研究所（Hongjin Qian、Jiajun Zhang）与中国人民大学（Yuyang Hu、Zheng Liu）。"
+      },
+      "mechanism": {
+        "en": "A commission-based benchmark for agent-building agents: 25 tasks across three lifecycle stages - Creation of a complete agent from a natural-language requirement (10 tasks from an empty workspace), Editing of production agent codebases such as Aider, OpenHands and Codex (10), and Optimization toward a measurable target on benchmarks like BrowseComp and OSWorld (5). Builders iterate only against illustrative development cases; the frozen submission is graded on held-out cases spanning the full requirement, using requirement-derived rubrics and pass/fail gates, with delivery selection happening at build time before the held-out cases are ever run.",
+        "zh": "面向「造 agent 的 agent」的委托式基准：25 个任务覆盖三个生命周期阶段——从自然语言需求从零创建完整 agent（10）、编辑 Aider/OpenHands/Codex 等生产级 agent 代码库（10）、朝 BrowseComp 与 OSWorld 等可测目标优化（5）。构建者只能对照示例开发用例迭代；冻结交付物在覆盖完整需求的留出用例上评分，使用从需求导出的评分细则与通过/失败闸，交付选择发生在构建期、先于留出用例运行。"
+      },
+      "result": {
+        "en": "Across models and harnesses, none comes close to delivering the requirement: the 50 Creation runs average 11.2 out of 100 and 20 of them score zero; the demonstrated-versus-delivered gap is the norm, not the exception. Recurring failure modes: overfitting to the visible development cases, hollow runtimes behind complete-looking code, and unsupported completion claims (code quality predicting little of held-out Result score).",
+        "zh": "跨模型与 harness，没有一个接近交付需求：50 次 Creation 运行平均 11.2/100，其中 20 次得零分；「演示水平-交付水平」差距是常态而非例外。反复出现的失败模式：对可见开发用例过拟合、看似完整的代码背后是空壳运行时、无依据的完成声明（代码质量对留出 Result 分预测力很低）。"
+      },
+      "limits": {
+        "en": "25 tasks with rubric-based grading; Editing and Optimization stages cover a fixed set of production codebases and targets; held-out evaluation is expensive (runtime execution of every frozen delivery).",
+        "zh": "25 个任务采用评分细则打分；Editing 与 Optimization 阶段只覆盖固定的生产代码库与目标集合；留出评估成本高（每个冻结交付物都要实际运行）。"
+      },
+      "availability": {
+        "en": "Code: github.com/VectorSpaceLab/AgentSWE, Apache-2.0 (tasks, runners, tools, installable CLI with setup/run/freeze commands, pinned Docker environments via Harbor); held-out cases ship in the repository so results are reproducible; an AgentSWE-Lite subset (8 tasks) runs with only a DeepSeek API key; 34 stars at verification.",
+        "zh": "代码：github.com/VectorSpaceLab/AgentSWE，Apache-2.0（任务、runner、工具、可安装 CLI 含 setup/run/freeze 命令、经 Harbor 的钉版 Docker 环境）；留出用例随仓库发布、结果可复现；AgentSWE-Lite 子集（8 任务）仅需 DeepSeek API key 即可运行；核验时 34 星。"
+      },
+      "application": {
+        "en": "The demonstrated-versus-delivered gap is the external framing of nanoRSI's frozen-panel discipline: builders see development cases, the frozen submission meets held-out grading - the same shape as nanorsi baseline/freeze/final-test. Its finding that code-level quality barely predicts held-out Result score supports reporting behavior-level evidence (not diff aesthetics) in the evidence ledger, and its unsupported-completion-claims failure mode is what the verify command exists to catch.",
+        "zh": "「演示水平-交付水平」差距是 nanoRSI 冻结面板纪律的外部印证：构建者看得到开发用例，冻结交付物面对留出评分——与 nanorsi baseline/freeze/final-test 同构。其「代码质量几乎预测不了留出 Result 分」的发现支持证据账本报告行为级证据（而非 diff 美观度）；其无依据完成声明的失败模式正是 verify 命令要抓的东西。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.13361"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.13361v1"
+        },
+        {
+          "kind": "repository",
+          "label": "GitHub repository (Apache-2.0)",
+          "url": "https://github.com/VectorSpaceLab/AgentSWE"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/agentswe-commission-evaluation.svg",
+        "source_url": "https://arxiv.org/html/2610.13361v1",
+        "locator": "Figure 1 (fig1-agentswe-overview.svg): AgentSWE at a glance - patch-grading vs commission-based delivery evaluation",
+        "caption": {
+          "en": "Original Figure 1: existing benchmarks grade the patch a coding agent writes, while AgentSWE grades the delivered agent against held-out cases spanning the full natural-language requirement across Creation, Editing and Optimization.",
+          "zh": "论文原图 1：既有基准给编码 agent 写的补丁打分，AgentSWE 则在覆盖完整自然语言需求的留出用例上评估交付的 agent，横跨创建、编辑与优化三阶段。"
+        }
+      },
+      "last_verified": "2026-10-14",
       "local_reproduction": "not-run"
     }
   ]

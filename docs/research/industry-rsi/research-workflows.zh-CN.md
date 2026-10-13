@@ -10,7 +10,7 @@
 | [自主后训练及其评测](#family-autonomous-post-training) | 3 |
 | [公司研发遥测](#family-company-telemetry) | 7 |
 | [对齐自动化](#family-alignment-automation) | 3 |
-| [分析与审计](#family-analyses-audits) | 13 |
+| [分析与审计](#family-analyses-audits) | 15 |
 | [立场、路线图与实验室](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
@@ -691,7 +691,67 @@
 
 <a id="family-analyses-audits"></a>
 
-## 分析与审计 (13)
+## 分析与审计 (15)
+
+<a id="mc-evobench-experience-audit"></a>
+
+### MC-EvoBench: Auditing Experience-Driven Self-Improvement in Minecraft Agents
+
+**2026-10-09** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 提交于 2026-10-09；39 页 6 图；无修订。
+
+**机构关系** — 上海交通大学、中国科学院大学、华南理工大学、华中科技大学、北京航空航天大学、港中文（深圳）与中国科学技术大学（Linfeng Zhang）。
+
+**改变对象与反馈复用** — 一个把真实能力变化与携带资源、曝光与运气隔离的受控基准：配对评估先跑源交互，冻结声明的 agent 工件（记忆、提示、检查点），重置目标世界与物品栏，只允许该工件跨边界。三个图对齐探针族（木种合成、木器与石器迁移）在匹配预算与五个种子下比较无先验、相关、无关与打乱源四种条件，报告带出处的 TSR、WGP、VMP；目录含 80 任务、111 状态节点、369 条类型化边，组成 19 条注册演化链。
+
+**作者报告结果** — 未发现稳定迁移：石器探针上相关条件 TSR/WGP/VMP 为 0.050/0.021/0.200，低于无先验的 0.150/0.082/0.533（相关反而更差）；唯一正向对比是木种 WGP deltaR +0.040，其 GATG 均值 +0.050 系于单一种子（+1.0，去掉后 -0.19）；全部 95% 置信区间含零。相关源消耗更多资源（源 TSR 0.100-0.150，唯一非零条件；LLM 调用 24.8 对 16.4/16.0）却无目标增益。控制器型优于规划器型（STEVE-1 平均 TSR/WGP/VMP 8.4/6.4/25.5；no-op 与 GPT 规划的 JARVIS-1 约 1.5/0.6/0）；早期执行瓶颈使后段能力无法被观测（42 次尝试中约 20-23 到达木板合成，<=2 到达工作台）。
+
+**证据边界** — 结论限于被测 agent、探针、五个配对种子（置信区间宽）、预算与公开实例；不排除其他 agent、工件、任务分布或源预算下有增益；不作真实世界安全或能力声明。
+
+**代码／权重／数据／许可** — 代码：github.com/xzw-ustc/mc-bench-open-source，MIT 许可（80 任务、19 条能力链、12 套环境配置、支持合成干跑与真实 MineRL，含文档与测试；1 次提交，尚无发布）。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 只允许声明工件跨界的「源交互 → 重置目标」配对协议是 nanoRSI 训练/验证/冻结切分的具身对应物；其单种子依赖（+0.050 去掉后 -0.19）正量化了雷达为何要求种子分散的证据才相信迁移声明；其无先验/相关/无关/打乱四条件是任何 nanoRSI 技能迁移研究的现成对照网格。
+
+![论文原图 2：MC-EvoBench 配对评估流——源交互产生冻结的声明工件，目标世界与物品栏重置，只允许该工件跨界后进入验证；目录按任务、状态、关系与链组织。](assets/paper-figures/mc-evobench-paired-evaluation.png)
+
+**原文图／官方图片** — 论文原图 2：MC-EvoBench 配对评估流——源交互产生冻结的声明工件，目标世界与物品栏重置，只允许该工件跨界后进入验证；目录按任务、状态、关系与链组织。 · Figure 2 (overview.png): benchmark design - panel (a) paired evaluation from source interaction and artifact formation to reset target and verification; panel (b) task/state/relation/chain catalog organization · [source](https://arxiv.org/html/2610.13829v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-14.
+
+**开源代码／权重／数据链接** — [GitHub repository (MIT)](https://github.com/xzw-ustc/mc-bench-open-source)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.13829) · [arXiv HTML v1](https://arxiv.org/html/2610.13829v1) · [GitHub repository (MIT)](https://github.com/xzw-ustc/mc-bench-open-source)
+
+<a id="agentswe-commission-audit"></a>
+
+### AgentSWE: Can Coding Agents Build the Agent You Actually Want?
+
+**2026-10-09** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 提交于 2026-10-09；无修订。仓库挂在 VectorSpaceLab 组织（智源）名下。
+
+**机构关系** — 北京智源人工智能研究院（Jiahao Wang 等）、中国科学院自动化研究所（Hongjin Qian、Jiajun Zhang）与中国人民大学（Yuyang Hu、Zheng Liu）。
+
+**改变对象与反馈复用** — 面向「造 agent 的 agent」的委托式基准：25 个任务覆盖三个生命周期阶段——从自然语言需求从零创建完整 agent（10）、编辑 Aider/OpenHands/Codex 等生产级 agent 代码库（10）、朝 BrowseComp 与 OSWorld 等可测目标优化（5）。构建者只能对照示例开发用例迭代；冻结交付物在覆盖完整需求的留出用例上评分，使用从需求导出的评分细则与通过/失败闸，交付选择发生在构建期、先于留出用例运行。
+
+**作者报告结果** — 跨模型与 harness，没有一个接近交付需求：50 次 Creation 运行平均 11.2/100，其中 20 次得零分；「演示水平-交付水平」差距是常态而非例外。反复出现的失败模式：对可见开发用例过拟合、看似完整的代码背后是空壳运行时、无依据的完成声明（代码质量对留出 Result 分预测力很低）。
+
+**证据边界** — 25 个任务采用评分细则打分；Editing 与 Optimization 阶段只覆盖固定的生产代码库与目标集合；留出评估成本高（每个冻结交付物都要实际运行）。
+
+**代码／权重／数据／许可** — 代码：github.com/VectorSpaceLab/AgentSWE，Apache-2.0（任务、runner、工具、可安装 CLI 含 setup/run/freeze 命令、经 Harbor 的钉版 Docker 环境）；留出用例随仓库发布、结果可复现；AgentSWE-Lite 子集（8 任务）仅需 DeepSeek API key 即可运行；核验时 34 星。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 「演示水平-交付水平」差距是 nanoRSI 冻结面板纪律的外部印证：构建者看得到开发用例，冻结交付物面对留出评分——与 nanorsi baseline/freeze/final-test 同构。其「代码质量几乎预测不了留出 Result 分」的发现支持证据账本报告行为级证据（而非 diff 美观度）；其无依据完成声明的失败模式正是 verify 命令要抓的东西。
+
+![论文原图 1：既有基准给编码 agent 写的补丁打分，AgentSWE 则在覆盖完整自然语言需求的留出用例上评估交付的 agent，横跨创建、编辑与优化三阶段。](assets/paper-figures/agentswe-commission-evaluation.svg)
+
+**原文图／官方图片** — 论文原图 1：既有基准给编码 agent 写的补丁打分，AgentSWE 则在覆盖完整自然语言需求的留出用例上评估交付的 agent，横跨创建、编辑与优化三阶段。 · Figure 1 (fig1-agentswe-overview.svg): AgentSWE at a glance - patch-grading vs commission-based delivery evaluation · [source](https://arxiv.org/html/2610.13361v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-14.
+
+**开源代码／权重／数据链接** — [GitHub repository (Apache-2.0)](https://github.com/VectorSpaceLab/AgentSWE)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.13361) · [arXiv HTML v1](https://arxiv.org/html/2610.13361v1) · [GitHub repository (Apache-2.0)](https://github.com/VectorSpaceLab/AgentSWE)
 
 <a id="study-contracts-research-agents"></a>
 

@@ -7,8 +7,8 @@
 | Family | Records |
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 20 |
-| [Harness search & evolution](#family-harness-search) | 19 |
-| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 8 |
+| [Harness search & evolution](#family-harness-search) | 20 |
+| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 9 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 8 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 5 |
 | [Safety & governance](#family-safety-governance) | 3 |
@@ -619,7 +619,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (19)
+## Harness search & evolution (20)
+
+<a id="evo2-weight-harness-coevolution"></a>
+
+### Evo²: Evolving the Evolver through Weight-Harness Co-Evolution
+
+**2026-10-09** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-09; no revisions. The arXiv HTML renders the shared affiliation of six authors as a LaTeX placeholder ("\thepa"); the PDF title page states Google DeepMind and UIUC.
+
+**Institutional relationship** — Google DeepMind (Shujian Zhang, Wenxuan Zhou, John Lambert, Beck Chen, Andrew Hard, Rajiv Mathews) and UIUC (Bo Li; Chejian Xu as a student researcher at Google DeepMind).
+
+**What changes and how feedback is reused** — One policy serves two roles over the harness: a Proposer writes harness edits and a Reflector diagnoses their effects and guides revision, with crossover moving strategies between search-tree branches. Weight updates close the loop on the evolver itself: EvoTIDE (Tree-guided Interleaved Dual-role Evolution) recovers usable training trajectories via edit extraction and prefix continuation, rewards each role's decisions by the task-performance delta they cause (with negative rewards for malformed outputs and gains credited only with trace evidence the mechanism ran), then trains with an SFT warm start and interleaved GRPO over Proposer and Reflector groups against a frozen counterpart snapshot per round.
+
+**Author-reported result** — With Qwen3.8-27B as both executor and evolver: 82.1% Polyglot and 48.3% SWE-bench Verified vs 62.6% (GEA) and 41.0% (HGM) for the strongest baselines; LiveCodeBench 58.0 vs 56.0; evolved harnesses transfer cross-benchmark without further evolution (5 of 6 transfer directions best, e.g. SWE-evolved harness 72.4 on Polyglot). On a 60-task proprietary SWE subset the framework lifts GPT-5-mini from 24.4% to 48.3% and Claude Haiku 4.5 to 47.8%. Memory tasks: LoCoMo F1 60.4 vs HGM 56.2; LongMemEval 71.5 vs 64.4. Training the evolver matters: trained vs untrained ablation +16.3 Polyglot (p=.001), +5.0 SWE (p=.086), +9.3 LoCoMo, +10.6 LongMemEval; crossover adds ~4.1 Polyglot; the evolved harness also uses fewer calls (36 vs 43).
+
+**Evidence limits** — The SWE-bench ablation gain (+5.0) is not significant at p<.05 (p=.086); the self-evolution tables use one open executor family (Qwen3.8-27B) plus proprietary subsets; the paper carries no explicit limitations section; no code or artifacts are released.
+
+**Code / weights / data / license** — No code, weights or data released with the paper (none linked on arXiv or in the HTML). Paper under arXiv's non-exclusive license (CC BY 4.0 per HTML license block).
+
+**Possible nanoRSI experiment — not implemented here** — The dual-role decomposition maps onto nanoRSI's proposer/gate split: one policy both proposes edits and reflects on gate outcomes, and the per-role performance-delta reward is computable from the existing frozen-panel evidence ledger without new gate behavior. The crossed harness-vs-weights reporting (with the trained-evolver ablation as the control) is the shape ADOPTION item 38 already requires.
+
+![Original Figure 1: Evo² connects harness evolution with the training of a unified Proposer-Reflector policy - harness edits and their execution outcomes become training data for the evolver, whose updated weights guide subsequent harness search.](assets/paper-figures/evo2-weight-harness-coevolution.png)
+
+**Source figure / official image** — Original Figure 1: Evo² connects harness evolution with the training of a unified Proposer-Reflector policy - harness edits and their execution outcomes become training data for the evolver, whose updated weights guide subsequent harness search. · Figure 1 (fig1.png): weight-harness co-evolution overview with the shared Proposer-Reflector policy, harness edits and execution outcomes training the evolver weights, and crossover search · [source](https://arxiv.org/html/2610.13025v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-14.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.13025) · [arXiv HTML v1](https://arxiv.org/html/2610.13025v1) · [arXiv PDF v1 (affiliations)](https://arxiv.org/pdf/2610.13025)
 
 <a id="harness-ceiling-failure-composition"></a>
 
@@ -1193,7 +1223,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## Self-modifying meta-agents & lineages (8)
+## Self-modifying meta-agents & lineages (9)
+
+<a id="rsi-anything-world-model-rsi"></a>
+
+### RSI-Anything: Unlocking Recursive Self-Improvement with World Models
+
+**2026-10-09** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-09; repository created 2026-10-08 and announced with the paper; no revisions.
+
+**Institutional relationship** — PhAI Labs (Zhenfei Yin, Yingcheng Wu), CUHK (Pheng Ann Heng, Taoyong Cui), University of Macau, Shanghai Jiao Tong University, Fudan University, University of Oxford, Stanford University and Peking University; Ling Yang (corresponding).
+
+**What changes and how feedback is reused** — Built on the JEPA-Anything predictive foundation, world-model predictions steer both action selection and the selection of learning data, substituting for costly external feedback. Observed feedback updates the policy/workflow; when the world model's reliability degrades as the policy evolves it is conditionally re-adaptated, and component plus compatibility checks decide whether an updated policy-model pair is retained. Imagined trajectories enter the training set only through a gated indicator (candidate valid, utility above threshold, uncertainty under cap, evidence label in permitted sources) with evidence tiered E0 rule checks / E1 model predictions / E2 simulators / E3 external measurements.
+
+**Author-reported result** — Code repair (200 CodeContests tasks, fixed coder): hidden-test success 26.3% static verifier / 26.0% random selection -> 29.2% with a fixed world model -> 31.2% after world-model adaptation; ranking accuracy 66.5%->72.8%, Brier 0.488->0.358. GUI: click-checkboxes 51%->99%, mean actions down 39.4% (5.30->3.21), repeated clicks 237->0; OSWorld +5.5% relative vs RLAnything, +18.4% vs the initial agent. Lab planning: LabHorizon F200 Level-2 improves 21.80%->46.01% across five 4B policy versions, the final version edging the Actor-Simulator-Selector reference (46.01 vs 45.32) and beating Grok 4.3, Gemini 3.1 Pro, GPT-5.5 and Kimi K2.6. Reaction optimization: 96.15% vs 82.16% mean best observed yield for Bayesian optimization under a 40-experiment LC-MS budget. An end-to-end immune-science application couples workflow evolution with therapeutic hypothesis generation.
+
+**Evidence limits** — Joint multiround evaluation of sustained mutual policy-world-model improvement within a single task is still needed; laboratory results assess protocol-aligned planning, not physical execution; chemistry covers two Suzuki-Miyaura screens at the reported budgets; the immune-science therapeutic hypothesis awaits experimental testing.
+
+**Code / weights / data / license** — Code: github.com/Gen-Verse/RSI-Anything, Apache-2.0 (571 stars at verification; task folders for code repair, GUI, lab planning and reaction optimization, tests and docs). Data: per-domain resources on Hugging Face (Gen-Verse/RSI-Anything datasets). Paper under arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — The evidence-tiered admission gate for self-generated training data (E0-E3 labels with validity, utility and uncertainty checks) is a concrete schema for nanoRSI's counterfactual-panel discipline; the world model as a cheap pre-verifier with reliability-triggered re-adaptation is directly usable as the low-cost pre-rank arm of the frozen selector study (ADOPTION items 38-39).
+
+![Original Figure 2: the RSI-Anything loop - world-model predictions guide actions and learning-data selection, observed feedback updates policy/workflow and conditionally re-adapts the world model, and component plus compatibility checks decide which policy-model pair is retained.](assets/paper-figures/rsi-anything-world-model-rsi.png)
+
+**Source figure / official image** — Original Figure 2: the RSI-Anything loop - world-model predictions guide actions and learning-data selection, observed feedback updates policy/workflow and conditionally re-adapts the world model, and component plus compatibility checks decide which policy-model pair is retained. · Figure 2 (figure1_v12_2026-10-09.png): RSI-Anything couples prediction-guided action with retained system updates, with domain instantiations in panel b · [source](https://arxiv.org/html/2610.13912v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-14.
+
+**Open code / weights / data links** — [GitHub repository (Apache-2.0)](https://github.com/Gen-Verse/RSI-Anything)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.13912) · [arXiv HTML v1](https://arxiv.org/html/2610.13912v1) · [GitHub repository (Apache-2.0)](https://github.com/Gen-Verse/RSI-Anything)
 
 <a id="agentevolver-ntu-self-evolution"></a>
 
