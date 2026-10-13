@@ -299,6 +299,15 @@ output=Path(os.environ["NANORSI_PROPOSAL_DIR"])
             with self.demo.local_workers(self.manifest, self.token, count=1) as workers:
                 self.assertEqual(self.evaluate(workers[0])["evaluation"]["schema_version"], 2)
 
+    def test_ready_file_is_published_as_complete_json(self):
+        from examples.remote_workers.server import _write_ready
+
+        ready = Path(self.tmp.name) / "worker.json"
+        _write_ready(ready, {"worker_id": "worker-0", "url": "http://127.0.0.1:1"})
+        self.assertEqual(json.loads(ready.read_text()), {
+            "worker_id": "worker-0", "url": "http://127.0.0.1:1"})
+        self.assertEqual(list(ready.parent.glob(".worker.json.*.tmp")), [])
+
     def test_demo_proves_two_workers_when_loaded_from_a_relative_script_path(self):
         output = Path(self.tmp.name) / "demo-output"
         source_root = EXAMPLE.parents[1]

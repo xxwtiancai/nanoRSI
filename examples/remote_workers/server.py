@@ -25,6 +25,28 @@ from remote_evaluate import (IDENTITY_FIELDS, MAX_BODY_BYTES, MAX_MANIFEST_BYTES
                              read_token, sha256, validate_request, validate_response)
 
 
+def _write_ready(path: Path, identity: dict) -> None:
+    """Publish a complete worker identity without exposing a partial JSON file."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(
+                mode="w", encoding="utf-8", dir=path.parent,
+                prefix=f".{path.name}.", suffix=".tmp", delete=False) as handle:
+            temporary = Path(handle.name)
+            json.dump(identity, handle, separators=(",", ":"), allow_nan=False)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+        temporary = None
+    finally:
+        if temporary is not None:
+            try:
+                temporary.unlink()
+            except FileNotFoundError:
+                pass
+
+
 def _stop_job(process: subprocess.Popen) -> None:
     """Best-effort descendant cleanup, including nested evaluator process groups.
 
@@ -231,7 +253,7 @@ def main(argv=None) -> int:
         with LoopbackHTTPServer(("127.0.0.1", args.port), Handler) as server:
             server.worker = worker
             identity = {**worker.identity(), "url": f"http://127.0.0.1:{server.server_port}"}
-            args.ready_file.write_text(json.dumps(identity), encoding="utf-8")
+            _write_ready(args.ready_file, identity)
             for _ in range(args.max_requests):
                 server.handle_request()
     return 0
