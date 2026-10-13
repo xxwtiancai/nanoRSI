@@ -1,5 +1,13 @@
 # ALFWorld flash replication: a gate-accepted skill improvement that transfers (2026-10-12)
 
+> **2026-10-14 replication update — read this first.** A fresh rerun with 3 final-test
+> repeats [did not replicate](../alfworld-flash-replication/README.md): the new search
+> accepted nothing, and identical-skill conditions differed by one game (0.083 mean)
+> across 3-repeat draws — the same magnitude as this study's two-game margin. Treat the
+> result below as a single noisy draw, exactly as the selector-study protocol now
+> prescribes; the platform-level findings (gated lifecycle on engine-scored tasks,
+> harm-blocking, measured noise) stand.
+
 Direct follow-up to the [GLM-5.3 ceiling null](../alfworld-phase2/README.md). Same platform,
 same frozen test games (**identical 6 seen + 6 unseen panels** — test selection depends only
 on `--test-per-split`), one deliberate change each: a **flash-tier agent** (more headroom than

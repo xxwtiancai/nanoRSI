@@ -1,0 +1,88 @@
+{
+  "changes": [
+    {
+      "attempt_id": 1,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "The failed kettle episode burned all 24 steps opening cabinets in order without prioritizing likely receptacles, and used examine redundantly. Adding object-likelihood search order, closed-receptacle awareness, and explicit task pipelines should reduce wasted exploration and improve unseen episodes across task types."
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": 0.0,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement below minimum: 0.000000"
+    },
+    {
+      "attempt_id": 2,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "The kettle failure exhausted all 24 steps on unguided, near-alphabetical cabinet exploration. Adding likelihood-ordered search with open-on-arrival, no-revisit rules, and a find-transform-place plan should cut wasted navigation in unseen episodes with tight step budgets."
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": 0.0,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement below minimum: 0.000000"
+    },
+    {
+      "attempt_id": 3,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "The failed kettle episode wasted the budget by examining receptacles redundantly (go-to already lists contents), never opening cabinets immediately, and searching without likelihood ordering. The winning lamp episode also spent 6 steps hunting for the lamp after the task was done except for 'use'. This version adds: plan-from-goal-type, open-on-arrival, no-examine-after-go-to, likelihood-ordered search with no revisits, one-object-at-a-time carrying discipline, and budget awareness \u2014 all general, none data-specific. Previous rejections likely failed because the guidance was too vague or the gate re-ran identical episodes; these concrete behavioral rules should reduce wasted steps in unseen episodes."
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": 0.0,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement below minimum: 0.000000"
+    },
+    {
+      "attempt_id": 4,
+      "changed_paths": [],
+      "constraints": null,
+      "decision": "no-op",
+      "diagnosis": null,
+      "metric": {
+        "candidate": null,
+        "delta": null,
+        "direction": "maximize",
+        "name": "score",
+        "parent": null
+      },
+      "reason": "proposal and training change no files"
+    }
+  ],
+  "decisions": {
+    "no-op": 1,
+    "rejected": 3
+  },
+  "revision_count": 4,
+  "schema_version": 1
+}
