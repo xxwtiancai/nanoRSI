@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 20 |
-| [Harness 搜索与进化](#family-harness-search) | 20 |
-| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 9 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 21 |
+| [Harness 搜索与进化](#family-harness-search) | 21 |
+| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 12 |
 | [程序进化与进化搜索](#family-program-evolution) | 8 |
-| [反馈审查与编排](#family-feedback-orchestration) | 5 |
-| [安全与治理](#family-safety-governance) | 3 |
+| [反馈审查与编排](#family-feedback-orchestration) | 6 |
+| [安全与治理](#family-safety-governance) | 4 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (20)
+## 技能文件优化与技能库 (21)
+
+<a id="tesearch-test-suite-signals"></a>
+
+### Small but Mighty: Test Suites as Improvement Signals for Self-Evolving Agents
+
+**2026-10-11** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-11，随翻倍的 2026-10-14 批次公告；2026-10-15 完成一手核验。
+
+**机构关系** — Yutong Cheng（弗吉尼亚理工；实习工作于 NEC Labs America）、Wei Cheng、Wenchao Yu、Haifeng Chen（NEC Laboratories America）、Dawei Zhou（弗吉尼亚理工）。HTML 中邮箱与作者映射错乱，机构以论文署名行为准。
+
+**改变对象与反馈复用** — 演化小型可执行测试套件，作为自编辑 harness 代码的接受/拒绝信号。质量-多样性搜索按套件规模生态位维护（覆盖率、变异得分）的帕累托前沿，让小而强的套件存活；交付套件是超体积最大者中最小的。学习到的落点核补偿 LLM 对套件规模指令的噪声服从（对数正态模型、在线估计计数偏差），并按请求实际落点加权老虎机信用；规模退火 UCB 在质量过阈后才惩罚规模。闸门：套件先对未修改模块跑通；修订模块若让先前通过的套件失败即被拒——无需模型调用即可拦截改变行为的自编辑。
+
+**作者报告结果** — 129 个 TestGenEval Python 模块、3 骨干（GPT-5.4、Claude Opus 4.8、Gemini 3.1 Pro）：行为改变型重写的拒绝率 59.9% 对仓库测试的 25.3%，逐模块全面更优；等价重写上的误报率 4.0%（10/253）；判定 3.5 秒对 5.9 秒且零模型调用；每个骨干上超体积最高（超最佳基线 7.0-8.5）且套件最小（如 hv 0.976、规模 29.1）。自演化研究：8 个 mini-swe-agent harness 模块、470 条已验证修订、评分者间 kappa 0.74。
+
+**证据边界** — 4.0% 误报率意味着等价重写偶被误拦（仓库测试为 0%）；评测仅限 Python（TestGenEval 模块）；自演化研究覆盖 8 个 harness 模块；HTML 邮箱-作者映射错乱（已如实记录）。
+
+**代码／权重／数据／许可** — 代码/数据 MIT 许可，位于 github.com/ccsnow127/TeSearch（LICENSE 已于 2026-10-15 核验）。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对 nanoRSI 的核心迁移：用专门演化出的小套件而非任务自带测试来闸自编辑——套件先在父代跑通再判子代，提供带实测误拦率的行为保持检查（TeSearch 的 4.0% 即参考值）。规模生态位帕累托档案也是让评测工件小到可在 episode 预算内逐次运行的具体范式。
+
+![论文原图 1：TeSearch 的质量-多样性档案按套件规模生态位维护覆盖率与变异得分的帕累托前沿；交付的小套件再为自演化 harness 代码的行为改变型重写把关。](assets/paper-figures/tesearch-test-suite-signals.png)
+
+**原文图／官方图片** — 论文原图 1：TeSearch 的质量-多样性档案按套件规模生态位维护覆盖率与变异得分的帕累托前沿；交付的小套件再为自演化 harness 代码的行为改变型重写把关。 · Figure 1 (fig1_overview.png): the TeSearch archive keeping a Pareto front on (coverage, mutation score) per size niche, feeding suite-gated harness rewrites · [source](https://arxiv.org/html/2610.15964v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — [ccsnow127/TeSearch (MIT)](https://github.com/ccsnow127/TeSearch)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.15964) · [arXiv HTML v1](https://arxiv.org/html/2610.15964v1) · [ccsnow127/TeSearch (MIT)](https://github.com/ccsnow127/TeSearch)
 
 <a id="visskill-visual-skill-cards"></a>
 
@@ -619,7 +649,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (20)
+## Harness 搜索与进化 (21)
 
 <a id="evo2-weight-harness-coevolution"></a>
 
@@ -951,6 +981,36 @@
 
 **一手来源** — [arXiv first submission](https://arxiv.org/abs/2609.01437) · [Paper v1](https://arxiv.org/html/2609.01437v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
+<a id="helix-harness-model-coevolution"></a>
+
+### HELIX: Model-Harness Co-evolution for Recursive Self-Improvement
+
+**2026-08-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-08-14；无修订。经 lobehub/awesome-rsi（2026-10-12 加入）发现、2026-10-15 完成一手核验；发表到收录相隔两个月，如实记录。
+
+**机构关系** — Tianyu Fan 与 Chao Huang，香港大学（论文代码以 HKUDS 组织名义发布）。
+
+**改变对象与反馈复用** — 两个耦合时间尺度：任务内由 harness 为固定模型中介上下文、工具结果、权限与控制流；跨轮则让一组演化出的 harness（65 个候选）在同一批任务上运行，已验证的同胞轨迹成为下一代模型的更新信号（SFT、critic、filter、preference 记录），更新后模型变化的能力画像再决定下一轮 harness 重建。HELIX 本体是一个可审计、可溯源的基座：把 agent 系统分解为类型化 ports/atoms/recipes/shells/policies，保留轨迹与出处。
+
+**作者报告结果** — 代码修复（SWE-bench）上：最佳固定 harness 比 Pi 多 4.0% 任务覆盖；65 候选完整组合通过互补的同胞行为多暴露至多 58.0% 的已验证覆盖；200 槽同胞切片产出 438 条已验证训练记录（SFT、critic、filter、preference）。
+
+**证据边界** — 主要数字核验到摘要层面；组合对单件的 58.0% 是覆盖暴露指标而非基准分数；展示的评测域仅为代码修复。
+
+**代码／权重／数据／许可** — 代码 MIT 许可，位于 github.com/HKUDS/HELIX（LICENSE 已于 2026-10-15 核验）。论文按 arXiv 非独占许可（abs 页标 CC BY 4.0）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 已验证同胞切片的思路可直接映射到 nanoRSI 的冻结面板：每次闸门尝试（无论接受与否）都产出面板轨迹，可蒸馏为训练数据而非丢弃——证据账本已在记录它们。类型化 port 分解也是声明候选改动面的词汇表（ADOPTION 第 40 项的账本 schema）。
+
+![论文原图 1：模型-harness 递归改进的两个时间尺度——任务内 harness 引导模型；跨轮已验证同胞轨迹更新模型，新的能力画像再决定下一轮 harness 重建。](assets/paper-figures/helix-harness-model-coevolution.svg)
+
+**原文图／官方图片** — 论文原图 1：模型-harness 递归改进的两个时间尺度——任务内 harness 引导模型；跨轮已验证同胞轨迹更新模型，新的能力画像再决定下一轮 harness 重建。 · Figure 1 (harness-model-coevolution.svg): two timescales of model-harness recursive improvement - within-task harness/model interaction above, verification-gated update and rebuild below · [source](https://arxiv.org/html/2608.13951v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — [HKUDS/HELIX (MIT)](https://github.com/HKUDS/HELIX)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.13951) · [arXiv HTML v1](https://arxiv.org/html/2608.13951v1) · [HKUDS/HELIX (MIT)](https://github.com/HKUDS/HELIX)
+
 <a id="qwen38-max-self-evolving-harness"></a>
 
 ### Qwen3.8-Max: A New Bar for Coding and Cowork (self-evolving harness demonstrations)
@@ -1223,7 +1283,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## 自改写元智能体与谱系 (9)
+## 自改写元智能体与谱系 (12)
+
+<a id="specrsi-speculative-rsi"></a>
+
+### Drafting Agents, Not Just Tokens: Speculative Recursive Self-Improvement for Agentic Systems
+
+**2026-10-12** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-12，随翻倍的 2026-10-14 批次公告（10-13 周二公告被跳过并入周三）；2026-10-15 完成一手核验。
+
+**机构关系** — Xin Xu、Ke Cheng、Yangru Huang、Haibin Lv、Jun Zhang、Jie Jiang（Tencent AMS）；Xin Xu 兼北大、Ke Cheng 兼北航；Hao Wang（小红书）；Yanghao Xiao（国科大）；Zhichao Chen（北大通用人工智能全国重点实验室）；Zhisheng Zhong（腾讯混元）；Zhouchen Lin（北大）；通讯：Jun Zhang、Zhouchen Lin。
+
+**改变对象与反馈复用** — 把投机执行引入递归自改进：在父代验证完成前就起草可执行的子代 agent，长出一棵由冻结版本与编辑边组成的不可变树；采纳仍要求完整、可采纳的验证。VATS（验证感知树搜索）在起草与检查之间分配剩余预算——Solver 用 MILP（缺失检查、依赖、共享设置）构造可行补全束，Scorer 预测扣除未来成本后的期望已验证增益，Policy 采样下一个起草或验证计划。GVO（组验证优化）进而训练改进器本身：同一根节点在冻结改进器下跑 G>=2 次独立完整搜索，优势=每次搜索的已验证增益减全部成本对组内留一均值，Scorer 以实现后缀回报回归+成对差分损失训练，演员用裁剪 PPO 式目标更新；验证契约全程冻结。
+
+**作者报告结果** — 科学赛道：50 个骨干-任务对全胜 Janus，终局增益 +33.3-40.0%、AUBC +30.4-33.7%（逐对提升 17.8-27.6%）。系统赛道：20 个骨干上宏平均超 MetaRSI-v1 1.85-2.38pp（TB2.1、SWE-Pro、GPQA-hard100、AIME）。编码验证 69.4% 对 HGM 64.3%，成本指数低 20.8%（60.8 对 76.8）。生命周期总成本指数 106.3 对 MetaRSI-v1 的 112.7；科学搜索成本比 Janus 高 7.2%——诚实注脚是投机买到的是出结果时间，不是处处更便宜。
+
+**证据边界** — 科学搜索成本比 Janus 高约 7%；部分 10 骨干图上总成本指数比 MetaRSI-v1 高 0.83-0.90%；基线是近期预印本系统（Janus、MetaRSI-v1、HGM）而非成熟排行榜；验证契约固定意味着验证器本身未被改进。
+
+**代码／权重／数据／许可** — 代码 MIT 许可，位于 github.com/SpecRSI-GPR/SpecRSI（LICENSE 已于 2026-10-15 核验）。论文按 arXiv 永久非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 两个可迁移件：(1) 只认完整验证的投机起草是 nanoRSI 尝试循环的预算策略——当前提案面板未跑完就先起草下一个，但绝不在部分证据上晋升；(2) GVO 的组内多次搜索+留一优势+冻结改进器正是 ADOPTION 第 38 项控制下的'改进改进器'探针（冻结改进器、等预算、只认已验证增益）。
+
+![论文原图 1（a-f 面板）：三种 RSI 执行形态（单路径、并行、投机）及其搜索论类比（贪心、束搜索、投机解码）——先探前路，采纳前必验证。](assets/paper-figures/specrsi-speculative-rsi.png)
+
+**原文图／官方图片** — 论文原图 1（a-f 面板）：三种 RSI 执行形态（单路径、并行、投机）及其搜索论类比（贪心、束搜索、投机解码）——先探前路，采纳前必验证。 · Figure 1 (six panel SVGs trim_f1a-f1f + legend, recomposed into one image): single-path RSI, parallel branches and speculative RSI mapped to greedy, beam search and speculative decoding · [source](https://arxiv.org/html/2610.16491v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — [SpecRSI-GPR/SpecRSI (MIT)](https://github.com/SpecRSI-GPR/SpecRSI)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.16491) · [arXiv HTML v1](https://arxiv.org/html/2610.16491v1) · [SpecRSI-GPR/SpecRSI (MIT)](https://github.com/SpecRSI-GPR/SpecRSI)
 
 <a id="rsi-anything-world-model-rsi"></a>
 
@@ -1369,7 +1459,7 @@
 
 **原文图／官方图片** — Nous Research 官方文章题图：Hermens 用 1,393 个子智能体自主重构自身约百万行代码库。 · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-13.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
 
 **开源代码／权重／数据链接** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
@@ -1494,6 +1584,66 @@
 **开源代码／权重／数据链接** — [Official code](https://github.com/facebookresearch/HyperAgents) · [Code licence](https://github.com/facebookresearch/HyperAgents/blob/main/LICENSE.md)
 
 **一手来源** — [Paper history](https://arxiv.org/abs/2603.19461) · [Paper v1, authors and section 5.1](https://arxiv.org/html/2603.19461v1) · [Meta publication](https://ai.meta.com/research/publications/hyperagents/) · [Official code](https://github.com/facebookresearch/HyperAgents) · [Code licence](https://github.com/facebookresearch/HyperAgents/blob/main/LICENSE.md)
+
+<a id="gea-group-evolution-sharing"></a>
+
+### Group-Evolving Agents: Open-Ended Self-Improvement via Experience Sharing
+
+**2026-02-04** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-02-04；无修订。经 lobehub/awesome-rsi（2026-10-12）发现、2026-10-15 完成一手核验。它正是 Evo²（2610.13025）中最强自演化基线 'GEA'——基线本身此前未被收录。
+
+**机构关系** — Zhaotian Weng、Antonis Antoniades、Deepak Nathani、Zhen Zhang、Xiao Pu、Xin Eric Wang——加州大学圣巴巴拉分校。
+
+**改变对象与反馈复用** — 把整个 agent 群体而非单一谱系作为进化单元：自改进 agent 自主改写自身架构，群内成员在开放式演化中共享复用经验，使早期探索多样性得以保留而非损失在孤立的树分支里。最佳 agent 整合来自多个不同祖先的经验。
+
+**作者报告结果** — SWE-bench Verified 71.0% 对最强自演化基线 DGM 56.7%；Polyglot 88.3% 对 68.3%。对顶级人工设计框架：OpenHands+GPT-5 71.8%、Aider+GPT-5(high) 52.0%——匹配或超越。鲁棒性：框架级 bug 平均 1.4 次迭代修复（对照 5.0）；最佳 GEA agent 整合 17 个不同祖先（DGM 为 9）；改进跨 GPT 系与 Claude 系骨干迁移。
+
+**证据边界** — 未发布代码；arXiv 页与论文正文均无仓库链接。71.0/88.3 是论文自身 harness 设置下对自演化基线的数字；人工框架对比使用不同骨干（GPT-5）。
+
+**代码／权重／数据／许可** — 未发布代码、权重或数据；论文按 arXiv 非独占许可（CC BY 4.0）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 群体级经验共享是对 nanoRSI rejected_recent 隔离的反向设计：失败候选的诊断轨迹可以共享给后续提案而非只做压制；17 祖先广度也是 ADOPTION 第 39 项可直接计算的选型统计（幸存候选动用了多少个不同先前尝试）。
+
+![论文原图 1：对比树结构自演化（孤立分支损失探索多样性）与群体演化 agent（群内成员在开放式演化中共享复用经验）。](assets/paper-figures/gea-group-evolution-sharing.png)
+
+**原文图／官方图片** — 论文原图 1：对比树结构自演化（孤立分支损失探索多样性）与群体演化 agent（群内成员在开放式演化中共享复用经验）。 · Figure 1 (pipeline_overall.png): GEA vs tree-structured self-evolution - isolated branches on the left, group-level experience sharing on the right · [source](https://arxiv.org/html/2602.04837v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2602.04837) · [arXiv HTML v1](https://arxiv.org/html/2602.04837v1)
+
+<a id="huxley-godel-cmp-steering"></a>
+
+### Huxley-Gödel Machine: Human-Level Coding Agent Development by an Approximation of the Optimal Self-Improving Machine
+
+**2025-10-24** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 2025-10-24、v2 2025-10-28、v3 2025-10-29（当前版）；收录时已处于滚动窗口下缘。经 lobehub/awesome-rsi（2026-10-12）发现、2026-10-15 完成一手核验。
+
+**机构关系** — Wenyi Wang、Piotr Piękos、Li Nanbo、Firas Laakom、Yimeng Chen、Mateusz Ostaszewski、Mingchen Zhuge、Jürgen Schmidhuber——全员 KAUST。
+
+**改变对象与反馈复用** — 编码 agent 编辑自身代码库，构建自修改树。论文识别出'元生产力-性能失配'——agent 的基准分数并不可靠指示其产出更强后代的能力——并提出 CMP（Clade Meta Productivity）：聚合一个 agent 全部后代的基准表现作为自改进潜力的指标。HGM 在线估计 CMP 并用它引导自修改树的搜索；论文证明在一定假设下，拥有真值 CMP 足以模拟 Gödel Machine 的行为。
+
+**作者报告结果** — SWE-Verified-60（800 次评估、best-belief agent）：HGM 56.7（+16.7）对 DGM 53.3（+13.3）与 SICA 50.0（+10），CPU 时耗 517 小时对 DGM 1231（省 2.38 倍）；Polyglot 30.5（+10.2）对 27.1/25.4，347 小时对 2385（比 DGM 省 6.86 倍）。CMP 估计器与实现后代增益的加权相关性：SWE-Verified-60 0.778、Polyglot 0.626，对 DGM 0.285/0.383、SICA 0.444/0.274。完整 SWE-bench Verified 8000 次评估后达 61.4%（初始 agent 53.2%），当时排行榜最高的 GPT-5-mini 系统。迁移：GPT-5-mini 优化的 agent 换 GPT-5 评测 SWE-bench Lite 得 47.8%（filtered；SWE-agent 48.3%）与 57%（standard；56.7%）——匹配最佳官方核验的人工设计 agent。
+
+**证据边界** — '当时排行榜最高'的断言会快速过时；CMP 相关性在加权评估子集上测得；论文 arXiv 许可为 CC BY-NC-SA（代码单独 Apache-2.0）。
+
+**代码／权重／数据／许可** — 代码 Apache-2.0，位于 github.com/metauto-ai/HGM（LICENSE 已于 2026-10-15 核验）。论文许可 CC BY-NC-SA 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — CMP 是 ADOPTION 第 38/39 项可实现的竞争选型器：按后代的聚合冻结面板表现（而非父代自身分数）给父代排名，可从既有 lineage store 直接计算、无需新增模型调用。'失配'发现对 nanoRSI 闸门也是直接警示：候选自身的面板分数对谱系价值只是噪声预测器。
+
+![论文原图 1：基准表现与自改进增益几乎不相关（左），由此提出以后代谱系聚合表现为自修改树搜索引导信号的 CMP（右）。](assets/paper-figures/huxley-godel-cmp-steering.svg)
+
+**原文图／官方图片** — 论文原图 1：基准表现与自改进增益几乎不相关（左），由此提出以后代谱系聚合表现为自修改树搜索引导信号的 CMP（右）。 · Figure 1 (intro_figure_combined_wider.svg): left - the Metaproductivity-Performance Mismatch scatter (benchmark accuracy vs descendant gain); right - HGM's clade-level metric and compute efficiency · [source](https://arxiv.org/html/2510.21614v3)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — [metauto-ai/HGM (Apache-2.0)](https://github.com/metauto-ai/HGM)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2510.21614) · [arXiv HTML v3](https://arxiv.org/html/2510.21614v3) · [metauto-ai/HGM (Apache-2.0)](https://github.com/metauto-ai/HGM)
 
 <a id="family-program-evolution"></a>
 
@@ -1741,7 +1891,37 @@
 
 <a id="family-feedback-orchestration"></a>
 
-## 反馈审查与编排 (5)
+## 反馈审查与编排 (6)
+
+<a id="ucoe-verifier-harness-coevolution"></a>
+
+### Verifier-Harness Co-Evolution for Training-Free Self-Improvement on Open-Ended Tasks
+
+**2026-10-13** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-13，随翻倍的 2026-10-14 批次公告；2026-10-15 完成一手核验。论文所列代码链接在核验时为 404。
+
+**机构关系** — Tianyi Xu、Joe Nguyen、Huazheng Wang（俄勒冈州立大学）；Yaolun Zhang（俄勒冈州立/AG2 AI，共同一作）；Yiran Wu（宾州州立/AG2 AI，共同一作）；Shengyu Dai、Saba Moeinizade、Zhenwen Shao（强生）；Qingyun Wu（宾州州立/AG2 AI）。
+
+**改变对象与反馈复用** — 免训练地把可执行验证器程序 V=（打分器组、聚合器、诊断器）与 agent 的 harness 状态共同演化。验证器候选由挖掘到的'Actor 对更大冻结模型'响应对比（恰好差一个目标缺陷族的响应对）合成，按驱动力选择——候选在最弱对比族上的判别力（对比族上的 maximin；定理 1 证明其对任意族混合最大化最坏情形成功率）。验证器给草稿打分、把最弱准则诊断为一次局部修复，仅当修订的奖励以边际超过草稿才上线；只有被接受的修复可向 harness 写入任务派生内容，且蒸馏为至多一条有界触发-动作程序。检查点上验证器自身由累积诊断重新合成，仅当最弱族严格增益且赢得的留出对比多于输掉的（W>L）、每族都在容差 kappa=0.10 内才替换。
+
+**作者报告结果** — 开放式偏好（平局调整、Qwen3.5-397B 评审）对匹配的直接生成：Qwen3-8B 平均 59.00%、Qwen3.8-27B 57.19%（最佳基线 49.26/51.60），12 个基准×Actor 设置全胜（Arena-Hard、WritingPrompts、WildBench、WritingBench、MultiChallenge、RefineBench）。可验证任务（8B）：均值 36.06%→38.48%，IFBench 30.00→34.67、Hard-MATH 56.54→59.16、BigCodeBench-Hard 无损而所有基线跌破直接生成。Codex agent harness 内 SpreadsheetBench-2（GPT-5.6-luna）：精确匹配 22.7% 对 17.3%。消融：完整 58.30% 对只更新 harness 50.80%、固定验证器 56.60%。机制核查：更新后验证器的 94 个被接受提案中，外部评审 73 个更好（7 差、14 平）。
+
+**证据边界** — 偏好由大号 Qwen 模型评审（与 Actor 骨干同家族）；论文不同段落混用 'Qwen3-8B' 与 'Qwen3.8-27B' 命名；头版代码链接核验时 404；开放式任务无真值，一切改进都是相对偏好的。
+
+**代码／权重／数据／许可** — 论文所列代码 URL（github.com/tianyi0216/Unified-Co-Evolution）核验时（2026-10-15）404——按未发布对待。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 对比族 maximin 选择与'W>L 且带容差'替换规则是 nanoRSI 评测器轨道现成的闸门准则：候选验证器只有在任何对比族不更差且总体严格更好时才替换在位者——是 ADOPTION 第 44 项锚定参考一致性检查的可计算类比。'只有被接受的修复才写记忆、每次接受至多一条有界程序'也约束了记忆的无界增长。
+
+![论文原图 2：UCoE 工作流把共同演化的可执行验证器（合成、对比 maximin 选择、检查点演化）与 agent 的起草-修订-蒸馏循环耦合，只有被接受的修复才更新 harness 状态。](assets/paper-figures/ucoe-verifier-harness-coevolution.svg)
+
+**原文图／官方图片** — 论文原图 2：UCoE 工作流把共同演化的可执行验证器（合成、对比 maximin 选择、检查点演化）与 agent 的起草-修订-蒸馏循环耦合，只有被接受的修复才更新 harness 状态。 · Figure 2 (fig2v3.svg): UCoE workflow - verifier side (synthesize / contrast-select / evolve) coupled to agent side (draft / revise / distill), with accepted repairs gating harness updates · [source](https://arxiv.org/html/2610.17609v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.17609) · [arXiv HTML v1](https://arxiv.org/html/2610.17609v1)
 
 <a id="whoverifies-coevolving-graders"></a>
 
@@ -1895,7 +2075,7 @@
 
 <a id="family-safety-governance"></a>
 
-## 安全与治理 (3)
+## 安全与治理 (4)
 
 <a id="cace-bench-admission-gate"></a>
 
@@ -1956,6 +2136,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2609.17817) · [Paper HTML (affiliations, attack figures)](https://arxiv.org/html/2609.17817v1)
+
+<a id="safety-selfevolving-saver-survey"></a>
+
+### Safety in Self-Evolving Agents: A Survey
+
+**2026-09-08** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 2026-09-08；80 页、6 图、13 表。经 lobehub/awesome-rsi（2026-10-12）发现、2026-10-15 完成一手核验。
+
+**机构关系** — 31 位作者，由 Jiahao Chen、Zhou Feng、Oubo Ma 等领衔，通讯作者 Shouling Ji（浙江大学）；合作机构横跨浙大、华中科大、西安交大、国防科大、上交、佐治亚理工、中科大、南洋理工、OPPO、天津大学、重庆大学、阿里与乐天。
+
+**改变对象与反馈复用** — 综述（无新机制）：为持续从经验更新可复用状态（参数、记忆、工具、技能、工作流）的 agent 重新定义安全——'过去的事件成为未来的原因'后，一个语境中无害的信息可能在更大持久性、权限或范围上影响后续决策。提出转移中心的 SAVER 分析框架：Substrate（可复用影响栖身何处）、Adaptation（如何变化）、Violation（破坏哪些安全属性）、Exposure（失败在哪里显形）、Response（遏制、修复、撤销）。语料：683 篇编码论文（579 注册 + 48 补充 + 56 附加），577 篇可视化子集。
+
+**作者报告结果** — 给出跨切面结论而非基准数字：当适应超出其有效性条件时，合法经验也能催生不安全状态；准入、检索、激活、暴露与本地遏制的证据充分，但'修复不安全状态的后代'与'评估不安全影响是否再浮现'的证据薄弱；综述主张以回溯到起始转移的纵向评估。
+
+**证据边界** — 综述论文：分类与证据制图，无新机制或新数字；覆盖冻结于其注册库构建日。
+
+**代码／权重／数据／许可** — 项目清单位于 github.com/xaddwell/awesome-self-evolving-agent-safety（页面 xaddwell.github.io/Awesome-Self-Evolving-Agent-Safety/）。论文按 arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — SAVER 五元分解可作为 nanoRSI 证据账本的核查清单 schema：每条被接受的编辑都可记录载体、适应方式、违反检查、暴露面与响应。综述证据最薄弱的两处——后代修复与再浮现——正对应 nanoRSI 的 rejected_recent 与谱系核验：退役一个不安全技能必须同时处理已从它派生的候选。
+
+![论文原图 2：转移中心的 SAVER 结构——中心的 Substrate-Adaptation 环与 Violation、Exposure、Response 耦合，组织起综述对自演化 agent 的安全分析。](assets/paper-figures/safety-selfevolving-saver-survey.png)
+
+**原文图／官方图片** — 论文原图 2：转移中心的 SAVER 结构——中心的 Substrate-Adaptation 环与 Violation、Exposure、Response 耦合，组织起综述对自演化 agent 的安全分析。 · Figure 2, PDF page 4 (HTML figure rendering failed; rendered from PDF at 150 dpi): overview of the transition-centered survey structure - the central Substrate x Adaptation ring with Violation, Exposure and Response traces and taxonomy panels · [source](https://arxiv.org/pdf/2610.00093v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — [Awesome-Self-Evolving-Agent-Safety list](https://github.com/xaddwell/awesome-self-evolving-agent-safety)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.00093) · [arXiv PDF v1 (figures; HTML rendering failed)](https://arxiv.org/pdf/2610.00093v1) · [Awesome-Self-Evolving-Agent-Safety list](https://github.com/xaddwell/awesome-self-evolving-agent-safety)
 
 <a id="skill-misevolution-safety"></a>
 

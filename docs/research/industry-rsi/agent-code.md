@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 20 |
-| [Harness search & evolution](#family-harness-search) | 20 |
-| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 9 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 21 |
+| [Harness search & evolution](#family-harness-search) | 21 |
+| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 12 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 8 |
-| [Feedback review & orchestration](#family-feedback-orchestration) | 5 |
-| [Safety & governance](#family-safety-governance) | 3 |
+| [Feedback review & orchestration](#family-feedback-orchestration) | 6 |
+| [Safety & governance](#family-safety-governance) | 4 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (20)
+## Skill-file optimization & libraries (21)
+
+<a id="tesearch-test-suite-signals"></a>
+
+### Small but Mighty: Test Suites as Improvement Signals for Self-Evolving Agents
+
+**2026-10-11** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-11, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-15.
+
+**Institutional relationship** — Yutong Cheng (Virginia Tech; internship work at NEC Labs America), Wei Cheng, Wenchao Yu, Haifeng Chen (NEC Laboratories America), Dawei Zhou (Virginia Tech). The HTML's email-to-author mapping is inconsistent, so affiliations follow the stated affiliation lines.
+
+**What changes and how feedback is reused** — Evolves small executable test suites as the accept/reject signal for self-editing harness code. Quality-diversity search keeps a Pareto front of (coverage, mutation score) per suite-size niche, so small-but-strong suites survive; the delivered suite is the smallest of maximal hypervolume. A learned landing kernel compensates the LLM's noisy instruction-following on suite size (log-normal model, online-estimated count bias) and weights bandit credit by where a request actually lands; size-annealed UCB penalizes size only after quality passes a threshold. Gating: the suite runs against the unmodified module first; a revised module is rejected if the previously-passing suite now fails - catching behavior-changing self-edits with no model call.
+
+**Author-reported result** — On 129 TestGenEval Python modules with 3 backbones (GPT-5.4, Claude Opus 4.8, Gemini 3.1 Pro): divergent (behavior-changing) rewrite rejection 59.9% vs 25.3% for repository tests, better on every module; false-alarm rate on equivalent rewrites 4.0% (10/253); decision time 3.5s vs 5.9s, no model call; highest hypervolume on every backbone (7.0-8.5 above best baseline) with the smallest suites among LLM methods (e.g. hv 0.976 at size 29.1). Self-evolution study: 8 mini-swe-agent harness modules, 470 verified revisions, inter-rater kappa 0.74.
+
+**Evidence limits** — 4.0% false-alarm rate means equivalent rewrites are occasionally blocked (repository tests have 0%); evaluation is Python-only (TestGenEval modules); the self-evolution study covers 8 harness modules; email-author mapping in the HTML is inconsistent (recorded above).
+
+**Code / weights / data / license** — MIT-licensed code/data at github.com/ccsnow127/TeSearch (LICENSE verified 2026-10-15). Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — The core transfer for nanoRSI: gate self-edits with a purpose-evolved small suite instead of the task's own tests - the suite must pass on the parent before judging the child, giving a behavior-preservation check with a measured false-block rate (TeSearch's 4.0% is the reference number). The size-niche Pareto archive is also a concrete pattern for keeping evaluator artifacts small enough to run per-attempt within episode budget.
+
+![Original Figure 1: TeSearch's quality-diversity archive maintains a Pareto front over coverage and mutation score for each suite-size niche; the delivered small suite then gates behavior-changing rewrites of self-evolving harness code.](assets/paper-figures/tesearch-test-suite-signals.png)
+
+**Source figure / official image** — Original Figure 1: TeSearch's quality-diversity archive maintains a Pareto front over coverage and mutation score for each suite-size niche; the delivered small suite then gates behavior-changing rewrites of self-evolving harness code. · Figure 1 (fig1_overview.png): the TeSearch archive keeping a Pareto front on (coverage, mutation score) per size niche, feeding suite-gated harness rewrites · [source](https://arxiv.org/html/2610.15964v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — [ccsnow127/TeSearch (MIT)](https://github.com/ccsnow127/TeSearch)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.15964) · [arXiv HTML v1](https://arxiv.org/html/2610.15964v1) · [ccsnow127/TeSearch (MIT)](https://github.com/ccsnow127/TeSearch)
 
 <a id="visskill-visual-skill-cards"></a>
 
@@ -619,7 +649,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (20)
+## Harness search & evolution (21)
 
 <a id="evo2-weight-harness-coevolution"></a>
 
@@ -951,6 +981,36 @@
 
 **Primary sources** — [arXiv first submission](https://arxiv.org/abs/2609.01437) · [Paper v1](https://arxiv.org/html/2609.01437v1) · [Official Self-Developing Agents project](https://self-developing-agents.github.io/)
 
+<a id="helix-harness-model-coevolution"></a>
+
+### HELIX: Model-Harness Co-evolution for Recursive Self-Improvement
+
+**2026-08-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-08-14; no revisions. Surfaced via lobehub/awesome-rsi (added 2026-10-12) and primary-verified on 2026-10-15; the two-month gap between publication and pickup is recorded rather than hidden.
+
+**Institutional relationship** — Tianyu Fan and Chao Huang, The University of Hong Kong (the paper's code is published under the HKUDS organization).
+
+**What changes and how feedback is reused** — Two coupled timescales. Within a task, a harness mediates context, tool results, permissions and control flow around a fixed model. Across rounds, a portfolio of evolved harnesses (65 candidates) is run on the same tasks so verified sibling trajectories supply the update signal for the next model (SFT, critic, filter and preference records); the updated model's changed capability profile then conditions the next harness rebuild. HELIX itself is an auditable, source-traceable substrate that decomposes agent systems into typed ports, atoms, recipes, shells and policies with retained trajectories and provenance.
+
+**Author-reported result** — On code repair (SWE-bench): the best fixed harness adds 4.0% task coverage over the Pi harness; the full 65-candidate portfolio exposes up to 58.0% more verified coverage through complementary sibling behavior; a 200-slot sibling slice yields 438 verified training records (SFT, critic, filter, preference).
+
+**Evidence limits** — Headline numbers verified at abstract level; the portfolio-vs-single gap (58.0%) is a coverage-exposure metric rather than a benchmark score; evaluation domain shown is code repair only.
+
+**Code / weights / data / license** — MIT-licensed code at github.com/HKUDS/HELIX (LICENSE verified 2026-10-15). Paper under arXiv non-exclusive license (CC BY 4.0 per abs page).
+
+**Possible nanoRSI experiment — not implemented here** — The verified-sibling-slice idea maps directly onto nanoRSI's frozen panels: every gate attempt, accepted or rejected, produces panel trajectories that can be distilled as training data instead of being discarded - the evidence ledger already records them. The typed-port decomposition is also a vocabulary for declaring which surface a candidate edits (ADOPTION item 40's ledger schema).
+
+![Original Figure 1: the two timescales of model-harness recursive improvement - within a task the harness guides the model, and across rounds verified sibling trajectories update the model whose new profile conditions the next harness rebuild.](assets/paper-figures/helix-harness-model-coevolution.svg)
+
+**Source figure / official image** — Original Figure 1: the two timescales of model-harness recursive improvement - within a task the harness guides the model, and across rounds verified sibling trajectories update the model whose new profile conditions the next harness rebuild. · Figure 1 (harness-model-coevolution.svg): two timescales of model-harness recursive improvement - within-task harness/model interaction above, verification-gated update and rebuild below · [source](https://arxiv.org/html/2608.13951v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — [HKUDS/HELIX (MIT)](https://github.com/HKUDS/HELIX)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2608.13951) · [arXiv HTML v1](https://arxiv.org/html/2608.13951v1) · [HKUDS/HELIX (MIT)](https://github.com/HKUDS/HELIX)
+
 <a id="qwen38-max-self-evolving-harness"></a>
 
 ### Qwen3.8-Max: A New Bar for Coding and Cowork (self-evolving harness demonstrations)
@@ -1223,7 +1283,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## Self-modifying meta-agents & lineages (9)
+## Self-modifying meta-agents & lineages (12)
+
+<a id="specrsi-speculative-rsi"></a>
+
+### Drafting Agents, Not Just Tokens: Speculative Recursive Self-Improvement for Agentic Systems
+
+**2026-10-12** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-12, announced in the double-size 2026-10-14 batch (the Tuesday 10-13 announcement was skipped and folded into Wednesday's); primary-verified on 2026-10-15.
+
+**Institutional relationship** — Xin Xu, Ke Cheng, Yangru Huang, Haibin Lv, Jun Zhang, Jie Jiang (Tencent AMS); Xin Xu also PKU; Ke Cheng also Beihang; Hao Wang (Xiaohongshu); Yanghao Xiao (UCAS); Zhichao Chen (PKU State Key Lab of General AI); Zhisheng Zhong (Tencent Hunyuan); Zhouchen Lin (PKU); corresponding: Jun Zhang, Zhouchen Lin.
+
+**What changes and how feedback is reused** — Applies speculative execution to recursive self-improvement: executable successor agents are drafted before parent verification completes, growing an immutable tree of frozen agent versions with edit edges; adoption still requires complete, admissible verification. VATS (Verification-Aware Tree Search) allocates the remaining budget between drafting and checking - a Solver builds feasible completion bundles (MILP over missing checks, dependencies, shared setups), a Scorer predicts expected verified gain net of future cost, a Policy samples the next draft or verification plan. GVO (Group Verification Optimization) then trains the improver itself: run G>=2 independent complete searches from the same root under a frozen improver, advantage = each search's verified gain minus all costs against the group's leave-one-out mean, scorer trained by regression on realized suffix returns plus pairwise loss, actor updated with a clipped PPO-style objective; the verification contract stays fixed throughout.
+
+**Author-reported result** — Scientific track: beats Janus on all 50 backbone-task pairs, terminal gains +33.3-40.0% and AUBC +30.4-33.7% (pairwise uplifts 17.8-27.6% terminal). Systems track: +1.85-2.38pp macro over MetaRSI-v1 across 20 backbones (TB2.1, SWE-Pro, GPQA-hard100, AIME). Coding validation 69.4% vs HGM's 64.3% at a 20.8% lower cost index (60.8 vs 76.8). Lifecycle total-cost index 106.3 vs MetaRSI-v1's 112.7; scientific runs cost 7.2% more than Janus - the honesty note is that speculation buys time-to-result, not cheaper searches everywhere.
+
+**Evidence limits** — Scientific searches cost ~7% more than Janus; some 10-backbone figures show 0.83-0.90% higher total-cost indices vs MetaRSI-v1; baseline set is recent preprint systems (Janus, MetaRSI-v1, HGM) rather than an established leaderboard; verification contract fixed means the verifier itself is not improved.
+
+**Code / weights / data / license** — MIT-licensed code at github.com/SpecRSI-GPR/SpecRSI (LICENSE verified 2026-10-15). Paper under arXiv perpetual non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — Two transferable pieces: (1) speculative drafting with complete-verification-only adoption is a budget policy for nanoRSI's attempt loop - start the next proposal before the current one's panels finish, but never promote on partial evidence; (2) GVO's group-of-searches, leave-one-out advantage with a frozen improver is precisely an improve-the-improver probe under ADOPTION item 38's controls (frozen improver, matched budget, verified-gain-only rewards).
+
+![Original Figure 1 (panels a-f): three RSI execution patterns (single-path, parallel, speculative) and their search-theory analogues (greedy, beam search, speculative decoding) - explore ahead, verify before adoption.](assets/paper-figures/specrsi-speculative-rsi.png)
+
+**Source figure / official image** — Original Figure 1 (panels a-f): three RSI execution patterns (single-path, parallel, speculative) and their search-theory analogues (greedy, beam search, speculative decoding) - explore ahead, verify before adoption. · Figure 1 (six panel SVGs trim_f1a-f1f + legend, recomposed into one image): single-path RSI, parallel branches and speculative RSI mapped to greedy, beam search and speculative decoding · [source](https://arxiv.org/html/2610.16491v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — [SpecRSI-GPR/SpecRSI (MIT)](https://github.com/SpecRSI-GPR/SpecRSI)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.16491) · [arXiv HTML v1](https://arxiv.org/html/2610.16491v1) · [SpecRSI-GPR/SpecRSI (MIT)](https://github.com/SpecRSI-GPR/SpecRSI)
 
 <a id="rsi-anything-world-model-rsi"></a>
 
@@ -1369,7 +1459,7 @@
 
 **Source figure / official image** — Official banner of Nous Research's account of Hermes autonomously refactoring its own ~1M-line codebase with 1,393 subagents. · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-10-13.
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
 
 **Open code / weights / data links** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
 
@@ -1494,6 +1584,66 @@
 **Open code / weights / data links** — [Official code](https://github.com/facebookresearch/HyperAgents) · [Code licence](https://github.com/facebookresearch/HyperAgents/blob/main/LICENSE.md)
 
 **Primary sources** — [Paper history](https://arxiv.org/abs/2603.19461) · [Paper v1, authors and section 5.1](https://arxiv.org/html/2603.19461v1) · [Meta publication](https://ai.meta.com/research/publications/hyperagents/) · [Official code](https://github.com/facebookresearch/HyperAgents) · [Code licence](https://github.com/facebookresearch/HyperAgents/blob/main/LICENSE.md)
+
+<a id="gea-group-evolution-sharing"></a>
+
+### Group-Evolving Agents: Open-Ended Self-Improvement via Experience Sharing
+
+**2026-02-04** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-02-04; no revisions. Surfaced via lobehub/awesome-rsi (2026-10-12) and primary-verified 2026-10-15. This is the 'GEA' that served as the strongest self-evolving baseline in Evo² (2610.13025) - the baseline itself was not previously catalogued.
+
+**Institutional relationship** — Zhaotian Weng, Antonis Antoniades, Deepak Nathani, Zhen Zhang, Xiao Pu, Xin Eric Wang - University of California, Santa Barbara.
+
+**What changes and how feedback is reused** — Treats a whole group of agents as the evolutionary unit instead of a single lineage: self-improving agents rewrite their own architecture, and members of a group share and reuse experiences during open-ended evolution, so early exploratory diversity survives instead of being lost in isolated tree branches. The best agent integrates experience from many distinct ancestors.
+
+**Author-reported result** — SWE-bench Verified 71.0% vs 56.7% for the strongest self-evolving baseline (DGM); Polyglot 88.3% vs 68.3%. Against top human-designed frameworks: 71.8% (OpenHands+GPT-5) and 52.0% (Aider+GPT-5 high) - matched or exceeded. Robustness: framework-level bugs repaired in 1.4 iterations on average vs 5.0; the best GEA agent draws on 17 unique ancestors vs 9 for DGM; improvements transfer across GPT-series and Claude-series backbones.
+
+**Evidence limits** — No code released; no repository linked on arXiv or in the paper body. The 71.0/88.3 numbers are against self-evolving baselines under the paper's own harness setup; human-framework comparisons use different backbones (GPT-5).
+
+**Code / weights / data / license** — No code, weights or data released; paper under arXiv non-exclusive license (CC BY 4.0).
+
+**Possible nanoRSI experiment — not implemented here** — Population-level experience sharing is the counter-design to nanoRSI's rejected_recent quarantine: failed candidates' diagnostic trajectories can be shared to later proposals instead of only suppressing them, and the 17-ancestor breadth metric is a directly computable selector statistic for ADOPTION 39 (how many distinct prior attempts a surviving candidate draws on).
+
+![Original Figure 1: overview contrasting tree-structured self-evolution (isolated branches lose exploratory diversity) with Group-Evolving Agents (group members share and reuse experience during open-ended evolution).](assets/paper-figures/gea-group-evolution-sharing.png)
+
+**Source figure / official image** — Original Figure 1: overview contrasting tree-structured self-evolution (isolated branches lose exploratory diversity) with Group-Evolving Agents (group members share and reuse experience during open-ended evolution). · Figure 1 (pipeline_overall.png): GEA vs tree-structured self-evolution - isolated branches on the left, group-level experience sharing on the right · [source](https://arxiv.org/html/2602.04837v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2602.04837) · [arXiv HTML v1](https://arxiv.org/html/2602.04837v1)
+
+<a id="huxley-godel-cmp-steering"></a>
+
+### Huxley-Gödel Machine: Human-Level Coding Agent Development by an Approximation of the Optimal Self-Improving Machine
+
+**2025-10-24** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 2025-10-24, v2 2025-10-28, v3 2025-10-29 (current); catalogued at the rolling window's lower edge. Surfaced via lobehub/awesome-rsi (2026-10-12) and primary-verified 2026-10-15.
+
+**Institutional relationship** — Wenyi Wang, Piotr Piękos, Li Nanbo, Firas Laakom, Yimeng Chen, Mateusz Ostaszewski, Mingchen Zhuge, Jürgen Schmidhuber - all at KAUST.
+
+**What changes and how feedback is reused** — Coding agents edit their own codebases, building a tree of self-modifications. The paper identifies a Metaproductivity-Performance Mismatch - an agent's benchmark score does not reliably indicate its potential to produce improved descendants - and proposes CMP (Clade Meta Productivity), which aggregates the benchmark performances of an agent's descendants as the indicator of self-improvement potential. HGM estimates CMP online and uses it to steer search through the self-modification tree; the paper shows that, given certain assumptions, access to the true CMP suffices to simulate a Gödel Machine.
+
+**Author-reported result** — SWE-Verified-60 (800 evaluations, best-belief agent): HGM 56.7 (+16.7) vs DGM 53.3 (+13.3) and SICA 50.0 (+10), at 517 CPU-hours vs DGM's 1231 (2.38x less); Polyglot 30.5 (+10.2) vs 27.1/25.4 at 347h vs 2385h (6.86x less than DGM). The CMP estimator's weighted correlation with realized descendant gain: 0.778 (SWE-Verified-60) and 0.626 (Polyglot) vs DGM 0.285/0.383 and SICA 0.444/0.274. Full SWE-bench Verified reaches 61.4% after 8000 evaluations (initial agent 53.2%), the top GPT-5-mini system on the leaderboard at the time. Transfer: the agent optimized with GPT-5-mini evaluated with GPT-5 on SWE-bench Lite scores 47.8% (filtered; SWE-agent 48.3%) and 57% (standard; 56.7%) - matching the best officially checked human-engineered agents.
+
+**Evidence limits** — Leaderboard 'top at the time' claims age quickly; CMP correlations are measured on weighted evaluation subsets; the paper is CC BY-NC-SA on arXiv (code is Apache-2.0 separately).
+
+**Code / weights / data / license** — Apache-2.0 code at github.com/metauto-ai/HGM (LICENSE verified 2026-10-15). Paper license CC BY-NC-SA 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — CMP is an implementable rival selector for ADOPTION 38/39: rank parents by the aggregated frozen-panel performance of their descendants rather than the parent's own score, computable from the existing lineage store without new model calls. The mismatch finding is also a direct warning for nanoRSI's gate: a candidate's own panel score is a noisy predictor of lineage value.
+
+![Original Figure 1: benchmark performance barely correlates with self-improvement gain (left), motivating CMP - the clade-aggregated performance of descendants - as the steering signal for the tree of self-modifications (right).](assets/paper-figures/huxley-godel-cmp-steering.svg)
+
+**Source figure / official image** — Original Figure 1: benchmark performance barely correlates with self-improvement gain (left), motivating CMP - the clade-aggregated performance of descendants - as the steering signal for the tree of self-modifications (right). · Figure 1 (intro_figure_combined_wider.svg): left - the Metaproductivity-Performance Mismatch scatter (benchmark accuracy vs descendant gain); right - HGM's clade-level metric and compute efficiency · [source](https://arxiv.org/html/2510.21614v3)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — [metauto-ai/HGM (Apache-2.0)](https://github.com/metauto-ai/HGM)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2510.21614) · [arXiv HTML v3](https://arxiv.org/html/2510.21614v3) · [metauto-ai/HGM (Apache-2.0)](https://github.com/metauto-ai/HGM)
 
 <a id="family-program-evolution"></a>
 
@@ -1741,7 +1891,37 @@
 
 <a id="family-feedback-orchestration"></a>
 
-## Feedback review & orchestration (5)
+## Feedback review & orchestration (6)
+
+<a id="ucoe-verifier-harness-coevolution"></a>
+
+### Verifier-Harness Co-Evolution for Training-Free Self-Improvement on Open-Ended Tasks
+
+**2026-10-13** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-13, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-15. The code URL stated in the paper was a 404 at verification time.
+
+**Institutional relationship** — Tianyi Xu, Joe Nguyen, Huazheng Wang (Oregon State University); Yaolun Zhang (Oregon State / AG2 AI, equal contribution); Yiran Wu (Penn State / AG2 AI, equal contribution); Shengyu Dai, Saba Moeinizade, Zhenwen Shao (Johnson & Johnson); Qingyun Wu (Penn State / AG2 AI).
+
+**What changes and how feedback is reused** — Co-evolves an executable verifier program V=(scorers, aggregator, diagnosis) with the agent's harness state, training-free. Verifier candidates are synthesized from mined actor-vs-larger-frozen-model response contrasts (pairs differing by exactly one targeted flaw family) and selected by driving capacity - discrimination on the family where the candidate is weakest (maximin over contrast families; Theorem 1 shows this maximizes worst-case success over any family mixture). The verifier scores a draft, diagnoses its weakest criterion into one local repair, and the revision is served only if its reward exceeds the draft's by a margin; only accepted repairs may write task-derived content into the harness, distilled into at most one bounded trigger-action procedure. At checkpoints the verifier itself is re-synthesized from accumulated diagnostics and replaced only on strict worst-family gain plus winning more held-out contrasts than losing (W>L) within tolerance kappa=0.10 on every family.
+
+**Author-reported result** — Open-ended preference (tie-adjusted, Qwen3.5-397B judge) vs matched direct generation: 59.00% average with Qwen3-8B and 57.19% with Qwen3.8-27B (best baselines 49.26/51.60), winning all 12 benchmark x actor settings across Arena-Hard, WritingPrompts, WildBench, WritingBench, MultiChallenge, RefineBench. Verifiable tasks (8B): mean 36.06%->38.48%, IFBench 30.00->34.67, Hard-MATH 56.54->59.16, BigCodeBench-Hard no loss while all baselines drop below direct generation. In the Codex agent harness on SpreadsheetBench-2 (GPT-5.6-luna): 22.7% vs 17.3% exact match. Ablations: full 58.30% vs harness-updates-only 50.80%, fixed verifier 56.60%. Mechanism checks: of the updated verifier's 94 accepted proposals, externally judged better in 73 (worse 7, ties 14).
+
+**Evidence limits** — Preference judged by a large Qwen model (same family as the actor backbones); the paper alternates between 'Qwen3-8B' and 'Qwen3.8-27B' actor naming in different passages; headline code URL 404 at verification time; open-ended tasks lack ground truth so all improvements are preference-relative.
+
+**Code / weights / data / license** — Code URL stated in the paper (github.com/tianyi0216/Unified-Co-Evolution) returned 404 at verification (2026-10-15) - treated as not yet released. Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — The contrast-family maximin selection and the W>L-with-tolerance replacement rule are ready-made gate criteria for nanoRSI's evaluator track: a candidate verifier replaces the incumbent only if it is no worse on any contrast family and strictly better overall - a computable analog of the anchored-reference agreement check in ADOPTION item 44. Accepted-repair-only memory writes with one bounded procedure per acceptance also bound unbounded memory growth.
+
+![Original Figure 2: the UCoE workflow couples a co-evolving executable verifier (synthesis, contrast-based maximin selection, checkpoint evolution) with the agent's draft-revise-distill loop, where only accepted repairs update harness state.](assets/paper-figures/ucoe-verifier-harness-coevolution.svg)
+
+**Source figure / official image** — Original Figure 2: the UCoE workflow couples a co-evolving executable verifier (synthesis, contrast-based maximin selection, checkpoint evolution) with the agent's draft-revise-distill loop, where only accepted repairs update harness state. · Figure 2 (fig2v3.svg): UCoE workflow - verifier side (synthesize / contrast-select / evolve) coupled to agent side (draft / revise / distill), with accepted repairs gating harness updates · [source](https://arxiv.org/html/2610.17609v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.17609) · [arXiv HTML v1](https://arxiv.org/html/2610.17609v1)
 
 <a id="whoverifies-coevolving-graders"></a>
 
@@ -1895,7 +2075,7 @@
 
 <a id="family-safety-governance"></a>
 
-## Safety & governance (3)
+## Safety & governance (4)
 
 <a id="cace-bench-admission-gate"></a>
 
@@ -1956,6 +2136,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2609.17817) · [Paper HTML (affiliations, attack figures)](https://arxiv.org/html/2609.17817v1)
+
+<a id="safety-selfevolving-saver-survey"></a>
+
+### Safety in Self-Evolving Agents: A Survey
+
+**2026-09-08** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 2026-09-08; 80 pages, 6 figures, 13 tables. Surfaced via lobehub/awesome-rsi (2026-10-12) and primary-verified 2026-10-15.
+
+**Institutional relationship** — 31 authors led by Jiahao Chen, Zhou Feng, Oubo Ma et al., corresponding author Shouling Ji (Zhejiang University); co-authors span Zhejiang University, HUST, Xi'an Jiaotong, NUDT, SJTU, Georgia Tech, USTC, NTU, OPPO, Tianjin University, Chongqing University, Alibaba and Rakuten.
+
+**What changes and how feedback is reused** — Survey (no new mechanism): reframes safety for agents that continually update reusable state - parameters, memories, tools, skills, workflows - from experience. Once 'past events become future causes', information harmless in one context can later affect decisions with greater persistence, authority or scope. Proposes SAVER, a transition-centered analysis framework: Substrate (where reusable influence lives), Adaptation (how it changes), Violation (which safety attributes break), Exposure (where failures surface), Response (containment, repair, revocation). Corpus: 683 coded papers (579 registry + 48 supplements + 56 additional), 577-paper visualization subset.
+
+**Author-reported result** — Cross-cutting findings rather than benchmark numbers: unsafe states can arise from legitimate experience when adaptation overextends its validity conditions; evidence is strong for admission, retrieval, activation, exposure and local containment, but weak for repairing descendants of unsafe states and for evaluating whether unsafe influence re-emerges; the survey argues for longitudinal evaluation tracing failures back to their originating transition.
+
+**Evidence limits** — Survey paper: taxonomy and evidence mapping, no new mechanism or numbers; coverage frozen at its registry construction date.
+
+**Code / weights / data / license** — Curated project list at github.com/xaddwell/awesome-self-evolving-agent-safety (page: xaddwell.github.io/Awesome-Self-Evolving-Agent-Safety/). Paper under arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — SAVER's five-way decomposition is a checklist schema for nanoRSI's evidence ledger: each accepted edit can record substrate, adaptation, violation-checked, exposure and response. The survey's weakest-evidence areas - descendant repair and re-emergence - map onto nanoRSI's rejected_recent and lineage verification: retiring an unsafe skill must also address candidates already derived from it.
+
+![Original Figure 2: the transition-centered SAVER structure - the central Substrate-Adaptation ring couples to Violation, Exposure and Response, organizing the survey's safety analysis of self-evolving agents.](assets/paper-figures/safety-selfevolving-saver-survey.png)
+
+**Source figure / official image** — Original Figure 2: the transition-centered SAVER structure - the central Substrate-Adaptation ring couples to Violation, Exposure and Response, organizing the survey's safety analysis of self-evolving agents. · Figure 2, PDF page 4 (HTML figure rendering failed; rendered from PDF at 150 dpi): overview of the transition-centered survey structure - the central Substrate x Adaptation ring with Violation, Exposure and Response traces and taxonomy panels · [source](https://arxiv.org/pdf/2610.00093v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — [Awesome-Self-Evolving-Agent-Safety list](https://github.com/xaddwell/awesome-self-evolving-agent-safety)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.00093) · [arXiv PDF v1 (figures; HTML rendering failed)](https://arxiv.org/pdf/2610.00093v1) · [Awesome-Self-Evolving-Agent-Safety list](https://github.com/xaddwell/awesome-self-evolving-agent-safety)
 
 <a id="skill-misevolution-safety"></a>
 

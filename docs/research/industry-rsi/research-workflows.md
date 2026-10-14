@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [AI-scientist systems](#family-ai-scientists) | 9 |
+| [AI-scientist systems](#family-ai-scientists) | 10 |
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 15 |
+| [Analyses & audits](#family-analyses-audits) | 16 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
 
-## AI-scientist systems (9)
+## AI-scientist systems (10)
+
+<a id="janus-coevolving-world-models"></a>
+
+### Janus: Enhancing Long-Horizon Autonomous Research with Co-Evolving World Models
+
+**2026-10-09** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-09 (announced in the 2026-10-12 batch); queued on 2026-10-13/14 for full-number verification and primary-verified on 2026-10-15.
+
+**Institutional relationship** — Mengdi Liu, Chenghao Jia, Hong Chang (corresponding), Mingjie He, Shiguang Shan, Xilin Chen - State Key Laboratory of AI Safety, Institute of Computing Technology, CAS; several also University of Chinese Academy of Sciences.
+
+**What changes and how feedback is reused** — Replaces the reactive Generate-Execute-Feedback loop of autonomous research agents with Predict-Verify-Evolve over an evolving research DAG, framed as budget-constrained POMDP search. An LLM world model scores candidate modifications before execution via a sparse pairwise tournament (soft Bradley-Terry fitting) on value improvement, information gain and exploration utility with adaptive weights, pruning, selecting or debate-refining proposals before costly runs. Feedback is distilled into three co-evolving skill streams: intra/cross-task skills for the research agent, prediction/exploration skills for the world model itself, and coordination skills for their debate protocol.
+
+**Author-reported result** — MLS-Bench-Lite (30 tasks, 5-hour budget): with DeepSeek-V4 Flash, JANUS beats every baseline system (Test 41.07 vs best baseline Codex 38.91; Beat-All 43.3%); with a GPT-5.6 solver, Beat-All 56.7%; with a Codex backbone, peak Test 49.78 and Beat-All 63.3%. On three real tasks (nanoGPT BPB, MinGPT kernel speedup, G2P macro Pearson), average sample-efficiency speedups over baselines: 13.78x vs MLEvolve, 9.43x vs Arbor, 7.67x vs AIBuildAI, 3.74x vs Codex (up to 43x on nanoGPT). Ablations show removing the world model or either evolution stream degrades performance.
+
+**Evidence limits** — The code repository has no license file (verified 2026-10-15) - treat as all-rights-reserved, ideas only. Speedup claims are sample-efficiency on three tasks; MLS-Bench-Lite comparisons mix backbones (Flash solver vs GPT-5.6 solver vs Codex) reported per configuration.
+
+**Code / weights / data / license** — Code exists at github.com/bilemond/JANUS but carries no license file (verified 2026-10-15); no license = all rights reserved, so only ideas may be borrowed. Paper under arXiv non-exclusive license (CC BY 4.0 per abs page).
+
+**Possible nanoRSI experiment — not implemented here** — The pre-execution tournament is the cheap pre-rank arm ADOPTION 39's selector study needs: a world model orders candidates by expected panel delta before any episode is spent, and its ranking quality against realized gate outcomes is itself measurable. JANUS's second face - the predictor's own skill stream evolving - is the improve-the-improver probe: track whether selection accuracy improves across rounds at matched budget.
+
+![Original Figure 1: the reactive Generate-Execute-Feedback paradigm versus JANUS's Predict-Verify-Evolve loop, where an evolving world model verifies candidates before execution and co-evolves with the research agent.](assets/paper-figures/janus-coevolving-world-models.png)
+
+**Source figure / official image** — Original Figure 1: the reactive Generate-Execute-Feedback paradigm versus JANUS's Predict-Verify-Evolve loop, where an evolving world model verifies candidates before execution and co-evolves with the research agent. · Figure 1 (Janus_Intro.png): Generate-Execute-Feedback (left) contrasted with JANUS's Predict-Verify-Evolve loop over an evolving research DAG and its efficiency/ceiling scaling (right) · [source](https://arxiv.org/html/2610.13194v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — [bilemond/JANUS (no license)](https://github.com/bilemond/JANUS)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.13194) · [arXiv HTML v1](https://arxiv.org/html/2610.13194v1) · [bilemond/JANUS (no license)](https://github.com/bilemond/JANUS)
 
 <a id="andromeda2-evidence-grounded-lab"></a>
 
@@ -691,7 +721,37 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (15)
+## Analyses & audits (16)
+
+<a id="teb-trace-evolution-bench"></a>
+
+### Trace Evolution Bench: Measuring Whether Agents Improve from Their Own Environment Traces
+
+**2026-10-10** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-10, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-15.
+
+**Institutional relationship** — Fangfei Li, Chenyang Zhao, Long Wang, Feng Tian, Lv Guo - all MatrixOrigin, China (matrixorigin.cn / matrixorigin.io addresses; Zhao, Wang, Tian, Guo corresponding).
+
+**What changes and how feedback is reused** — A measurement protocol, not a new improver: three frozen 80/20/40 task packs (office, coding, manufacturing; n=40 held-out each) where locked held-out ids are never fed into evolve(), a validation gate with accept/rollback (min_delta=0), R=3 rounds at temperature 0, and - critically - repeated frozen no_evolve rescoring of the same seeds, giving each seed its own noise band (max-min of four frozen passes). Genuine improvement is judged as seed-matched paired excess (method gain minus same-seed no_evolve gain) exceeding that seed's own band, with anti-leak identifier checks, contamination flags and a 10-pp round-0 pairing cutoff.
+
+**Author-reported result** — Coding track (primary): 7 of 9 DeepSeek text-update cells exceed their seed bands (gepa_llm seeds 42/43 +15.0 each; ace_llm 42/43 +20.0/+10.0; expel_llm 42/43/44 +15.0/+7.5/+20.0); gepa_llm seed 44 moves down by its full 12.5-pp band. Non-reproduction is the headline: GLM has only 2 paired cells above band, MiniMax 1 - no method remains above its own band on every seed of all three models. Frozen no_evolve gains were negative on all three DeepSeek coding seeds (-7.5/-2.5/-10.0): endpoint gain alone overstates progress. Office (bands up to 17.5 pp) and manufacturing show no paired positive excess beyond noise.
+
+**Evidence limits** — Benchmark measures text-update pipelines (GEPA/ACE/ExpeL-style) on three task packs with hosted endpoints (non-deterministic even at temperature 0); noise bands are seed-specific max-min of four passes, not confidence intervals; the protocol itself is the contribution - no new improvement mechanism.
+
+**Code / weights / data / license** — Runner, table contract, three packs, run configs and plotting released with the paper (hosted endpoints need your own API key); data CC BY 4.0, code MIT.
+
+**Possible nanoRSI experiment — not implemented here** — TEB is external validation of nanoRSI's noise-band doctrine with a sharper instrument: seed-matched paired excess against each seed's own four-pass band is exactly the acceptance bar ADOPTION items 38/39 prescribe, and its negative no_evolve gains (frozen rescores drift down) warn that any frozen-panel comparison must rescore the parent in the same session. The non-reproduction finding (no method clears its band on every seed/model) is the field-level version of the ALFWorld flash non-replication already published as ADOPTION 37.
+
+![Original protocol figure: each round calls evolve() once under a validation gate with accept/rollback, then rescores the same locked held-out tasks; genuine improvement is the seed-matched paired excess over that seed's own frozen-rescoring noise band.](assets/paper-figures/teb-trace-evolution-bench.svg)
+
+**Source figure / official image** — Original protocol figure: each round calls evolve() once under a validation gate with accept/rollback, then rescores the same locked held-out tasks; genuine improvement is the seed-matched paired excess over that seed's own frozen-rescoring noise band. · Pipeline figure (fig_teb_pipeline.svg): the rounds contract - round 0 scores M0 on locked held-out ids and freezes the baseline; rounds 1-3 each run evolve() once, accept or roll back via the validation gate, then rescore the same ids, with excess read against the seed's four-pass no_evolve band · [source](https://arxiv.org/html/2610.15055v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.15055) · [arXiv HTML v1](https://arxiv.org/html/2610.15055v1)
 
 <a id="mc-evobench-experience-audit"></a>
 

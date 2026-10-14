@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [AI 科学家系统](#family-ai-scientists) | 9 |
+| [AI 科学家系统](#family-ai-scientists) | 10 |
 | [自主后训练及其评测](#family-autonomous-post-training) | 3 |
 | [公司研发遥测](#family-company-telemetry) | 7 |
 | [对齐自动化](#family-alignment-automation) | 3 |
-| [分析与审计](#family-analyses-audits) | 15 |
+| [分析与审计](#family-analyses-audits) | 16 |
 | [立场、路线图与实验室](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
 
-## AI 科学家系统 (9)
+## AI 科学家系统 (10)
+
+<a id="janus-coevolving-world-models"></a>
+
+### Janus: Enhancing Long-Horizon Autonomous Research with Co-Evolving World Models
+
+**2026-10-09** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-09（随 2026-10-12 批次公告）；10-13/14 入队待全数字核验，2026-10-15 完成一手核验。
+
+**机构关系** — Mengdi Liu、Chenghao Jia、Hong Chang（通讯）、Mingjie He、Shiguang Shan、Xilin Chen——中科院计算所 AI 安全全国重点实验室；多位兼属中国科学院大学。
+
+**改变对象与反馈复用** — 把自动研究 agent 的反应式 Generate-Execute-Feedback 循环替换为在演化研究 DAG 上的 Predict-Verify-Evolve，建模为预算约束 POMDP 搜索。LLM 世界模型在执行前以稀疏两两锦标赛（软 Bradley-Terry 拟合）按价值改进、信息增益、探索效用三准则（自适应权重）为候选打分，先剪枝、选择或辩论精炼再进入昂贵执行。反馈蒸馏进三条共同演化的技能流：研究 agent 的任务内/跨任务技能、世界模型自身的预测/探索技能、以及双方辩论协议的协调技能。
+
+**作者报告结果** — MLS-Bench-Lite（30 任务、5 小时预算）：DeepSeek-V4 Flash 下 JANUS 全面胜出（Test 41.07 对最强基线 Codex 38.91；Beat-All 43.3%）；换 GPT-5.6 solver 后 Beat-All 56.7%；Codex 骨干下峰值 Test 49.78、Beat-All 63.3%。三个真实任务（nanoGPT BPB、MinGPT 核加速、G2P 宏 Pearson）平均采样效率加速：对 MLEvolve 13.78 倍、Arbor 9.43 倍、AIBuildAI 7.67 倍、Codex 3.74 倍（nanoGPT 上最高 43 倍）。消融显示移除世界模型或任一演化流均降性能。
+
+**证据边界** — 代码仓库无 LICENSE 文件（2026-10-15 核验）——按保留所有权利对待，只借鉴思想。加速主张是三个任务上的采样效率；MLS-Bench-Lite 对比按配置混合骨干（Flash solver、GPT-5.6 solver、Codex）分别报告。
+
+**代码／权重／数据／许可** — 代码位于 github.com/bilemond/JANUS 但无 LICENSE 文件（2026-10-15 核验）；无许可证即保留所有权利，只可借鉴思想。论文按 arXiv 非独占许可（abs 页标 CC BY 4.0）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 执行前锦标赛正是 ADOPTION 第 39 项选型研究需要的廉价预排序臂：世界模型在任何 episode 花费前按预期面板增益给候选排序，其排序质量对实际闸门结果的命中本身可测。JANUS 的另一面——预测器自身技能流也在演化——是'改进改进器'探针：追踪同预算下选型准确率是否随轮次提升。
+
+![论文原图 1：反应式 Generate-Execute-Feedback 范式与 JANUS 的 Predict-Verify-Evolve 循环对比——演化的世界模型在执行前验证候选，并与研究 agent 共同演化。](assets/paper-figures/janus-coevolving-world-models.png)
+
+**原文图／官方图片** — 论文原图 1：反应式 Generate-Execute-Feedback 范式与 JANUS 的 Predict-Verify-Evolve 循环对比——演化的世界模型在执行前验证候选，并与研究 agent 共同演化。 · Figure 1 (Janus_Intro.png): Generate-Execute-Feedback (left) contrasted with JANUS's Predict-Verify-Evolve loop over an evolving research DAG and its efficiency/ceiling scaling (right) · [source](https://arxiv.org/html/2610.13194v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — [bilemond/JANUS (no license)](https://github.com/bilemond/JANUS)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.13194) · [arXiv HTML v1](https://arxiv.org/html/2610.13194v1) · [bilemond/JANUS (no license)](https://github.com/bilemond/JANUS)
 
 <a id="andromeda2-evidence-grounded-lab"></a>
 
@@ -691,7 +721,37 @@
 
 <a id="family-analyses-audits"></a>
 
-## 分析与审计 (15)
+## 分析与审计 (16)
+
+<a id="teb-trace-evolution-bench"></a>
+
+### Trace Evolution Bench: Measuring Whether Agents Improve from Their Own Environment Traces
+
+**2026-10-10** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 提交于 2026-10-10，随翻倍的 2026-10-14 批次公告；2026-10-15 完成一手核验。
+
+**机构关系** — Fangfei Li、Chenyang Zhao、Long Wang、Feng Tian、Lv Guo——全员 MatrixOrigin（中国；matrixorigin.cn/.io 邮箱；Zhao、Wang、Tian、Guo 为通讯）。
+
+**改变对象与反馈复用** — 这是测量协议而非新改进器：三套冻结的 80/20/40 任务包（办公、编码、制造；各 n=40 留出），锁定的留出 id 永不进入 evolve()，带接受/回滚的验证闸（min_delta=0），温度 0 下 R=3 轮；关键是对同一种子重复冻结重评 no_evolve，得到该种子自己的噪声带（四遍冻结通过的最大-最小）。真实改进判定为种子配对超额（方法增益减同种子 no_evolve 增益）超过该种子自身噪声带，并配反泄漏 id 检查、污染标记与 10pp 的第 0 轮配对门槛。
+
+**作者报告结果** — 编码赛道（主记分板）：DeepSeek 文本更新 9 格中 7 格超过自身种子带（gepa_llm 种子 42/43 各 +15.0；ace_llm 42/43 +20.0/+10.0；expel_llm 42/43/44 +15.0/+7.5/+20.0）；gepa_llm 种子 44 按自身 12.5pp 全带下行。不可复现是头条：GLM 仅 2 格超带、MiniMax 仅 1 格——没有任何方法在三模型全部种子上都稳超自身带。DeepSeek 编码三个种子的冻结 no_evolve 增益全为负（-7.5/-2.5/-10.0）：只看端点增益会高估进步。办公（带宽至 17.5pp）与制造赛道无超噪声的配对正超额。
+
+**证据边界** — 基准测的是文本更新管线（GEPA/ACE/ExpeL 式）在三套任务包上的表现，托管端点即便温度 0 也非确定；噪声带是种子特定的四遍最大-最小，不是置信区间；协议本身即贡献——不含新改进机制。
+
+**代码／权重／数据／许可** — 运行器、表格契约、三套任务包、运行配置与绘图随论文发布（托管端点需自备 API key）；数据 CC BY 4.0、代码 MIT。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — TEB 用更锋利的工具外部验证了 nanoRSI 的噪声带纪律：种子配对超额对自身四遍带正是 ADOPTION 第 38/39 项规定的接受门槛；其 no_evolve 负增益（冻结重评会漂移下行）警示任何冻结面板比较都必须同场重测父代。'没有任何方法在每种子/模型上稳超自身带'的不可复现发现，就是已发布的 ADOPTION 第 37 项 ALFWorld flash 未复现在全领域的镜像。
+
+![论文原图：每轮在带接受/回滚的验证闸下调用一次 evolve()，再重评同一批锁定留出任务；真实改进是与该种子自身冻结重评噪声带相比的配对超额。](assets/paper-figures/teb-trace-evolution-bench.svg)
+
+**原文图／官方图片** — 论文原图：每轮在带接受/回滚的验证闸下调用一次 evolve()，再重评同一批锁定留出任务；真实改进是与该种子自身冻结重评噪声带相比的配对超额。 · Pipeline figure (fig_teb_pipeline.svg): the rounds contract - round 0 scores M0 on locked held-out ids and freezes the baseline; rounds 1-3 each run evolve() once, accept or roll back via the validation gate, then rescore the same ids, with excess read against the seed's four-pass no_evolve band · [source](https://arxiv.org/html/2610.15055v1)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.15055) · [arXiv HTML v1](https://arxiv.org/html/2610.15055v1)
 
 <a id="mc-evobench-experience-audit"></a>
 

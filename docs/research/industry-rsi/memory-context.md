@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Structured knowledge bases & graphs](#family-structured-knowledge) | 8 |
-| [Experience accumulation & replay](#family-experience-accumulation) | 8 |
+| [Experience accumulation & replay](#family-experience-accumulation) | 9 |
 | [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
 | [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 3 |
@@ -258,7 +258,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## Experience accumulation & replay (8)
+## Experience accumulation & replay (9)
+
+<a id="rbc-randomized-block-curation"></a>
+
+### Reliable Memory from Unstable Growth: Curating Self-Written Agent Playbooks with Randomized Experiments
+
+**2026-10-13** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-13, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-15.
+
+**Institutional relationship** — Hoang Pham, Dong Le, Ponhvoan Srey, Anh Tuan Luu (Nanyang Technological University); Cong-Duy Nguyen (VinUniversity); Anh Tuan Luu also VinUniversity (corresponding).
+
+**What changes and how feedback is reused** — Treats the self-written playbook as an experiment, not a text: lessons are embedded and Ward-clustered into m=8 topic blocks; on practice tasks each block is independently included at p=1/2 per episode (two-level factorial design), and a ridge regression of task success on inclusion indicators estimates each block's effect - which equals its Banzhaf value over random co-served subsets. Only blocks with positive estimated effects are served (highest first, within a 40% token budget); if none help, no playbook is served. RBC grows K=3 playbooks, curates each, then verifies 2K+1 candidates (curated sets, whole playbooks, empty) on fresh practice episodes and serves the winner. Growth is unchanged; curation adds no LLM calls.
+
+**Author-reported result** — Across 2 memory systems (ACE, Dynamic Cheatsheet) x 3 models (Qwen3.8-27B, Qwen3.5-9B, Gemma-4-31B) x 3 benchmarks (AppWorld, WebShop, ALFWorld): RBC averages 66.9 vs 55.5 (whole playbook), 54.1 (no playbook) and 53.8 (the agent's own selection of lessons). Worst case measured: serving the whole playbook on Qwen 27B AppWorld with pass/fail feedback fell 69.6 points below no playbook (19.2 vs 78.4). On ACE, RBC never falls more than 0.8 below no-playbook while every baseline drops at least 5.4 somewhere.
+
+**Evidence limits** — Block granularity is fixed at m=8 Ward clusters; practice-task budget doubles serving cost during curation; evaluation covers three interactive benchmarks with three open-weight models; curation estimates are noisy at small practice-sample sizes (per-block effects use ridge shrinkage).
+
+**Code / weights / data / license** — Anonymous code at anonymous.4open.science/r/rbc (review-stage artifact). Paper under arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — RBC is a drop-in causal upgrade for ADOPTION item 48's per-skill utility ledger: instead of logging retrieval-correlated utility, measure each skill block's randomized on/off effect on frozen-panel episodes (the Banzhaf/ridge estimator needs only inclusion indicators and outcomes nanoRSI already records), and retire or keep blocks on sign, not on vibes. The 69.6-point worst case is the standing warning for serving whole self-written skill files.
+
+![Original Figure 1: judging one's own lessons (a) and post-hoc context valuation (b) versus Randomized Block Curation (c), which measures each self-written block's causal effect by on/off practice runs and serves only blocks that measurably help.](assets/paper-figures/rbc-randomized-block-curation.svg)
+
+**Source figure / official image** — Original Figure 1: judging one's own lessons (a) and post-hoc context valuation (b) versus Randomized Block Curation (c), which measures each self-written block's causal effect by on/off practice runs and serves only blocks that measurably help. · Figure 1 (f_main.svg): three curation designs contrasted - (a) agent self-judgment, (b) context valuation of random subsets, (c) RBC's randomized block inclusion on practice tasks with keep-only-helpful selection · [source](https://arxiv.org/html/2610.18427v1)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.18427) · [arXiv HTML v1](https://arxiv.org/html/2610.18427v1)
 
 <a id="reharness-agentic-continual-learning"></a>
 
@@ -374,7 +404,7 @@
 
 **Source figure / official image** — Figure 1: Prime Agent connects persistent root and subagent sessions to a daemon and continual refinement loop. · Figure 1, PDF p.3 · [source](https://arxiv.org/html/2608.23552v1)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-09-18.
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
 
 **Open code / weights / data links** — [Official code and license](https://github.com/PrimeIntellect-ai/prime-agent)
 
