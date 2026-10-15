@@ -6,16 +6,76 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [AI 科学家系统](#family-ai-scientists) | 10 |
+| [AI 科学家系统](#family-ai-scientists) | 12 |
 | [自主后训练及其评测](#family-autonomous-post-training) | 3 |
 | [公司研发遥测](#family-company-telemetry) | 7 |
 | [对齐自动化](#family-alignment-automation) | 3 |
-| [分析与审计](#family-analyses-audits) | 16 |
+| [分析与审计](#family-analyses-audits) | 18 |
 | [立场、路线图与实验室](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
 
-## AI 科学家系统 (10)
+## AI 科学家系统 (12)
+
+<a id="discovery-scaling-forgetting"></a>
+
+### Scaling Discovery Requires Forgetting
+
+**2026-10-14** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 提交于 2026-10-14，随 2026-10-15 批次公告；2026-10-16 完成一手核验。
+
+**机构关系** — Shangyin Tan、Ben Zhou、Lakshya A Agrawal、Jialin Zhang、Qiuyang Mang、Donghyun Lee、Dennis Jacob、Koushik Sen、Matei Zaharia（UC Berkeley）；Yilin Chen（斯坦福）；Alex Dimakis（UC Berkeley × Bespoke Labs）。
+
+**改变对象与反馈复用** — 研究为何扩展 LLM 代理的自动化研究——更长迭代、更多并行代理、可通信的代理团队——会平台化：代理锚定自己过去的尝试，随历史累积做出越来越少、越来越小的编辑。解法是周期性遗忘：丢弃累积的搜索状态、从迄今最优候选重启搜索，只留现任者不留历史。任务是带打分验证器的程序/内核/设置迭代精修（OpenEvolve 式）——启发式编程、内核优化与模型训练共四项，以总花费美元计量。
+
+**作者报告结果** — 在可通信的代理团队中，周期性遗忘较不遗忘的并行代理最多提升 15%、较单代理最多 39%；在 AtCoder 启发式竞赛 014 与 VLIW 内核任务上，按花费美元计，遗忘重启明显解除分数停滞（图 1）。
+
+**证据边界** — 四项带打分验证器的任务（启发式编程、内核优化、模型训练）；“遗忘”指丢弃搜索状态而非记忆或技能；增益以跨任务-配置的至多 15%/39% 报告，摘要未给逐任务方差；Comments 无代码链接。
+
+**代码／权重／数据／许可** — Comments 字段无代码链接（2026-10-16 核对）；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可作 nanoRSI 选择器研究的种群级对照：周期性清空被拒/入围历史（rejected_recent、谱系权重）但保留现任者与冻结测试面板，使提案器条件化不锚定累积的拒绝历史——用现有多种子编排器即可直接作为一条选择器臂验证（等 episode 预算下对比全保留 vs 周期重置）。
+
+![论文原图 1：AtCoder 启发式竞赛 014 与 VLIW 内核任务上、迄今最佳分数对总花费美元——每次遗忘重启（Forget 1/2/3）都明显解开连续会话中不再上涨的分数进程。](assets/paper-figures/discovery-scaling-forgetting.png)
+
+**原文图／官方图片** — 论文原图 1：AtCoder 启发式竞赛 014 与 VLIW 内核任务上、迄今最佳分数对总花费美元——每次遗忘重启（Forget 1/2/3）都明显解开连续会话中不再上涨的分数进程。 · Figure 1, PDF page 1 (no HTML full text available); 150 dpi render, cropped · [source](https://arxiv.org/pdf/2610.20563)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.20563) · [arXiv PDF v1 (no HTML full text)](https://arxiv.org/pdf/2610.20563)
+
+<a id="areal-rsi-adaptive-scaling"></a>
+
+### AReaL-RSI: Adaptive Scaling and Coordination of Recursive Self-Improvement
+
+**2026-10-13** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-13，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。
+
+**机构关系** — 十四位作者分属蚂蚁集团（11）、浙江大学（3）与香港科技大学（2，含 Binhang Yuan）；Wenhao Zhou 与 Yingqi Peng 为蚂蚁集团 × 浙江大学。机构取自 HTML 作者块的署名行。
+
+**改变对象与反馈复用** — 在不触碰骨干权重、工具权限与编排的前提下，围绕任务条件化的 harness 库 h = (p, K, S)——研究方向、可复用知识、可重复技能——组织一个持久的研究团队。领导者代理分配 harness、区分工件质量与研究潜力并路由记忆。条件化记忆共享给每条经验记录附带观测结果、解释、已测条件、剩余不确定性与 κ 标签（problem / positive）：未解决问题最多路由给一名额外研究者，正向发现可广泛共享，改标签需要新的支撑引用；接收方先本地测试再采纳。每个战役结束后，领导者运行独立的循证评审会话，从可检索记录提出 harness 修订而不做新实验；被接受且版本一致的修订替换库条目供后续战役使用。
+
+**作者报告结果** — 在报告的资源分配下对比 Codex-Goal：Terminal Bench 2.1 每骨干 +2.2 个百分点（Luna 75.3→77.5%、Astra 85.4→87.6%）；KernelBench 平均加速 +32.2–36.8%（Luna 1.74×→2.30×、Astra 6.28×→8.59×）。扩展研究（表 2，4 个 KernelBench 任务 × 2 骨干）：经验共享加专职研究者角色比独立探索低 1.9–27.5% 内核延迟、比仅共享低 1.3–33.9%，覆盖全部七个可比任务-骨干对（Astra L3P10：独立/共享/共享+角色 = 8.815 / 7.379 / 6.395 ms）。
+
+**证据边界** — 作者声明结果未建立等算力效率，比较为描述性、无重复运行不确定度。仅共享在 Luna L1P63（11.944→15.633 ms，+30.9%）与 L2P71（+13.4%）上退化；Luna L3P10 在全部配置下失败；Astra 越狱任务增益极小（+0.119）。机制效应未分离、多样性未测量。防泄漏指令（可复用资产不得含任务答案或隐藏测试信息）是语义性要求而非形式化保证。
+
+**代码／权重／数据／许可** — HTML 中未见代码或数据可用性声明（2026-10-16 核对）；论文为 arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 战役级评审是可直接移植的结构：在 nanoRSI 世代之间设检查点评审会话，从证据账本改写方向/知识/技能条目而不消耗 episode，以版本一致性为闸门。条件化共享（problem/positive 标签、最多一名路由接收者、采纳前本地重测、改标签需新证据）是种群候选间路由经验、避免广播式堆积的具体策略。
+
+![论文原图 1：领导者代理选取任务条件化 harness（方向、知识、技能），研究者产出可验证记录，战役后评审改写库条目——以协调而非重训练来扩展 RSI。](assets/paper-figures/areal-rsi-adaptive-scaling.svg)
+
+**原文图／官方图片** — 论文原图 1：领导者代理选取任务条件化 harness（方向、知识、技能），研究者产出可验证记录，战役后评审改写库条目——以协调而非重训练来扩展 RSI。 · Figure 1 (S1.F1), arXiv HTML v1 · [source](https://arxiv.org/html/2610.18083v1/areal_rsi_overview.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.18083) · [arXiv HTML v1](https://arxiv.org/html/2610.18083v1)
 
 <a id="janus-coevolving-world-models"></a>
 
@@ -721,7 +781,7 @@
 
 <a id="family-analyses-audits"></a>
 
-## 分析与审计 (16)
+## 分析与审计 (18)
 
 <a id="teb-trace-evolution-bench"></a>
 
@@ -752,6 +812,66 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.15055) · [arXiv HTML v1](https://arxiv.org/html/2610.15055v1)
+
+<a id="genesis-preregistered-accounting"></a>
+
+### Pre-Registered Genesis Accounting for Recursive Self-Improvement: First Audited Operator-Genesis Events in a Physics-Discovery Runtime
+
+**2026-10-10** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 提交于 2026-10-10，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。
+
+**机构关系** — Wenbin Mao 与 Pei Zou，同属 HoomanBio AI Lab、华曼生物技术（北京）有限公司（单一共享署名行）。手稿致谢 AI 研究代理 GML-5.3 的起草协助，声明为工具而非作者。
+
+**改变对象与反馈复用** — 面向 RSI 主张的两级预注册记账：M1 统计设计者词表内生成的结构实例（四个谱系族）；M2 统计机器自著的算子类型——运行时自行组合并注册进自身词表的新算子，仅在留出验证证书下准入（组合 R² 须在留出数据上跨过 τ = 0.999）。首次经审计的 M2 事件：对 NIST 氢巴尔末系深度受限组合搜索合成出 sq(inv(n)) = 1/n²（里德伯形式），任何标准单一变换都无法表达。预注册审计抓到 v1 协议缺陷——自变量 n 由反演被测定律重构，R² = 1 沦为代数往返——并以独立标签协议（n 取自 NIST 组态标签）修复；在 n≤7 拟合、外推 n=8,9 以约 1e-6 相对误差成立，He II 复现，第二事件从 JPL 星历恢复 sqrt(inv(a))（开普勒速度律）。对十二个数据集 / 34 个变量对的盲式去策划创生考试如实返回零。
+
+**作者报告结果** — 最佳标准库变换 inv(n)：留出 R² −0.546；组合出的 1/n² 在修复后的独立标签协议下为 1.0000000。向未见过层级外推：n=8,9 相对误差约 1e-6 至 1e-7，基线为 0.35–3.8（四到六个数量级）。拟合系数 b ≈ 13.6 eV（氢结合能）。领域级复利通道：1.109× 精度比（MAE 0.0797 对 0.0883，NDBC 浮标数据，54.6% 胜率）——首个创生算子复利的领域级测量。阴性对照被否：cos(sqrt(·)) R² 0.919 对获准的 sqrt 的 0.838。
+
+**证据边界** — 作者自列：考试数据集由知晓教科书答案的代理策划；创生触发是手动的（“M2 度量的是被著类型，不是自主性”）；文法、原语、深度与裁判均为观察者注入，“发明”只是给定原语上的组合而非新数学；复利通道窄且未证明创生特异效用；样本小（氢 7 层、He II 4 层）；M2 成为目标后有 Goodhart 风险。摘要明言事件展示的是“创作能力，尚非自主创生”。无代码发布；可复现性依托公开 NIST ASD 数据与所述规则。
+
+**代码／权重／数据／许可** — 未声明代码发布；可复现性一节说明 NIST ASD 公开、R² 差距与外推表可由所述规则重推。论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — M1/M2 两分可直接采纳为 nanoRSI 证据账本词汇：分开统计（M1）起始模板设计者词表内生成的变体——提示/技能/参数编辑——与（M2）循环自著、运行时词表原本不包含的机制，后者仅在留出验证证书下准入；跑前预注册准入规则是诚实性升级。其被抓的协议缺陷（反演被测定律构造自变量）是任何由系统自行合成的评测器都要检查的一类具体泄漏。
+
+![论文原图 1：实测氢结合能对运行时组合出的算子 1/n²，不展示自由参数；拟合系数 b ≈ 13.6 eV——修复后独立标签协议下首个经审计的 M2 创生事件。](assets/paper-figures/genesis-preregistered-accounting.png)
+
+**原文图／官方图片** — 论文原图 1：实测氢结合能对运行时组合出的算子 1/n²，不展示自由参数；拟合系数 b ≈ 13.6 eV——修复后独立标签协议下首个经审计的 M2 创生事件。 · Figure 1, PDF page 3 (HTML figure is inline-only); 150 dpi render, cropped · [source](https://arxiv.org/pdf/2610.14843)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.14843) · [arXiv HTML v1](https://arxiv.org/html/2610.14843v1)
+
+<a id="dgm-failure-feedback-audit"></a>
+
+### Does Failure Feedback Direct Agent Self-Modification?
+
+**2026-10-10** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 提交于 2026-10-10，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。
+
+**机构关系** — 唯一作者 Rong He；HTML 作者块未给出任何机构署名（如实记录，不作推断）。
+
+**改变对象与反馈复用** — 度量失败反馈是否真的引导自修改：在同一子代修改内部，比较随机抽取的目标失败的修复与父代其余失败的修复。研究一审计六条公开 Darwin Gödel Machine 运行日志（SWE-bench Verified 与 Polyglot 上的 DGM / 固定编辑器 / 无档案）：145 处合格的任务条目修改（子代可用且目标被评测）；鞅 e 值检验（Ville 不等式，E≥20 才算 5% 证据）加 z 统计量与 Poisson-二项参照。研究二对小开源模型（Qwen3-4B、Phi-4-mini）做受控指令修订实验，带预注册分析计划、留出测试切分与植入辅助 bug 的工具型代理。
+
+**作者报告结果** — 公开 DGM 日志中无可检出的目标特异优势：修复目标 12 处对期望 16.4（e 值 0.15、优势比 0.69）——失败反馈未将修复引向目标，与随机无异。受控研究：对 Qwen3-4B，自身失败反馈较匹配的同类别反馈使目标修复 +20.0 个百分点（CI +8.5 至 +31.8，Holm p=0.003）；Phi-4-mini +6.7 个百分点不显著（CI −0.6 至 +14.0，p=0.17）。目标修复不必然带来留出改进；留出收益集中在具有可识别、可修复失败机制的设置（植入错误、自然工具接口失败）。八步修订环与 GEPA 终点平均留出精度相当（植入规则 Qwen 父代上 +14.5 对 +14.4）。
+
+**证据边界** — 研究一为公开日志的观察性研究、受合格性约束；研究二覆盖两个小开源模型、指令修订与植入 bug 设置，模型与领域普适性未测；DGM 发现关乎日志中可测的方向性，而非 DGM 整体是否有提升。单作者、无机构署名、无会议信息。
+
+**代码／权重／数据／许可** — arXiv 源码附带分析/实验代码、派生数据、README 与 prereg/prereg_v2.md；verify_claims.py 可重算论文引用的每个数字；DGM 数据取自 DGM 作者公开的日志。arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 应按修改采纳三个报告轴：目标修复（被引用的失败是否真被修复）、向相关失败的迁移、留出净变化——目前证据账本只记面板增量，不记被反馈的失败是否就是被修复的那个。DGM 无方向性发现警示不要假设失败条件化的提案具有针对性；真实收益集中于可识别/可修复机制，支持反馈结构化失败类别而非原始轨迹。
+
+![论文原图 2：145 处合格 DGM 自修改的方向性——随机选中目标失败的修复率（带 Clopper-Pearson 区间）对父代其余失败，正是返回“无目标特异优势”的那项测量。](assets/paper-figures/dgm-failure-feedback-audit.svg)
+
+**原文图／官方图片** — 论文原图 2：145 处合格 DGM 自修改的方向性——随机选中目标失败的修复率（带 Clopper-Pearson 区间）对父代其余失败，正是返回“无目标特异优势”的那项测量。 · Figure 2 (S3.F2; asset file named fig1_directedness.svg), arXiv HTML v1 · [source](https://arxiv.org/html/2610.14662v1/fig1_directedness.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.14662) · [arXiv HTML v1](https://arxiv.org/html/2610.14662v1)
 
 <a id="mc-evobench-experience-audit"></a>
 

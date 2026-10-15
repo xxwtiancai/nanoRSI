@@ -6,7 +6,7 @@
 
 | Family | Records |
 | --- | ---: |
-| [Structured knowledge bases & graphs](#family-structured-knowledge) | 8 |
+| [Structured knowledge bases & graphs](#family-structured-knowledge) | 9 |
 | [Experience accumulation & replay](#family-experience-accumulation) | 9 |
 | [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
@@ -14,7 +14,37 @@
 
 <a id="family-structured-knowledge"></a>
 
-## Structured knowledge bases & graphs (8)
+## Structured knowledge bases & graphs (9)
+
+<a id="specforge-behavioral-specs"></a>
+
+### SpecForge: Recursive Self-Improvement for Coding Agents via Behavioral Specifications
+
+**2026-10-11** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-11, announced in the double-size 2026-10-14 batch; accepted to NeurIPS 2026 Main Track per the arXiv comments field; primary-verified 2026-10-16.
+
+**Institutional relationship** — Yutong Cheng (Virginia Tech), Haifeng Chen (NEC Laboratories America), Peng Gao (Virginia Tech), Wei Cheng (NEC Laboratories America, corresponding). The HTML's email-to-author mapping is swapped between Chen and Gao; affiliations follow the stated lines. Work done during an internship at NEC Labs America; same group as TeSearch (catalogued 2026-10-15).
+
+**What changes and how feedback is reused** — Improves the external context, not weights: an agent generates code from the current natural-language behavioral specifications of program entities, runs execution-verified tests (LLM-generated from reference implementations and kept only if passing), and refines specs from failures. Output coupling - improving one entity's spec can degrade dependents ('whack-a-mole') - is countered by a multi-frontier tree search: (i) Pareto-guided state selection keeps an archive of non-dominated states over per-entity pass-rate vectors and samples expansion nodes frequency-weighted; (ii) dependency-constrained entity selection makes an entity eligible only when unsolved with all callees resolved (callee-before-caller), budgeted by a discounted-UCB bandit on normalized gap-closing reward; (iii) error-diversified expansion grows W=3 children per step, each via Diagnose->Prescribe conditioned on a random ~half subset of failing tests, then regenerates and fully re-tests the module.
+
+**Author-reported result** — DevEval+ across five backbones: 88.9 (Qwen3-235B-A22B), 89.6 (Gemini-2.5-Flash), 90.9 (GPT-4o), 91.0 (Gemini-3.1-Pro), 94.9 (Claude-4.5-Sonnet); average +5.7pt solve-rate over the strongest baseline DocSearch (the authors' own ICML 2026 playbook optimizer). Transfer: DevEval+-Java 65.7% vs 39.7% source-only (spec+source 76.2%); SWE-Dev new-feature implementation 74.5% easy / 51.7% hard Pass@1 vs 55.7 / 44.6 for the benchmark PRD. Ablations: reverse topological order -18.6%, D-UCB -10.4%, error diversity -9.5%, Pareto archive -5.2%.
+
+**Evidence limits** — Static documentation underperforms source-only on cross-language transfer; GEPA declines after peaking; DocSearch drops ~5.6pt on the revised benchmark. A limitations appendix section exists but its content did not render in the HTML fetch. The HTML email-author mapping is swapped (recorded in affiliation).
+
+**Code / weights / data / license** — MIT-licensed code at github.com/ccsnow127/SpecForge (LICENSE verified 2026-10-16; artifact ships DevEval+ 20 Python modules, 16 Java harnesses and selected SWE-Dev data); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Three concrete transfers: keep a Pareto archive of non-dominated skill/spec variants per entity instead of a single incumbent (dominance over per-item pass-rate vectors); enforce callee-before-caller edit ordering when evolving multi-file skill bundles; and make each proposer attempt condition on a different subset of observed failures (error-diversified expansion) so population children search different frontiers.
+
+![Original Figure 2 (overview): the three search decisions of SpecForge - where to refine (Pareto-guided state selection), what to refine (dependency-constrained entity choice), and how to refine (error-diversified spec rewriting).](assets/paper-figures/specforge-behavioral-specs.png)
+
+**Source figure / official image** — Original Figure 2 (overview): the three search decisions of SpecForge - where to refine (Pareto-guided state selection), what to refine (dependency-constrained entity choice), and how to refine (error-diversified spec rewriting). · Figure 2 (S3.F2), arXiv HTML v1 · [source](https://arxiv.org/html/2610.15708v1/overview.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — [SpecForge code](https://github.com/ccsnow127/SpecForge)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.15708) · [arXiv HTML v1](https://arxiv.org/html/2610.15708v1) · [SpecForge code](https://github.com/ccsnow127/SpecForge)
 
 <a id="memento3-reflective-rulebooks"></a>
 

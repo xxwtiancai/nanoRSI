@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 21 |
-| [Harness 搜索与进化](#family-harness-search) | 21 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 23 |
+| [Harness 搜索与进化](#family-harness-search) | 24 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 12 |
 | [程序进化与进化搜索](#family-program-evolution) | 8 |
 | [反馈审查与编排](#family-feedback-orchestration) | 6 |
-| [安全与治理](#family-safety-governance) | 4 |
+| [安全与治理](#family-safety-governance) | 5 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (21)
+## 技能文件优化与技能库 (23)
+
+<a id="kgfiles-tool-coevolution"></a>
+
+### Knowledge Graphs as Files: An Agent Harness Where Tool Creation and Tool Use Co-Evolve
+
+**2026-10-13** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-13，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。
+
+**机构关系** — Yuyang Bai（德州农工）、Yu Wang（俄勒冈大学）、Yu Zhang（德州农工），取自署名行；HTML 邮箱链接错乱（Wang 的地址渲染成 Yu Zhang 的），如实记录。
+
+**改变对象与反馈复用** — DKGI（直接知识图谱交互）把 KG 导出为文件——节点 JSONL 分片、按关系的 TSV 边表、schema.json、candidate_ids.txt——让编码 CLI（Pi 或 Codex）里的 ReAct 式代理把 shell 检索与直接在这些文件上写并执行 Python 交织，不用预定义图 API 或子图检索器。每回合代理可向工具箱 T_t 增加程序 p_t、向 L_t 增加保存的输出文件 l_t；执行反馈（候选 id、中间节点集、空匹配、报错信息，以及大输出的首尾截断视图）决定下一步的遍历、过滤或修订，使工具创造与工具使用在任务内共演化。复用有实测：48.4% 的程序嵌入早前输出中见过的节点 id；36.5% 修订早前程序（其中 88.6% 发生在失败之后）；更晚的程序读取早前的输出文件。
+
+**作者报告结果** — 免训练 DKGI 在 STaRK 合成测试（Amazon 1,642 / MAG 2,665 / Prime 2,801 查询）上：GPT-6-Astra 下对 GRASP（最强已训练基线）Hit@1 领先 +8.2 / +9.0 / +6.7——“每张图至少 6.7 Hit@1”；整体 H@1 71.5（Luna/Pi）、73.1（Luna/Codex）、82.1（Astra/Pi）。消融（测试子集，GPT-6-Luna）：完整 DKGI 75.2 对仅 shell 68.3、预定义图工具 72.8、图工具+代码 74.2、单程序 69.0、仅检索 47.7、无邻边 44.2——在原始文件上加 Python 得 +6.9，而在预定义图工具上只加 +1.4。
+
+**证据边界** — 范围：STaRK 三张 KG（≤10 实体类型、18 关系类型、190 万节点、3,980 万边）；Freebase/Wikidata 级 schema、聚合问题与同 harness 下的 Cypher/SPARQL 代理留作未来工作。仅用专有骨干（GPT-6-Luna/Astra，2026 年 9–10 月 API）；未测开源权重模型。基线数字取自文献、骨干/预算不一致；程序按查询丢弃；任意 shell 执行需沙箱。最大错误源是排序（答错案例中金节点被返回但未排第一的占 58/46/55%）；仅 shell 访问甚至不如预定义图工具。
+
+**代码／权重／数据／许可** — 代码 MIT 许可，位于 github.com/leopoldwhite/DKGI；导出图、提示与全部轨迹 CC BY 4.0；论文 CC BY 4.0（2026-10-16 自 HTML 声明核验）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 共演化的度量即可迁移点：给 nanoRSI 技能演化装上统计——“新程序中复用早前输出（嵌入 id）的比例、修订早前程序的比例、修订中有多少发生在失败之后”——这些按轨迹的廉价统计能区分真实积累与重新推导。消融还支持把任务数据以原始文件而非预定义工具 API 交给代理：直接文件访问加代码的收益超过任一单独形式。
+
+![论文原图 1：STaRK-MAG 查询上，截断的预定义邻居调用漏掉金论文，而 DKGI 的代理自写代码（在导出的节点/边文件上扫描、合并、过滤）让工具创造与工具使用共演化并检索到它。](assets/paper-figures/kgfiles-tool-coevolution.svg)
+
+**原文图／官方图片** — 论文原图 1：STaRK-MAG 查询上，截断的预定义邻居调用漏掉金论文，而 DKGI 的代理自写代码（在导出的节点/边文件上扫描、合并、过滤）让工具创造与工具使用共演化并检索到它。 · Figure 1 (S1.F1), arXiv HTML v1 · [source](https://arxiv.org/html/2610.18616v1/fig1_image.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — [DKGI code](https://github.com/leopoldwhite/DKGI)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.18616) · [arXiv HTML v1](https://arxiv.org/html/2610.18616v1) · [DKGI code](https://github.com/leopoldwhite/DKGI)
 
 <a id="tesearch-test-suite-signals"></a>
 
@@ -437,6 +467,36 @@
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2608.27454) · [Paper v1 (affiliations, Figure 2, main table)](https://arxiv.org/html/2608.27454v1)
 
+<a id="msr-skillopt-skill-parameters"></a>
+
+### SkillOpt: Agent skills as trainable parameters
+
+**2026-06-30** · report · 直接有界闭环
+
+**日期说明** — 微软研究院博文发布于 2026-06-30（2026-10-16 由第三方文章回溯到一手来源而发现）；微软出版物页面存在但未确认 arXiv 编号——坊间流传的 arXiv 号（2605.23904）核对不符，不予记录。
+
+**机构关系** — Yifan Yang、Xuemei Gao、Qi Dai、Bei Liu、Kai Qiu、Dongdong Chen、Chong Luo——微软研究院（亚洲院区）。
+
+**改变对象与反馈复用** — 把自然语言技能文件当作“活在冻结目标模型之外的 可训练参数”。由独立的优化器模型在文本空间跑前向-反向-更新环：前向 = 冻结目标执行任务批；反向 = 优化器按小批反思轨迹；更新 = 小幅增/删/改编辑，经合并、去重、排序，并由“文本学习率”（每步编辑预算）裁剪。验证闸门严格：仅当编辑在留出验证切分上严格高于当前技能才被采纳；被拒编辑进入缓冲区作为负反馈复用，逐 epoch 的慢/元更新沉淀更长程的教训。权重从不更新，推理不增加额外模型调用；交付物是 best_skill.md。
+
+**作者报告结果** — 在报告的全部 52 个评测格中最佳或并列最佳（博文口径），覆盖六个基准（SearchQA、SpreadsheetBench、OfficeQA、DocVQA、LiveMathematicianBench、ALFWorld）、七个模型（GPT-5.5 到 Qwen3.5-4B）与三种执行模式（直连、Codex、Claude Code），对照包括人工技能、一次性 LLM 技能、Trace2Skill、TextGrad、GEPA 与 EvoSkill。带技能的 GPT-5.4-mini（64.3）胜过不带技能的 GPT-5.4（59.7）。编辑极小：终版技能中位约 920 token、仅 1–4 条被采纳的编辑；OfficeQA 的 +39.0 来自单条编辑。跨 harness 迁移：Codex 训出的技能放进 Claude Code 从 22.1 升到 81.8。
+
+**证据边界** — 博文级证据：“52 格”是博文对 6×7×3 空间的自报计数（全集的子集，未逐格公开）；GPT-5.5 六基准 58.8→82.3 等均值未给方差或种子数；方法适用于“存在自动评测或可靠验证器之处”。未核验到 arXiv 论文，数字以官方报告为准；52 格细节无法独立重算。
+
+**代码／权重／数据／许可** — 代码 MIT 许可，位于 github.com/microsoft/SkillOpt（LICENSE 已于 2026-10-16 核验）；项目页 aka.ms/skillopt；配套 SkillLens 在 microsoft.github.io/SkillLens/。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 正是 nanoRSI skills 模板缺的模式：文本学习率（每步有界编辑数）、严格“留出验证上严格更好才采纳”的闸门、复用为负反馈的被拒编辑缓冲、逐 epoch 汇总一遍——全部可在现有技能文件周围用标准库实现。终版技能中位约 920 token、仅 1–4 条采纳编辑，是“小技能即足”的参考预算。
+
+![MSR 博客原图 1：冻结目标模型执行任务，独立优化器模型从轨迹反馈训练技能层——有界文本编辑、验证闸门采纳、慢速沉淀。](assets/paper-figures/msr-skillopt-skill-parameters.png)
+
+**原文图／官方图片** — MSR 博客原图 1：冻结目标模型执行任务，独立优化器模型从轨迹反馈训练技能层——有界文本编辑、验证闸门采纳、慢速沉淀。 · Figure 1, MSR blog 'SkillOpt: Agent skills as trainable parameters' (2026-06-30) · [source](https://www.microsoft.com/en-us/research/wp-content/uploads/2026/06/SkillOpt_EXT_FA_Figure-1.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — [SkillOpt code](https://github.com/microsoft/SkillOpt)
+
+**一手来源** — [MSR blog: SkillOpt](https://www.microsoft.com/en-us/research/blog/skillopt-agent-skills-as-trainable-parameters/) · [SkillOpt code](https://github.com/microsoft/SkillOpt) · [SkillOpt project page](https://aka.ms/skillopt)
+
 <a id="microsoft-skillopt"></a>
 
 ### SkillOpt: Executive Strategy for Self-Evolving Agent Skills
@@ -649,7 +709,97 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (21)
+## Harness 搜索与进化 (24)
+
+<a id="videoharness-srsi-evidence-governed"></a>
+
+### VideoHarness-SRSI: Structured Recursive Self-Improvement for Video Understanding Harness
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-14，随 2026-10-15 批次公告；2026-10-16 完成一手核验。
+
+**机构关系** — 十三位作者：Zihao Lin（UC Davis × Meta MRS Research，工作完成于 Meta）、Haoyu Dong（杜克）、Haobo Xu 与 Xuying Ning（UIUC）、Chi-Chih Chang（康奈尔）、Yinglong Xia、Shuang Yang、Zhuokai Zhao、Xinying Song、Yang Song 与 Qifan Wang（Meta MRS Research）、Dongfang Liu（普渡）、Lifu Huang（UC Davis）。
+
+**改变对象与反馈复用** — 研究围绕冻结视觉语言模型的递归 harness 演化（智能视频理解）。基线 VideoHarness-BRSI 演化 4,000+ 候选、可与手工系统匹敌，但有三个被诊断的失败模式：验证过拟合（复用的验证反馈同时驱动修订与提案器搜索向验证集靠拢）、搜索预算稀释与早期经验陷阱。VideoHarness-SRSI 重构搜索，使每个决定都建立在可迁移、充分、且在搜索承诺之前就采集好的证据上：提案器只见无内容反馈；插桩热身实验预先测量信号质量；候选机制先在隔离的 probe-race 分支验证，再做析因组合进部署 harness。
+
+**作者报告结果** — 在四个视频理解基准上，VideoHarness-SRSI 相对 BRSI 将等权平均留出分提升 6.2%，并将平均验证-测试差距缩小 37.9%。
+
+**证据边界** — 领域是冻结 VLM 的智能视频理解（四个基准）；Comments 未声明代码发布（“50 页、15 图”）；增益相对作者自己的 BRSI 基线测得；摘要未给逐基准方差与种子数。
+
+**代码／权重／数据／许可** — 截至 2026-10-16 未声明代码或数据发布；arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 其诊断正是 nanoRSI 反事实闸门的镜像：被修订与提案选择两头复用的验证反馈会过拟合——SRSI 的解法（给提案器无内容反馈、预提交的热身信号审计、机制级先隔离 probe-race 再组合）是既有评测器泄漏工作的具体范式；验证-测试差距缩减（37.9%）才是该跟踪的指标，而非只看留出增益。
+
+![论文原图 4（SRSI 总览）：每个搜索决定都建立在可迁移、充分、且在搜索承诺前采集的证据上——给提案器的无内容反馈、插桩热身、以及析因组合前的 probe-race 分支。](assets/paper-figures/videoharness-srsi-evidence-governed.svg)
+
+**原文图／官方图片** — 论文原图 4（SRSI 总览）：每个搜索决定都建立在可迁移、充分、且在搜索承诺前采集的证据上——给提案器的无内容反馈、插桩热身、以及析因组合前的 probe-race 分支。 · Figure 4 (S4.F4; asset named Figure2_VideoHarness_SRSI.svg), arXiv HTML v1 · [source](https://arxiv.org/html/2610.19424v1/Figure2_VideoHarness_SRSI.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.19424) · [arXiv HTML v1](https://arxiv.org/html/2610.19424v1)
+
+<a id="harnessttt-test-time-harness"></a>
+
+### HarnessTTT: Learn to Optimize Harness at Test-Time for Scientific Discovery
+
+**2026-10-12** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-12，随翻倍的 2026-10-14 批次公告；项目页标注“research preview, paper under review”；2026-10-16 完成一手核验。
+
+**机构关系** — Yingzi Ma（威斯康星大学麦迪逊分校）、Yulong Cao（NVIDIA）、Nanxi Li（约翰霍普金斯）、Fang Wu（斯坦福）、Yizhe Zhang（Meta）、James Zou（斯坦福）、Yejin Choi（斯坦福）、Chaowei Xiao（约翰霍普金斯），取自署名行。
+
+**改变对象与反馈复用** — 执行器冻结、在测试时训练 harness 提案器：提案器（执行器模型 + 持久 rank-64 LoRA，每轮 3 epoch，PPO 式裁剪目标，对冻结基座 KL 0.1）产出可执行 harness——系统提示、可复用技能、工具、中间件、执行控制——每个引导一次预算内发现式 rollout，其结果更新提案器。发现导向的策略梯度用缺口归一化奖励 g_k = (s_k − b_τ)/Z_τ（对已发表参考的剩余缺口；正信用以 3·tanh(g/3) 平滑封顶、损失下取 −1、非法候选 −1）、同父组内 RLOO 留一优势（刻意不除组标准差）、近平局（δ=1e-3）坍缩为均值且全平局组剔除，外加 max-sharpening（中心化 softmax，α=0.3）。每个生成的工具先过静态检查（导入白名单、禁止访问筛查）与沙箱自测再挂载，至多 2 次修复否则丢弃；受限 ctx 接口对提案器隐藏评测器代码、真值与网络。每轮只保留最优有效解（严格改进的棘轮）、现任 harness 与定长经验摘要。
+
+**作者报告结果** — 冻结 9B 执行器：同一执行器下在全部十一个基准任务上胜过 OpenEvolve（圆装箱 1.17→2.64）；较发现式微调的 Finch-9B 最高 +91.7%（Hadamard；摘要四舍五入为 92%）；9/11 任务为开源权重 ≤10B 系统最佳；Erdős 最小重叠 0.380919，优于最佳人类参考 0.380927。提案器随冻结 27B 执行器扩展后十四个任务中十一个提升；学到的 harness 重放到 GPT-5.5 上在十四个任务中的九个上匹配或超过任意骨干的最强已报告系统。十四个任务覆盖数学、系统、GPU 内核、启发式、天体力学与生物。
+
+**证据边界** — 在 AC2（0.934 对 0.947）与 Txn（4,255 对 4,762）上落后于 ≤10B 系统，AC2 比较受初始程序混杂；EPLB 落后前沿；27B 提案器在 Hadamard 上更差（−12.4%）。报告为单战役而非均值；迁移与重放增益是描述性点估计、未分离纯迁移效应；LLM-SQL 与 Txn 被隔离并附警示。释出工件缺少可信运行时、沙箱与日志，故设置“尚无法被独立验证”（作者自述，项目页同文）。
+
+**代码／权重／数据／许可** — 项目页 gray311.github.io/harnessrl 链接了两个不同 GitHub 仓库（Code 按钮：SaFo-Lab/Self_Adapt_Harness；页脚：gray311/SAH——均可访问，不一致已如实记录）；页面未见许可声明，代码许可 2026-10-16 未核验。未声明权重或数据发布。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 奖励配方可直接移植到 nanoRSI 的小噪声面板选择：把候选按（分数 − 父代）/对参考的剩余缺口归一化，正信用平滑封顶、损失取下限、非法尝试记 −1；同父组内算留一优势且不除组标准差，近平局坍缩、全平局组丢弃。挂载前验证阶梯（静态白名单 → 沙箱自测 → 至多 2 次修复 → 丢弃）是生成技能与评测器的具体 attempt 闸门范式。
+
+![论文原图 4（总览）：提案器（执行器 + LoRA 适配器）产出候选 harness，各自先验证再引导一次预算内发现式 rollout；rollout 结果在测试时训练提案器，执行器保持冻结。](assets/paper-figures/harnessttt-test-time-harness.svg)
+
+**原文图／官方图片** — 论文原图 4（总览）：提案器（执行器 + LoRA 适配器）产出候选 harness，各自先验证再引导一次预算内发现式 rollout；rollout 结果在测试时训练提案器，执行器保持冻结。 · Figure 4 (S3.F4), arXiv HTML v1 · [source](https://arxiv.org/html/2610.17370v1/overview.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.17370) · [arXiv HTML v1](https://arxiv.org/html/2610.17370v1) · [HarnessTTT project page](https://gray311.github.io/harnessrl/)
+
+<a id="harness2-recursive-harnessing"></a>
+
+### Harness^2: Recursive Agent Harnessing for an Open World
+
+**2026-10-09** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-09，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。
+
+**机构关系** — 九位作者中八位属 Google Cloud AI Research（Yanfei Chen、Zhongying CuiZhu、Bhavana Dalvi Mishra、Yifei Ming、Han Yu、Rujun Han、Chen-Yu Lee、Tomas Pfister）；通讯作者 Ruiyao Xu 在 Google Cloud AI Research 之外另有 Northwestern University 署名行。署名“Zhongying CuiZhu”疑为 LaTeXML 合并两名作者造成的伪影；机构块另有零散 LaTeX 残留。
+
+**改变对象与反馈复用** — 在 K=8 个可编辑组件的 harness（系统提示、护栏、记忆、技能、工具指引、脚本、子代理、TypeScript 中间件）上做两层递归。任务级 Propose-Probe-Compose：先以当前 harness 跑一次参照执行，再提出“不变式”候选（跨领域代理缺陷）与领域专用候选各一；Probe 在匹配配置下重跑各候选，把轨迹与交付物同参照对比得到行为反差（缓解/中性/退化），全程不用真值验证器；Compose 选择性合并受支持的编辑、修订冲突、采纳其一或保持不变——每个决定都绑定具体观察而非假想的分数增益。并行递归探 k 个候选并从池中组合；串行递归链式 k 步反差。harness 级：每个任务后由反思从完整改进记录提炼教训，只保留有反差支撑者；被采纳 harness 与一条 EXPERIENCE.md 条目进入带索引的改进库。默认 harness 编辑器为 OpenCode 下的 Claude Opus 4.8。
+
+**作者报告结果** — 在三个专业基准与四个模型-harness 配置（冻结的 GLM-5 与 Gemini 3.5 Flash 执行器 × OpenCode 与 Codex 基线 harness）上，单步递归增益最高 WorkBuddy-Bench +11.5 分（GLM-5/OpenCode 64.2→75.7）、JobBench +4.5（Gemini 3.5 Flash/OpenCode）、LAB partial +11.8 个百分点（GLM-5/OpenCode 59.6→71.4）；递归预算 k 从 1 到 5 时并行与串行两种形态均单调提升（k=5 并行更高），按基准-配置再加约 +2.6–6.7 个百分点。
+
+**证据边界** — 无正确性或迁移保证：反差与模型判断对执行变异和共享模型偏置敏感。负结果：ReasoningBank 在编码任务上最多低于基线 6.6 分；Harness Scaling 在 12 个基准-配置对中的 7 个劣于基线且 k=2→3 退化；LAB 上 Gemini 3.5 Flash/Codex 由 Meta-Harness 领先。9 例退化的失败分析：匿名交付物选择失当（选中 55 分而弃 95 分）、错误前提传播（损失 2–11 分）、无法归因的变异。递归需额外执行与编辑器会话。
+
+**代码／权重／数据／许可** — 代码 Apache-2.0，位于 github.com/google-research/harness2（LICENSE 已于 2026-10-16 核验；3 次提交、无发布、带“非 Google 官方支持产品”惯常声明）；项目页 harness2.github.io；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 反差探测是 nanoRSI 在开放任务上缺失的免验证器闸门：父代跑一次取参照，子代在匹配配置下重跑，比较轨迹/交付物，只接受有反差支撑的编辑——不用分数、评分表或真值。带逐条出处与留一复用审计（其图 10/11）的索引化改进库，是 nanoRSI 种群簿记在记忆面上的镜像。
+
+![论文原图 3（管线）：任务级递归提出不变式与领域专用两个 harness 候选，对参照执行做行为反差探测并组合受支持编辑；harness 级递归把有反差支撑的教训蒸馏进带索引的改进库。](assets/paper-figures/harness2-recursive-harnessing.png)
+
+**原文图／官方图片** — 论文原图 3（管线）：任务级递归提出不变式与领域专用两个 harness 候选，对参照执行做行为反差探测并组合受支持编辑；harness 级递归把有反差支撑的教训蒸馏进带索引的改进库。 · Figure 3 (S2.F3), arXiv HTML v1 · [source](https://arxiv.org/html/2610.14224v1/harness2_main_new.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — [harness2 code](https://github.com/google-research/harness2)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.14224) · [arXiv HTML v1](https://arxiv.org/html/2610.14224v1) · [harness2 code](https://github.com/google-research/harness2) · [harness2 project page](https://harness2.github.io)
 
 <a id="evo2-weight-harness-coevolution"></a>
 
@@ -1459,11 +1609,11 @@
 
 **原文图／官方图片** — Nous Research 官方文章题图：Hermens 用 1,393 个子智能体自主重构自身约百万行代码库。 · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-15.
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
 
-**开源代码／权重／数据链接** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
+**开源代码／权重／数据链接** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE) · [hermes-agent v0.22.2 release](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.2)
 
-**一手来源** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/) · [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE) · [Hermes Agent v0.21.5 release](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24) · [Hermes Agent v0.21.6 release](https://github.com/NousResearch/hermes-agent/releases/tag/v0.21.6)
+**一手来源** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/) · [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE) · [Hermes Agent v0.21.5 release](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24) · [Hermes Agent v0.21.6 release](https://github.com/NousResearch/hermes-agent/releases/tag/v0.21.6) · [hermes-agent v0.22.2 release](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.2)
 
 <a id="mgm-mendel-godel-machine"></a>
 
@@ -2075,7 +2225,37 @@
 
 <a id="family-safety-governance"></a>
 
-## 安全与治理 (4)
+## 安全与治理 (5)
+
+<a id="l3m-verifiable-runtime"></a>
+
+### L3M: A Verifiable Harness and Runtime for Self-Extending and Self-Improving Agents
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-14，随 2026-10-15 批次公告；HTML 内部稿日期为 2026-09-30，且含更完整的标题“Capability Without Authority”；2026-10-16 完成一手核验。此处记录 arXiv 列示标题。
+
+**机构关系** — Carson Eisenach（通讯）、Robert Joseph George、Vincent Quenneville-Bélair、Kate Gwimm、Dean Foster——全部 Amazon，取自单一署名行。
+
+**改变对象与反馈复用** — 以 Lean 4 写成的运行时：同一种语言实现 harness、陈述其不变量，也是代理扩展它的语言。全部状态存放于 Git：丰富的状态轨迹——而非聊天会话——是运行时可恢复、回滚、分叉、比较与合并的对象；等待、通信、委派与撤销是原语而非每次重新推理的模式。当代理摸索出一个过程，可将其一次性写成密封的 Lean 程序，其类型即权限请求，harness 再把它作为工具提供回来。可逆性决定安全边界：工具的审查层级取决于其影响能被撤销多远，运行时能恢复之处代理可自由行动；可能被链成攻击的职责由不同方分掌，而使这一切安全的性质以内核检查的定理形式陈述在运行的代码上。
+
+**作者报告结果** — 在 Terminal-Bench 上对照 Claude Code、以普通受限代理运行：未调优的 L3M“驯化”臂（无野调用）pass@3 27.0%，同 harness 开 shell 且关审查为 41.7%（34 对 18 通过，表 5）——无任何未审查调用即达 shell 三分之二；驯化臂 18 次通过中有 5 次用了代理自写的工具程序。驯化与 shell 两臂每次通过的 token 开销相当，指向差距来自 harness 而非权限约束。
+
+**证据边界** — 作者自述：结果来自未调优 harness，调优后通过率与 token 成本预计改善（安全定理不依赖调优）；“三分之二”仅限这些 Terminal-Bench 任务；评测是对 Claude Code 的初步评测。截至 2026-10-16 HTML 未声明公开代码发布。
+
+**代码／权重／数据／许可** — 截至 2026-10-16 HTML 未声明代码、权重或数据发布；论文为 arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 两个迁移点：(i) 按可逆性分层审查——nanoRSI 闸门严格度可随“影响可撤销距离”走（干跑与纯增量编辑自动放行、破坏性或改状态编辑走反事实复审），而非一刀切；(ii) 密封过程类型——候选技能被接受时连同显式能力声明（可读/写/执行什么）一起冻结并由执行器强制，让技能文件的权限面可机检。
+
+![论文原图 1：代理的状态与工作活在超出任何会话生命周期的 Git 枢纽里；作用域化的能力令牌把授权带进它写下的每个工具与程序；被委派的代理各自在自己的授权下运行——有能力而无权限。](assets/paper-figures/l3m-verifiable-runtime.png)
+
+**原文图／官方图片** — 论文原图 1：代理的状态与工作活在超出任何会话生命周期的 Git 枢纽里；作用域化的能力令牌把授权带进它写下的每个工具与程序；被委派的代理各自在自己的授权下运行——有能力而无权限。 · Figure 1 (main overview), arXiv HTML v1 · [source](https://arxiv.org/html/2610.19591v1/figs/l3m-main-overview.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.19591) · [arXiv HTML v1](https://arxiv.org/html/2610.19591v1)
 
 <a id="cace-bench-admission-gate"></a>
 

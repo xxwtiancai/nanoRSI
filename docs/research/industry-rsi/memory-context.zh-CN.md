@@ -6,7 +6,7 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [结构化知识库与图](#family-structured-knowledge) | 8 |
+| [结构化知识库与图](#family-structured-knowledge) | 9 |
 | [经验积累与回放](#family-experience-accumulation) | 9 |
 | [上下文组织策略](#family-context-policies) | 5 |
 | [探索式记忆构建](#family-exploration-memory) | 1 |
@@ -14,7 +14,37 @@
 
 <a id="family-structured-knowledge"></a>
 
-## 结构化知识库与图 (8)
+## 结构化知识库与图 (9)
+
+<a id="specforge-behavioral-specs"></a>
+
+### SpecForge: Recursive Self-Improvement for Coding Agents via Behavioral Specifications
+
+**2026-10-11** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 提交于 2026-10-11，随翻倍的 2026-10-14 批次公告；据 arXiv comments 字段已被 NeurIPS 2026 主会接收；2026-10-16 完成一手核验。
+
+**机构关系** — Yutong Cheng（弗吉尼亚理工）、Haifeng Chen（NEC Laboratories America）、Peng Gao（弗吉尼亚理工）、Wei Cheng（NEC Laboratories America，通讯）。HTML 中 Chen 与 Gao 的邮箱映射互换；机构以署名行为准。工作完成于 NEC Labs America 实习期间；与 2026-10-15 收录的 TeSearch 同一团队。
+
+**改变对象与反馈复用** — 改进外部上下文而非权重：代理按当前程序实体的自然语言行为规约生成代码，跑执行验证的测试（由参考实现生成、仅保留通过者），并从失败中修订规约。输出耦合——改好一个实体的规约可能劣化依赖者（“打地鼠”）——由多前沿树搜索应对：(i) 帕累托引导的状态选择维护逐实体通过率向量上非支配状态的档案，按频率加权采样扩展节点；(ii) 依赖约束的实体选择要求实体未解决且全部被调用方已解决（先被调后调用），用折扣 UCB 老虎机按归一化缺口闭合奖励分配预算；(iii) 误差多样化扩展每步生成 W=3 个子节点，各以随机约半数失败测试子集为条件做 Diagnose→Prescribe，再整体重生成并全量重测。
+
+**作者报告结果** — DevEval+ 五骨干：88.9（Qwen3-235B-A22B）、89.6（Gemini-2.5-Flash）、90.9（GPT-4o）、91.0（Gemini-3.1-Pro）、94.9（Claude-4.5-Sonnet）；平均较最强基线 DocSearch（作者自己的 ICML 2026 playbook 优化器）+5.7 个百分点。迁移：DevEval+-Java 65.7% 对仅源码 39.7%（规约+源码 76.2%）；SWE-Dev 新特性实现 74.5% easy / 51.7% hard Pass@1 对基准 PRD 的 55.7 / 44.6。消融：逆拓扑序 −18.6%、D-UCB −10.4%、误差多样性 −9.5%、帕累托档案 −5.2%。
+
+**证据边界** — 静态文档在跨语言迁移上不如仅源码；GEPA 达峰后下滑；DocSearch 在修订基准上掉约 5.6 分。存在局限性附录章节但其内容未在抓取的 HTML 中渲染。HTML 邮箱-作者映射互换（已记入机构字段）。
+
+**代码／权重／数据／许可** — 代码 MIT 许可，位于 github.com/ccsnow127/SpecForge（LICENSE 已于 2026-10-16 核验；工件含 DevEval+ 20 个 Python 模块、16 个 Java harness 与部分 SWE-Dev 数据）；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 三个可直接迁移点：按实体维护非支配的技能/规约变体帕累托档案而非单一现任者（支配关系定义在逐条目通过率向量上）；演化多文件技能束时强制先被调后调用的编辑顺序；让提案器的每次尝试以观测失败的不同子集为条件（误差多样化扩展），使种群子代搜索不同前沿。
+
+![论文原图 2（总览）：SpecForge 的三个搜索决策——在哪改（帕累托引导的状态选择）、改什么（依赖约束的实体选择）、怎么改（误差多样化的规约重写）。](assets/paper-figures/specforge-behavioral-specs.png)
+
+**原文图／官方图片** — 论文原图 2（总览）：SpecForge 的三个搜索决策——在哪改（帕累托引导的状态选择）、改什么（依赖约束的实体选择）、怎么改（误差多样化的规约重写）。 · Figure 2 (S3.F2), arXiv HTML v1 · [source](https://arxiv.org/html/2610.15708v1/overview.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-16.
+
+**开源代码／权重／数据链接** — [SpecForge code](https://github.com/ccsnow127/SpecForge)
+
+**一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.15708) · [arXiv HTML v1](https://arxiv.org/html/2610.15708v1) · [SpecForge code](https://github.com/ccsnow127/SpecForge)
 
 <a id="memento3-reflective-rulebooks"></a>
 

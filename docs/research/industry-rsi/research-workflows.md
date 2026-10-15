@@ -6,16 +6,76 @@
 
 | Family | Records |
 | --- | ---: |
-| [AI-scientist systems](#family-ai-scientists) | 10 |
+| [AI-scientist systems](#family-ai-scientists) | 12 |
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 16 |
+| [Analyses & audits](#family-analyses-audits) | 18 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
 
-## AI-scientist systems (10)
+## AI-scientist systems (12)
+
+<a id="discovery-scaling-forgetting"></a>
+
+### Scaling Discovery Requires Forgetting
+
+**2026-10-14** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-14, announced in the 2026-10-15 batch; primary-verified 2026-10-16.
+
+**Institutional relationship** — Shangyin Tan, Ben Zhou, Lakshya A Agrawal, Jialin Zhang, Qiuyang Mang, Donghyun Lee, Dennis Jacob, Koushik Sen, Matei Zaharia (UC Berkeley); Yilin Chen (Stanford); Alex Dimakis (UC Berkeley x Bespoke Labs).
+
+**What changes and how feedback is reused** — Studies why scaling LLM-agent automated research - longer iteration, more parallel agents, communicating agent teams - plateaus: agents anchor to their own past attempts, making fewer and smaller edits as history accumulates. The fix is periodic forgetting: discard the accumulated search state and restart the search from the best candidate found so far, keeping only the incumbent rather than the history. Tasks are iterative refinement of programs, kernels and setups with scored verifiers (OpenEvolve-style) - heuristic programming, kernel optimization and model training across four tasks, measured in total dollars spent.
+
+**Author-reported result** — In a communicating agent team, periodic forgetting yields up to 15% improvement over parallel agents without forgetting and up to 39% over a single agent; on AtCoder Heuristic Contest 014 and a VLIW kernel task, forgetting restarts visibly unblock score progression against dollars spent (Figure 1).
+
+**Evidence limits** — Four tasks with scored verifiers (heuristic programming, kernel optimization, model training); 'forgetting' here means discarding search state, not memory or skills; gains reported up to 15%/39% across task-configurations, per-task variance not stated in the abstract; no code link in the Comments field.
+
+**Code / weights / data / license** — No code link in the Comments field (checked 2026-10-16); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — A population-level control for nanoRSI's selector study: periodically reset the rejected/shortlist history (rejected_recent, ancestry weighting) while keeping the incumbent and the frozen test panels, so proposer conditioning does not anchor on accumulated rejection history - directly testable as a selector arm with the existing multi-seed orchestrator (compare keep-all vs periodic-reset under equal episode budget).
+
+![Original Figure 1: best score so far against total dollars spent on AtCoder Heuristic Contest 014 and a VLIW kernel task - each forgetting restart (Forget 1/2/3) visibly unblocks further score progression that a continuous session leaves flat.](assets/paper-figures/discovery-scaling-forgetting.png)
+
+**Source figure / official image** — Original Figure 1: best score so far against total dollars spent on AtCoder Heuristic Contest 014 and a VLIW kernel task - each forgetting restart (Forget 1/2/3) visibly unblocks further score progression that a continuous session leaves flat. · Figure 1, PDF page 1 (no HTML full text available); 150 dpi render, cropped · [source](https://arxiv.org/pdf/2610.20563)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.20563) · [arXiv PDF v1 (no HTML full text)](https://arxiv.org/pdf/2610.20563)
+
+<a id="areal-rsi-adaptive-scaling"></a>
+
+### AReaL-RSI: Adaptive Scaling and Coordination of Recursive Self-Improvement
+
+**2026-10-13** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-13, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.
+
+**Institutional relationship** — Fourteen authors across Ant Group (11), Zhejiang University (3) and HKUST (2, including Binhang Yuan); Wenhao Zhou and Yingqi Peng are Ant Group x Zhejiang University. Affiliations read from the stated lines of the HTML author block.
+
+**What changes and how feedback is reused** — Organizes a persistent research team of agents around a task-conditioned harness library h = (p, K, S) - research orientation, reusable knowledge, repeatable skills - without touching backbone weights, tool permissions or orchestration. A leader agent assigns harnesses, distinguishes artifact quality from investigative promise and routes memory. Conditional memory sharing gives every experience record an observed result, interpretation, tested conditions, remaining uncertainty and a kappa label in {problem, positive}: unresolved problems are routed to at most one additional researcher, positive findings spread broadly, and relabeling requires new supporting references; recipients test locally before adopting. After each campaign the leader runs a separate evidence-based review session that proposes harness edits from the retrievable record without new experiments; accepted, version-consistent revisions replace library entries for later campaigns.
+
+**Author-reported result** — Versus Codex-Goal under the reported resource allocations: Terminal Bench 2.1 +2.2pp per backbone (Luna 75.3->77.5%, Astra 85.4->87.6%); mean KernelBench speedup +32.2-36.8% (Luna 1.74x->2.30x, Astra 6.28x->8.59x). Scaling study (Table 2, 4 KernelBench tasks x 2 backbones): experience sharing plus specialized researcher roles gives 1.9-27.5% lower kernel latency than independent exploration and 1.3-33.9% lower than sharing alone across all seven comparable task-backbone pairs (Astra L3P10: 8.815 / 7.379 / 6.395 ms for independent / sharing / sharing+roles).
+
+**Evidence limits** — Authors state results do not establish equal-compute efficiency and comparisons are descriptive without repeated-run uncertainty. Sharing alone regressed on Luna L1P63 (11.944->15.633 ms, +30.9%) and L2P71 (+13.4%); Luna L3P10 failed under all configurations; the Astra jailbreak-task gain was tiny (+0.119). Mechanism effects are not isolated and diversity is unmeasured. Anti-leakage instructions (no task answers or hidden-test info in reusable assets) are a semantic requirement, not a formal guarantee.
+
+**Code / weights / data / license** — No code or data availability statement found in the HTML (checked 2026-10-16); paper under the arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — Campaign-level review is a directly portable structure: a checkpointed review session that rewrites orientation/knowledge/skill entries from the evidence ledger without spending episodes, gated on version consistency, between nanoRSI generations. Conditional sharing (problem vs positive labels, at most one routed recipient, local re-test before adoption, relabeling only with new evidence) is a concrete policy for routing experience between population candidates instead of broadcast accumulation.
+
+![Original Figure 1: the leader agent selects task-conditioned harnesses (orientation, knowledge, skills), researchers produce verifiable records, and post-campaign review rewrites library entries - scaling RSI by coordinating rather than retraining.](assets/paper-figures/areal-rsi-adaptive-scaling.svg)
+
+**Source figure / official image** — Original Figure 1: the leader agent selects task-conditioned harnesses (orientation, knowledge, skills), researchers produce verifiable records, and post-campaign review rewrites library entries - scaling RSI by coordinating rather than retraining. · Figure 1 (S1.F1), arXiv HTML v1 · [source](https://arxiv.org/html/2610.18083v1/areal_rsi_overview.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.18083) · [arXiv HTML v1](https://arxiv.org/html/2610.18083v1)
 
 <a id="janus-coevolving-world-models"></a>
 
@@ -721,7 +781,7 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (16)
+## Analyses & audits (18)
 
 <a id="teb-trace-evolution-bench"></a>
 
@@ -752,6 +812,66 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.15055) · [arXiv HTML v1](https://arxiv.org/html/2610.15055v1)
+
+<a id="genesis-preregistered-accounting"></a>
+
+### Pre-Registered Genesis Accounting for Recursive Self-Improvement: First Audited Operator-Genesis Events in a Physics-Discovery Runtime
+
+**2026-10-10** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-10, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.
+
+**Institutional relationship** — Wenbin Mao and Pei Zou, both at HoomanBio AI Lab, Huaman Biotechnology (Beijing) Co., Ltd. (single shared affiliation line). The manuscript acknowledges drafting assistance from an AI research agent (GML-5.3), stated as a tool, not an author.
+
+**What changes and how feedback is reused** — A two-tier, pre-registered accounting scheme for RSI claims: M1 counts structure instances generated within a designer-provided vocabulary (four lineage families); M2 counts machine-authored operator types - new operators the runtime itself composed and registered into its vocabulary, each admitted only under a held-out-validation certificate (composed R-squared must jump across tau = 0.999 on held-out data). First audited M2 events: depth-limited compositional search over NIST hydrogen Balmer lines composed sq(inv(n)) = 1/n^2 (the Rydberg form), which no standard single transform expresses. A pre-registered audit caught a v1 protocol flaw - the independent variable n had been reconstructed by inverting the tested law, making R-squared = 1 an algebraic round-trip - and an independent-label protocol (n parsed from NIST configuration labels) repaired it; extrapolation to unseen levels n=8,9 with fitting on n<=7 holds at ~1e-6 relative error, He II replicates, and a second event recovered sqrt(inv(a)) (Kepler velocity law) from JPL ephemerides. Blind decurated genesis exams over twelve datasets / 34 variable pairs returned an honestly reported zero.
+
+**Author-reported result** — Best standard-library transform inv(n): held-out R-squared -0.546; composed 1/n^2: 1.0000000 under the repaired independent-label protocol. Extrapolation to unseen levels: relative error ~1e-6 to 1e-7 for n=8,9 vs 0.35-3.8 for baselines (four to six orders of magnitude). Fitted coefficient b ~ 13.6 eV (hydrogen binding energy). Domain-level compounding channel: 1.109x accuracy ratio (MAE 0.0797 vs 0.0883, NDBC buoy data, 54.6% win rate) - first domain-level measurement of a genesis operator compounding. Negative control denied: cos(sqrt(.)) R-squared 0.919 vs 0.838 for the admitted sqrt.
+
+**Evidence limits** — Authors' own list: exam datasets were curated by agents that knew the textbook answers; genesis triggers were manual ('M2 measures authored types, not autonomy'); grammar, primitives, depth and judges are observer-injected, so 'invention' is composition over given primitives, not new mathematics; compounding is narrow with no genesis-specific utility proven; small samples (seven H levels, four He II levels); Goodhart exposure as M2 becomes a target. The abstract states the events demonstrate 'capability to author, not yet of autonomous genesis'. No code release; reproducibility rests on public NIST ASD data and the stated rules.
+
+**Code / weights / data / license** — No code release stated; a Reproducibility section notes NIST ASD is public and the R-squared gap and extrapolation table re-derive from the stated rules. Paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — The M1/M2 split is directly adoptable evidence-ledger vocabulary for nanoRSI: count separately (M1) variants generated within the starter's designer vocabulary - prompt/skill/parameter edits the templates already anticipate - versus (M2) mechanisms the loop authored that the runtime vocabulary did not contain, each admitted only with a held-out-validation certificate; pre-registering the admission rule before a run is the honesty upgrade. Their caught protocol flaw (inverting the tested law to build the independent variable) is a concrete leakage class to check in any evaluator synthesized by the system itself.
+
+![Original Figure 1: measured hydrogen binding energies versus the runtime-composed operator 1/n^2 with no free parameter shown; the fitted coefficient is b ~ 13.6 eV - the first audited M2 genesis event under the repaired independent-label protocol.](assets/paper-figures/genesis-preregistered-accounting.png)
+
+**Source figure / official image** — Original Figure 1: measured hydrogen binding energies versus the runtime-composed operator 1/n^2 with no free parameter shown; the fitted coefficient is b ~ 13.6 eV - the first audited M2 genesis event under the repaired independent-label protocol. · Figure 1, PDF page 3 (HTML figure is inline-only); 150 dpi render, cropped · [source](https://arxiv.org/pdf/2610.14843)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.14843) · [arXiv HTML v1](https://arxiv.org/html/2610.14843v1)
+
+<a id="dgm-failure-feedback-audit"></a>
+
+### Does Failure Feedback Direct Agent Self-Modification?
+
+**2026-10-10** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-10, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.
+
+**Institutional relationship** — Sole author Rong He; no institutional affiliation is stated anywhere in the HTML author block (recorded as-is, not inferred).
+
+**What changes and how feedback is reused** — Measures whether failure feedback actually directs self-modification, comparing repair of a randomly drawn target failure with repair of the parent's other failures inside the same child modification. Study 1 audits the six public Darwin Godel Machine runs (DGM / fixed editor / no-archive on SWE-bench Verified and Polyglot): 145 eligible task-entry modifications where the child worked and the target was evaluated; a martingale e-value test (Ville's inequality, E>=20 for 5% evidence) plus z-statistic and Poisson-binomial reference. Study 2 runs controlled instruction-revision experiments on small open models (Qwen3-4B, Phi-4-mini) with a pre-specified analysis plan, held-out test split and a tool-using agent with planted helper bugs.
+
+**Author-reported result** — In public DGM logs, no detectable target-specific advantage: 12 targets repaired vs 16.4 expected (e-value 0.15, odds ratio 0.69) - failure feedback did not direct repair beyond chance. Controlled study: own-failure feedback raised target repair +20.0pp for Qwen3-4B versus matched same-category feedback (CI +8.5 to +31.8, Holm p=0.003); Phi-4-mini +6.7pp not significant (CI -0.6 to +14.0, p=0.17). Target repair did not reliably imply held-out improvement; held-out gains concentrated in settings with identifiable, repairable failure mechanisms (planted errors, natural tool-interface failures). Eight-step revision loops and GEPA ended at similar mean held-out accuracy (+14.5 vs +14.4 on the planted-rule Qwen parent).
+
+**Evidence limits** — Study 1 is observational over public logs with eligibility constraints; Study 2 covers two small open models on instruction-revision and planted-bug settings, so model- and domain-generality is untested; the DGM finding is about logs' measurable directedness, not about whether DGM improved overall. Single-author, no stated affiliation and no venue.
+
+**Code / weights / data / license** — Ancillary files at the arXiv source include analysis and experiment code, derived data, a README and prereg/prereg_v2.md; verify_claims.py recomputes each number quoted in the paper; DGM data start from the public logs released by the DGM authors. arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — Three reporting axes nanoRSI should adopt per modification: target repair (did the cited failure actually get fixed), transfer to related failures, and held-out net change - currently the evidence ledger records panel deltas only, not whether the fed-back failure was the one repaired. The DGM no-direction finding is a caution against assuming failure-conditioned proposals are targeted; the concentration of real gains in identifiable/repairable mechanisms argues for feeding back structured failure classes, not raw traces.
+
+![Original Figure 2: directedness of the 145 eligible DGM self-modifications - repair rate of the randomly selected target failure (with Clopper-Pearson intervals) against the parent's other failures, the measurement that returned no target-specific advantage.](assets/paper-figures/dgm-failure-feedback-audit.svg)
+
+**Source figure / official image** — Original Figure 2: directedness of the 145 eligible DGM self-modifications - repair rate of the randomly selected target failure (with Clopper-Pearson intervals) against the parent's other failures, the measurement that returned no target-specific advantage. · Figure 2 (S3.F2; asset file named fig1_directedness.svg), arXiv HTML v1 · [source](https://arxiv.org/html/2610.14662v1/fig1_directedness.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.14662) · [arXiv HTML v1](https://arxiv.org/html/2610.14662v1)
 
 <a id="mc-evobench-experience-audit"></a>
 

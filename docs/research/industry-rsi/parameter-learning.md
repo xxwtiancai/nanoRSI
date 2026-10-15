@@ -10,7 +10,7 @@
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 3 |
 | [Experience distillation & test-time adaptation](#family-experience-distillation) | 7 |
-| [Autonomous training agents & data pipelines](#family-autonomous-training) | 7 |
+| [Autonomous training agents & data pipelines](#family-autonomous-training) | 8 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
 
 <a id="family-self-play-curriculum"></a>
@@ -901,7 +901,37 @@
 
 <a id="family-autonomous-training"></a>
 
-## Autonomous training agents & data pipelines (7)
+## Autonomous training agents & data pipelines (8)
+
+<a id="workrover-recursive-env-evolution"></a>
+
+### WorkRover: Scaling Long-Horizon Cowork Agent Training Via Recursive Environment Evolution
+
+**2026-10-13** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-13, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.
+
+**Institutional relationship** — Seventeen authors under one shared affiliation line covering Fudan University, East China Normal University, Renmin University of China, Shanghai Qiji Zhifeng Co., Ltd. and Shanghai Innovation Institute; the HTML gives no per-author mapping and the contribution-role markup is garbled (recorded).
+
+**What changes and how feedback is reused** — Treats environments as N task packages <Context, Task, Verifier> built and repaired by adaptive construction agents rather than a fixed pipeline. Phase I packages work contexts (repo files, DeepResearch trajectories, MCP-interfaced skills, instrumented apps); Phase II has a Skill Matcher assemble a WorkEnv and an independent Demonstrator Agent execute from the starter workspace to confirm feasibility and emit a Reference State whose diffs are completion evidence; Phase III derives a frozen Evaluation Contract (infrastructure validity, canonical state diff, functional checks, semantic judge) and calibrates it by rejecting the starter state and mutants while accepting the reference and valid alternatives. Recursive evolution: when rollouts expose defects, diagnostics separate agent errors from environment problems; one frozen repair proposal per eligible component (d<=4, <=16 combinations) expands to a dependency-closed update set Gamma(chi)=Close(chi); rebuilt packages replay under matched seeds/policies and the smallest validated closed edit set is selected, with regression checks and fresh-seed confirmation before promotion. Training: Verifier-to-Turn Credit Assignment augments trajectory GRPO advantage - frozen deterministic checks score workspace progress between turns, at least half of each positive increment stays with the producing turn, the remainder goes to prerequisite turns whose tool outputs or exact artifact versions were directly used, negative increments stay local.
+
+**Author-reported result** — Post-training Qwen3.5-35B-A3B (SFT 30,115 trajectories from Qwen3.5-397B-A17B; RL 3,200 pairs from 20,000 screened candidates) yields WorkRover-35B-A3B: JobBench 10.62->36.89% (+26.27), OfficeQA Pro 19.55->48.87% (+29.32), GDPval v2 804.75->1218.00 Elo (+413.25), AutomationBench +22.67, WorkBuddy Office +13.63; leads all 27-35B open-weight peers on all five (Occamy-1.0 second), trailing Kimi K3, >400B open models and GPT-5.5 / Claude Opus 4.7 on several. FCR ablations: Safe Resolution Rate on natural defects 60.7%->70.3% vs full regeneration, task-intent changes 14.3%->1.3%, synthesis pass rate 49.8%->74.8%, regressions vs Apply-all 7.0%->0.7%. VTCA beats episode-only GRPO on all five benchmarks (largest +5.7 AutomationBench, +43 Elo GDPval).
+
+**Evidence limits** — Authors state FCR's bounded enumeration does not establish a global minimum over repairs; VTCA depends on checker coverage and dependency records (wrong provenance misallocates credit, missed links leave prerequisites uncredited) and conservation of checker increments establishes neither policy invariance nor an unbiased policy-gradient estimate. Cross-model comparisons use source-specific evaluation settings (not fully controlled). FCR's repair reliability costs more tokens than Apply-all (1.00 vs 0.59 relative). Handoff case study lacked visual review.
+
+**Code / weights / data / license** — Paper CC BY 4.0; project page workrover.github.io; no code, weights or dataset release stated in the text as of 2026-10-16.
+
+**Possible nanoRSI experiment — not implemented here** — FCR is the transfer: on environment/evaluator defects, enumerate one frozen repair per component within a small bound, expand to the dependency-closed update set, replay under matched seeds and promote the smallest validated closed edit - directly applicable to nanoRSI task-package generation (prepare.py manifests) where a bad fixture should be minimally repaired, not regenerated. Calibration-by-rejection (starter state and mutants must fail; reference and valid alternatives must pass) is a concrete evaluator self-check before any run.
+
+![Original Figure 3: three phases of environment construction (work context, task synthesis via an independent demonstrator, verifier synthesis and calibration) coordinated by the harness, with recursive evolution replaying dependency-closed component repairs until the smallest validated edit set is found.](assets/paper-figures/workrover-recursive-env-evolution.png)
+
+**Source figure / official image** — Original Figure 3: three phases of environment construction (work context, task synthesis via an independent demonstrator, verifier synthesis and calibration) coordinated by the harness, with recursive evolution replaying dependency-closed component repairs until the smallest validated edit set is found. · Figure 3 (S3.F3), arXiv HTML v1 · [source](https://arxiv.org/html/2610.18067v1/overview-2.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.18067) · [arXiv HTML v1](https://arxiv.org/html/2610.18067v1) · [WorkRover project page](https://workrover.github.io/)
 
 <a id="agentic-ttt-test-time-policy"></a>
 

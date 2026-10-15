@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-15",
-  "window_start": "2025-10-15",
+  "as_of": "2026-10-16",
+  "window_start": "2025-10-16",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -7999,6 +7999,11 @@
           "label": "Hermes Agent v0.21.6 release",
           "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.21.6",
           "kind": "official-report"
+        },
+        {
+          "kind": "repository",
+          "label": "hermes-agent v0.22.2 release",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.2"
         }
       ],
       "visual": {
@@ -8031,10 +8036,15 @@
           "date": "2026-10-14",
           "kind": "release",
           "label": "Hermes Agent v0.22.0 'The Threshold Release' (notes dated 2026-10-13): ~24,200 commits / 6,080 merged PRs focused on onboarding and packaging - guided first-run, Linear/Notion connectors, one-click local llama.cpp, signed MSIX/notarized macOS packages, hermes pm and a 600-plugin catalog; Python 3.14 runtime and Windows MSIX-only are breaking. Product and distribution work around the self-refactoring agent, no new recursive capability claim."
+        },
+        {
+          "date": "2026-10-15",
+          "kind": "release",
+          "label": "Hermes Agent v0.22.2 fix release (v0.22.1 of 2026-10-14 was built from the wrong commit): gateway failing to start after reboot and long local-model turns dying on laptops fixed"
         }
       ],
       "local_reproduction": "not-run",
-      "last_verified": "2026-10-15"
+      "last_verified": "2026-10-16"
     },
     {
       "id": "scienceide-agent-environments",
@@ -13321,6 +13331,829 @@
         }
       },
       "last_verified": "2026-10-15",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "areal-rsi-adaptive-scaling",
+      "title": "AReaL-RSI: Adaptive Scaling and Coordination of Recursive Self-Improvement",
+      "organizations": [
+        "Ant Group",
+        "Zhejiang University",
+        "HKUST"
+      ],
+      "published": "2026-10-13",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "ai-scientists",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-13, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-13，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Fourteen authors across Ant Group (11), Zhejiang University (3) and HKUST (2, including Binhang Yuan); Wenhao Zhou and Yingqi Peng are Ant Group x Zhejiang University. Affiliations read from the stated lines of the HTML author block.",
+        "zh": "十四位作者分属蚂蚁集团（11）、浙江大学（3）与香港科技大学（2，含 Binhang Yuan）；Wenhao Zhou 与 Yingqi Peng 为蚂蚁集团 × 浙江大学。机构取自 HTML 作者块的署名行。"
+      },
+      "mechanism": {
+        "en": "Organizes a persistent research team of agents around a task-conditioned harness library h = (p, K, S) - research orientation, reusable knowledge, repeatable skills - without touching backbone weights, tool permissions or orchestration. A leader agent assigns harnesses, distinguishes artifact quality from investigative promise and routes memory. Conditional memory sharing gives every experience record an observed result, interpretation, tested conditions, remaining uncertainty and a kappa label in {problem, positive}: unresolved problems are routed to at most one additional researcher, positive findings spread broadly, and relabeling requires new supporting references; recipients test locally before adopting. After each campaign the leader runs a separate evidence-based review session that proposes harness edits from the retrievable record without new experiments; accepted, version-consistent revisions replace library entries for later campaigns.",
+        "zh": "在不触碰骨干权重、工具权限与编排的前提下，围绕任务条件化的 harness 库 h = (p, K, S)——研究方向、可复用知识、可重复技能——组织一个持久的研究团队。领导者代理分配 harness、区分工件质量与研究潜力并路由记忆。条件化记忆共享给每条经验记录附带观测结果、解释、已测条件、剩余不确定性与 κ 标签（problem / positive）：未解决问题最多路由给一名额外研究者，正向发现可广泛共享，改标签需要新的支撑引用；接收方先本地测试再采纳。每个战役结束后，领导者运行独立的循证评审会话，从可检索记录提出 harness 修订而不做新实验；被接受且版本一致的修订替换库条目供后续战役使用。"
+      },
+      "result": {
+        "en": "Versus Codex-Goal under the reported resource allocations: Terminal Bench 2.1 +2.2pp per backbone (Luna 75.3->77.5%, Astra 85.4->87.6%); mean KernelBench speedup +32.2-36.8% (Luna 1.74x->2.30x, Astra 6.28x->8.59x). Scaling study (Table 2, 4 KernelBench tasks x 2 backbones): experience sharing plus specialized researcher roles gives 1.9-27.5% lower kernel latency than independent exploration and 1.3-33.9% lower than sharing alone across all seven comparable task-backbone pairs (Astra L3P10: 8.815 / 7.379 / 6.395 ms for independent / sharing / sharing+roles).",
+        "zh": "在报告的资源分配下对比 Codex-Goal：Terminal Bench 2.1 每骨干 +2.2 个百分点（Luna 75.3→77.5%、Astra 85.4→87.6%）；KernelBench 平均加速 +32.2–36.8%（Luna 1.74×→2.30×、Astra 6.28×→8.59×）。扩展研究（表 2，4 个 KernelBench 任务 × 2 骨干）：经验共享加专职研究者角色比独立探索低 1.9–27.5% 内核延迟、比仅共享低 1.3–33.9%，覆盖全部七个可比任务-骨干对（Astra L3P10：独立/共享/共享+角色 = 8.815 / 7.379 / 6.395 ms）。"
+      },
+      "limits": {
+        "en": "Authors state results do not establish equal-compute efficiency and comparisons are descriptive without repeated-run uncertainty. Sharing alone regressed on Luna L1P63 (11.944->15.633 ms, +30.9%) and L2P71 (+13.4%); Luna L3P10 failed under all configurations; the Astra jailbreak-task gain was tiny (+0.119). Mechanism effects are not isolated and diversity is unmeasured. Anti-leakage instructions (no task answers or hidden-test info in reusable assets) are a semantic requirement, not a formal guarantee.",
+        "zh": "作者声明结果未建立等算力效率，比较为描述性、无重复运行不确定度。仅共享在 Luna L1P63（11.944→15.633 ms，+30.9%）与 L2P71（+13.4%）上退化；Luna L3P10 在全部配置下失败；Astra 越狱任务增益极小（+0.119）。机制效应未分离、多样性未测量。防泄漏指令（可复用资产不得含任务答案或隐藏测试信息）是语义性要求而非形式化保证。"
+      },
+      "availability": {
+        "en": "No code or data availability statement found in the HTML (checked 2026-10-16); paper under the arXiv non-exclusive license.",
+        "zh": "HTML 中未见代码或数据可用性声明（2026-10-16 核对）；论文为 arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "Campaign-level review is a directly portable structure: a checkpointed review session that rewrites orientation/knowledge/skill entries from the evidence ledger without spending episodes, gated on version consistency, between nanoRSI generations. Conditional sharing (problem vs positive labels, at most one routed recipient, local re-test before adoption, relabeling only with new evidence) is a concrete policy for routing experience between population candidates instead of broadcast accumulation.",
+        "zh": "战役级评审是可直接移植的结构：在 nanoRSI 世代之间设检查点评审会话，从证据账本改写方向/知识/技能条目而不消耗 episode，以版本一致性为闸门。条件化共享（problem/positive 标签、最多一名路由接收者、采纳前本地重测、改标签需新证据）是种群候选间路由经验、避免广播式堆积的具体策略。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.18083"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.18083v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/areal-rsi-adaptive-scaling.svg",
+        "source_url": "https://arxiv.org/html/2610.18083v1/areal_rsi_overview.svg",
+        "locator": "Figure 1 (S1.F1), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 1: the leader agent selects task-conditioned harnesses (orientation, knowledge, skills), researchers produce verifiable records, and post-campaign review rewrites library entries - scaling RSI by coordinating rather than retraining.",
+          "zh": "论文原图 1：领导者代理选取任务条件化 harness（方向、知识、技能），研究者产出可验证记录，战役后评审改写库条目——以协调而非重训练来扩展 RSI。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "specforge-behavioral-specs",
+      "title": "SpecForge: Recursive Self-Improvement for Coding Agents via Behavioral Specifications",
+      "organizations": [
+        "Virginia Tech",
+        "NEC Laboratories America"
+      ],
+      "published": "2026-10-11",
+      "kind": "paper",
+      "category": "memory-context",
+      "family": "structured-knowledge",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-11, announced in the double-size 2026-10-14 batch; accepted to NeurIPS 2026 Main Track per the arXiv comments field; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-11，随翻倍的 2026-10-14 批次公告；据 arXiv comments 字段已被 NeurIPS 2026 主会接收；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Yutong Cheng (Virginia Tech), Haifeng Chen (NEC Laboratories America), Peng Gao (Virginia Tech), Wei Cheng (NEC Laboratories America, corresponding). The HTML's email-to-author mapping is swapped between Chen and Gao; affiliations follow the stated lines. Work done during an internship at NEC Labs America; same group as TeSearch (catalogued 2026-10-15).",
+        "zh": "Yutong Cheng（弗吉尼亚理工）、Haifeng Chen（NEC Laboratories America）、Peng Gao（弗吉尼亚理工）、Wei Cheng（NEC Laboratories America，通讯）。HTML 中 Chen 与 Gao 的邮箱映射互换；机构以署名行为准。工作完成于 NEC Labs America 实习期间；与 2026-10-15 收录的 TeSearch 同一团队。"
+      },
+      "mechanism": {
+        "en": "Improves the external context, not weights: an agent generates code from the current natural-language behavioral specifications of program entities, runs execution-verified tests (LLM-generated from reference implementations and kept only if passing), and refines specs from failures. Output coupling - improving one entity's spec can degrade dependents ('whack-a-mole') - is countered by a multi-frontier tree search: (i) Pareto-guided state selection keeps an archive of non-dominated states over per-entity pass-rate vectors and samples expansion nodes frequency-weighted; (ii) dependency-constrained entity selection makes an entity eligible only when unsolved with all callees resolved (callee-before-caller), budgeted by a discounted-UCB bandit on normalized gap-closing reward; (iii) error-diversified expansion grows W=3 children per step, each via Diagnose->Prescribe conditioned on a random ~half subset of failing tests, then regenerates and fully re-tests the module.",
+        "zh": "改进外部上下文而非权重：代理按当前程序实体的自然语言行为规约生成代码，跑执行验证的测试（由参考实现生成、仅保留通过者），并从失败中修订规约。输出耦合——改好一个实体的规约可能劣化依赖者（“打地鼠”）——由多前沿树搜索应对：(i) 帕累托引导的状态选择维护逐实体通过率向量上非支配状态的档案，按频率加权采样扩展节点；(ii) 依赖约束的实体选择要求实体未解决且全部被调用方已解决（先被调后调用），用折扣 UCB 老虎机按归一化缺口闭合奖励分配预算；(iii) 误差多样化扩展每步生成 W=3 个子节点，各以随机约半数失败测试子集为条件做 Diagnose→Prescribe，再整体重生成并全量重测。"
+      },
+      "result": {
+        "en": "DevEval+ across five backbones: 88.9 (Qwen3-235B-A22B), 89.6 (Gemini-2.5-Flash), 90.9 (GPT-4o), 91.0 (Gemini-3.1-Pro), 94.9 (Claude-4.5-Sonnet); average +5.7pt solve-rate over the strongest baseline DocSearch (the authors' own ICML 2026 playbook optimizer). Transfer: DevEval+-Java 65.7% vs 39.7% source-only (spec+source 76.2%); SWE-Dev new-feature implementation 74.5% easy / 51.7% hard Pass@1 vs 55.7 / 44.6 for the benchmark PRD. Ablations: reverse topological order -18.6%, D-UCB -10.4%, error diversity -9.5%, Pareto archive -5.2%.",
+        "zh": "DevEval+ 五骨干：88.9（Qwen3-235B-A22B）、89.6（Gemini-2.5-Flash）、90.9（GPT-4o）、91.0（Gemini-3.1-Pro）、94.9（Claude-4.5-Sonnet）；平均较最强基线 DocSearch（作者自己的 ICML 2026 playbook 优化器）+5.7 个百分点。迁移：DevEval+-Java 65.7% 对仅源码 39.7%（规约+源码 76.2%）；SWE-Dev 新特性实现 74.5% easy / 51.7% hard Pass@1 对基准 PRD 的 55.7 / 44.6。消融：逆拓扑序 −18.6%、D-UCB −10.4%、误差多样性 −9.5%、帕累托档案 −5.2%。"
+      },
+      "limits": {
+        "en": "Static documentation underperforms source-only on cross-language transfer; GEPA declines after peaking; DocSearch drops ~5.6pt on the revised benchmark. A limitations appendix section exists but its content did not render in the HTML fetch. The HTML email-author mapping is swapped (recorded in affiliation).",
+        "zh": "静态文档在跨语言迁移上不如仅源码；GEPA 达峰后下滑；DocSearch 在修订基准上掉约 5.6 分。存在局限性附录章节但其内容未在抓取的 HTML 中渲染。HTML 邮箱-作者映射互换（已记入机构字段）。"
+      },
+      "availability": {
+        "en": "MIT-licensed code at github.com/ccsnow127/SpecForge (LICENSE verified 2026-10-16; artifact ships DevEval+ 20 Python modules, 16 Java harnesses and selected SWE-Dev data); paper CC BY 4.0.",
+        "zh": "代码 MIT 许可，位于 github.com/ccsnow127/SpecForge（LICENSE 已于 2026-10-16 核验；工件含 DevEval+ 20 个 Python 模块、16 个 Java harness 与部分 SWE-Dev 数据）；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "Three concrete transfers: keep a Pareto archive of non-dominated skill/spec variants per entity instead of a single incumbent (dominance over per-item pass-rate vectors); enforce callee-before-caller edit ordering when evolving multi-file skill bundles; and make each proposer attempt condition on a different subset of observed failures (error-diversified expansion) so population children search different frontiers.",
+        "zh": "三个可直接迁移点：按实体维护非支配的技能/规约变体帕累托档案而非单一现任者（支配关系定义在逐条目通过率向量上）；演化多文件技能束时强制先被调后调用的编辑顺序；让提案器的每次尝试以观测失败的不同子集为条件（误差多样化扩展），使种群子代搜索不同前沿。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.15708"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.15708v1"
+        },
+        {
+          "kind": "repository",
+          "label": "SpecForge code",
+          "url": "https://github.com/ccsnow127/SpecForge"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/specforge-behavioral-specs.png",
+        "source_url": "https://arxiv.org/html/2610.15708v1/overview.png",
+        "locator": "Figure 2 (S3.F2), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 2 (overview): the three search decisions of SpecForge - where to refine (Pareto-guided state selection), what to refine (dependency-constrained entity choice), and how to refine (error-diversified spec rewriting).",
+          "zh": "论文原图 2（总览）：SpecForge 的三个搜索决策——在哪改（帕累托引导的状态选择）、改什么（依赖约束的实体选择）、怎么改（误差多样化的规约重写）。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "harnessttt-test-time-harness",
+      "title": "HarnessTTT: Learn to Optimize Harness at Test-Time for Scientific Discovery",
+      "organizations": [
+        "University of Wisconsin-Madison",
+        "NVIDIA",
+        "Johns Hopkins University",
+        "Stanford University",
+        "Meta"
+      ],
+      "published": "2026-10-12",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "harness-search",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-12, announced in the double-size 2026-10-14 batch; project page marked 'research preview, paper under review'; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-12，随翻倍的 2026-10-14 批次公告；项目页标注“research preview, paper under review”；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Yingzi Ma (UW-Madison), Yulong Cao (NVIDIA), Nanxi Li (Johns Hopkins), Fang Wu (Stanford), Yizhe Zhang (Meta), James Zou (Stanford), Yejin Choi (Stanford), Chaowei Xiao (Johns Hopkins), from the stated affiliation lines.",
+        "zh": "Yingzi Ma（威斯康星大学麦迪逊分校）、Yulong Cao（NVIDIA）、Nanxi Li（约翰霍普金斯）、Fang Wu（斯坦福）、Yizhe Zhang（Meta）、James Zou（斯坦福）、Yejin Choi（斯坦福）、Chaowei Xiao（约翰霍普金斯），取自署名行。"
+      },
+      "mechanism": {
+        "en": "Trains a harness proposer at test time while the executor stays frozen: the proposer (executor model + persistent rank-64 LoRA, 3 epochs per round, PPO-style clipped objective, KL 0.1 to the frozen base) emits executable harnesses - system prompts, reusable skills, tools, middleware, execution controls - each guiding one budgeted discovery rollout whose outcome updates the proposer. The discovery-oriented policy gradient uses gap-normalized rewards g_k = (s_k - b_tau)/Z_tau against the remaining gap to a published reference (positive credit smoothly capped at 3*tanh(g/3), losses floored at -1, invalid candidates -1), RLOO leave-one-out advantages within same-parent groups that deliberately omit division by group std, near-ties (delta 1e-3) collapsed to their mean and all-tied groups excluded, plus max-sharpening (centered softmax, alpha 0.3). Every generated tool passes static checks (import allowlist, forbidden-access screening) and a sandboxed self-test before mounting, with at most 2 repair attempts before being dropped; a restricted ctx interface withholds evaluator code, ground truth and network. Each round retains only the best valid solution (strictly-improving ratchet), the incumbent harness and a fixed-size experience digest.",
+        "zh": "执行器冻结、在测试时训练 harness 提案器：提案器（执行器模型 + 持久 rank-64 LoRA，每轮 3 epoch，PPO 式裁剪目标，对冻结基座 KL 0.1）产出可执行 harness——系统提示、可复用技能、工具、中间件、执行控制——每个引导一次预算内发现式 rollout，其结果更新提案器。发现导向的策略梯度用缺口归一化奖励 g_k = (s_k − b_τ)/Z_τ（对已发表参考的剩余缺口；正信用以 3·tanh(g/3) 平滑封顶、损失下取 −1、非法候选 −1）、同父组内 RLOO 留一优势（刻意不除组标准差）、近平局（δ=1e-3）坍缩为均值且全平局组剔除，外加 max-sharpening（中心化 softmax，α=0.3）。每个生成的工具先过静态检查（导入白名单、禁止访问筛查）与沙箱自测再挂载，至多 2 次修复否则丢弃；受限 ctx 接口对提案器隐藏评测器代码、真值与网络。每轮只保留最优有效解（严格改进的棘轮）、现任 harness 与定长经验摘要。"
+      },
+      "result": {
+        "en": "With a frozen 9B executor: beats OpenEvolve with the same executor on all eleven benchmark tasks (circle packing 1.17 -> 2.64); beats the discovery-fine-tuned Finch-9B by up to 91.7% (Hadamard; abstract rounds to 92%); 9/11 tasks best among open-weight <=10B systems; Erdos minimum-overlap 0.380919, better than the best human reference 0.380927. Scaling the proposer with a frozen 27B executor improves eleven of fourteen tasks; learned harnesses replayed on GPT-5.5 match or exceed the strongest reported system of any backbone on nine of fourteen tasks. Fourteen tasks span math, systems, GPU kernels, heuristics, astrodynamics and biology.",
+        "zh": "冻结 9B 执行器：同一执行器下在全部十一个基准任务上胜过 OpenEvolve（圆装箱 1.17→2.64）；较发现式微调的 Finch-9B 最高 +91.7%（Hadamard；摘要四舍五入为 92%）；9/11 任务为开源权重 ≤10B 系统最佳；Erdős 最小重叠 0.380919，优于最佳人类参考 0.380927。提案器随冻结 27B 执行器扩展后十四个任务中十一个提升；学到的 harness 重放到 GPT-5.5 上在十四个任务中的九个上匹配或超过任意骨干的最强已报告系统。十四个任务覆盖数学、系统、GPU 内核、启发式、天体力学与生物。"
+      },
+      "limits": {
+        "en": "Trails <=10B systems on AC2 (0.934 vs 0.947) and Txn (4,255 vs 4,762), with the AC2 comparison confounded by the initial program; behind frontier on EPLB; the 27B proposer is worse on Hadamard (-12.4%). Reporting is single-campaign rather than means; transfer and replay gains are descriptive point estimates without isolated transfer effects; LLM-SQL and Txn are quarantined with caveats. The released artifact lacks the trusted runtime, sandbox and logs, so the settings 'cannot yet be verified independently' (authors' statement, echoed on the project page).",
+        "zh": "在 AC2（0.934 对 0.947）与 Txn（4,255 对 4,762）上落后于 ≤10B 系统，AC2 比较受初始程序混杂；EPLB 落后前沿；27B 提案器在 Hadamard 上更差（−12.4%）。报告为单战役而非均值；迁移与重放增益是描述性点估计、未分离纯迁移效应；LLM-SQL 与 Txn 被隔离并附警示。释出工件缺少可信运行时、沙箱与日志，故设置“尚无法被独立验证”（作者自述，项目页同文）。"
+      },
+      "availability": {
+        "en": "Project page gray311.github.io/harnessrl links two different GitHub repos (Code button: SaFo-Lab/Self_Adapt_Harness; footer: gray311/SAH - both resolve, the inconsistency recorded); no license statement found on the page, code license not verified 2026-10-16. No weights or dataset release stated.",
+        "zh": "项目页 gray311.github.io/harnessrl 链接了两个不同 GitHub 仓库（Code 按钮：SaFo-Lab/Self_Adapt_Harness；页脚：gray311/SAH——均可访问，不一致已如实记录）；页面未见许可声明，代码许可 2026-10-16 未核验。未声明权重或数据发布。"
+      },
+      "application": {
+        "en": "The reward recipe is directly portable to nanoRSI's noisy small-panel selection: normalize each candidate by (score - parent) over the remaining gap to a reference, cap positive credit smoothly, floor losses and mark invalid attempts -1; compute leave-one-out advantages within same-parent groups without dividing by group std, collapse near-ties, drop all-tied groups. The pre-mount validation ladder (static allowlist -> sandboxed self-test -> at most 2 repairs -> drop) is a concrete attempt-gating pattern for generated skills and evaluators.",
+        "zh": "奖励配方可直接移植到 nanoRSI 的小噪声面板选择：把候选按（分数 − 父代）/对参考的剩余缺口归一化，正信用平滑封顶、损失取下限、非法尝试记 −1；同父组内算留一优势且不除组标准差，近平局坍缩、全平局组丢弃。挂载前验证阶梯（静态白名单 → 沙箱自测 → 至多 2 次修复 → 丢弃）是生成技能与评测器的具体 attempt 闸门范式。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.17370"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.17370v1"
+        },
+        {
+          "kind": "project-page",
+          "label": "HarnessTTT project page",
+          "url": "https://gray311.github.io/harnessrl/"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/harnessttt-test-time-harness.svg",
+        "source_url": "https://arxiv.org/html/2610.17370v1/overview.svg",
+        "locator": "Figure 4 (S3.F4), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 4 (overview): the proposer (executor + LoRA adapter) emits candidate harnesses, each validated before guiding a budgeted discovery rollout; rollout outcomes train the proposer at test time while the executor stays frozen.",
+          "zh": "论文原图 4（总览）：提案器（执行器 + LoRA 适配器）产出候选 harness，各自先验证再引导一次预算内发现式 rollout；rollout 结果在测试时训练提案器，执行器保持冻结。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "harness2-recursive-harnessing",
+      "title": "Harness^2: Recursive Agent Harnessing for an Open World",
+      "organizations": [
+        "Google Cloud AI Research",
+        "Northwestern University"
+      ],
+      "published": "2026-10-09",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "harness-search",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-09, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-09，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Eight of nine authors at Google Cloud AI Research (Yanfei Chen, Zhongying CuiZhu, Bhavana Dalvi Mishra, Yifei Ming, Han Yu, Rujun Han, Chen-Yu Lee, Tomas Pfister); corresponding author Ruiyao Xu carries a Northwestern University affiliation line in addition to Google Cloud AI Research. The byline 'Zhongying CuiZhu' looks like a LaTeXML merge artifact of two names; stray LaTeX artifacts appear in the affiliation block.",
+        "zh": "九位作者中八位属 Google Cloud AI Research（Yanfei Chen、Zhongying CuiZhu、Bhavana Dalvi Mishra、Yifei Ming、Han Yu、Rujun Han、Chen-Yu Lee、Tomas Pfister）；通讯作者 Ruiyao Xu 在 Google Cloud AI Research 之外另有 Northwestern University 署名行。署名“Zhongying CuiZhu”疑为 LaTeXML 合并两名作者造成的伪影；机构块另有零散 LaTeX 残留。"
+      },
+      "mechanism": {
+        "en": "Two levels of recursion over a K=8 editable-component harness (system prompt, guardrails, memory, skills, tool guidance, scripts, subagents, TypeScript middleware). Task level, Propose-Probe-Compose: run the current harness once for a reference execution, then propose an 'invariant' candidate (cross-domain agentic deficiency) and a domain-specific candidate; Probe reruns each under matched configuration and compares trajectory and deliverable against the reference to yield a behavioral contrast (mitigates / neutral / regresses) with no ground-truth verifier; Compose selectively merges supported edits, revises conflicts, adopts one candidate or keeps the harness - every decision tied to a concrete observation rather than a presumed score gain. Parallel recursion probes k candidates and composes from the pool; sequential recursion chains k contrastive steps. Harnessing level: after each task, reflection extracts lessons from the full improvement record, retaining only contrast-supported lessons; the adopted harness plus an EXPERIENCE.md entry joins an indexed improvement library. The default harness editor is Claude Opus 4.8 under OpenCode.",
+        "zh": "在 K=8 个可编辑组件的 harness（系统提示、护栏、记忆、技能、工具指引、脚本、子代理、TypeScript 中间件）上做两层递归。任务级 Propose-Probe-Compose：先以当前 harness 跑一次参照执行，再提出“不变式”候选（跨领域代理缺陷）与领域专用候选各一；Probe 在匹配配置下重跑各候选，把轨迹与交付物同参照对比得到行为反差（缓解/中性/退化），全程不用真值验证器；Compose 选择性合并受支持的编辑、修订冲突、采纳其一或保持不变——每个决定都绑定具体观察而非假想的分数增益。并行递归探 k 个候选并从池中组合；串行递归链式 k 步反差。harness 级：每个任务后由反思从完整改进记录提炼教训，只保留有反差支撑者；被采纳 harness 与一条 EXPERIENCE.md 条目进入带索引的改进库。默认 harness 编辑器为 OpenCode 下的 Claude Opus 4.8。"
+      },
+      "result": {
+        "en": "Across three professional benchmarks and four model-harness configurations (frozen GLM-5 and Gemini 3.5 Flash executors x OpenCode and Codex baseline harnesses), a single recursion step gains up to 11.5 points on WorkBuddy-Bench (GLM-5/OpenCode 64.2 -> 75.7), 4.5 on JobBench (Gemini 3.5 Flash/OpenCode) and 11.8pp on LAB partial (GLM-5/OpenCode 59.6 -> 71.4); raising recursion budget k from 1 to 5 improves monotonically for both parallel and sequential forms (parallel higher at k=5), adding roughly +2.6-6.7pp depending on benchmark-configuration.",
+        "zh": "在三个专业基准与四个模型-harness 配置（冻结的 GLM-5 与 Gemini 3.5 Flash 执行器 × OpenCode 与 Codex 基线 harness）上，单步递归增益最高 WorkBuddy-Bench +11.5 分（GLM-5/OpenCode 64.2→75.7）、JobBench +4.5（Gemini 3.5 Flash/OpenCode）、LAB partial +11.8 个百分点（GLM-5/OpenCode 59.6→71.4）；递归预算 k 从 1 到 5 时并行与串行两种形态均单调提升（k=5 并行更高），按基准-配置再加约 +2.6–6.7 个百分点。"
+      },
+      "limits": {
+        "en": "No correctness or transfer guarantee: contrasts and model judgment are sensitive to execution variability and shared model biases. Negative results: ReasoningBank drops as much as 6.6 points below base on coding; Harness Scaling underperforms base in 7 of 12 benchmark-configuration pairs and regresses from k=2 to k=3; Meta-Harness leads Harness2 on LAB for Gemini 3.5 Flash under Codex. Failure analysis of 9 regressions: weak anonymized-deliverable selection (a score-55 output chosen over 95), propagated incorrect premises (2-11 point losses), unattributable variability. Recursion costs extra executions and editor sessions.",
+        "zh": "无正确性或迁移保证：反差与模型判断对执行变异和共享模型偏置敏感。负结果：ReasoningBank 在编码任务上最多低于基线 6.6 分；Harness Scaling 在 12 个基准-配置对中的 7 个劣于基线且 k=2→3 退化；LAB 上 Gemini 3.5 Flash/Codex 由 Meta-Harness 领先。9 例退化的失败分析：匿名交付物选择失当（选中 55 分而弃 95 分）、错误前提传播（损失 2–11 分）、无法归因的变异。递归需额外执行与编辑器会话。"
+      },
+      "availability": {
+        "en": "Apache-2.0 code at github.com/google-research/harness2 (LICENSE verified 2026-10-16; 3 commits, no releases, standard 'not an officially supported Google product' notice); project page harness2.github.io; paper CC BY 4.0.",
+        "zh": "代码 Apache-2.0，位于 github.com/google-research/harness2（LICENSE 已于 2026-10-16 核验；3 次提交、无发布、带“非 Google 官方支持产品”惯常声明）；项目页 harness2.github.io；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "Contrastive probing is the verifier-free gate nanoRSI lacks on open tasks: run the parent once for a reference, rerun each child under matched configuration, and compare trajectories/deliverables to accept only contrast-supported edits - no scores, rubrics or ground truth. The indexed improvement library with per-entry provenance and leave-one-out reuse auditing (their Fig. 10/11) is the memory-surface mirror of nanoRSI's population bookkeeping.",
+        "zh": "反差探测是 nanoRSI 在开放任务上缺失的免验证器闸门：父代跑一次取参照，子代在匹配配置下重跑，比较轨迹/交付物，只接受有反差支撑的编辑——不用分数、评分表或真值。带逐条出处与留一复用审计（其图 10/11）的索引化改进库，是 nanoRSI 种群簿记在记忆面上的镜像。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.14224"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.14224v1"
+        },
+        {
+          "kind": "repository",
+          "label": "harness2 code",
+          "url": "https://github.com/google-research/harness2"
+        },
+        {
+          "kind": "project-page",
+          "label": "harness2 project page",
+          "url": "https://harness2.github.io"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/harness2-recursive-harnessing.png",
+        "source_url": "https://arxiv.org/html/2610.14224v1/harness2_main_new.png",
+        "locator": "Figure 3 (S2.F3), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 3 (pipeline): task-level recursion proposes invariant and domain-specific harness candidates, probes them against a reference execution for behavioral contrast, and composes supported edits; harnessing-level recursion distills contrast-supported lessons into an indexed improvement library.",
+          "zh": "论文原图 3（管线）：任务级递归提出不变式与领域专用两个 harness 候选，对参照执行做行为反差探测并组合受支持编辑；harness 级递归把有反差支撑的教训蒸馏进带索引的改进库。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "workrover-recursive-env-evolution",
+      "title": "WorkRover: Scaling Long-Horizon Cowork Agent Training Via Recursive Environment Evolution",
+      "organizations": [
+        "Fudan University",
+        "East China Normal University",
+        "Renmin University of China",
+        "Shanghai Qiji Zhifeng",
+        "Shanghai Innovation Institute"
+      ],
+      "published": "2026-10-13",
+      "kind": "paper",
+      "category": "parameter-learning",
+      "family": "autonomous-training",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-13, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-13，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Seventeen authors under one shared affiliation line covering Fudan University, East China Normal University, Renmin University of China, Shanghai Qiji Zhifeng Co., Ltd. and Shanghai Innovation Institute; the HTML gives no per-author mapping and the contribution-role markup is garbled (recorded).",
+        "zh": "十七位作者共享一行机构署名，覆盖复旦大学、华东师范大学、中国人民大学、上海期智峰与上海创新研究院；HTML 未给出逐作者映射，贡献角色标记错乱（已如实记录）。"
+      },
+      "mechanism": {
+        "en": "Treats environments as N task packages <Context, Task, Verifier> built and repaired by adaptive construction agents rather than a fixed pipeline. Phase I packages work contexts (repo files, DeepResearch trajectories, MCP-interfaced skills, instrumented apps); Phase II has a Skill Matcher assemble a WorkEnv and an independent Demonstrator Agent execute from the starter workspace to confirm feasibility and emit a Reference State whose diffs are completion evidence; Phase III derives a frozen Evaluation Contract (infrastructure validity, canonical state diff, functional checks, semantic judge) and calibrates it by rejecting the starter state and mutants while accepting the reference and valid alternatives. Recursive evolution: when rollouts expose defects, diagnostics separate agent errors from environment problems; one frozen repair proposal per eligible component (d<=4, <=16 combinations) expands to a dependency-closed update set Gamma(chi)=Close(chi); rebuilt packages replay under matched seeds/policies and the smallest validated closed edit set is selected, with regression checks and fresh-seed confirmation before promotion. Training: Verifier-to-Turn Credit Assignment augments trajectory GRPO advantage - frozen deterministic checks score workspace progress between turns, at least half of each positive increment stays with the producing turn, the remainder goes to prerequisite turns whose tool outputs or exact artifact versions were directly used, negative increments stay local.",
+        "zh": "把环境视作 N 个 <Context, Task, Verifier> 任务包，由自适应的构建代理建造与修复而非固定流水线。阶段一打包工作上下文（仓库文件、DeepResearch 轨迹、MCP 接口技能、插桩应用）；阶段二由 Skill Matcher 组装 WorkEnv，独立的 Demonstrator Agent 从起始工作区执行以确认可行性并产出 Reference State，其差异即完成证据；阶段三从指令派生冻结的 Evaluation Contract（基础设施有效性、规范状态差异、功能检查、语义判官），并以“拒收起始态与突变体、接受参照与有效替代”校准。递归演化：rollout 暴露缺陷时，诊断先区分代理错误与环境问题；每个合格组件一份冻结修复提案（d≤4、≤16 组合），扩展为依赖闭更新集 Γ(χ)=Close(χ)；重建包在匹配种子/策略下重放，选取最小通过验证的闭编辑集，回归检查与新种子确认后才晋升。训练上，Verifier-to-Turn 信用分配增广轨迹 GRPO 优势——冻结的确定性检查为回合间工作区进展打分，每个正增量的至少一半留在产出回合，其余按“工具输出或精确工件版本被直接使用”的依赖记给前置回合，负增量留在本地。"
+      },
+      "result": {
+        "en": "Post-training Qwen3.5-35B-A3B (SFT 30,115 trajectories from Qwen3.5-397B-A17B; RL 3,200 pairs from 20,000 screened candidates) yields WorkRover-35B-A3B: JobBench 10.62->36.89% (+26.27), OfficeQA Pro 19.55->48.87% (+29.32), GDPval v2 804.75->1218.00 Elo (+413.25), AutomationBench +22.67, WorkBuddy Office +13.63; leads all 27-35B open-weight peers on all five (Occamy-1.0 second), trailing Kimi K3, >400B open models and GPT-5.5 / Claude Opus 4.7 on several. FCR ablations: Safe Resolution Rate on natural defects 60.7%->70.3% vs full regeneration, task-intent changes 14.3%->1.3%, synthesis pass rate 49.8%->74.8%, regressions vs Apply-all 7.0%->0.7%. VTCA beats episode-only GRPO on all five benchmarks (largest +5.7 AutomationBench, +43 Elo GDPval).",
+        "zh": "对 Qwen3.5-35B-A3B 后训练（SFT 30,115 条轨迹来自 Qwen3.5-397B-A17B；RL 3,200 对来自 20,000 筛选候选）得到 WorkRover-35B-A3B：JobBench 10.62→36.89%（+26.27）、OfficeQA Pro 19.55→48.87%（+29.32）、GDPval v2 804.75→1218.00 Elo（+413.25）、AutomationBench +22.67、WorkBuddy Office +13.63；在全部五项上领先 27–35B 开源同侪（Occamy-1.0 次之），部分落后 Kimi K3、>400B 开源模型与 GPT-5.5 / Claude Opus 4.7。FCR 消融：自然缺陷 Safe Resolution Rate 60.7%→70.3% 对全量重生成、任务意图变更 14.3%→1.3%、合成通过率 49.8%→74.8%、对 Apply-all 回归 7.0%→0.7%。VTCA 在全部五项上胜过仅回合级 GRPO（最大 AutomationBench +5.7、GDPval +43 Elo）。"
+      },
+      "limits": {
+        "en": "Authors state FCR's bounded enumeration does not establish a global minimum over repairs; VTCA depends on checker coverage and dependency records (wrong provenance misallocates credit, missed links leave prerequisites uncredited) and conservation of checker increments establishes neither policy invariance nor an unbiased policy-gradient estimate. Cross-model comparisons use source-specific evaluation settings (not fully controlled). FCR's repair reliability costs more tokens than Apply-all (1.00 vs 0.59 relative). Handoff case study lacked visual review.",
+        "zh": "作者声明 FCR 的有界枚举不对全部修复建立全局最小；VTCA 依赖检查器覆盖与依赖记录（出处错误会错配信用、漏记链接使前置回合无信用），且检查器增量的守恒既不保证策略不变性、也不是无偏策略梯度估计。跨模型比较沿用各源自评测设置（未完全对齐）。FCR 的修复可靠性比 Apply-all 花更多 token（相对 1.00 对 0.59）。交接案例研究缺视觉审查。"
+      },
+      "availability": {
+        "en": "Paper CC BY 4.0; project page workrover.github.io; no code, weights or dataset release stated in the text as of 2026-10-16.",
+        "zh": "论文 CC BY 4.0；项目页 workrover.github.io；截至 2026-10-16 正文未声明代码、权重或数据发布。"
+      },
+      "application": {
+        "en": "FCR is the transfer: on environment/evaluator defects, enumerate one frozen repair per component within a small bound, expand to the dependency-closed update set, replay under matched seeds and promote the smallest validated closed edit - directly applicable to nanoRSI task-package generation (prepare.py manifests) where a bad fixture should be minimally repaired, not regenerated. Calibration-by-rejection (starter state and mutants must fail; reference and valid alternatives must pass) is a concrete evaluator self-check before any run.",
+        "zh": "FCR 即可迁移点：对环境/评测器缺陷，每组件限一份冻结修复、小界枚举，扩展到依赖闭更新集，匹配种子重放后晋升最小通过验证的闭编辑——直接适用于 nanoRSI 任务包生成（prepare.py manifest），坏 fixture 应最小修复而非重生成。以拒绝做校准（起始态与突变体必须失败、参照与有效替代必须通过）是任何 run 之前的评测器自检具体做法。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.18067"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.18067v1"
+        },
+        {
+          "kind": "project-page",
+          "label": "WorkRover project page",
+          "url": "https://workrover.github.io/"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/workrover-recursive-env-evolution.png",
+        "source_url": "https://arxiv.org/html/2610.18067v1/overview-2.png",
+        "locator": "Figure 3 (S3.F3), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 3: three phases of environment construction (work context, task synthesis via an independent demonstrator, verifier synthesis and calibration) coordinated by the harness, with recursive evolution replaying dependency-closed component repairs until the smallest validated edit set is found.",
+          "zh": "论文原图 3：环境构建三阶段（工作上下文、经独立演示者确认的任务合成、验证器合成与校准）由 harness 协调，递归演化通过重放依赖闭的组件修复直至找到最小通过验证的编辑集。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "kgfiles-tool-coevolution",
+      "title": "Knowledge Graphs as Files: An Agent Harness Where Tool Creation and Tool Use Co-Evolve",
+      "organizations": [
+        "Texas A&M University",
+        "University of Oregon"
+      ],
+      "published": "2026-10-13",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-13, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-13，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Yuyang Bai (Texas A&M University), Yu Wang (University of Oregon), Yu Zhang (Texas A&M University), from the stated affiliation lines; the HTML's email links are garbled (Wang's address renders as Yu Zhang's), recorded as-is.",
+        "zh": "Yuyang Bai（德州农工）、Yu Wang（俄勒冈大学）、Yu Zhang（德州农工），取自署名行；HTML 邮箱链接错乱（Wang 的地址渲染成 Yu Zhang 的），如实记录。"
+      },
+      "mechanism": {
+        "en": "DKGI (direct knowledge graph interaction) exports a KG as files - node JSONL shards, per-relation TSV edge lists, schema.json, candidate_ids.txt - and lets a ReAct-style agent in a coding CLI (Pi or Codex) interleave shell search with writing and executing Python directly over those files, with no predefined graph API or subgraph retriever. Each turn the agent may add a program p_t to its toolbox T_t and a saved output file l_t to L_t; execution feedback (candidate ids, intermediate node sets, empty matches, error messages, plus head-and-tail truncated views of large outputs) selects which traversals, filters or revisions come next, so tool creation and tool use co-evolve within the task. Reuse is measured: 48.4% of programs embed node ids seen in earlier outputs; 36.5% revise an earlier program (88.6% of revisions follow a failure); later programs read earlier output files.",
+        "zh": "DKGI（直接知识图谱交互）把 KG 导出为文件——节点 JSONL 分片、按关系的 TSV 边表、schema.json、candidate_ids.txt——让编码 CLI（Pi 或 Codex）里的 ReAct 式代理把 shell 检索与直接在这些文件上写并执行 Python 交织，不用预定义图 API 或子图检索器。每回合代理可向工具箱 T_t 增加程序 p_t、向 L_t 增加保存的输出文件 l_t；执行反馈（候选 id、中间节点集、空匹配、报错信息，以及大输出的首尾截断视图）决定下一步的遍历、过滤或修订，使工具创造与工具使用在任务内共演化。复用有实测：48.4% 的程序嵌入早前输出中见过的节点 id；36.5% 修订早前程序（其中 88.6% 发生在失败之后）；更晚的程序读取早前的输出文件。"
+      },
+      "result": {
+        "en": "Training-free DKGI on STaRK synthetic tests (Amazon 1,642 / MAG 2,665 / Prime 2,801 queries): with GPT-6-Astra, Hit@1 margins over GRASP (strongest trained baseline) of +8.2 / +9.0 / +6.7 - 'at least 6.7 Hit@1 points on every graph'; overall H@1 71.5 (Luna/Pi), 73.1 (Luna/Codex), 82.1 (Astra/Pi). Ablations (test subset, GPT-6-Luna): Full DKGI 75.2 vs shell-only 68.3, predefined graph tools 72.8, graph tools + code 74.2, one-program 69.0, retrieval-only 47.7, no edges 44.2 - adding Python to raw files gains +6.9 but only +1.4 on top of predefined graph tools.",
+        "zh": "免训练 DKGI 在 STaRK 合成测试（Amazon 1,642 / MAG 2,665 / Prime 2,801 查询）上：GPT-6-Astra 下对 GRASP（最强已训练基线）Hit@1 领先 +8.2 / +9.0 / +6.7——“每张图至少 6.7 Hit@1”；整体 H@1 71.5（Luna/Pi）、73.1（Luna/Codex）、82.1（Astra/Pi）。消融（测试子集，GPT-6-Luna）：完整 DKGI 75.2 对仅 shell 68.3、预定义图工具 72.8、图工具+代码 74.2、单程序 69.0、仅检索 47.7、无邻边 44.2——在原始文件上加 Python 得 +6.9，而在预定义图工具上只加 +1.4。"
+      },
+      "limits": {
+        "en": "Scope: STaRK's three KGs (<=10 entity types, 18 relation types, 1.9M nodes, 39.8M edges); Freebase/Wikidata-scale schemas, aggregation questions and a Cypher/SPARQL agent in the same harness left to future work. Proprietary backbones only (GPT-6-Luna/Astra, Sept-Oct 2026 API access); open-weight models untested. Baseline numbers come from the literature with differing backbones/budgets; programs are discarded after each query; arbitrary shell execution requires sandboxing. Largest error source is ranking (gold node returned but not ranked first in 58/46/55% of wrong answers); shell-only access underperforms even predefined graph tools.",
+        "zh": "范围：STaRK 三张 KG（≤10 实体类型、18 关系类型、190 万节点、3,980 万边）；Freebase/Wikidata 级 schema、聚合问题与同 harness 下的 Cypher/SPARQL 代理留作未来工作。仅用专有骨干（GPT-6-Luna/Astra，2026 年 9–10 月 API）；未测开源权重模型。基线数字取自文献、骨干/预算不一致；程序按查询丢弃；任意 shell 执行需沙箱。最大错误源是排序（答错案例中金节点被返回但未排第一的占 58/46/55%）；仅 shell 访问甚至不如预定义图工具。"
+      },
+      "availability": {
+        "en": "MIT-licensed code at github.com/leopoldwhite/DKGI; exported graphs, prompts and all trajectories CC BY 4.0; paper CC BY 4.0 (verified from the HTML statement 2026-10-16).",
+        "zh": "代码 MIT 许可，位于 github.com/leopoldwhite/DKGI；导出图、提示与全部轨迹 CC BY 4.0；论文 CC BY 4.0（2026-10-16 自 HTML 声明核验）。"
+      },
+      "application": {
+        "en": "The co-evolution measurement is the transfer: instrument nanoRSI skill evolution with 'what fraction of new programs reuse earlier outputs (embedded ids), what fraction revise an earlier program, and how many revisions follow a failure' - cheap, per-trajectory statistics that distinguish genuine accumulation from re-derivation. The ablation also argues for raw-file surfaces over predefined tool APIs when giving agents task data: direct file access plus code beat curated interfaces by more than either alone.",
+        "zh": "共演化的度量即可迁移点：给 nanoRSI 技能演化装上统计——“新程序中复用早前输出（嵌入 id）的比例、修订早前程序的比例、修订中有多少发生在失败之后”——这些按轨迹的廉价统计能区分真实积累与重新推导。消融还支持把任务数据以原始文件而非预定义工具 API 交给代理：直接文件访问加代码的收益超过任一单独形式。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.18616"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.18616v1"
+        },
+        {
+          "kind": "repository",
+          "label": "DKGI code",
+          "url": "https://github.com/leopoldwhite/DKGI"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/kgfiles-tool-coevolution.svg",
+        "source_url": "https://arxiv.org/html/2610.18616v1/fig1_image.svg",
+        "locator": "Figure 1 (S1.F1), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 1: on a STaRK-MAG query, a truncated predefined-neighbors call misses the gold paper, while DKGI's agent-written code (scan, merge, filter over the exported node/edge files) co-evolves tool creation with tool use and retrieves it.",
+          "zh": "论文原图 1：STaRK-MAG 查询上，截断的预定义邻居调用漏掉金论文，而 DKGI 的代理自写代码（在导出的节点/边文件上扫描、合并、过滤）让工具创造与工具使用共演化并检索到它。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "genesis-preregistered-accounting",
+      "title": "Pre-Registered Genesis Accounting for Recursive Self-Improvement: First Audited Operator-Genesis Events in a Physics-Discovery Runtime",
+      "organizations": [
+        "HoomanBio AI Lab, Huaman Biotechnology (Beijing)"
+      ],
+      "published": "2026-10-10",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "analyses-audits",
+      "relationship": "enabling",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-10, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-10，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Wenbin Mao and Pei Zou, both at HoomanBio AI Lab, Huaman Biotechnology (Beijing) Co., Ltd. (single shared affiliation line). The manuscript acknowledges drafting assistance from an AI research agent (GML-5.3), stated as a tool, not an author.",
+        "zh": "Wenbin Mao 与 Pei Zou，同属 HoomanBio AI Lab、华曼生物技术（北京）有限公司（单一共享署名行）。手稿致谢 AI 研究代理 GML-5.3 的起草协助，声明为工具而非作者。"
+      },
+      "mechanism": {
+        "en": "A two-tier, pre-registered accounting scheme for RSI claims: M1 counts structure instances generated within a designer-provided vocabulary (four lineage families); M2 counts machine-authored operator types - new operators the runtime itself composed and registered into its vocabulary, each admitted only under a held-out-validation certificate (composed R-squared must jump across tau = 0.999 on held-out data). First audited M2 events: depth-limited compositional search over NIST hydrogen Balmer lines composed sq(inv(n)) = 1/n^2 (the Rydberg form), which no standard single transform expresses. A pre-registered audit caught a v1 protocol flaw - the independent variable n had been reconstructed by inverting the tested law, making R-squared = 1 an algebraic round-trip - and an independent-label protocol (n parsed from NIST configuration labels) repaired it; extrapolation to unseen levels n=8,9 with fitting on n<=7 holds at ~1e-6 relative error, He II replicates, and a second event recovered sqrt(inv(a)) (Kepler velocity law) from JPL ephemerides. Blind decurated genesis exams over twelve datasets / 34 variable pairs returned an honestly reported zero.",
+        "zh": "面向 RSI 主张的两级预注册记账：M1 统计设计者词表内生成的结构实例（四个谱系族）；M2 统计机器自著的算子类型——运行时自行组合并注册进自身词表的新算子，仅在留出验证证书下准入（组合 R² 须在留出数据上跨过 τ = 0.999）。首次经审计的 M2 事件：对 NIST 氢巴尔末系深度受限组合搜索合成出 sq(inv(n)) = 1/n²（里德伯形式），任何标准单一变换都无法表达。预注册审计抓到 v1 协议缺陷——自变量 n 由反演被测定律重构，R² = 1 沦为代数往返——并以独立标签协议（n 取自 NIST 组态标签）修复；在 n≤7 拟合、外推 n=8,9 以约 1e-6 相对误差成立，He II 复现，第二事件从 JPL 星历恢复 sqrt(inv(a))（开普勒速度律）。对十二个数据集 / 34 个变量对的盲式去策划创生考试如实返回零。"
+      },
+      "result": {
+        "en": "Best standard-library transform inv(n): held-out R-squared -0.546; composed 1/n^2: 1.0000000 under the repaired independent-label protocol. Extrapolation to unseen levels: relative error ~1e-6 to 1e-7 for n=8,9 vs 0.35-3.8 for baselines (four to six orders of magnitude). Fitted coefficient b ~ 13.6 eV (hydrogen binding energy). Domain-level compounding channel: 1.109x accuracy ratio (MAE 0.0797 vs 0.0883, NDBC buoy data, 54.6% win rate) - first domain-level measurement of a genesis operator compounding. Negative control denied: cos(sqrt(.)) R-squared 0.919 vs 0.838 for the admitted sqrt.",
+        "zh": "最佳标准库变换 inv(n)：留出 R² −0.546；组合出的 1/n² 在修复后的独立标签协议下为 1.0000000。向未见过层级外推：n=8,9 相对误差约 1e-6 至 1e-7，基线为 0.35–3.8（四到六个数量级）。拟合系数 b ≈ 13.6 eV（氢结合能）。领域级复利通道：1.109× 精度比（MAE 0.0797 对 0.0883，NDBC 浮标数据，54.6% 胜率）——首个创生算子复利的领域级测量。阴性对照被否：cos(sqrt(·)) R² 0.919 对获准的 sqrt 的 0.838。"
+      },
+      "limits": {
+        "en": "Authors' own list: exam datasets were curated by agents that knew the textbook answers; genesis triggers were manual ('M2 measures authored types, not autonomy'); grammar, primitives, depth and judges are observer-injected, so 'invention' is composition over given primitives, not new mathematics; compounding is narrow with no genesis-specific utility proven; small samples (seven H levels, four He II levels); Goodhart exposure as M2 becomes a target. The abstract states the events demonstrate 'capability to author, not yet of autonomous genesis'. No code release; reproducibility rests on public NIST ASD data and the stated rules.",
+        "zh": "作者自列：考试数据集由知晓教科书答案的代理策划；创生触发是手动的（“M2 度量的是被著类型，不是自主性”）；文法、原语、深度与裁判均为观察者注入，“发明”只是给定原语上的组合而非新数学；复利通道窄且未证明创生特异效用；样本小（氢 7 层、He II 4 层）；M2 成为目标后有 Goodhart 风险。摘要明言事件展示的是“创作能力，尚非自主创生”。无代码发布；可复现性依托公开 NIST ASD 数据与所述规则。"
+      },
+      "availability": {
+        "en": "No code release stated; a Reproducibility section notes NIST ASD is public and the R-squared gap and extrapolation table re-derive from the stated rules. Paper CC BY 4.0.",
+        "zh": "未声明代码发布；可复现性一节说明 NIST ASD 公开、R² 差距与外推表可由所述规则重推。论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "The M1/M2 split is directly adoptable evidence-ledger vocabulary for nanoRSI: count separately (M1) variants generated within the starter's designer vocabulary - prompt/skill/parameter edits the templates already anticipate - versus (M2) mechanisms the loop authored that the runtime vocabulary did not contain, each admitted only with a held-out-validation certificate; pre-registering the admission rule before a run is the honesty upgrade. Their caught protocol flaw (inverting the tested law to build the independent variable) is a concrete leakage class to check in any evaluator synthesized by the system itself.",
+        "zh": "M1/M2 两分可直接采纳为 nanoRSI 证据账本词汇：分开统计（M1）起始模板设计者词表内生成的变体——提示/技能/参数编辑——与（M2）循环自著、运行时词表原本不包含的机制，后者仅在留出验证证书下准入；跑前预注册准入规则是诚实性升级。其被抓的协议缺陷（反演被测定律构造自变量）是任何由系统自行合成的评测器都要检查的一类具体泄漏。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.14843"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.14843v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure-crop",
+        "asset": "assets/paper-figures/genesis-preregistered-accounting.png",
+        "source_url": "https://arxiv.org/pdf/2610.14843",
+        "locator": "Figure 1, PDF page 3 (HTML figure is inline-only); 150 dpi render, cropped",
+        "caption": {
+          "en": "Original Figure 1: measured hydrogen binding energies versus the runtime-composed operator 1/n^2 with no free parameter shown; the fitted coefficient is b ~ 13.6 eV - the first audited M2 genesis event under the repaired independent-label protocol.",
+          "zh": "论文原图 1：实测氢结合能对运行时组合出的算子 1/n²，不展示自由参数；拟合系数 b ≈ 13.6 eV——修复后独立标签协议下首个经审计的 M2 创生事件。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "dgm-failure-feedback-audit",
+      "title": "Does Failure Feedback Direct Agent Self-Modification?",
+      "organizations": [
+        "Independent (no affiliation stated)"
+      ],
+      "published": "2026-10-10",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "analyses-audits",
+      "relationship": "enabling",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-10, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-10，随翻倍的 2026-10-14 批次公告；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Sole author Rong He; no institutional affiliation is stated anywhere in the HTML author block (recorded as-is, not inferred).",
+        "zh": "唯一作者 Rong He；HTML 作者块未给出任何机构署名（如实记录，不作推断）。"
+      },
+      "mechanism": {
+        "en": "Measures whether failure feedback actually directs self-modification, comparing repair of a randomly drawn target failure with repair of the parent's other failures inside the same child modification. Study 1 audits the six public Darwin Godel Machine runs (DGM / fixed editor / no-archive on SWE-bench Verified and Polyglot): 145 eligible task-entry modifications where the child worked and the target was evaluated; a martingale e-value test (Ville's inequality, E>=20 for 5% evidence) plus z-statistic and Poisson-binomial reference. Study 2 runs controlled instruction-revision experiments on small open models (Qwen3-4B, Phi-4-mini) with a pre-specified analysis plan, held-out test split and a tool-using agent with planted helper bugs.",
+        "zh": "度量失败反馈是否真的引导自修改：在同一子代修改内部，比较随机抽取的目标失败的修复与父代其余失败的修复。研究一审计六条公开 Darwin Gödel Machine 运行日志（SWE-bench Verified 与 Polyglot 上的 DGM / 固定编辑器 / 无档案）：145 处合格的任务条目修改（子代可用且目标被评测）；鞅 e 值检验（Ville 不等式，E≥20 才算 5% 证据）加 z 统计量与 Poisson-二项参照。研究二对小开源模型（Qwen3-4B、Phi-4-mini）做受控指令修订实验，带预注册分析计划、留出测试切分与植入辅助 bug 的工具型代理。"
+      },
+      "result": {
+        "en": "In public DGM logs, no detectable target-specific advantage: 12 targets repaired vs 16.4 expected (e-value 0.15, odds ratio 0.69) - failure feedback did not direct repair beyond chance. Controlled study: own-failure feedback raised target repair +20.0pp for Qwen3-4B versus matched same-category feedback (CI +8.5 to +31.8, Holm p=0.003); Phi-4-mini +6.7pp not significant (CI -0.6 to +14.0, p=0.17). Target repair did not reliably imply held-out improvement; held-out gains concentrated in settings with identifiable, repairable failure mechanisms (planted errors, natural tool-interface failures). Eight-step revision loops and GEPA ended at similar mean held-out accuracy (+14.5 vs +14.4 on the planted-rule Qwen parent).",
+        "zh": "公开 DGM 日志中无可检出的目标特异优势：修复目标 12 处对期望 16.4（e 值 0.15、优势比 0.69）——失败反馈未将修复引向目标，与随机无异。受控研究：对 Qwen3-4B，自身失败反馈较匹配的同类别反馈使目标修复 +20.0 个百分点（CI +8.5 至 +31.8，Holm p=0.003）；Phi-4-mini +6.7 个百分点不显著（CI −0.6 至 +14.0，p=0.17）。目标修复不必然带来留出改进；留出收益集中在具有可识别、可修复失败机制的设置（植入错误、自然工具接口失败）。八步修订环与 GEPA 终点平均留出精度相当（植入规则 Qwen 父代上 +14.5 对 +14.4）。"
+      },
+      "limits": {
+        "en": "Study 1 is observational over public logs with eligibility constraints; Study 2 covers two small open models on instruction-revision and planted-bug settings, so model- and domain-generality is untested; the DGM finding is about logs' measurable directedness, not about whether DGM improved overall. Single-author, no stated affiliation and no venue.",
+        "zh": "研究一为公开日志的观察性研究、受合格性约束；研究二覆盖两个小开源模型、指令修订与植入 bug 设置，模型与领域普适性未测；DGM 发现关乎日志中可测的方向性，而非 DGM 整体是否有提升。单作者、无机构署名、无会议信息。"
+      },
+      "availability": {
+        "en": "Ancillary files at the arXiv source include analysis and experiment code, derived data, a README and prereg/prereg_v2.md; verify_claims.py recomputes each number quoted in the paper; DGM data start from the public logs released by the DGM authors. arXiv non-exclusive license.",
+        "zh": "arXiv 源码附带分析/实验代码、派生数据、README 与 prereg/prereg_v2.md；verify_claims.py 可重算论文引用的每个数字；DGM 数据取自 DGM 作者公开的日志。arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "Three reporting axes nanoRSI should adopt per modification: target repair (did the cited failure actually get fixed), transfer to related failures, and held-out net change - currently the evidence ledger records panel deltas only, not whether the fed-back failure was the one repaired. The DGM no-direction finding is a caution against assuming failure-conditioned proposals are targeted; the concentration of real gains in identifiable/repairable mechanisms argues for feeding back structured failure classes, not raw traces.",
+        "zh": "nanoRSI 应按修改采纳三个报告轴：目标修复（被引用的失败是否真被修复）、向相关失败的迁移、留出净变化——目前证据账本只记面板增量，不记被反馈的失败是否就是被修复的那个。DGM 无方向性发现警示不要假设失败条件化的提案具有针对性；真实收益集中于可识别/可修复机制，支持反馈结构化失败类别而非原始轨迹。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.14662"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.14662v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/dgm-failure-feedback-audit.svg",
+        "source_url": "https://arxiv.org/html/2610.14662v1/fig1_directedness.svg",
+        "locator": "Figure 2 (S3.F2; asset file named fig1_directedness.svg), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 2: directedness of the 145 eligible DGM self-modifications - repair rate of the randomly selected target failure (with Clopper-Pearson intervals) against the parent's other failures, the measurement that returned no target-specific advantage.",
+          "zh": "论文原图 2：145 处合格 DGM 自修改的方向性——随机选中目标失败的修复率（带 Clopper-Pearson 区间）对父代其余失败，正是返回“无目标特异优势”的那项测量。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "msr-skillopt-skill-parameters",
+      "title": "SkillOpt: Agent skills as trainable parameters",
+      "organizations": [
+        "Microsoft Research"
+      ],
+      "published": "2026-06-30",
+      "kind": "report",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "Microsoft Research blog post published 2026-06-30 (surfaced 2026-10-16 by tracing a third-party writeup back to its primary); a Microsoft publication page exists but no arXiv ID is confirmed - an arXiv number circulating in writeups (2605.23904) did not check out and is not recorded.",
+        "zh": "微软研究院博文发布于 2026-06-30（2026-10-16 由第三方文章回溯到一手来源而发现）；微软出版物页面存在但未确认 arXiv 编号——坊间流传的 arXiv 号（2605.23904）核对不符，不予记录。"
+      },
+      "affiliation": {
+        "en": "Yifan Yang, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Dongdong Chen, Chong Luo - Microsoft Research (Asia lab).",
+        "zh": "Yifan Yang、Xuemei Gao、Qi Dai、Bei Liu、Kai Qiu、Dongdong Chen、Chong Luo——微软研究院（亚洲院区）。"
+      },
+      "mechanism": {
+        "en": "Treats a natural-language skill file as 'a trainable parameter living outside a frozen target model'. A separate optimizer model runs a forward-backward-update loop in text space: forward = the frozen target executes task batches; backward = the optimizer reflects on trajectories in minibatches; update = small add/delete/replace edits, merged, deduplicated, ranked and clipped by a 'textual learning rate' (per-step edit budget). Validation gating is strict: an edit is adopted only if it scores strictly higher than the current skill on the held-out validation split; rejected edits feed a buffer reused as negative feedback, and an epoch-wise slow/meta update consolidates longer-horizon lessons. Weights are never updated and no extra model calls are added at inference; the deliverable is best_skill.md.",
+        "zh": "把自然语言技能文件当作“活在冻结目标模型之外的 可训练参数”。由独立的优化器模型在文本空间跑前向-反向-更新环：前向 = 冻结目标执行任务批；反向 = 优化器按小批反思轨迹；更新 = 小幅增/删/改编辑，经合并、去重、排序，并由“文本学习率”（每步编辑预算）裁剪。验证闸门严格：仅当编辑在留出验证切分上严格高于当前技能才被采纳；被拒编辑进入缓冲区作为负反馈复用，逐 epoch 的慢/元更新沉淀更长程的教训。权重从不更新，推理不增加额外模型调用；交付物是 best_skill.md。"
+      },
+      "result": {
+        "en": "Best or tied-best in all 52 reported evaluation cells (blog's claim) spanning six benchmarks (SearchQA, SpreadsheetBench, OfficeQA, DocVQA, LiveMathematicianBench, ALFWorld), seven models (GPT-5.5 down to Qwen3.5-4B) and three execution modes (direct chat, Codex, Claude Code), against human-written skills, one-shot LLM skills, Trace2Skill, TextGrad, GEPA and EvoSkill. GPT-5.4-mini with the skill (64.3) beats GPT-5.4 without (59.7). Edits stay tiny: median final skill ~920 tokens with only 1-4 accepted edits; OfficeQA's +39.0 gain came from a single edit. Cross-harness transfer: a Codex-trained skill dropped into Claude Code lifts 22.1 -> 81.8.",
+        "zh": "在报告的全部 52 个评测格中最佳或并列最佳（博文口径），覆盖六个基准（SearchQA、SpreadsheetBench、OfficeQA、DocVQA、LiveMathematicianBench、ALFWorld）、七个模型（GPT-5.5 到 Qwen3.5-4B）与三种执行模式（直连、Codex、Claude Code），对照包括人工技能、一次性 LLM 技能、Trace2Skill、TextGrad、GEPA 与 EvoSkill。带技能的 GPT-5.4-mini（64.3）胜过不带技能的 GPT-5.4（59.7）。编辑极小：终版技能中位约 920 token、仅 1–4 条被采纳的编辑；OfficeQA 的 +39.0 来自单条编辑。跨 harness 迁移：Codex 训出的技能放进 Claude Code 从 22.1 升到 81.8。"
+      },
+      "limits": {
+        "en": "Blog-format evidence: the '52 cells' is the blog's stated count over the 6x7x3 space (a subset of the full cross-product, not itemized publicly); headline averages like GPT-5.5 six-benchmark 58.8 -> 82.3 are stated without variance or seed counts; method applies 'wherever automatic evaluation or a reliable verifier exists'. No arXiv paper verified, so numbers rest on the official report; the 52-cell detail could not be independently recomputed.",
+        "zh": "博文级证据：“52 格”是博文对 6×7×3 空间的自报计数（全集的子集，未逐格公开）；GPT-5.5 六基准 58.8→82.3 等均值未给方差或种子数；方法适用于“存在自动评测或可靠验证器之处”。未核验到 arXiv 论文，数字以官方报告为准；52 格细节无法独立重算。"
+      },
+      "availability": {
+        "en": "MIT-licensed code at github.com/microsoft/SkillOpt (LICENSE verified 2026-10-16); project page aka.ms/skillopt; companion SkillLens at microsoft.github.io/SkillLens/.",
+        "zh": "代码 MIT 许可，位于 github.com/microsoft/SkillOpt（LICENSE 已于 2026-10-16 核验）；项目页 aka.ms/skillopt；配套 SkillLens 在 microsoft.github.io/SkillLens/。"
+      },
+      "application": {
+        "en": "The exact pattern nanoRSI's skills template lacks: a textual learning rate (bounded per-step edit count), strict 'adopt only if strictly better on held-out validation' gating, a rejected-edit buffer reused as negative feedback, and an epoch-wise consolidation pass - all implementable in the standard library around the existing skill files. The ~920-token median final skill with 1-4 accepted edits is the reference budget showing small skills suffice.",
+        "zh": "正是 nanoRSI skills 模板缺的模式：文本学习率（每步有界编辑数）、严格“留出验证上严格更好才采纳”的闸门、复用为负反馈的被拒编辑缓冲、逐 epoch 汇总一遍——全部可在现有技能文件周围用标准库实现。终版技能中位约 920 token、仅 1–4 条采纳编辑，是“小技能即足”的参考预算。"
+      },
+      "sources": [
+        {
+          "kind": "official-report",
+          "label": "MSR blog: SkillOpt",
+          "url": "https://www.microsoft.com/en-us/research/blog/skillopt-agent-skills-as-trainable-parameters/"
+        },
+        {
+          "kind": "repository",
+          "label": "SkillOpt code",
+          "url": "https://github.com/microsoft/SkillOpt"
+        },
+        {
+          "kind": "project-page",
+          "label": "SkillOpt project page",
+          "url": "https://aka.ms/skillopt"
+        }
+      ],
+      "visual": {
+        "kind": "official-report-figure",
+        "asset": "assets/paper-figures/msr-skillopt-skill-parameters.png",
+        "source_url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2026/06/SkillOpt_EXT_FA_Figure-1.png",
+        "locator": "Figure 1, MSR blog 'SkillOpt: Agent skills as trainable parameters' (2026-06-30)",
+        "caption": {
+          "en": "Original Figure 1 from the MSR blog: a frozen target model executes tasks while a separate optimizer model trains the skill layer from trajectory feedback - bounded text edits, validation-gated adoption, slow consolidation.",
+          "zh": "MSR 博客原图 1：冻结目标模型执行任务，独立优化器模型从轨迹反馈训练技能层——有界文本编辑、验证闸门采纳、慢速沉淀。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "l3m-verifiable-runtime",
+      "title": "L3M: A Verifiable Harness and Runtime for Self-Extending and Self-Improving Agents",
+      "organizations": [
+        "Amazon"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "safety-governance",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-14, announced in the 2026-10-15 batch; the HTML carries an internal manuscript date of 2026-09-30 and the fuller title 'Capability Without Authority'; primary-verified 2026-10-16. The arXiv-listed title is recorded here.",
+        "zh": "arXiv v1 提交于 2026-10-14，随 2026-10-15 批次公告；HTML 内部稿日期为 2026-09-30，且含更完整的标题“Capability Without Authority”；2026-10-16 完成一手核验。此处记录 arXiv 列示标题。"
+      },
+      "affiliation": {
+        "en": "Carson Eisenach (correspondence), Robert Joseph George, Vincent Quenneville-Belair, Kate Gwimm, Dean Foster - all Amazon, from the single stated affiliation line.",
+        "zh": "Carson Eisenach（通讯）、Robert Joseph George、Vincent Quenneville-Bélair、Kate Gwimm、Dean Foster——全部 Amazon，取自单一署名行。"
+      },
+      "mechanism": {
+        "en": "A runtime written in Lean 4 so that one language implements the harness, states its invariants, and is the language agents extend it in. All state lives in Git: a rich state trajectory - not a chat conversation - is an object the runtime can resume, rewind, fork, compare and merge; waiting, communication, delegation and undo are primitives rather than patterns re-derived each time. When an agent works out a procedure it writes it once as a sealed Lean program whose type is its permission request, and the harness offers it back as a tool. Reversibility decides safety boundaries: a tool's review tier follows from how far its effects can be undone, so agents act freely where the runtime can recover; duties that could be chained into an attack are held by different parties, and the properties that make this safe are stated as kernel-checked theorems about the code that runs.",
+        "zh": "以 Lean 4 写成的运行时：同一种语言实现 harness、陈述其不变量，也是代理扩展它的语言。全部状态存放于 Git：丰富的状态轨迹——而非聊天会话——是运行时可恢复、回滚、分叉、比较与合并的对象；等待、通信、委派与撤销是原语而非每次重新推理的模式。当代理摸索出一个过程，可将其一次性写成密封的 Lean 程序，其类型即权限请求，harness 再把它作为工具提供回来。可逆性决定安全边界：工具的审查层级取决于其影响能被撤销多远，运行时能恢复之处代理可自由行动；可能被链成攻击的职责由不同方分掌，而使这一切安全的性质以内核检查的定理形式陈述在运行的代码上。"
+      },
+      "result": {
+        "en": "On Terminal-Bench against Claude Code, run as ordinary bounded agents: the untuned L3M in its 'tame' arm (no wild calls) reaches pass@3 27.0% versus 41.7% for the same harness with a shell and review off (34 vs 18 passes, Table 5) - about two-thirds of what the shell delivers with no unreviewed call at all; five of the 18 tame passes used agent-written tool programs. The tame and shell arms spend about the same tokens per passing attempt, pointing at the harness rather than the authority bound as the gap.",
+        "zh": "在 Terminal-Bench 上对照 Claude Code、以普通受限代理运行：未调优的 L3M“驯化”臂（无野调用）pass@3 27.0%，同 harness 开 shell 且关审查为 41.7%（34 对 18 通过，表 5）——无任何未审查调用即达 shell 三分之二；驯化臂 18 次通过中有 5 次用了代理自写的工具程序。驯化与 shell 两臂每次通过的 token 开销相当，指向差距来自 harness 而非权限约束。"
+      },
+      "limits": {
+        "en": "Authors' framing: results are from an untuned harness and pass rates/token costs are expected to improve with tuning (the safety theorems do not depend on it); the two-thirds figure is specific to these Terminal-Bench tasks; the evaluation is an initial one against Claude Code. No public code release stated in the HTML as of 2026-10-16.",
+        "zh": "作者自述：结果来自未调优 harness，调优后通过率与 token 成本预计改善（安全定理不依赖调优）；“三分之二”仅限这些 Terminal-Bench 任务；评测是对 Claude Code 的初步评测。截至 2026-10-16 HTML 未声明公开代码发布。"
+      },
+      "availability": {
+        "en": "No code, weights or dataset release stated in the HTML (checked 2026-10-16); paper under the arXiv non-exclusive license.",
+        "zh": "截至 2026-10-16 HTML 未声明代码、权重或数据发布；论文为 arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "Two transfers: (i) reversibility-tiered review - nanoRSI gate strictness could follow effect-undo distance (dry runs and additive edits auto-approved, destructive or state-mutating edits counterfactual-reviewed) instead of one global rule; (ii) sealed procedure types - when a candidate skill is accepted, freeze it with an explicit capability declaration (what it may read/write/execute) that the executor enforces, making the skill file's permission surface machine-checkable.",
+        "zh": "两个迁移点：(i) 按可逆性分层审查——nanoRSI 闸门严格度可随“影响可撤销距离”走（干跑与纯增量编辑自动放行、破坏性或改状态编辑走反事实复审），而非一刀切；(ii) 密封过程类型——候选技能被接受时连同显式能力声明（可读/写/执行什么）一起冻结并由执行器强制，让技能文件的权限面可机检。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.19591"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.19591v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/l3m-verifiable-runtime.png",
+        "source_url": "https://arxiv.org/html/2610.19591v1/figs/l3m-main-overview.png",
+        "locator": "Figure 1 (main overview), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 1: an agent's state and work live in a Git hub that outlasts any session; scoped capability tokens carry its grant into every tool and program it writes; delegated agents each run under a grant of their own - capability without authority.",
+          "zh": "论文原图 1：代理的状态与工作活在超出任何会话生命周期的 Git 枢纽里；作用域化的能力令牌把授权带进它写下的每个工具与程序；被委派的代理各自在自己的授权下运行——有能力而无权限。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "videoharness-srsi-evidence-governed",
+      "title": "VideoHarness-SRSI: Structured Recursive Self-Improvement for Video Understanding Harness",
+      "organizations": [
+        "Meta MRS Research",
+        "UC Davis",
+        "Duke University",
+        "University of Illinois Urbana-Champaign",
+        "Cornell University",
+        "Purdue University"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "harness-search",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-14, announced in the 2026-10-15 batch; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-14，随 2026-10-15 批次公告；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Thirteen authors: Zihao Lin (UC Davis x Meta MRS Research, work done at Meta), Haoyu Dong (Duke), Haobo Xu and Xuying Ning (UIUC), Chi-Chih Chang (Cornell), Yinglong Xia, Shuang Yang, Zhuokai Zhao, Xinying Song, Yang Song and Qifan Wang (Meta MRS Research), Dongfang Liu (Purdue), Lifu Huang (UC Davis).",
+        "zh": "十三位作者：Zihao Lin（UC Davis × Meta MRS Research，工作完成于 Meta）、Haoyu Dong（杜克）、Haobo Xu 与 Xuying Ning（UIUC）、Chi-Chih Chang（康奈尔）、Yinglong Xia、Shuang Yang、Zhuokai Zhao、Xinying Song、Yang Song 与 Qifan Wang（Meta MRS Research）、Dongfang Liu（普渡）、Lifu Huang（UC Davis）。"
+      },
+      "mechanism": {
+        "en": "Studies recursive harness evolution around a frozen vision-language model for agentic video understanding. The baseline VideoHarness-BRSI evolves 4,000+ candidates and rivals hand-engineered systems but exhibits three diagnosed failure modes: validation overfitting (reused validation feedback drives both revisions and proposer search toward the validation set), search-budget dilution, and the early-experience trap. VideoHarness-SRSI restructures the search so every decision rests on evidence that is transferable, sufficient, and gathered before the search commits: the proposer sees only content-free feedback; instrumented warm-up experiments measure signal quality in advance; and candidate mechanisms are validated in isolated probe-race branches before factorial composition into the deployed harness.",
+        "zh": "研究围绕冻结视觉语言模型的递归 harness 演化（智能视频理解）。基线 VideoHarness-BRSI 演化 4,000+ 候选、可与手工系统匹敌，但有三个被诊断的失败模式：验证过拟合（复用的验证反馈同时驱动修订与提案器搜索向验证集靠拢）、搜索预算稀释与早期经验陷阱。VideoHarness-SRSI 重构搜索，使每个决定都建立在可迁移、充分、且在搜索承诺之前就采集好的证据上：提案器只见无内容反馈；插桩热身实验预先测量信号质量；候选机制先在隔离的 probe-race 分支验证，再做析因组合进部署 harness。"
+      },
+      "result": {
+        "en": "Across four video understanding benchmarks, VideoHarness-SRSI improves the equally weighted mean held-out score by 6.2% relative to BRSI and reduces the mean validation-test gap by 37.9%.",
+        "zh": "在四个视频理解基准上，VideoHarness-SRSI 相对 BRSI 将等权平均留出分提升 6.2%，并将平均验证-测试差距缩小 37.9%。"
+      },
+      "limits": {
+        "en": "Domain is agentic video understanding with a frozen VLM (four benchmarks); no code release stated in the Comments ('50 pages, 15 figures'); gains are measured against the authors' own BRSI baseline; per-benchmark variance and seeds not stated in the abstract.",
+        "zh": "领域是冻结 VLM 的智能视频理解（四个基准）；Comments 未声明代码发布（“50 页、15 图”）；增益相对作者自己的 BRSI 基线测得；摘要未给逐基准方差与种子数。"
+      },
+      "availability": {
+        "en": "No code or dataset release stated (checked 2026-10-16); arXiv non-exclusive license.",
+        "zh": "截至 2026-10-16 未声明代码或数据发布；arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "The diagnosis is the mirror of nanoRSI's counterfactual gate: validation feedback reused across revision AND proposer selection overfits - SRSI's fixes (content-free feedback to the proposer, pre-committed warm-up signal audits, mechanism-level probe races in isolated branches before composition) are concrete patterns for the already-planned evaluator-leak work; the val-test gap reduction metric (37.9%) is the number to track, not just held-out gains.",
+        "zh": "其诊断正是 nanoRSI 反事实闸门的镜像：被修订与提案选择两头复用的验证反馈会过拟合——SRSI 的解法（给提案器无内容反馈、预提交的热身信号审计、机制级先隔离 probe-race 再组合）是既有评测器泄漏工作的具体范式；验证-测试差距缩减（37.9%）才是该跟踪的指标，而非只看留出增益。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.19424"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.19424v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/videoharness-srsi-evidence-governed.svg",
+        "source_url": "https://arxiv.org/html/2610.19424v1/Figure2_VideoHarness_SRSI.svg",
+        "locator": "Figure 4 (S4.F4; asset named Figure2_VideoHarness_SRSI.svg), arXiv HTML v1",
+        "caption": {
+          "en": "Original Figure 4 (SRSI overview): every search decision rests on evidence that is transferable, sufficient and gathered before the search commits - content-free proposer feedback, instrumented warm-ups, and probe-race branches before factorial composition.",
+          "zh": "论文原图 4（SRSI 总览）：每个搜索决定都建立在可迁移、充分、且在搜索承诺前采集的证据上——给提案器的无内容反馈、插桩热身、以及析因组合前的 probe-race 分支。"
+        }
+      },
+      "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "discovery-scaling-forgetting",
+      "title": "Scaling Discovery Requires Forgetting",
+      "organizations": [
+        "UC Berkeley",
+        "Stanford University",
+        "Bespoke Labs"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "ai-scientists",
+      "relationship": "enabling",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-14, announced in the 2026-10-15 batch; primary-verified 2026-10-16.",
+        "zh": "arXiv v1 提交于 2026-10-14，随 2026-10-15 批次公告；2026-10-16 完成一手核验。"
+      },
+      "affiliation": {
+        "en": "Shangyin Tan, Ben Zhou, Lakshya A Agrawal, Jialin Zhang, Qiuyang Mang, Donghyun Lee, Dennis Jacob, Koushik Sen, Matei Zaharia (UC Berkeley); Yilin Chen (Stanford); Alex Dimakis (UC Berkeley x Bespoke Labs).",
+        "zh": "Shangyin Tan、Ben Zhou、Lakshya A Agrawal、Jialin Zhang、Qiuyang Mang、Donghyun Lee、Dennis Jacob、Koushik Sen、Matei Zaharia（UC Berkeley）；Yilin Chen（斯坦福）；Alex Dimakis（UC Berkeley × Bespoke Labs）。"
+      },
+      "mechanism": {
+        "en": "Studies why scaling LLM-agent automated research - longer iteration, more parallel agents, communicating agent teams - plateaus: agents anchor to their own past attempts, making fewer and smaller edits as history accumulates. The fix is periodic forgetting: discard the accumulated search state and restart the search from the best candidate found so far, keeping only the incumbent rather than the history. Tasks are iterative refinement of programs, kernels and setups with scored verifiers (OpenEvolve-style) - heuristic programming, kernel optimization and model training across four tasks, measured in total dollars spent.",
+        "zh": "研究为何扩展 LLM 代理的自动化研究——更长迭代、更多并行代理、可通信的代理团队——会平台化：代理锚定自己过去的尝试，随历史累积做出越来越少、越来越小的编辑。解法是周期性遗忘：丢弃累积的搜索状态、从迄今最优候选重启搜索，只留现任者不留历史。任务是带打分验证器的程序/内核/设置迭代精修（OpenEvolve 式）——启发式编程、内核优化与模型训练共四项，以总花费美元计量。"
+      },
+      "result": {
+        "en": "In a communicating agent team, periodic forgetting yields up to 15% improvement over parallel agents without forgetting and up to 39% over a single agent; on AtCoder Heuristic Contest 014 and a VLIW kernel task, forgetting restarts visibly unblock score progression against dollars spent (Figure 1).",
+        "zh": "在可通信的代理团队中，周期性遗忘较不遗忘的并行代理最多提升 15%、较单代理最多 39%；在 AtCoder 启发式竞赛 014 与 VLIW 内核任务上，按花费美元计，遗忘重启明显解除分数停滞（图 1）。"
+      },
+      "limits": {
+        "en": "Four tasks with scored verifiers (heuristic programming, kernel optimization, model training); 'forgetting' here means discarding search state, not memory or skills; gains reported up to 15%/39% across task-configurations, per-task variance not stated in the abstract; no code link in the Comments field.",
+        "zh": "四项带打分验证器的任务（启发式编程、内核优化、模型训练）；“遗忘”指丢弃搜索状态而非记忆或技能；增益以跨任务-配置的至多 15%/39% 报告，摘要未给逐任务方差；Comments 无代码链接。"
+      },
+      "availability": {
+        "en": "No code link in the Comments field (checked 2026-10-16); paper CC BY 4.0.",
+        "zh": "Comments 字段无代码链接（2026-10-16 核对）；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "A population-level control for nanoRSI's selector study: periodically reset the rejected/shortlist history (rejected_recent, ancestry weighting) while keeping the incumbent and the frozen test panels, so proposer conditioning does not anchor on accumulated rejection history - directly testable as a selector arm with the existing multi-seed orchestrator (compare keep-all vs periodic-reset under equal episode budget).",
+        "zh": "可作 nanoRSI 选择器研究的种群级对照：周期性清空被拒/入围历史（rejected_recent、谱系权重）但保留现任者与冻结测试面板，使提案器条件化不锚定累积的拒绝历史——用现有多种子编排器即可直接作为一条选择器臂验证（等 episode 预算下对比全保留 vs 周期重置）。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abstract",
+          "url": "https://arxiv.org/abs/2610.20563"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv PDF v1 (no HTML full text)",
+          "url": "https://arxiv.org/pdf/2610.20563"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure-crop",
+        "asset": "assets/paper-figures/discovery-scaling-forgetting.png",
+        "source_url": "https://arxiv.org/pdf/2610.20563",
+        "locator": "Figure 1, PDF page 1 (no HTML full text available); 150 dpi render, cropped",
+        "caption": {
+          "en": "Original Figure 1: best score so far against total dollars spent on AtCoder Heuristic Contest 014 and a VLIW kernel task - each forgetting restart (Forget 1/2/3) visibly unblocks further score progression that a continuous session leaves flat.",
+          "zh": "论文原图 1：AtCoder 启发式竞赛 014 与 VLIW 内核任务上、迄今最佳分数对总花费美元——每次遗忘重启（Forget 1/2/3）都明显解开连续会话中不再上涨的分数进程。"
+        }
+      },
+      "last_verified": "2026-10-16",
       "local_reproduction": "not-run"
     }
   ]

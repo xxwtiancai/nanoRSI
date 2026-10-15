@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 21 |
-| [Harness search & evolution](#family-harness-search) | 21 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 23 |
+| [Harness search & evolution](#family-harness-search) | 24 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 12 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 8 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 6 |
-| [Safety & governance](#family-safety-governance) | 4 |
+| [Safety & governance](#family-safety-governance) | 5 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (21)
+## Skill-file optimization & libraries (23)
+
+<a id="kgfiles-tool-coevolution"></a>
+
+### Knowledge Graphs as Files: An Agent Harness Where Tool Creation and Tool Use Co-Evolve
+
+**2026-10-13** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-13, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.
+
+**Institutional relationship** — Yuyang Bai (Texas A&M University), Yu Wang (University of Oregon), Yu Zhang (Texas A&M University), from the stated affiliation lines; the HTML's email links are garbled (Wang's address renders as Yu Zhang's), recorded as-is.
+
+**What changes and how feedback is reused** — DKGI (direct knowledge graph interaction) exports a KG as files - node JSONL shards, per-relation TSV edge lists, schema.json, candidate_ids.txt - and lets a ReAct-style agent in a coding CLI (Pi or Codex) interleave shell search with writing and executing Python directly over those files, with no predefined graph API or subgraph retriever. Each turn the agent may add a program p_t to its toolbox T_t and a saved output file l_t to L_t; execution feedback (candidate ids, intermediate node sets, empty matches, error messages, plus head-and-tail truncated views of large outputs) selects which traversals, filters or revisions come next, so tool creation and tool use co-evolve within the task. Reuse is measured: 48.4% of programs embed node ids seen in earlier outputs; 36.5% revise an earlier program (88.6% of revisions follow a failure); later programs read earlier output files.
+
+**Author-reported result** — Training-free DKGI on STaRK synthetic tests (Amazon 1,642 / MAG 2,665 / Prime 2,801 queries): with GPT-6-Astra, Hit@1 margins over GRASP (strongest trained baseline) of +8.2 / +9.0 / +6.7 - 'at least 6.7 Hit@1 points on every graph'; overall H@1 71.5 (Luna/Pi), 73.1 (Luna/Codex), 82.1 (Astra/Pi). Ablations (test subset, GPT-6-Luna): Full DKGI 75.2 vs shell-only 68.3, predefined graph tools 72.8, graph tools + code 74.2, one-program 69.0, retrieval-only 47.7, no edges 44.2 - adding Python to raw files gains +6.9 but only +1.4 on top of predefined graph tools.
+
+**Evidence limits** — Scope: STaRK's three KGs (<=10 entity types, 18 relation types, 1.9M nodes, 39.8M edges); Freebase/Wikidata-scale schemas, aggregation questions and a Cypher/SPARQL agent in the same harness left to future work. Proprietary backbones only (GPT-6-Luna/Astra, Sept-Oct 2026 API access); open-weight models untested. Baseline numbers come from the literature with differing backbones/budgets; programs are discarded after each query; arbitrary shell execution requires sandboxing. Largest error source is ranking (gold node returned but not ranked first in 58/46/55% of wrong answers); shell-only access underperforms even predefined graph tools.
+
+**Code / weights / data / license** — MIT-licensed code at github.com/leopoldwhite/DKGI; exported graphs, prompts and all trajectories CC BY 4.0; paper CC BY 4.0 (verified from the HTML statement 2026-10-16).
+
+**Possible nanoRSI experiment — not implemented here** — The co-evolution measurement is the transfer: instrument nanoRSI skill evolution with 'what fraction of new programs reuse earlier outputs (embedded ids), what fraction revise an earlier program, and how many revisions follow a failure' - cheap, per-trajectory statistics that distinguish genuine accumulation from re-derivation. The ablation also argues for raw-file surfaces over predefined tool APIs when giving agents task data: direct file access plus code beat curated interfaces by more than either alone.
+
+![Original Figure 1: on a STaRK-MAG query, a truncated predefined-neighbors call misses the gold paper, while DKGI's agent-written code (scan, merge, filter over the exported node/edge files) co-evolves tool creation with tool use and retrieves it.](assets/paper-figures/kgfiles-tool-coevolution.svg)
+
+**Source figure / official image** — Original Figure 1: on a STaRK-MAG query, a truncated predefined-neighbors call misses the gold paper, while DKGI's agent-written code (scan, merge, filter over the exported node/edge files) co-evolves tool creation with tool use and retrieves it. · Figure 1 (S1.F1), arXiv HTML v1 · [source](https://arxiv.org/html/2610.18616v1/fig1_image.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — [DKGI code](https://github.com/leopoldwhite/DKGI)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.18616) · [arXiv HTML v1](https://arxiv.org/html/2610.18616v1) · [DKGI code](https://github.com/leopoldwhite/DKGI)
 
 <a id="tesearch-test-suite-signals"></a>
 
@@ -437,6 +467,36 @@
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2608.27454) · [Paper v1 (affiliations, Figure 2, main table)](https://arxiv.org/html/2608.27454v1)
 
+<a id="msr-skillopt-skill-parameters"></a>
+
+### SkillOpt: Agent skills as trainable parameters
+
+**2026-06-30** · report · Direct bounded loop
+
+**Publication date** — Microsoft Research blog post published 2026-06-30 (surfaced 2026-10-16 by tracing a third-party writeup back to its primary); a Microsoft publication page exists but no arXiv ID is confirmed - an arXiv number circulating in writeups (2605.23904) did not check out and is not recorded.
+
+**Institutional relationship** — Yifan Yang, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Dongdong Chen, Chong Luo - Microsoft Research (Asia lab).
+
+**What changes and how feedback is reused** — Treats a natural-language skill file as 'a trainable parameter living outside a frozen target model'. A separate optimizer model runs a forward-backward-update loop in text space: forward = the frozen target executes task batches; backward = the optimizer reflects on trajectories in minibatches; update = small add/delete/replace edits, merged, deduplicated, ranked and clipped by a 'textual learning rate' (per-step edit budget). Validation gating is strict: an edit is adopted only if it scores strictly higher than the current skill on the held-out validation split; rejected edits feed a buffer reused as negative feedback, and an epoch-wise slow/meta update consolidates longer-horizon lessons. Weights are never updated and no extra model calls are added at inference; the deliverable is best_skill.md.
+
+**Author-reported result** — Best or tied-best in all 52 reported evaluation cells (blog's claim) spanning six benchmarks (SearchQA, SpreadsheetBench, OfficeQA, DocVQA, LiveMathematicianBench, ALFWorld), seven models (GPT-5.5 down to Qwen3.5-4B) and three execution modes (direct chat, Codex, Claude Code), against human-written skills, one-shot LLM skills, Trace2Skill, TextGrad, GEPA and EvoSkill. GPT-5.4-mini with the skill (64.3) beats GPT-5.4 without (59.7). Edits stay tiny: median final skill ~920 tokens with only 1-4 accepted edits; OfficeQA's +39.0 gain came from a single edit. Cross-harness transfer: a Codex-trained skill dropped into Claude Code lifts 22.1 -> 81.8.
+
+**Evidence limits** — Blog-format evidence: the '52 cells' is the blog's stated count over the 6x7x3 space (a subset of the full cross-product, not itemized publicly); headline averages like GPT-5.5 six-benchmark 58.8 -> 82.3 are stated without variance or seed counts; method applies 'wherever automatic evaluation or a reliable verifier exists'. No arXiv paper verified, so numbers rest on the official report; the 52-cell detail could not be independently recomputed.
+
+**Code / weights / data / license** — MIT-licensed code at github.com/microsoft/SkillOpt (LICENSE verified 2026-10-16); project page aka.ms/skillopt; companion SkillLens at microsoft.github.io/SkillLens/.
+
+**Possible nanoRSI experiment — not implemented here** — The exact pattern nanoRSI's skills template lacks: a textual learning rate (bounded per-step edit count), strict 'adopt only if strictly better on held-out validation' gating, a rejected-edit buffer reused as negative feedback, and an epoch-wise consolidation pass - all implementable in the standard library around the existing skill files. The ~920-token median final skill with 1-4 accepted edits is the reference budget showing small skills suffice.
+
+![Original Figure 1 from the MSR blog: a frozen target model executes tasks while a separate optimizer model trains the skill layer from trajectory feedback - bounded text edits, validation-gated adoption, slow consolidation.](assets/paper-figures/msr-skillopt-skill-parameters.png)
+
+**Source figure / official image** — Original Figure 1 from the MSR blog: a frozen target model executes tasks while a separate optimizer model trains the skill layer from trajectory feedback - bounded text edits, validation-gated adoption, slow consolidation. · Figure 1, MSR blog 'SkillOpt: Agent skills as trainable parameters' (2026-06-30) · [source](https://www.microsoft.com/en-us/research/wp-content/uploads/2026/06/SkillOpt_EXT_FA_Figure-1.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — [SkillOpt code](https://github.com/microsoft/SkillOpt)
+
+**Primary sources** — [MSR blog: SkillOpt](https://www.microsoft.com/en-us/research/blog/skillopt-agent-skills-as-trainable-parameters/) · [SkillOpt code](https://github.com/microsoft/SkillOpt) · [SkillOpt project page](https://aka.ms/skillopt)
+
 <a id="microsoft-skillopt"></a>
 
 ### SkillOpt: Executive Strategy for Self-Evolving Agent Skills
@@ -649,7 +709,97 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (21)
+## Harness search & evolution (24)
+
+<a id="videoharness-srsi-evidence-governed"></a>
+
+### VideoHarness-SRSI: Structured Recursive Self-Improvement for Video Understanding Harness
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-14, announced in the 2026-10-15 batch; primary-verified 2026-10-16.
+
+**Institutional relationship** — Thirteen authors: Zihao Lin (UC Davis x Meta MRS Research, work done at Meta), Haoyu Dong (Duke), Haobo Xu and Xuying Ning (UIUC), Chi-Chih Chang (Cornell), Yinglong Xia, Shuang Yang, Zhuokai Zhao, Xinying Song, Yang Song and Qifan Wang (Meta MRS Research), Dongfang Liu (Purdue), Lifu Huang (UC Davis).
+
+**What changes and how feedback is reused** — Studies recursive harness evolution around a frozen vision-language model for agentic video understanding. The baseline VideoHarness-BRSI evolves 4,000+ candidates and rivals hand-engineered systems but exhibits three diagnosed failure modes: validation overfitting (reused validation feedback drives both revisions and proposer search toward the validation set), search-budget dilution, and the early-experience trap. VideoHarness-SRSI restructures the search so every decision rests on evidence that is transferable, sufficient, and gathered before the search commits: the proposer sees only content-free feedback; instrumented warm-up experiments measure signal quality in advance; and candidate mechanisms are validated in isolated probe-race branches before factorial composition into the deployed harness.
+
+**Author-reported result** — Across four video understanding benchmarks, VideoHarness-SRSI improves the equally weighted mean held-out score by 6.2% relative to BRSI and reduces the mean validation-test gap by 37.9%.
+
+**Evidence limits** — Domain is agentic video understanding with a frozen VLM (four benchmarks); no code release stated in the Comments ('50 pages, 15 figures'); gains are measured against the authors' own BRSI baseline; per-benchmark variance and seeds not stated in the abstract.
+
+**Code / weights / data / license** — No code or dataset release stated (checked 2026-10-16); arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — The diagnosis is the mirror of nanoRSI's counterfactual gate: validation feedback reused across revision AND proposer selection overfits - SRSI's fixes (content-free feedback to the proposer, pre-committed warm-up signal audits, mechanism-level probe races in isolated branches before composition) are concrete patterns for the already-planned evaluator-leak work; the val-test gap reduction metric (37.9%) is the number to track, not just held-out gains.
+
+![Original Figure 4 (SRSI overview): every search decision rests on evidence that is transferable, sufficient and gathered before the search commits - content-free proposer feedback, instrumented warm-ups, and probe-race branches before factorial composition.](assets/paper-figures/videoharness-srsi-evidence-governed.svg)
+
+**Source figure / official image** — Original Figure 4 (SRSI overview): every search decision rests on evidence that is transferable, sufficient and gathered before the search commits - content-free proposer feedback, instrumented warm-ups, and probe-race branches before factorial composition. · Figure 4 (S4.F4; asset named Figure2_VideoHarness_SRSI.svg), arXiv HTML v1 · [source](https://arxiv.org/html/2610.19424v1/Figure2_VideoHarness_SRSI.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.19424) · [arXiv HTML v1](https://arxiv.org/html/2610.19424v1)
+
+<a id="harnessttt-test-time-harness"></a>
+
+### HarnessTTT: Learn to Optimize Harness at Test-Time for Scientific Discovery
+
+**2026-10-12** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-12, announced in the double-size 2026-10-14 batch; project page marked 'research preview, paper under review'; primary-verified 2026-10-16.
+
+**Institutional relationship** — Yingzi Ma (UW-Madison), Yulong Cao (NVIDIA), Nanxi Li (Johns Hopkins), Fang Wu (Stanford), Yizhe Zhang (Meta), James Zou (Stanford), Yejin Choi (Stanford), Chaowei Xiao (Johns Hopkins), from the stated affiliation lines.
+
+**What changes and how feedback is reused** — Trains a harness proposer at test time while the executor stays frozen: the proposer (executor model + persistent rank-64 LoRA, 3 epochs per round, PPO-style clipped objective, KL 0.1 to the frozen base) emits executable harnesses - system prompts, reusable skills, tools, middleware, execution controls - each guiding one budgeted discovery rollout whose outcome updates the proposer. The discovery-oriented policy gradient uses gap-normalized rewards g_k = (s_k - b_tau)/Z_tau against the remaining gap to a published reference (positive credit smoothly capped at 3*tanh(g/3), losses floored at -1, invalid candidates -1), RLOO leave-one-out advantages within same-parent groups that deliberately omit division by group std, near-ties (delta 1e-3) collapsed to their mean and all-tied groups excluded, plus max-sharpening (centered softmax, alpha 0.3). Every generated tool passes static checks (import allowlist, forbidden-access screening) and a sandboxed self-test before mounting, with at most 2 repair attempts before being dropped; a restricted ctx interface withholds evaluator code, ground truth and network. Each round retains only the best valid solution (strictly-improving ratchet), the incumbent harness and a fixed-size experience digest.
+
+**Author-reported result** — With a frozen 9B executor: beats OpenEvolve with the same executor on all eleven benchmark tasks (circle packing 1.17 -> 2.64); beats the discovery-fine-tuned Finch-9B by up to 91.7% (Hadamard; abstract rounds to 92%); 9/11 tasks best among open-weight <=10B systems; Erdos minimum-overlap 0.380919, better than the best human reference 0.380927. Scaling the proposer with a frozen 27B executor improves eleven of fourteen tasks; learned harnesses replayed on GPT-5.5 match or exceed the strongest reported system of any backbone on nine of fourteen tasks. Fourteen tasks span math, systems, GPU kernels, heuristics, astrodynamics and biology.
+
+**Evidence limits** — Trails <=10B systems on AC2 (0.934 vs 0.947) and Txn (4,255 vs 4,762), with the AC2 comparison confounded by the initial program; behind frontier on EPLB; the 27B proposer is worse on Hadamard (-12.4%). Reporting is single-campaign rather than means; transfer and replay gains are descriptive point estimates without isolated transfer effects; LLM-SQL and Txn are quarantined with caveats. The released artifact lacks the trusted runtime, sandbox and logs, so the settings 'cannot yet be verified independently' (authors' statement, echoed on the project page).
+
+**Code / weights / data / license** — Project page gray311.github.io/harnessrl links two different GitHub repos (Code button: SaFo-Lab/Self_Adapt_Harness; footer: gray311/SAH - both resolve, the inconsistency recorded); no license statement found on the page, code license not verified 2026-10-16. No weights or dataset release stated.
+
+**Possible nanoRSI experiment — not implemented here** — The reward recipe is directly portable to nanoRSI's noisy small-panel selection: normalize each candidate by (score - parent) over the remaining gap to a reference, cap positive credit smoothly, floor losses and mark invalid attempts -1; compute leave-one-out advantages within same-parent groups without dividing by group std, collapse near-ties, drop all-tied groups. The pre-mount validation ladder (static allowlist -> sandboxed self-test -> at most 2 repairs -> drop) is a concrete attempt-gating pattern for generated skills and evaluators.
+
+![Original Figure 4 (overview): the proposer (executor + LoRA adapter) emits candidate harnesses, each validated before guiding a budgeted discovery rollout; rollout outcomes train the proposer at test time while the executor stays frozen.](assets/paper-figures/harnessttt-test-time-harness.svg)
+
+**Source figure / official image** — Original Figure 4 (overview): the proposer (executor + LoRA adapter) emits candidate harnesses, each validated before guiding a budgeted discovery rollout; rollout outcomes train the proposer at test time while the executor stays frozen. · Figure 4 (S3.F4), arXiv HTML v1 · [source](https://arxiv.org/html/2610.17370v1/overview.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.17370) · [arXiv HTML v1](https://arxiv.org/html/2610.17370v1) · [HarnessTTT project page](https://gray311.github.io/harnessrl/)
+
+<a id="harness2-recursive-harnessing"></a>
+
+### Harness^2: Recursive Agent Harnessing for an Open World
+
+**2026-10-09** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-09, announced in the double-size 2026-10-14 batch; primary-verified 2026-10-16.
+
+**Institutional relationship** — Eight of nine authors at Google Cloud AI Research (Yanfei Chen, Zhongying CuiZhu, Bhavana Dalvi Mishra, Yifei Ming, Han Yu, Rujun Han, Chen-Yu Lee, Tomas Pfister); corresponding author Ruiyao Xu carries a Northwestern University affiliation line in addition to Google Cloud AI Research. The byline 'Zhongying CuiZhu' looks like a LaTeXML merge artifact of two names; stray LaTeX artifacts appear in the affiliation block.
+
+**What changes and how feedback is reused** — Two levels of recursion over a K=8 editable-component harness (system prompt, guardrails, memory, skills, tool guidance, scripts, subagents, TypeScript middleware). Task level, Propose-Probe-Compose: run the current harness once for a reference execution, then propose an 'invariant' candidate (cross-domain agentic deficiency) and a domain-specific candidate; Probe reruns each under matched configuration and compares trajectory and deliverable against the reference to yield a behavioral contrast (mitigates / neutral / regresses) with no ground-truth verifier; Compose selectively merges supported edits, revises conflicts, adopts one candidate or keeps the harness - every decision tied to a concrete observation rather than a presumed score gain. Parallel recursion probes k candidates and composes from the pool; sequential recursion chains k contrastive steps. Harnessing level: after each task, reflection extracts lessons from the full improvement record, retaining only contrast-supported lessons; the adopted harness plus an EXPERIENCE.md entry joins an indexed improvement library. The default harness editor is Claude Opus 4.8 under OpenCode.
+
+**Author-reported result** — Across three professional benchmarks and four model-harness configurations (frozen GLM-5 and Gemini 3.5 Flash executors x OpenCode and Codex baseline harnesses), a single recursion step gains up to 11.5 points on WorkBuddy-Bench (GLM-5/OpenCode 64.2 -> 75.7), 4.5 on JobBench (Gemini 3.5 Flash/OpenCode) and 11.8pp on LAB partial (GLM-5/OpenCode 59.6 -> 71.4); raising recursion budget k from 1 to 5 improves monotonically for both parallel and sequential forms (parallel higher at k=5), adding roughly +2.6-6.7pp depending on benchmark-configuration.
+
+**Evidence limits** — No correctness or transfer guarantee: contrasts and model judgment are sensitive to execution variability and shared model biases. Negative results: ReasoningBank drops as much as 6.6 points below base on coding; Harness Scaling underperforms base in 7 of 12 benchmark-configuration pairs and regresses from k=2 to k=3; Meta-Harness leads Harness2 on LAB for Gemini 3.5 Flash under Codex. Failure analysis of 9 regressions: weak anonymized-deliverable selection (a score-55 output chosen over 95), propagated incorrect premises (2-11 point losses), unattributable variability. Recursion costs extra executions and editor sessions.
+
+**Code / weights / data / license** — Apache-2.0 code at github.com/google-research/harness2 (LICENSE verified 2026-10-16; 3 commits, no releases, standard 'not an officially supported Google product' notice); project page harness2.github.io; paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Contrastive probing is the verifier-free gate nanoRSI lacks on open tasks: run the parent once for a reference, rerun each child under matched configuration, and compare trajectories/deliverables to accept only contrast-supported edits - no scores, rubrics or ground truth. The indexed improvement library with per-entry provenance and leave-one-out reuse auditing (their Fig. 10/11) is the memory-surface mirror of nanoRSI's population bookkeeping.
+
+![Original Figure 3 (pipeline): task-level recursion proposes invariant and domain-specific harness candidates, probes them against a reference execution for behavioral contrast, and composes supported edits; harnessing-level recursion distills contrast-supported lessons into an indexed improvement library.](assets/paper-figures/harness2-recursive-harnessing.png)
+
+**Source figure / official image** — Original Figure 3 (pipeline): task-level recursion proposes invariant and domain-specific harness candidates, probes them against a reference execution for behavioral contrast, and composes supported edits; harnessing-level recursion distills contrast-supported lessons into an indexed improvement library. · Figure 3 (S2.F3), arXiv HTML v1 · [source](https://arxiv.org/html/2610.14224v1/harness2_main_new.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — [harness2 code](https://github.com/google-research/harness2)
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.14224) · [arXiv HTML v1](https://arxiv.org/html/2610.14224v1) · [harness2 code](https://github.com/google-research/harness2) · [harness2 project page](https://harness2.github.io)
 
 <a id="evo2-weight-harness-coevolution"></a>
 
@@ -1459,11 +1609,11 @@
 
 **Source figure / official image** — Official banner of Nous Research's account of Hermes autonomously refactoring its own ~1M-line codebase with 1,393 subagents. · Post banner graphic · [source](https://nousresearch.com/refactoring-hermes-with-1393-agents/)
 
-**nanoRSI reproduction** — not-run. Last source check: 2026-10-15.
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
 
-**Open code / weights / data links** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE)
+**Open code / weights / data links** — [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE) · [hermes-agent v0.22.2 release](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.2)
 
-**Primary sources** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/) · [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE) · [Hermes Agent v0.21.5 release](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24) · [Hermes Agent v0.21.6 release](https://github.com/NousResearch/hermes-agent/releases/tag/v0.21.6)
+**Primary sources** — [Nous Research blog report](https://nousresearch.com/refactoring-hermes-with-1393-agents/) · [Hermes Agent repository](https://github.com/NousResearch/hermes-agent) · [Repository LICENSE](https://github.com/NousResearch/hermes-agent/blob/main/LICENSE) · [Hermes Agent v0.21.5 release](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24) · [Hermes Agent v0.21.6 release](https://github.com/NousResearch/hermes-agent/releases/tag/v0.21.6) · [hermes-agent v0.22.2 release](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.2)
 
 <a id="mgm-mendel-godel-machine"></a>
 
@@ -2075,7 +2225,37 @@
 
 <a id="family-safety-governance"></a>
 
-## Safety & governance (4)
+## Safety & governance (5)
+
+<a id="l3m-verifiable-runtime"></a>
+
+### L3M: A Verifiable Harness and Runtime for Self-Extending and Self-Improving Agents
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-14, announced in the 2026-10-15 batch; the HTML carries an internal manuscript date of 2026-09-30 and the fuller title 'Capability Without Authority'; primary-verified 2026-10-16. The arXiv-listed title is recorded here.
+
+**Institutional relationship** — Carson Eisenach (correspondence), Robert Joseph George, Vincent Quenneville-Belair, Kate Gwimm, Dean Foster - all Amazon, from the single stated affiliation line.
+
+**What changes and how feedback is reused** — A runtime written in Lean 4 so that one language implements the harness, states its invariants, and is the language agents extend it in. All state lives in Git: a rich state trajectory - not a chat conversation - is an object the runtime can resume, rewind, fork, compare and merge; waiting, communication, delegation and undo are primitives rather than patterns re-derived each time. When an agent works out a procedure it writes it once as a sealed Lean program whose type is its permission request, and the harness offers it back as a tool. Reversibility decides safety boundaries: a tool's review tier follows from how far its effects can be undone, so agents act freely where the runtime can recover; duties that could be chained into an attack are held by different parties, and the properties that make this safe are stated as kernel-checked theorems about the code that runs.
+
+**Author-reported result** — On Terminal-Bench against Claude Code, run as ordinary bounded agents: the untuned L3M in its 'tame' arm (no wild calls) reaches pass@3 27.0% versus 41.7% for the same harness with a shell and review off (34 vs 18 passes, Table 5) - about two-thirds of what the shell delivers with no unreviewed call at all; five of the 18 tame passes used agent-written tool programs. The tame and shell arms spend about the same tokens per passing attempt, pointing at the harness rather than the authority bound as the gap.
+
+**Evidence limits** — Authors' framing: results are from an untuned harness and pass rates/token costs are expected to improve with tuning (the safety theorems do not depend on it); the two-thirds figure is specific to these Terminal-Bench tasks; the evaluation is an initial one against Claude Code. No public code release stated in the HTML as of 2026-10-16.
+
+**Code / weights / data / license** — No code, weights or dataset release stated in the HTML (checked 2026-10-16); paper under the arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — Two transfers: (i) reversibility-tiered review - nanoRSI gate strictness could follow effect-undo distance (dry runs and additive edits auto-approved, destructive or state-mutating edits counterfactual-reviewed) instead of one global rule; (ii) sealed procedure types - when a candidate skill is accepted, freeze it with an explicit capability declaration (what it may read/write/execute) that the executor enforces, making the skill file's permission surface machine-checkable.
+
+![Original Figure 1: an agent's state and work live in a Git hub that outlasts any session; scoped capability tokens carry its grant into every tool and program it writes; delegated agents each run under a grant of their own - capability without authority.](assets/paper-figures/l3m-verifiable-runtime.png)
+
+**Source figure / official image** — Original Figure 1: an agent's state and work live in a Git hub that outlasts any session; scoped capability tokens carry its grant into every tool and program it writes; delegated agents each run under a grant of their own - capability without authority. · Figure 1 (main overview), arXiv HTML v1 · [source](https://arxiv.org/html/2610.19591v1/figs/l3m-main-overview.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-16.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.19591) · [arXiv HTML v1](https://arxiv.org/html/2610.19591v1)
 
 <a id="cace-bench-admission-gate"></a>
 
