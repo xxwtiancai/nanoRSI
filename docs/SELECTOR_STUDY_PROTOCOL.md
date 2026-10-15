@@ -69,6 +69,10 @@ the gate from evaluation evidence remains rejected until a study says otherwise.
 Task packs: BBH (program track), ALFWorld (agent track; split sizes parameterized,
 frozen test panels comparable across studies), HumanEval (coding track; 3-repeat final
 testing demonstrated). Tooling: noise-band report, evidence ledger with gate summary,
-audit, counterfactual challenger. What is still missing: multi-seed orchestration (each
-seed is a fresh workspace today) and the offline double-scoring harness for false-block
-accounting — both are prerequisites for the first selector study.
+audit, counterfactual challenger, multi-seed orchestration, and the read-only offline
+double-scoring harness at `examples/double_scoring/run.py`. The harness recomputes
+control decisions from recorded metrics and can re-evaluate archived pre-evaluation-
+blocked diffs in isolated worktrees; it does not select, promote or mutate the source
+study. Before any selector arm changes behavior, the first study must still freeze the
+exact three-seed × three-budget plan, matched total evaluation budgets, repeated-frozen
+parent rescoring, held-out panel and failure accounting.
