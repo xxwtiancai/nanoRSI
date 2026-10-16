@@ -44,6 +44,11 @@ class MultiSeedTests(unittest.TestCase):
             for seed in (0, 1):
                 toml = (out / f"seed-{seed}" / "nanorsi.toml").read_text()
                 self.assertIn(f"seed = {seed}", toml)
+            # a patched seed must be committed so baseline sees a clean tree
+            # (the v2 fixture has no initial commit, so this checks the commit path)
+            log = subprocess.run(["git", "log", "--oneline"], cwd=out / "seed-1",
+                                 capture_output=True, text=True)
+            self.assertIn("set experiment seed to 1", log.stdout)
             self.assertFalse((template / "lineage.jsonl").exists())  # template untouched
 
     def test_refuses_journalled_template_and_missing_toml(self) -> None:

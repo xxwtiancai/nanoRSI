@@ -1,0 +1,96 @@
+{
+  "arms": [
+    {
+      "arm": "strict",
+      "noise_band": 0.0,
+      "per_seed": [
+        {
+          "accepted": 1,
+          "decisions": [
+            "accepted"
+          ],
+          "false_admits": 0,
+          "false_blocks": 0,
+          "seed": 0
+        },
+        {
+          "accepted": 1,
+          "decisions": [
+            "accepted"
+          ],
+          "false_admits": 0,
+          "false_blocks": 0,
+          "seed": 1
+        },
+        {
+          "accepted": 1,
+          "decisions": [
+            "accepted"
+          ],
+          "false_admits": 0,
+          "false_blocks": 0,
+          "seed": 2
+        }
+      ]
+    },
+    {
+      "arm": "noise-band",
+      "noise_band": 1.5,
+      "per_seed": [
+        {
+          "accepted": 0,
+          "decisions": [
+            "rejected",
+            "rejected",
+            "rejected"
+          ],
+          "false_admits": 0,
+          "false_blocks": 3,
+          "seed": 0
+        },
+        {
+          "accepted": 0,
+          "decisions": [
+            "rejected",
+            "rejected",
+            "rejected"
+          ],
+          "false_admits": 0,
+          "false_blocks": 3,
+          "seed": 1
+        },
+        {
+          "accepted": 0,
+          "decisions": [
+            "rejected",
+            "rejected",
+            "rejected"
+          ],
+          "false_admits": 0,
+          "false_blocks": 3,
+          "seed": 2
+        }
+      ]
+    }
+  ],
+  "conditions": {
+    "noise-band/baseline": {
+      "mean": 0.0,
+      "n": 6
+    },
+    "noise-band/candidate": {
+      "mean": 0.0,
+      "n": 6
+    },
+    "strict/baseline": {
+      "mean": 0.0,
+      "n": 6
+    },
+    "strict/candidate": {
+      "mean": 1.0,
+      "n": 6
+    }
+  },
+  "schema_version": 1,
+  "verdict": "dry-run on a deterministic offline fixture: machinery and false-block accounting validated; effect sizes require the live three-seed x three-budget study per the selector protocol"
+}

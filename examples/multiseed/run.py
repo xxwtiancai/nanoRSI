@@ -51,7 +51,14 @@ def run_seed(template: Path, out: Path, seed: int, repeats: int) -> dict:
     if workspace.exists():
         raise RuntimeError(f"refusing to overwrite existing seed workspace: {workspace}")
     shutil.copytree(template, workspace, ignore=shutil.ignore_patterns("__pycache__", ".nanorsi"))
-    _patch_seed(workspace / "nanorsi.toml", seed)
+    toml = workspace / "nanorsi.toml"
+    original = toml.read_bytes()
+    _patch_seed(toml, seed)
+    if toml.read_bytes() != original:  # seed != template default leaves the tree dirty
+        from nanorsi.gitops import Git
+        git = Git(workspace)
+        git._run("add", "-A")  # a committed template stages only the toml; an
+        git._run("commit", "-m", f"set experiment seed to {seed}", identity=True)  # uncommitted template gets its initial commit
     cli = _nanorsi()
     for step in (["baseline"], ["run"], ["freeze", "--repeats", str(repeats)], ["final-test"], ["report"], ["verify"]):
         _run(cli + step + ["--workspace", str(workspace)])

@@ -1,0 +1,838 @@
+{
+  "arm": "frozen",
+  "comparison_hash": "68200a5bacbc498b762efb77f90e69eb7c5d50de20a03ff043db3408eb89e6ef",
+  "conditions": [
+    "baseline",
+    "candidate"
+  ],
+  "experiment_id": "program-lab",
+  "manifest_hash": "0d887a9dc6975b897df4d0e4ed7b6716f5a9d2b9af44f14d22722fbccb73459d",
+  "metric": {
+    "direction": "maximize",
+    "name": "score"
+  },
+  "mode": "artifact",
+  "repeats": 2,
+  "results": [
+    {
+      "case_results": [
+        {
+          "duration_ms": 25,
+          "group_id": "test-echo",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 24,
+          "group_id": "test-echo",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 25,
+          "group_id": "test-echo",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 23,
+          "group_id": "test-echo",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 100,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 24,
+          "group_id": "test-echo",
+          "repeat_id": 1,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 26,
+          "group_id": "test-echo",
+          "repeat_id": 1,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 23,
+          "group_id": "test-echo",
+          "repeat_id": 1,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 23,
+          "group_id": "test-echo",
+          "repeat_id": 1,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "baseline",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 99,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 1,
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 25,
+          "group_id": "test-echo",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 24,
+          "group_id": "test-echo",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 26,
+          "group_id": "test-echo",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 25,
+          "group_id": "test-echo",
+          "repeat_id": 0,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 101,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 0,
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "case_results": [
+        {
+          "duration_ms": 24,
+          "group_id": "test-echo",
+          "repeat_id": 1,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-000",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 24,
+          "group_id": "test-echo",
+          "repeat_id": 1,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-001",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 24,
+          "group_id": "test-echo",
+          "repeat_id": 1,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-002",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        },
+        {
+          "duration_ms": 26,
+          "group_id": "test-echo",
+          "repeat_id": 1,
+          "score": 0.0,
+          "skill_hashes": {},
+          "status": "task_failure",
+          "task_id": "test-003",
+          "trace": [
+            {
+              "event": "program_loaded",
+              "path": "target/program.py",
+              "sha256": "6fd41ff88f8d8368b35411a2aa78732029c0debc3180be233b39e70e6b9304e0"
+            }
+          ],
+          "usage": {
+            "cost_usd": 0.0,
+            "errors": [],
+            "input_tokens": 0,
+            "model_calls": 0,
+            "output_tokens": 0
+          }
+        }
+      ],
+      "checkpoint": null,
+      "condition": "candidate",
+      "constraints": {
+        "tests_passed": true
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 100,
+      "metrics": {
+        "score": 0.0
+      },
+      "repeat_id": 1,
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "schema_version": 2,
+  "search_cost_usd": {
+    "coverage": 0.7692307692307693,
+    "known_count": 10,
+    "known_usd": 0.0,
+    "total_count": 13,
+    "total_usd": null
+  },
+  "search_evaluations": [
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "cd5bdd9df18a40c789eafbd9364516bd",
+      "phase": "search",
+      "receipt": "286e1ee0001150b716f1201d5fe0c0116662b4c5c94a494fd560055752940c20",
+      "seq": 2,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/baseline/52f911f198/gate.json",
+          "sha256": "84bf0031faa61c766a864245a0e46b91fc8a289a866dd9b622e6a036c54f7b0c"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 74,
+      "event_type": "evaluation_finished",
+      "invocation_id": "cd5bdd9df18a40c789eafbd9364516bd",
+      "phase": "search",
+      "receipt": "443f4a2474c47b363b180789bc9d3e8d94b6148e1c8b2e04276b657f7d65612e",
+      "seq": 3,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 2,
+      "event_type": "evaluation_started",
+      "invocation_id": "39429b97d0ef4796bced5863ea9b708f",
+      "phase": "search",
+      "receipt": "d1c6efc943858d2e6cc1dbb193b066c9ab192334d93bb8e09c3cc26606a4d10b",
+      "seq": 6,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/d222483912/train.json",
+          "sha256": "bf83e0d12980a1981dcdac71634b11071bf194b46756b5f43c448b4766356f65"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 51,
+      "event_type": "evaluation_finished",
+      "invocation_id": "39429b97d0ef4796bced5863ea9b708f",
+      "phase": "search",
+      "receipt": "5abccbef4abc796e8d13c5876c7271d942007fe732df3911629bf25596ce07bd",
+      "seq": 7,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "e2ead904ad5145bba04f1b4123295845",
+      "phase": "search",
+      "receipt": "d028c7b1b23a4befcb3683d9a9a1499d24a29434c16e905ad755bea4a9d035b0",
+      "seq": 10,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/d222483912/parent.json",
+          "sha256": "c79277f23a6cc9212b76f4dca0c0fa192ea86b6ad7b638988d349d26c418f0a2"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 74,
+      "event_type": "evaluation_finished",
+      "invocation_id": "e2ead904ad5145bba04f1b4123295845",
+      "phase": "search",
+      "receipt": "ca1c63181c714db1d1eb3d11513934f5d1abc831bf8ed23439fb2d7bfb6b256c",
+      "seq": 11,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "0cb4620fc00647e0a48ebdd3be2cbb3f",
+      "phase": "search",
+      "receipt": "35e9df64bc20879aee8756bc3bfcd01ac113b607249854c3c2802a7558c62978",
+      "seq": 12,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/d222483912/gate.json",
+          "sha256": "314d68ec6ef1313173eac942175f272830873f3fee8fa97ac66de696ccc33fac"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 77,
+      "event_type": "evaluation_finished",
+      "invocation_id": "0cb4620fc00647e0a48ebdd3be2cbb3f",
+      "phase": "search",
+      "receipt": "84b1801ebe5db74158da49304df0bb6be35d505fc915515616ed44d3e9d83544",
+      "seq": 13,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 2,
+      "event_type": "evaluation_started",
+      "invocation_id": "3af299f8f3d044d791d3f7b5311d21c7",
+      "phase": "search",
+      "receipt": "872743a5ee7031a5685fe509e43a022637772a1304390bad8bd5a4ef4969f017",
+      "seq": 16,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/b691ad197b/train.json",
+          "sha256": "69e80abdd6d1861e46c80ad32ded58168aee35f0c1fdffbec0fa3f8ec951088b"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 49,
+      "event_type": "evaluation_finished",
+      "invocation_id": "3af299f8f3d044d791d3f7b5311d21c7",
+      "phase": "search",
+      "receipt": "e40157d3307e38cedb5d7c9d0b6a201efd2eec80ce142a380933b6e712c92f6e",
+      "seq": 17,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "225668f44b8948c2a423abe5de9b2ed8",
+      "phase": "search",
+      "receipt": "6d77588805a6d613dce5c2fb38902719b50a5b34ddbe4941bdf52300a52c15bd",
+      "seq": 20,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/b691ad197b/parent.json",
+          "sha256": "b2a03213052e954a5e9d80a9d4c504a0d81f6666adbba5f09c06454a74b52e91"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 76,
+      "event_type": "evaluation_finished",
+      "invocation_id": "225668f44b8948c2a423abe5de9b2ed8",
+      "phase": "search",
+      "receipt": "a3561d669ab4c22c397f9002559fd7727d7777da7a89e338d2b0b1ef6970ed93",
+      "seq": 21,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "5c93aa796eec4aed8afed066ec38a210",
+      "phase": "search",
+      "receipt": "90ad96a55b2722e418ec84fdf3498f8d441421b7eec5c286a260ada725c956e5",
+      "seq": 22,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/b691ad197b/gate.json",
+          "sha256": "523bb2bf59352362a6e727a5a9067a1e81fdad959453edc2bf63b47deec7ced9"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 73,
+      "event_type": "evaluation_finished",
+      "invocation_id": "5c93aa796eec4aed8afed066ec38a210",
+      "phase": "search",
+      "receipt": "2d14feef25dfbb66f8408e138cfd848978730ad80a7858a9d88e8bac1f0e1608",
+      "seq": 23,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 2,
+      "event_type": "evaluation_started",
+      "invocation_id": "a0badf2050ca457da11e4a6af20b24a4",
+      "phase": "search",
+      "receipt": "2b166c2fbdbf4c728de9c7dbc957aad23596d9338f881292d57db538f00c0513",
+      "seq": 26,
+      "split": "train"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/8a42b40706/train.json",
+          "sha256": "b8791b6a6339d2d43f093628d271324824f67a42f73a9c5e99d529fecb6161f5"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 50,
+      "event_type": "evaluation_finished",
+      "invocation_id": "a0badf2050ca457da11e4a6af20b24a4",
+      "phase": "search",
+      "receipt": "b5bf0ffc889fed2bc14e52ec54d42c6e0f22a47155ae4ac7c03106d81e9cc8b5",
+      "seq": 27,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "33bff8fa160d497e92706a377cde1bfa",
+      "phase": "search",
+      "receipt": "c1209ec9f2c84a42312d010faac040e91bd78f7a9ee1a35cb66804286f08ed35",
+      "seq": 30,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/8a42b40706/parent.json",
+          "sha256": "e92e62c24ecb6e48c85370e6dde6a60556f4164fd151953a6cb77813c522d4a9"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 75,
+      "event_type": "evaluation_finished",
+      "invocation_id": "33bff8fa160d497e92706a377cde1bfa",
+      "phase": "search",
+      "receipt": "e10130bd6d034dfd0fbd957ea07630b60b1c05853e8d18d10a8019efedf649e0",
+      "seq": 31,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    },
+    {
+      "episodes": 3,
+      "event_type": "evaluation_started",
+      "invocation_id": "602c32a2085a4de58e14f2365e1d5aef",
+      "phase": "search",
+      "receipt": "9dc0266ef3148710059f3ed41965d56a4ea841f332ea19c1eeecd2ff9d5da30b",
+      "seq": 32,
+      "split": "validation"
+    },
+    {
+      "artifacts": {
+        "result": {
+          "path": ".nanorsi/runs/8a42b40706/gate.json",
+          "sha256": "891b425f862d00191c2e78b30b4bd208065e0336a9a5dfe388c8324abb3b0c5f"
+        }
+      },
+      "cost_usd": 0.0,
+      "duration_ms": 72,
+      "event_type": "evaluation_finished",
+      "invocation_id": "602c32a2085a4de58e14f2365e1d5aef",
+      "phase": "search",
+      "receipt": "b45d6d72aa60b1421efedeb6279b5750bba7db771c750abc3c3db67d99c3f40b",
+      "seq": 33,
+      "status": "ok",
+      "usage": {
+        "cost_usd": 0.0,
+        "errors": [],
+        "input_tokens": 0,
+        "model_calls": 0,
+        "output_tokens": 0
+      }
+    }
+  ],
+  "search_proposals": [
+    {
+      "attempt_id": 1,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "17124ef1a8078fcd19ccbc47b4da5433dddff5dac84fa4a7858be177fd76e7ef",
+      "seq": 9,
+      "usage": {}
+    },
+    {
+      "attempt_id": 2,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "e2d49cf701e2e7242e0c5220cb23a989602d48744bcc7911d5691c5f2cf10b24",
+      "seq": 19,
+      "usage": {}
+    },
+    {
+      "attempt_id": 3,
+      "cost_usd": null,
+      "event_type": "proposal_finished",
+      "receipt": "7a6aba0dbc2aa8599fb9468c8e2c307f715315c70fbc7589f40bd1ae1dea90a5",
+      "seq": 29,
+      "usage": {}
+    }
+  ],
+  "seed": 0,
+  "test_cost_usd": {
+    "coverage": 1.0,
+    "known_count": 4,
+    "known_usd": 0.0,
+    "total_count": 4,
+    "total_usd": 0.0
+  }
+}
