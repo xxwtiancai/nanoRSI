@@ -8,7 +8,7 @@
 | --- | ---: |
 | [Self-play & curriculum task generation](#family-self-play-curriculum) | 14 |
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
-| [Skill-weight co-evolution](#family-skill-weight-coevolution) | 3 |
+| [Skill-weight co-evolution](#family-skill-weight-coevolution) | 4 |
 | [Experience distillation & test-time adaptation](#family-experience-distillation) | 7 |
 | [Autonomous training agents & data pipelines](#family-autonomous-training) | 8 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
@@ -593,7 +593,37 @@
 
 <a id="family-skill-weight-coevolution"></a>
 
-## Skill-weight co-evolution (3)
+## Skill-weight co-evolution (4)
+
+<a id="adarsi-on-demand-weights"></a>
+
+### AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.20474 v1 submitted 2026-10-14, announced in the 2026-10-15 batch.
+
+**Institutional relationship** — Peidong Wang (Northeastern University; work done during an internship at AgiBot), Zhiming Ma, Xiaocui Yang, Shi Feng, Daling Wang (Northeastern University); Ying Chang (University of Chinese Academy of Sciences); Daqi Liu, Yuzhe Yang, Xu Cao, Chuang Wang, Jian Su (AgiBot).
+
+**What changes and how feedback is reused** — Asks when a self-improving embodied system should change the weights of its executor. A coding agent first improves its skills and harness; persistent failures are then attributed by retrying failing sub-steps from saved states (is the failure in how the executor is called, or in what it can do?); only the sub-steps that remain unreliable are fine-tuned, with demonstrations the system collects itself and experience carried over from earlier tasks.
+
+**Author-reported result** — On all 50 target tasks of RoboCasa365 (50 scenes each), with GR00T N1.5 as executor and no human demonstrations, AdaRSI improves the VLA on all three suites and raises success on unseen composite tasks from 4.6% to 13.8%. Compared with fine-tuning every sub-step it reaches slightly higher success using only 28% of the GPU time and 22% of the self-collected demonstrations; fine-tuning without a harness trains more yet gains far less.
+
+**Evidence limits** — No code link found in the HTML; single executor (GR00T N1.5) and single benchmark family (RoboCasa365); sub-step attribution assumes saved-state resets faithfully isolate failures.
+
+**Code / weights / data / license** — No code or repository link found in the HTML full text.
+
+**Possible nanoRSI experiment — not implemented here** — The harness-first, weights-only-for-persistently-unreliable-sub-steps boundary is the exact decision nanoRSI's frozen-executor doctrine draws: any future weights-side arm should copy this attribution-before-fine-tune gate (retry-from-saved-state) instead of fine-tuning on failure directly.
+
+![Original Figure 2: AdaRSI pipeline - improve skills and harness first, attribute persistent failures by retrying failing sub-steps from saved states, fine-tune only the sub-steps that remain unreliable.](assets/paper-figures/adarsi-on-demand-pipeline.jpg)
+
+**Source figure / official image** — Original Figure 2: AdaRSI pipeline - improve skills and harness first, attribute persistent failures by retrying failing sub-steps from saved states, fine-tune only the sub-steps that remain unreliable. · Figure 2 (figures/AdaRSI_pipeline.jpg), arXiv HTML 2610.20474v1 · [source](https://arxiv.org/html/2610.20474v1/figures/AdaRSI_pipeline.jpg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.20474](https://arxiv.org/abs/2610.20474) · [HTML full text v1](https://arxiv.org/html/2610.20474v1)
 
 <a id="sguid-skill-bank-selection"></a>
 

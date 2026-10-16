@@ -6,16 +6,76 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 23 |
-| [Harness search & evolution](#family-harness-search) | 24 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 25 |
+| [Harness search & evolution](#family-harness-search) | 25 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 12 |
-| [Program evolution & evolutionary search](#family-program-evolution) | 8 |
+| [Program evolution & evolutionary search](#family-program-evolution) | 9 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 6 |
 | [Safety & governance](#family-safety-governance) | 5 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (23)
+## Skill-file optimization & libraries (25)
+
+<a id="skillneo-non-elitist-skills"></a>
+
+### SkillNEO: Non-Elitist Evolutionary Optimization of Agent Skills
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.20926 v1 submitted 2026-10-15, announced in the 2026-10-16 batch; 21 authors across UIC/MBZUAI/UCSD/UCLA/UT Arlington + one independent researcher.
+
+**Institutional relationship** — Enze Ma, Chunyu Miao, Yankai Chen, Jie Yang, Liancheng Fang, Kening Zheng, Hanrong Zhang, Muyao Xu, Xinle Yu, Chengze Li, Wei-Chieh Huang, Ziwei Ren, Yunhao Du, Zhixiang Shen, Xue Liu, Philip S. Yu, Zhen Wang et al. - University of Illinois at Chicago; Mohamed bin Zayed University of Artificial Intelligence; University of California, San Diego; University of California, Los Angeles; University of Texas at Arlington; Independent Researcher (institution set as rendered in the HTML author block).
+
+**What changes and how feedback is reused** — Non-elitist skill evolution: separately selects the version to USE from the versions to KEEP EDITING - improvement may require several interdependent edits, so a low-scoring revision can still carry usable parts. By observing how related versions carry out the same task it identifies working steps to preserve and remaining failures to fix; it can return to earlier versions and revise them using what later attempts reveal.
+
+**Author-reported result** — Across 86 SkillsBench tasks spanning software engineering, office work and six other domains, SkillNEO raises GPT-5.4 Mini's average reward from 49.1% to 66.4%, bringing it into GPT-5.5 and GPT-5.6 Luna's original-skill performance range. The same evolved skills improve stronger models without further editing: on the 41 tasks with modified skills, reuse improves Luna by 10.5 percentage points and places GPT-5.5 10.6 points above its published original-skill reference.
+
+**Evidence limits** — No code URL for SkillNEO itself found in the HTML (only a SkillsBench trajectories data link); evaluation is on the authors' SkillsBench suite; gains concentrate on the weaker editing model with transfer measured on a 41-task subset.
+
+**Code / weights / data / license** — No dedicated repository found in the HTML; SkillsBench trajectory data referenced at github.com/benchflow-ai/skillsbench-trajectories.
+
+**Possible nanoRSI experiment — not implemented here** — Non-elitist use-vs-edit separation is the missing half of ADOPTION item 53: keeping low-scoring versions editable (while never serving them) captures interdependent-edit gains that strict gating discards - directly complementary to AtomSearch's retained-but-unpromoted states (same batch, independent teams). Upward transfer (+10.5pp to a stronger model) is the skill-side answer to our cross-panel migration question.
+
+![Original Figure 2: SkillNEO separates choosing a skill to use from choosing versions to improve - a version can receive further edits (green) while another is served, and related versions are compared to identify working steps and remaining failures.](assets/paper-figures/skillneo-non-elitist-skills.png)
+
+**Source figure / official image** — Original Figure 2: SkillNEO separates choosing a skill to use from choosing versions to improve - a version can receive further edits (green) while another is served, and related versions are compared to identify working steps and remaining failures. · Figure 2 (skillneo_method_artwork.png), arXiv HTML 2610.20926v1 · [source](https://arxiv.org/html/2610.20926v1/skillneo_method_artwork.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.20926](https://arxiv.org/abs/2610.20926) · [HTML full text v1](https://arxiv.org/html/2610.20926v1)
+
+<a id="atomsearch-skill-state-tree"></a>
+
+### AtomSearch: Evidence-Grounded Tree Search for Agent Skill Optimization
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.19951 v1 submitted 2026-10-14, announced in the 2026-10-15 batch.
+
+**Institutional relationship** — Jia Tong, Senyou Deng, Min Peng, Jianfeng Pan - 360 Security Technology Inc., Beijing (three 360.cn author emails; shared affiliation line).
+
+**What changes and how feedback is reused** — Keeps skill-revision actions local while using subsequent skill states to guide search. Contrastive Atomic Editing links each primitive rule edit to failed and successful executions, a behavioral hypothesis, and an intended scope. Skill-State Tree Search (STS) evaluates short edit compositions and selectively retains them as executable states that can be revisited and extended. Outcome Memory supplies later proposals with observed repair and regression statistics.
+
+**Author-reported result** — Across four tasks and five target models: with deepseek-v4-flash it exceeds SkillOpt on three of four tasks including a 9.68-percentage-point gain on LiveMathematicianBench, while SkillOpt's final skills contain 2.3-19.7 times as many characters. In 67% of completed searches, the best validation state passes through an ancestor that was not highest-scoring at its depth - immediate-score greedy selection would discard the path to the optimum.
+
+**Evidence limits** — No code link found; the comparison set centers on SkillOpt at 4 tasks / 5 models; repair/regression statistics were described but not re-derived by this verification.
+
+**Code / weights / data / license** — No code or repository link found in the HTML full text.
+
+**Possible nanoRSI experiment — not implemented here** — The 67% ancestor finding is direct external evidence against pure strict-gating skill adoption (ADOPTION item 53): a bounded skill-state tree that retains-but-does-not-promote states is the missing middle ground between single-edit strict validation and multi-edit proposals; outcome memory (observed repair/regression per rule) maps one-to-one onto evidence-ledger fields for the skills track.
+
+![Original Figure 1: contrastive atomic editing turns failed/passed execution pairs into scoped edit specifications; skill-state tree search retains executable intermediate states; outcome memory feeds repair/regression statistics to later proposals.](assets/paper-figures/atomsearch-skill-state-tree.svg)
+
+**Source figure / official image** — Original Figure 1: contrastive atomic editing turns failed/passed execution pairs into scoped edit specifications; skill-state tree search retains executable intermediate states; outcome memory feeds repair/regression statistics to later proposals. · Figure 1 (fig_overview.svg), arXiv HTML 2610.19951v1 · [source](https://arxiv.org/html/2610.19951v1/fig_overview.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.19951](https://arxiv.org/abs/2610.19951) · [HTML full text v1](https://arxiv.org/html/2610.19951v1)
 
 <a id="kgfiles-tool-coevolution"></a>
 
@@ -709,7 +769,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (24)
+## Harness search & evolution (25)
 
 <a id="videoharness-srsi-evidence-governed"></a>
 
@@ -740,6 +800,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.19424) · [arXiv HTML v1](https://arxiv.org/html/2610.19424v1)
+
+<a id="timersi-agentic-deployment"></a>
+
+### TimeRSI: Towards Self-Improved Agentic Deployment for Time-Series Foundation Models
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.19725 v1 submitted 2026-10-14; v2 (this verification) revised 2026-10-15. First public date follows the v1 convention.
+
+**Institutional relationship** — Haoxin Liu, Lucheng Fu, Yiqiao Jin, Rushi Qiang, B. Aditya Prakash (Georgia Institute of Technology); Deqing Fu (University of Southern California); Harshavardhan Kamarthi (Georgia Institute of Technology; Samay AI).
+
+**What changes and how feedback is reused** — A self-improving agentic deployment system around frozen time-series foundation models. A coding agent translates task descriptions into executable pipeline changes; it tests each revision on historical forecasting windows and uses observed errors to guide subsequent revisions; during deployment an adaptive selector chooses among the resulting pipelines using completed forecasts under similar conditions. The TSFM weights remain fixed in both stages.
+
+**Author-reported result** — Across 198 tasks on TIME and FEV-bench, TimeRSI outperforms all submissions on six point and probabilistic forecasting metrics (ranks first among compared submissions). Controlled comparisons support the value of feedback-guided revision over non-iterative pipeline search; further experiments verify generalization across different coding agents and forecasting models.
+
+**Evidence limits** — Domain-specific (forecasting deployment); leaderboard-style comparison against prior submissions rather than same-compute re-runs of every baseline; code repository linked but its artifact completeness was not audited in this pass.
+
+**Code / weights / data / license** — Apache-2.0 code at github.com/haoxin1998/TimeRSI (LICENSE verified via raw.githubusercontent.com 2026-10-17).
+
+**Possible nanoRSI experiment — not implemented here** — Historical-window pre-validation before adopting a pipeline edit is train/validation gating in deployment clothing - the same doctrine nanoRSI enforces before promotion; the adaptive selector over an accumulated pipeline portfolio is a lightweight population pattern (no weights, just versioned programs picked by past performance under matched conditions).
+
+![Original Figure 1: from conventional to self-improved TSFM deployment - direct inference leaves task-specific adaptation to the user, hand-tailored pipelines need expert effort, and TimeRSI iterates executable pipeline revisions from observed forecast errors with an adaptive selector at deployment.](assets/paper-figures/timersi-agentic-deployment.png)
+
+**Source figure / official image** — Original Figure 1: from conventional to self-improved TSFM deployment - direct inference leaves task-specific adaptation to the user, hand-tailored pipelines need expert effort, and TimeRSI iterates executable pipeline revisions from observed forecast errors with an adaptive selector at deployment. · Figure 1 (inline SVG with 64 foreignObject blocks; in-browser screenshot of figure#S0.F1 at page-absolute coordinates), arXiv HTML 2610.19725v2 · [source](https://arxiv.org/html/2610.19725v2)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — [TimeRSI code (Apache-2.0)](https://github.com/haoxin1998/TimeRSI)
+
+**Primary sources** — [arXiv abs 2610.19725](https://arxiv.org/abs/2610.19725) · [TimeRSI code (Apache-2.0)](https://github.com/haoxin1998/TimeRSI)
 
 <a id="harnessttt-test-time-harness"></a>
 
@@ -1797,7 +1887,37 @@
 
 <a id="family-program-evolution"></a>
 
-## Program evolution & evolutionary search (8)
+## Program evolution & evolutionary search (9)
+
+<a id="lago-growing-options"></a>
+
+### LAGO: Language Agents with Reusable Growing Options
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.19843 v1 submitted 2026-10-14, announced in the 2026-10-15 batch. Equal contribution: Yuran Wu, Mengkang Hu; corresponding author: Xu Wang.
+
+**Institutional relationship** — Yuran Wu, Qiudan Zhang, Xu Wang (Shenzhen University); Mengkang Hu (University of Hong Kong); Qionglin Qiu (Hunan University); Fanqing Meng (National University of Singapore); Qiguang Chen (Evolvent Research Team); Yuhang Zhou (Fudan University).
+
+**What changes and how feedback is reused** — Treats specialized language agents as reusable temporally extended options. A meta-agent retrieves options from a persistent library or spawns new ones, dispatches sub-tasks, verifies results, and admits successful novel options; the library grows across tasks without updating model weights.
+
+**Author-reported result** — On 500 SWE-bench Verified tasks under single-attempt evaluation with the official Docker evaluator, frozen Qwen3.5-35B-A3B in both meta-agent and option roles resolves 58.6%. On a fixed 150-task controlled subset (identical policy, temperature, task ids, evaluator): mini-SWE-agent 49.3%, Terminus 2 57.3%, LAGO 60.3%. A 50-task component ablation: four fewer resolved without decomposition, two fewer with shuffled reused content, six fewer without the library. Cross-model experiments give evidence consistent with a role for decomposition quality.
+
+**Evidence limits** — No code link found; meta-agent and options share one frozen model (capability ceiling bound); the controlled comparison covers 150 of the 500 tasks.
+
+**Code / weights / data / license** — No code or repository link found in the HTML full text.
+
+**Possible nanoRSI experiment — not implemented here** — Option admission (spawn -> verify -> admit -> reuse) is the skill-library growth loop our skills template could mirror: verified sub-agent programs become first-class reusable units instead of one-shot trajectories. The -6-resolved without-library ablation quantifies what a persistent library is worth on a frozen model - the number to beat for any nanoRSI skill-bank variant.
+
+![Original Figure 1: LAGO turns task decomposition into a reusable action space - a meta-agent retrieves options from a persistent library or spawns new ones, dispatches sub-tasks, verifies results, and admits successful novel options.](assets/paper-figures/lago-growing-options.png)
+
+**Source figure / official image** — Original Figure 1: LAGO turns task decomposition into a reusable action space - a meta-agent retrieves options from a persistent library or spawns new ones, dispatches sub-tasks, verifies results, and admits successful novel options. · Figure 1 (LAGO_editable_no_footer.drawio.png), arXiv HTML 2610.19843v1 · [source](https://arxiv.org/html/2610.19843v1/LAGO_editable_no_footer.drawio.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.19843](https://arxiv.org/abs/2610.19843) · [HTML full text v1](https://arxiv.org/html/2610.19843v1)
 
 <a id="evoalloc-resource-allocation-evolution"></a>
 

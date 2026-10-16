@@ -6,16 +6,76 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 23 |
-| [Harness 搜索与进化](#family-harness-search) | 24 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 25 |
+| [Harness 搜索与进化](#family-harness-search) | 25 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 12 |
-| [程序进化与进化搜索](#family-program-evolution) | 8 |
+| [程序进化与进化搜索](#family-program-evolution) | 9 |
 | [反馈审查与编排](#family-feedback-orchestration) | 6 |
 | [安全与治理](#family-safety-governance) | 5 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (23)
+## 技能文件优化与技能库 (25)
+
+<a id="skillneo-non-elitist-skills"></a>
+
+### SkillNEO: Non-Elitist Evolutionary Optimization of Agent Skills
+
+**2026-10-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.20926 v1 提交于 2026-10-15，随 2026-10-16 批次公告；21 位作者分布于 UIC/MBZUAI/UCSD/UCLA/UT Arlington 加一位独立研究者。
+
+**机构关系** — Enze Ma、Chunyu Miao、Yankai Chen、Jie Yang、Liancheng Fang、Kening Zheng、Hanrong Zhang、Muyao Xu、Xinle Yu、Chengze Li、Wei-Chieh Huang、Ziwei Ren、Yunhao Du、Zhixiang Shen、Xue Liu、Philip S. Yu、Zhen Wang 等——伊利诺伊大学芝加哥分校；穆罕默德·本·扎耶德人工智能大学；加州大学圣地亚哥分校；加州大学洛杉矶分校；德克萨斯大学阿灵顿分校；独立研究者（机构集合按 HTML 作者块原样记录）。
+
+**改变对象与反馈复用** — 非精英技能演化：把“选哪个版本来用”与“选哪些版本继续改”分开——提升可能需要多条相互依赖的编辑，低分修订仍可能带有可用部分。通过观察相关版本如何执行同一任务，识别应保留的可用步骤与待修复的残留失败；还能回到更早版本，用后续尝试揭示的信息重新修订。
+
+**作者报告结果** — 在覆盖软件工程、办公与另外六个领域的 86 个 SkillsBench 任务上，SkillNEO 把 GPT-5.4 Mini 的平均奖励从 49.1% 提到 66.4%，进入 GPT-5.5 与 GPT-5.6 Luna 的原技能性能区间。演化出的技能无需再编辑即可改进更强模型：在有改动的 41 个任务上，复用使 Luna 提升 10.5 个百分点、GPT-5.5 高出其公开原技能参考 10.6 个百分点。
+
+**证据边界** — HTML 未找到 SkillNEO 本体的代码 URL（只有 SkillsBench 轨迹数据链接）；评测在作者自建的 SkillsBench 套件上；增益集中在较弱的编辑模型上，迁移在 41 任务子集上测得。
+
+**代码／权重／数据／许可** — HTML 未找到专属仓库；引用了 github.com/benchflow-ai/skillsbench-trajectories 的 SkillsBench 轨迹数据。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — “用与改”分离的非精英选择是 ADOPTION 53 缺的另一半：让低分版本保持可编辑（但绝不投入使用）能抓住严格闸门丢弃的相互依赖编辑收益——与同批次 AtomSearch 的“保留但不晋升”状态互补（不同团队独立得出）。向更强模型 +10.5 个百分点的向上迁移，是技能面对我们跨面板迁移问题的回答。
+
+![原图 2：SkillNEO 把“选技能来用”与“选版本来改”分开——一个版本可以继续接受编辑（绿色）而另一版本被投入使用，并通过比较相关版本识别可用步骤与残留失败。](assets/paper-figures/skillneo-non-elitist-skills.png)
+
+**原文图／官方图片** — 原图 2：SkillNEO 把“选技能来用”与“选版本来改”分开——一个版本可以继续接受编辑（绿色）而另一版本被投入使用，并通过比较相关版本识别可用步骤与残留失败。 · Figure 2 (skillneo_method_artwork.png), arXiv HTML 2610.20926v1 · [source](https://arxiv.org/html/2610.20926v1/skillneo_method_artwork.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.20926](https://arxiv.org/abs/2610.20926) · [HTML full text v1](https://arxiv.org/html/2610.20926v1)
+
+<a id="atomsearch-skill-state-tree"></a>
+
+### AtomSearch: Evidence-Grounded Tree Search for Agent Skill Optimization
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.19951 v1 提交于 2026-10-14，随 2026-10-15 批次公告。
+
+**机构关系** — Jia Tong、Senyou Deng、Min Peng、Jianfeng Pan——360 安全技术（北京）（三个 360.cn 作者邮箱；共享机构行）。
+
+**改变对象与反馈复用** — 让技能修订动作保持局部，同时用后续技能状态引导搜索。对比原子编辑把每条最小规则编辑与失败/成功执行、一个行为假设和预期作用域绑定；技能状态树搜索评估短编辑组合并有选择地保留为可重访、可扩展的可执行状态；结果记忆向后续提案提供实测的修复与回归统计。
+
+**作者报告结果** — 四个任务 × 五个目标模型：deepseek-v4-flash 下在 3/4 任务上超过 SkillOpt，LiveMathematicianBench 领先 9.68 个百分点，而 SkillOpt 终版技能字符数是其 2.3-19.7 倍。67% 的已完成搜索中，最优验证状态经过了在其深度上并非最高分的祖先——按即时分数贪心会丢弃通往最优的路径。
+
+**证据边界** — 未找到代码链接；对比以 SkillOpt 为主、4 任务/5 模型；修复/回归统计未由本次核验重推。
+
+**代码／权重／数据／许可** — HTML 全文未找到代码或仓库链接。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — “67% 经由非最高分祖先”是对纯严格闸门技能采纳（ADOPTION 53）的直接外部反证：有界技能状态树（保留但不晋升）是单编辑严格验证与多编辑提案之间缺的中间层；结果记忆（每条规则实测修复/回归）与技能轨道的证据账本字段一一对应。
+
+![原图 1：对比原子编辑把失败/通过执行对变成带作用域的编辑规格；技能状态树搜索保留可执行的中间状态；结果记忆把修复/回归统计喂给后续提案。](assets/paper-figures/atomsearch-skill-state-tree.svg)
+
+**原文图／官方图片** — 原图 1：对比原子编辑把失败/通过执行对变成带作用域的编辑规格；技能状态树搜索保留可执行的中间状态；结果记忆把修复/回归统计喂给后续提案。 · Figure 1 (fig_overview.svg), arXiv HTML 2610.19951v1 · [source](https://arxiv.org/html/2610.19951v1/fig_overview.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.19951](https://arxiv.org/abs/2610.19951) · [HTML full text v1](https://arxiv.org/html/2610.19951v1)
 
 <a id="kgfiles-tool-coevolution"></a>
 
@@ -709,7 +769,7 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (24)
+## Harness 搜索与进化 (25)
 
 <a id="videoharness-srsi-evidence-governed"></a>
 
@@ -740,6 +800,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.19424) · [arXiv HTML v1](https://arxiv.org/html/2610.19424v1)
+
+<a id="timersi-agentic-deployment"></a>
+
+### TimeRSI: Towards Self-Improved Agentic Deployment for Time-Series Foundation Models
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.19725 v1 提交于 2026-10-14；本次核验的 v2 修订于 2026-10-15。首次公开日期沿用 v1 惯例。
+
+**机构关系** — Haoxin Liu、Lucheng Fu、Yiqiao Jin、Rushi Qiang、B. Aditya Prakash（佐治亚理工学院）；Deqing Fu（南加州大学）；Harshavardhan Kamarthi（佐治亚理工学院；Samay AI）。
+
+**改变对象与反馈复用** — 围绕冻结时序基础模型的自改进部署系统：编码智能体把任务描述翻译成可执行的流水线改动，在历史预测窗口上测试每次修订并用观测误差引导后续修订；部署期由自适应选择器按相似条件下已完成预测的表现，在积累的流水线中挑选。两个阶段 TSFM 权重均保持冻结。
+
+**作者报告结果** — 在 TIME 与 FEV-bench 的 198 个任务上，TimeRSI 在六项点预测与概率预测指标上全面超过所有参赛提交（对比提交中排名第一）。受控对比支持“反馈引导修订优于非迭代流水线搜索”；进一步实验验证了跨编码智能体与跨预测模型的泛化。
+
+**证据边界** — 领域特定（预测部署）；排行榜式对比而非对每个基线的同算力重跑；代码仓库已链接但本核验未审计其产物完整性。
+
+**代码／权重／数据／许可** — 代码 Apache-2.0，位于 github.com/haoxin1998/TimeRSI（LICENSE 已于 2026-10-17 经 raw.githubusercontent.com 核验）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 采纳流水线编辑前先在历史窗口预验证，就是换了部署外衣的训练/验证闸门——与 nanoRSI 晋升前教义一致；在积累的流水线组合上按匹配条件下的历史表现做自适应选择，是无权重的轻量种群模式。
+
+![原图 1：从常规到自改进的 TSFM 部署——直接推理把任务适配丢给用户、手工流水线需要专家投入，TimeRSI 从观测预测误差迭代可执行的流水线修订，部署期由自适应选择器挑选。](assets/paper-figures/timersi-agentic-deployment.png)
+
+**原文图／官方图片** — 原图 1：从常规到自改进的 TSFM 部署——直接推理把任务适配丢给用户、手工流水线需要专家投入，TimeRSI 从观测预测误差迭代可执行的流水线修订，部署期由自适应选择器挑选。 · Figure 1 (inline SVG with 64 foreignObject blocks; in-browser screenshot of figure#S0.F1 at page-absolute coordinates), arXiv HTML 2610.19725v2 · [source](https://arxiv.org/html/2610.19725v2)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — [TimeRSI code (Apache-2.0)](https://github.com/haoxin1998/TimeRSI)
+
+**一手来源** — [arXiv abs 2610.19725](https://arxiv.org/abs/2610.19725) · [TimeRSI code (Apache-2.0)](https://github.com/haoxin1998/TimeRSI)
 
 <a id="harnessttt-test-time-harness"></a>
 
@@ -1797,7 +1887,37 @@
 
 <a id="family-program-evolution"></a>
 
-## 程序进化与进化搜索 (8)
+## 程序进化与进化搜索 (9)
+
+<a id="lago-growing-options"></a>
+
+### LAGO: Language Agents with Reusable Growing Options
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.19843 v1 提交于 2026-10-14，随 2026-10-15 批次公告。Yuran Wu 与 Mengkang Hu 同等贡献；通讯作者 Xu Wang。
+
+**机构关系** — Yuran Wu、Qiudan Zhang、Xu Wang（深圳大学）；Mengkang Hu（香港大学）；Qionglin Qiu（湖南大学）；Fanqing Meng（新加坡国立大学）；Qiguang Chen（Evolvent Research Team）；Yuhang Zhou（复旦大学）。
+
+**改变对象与反馈复用** — 把专门化语言智能体当作可复用的时间扩展选项：元智能体从持久库检索选项或新生选项、派发子任务、验证结果、把成功的新选项准入库；库跨任务增长而不更新模型权重。
+
+**作者报告结果** — 在 500 个 SWE-bench Verified 任务上以官方 Docker 评测器单次尝试评测，冻结 Qwen3.5-35B-A3B 同时担任元智能体与选项角色解决 58.6%。在固定 150 任务受控子集（同策略、同温度、同任务 ID、同评测器）：mini-SWE-agent 49.3%、Terminus 2 57.3%、LAGO 60.3%。50 任务组件消融：去掉分解少解 4 题、复用内容乱序少 2 题、去掉库少 6 题。跨模型实验与“分解质量有作用”的解释一致。
+
+**证据边界** — 未找到代码链接；元智能体与选项共用同一冻结模型（能力上限受约束）；受控对比只覆盖 500 任务中的 150 个。
+
+**代码／权重／数据／许可** — HTML 全文未找到代码或仓库链接。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 选项准入（生成→验证→准入→复用）正是技能模板可以镜像的库增长环：经验证的子智能体程序成为一等可复用单元而非一次性轨迹。“去掉库少解 6 题”的消融量化了冻结模型上持久库的价值——这是 nanoRSI 任何技能库变体要打败的数字。
+
+![原图 1：LAGO 把任务分解变成可复用动作空间——元智能体从持久库检索选项或新生选项、派发子任务、验证结果、把成功的新选项准入库。](assets/paper-figures/lago-growing-options.png)
+
+**原文图／官方图片** — 原图 1：LAGO 把任务分解变成可复用动作空间——元智能体从持久库检索选项或新生选项、派发子任务、验证结果、把成功的新选项准入库。 · Figure 1 (LAGO_editable_no_footer.drawio.png), arXiv HTML 2610.19843v1 · [source](https://arxiv.org/html/2610.19843v1/LAGO_editable_no_footer.drawio.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.19843](https://arxiv.org/abs/2610.19843) · [HTML full text v1](https://arxiv.org/html/2610.19843v1)
 
 <a id="evoalloc-resource-allocation-evolution"></a>
 

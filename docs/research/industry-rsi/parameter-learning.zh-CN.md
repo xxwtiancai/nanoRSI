@@ -8,7 +8,7 @@
 | --- | ---: |
 | [自博弈与课程任务生成](#family-self-play-curriculum) | 14 |
 | [验证器与奖励进化](#family-verifier-reward) | 5 |
-| [技能-权重共进化](#family-skill-weight-coevolution) | 3 |
+| [技能-权重共进化](#family-skill-weight-coevolution) | 4 |
 | [经验蒸馏与测试时适应](#family-experience-distillation) | 7 |
 | [自主训练智能体与数据管线](#family-autonomous-training) | 8 |
 | [支撑性适应机制](#family-enabling-adaptation) | 7 |
@@ -593,7 +593,37 @@
 
 <a id="family-skill-weight-coevolution"></a>
 
-## 技能-权重共进化 (3)
+## 技能-权重共进化 (4)
+
+<a id="adarsi-on-demand-weights"></a>
+
+### AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.20474 v1 提交于 2026-10-14，随 2026-10-15 批次公告。
+
+**机构关系** — Peidong Wang（东北大学，工作于 AgiBot 实习期间完成）、Zhiming Ma、Xiaocui Yang、Shi Feng、Daling Wang（东北大学）；Ying Chang（中国科学院大学）；Daqi Liu、Yuzhe Yang、Xu Cao、Chuang Wang、Jian Su（AgiBot）。
+
+**改变对象与反馈复用** — 回答“自改进具身系统何时该改执行器权重”：编码智能体先改进技能与 harness；再从保存的状态重试失败子步骤做失败归因（失败在调用方式还是能力本身）；只对仍不可靠的子步骤做微调，演示由系统自采、经验从早前任务迁移。
+
+**作者报告结果** — 在 RoboCasa365 全部 50 个目标任务（各 50 场景）上，以 GR00T N1.5 为执行器、无人类演示：AdaRSI 在三个套件上均提升 VLA，未见组合任务成功率从 4.6% 升至 13.8%。与“每个子步骤都微调”相比，成功率略高而只用 28% GPU 时间与 22% 自采演示；不带 harness 的微调训练更多、收益远低。
+
+**证据边界** — HTML 未找到代码链接；单一执行器（GR00T N1.5）与单一基准族（RoboCasa365）；子步骤归因假设保存状态重置能忠实隔离失败。
+
+**代码／权重／数据／许可** — HTML 全文未找到代码或仓库链接。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — “先改 harness、只对持续不可靠子步骤改权重”的边界正是 nanoRSI 冻结执行器教义所在：将来任何权重侧实验臂都应照抄这种“先归因再微调”的闸门（从保存状态重试），而不是失败即微调。
+
+![原图 2：AdaRSI 流程——先改进技能与 harness，从保存状态重试失败子步骤做归因，只对仍不可靠的子步骤微调。](assets/paper-figures/adarsi-on-demand-pipeline.jpg)
+
+**原文图／官方图片** — 原图 2：AdaRSI 流程——先改进技能与 harness，从保存状态重试失败子步骤做归因，只对仍不可靠的子步骤微调。 · Figure 2 (figures/AdaRSI_pipeline.jpg), arXiv HTML 2610.20474v1 · [source](https://arxiv.org/html/2610.20474v1/figures/AdaRSI_pipeline.jpg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.20474](https://arxiv.org/abs/2610.20474) · [HTML full text v1](https://arxiv.org/html/2610.20474v1)
 
 <a id="sguid-skill-bank-selection"></a>
 

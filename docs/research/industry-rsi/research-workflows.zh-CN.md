@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [AI 科学家系统](#family-ai-scientists) | 12 |
-| [自主后训练及其评测](#family-autonomous-post-training) | 3 |
+| [AI 科学家系统](#family-ai-scientists) | 14 |
+| [自主后训练及其评测](#family-autonomous-post-training) | 4 |
 | [公司研发遥测](#family-company-telemetry) | 7 |
 | [对齐自动化](#family-alignment-automation) | 3 |
-| [分析与审计](#family-analyses-audits) | 18 |
+| [分析与审计](#family-analyses-audits) | 19 |
 | [立场、路线图与实验室](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
 
-## AI 科学家系统 (12)
+## AI 科学家系统 (14)
+
+<a id="swarmrsi-evolving-swarm"></a>
+
+### SwarmRSI: Recursive Self-Improvement through Evolving Scientific Agent Swarm
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.20431 v1 提交于 2026-10-14，随 2026-10-15 批次公告；标题已在 abs 页核对。
+
+**机构关系** — Qianru Meng、Xi Zhang、Konstantinos Papakostas、Congfeng Cao、Wenxiang Hu、Tianyi Lu、Xiao Zhang、Lun Zhou、Zaiqiao Meng、Zhaochun Ren、Xiaohui Yan、Yougang Lyu——HTML 作者块渲染出的机构集合：华为技术有限公司、莱顿大学、格罗宁根大学（LaTeXML 只给集合、无干净的逐作者映射，按原样记录）。
+
+**改变对象与反馈复用** — 演化科研智能体群体，使一个智能体的发现与实现能推进另一个智能体的研究。反馈引导群体变异用其他智能体的实验反馈同时精修假设及其实现（解决“结果差该改假设还是改实现”的归因歧义）；互补群体重组跨智能体复用被保留的假设与互补的程序组件，让部分成果支撑新研究而非被总体程序分数淹没；递归群体演化把每次结果写回共享图，指导每个智能体下一步更新哪个状态。
+
+**作者报告结果** — 在 OpenProblems 与 NatureBench 上 SOTA：Gemini 3.1 Pro Preview 下 OpenProblems 平均分 76.2，NatureBench 上 44.4% 任务追平已发表 SOTA（对比方法中最高的 Match-SOTA 率）；MLE-Bench Lite 上 81.8% 任务获奖牌，高于同骨干的假设演化与程序演化智能体。共 118 个科研编码与机器学习工程任务、两个骨干（Gemini 3.1 Pro Preview、DeepSeek-V4-Pro）。
+
+**证据边界** — HTML 全文未找到代码或仓库链接；许可 CC BY-NC-SA 4.0（非商业——只借鉴思想、不复用代码）。SOTA 声明为作者自跑对比（含附录 B.2 的同骨干重跑）；本次核验覆盖摘要/引言声明与作者块，未重推全部结果表格。逐作者机构映射不完整（以集合渲染）。
+
+**代码／权重／数据／许可** — 未发现代码发布；扉页标注 CC BY-NC-SA 4.0 许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 跨智能体互补组件复用是 nanoRSI 种群模式缺的模式：按组件验证把关的候选级部分程序合并是选择器研究的一个具体臂；“改假设还是改实现”的归因问题则对应我们失败尝试中“提案问题还是评测问题”的归因。
+
+![原图 1：SwarmRSI 循环——智能体用其他智能体的实验反馈变异假设与程序、重组互补程序组件，并把每次结果写回指导各智能体下一步更新哪个状态的共享图。](assets/paper-figures/swarmrsi-evolving-swarm.svg)
+
+**原文图／官方图片** — 原图 1：SwarmRSI 循环——智能体用其他智能体的实验反馈变异假设与程序、重组互补程序组件，并把每次结果写回指导各智能体下一步更新哪个状态的共享图。 · Figure 1 (figure1_swarmrsi.svg), arXiv HTML 2610.20431v1 · [source](https://arxiv.org/html/2610.20431v1/figure1_swarmrsi.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.20431](https://arxiv.org/abs/2610.20431) · [HTML full text v1](https://arxiv.org/html/2610.20431v1)
 
 <a id="discovery-scaling-forgetting"></a>
 
@@ -76,6 +106,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.18083) · [arXiv HTML v1](https://arxiv.org/html/2610.18083v1)
+
+<a id="agentic-scientist-codiscovery"></a>
+
+### The Agentic Scientist: Orchestrating Coding Agents for Automated Scientific (Co-)Discovery
+
+**2026-10-13** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.18933 v1 提交于 2026-10-13（88 页）；出现于 2026-10-15 批次队列。是 The AI Scientist 系列（Lu 等，2026）的后续，论文链接了其 v3 仓库。
+
+**机构关系** — Robert Tjarko Lange、Luca Grillotti、Yutaro Yamada（同等贡献）、Rujikorn Charakorn、David Ha——全部 Sakana AI。
+
+**改变对象与反馈复用** — 供人类研究者与现代编码智能体并肩做计算的端到端分布式流水线。研究被分解为任务起草、想法生成、规划、沙箱实验、结果汇总、基线与消融构建、事后分析、有据论文写作（证据暂存与规划、稿件生成、验证与评审），外加生成概念图的 autoillustrate。每一阶段由新一代编码智能体驱动并带智能体自验证；元控制器管理并行研究智能体并在每阶段强制执行 rubric 校验；搜索是 CLI 智能体上的束搜索，并显式提供人类共科学家选项。出发点：全自主研究智能体的想法半径有限且易陷入短视爬山。
+
+**作者报告结果** — 谱系表（表 1）：AI Scientist-v1（主题特定、线性 Aider）→ v2（领域通用、树搜索 AIDE、并行实验）→ Agentic Scientist（领域通用、CLI 智能体束搜索、并行 + rubric 校验 + 共科学家选项），评价级别从 workshop 提升到会议。系统开发版自动化了 Error Diffusion（Fujita 2026；Kaneko 2000）研究的部分流程，用系统构建的一篇论文被 ALIFE 2026 接收。作为论文质量代理的 AI 评审经 ICLR 接收决定验证（含训练数据截止后的 2025 队列）；作者明确评审分只是“评审感知质量”的代理、非正确性真值。
+
+**证据边界** — 设计上就是人在环的共发现，不是闭环自主 RSI；评审分明确是代理指标；88 页系统报告的任务级对比未由本次核验重推。HTML 中未找到系统本身的专属仓库（只链接了前代 SakanaAI/AI-Scientist-v3 仓库）。
+
+**代码／权重／数据／许可** — 论文未提供 The Agentic Scientist 的专属代码仓库；链接了前代代码 github.com/SakanaAI/AI-Scientist-v3。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 元控制器在每阶段强制 rubric 校验，是证据账本阶段闸门的外部模板；“想法半径有限/短视爬山”的诊断与我们的种群多样性关切（ADOPTION 38/45）吻合；autoillustrate 把智能体自验证延伸到插图生成，是报告质量审计的廉价附加项。
+
+![原图 1：四阶段工作流——任务起草、带 rubric 校验的并行调查、回溯式证据生成（受控基线与消融、事后分析）、有据论文写作。](assets/paper-figures/agentic-scientist-pipeline.png)
+
+**原文图／官方图片** — 原图 1：四阶段工作流——任务起草、带 rubric 校验的并行调查、回溯式证据生成（受控基线与消融、事后分析）、有据论文写作。 · Figure 1 (conceptual.png), arXiv HTML 2610.18933v1 · [source](https://arxiv.org/html/2610.18933v1/conceptual.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — [Predecessor: AI-Scientist-v3 code](https://github.com/SakanaAI/AI-Scientist-v3)
+
+**一手来源** — [arXiv abs 2610.18933](https://arxiv.org/abs/2610.18933) · [Predecessor: AI-Scientist-v3 code](https://github.com/SakanaAI/AI-Scientist-v3)
 
 <a id="janus-coevolving-world-models"></a>
 
@@ -379,7 +439,37 @@
 
 <a id="family-autonomous-post-training"></a>
 
-## 自主后训练及其评测 (3)
+## 自主后训练及其评测 (4)
+
+<a id="athanor-autoposttrain"></a>
+
+### Athanor: An Agent-Native System for Autonomous Post-Training Research
+
+**2026-10-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.21055 v1 提交于 2026-10-15，随 2026-10-16 批次公告（首个入库的周五批次条目）。论文诚实地把 RSI 框定为较弱的可测形式：前沿智能体后训练小型裸基座模型。核验时无 HTML 全文（仅桩）；机构与图 2 取自 PDF。
+
+**机构关系** — Yufa Zhou（字节跳动；杜克大学；项目负责人）、Yichen Wang（芝加哥大学）、Jiakun Fan（字节跳动；弗吉尼亚理工）、Ziqi Shu、Zhichao Liu、Neiwen Ling（通讯）、Zijun Wei（通讯）（字节跳动）、Anru R. Zhang（杜克大学）。
+
+**改变对象与反馈复用** — 在真实 GPU 上做自主后训练研究（AutoPostTrain）的开放智能体原生系统。智能体获得完全研究自主权、低摩擦工程工具与高效起始代码：在沙箱内读数据集与评测结果、构建训练数据、编写并修改训练算法、调超参、分析结果决定下一步，且不能使用外部教师模型。Athanor 服务侧提供冻结评测、托管作业、去污染数据、持久研究记录，以及智能体不知情的留出测试套件。
+
+**作者报告结果** — 在 104 小时的战役中，四个 Claude Opus 5.5 智能体（各占一个八卡节点、无任何研究建议）把 Qwen3-4B-Base 从六任务开发套件 15.9 分提升到 67.3、留出套件从 9.2 提升到 48.2，对照官方 Qwen3-4B-Instruct-2507 的 66.5 与 47.9。路径为 SFT + RL + 跨智能体权重合并 + 自蒸馏。作者称这是前沿智能体自主把裸基座模型后训练成跨域对话模型的首个演示。
+
+**证据边界** — abs/HTML 未见代码 URL（系统自称开放但本核验未找到仓库）；战役是单次 104 小时运行（摘要未报告重复种子方差）；前沿智能体（Claude Opus 5.5）是外部且冻结的——递归发生在研究工作流层而非模型自改；评测套件为作者自选。
+
+**代码／权重／数据／许可** — abs 页与 HTML 桩均未找到代码 URL；论文自称开放系统——待发布后定位仓库。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可移植的是服务侧教义：冻结评测、去污染数据、持久研究记录、改进者不知情的留出套件，正是我们 freeze/final-test 协议维护的实验隔离保证——现在有了权重规模的外部演示：这些约束能支撑自主后训练战役。
+
+![原图 2：每个研究智能体在各自 GPU 节点的沙箱内工作，经一条命令触达 GPU；环境侧运行作业、给流入数据去污染、用冻结评测器给检查点打分并记录每个请求与结果；操作员负责搭建与节点恢复。](assets/paper-figures/athanor-autoposttrain-system.png)
+
+**原文图／官方图片** — 原图 2：每个研究智能体在各自 GPU 节点的沙箱内工作，经一条命令触达 GPU；环境侧运行作业、给流入数据去污染、用冻结评测器给检查点打分并记录每个请求与结果；操作员负责搭建与节点恢复。 · Figure 2 "Athanor at a glance", PDF page 3 (150 dpi render, cropped; no HTML full text available) · [source](https://arxiv.org/pdf/2610.21055)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.21055](https://arxiv.org/abs/2610.21055) · [PDF full text v1](https://arxiv.org/pdf/2610.21055)
 
 <a id="metarsi-composition"></a>
 
@@ -781,7 +871,37 @@
 
 <a id="family-analyses-audits"></a>
 
-## 分析与审计 (18)
+## 分析与审计 (19)
+
+<a id="selfimprovement-problem-impossibility"></a>
+
+### The Self-Improvement Problem
+
+**2026-10-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.21646 v1 提交于 2026-10-15，随 2026-10-16 批次公告。理论论文（无实验）；发布了形式化证明代码。
+
+**机构关系** — Brian B. Moser（DFKI；RPTU 凯泽斯劳滕-兰道）、Stanislav Frolov（DFKI）、Tobias C. Nauen（DFKI；RPTU 凯泽斯劳滕-兰道）、Federico Raue（DFKI）、Andreas Dengel（DFKI；RPTU 凯泽斯劳滕-兰道）。
+
+**改变对象与反馈复用** — 把安全自改进形式化：智能体是程序、改进是未必可计算的语义分数，而任何自动闸门（奖励模型、回归测试套件、自动评审）都必须是可终止的可计算过程。研究两种评估抽象——批准/拒绝更新的证明器（certifier）与在给定提案生成器下输出改进候选的搜索过程。定理：在完全一般的设定下，不存在可同时保证可靠性（绝不接受非改进）与非保守性（绝不放过可得改进）的可终止过程；自指构造可迫使任何此类闸门或搜索器失败，有界误差的随机化闸门同样受限。在有界评估、有限提案预算的机制下，穷举模拟给出具备期望保证的可终止搜索——但被接受的更新链可以每轮都抬高有界分数而真实分数下降。
+
+**作者报告结果** — 无实验（理论）。结论：无界通用设定下不可能；有界设定下可按设计恢复保证；并给出恢复极限（有界分数逐轮上升而真实分数下降）——划出“正确性保证崩溃”与“可工程恢复”的边界。
+
+**证据边界** — 纯理论、采用风格化抽象（语义分数、无界行为）；实用系统本就生活在论文自己恢复的有界机制内，因此不可能性是边界陈述而非末日论——作者亦如此表述。本次核验未检查其证明代码。
+
+**代码／权重／数据／许可** — 形式化证明代码位于 github.com/Brian-Moser/SelfImprovementProof（许可尚未核对）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 这是 nanoRSI 闸门教义的理论支柱：冻结面板、有限提案预算与有界评测器正是保证得以恢复的可判定机制——而“有界分数升、真实分数降”的极限，正是反事实面板与留出 freeze/final-test 存在理由的形式化表述。今后凡触及闸门的 ADOPTION 条目都应引用这条边界。
+
+![原图 1：验证闸门式自改进的结构性不可能——提案机制（枚举器）生成的候选，其语义行为是可终止闸门无法完全检查的；自指构造迫使其失败。](assets/paper-figures/selfimprovement-problem-impossibility.svg)
+
+**原文图／官方图片** — 原图 1：验证闸门式自改进的结构性不可能——提案机制（枚举器）生成的候选，其语义行为是可终止闸门无法完全检查的；自指构造迫使其失败。 · Figure 1 (SelfImprovementProblem.svg), arXiv HTML 2610.21646v1 · [source](https://arxiv.org/html/2610.21646v1/SelfImprovementProblem.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — [SelfImprovementProof code](https://github.com/Brian-Moser/SelfImprovementProof)
+
+**一手来源** — [arXiv abs 2610.21646](https://arxiv.org/abs/2610.21646) · [SelfImprovementProof code](https://github.com/Brian-Moser/SelfImprovementProof)
 
 <a id="teb-trace-evolution-bench"></a>
 

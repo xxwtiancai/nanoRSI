@@ -6,15 +6,45 @@
 
 | Family | Records |
 | --- | ---: |
-| [Structured knowledge bases & graphs](#family-structured-knowledge) | 9 |
-| [Experience accumulation & replay](#family-experience-accumulation) | 9 |
+| [Structured knowledge bases & graphs](#family-structured-knowledge) | 10 |
+| [Experience accumulation & replay](#family-experience-accumulation) | 10 |
 | [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
 | [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 3 |
 
 <a id="family-structured-knowledge"></a>
 
-## Structured knowledge bases & graphs (9)
+## Structured knowledge bases & graphs (10)
+
+<a id="evoweave-operation-graphs"></a>
+
+### EvoWeave: Composing Reusable Agent Experience through Operation Level Graphs
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.19381 v1 submitted 2026-10-14, announced in the 2026-10-15 batch.
+
+**Institutional relationship** — Guanhua Zhu, Lei Zhang, Fadi Deek (Department of Informatics, NJIT); Bo Shen (Department of Mechanical and Industrial Engineering, NJIT); Zhi Wei, Chenxi Yuan (NJIT); Mengnan Du (The Chinese University of Hong Kong).
+
+**What changes and how feedback is reused** — Experience memory at operation granularity: abstract states as nodes, reusable operations as directed edges carrying input/output contracts, provenance, and capability references. A planner decomposes the current task into a dependency graph; operation retrieval and bounded directed search assemble relevant experience fragments; an execution agent inspects fragments and their referenced capabilities; reflection separates concrete execution evidence from reusable abstractions.
+
+**Author-reported result** — Studied across four benchmarks, five evaluation settings and three backbones. AppWorld Normal and Challenge task goal completion average 51.91 and 27.99, exceeding the no-memory baseline by 6.99 and 4.99 percentage points; an AppWorld ablation associates directed connections with an additional 2.08-point improvement over independent operation cards. The paper also exposes tradeoffs in retrieval overhead and conditions for valid reuse.
+
+**Evidence limits** — No code link found; headline gains are averages across settings (per-backbone variance not re-derived); the four-benchmark span is narrower than the memory-benchmark literature it builds on.
+
+**Code / weights / data / license** — No code or repository link found in the HTML full text.
+
+**Possible nanoRSI experiment — not implemented here** — Contracts + provenance on every reusable operation is the schema upgrade for nanoRSI skill files: each skill should carry typed input/output contracts and capability provenance so retrieval can check compatibility before spending a rollout - a read-only schema extension compatible with the existing skills surface.
+
+![Original Figure 2: EvoWeave overview - a planner generates a task DAG that guides retrieval from an experience graph whose nodes are abstract states and whose edges are reusable operations with contracts, provenance and capability references.](assets/paper-figures/evoweave-operation-graphs.png)
+
+**Source figure / official image** — Original Figure 2: EvoWeave overview - a planner generates a task DAG that guides retrieval from an experience graph whose nodes are abstract states and whose edges are reusable operations with contracts, provenance and capability references. · Figure 2 (method.png), arXiv HTML 2610.19381v1 · [source](https://arxiv.org/html/2610.19381v1/method.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.19381](https://arxiv.org/abs/2610.19381) · [HTML full text v1](https://arxiv.org/html/2610.19381v1)
 
 <a id="specforge-behavioral-specs"></a>
 
@@ -288,7 +318,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## Experience accumulation & replay (9)
+## Experience accumulation & replay (10)
+
+<a id="himeco-hippocampal-metacognitive"></a>
+
+### Reflect After Failure: Brain-Inspired Self-Evolving Agents for Embodied Spatial Intelligence
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.20312 v1 submitted 2026-10-14, announced in the 2026-10-15 batch. System name HiMeco appears in the abstract; abs title kept verbatim.
+
+**Institutional relationship** — Xin Li, Tianli Shi, Zhimeng Yin, Dapeng Wu, Yun Wang (City University of Hong Kong); Xiaohuan Gu (East China Normal University); Yifan Wang (University of Electronic Science and Technology of China); Shaobin Ling (The Chinese University of Hong Kong, Shenzhen); Jingao Xu (The University of Hong Kong; equal contribution with Xin Li).
+
+**What changes and how feedback is reused** — Brain-inspired self-evolving agent for embodied spatial tasks. Hippocampal-Metacognitive Reflection diagnoses failures across perception-exploration-planning (PEP) - execution feedback alone rarely reveals which component is responsible, so simply accumulating experience can reinforce ineffective strategies. It compares execution attempts to derive reusable strategies and guidance for avoiding recurring errors, and abstracts interaction programs into parameterized skills using evidence contracts and execution-based validation.
+
+**Author-reported result** — Improves success rates on embodied spatial benchmarks with generalization (per abstract; the detailed table numbers were not re-derived in this verification pass).
+
+**Evidence limits** — Result numbers were not extracted verbatim in this pass (verification focused on mechanism, affiliations and figure); no code link found in the HTML.
+
+**Code / weights / data / license** — No code or repository link found in the HTML full text.
+
+**Possible nanoRSI experiment — not implemented here** — PEP failure attribution (perception vs exploration vs planning) before memory consolidation is the embodied analogue of our proposal-vs-evaluation attribution: reflections should be written only after the failing component is identified, otherwise accumulated skills reinforce the wrong repair.
+
+![Original Figure 2: HiMeco overview - (A) the frozen planner interacts with the environment and collects evidence; (B) PEP diagnosis attributes the failure; reflection derives reusable strategies; interaction programs are abstracted into parameterized skills under evidence contracts.](assets/paper-figures/himeco-hippocampal-metacognitive.png)
+
+**Source figure / official image** — Original Figure 2: HiMeco overview - (A) the frozen planner interacts with the environment and collects evidence; (B) PEP diagnosis attributes the failure; reflection derives reusable strategies; interaction programs are abstracted into parameterized skills under evidence contracts. · Figure 2 (Method.png), arXiv HTML 2610.20312v1 · [source](https://arxiv.org/html/2610.20312v1/Method.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.20312](https://arxiv.org/abs/2610.20312) · [HTML full text v1](https://arxiv.org/html/2610.20312v1)
 
 <a id="rbc-randomized-block-curation"></a>
 

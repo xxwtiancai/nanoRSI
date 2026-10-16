@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [AI-scientist systems](#family-ai-scientists) | 12 |
-| [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 3 |
+| [AI-scientist systems](#family-ai-scientists) | 14 |
+| [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 4 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 18 |
+| [Analyses & audits](#family-analyses-audits) | 19 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 6 |
 
 <a id="family-ai-scientists"></a>
 
-## AI-scientist systems (12)
+## AI-scientist systems (14)
+
+<a id="swarmrsi-evolving-swarm"></a>
+
+### SwarmRSI: Recursive Self-Improvement through Evolving Scientific Agent Swarm
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.20431 v1 submitted 2026-10-14, announced in the 2026-10-15 batch; title confirmed at abs.
+
+**Institutional relationship** — Qianru Meng, Xi Zhang, Konstantinos Papakostas, Congfeng Cao, Wenxiang Hu, Tianyi Lu, Xiao Zhang, Lun Zhou, Zaiqiao Meng, Zhaochun Ren, Xiaohui Yan, Yougang Lyu - affiliation set rendered in the HTML author block: Huawei Technologies Co., Ltd., Leiden University, University of Groningen (LaTeXML gives the set without a clean per-author mapping; recorded as stated).
+
+**What changes and how feedback is reused** — Evolves a scientific agent swarm so that one agent's findings and implementations advance another's research. Feedback-Guided Swarm Mutation refines hypotheses AND their implementations using experimental feedback from other agents (resolving the ambiguity of whether a poor result calls for revising the hypothesis or its implementation). Complementary Swarm Recombination reuses retained hypotheses and complementary program components across agents, letting partial results support new research instead of being hidden inside overall program scores. Recursive Swarm Evolution returns every outcome to a shared graph that guides which state each agent updates next.
+
+**Author-reported result** — SOTA on OpenProblems and NatureBench: with Gemini 3.1 Pro Preview, average score 76.2 on OpenProblems, and matches the published SOTA on 44.4% of NatureBench tasks (highest Match-SOTA rate among compared methods); on MLE-Bench Lite wins medals on 81.8% of tasks, above hypothesis-evolution and program-evolution agents with the same backbone. 118 scientific coding and ML-engineering tasks, two backbones (Gemini 3.1 Pro Preview, DeepSeek-V4-Pro).
+
+**Evidence limits** — No code or repository link found in the HTML full text; license CC BY-NC-SA 4.0 (non-commercial - ideas only, no code reuse). SOTA claims are author-run comparisons incl. matched-backbone reruns (appendix B.2); this verification covered the abstract/intro claims and the author block, full result tables were not re-derived. The per-author institution mapping is partial (rendered as a set).
+
+**Code / weights / data / license** — No code release found; CC BY-NC-SA 4.0 license stated on the title page.
+
+**Possible nanoRSI experiment — not implemented here** — Cross-agent complementary-component reuse is the pattern nanoRSI's population mode lacks: candidate-level partial-program merging gated by per-component validation is a concrete arm for the selector study, and the hypothesis-vs-implementation attribution problem mirrors our proposal-vs-evaluation attribution in failed attempts.
+
+![Original Figure 1: the SwarmRSI loop - agents mutate hypotheses and programs using other agents' experimental feedback, recombine complementary program components, and return every outcome to a shared graph that guides which state each agent updates next.](assets/paper-figures/swarmrsi-evolving-swarm.svg)
+
+**Source figure / official image** — Original Figure 1: the SwarmRSI loop - agents mutate hypotheses and programs using other agents' experimental feedback, recombine complementary program components, and return every outcome to a shared graph that guides which state each agent updates next. · Figure 1 (figure1_swarmrsi.svg), arXiv HTML 2610.20431v1 · [source](https://arxiv.org/html/2610.20431v1/figure1_swarmrsi.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.20431](https://arxiv.org/abs/2610.20431) · [HTML full text v1](https://arxiv.org/html/2610.20431v1)
 
 <a id="discovery-scaling-forgetting"></a>
 
@@ -76,6 +106,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.18083) · [arXiv HTML v1](https://arxiv.org/html/2610.18083v1)
+
+<a id="agentic-scientist-codiscovery"></a>
+
+### The Agentic Scientist: Orchestrating Coding Agents for Automated Scientific (Co-)Discovery
+
+**2026-10-13** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.18933 v1 submitted 2026-10-13 (88 pages); surfaced in the 2026-10-15 batch queue. Successor to The AI Scientist line (Lu et al., 2026), whose v3 repository the paper links.
+
+**Institutional relationship** — Robert Tjarko Lange, Luca Grillotti, Yutaro Yamada (equal contribution), Rujikorn Charakorn, David Ha - all Sakana AI.
+
+**What changes and how feedback is reused** — An end-to-end distributed pipeline for human researchers to conduct computational research alongside coding agents. Research is decomposed into task drafting, idea generation, planning, sandboxed experimentation, result aggregation, baseline and ablation construction, post-hoc analysis, and grounded paper writing (evidence staging and planning, manuscript generation, validation and review), plus autoillustrate for conceptual diagram generation. Each stage is powered by the next generation of coding agents with agentic self-verification; a meta-controller manages parallel research agents and enforces rubric verification at each stage; search is beam search over CLI agents, with an explicit human co-scientist option. The stated motivation: fully autonomous research agents suffer a limited ideation radius and myopic hill-climbing.
+
+**Author-reported result** — Lineage table (Table 1): AI Scientist-v1 (topic-specific, linear Aider) -> v2 (domain-general, tree-based AIDE, parallel experiments) -> Agentic Scientist (domain-general, beam search over CLI agents, parallel + rubric-based verification + co-scientist option), evaluated at conference level rather than workshop level. A development version automated parts of the research process on Error Diffusion (Fujita 2026; Kaneko 2000) and a single paper built with the system was accepted at ALIFE 2026. The AI reviewer used for paper-quality proxy scoring was validated against ICLR acceptance decisions including a post-training-data-cutoff 2025 cohort; the authors state the reviewer score is a proxy for reviewer-perceived quality, not ground-truth correctness.
+
+**Evidence limits** — Human-in-the-loop co-discovery by design, not closed autonomous RSI; reviewer scores are explicitly proxies; the 88-page system report's task-level SOTA comparisons were not re-derived by this verification. No dedicated repository for the system itself was found in the HTML (only the predecessor SakanaAI/AI-Scientist-v3 repo is linked).
+
+**Code / weights / data / license** — No dedicated code repository for The Agentic Scientist found in the paper; predecessor code at github.com/SakanaAI/AI-Scientist-v3 is linked.
+
+**Possible nanoRSI experiment — not implemented here** — Rubric verification enforced per stage by a meta-controller is the external template for the evidence ledger's stage gates; the ideation-radius / myopic-hill-climbing diagnosis matches our population-diversity concerns (ADOPTION items 38/45); autoillustrate extends agentic self-verification to figure generation - a cheap add-on for report quality auditing.
+
+![Original Figure 1: the four-stage workflow - task drafting, parallel investigation with rubric verification, retrospective evidence generation (controlled baselines and ablations, post-hoc analysis), and grounded paper writing.](assets/paper-figures/agentic-scientist-pipeline.png)
+
+**Source figure / official image** — Original Figure 1: the four-stage workflow - task drafting, parallel investigation with rubric verification, retrospective evidence generation (controlled baselines and ablations, post-hoc analysis), and grounded paper writing. · Figure 1 (conceptual.png), arXiv HTML 2610.18933v1 · [source](https://arxiv.org/html/2610.18933v1/conceptual.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — [Predecessor: AI-Scientist-v3 code](https://github.com/SakanaAI/AI-Scientist-v3)
+
+**Primary sources** — [arXiv abs 2610.18933](https://arxiv.org/abs/2610.18933) · [Predecessor: AI-Scientist-v3 code](https://github.com/SakanaAI/AI-Scientist-v3)
 
 <a id="janus-coevolving-world-models"></a>
 
@@ -379,7 +439,37 @@
 
 <a id="family-autonomous-post-training"></a>
 
-## Autonomous post-training & its evaluation (3)
+## Autonomous post-training & its evaluation (4)
+
+<a id="athanor-autoposttrain"></a>
+
+### Athanor: An Agent-Native System for Autonomous Post-Training Research
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.21055 v1 submitted 2026-10-15, announced in the 2026-10-16 batch (first Fri-16-batch entry catalogued). The paper frames RSI honestly as a weaker measurable form: frontier agents post-training a small raw base model. No HTML full text at verification (stub only); affiliations and Figure 2 from the PDF.
+
+**Institutional relationship** — Yufa Zhou (ByteDance; Duke University; project lead), Yichen Wang (The University of Chicago), Jiakun Fan (ByteDance; Virginia Tech), Ziqi Shu, Zhichao Liu, Neiwen Ling (corresponding), Zijun Wei (corresponding) (ByteDance), Anru R. Zhang (Duke University).
+
+**What changes and how feedback is reused** — An open agent-native system for autonomous post-training research (AutoPostTrain) on real GPUs. Agents receive full research autonomy, low-friction engineering tools, and efficient starter code: they read datasets and evaluation results, build their training data, write and modify training algorithms, tune hyperparameters, and analyze results to decide what to try next, inside a sandbox with no external teacher models. Athanor services supply frozen evaluation, managed jobs, decontaminated data, a persistent research record, and a held-out suite the agents are unaware of.
+
+**Author-reported result** — In a 104-hour campaign, a team of four Claude Opus 5.5 agents - each on an eight-GPU node, given no research advice - improves Qwen3-4B-Base from 15.9 to 67.3 on a six-task development suite and from 9.2 to 48.2 on the held-out suite, against 66.5 and 47.9 for the official Qwen3-4B-Instruct-2507. Reached via SFT + RL + cross-agent weight merges + self-distillation. The authors claim the first demonstration of frontier agents autonomously post-training a raw base model into a cross-domain instruct model.
+
+**Evidence limits** — No code URL found at abs/HTML (system described as open but repository not located in this pass); the campaign is a single 104-hour run (no repeat-seed variance reported in the abstract); frontier agents (Claude Opus 5.5) are external and frozen - the recursion is at the research-workflow level, not model self-modification; evaluation suites are the authors' own selection.
+
+**Code / weights / data / license** — No code URL found in the abs page or HTML stub; the paper describes itself as an open system - repository to be located when published.
+
+**Possible nanoRSI experiment — not implemented here** — The services-side doctrine is the transferable part for nanoRSI: frozen evaluation, decontaminated data, persistent research record, and a held-out suite the improver cannot see are exactly the experimental-isolation guarantees our freeze/final-test protocol enforces - now with an external, weights-scale demonstration that they suffice for autonomous post-training campaigns.
+
+![Original Figure 2: each researcher agent works in its own sandbox on a GPU node and reaches the GPUs through one command; the environment runs jobs, decontaminates incoming data, scores checkpoints with a frozen evaluator, and records every request and result; the operator sets up and recovers nodes.](assets/paper-figures/athanor-autoposttrain-system.png)
+
+**Source figure / official image** — Original Figure 2: each researcher agent works in its own sandbox on a GPU node and reaches the GPUs through one command; the environment runs jobs, decontaminates incoming data, scores checkpoints with a frozen evaluator, and records every request and result; the operator sets up and recovers nodes. · Figure 2 "Athanor at a glance", PDF page 3 (150 dpi render, cropped; no HTML full text available) · [source](https://arxiv.org/pdf/2610.21055)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.21055](https://arxiv.org/abs/2610.21055) · [PDF full text v1](https://arxiv.org/pdf/2610.21055)
 
 <a id="metarsi-composition"></a>
 
@@ -781,7 +871,37 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (18)
+## Analyses & audits (19)
+
+<a id="selfimprovement-problem-impossibility"></a>
+
+### The Self-Improvement Problem
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv 2610.21646 v1 submitted 2026-10-15, announced in the 2026-10-16 batch. Theory paper (no experiments); formal proof code released.
+
+**Institutional relationship** — Brian B. Moser (DFKI; RPTU Kaiserslautern-Landau), Stanislav Frolov (DFKI), Tobias C. Nauen (DFKI; RPTU Kaiserslautern-Landau), Federico Raue (DFKI), Andreas Dengel (DFKI; RPTU Kaiserslautern-Landau).
+
+**What changes and how feedback is reused** — Formalizes safe self-improvement: agents are programs and improvement is a semantic score that need not be computable, while any automated gate (reward model, regression suite, automated reviewer) must be a terminating computable procedure. Two evaluation abstractions are studied - a certifier that approves/rejects an update, and a search procedure that outputs an improving candidate given a proposal generator. Theorem: in the fully general setting, no terminating procedure can simultaneously guarantee reliability (never accepting a non-improvement) and non-conservatism (never missing an available improvement); self-referential constructions force any such gate or searcher to fail, and randomized gates with bounded error face the same limit. In the bounded-evaluation, finite-proposal-budget regime, exhaustive simulation yields a terminating search with the desired guarantees - but a chain of accepted updates can raise the bounded score in every round while the true score falls.
+
+**Author-reported result** — No experiments (theory). Impossibility in the unbounded universal setting; recovery of guarantees by design in bounded settings; and the explicit recovery limit (bounded score rising while true score falls) - a boundary result between where correctness guarantees collapse and where they can be engineered back.
+
+**Evidence limits** — Pure theory with stylized abstractions (semantic scores, unbounded behavior); practical systems live inside the bounded regime the paper itself recovers, so the impossibility is a boundary statement rather than a doom claim - the authors say as much. Proof checking of the released code was not performed in this verification.
+
+**Code / weights / data / license** — Formal proof code at github.com/Brian-Moser/SelfImprovementProof (license not yet checked).
+
+**Possible nanoRSI experiment — not implemented here** — This is the theoretical backbone of nanoRSI's gate doctrine: our frozen panels, finite proposal budgets and bounded evaluators are exactly the decidable regime where guarantees recover - and the bounded-score-rises-while-true-score-falls limit is the formal statement of why the counterfactual panel and held-out freeze/final-test exist. Every future ADOPTION item touching gates should cite this boundary.
+
+![Original Figure 1: the structural impossibility of verification-gated self-improvement - the proposal mechanism (enumerator) generates candidates whose semantic behavior the terminating gate cannot fully inspect; self-referential constructions force failure.](assets/paper-figures/selfimprovement-problem-impossibility.svg)
+
+**Source figure / official image** — Original Figure 1: the structural impossibility of verification-gated self-improvement - the proposal mechanism (enumerator) generates candidates whose semantic behavior the terminating gate cannot fully inspect; self-referential constructions force failure. · Figure 1 (SelfImprovementProblem.svg), arXiv HTML 2610.21646v1 · [source](https://arxiv.org/html/2610.21646v1/SelfImprovementProblem.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-17.
+
+**Open code / weights / data links** — [SelfImprovementProof code](https://github.com/Brian-Moser/SelfImprovementProof)
+
+**Primary sources** — [arXiv abs 2610.21646](https://arxiv.org/abs/2610.21646) · [SelfImprovementProof code](https://github.com/Brian-Moser/SelfImprovementProof)
 
 <a id="teb-trace-evolution-bench"></a>
 

@@ -6,15 +6,45 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [结构化知识库与图](#family-structured-knowledge) | 9 |
-| [经验积累与回放](#family-experience-accumulation) | 9 |
+| [结构化知识库与图](#family-structured-knowledge) | 10 |
+| [经验积累与回放](#family-experience-accumulation) | 10 |
 | [上下文组织策略](#family-context-policies) | 5 |
 | [探索式记忆构建](#family-exploration-memory) | 1 |
 | [记忆进化评测研究](#family-memory-evolution-studies) | 3 |
 
 <a id="family-structured-knowledge"></a>
 
-## 结构化知识库与图 (9)
+## 结构化知识库与图 (10)
+
+<a id="evoweave-operation-graphs"></a>
+
+### EvoWeave: Composing Reusable Agent Experience through Operation Level Graphs
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.19381 v1 提交于 2026-10-14，随 2026-10-15 批次公告。
+
+**机构关系** — Guanhua Zhu、Lei Zhang、Fadi Deek（NJIT 信息系）；Bo Shen（NJIT 机械与工业工程系）；Zhi Wei、Chenxi Yuan（NJIT）；Mengnan Du（香港中文大学）。
+
+**改变对象与反馈复用** — 操作粒度的经验记忆：抽象状态为节点、可复用操作为有向边，边上带输入/输出契约、出处与能力引用。规划器把当前任务分解为依赖图；操作检索与有界定向搜索拼装相关经验片段；执行智能体可检查片段及其引用的能力；反思把具体执行证据与可复用抽象分离。
+
+**作者报告结果** — 覆盖四基准 × 五评测设置 × 三骨干。AppWorld Normal 与 Challenge 任务目标完成度均值 51.91 与 27.99，高出无记忆基线 6.99 与 4.99 个百分点；AppWorld 消融显示有向连接比独立操作卡片再高 2.08 分。论文同时给出检索开销与有效复用条件的权衡。
+
+**证据边界** — 未找到代码链接；主要增益是跨设置均值（逐骨干方差未重推）；基准覆盖窄于其所构建的记忆基准文献。
+
+**代码／权重／数据／许可** — HTML 全文未找到代码或仓库链接。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 给每个可复用操作加契约与出处，是 nanoRSI 技能文件的 schema 升级方向：每条技能携带类型化输入/输出契约与能力出处，让检索在花费一次 rollout 前先检查兼容性——只读的 schema 扩展，与现有技能面兼容。
+
+![原图 2：EvoWeave 总览——规划器生成任务 DAG，指导从经验图检索；图的节点是抽象状态，边是带契约、出处与能力引用的可复用操作。](assets/paper-figures/evoweave-operation-graphs.png)
+
+**原文图／官方图片** — 原图 2：EvoWeave 总览——规划器生成任务 DAG，指导从经验图检索；图的节点是抽象状态，边是带契约、出处与能力引用的可复用操作。 · Figure 2 (method.png), arXiv HTML 2610.19381v1 · [source](https://arxiv.org/html/2610.19381v1/method.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.19381](https://arxiv.org/abs/2610.19381) · [HTML full text v1](https://arxiv.org/html/2610.19381v1)
 
 <a id="specforge-behavioral-specs"></a>
 
@@ -288,7 +318,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## 经验积累与回放 (9)
+## 经验积累与回放 (10)
+
+<a id="himeco-hippocampal-metacognitive"></a>
+
+### Reflect After Failure: Brain-Inspired Self-Evolving Agents for Embodied Spatial Intelligence
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv 2610.20312 v1 提交于 2026-10-14，随 2026-10-15 批次公告。系统名 HiMeco 出现在摘要中；abs 标题按原样保留。
+
+**机构关系** — Xin Li、Tianli Shi、Zhimeng Yin、Dapeng Wu、Yun Wang（香港城市大学）；Xiaohuan Gu（华东师范大学）；Yifan Wang（电子科技大学）；Shaobin Ling（香港中文大学（深圳））；Jingao Xu（香港大学，与 Xin Li 同等贡献）。
+
+**改变对象与反馈复用** — 受脑启发的具身空间任务自进化智能体。海马-元认知反思在感知-探索-规划三轴上诊断失败——执行反馈本身很少揭示哪个环节负责，单纯堆积经验反而会强化无效策略。系统对比多次执行尝试提炼可复用策略与规避重复错误的指引，并用证据契约与基于执行的校验把交互程序抽象为参数化技能。
+
+**作者报告结果** — 在具身空间基准上提升成功率并具泛化性（据摘要；本核验未重推逐表数字）。
+
+**证据边界** — 本核验侧重机制、机构与配图，未逐字提取结果数字；HTML 未找到代码链接。
+
+**代码／权重／数据／许可** — HTML 全文未找到代码或仓库链接。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 记忆沉淀前先做感知/探索/规划三轴归因，是我们“提案问题还是评测问题”归因的具身版：只有定位到失效环节后才写反思，否则累积的技能会强化错误修复。
+
+![原图 2：HiMeco 总览——(A) 冻结规划器与环境交互收集证据；(B) PEP 诊断归因失败；反思提炼可复用策略；交互程序在证据契约下抽象为参数化技能。](assets/paper-figures/himeco-hippocampal-metacognitive.png)
+
+**原文图／官方图片** — 原图 2：HiMeco 总览——(A) 冻结规划器与环境交互收集证据；(B) PEP 诊断归因失败；反思提炼可复用策略；交互程序在证据契约下抽象为参数化技能。 · Figure 2 (Method.png), arXiv HTML 2610.20312v1 · [source](https://arxiv.org/html/2610.20312v1/Method.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-17.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.20312](https://arxiv.org/abs/2610.20312) · [HTML full text v1](https://arxiv.org/html/2610.20312v1)
 
 <a id="rbc-randomized-block-curation"></a>
 

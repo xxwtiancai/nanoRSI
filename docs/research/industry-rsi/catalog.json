@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-16",
-  "window_start": "2025-10-16",
+  "as_of": "2026-10-17",
+  "window_start": "2025-10-17",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -14154,6 +14154,735 @@
         }
       },
       "last_verified": "2026-10-16",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "swarmrsi-evolving-swarm",
+      "title": "SwarmRSI: Recursive Self-Improvement through Evolving Scientific Agent Swarm",
+      "organizations": [
+        "Huawei Technologies",
+        "Leiden University",
+        "University of Groningen"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "ai-scientists",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.20431 v1 submitted 2026-10-14, announced in the 2026-10-15 batch; title confirmed at abs.",
+        "zh": "arXiv 2610.20431 v1 提交于 2026-10-14，随 2026-10-15 批次公告；标题已在 abs 页核对。"
+      },
+      "affiliation": {
+        "en": "Qianru Meng, Xi Zhang, Konstantinos Papakostas, Congfeng Cao, Wenxiang Hu, Tianyi Lu, Xiao Zhang, Lun Zhou, Zaiqiao Meng, Zhaochun Ren, Xiaohui Yan, Yougang Lyu - affiliation set rendered in the HTML author block: Huawei Technologies Co., Ltd., Leiden University, University of Groningen (LaTeXML gives the set without a clean per-author mapping; recorded as stated).",
+        "zh": "Qianru Meng、Xi Zhang、Konstantinos Papakostas、Congfeng Cao、Wenxiang Hu、Tianyi Lu、Xiao Zhang、Lun Zhou、Zaiqiao Meng、Zhaochun Ren、Xiaohui Yan、Yougang Lyu——HTML 作者块渲染出的机构集合：华为技术有限公司、莱顿大学、格罗宁根大学（LaTeXML 只给集合、无干净的逐作者映射，按原样记录）。"
+      },
+      "mechanism": {
+        "en": "Evolves a scientific agent swarm so that one agent's findings and implementations advance another's research. Feedback-Guided Swarm Mutation refines hypotheses AND their implementations using experimental feedback from other agents (resolving the ambiguity of whether a poor result calls for revising the hypothesis or its implementation). Complementary Swarm Recombination reuses retained hypotheses and complementary program components across agents, letting partial results support new research instead of being hidden inside overall program scores. Recursive Swarm Evolution returns every outcome to a shared graph that guides which state each agent updates next.",
+        "zh": "演化科研智能体群体，使一个智能体的发现与实现能推进另一个智能体的研究。反馈引导群体变异用其他智能体的实验反馈同时精修假设及其实现（解决“结果差该改假设还是改实现”的归因歧义）；互补群体重组跨智能体复用被保留的假设与互补的程序组件，让部分成果支撑新研究而非被总体程序分数淹没；递归群体演化把每次结果写回共享图，指导每个智能体下一步更新哪个状态。"
+      },
+      "result": {
+        "en": "SOTA on OpenProblems and NatureBench: with Gemini 3.1 Pro Preview, average score 76.2 on OpenProblems, and matches the published SOTA on 44.4% of NatureBench tasks (highest Match-SOTA rate among compared methods); on MLE-Bench Lite wins medals on 81.8% of tasks, above hypothesis-evolution and program-evolution agents with the same backbone. 118 scientific coding and ML-engineering tasks, two backbones (Gemini 3.1 Pro Preview, DeepSeek-V4-Pro).",
+        "zh": "在 OpenProblems 与 NatureBench 上 SOTA：Gemini 3.1 Pro Preview 下 OpenProblems 平均分 76.2，NatureBench 上 44.4% 任务追平已发表 SOTA（对比方法中最高的 Match-SOTA 率）；MLE-Bench Lite 上 81.8% 任务获奖牌，高于同骨干的假设演化与程序演化智能体。共 118 个科研编码与机器学习工程任务、两个骨干（Gemini 3.1 Pro Preview、DeepSeek-V4-Pro）。"
+      },
+      "limits": {
+        "en": "No code or repository link found in the HTML full text; license CC BY-NC-SA 4.0 (non-commercial - ideas only, no code reuse). SOTA claims are author-run comparisons incl. matched-backbone reruns (appendix B.2); this verification covered the abstract/intro claims and the author block, full result tables were not re-derived. The per-author institution mapping is partial (rendered as a set).",
+        "zh": "HTML 全文未找到代码或仓库链接；许可 CC BY-NC-SA 4.0（非商业——只借鉴思想、不复用代码）。SOTA 声明为作者自跑对比（含附录 B.2 的同骨干重跑）；本次核验覆盖摘要/引言声明与作者块，未重推全部结果表格。逐作者机构映射不完整（以集合渲染）。"
+      },
+      "availability": {
+        "en": "No code release found; CC BY-NC-SA 4.0 license stated on the title page.",
+        "zh": "未发现代码发布；扉页标注 CC BY-NC-SA 4.0 许可。"
+      },
+      "application": {
+        "en": "Cross-agent complementary-component reuse is the pattern nanoRSI's population mode lacks: candidate-level partial-program merging gated by per-component validation is a concrete arm for the selector study, and the hypothesis-vs-implementation attribution problem mirrors our proposal-vs-evaluation attribution in failed attempts.",
+        "zh": "跨智能体互补组件复用是 nanoRSI 种群模式缺的模式：按组件验证把关的候选级部分程序合并是选择器研究的一个具体臂；“改假设还是改实现”的归因问题则对应我们失败尝试中“提案问题还是评测问题”的归因。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.20431",
+          "url": "https://arxiv.org/abs/2610.20431"
+        },
+        {
+          "kind": "paper",
+          "label": "HTML full text v1",
+          "url": "https://arxiv.org/html/2610.20431v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/swarmrsi-evolving-swarm.svg",
+        "source_url": "https://arxiv.org/html/2610.20431v1/figure1_swarmrsi.svg",
+        "locator": "Figure 1 (figure1_swarmrsi.svg), arXiv HTML 2610.20431v1",
+        "caption": {
+          "en": "Original Figure 1: the SwarmRSI loop - agents mutate hypotheses and programs using other agents' experimental feedback, recombine complementary program components, and return every outcome to a shared graph that guides which state each agent updates next.",
+          "zh": "原图 1：SwarmRSI 循环——智能体用其他智能体的实验反馈变异假设与程序、重组互补程序组件，并把每次结果写回指导各智能体下一步更新哪个状态的共享图。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "agentic-scientist-codiscovery",
+      "title": "The Agentic Scientist: Orchestrating Coding Agents for Automated Scientific (Co-)Discovery",
+      "organizations": [
+        "Sakana AI"
+      ],
+      "published": "2026-10-13",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "ai-scientists",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.18933 v1 submitted 2026-10-13 (88 pages); surfaced in the 2026-10-15 batch queue. Successor to The AI Scientist line (Lu et al., 2026), whose v3 repository the paper links.",
+        "zh": "arXiv 2610.18933 v1 提交于 2026-10-13（88 页）；出现于 2026-10-15 批次队列。是 The AI Scientist 系列（Lu 等，2026）的后续，论文链接了其 v3 仓库。"
+      },
+      "affiliation": {
+        "en": "Robert Tjarko Lange, Luca Grillotti, Yutaro Yamada (equal contribution), Rujikorn Charakorn, David Ha - all Sakana AI.",
+        "zh": "Robert Tjarko Lange、Luca Grillotti、Yutaro Yamada（同等贡献）、Rujikorn Charakorn、David Ha——全部 Sakana AI。"
+      },
+      "mechanism": {
+        "en": "An end-to-end distributed pipeline for human researchers to conduct computational research alongside coding agents. Research is decomposed into task drafting, idea generation, planning, sandboxed experimentation, result aggregation, baseline and ablation construction, post-hoc analysis, and grounded paper writing (evidence staging and planning, manuscript generation, validation and review), plus autoillustrate for conceptual diagram generation. Each stage is powered by the next generation of coding agents with agentic self-verification; a meta-controller manages parallel research agents and enforces rubric verification at each stage; search is beam search over CLI agents, with an explicit human co-scientist option. The stated motivation: fully autonomous research agents suffer a limited ideation radius and myopic hill-climbing.",
+        "zh": "供人类研究者与现代编码智能体并肩做计算的端到端分布式流水线。研究被分解为任务起草、想法生成、规划、沙箱实验、结果汇总、基线与消融构建、事后分析、有据论文写作（证据暂存与规划、稿件生成、验证与评审），外加生成概念图的 autoillustrate。每一阶段由新一代编码智能体驱动并带智能体自验证；元控制器管理并行研究智能体并在每阶段强制执行 rubric 校验；搜索是 CLI 智能体上的束搜索，并显式提供人类共科学家选项。出发点：全自主研究智能体的想法半径有限且易陷入短视爬山。"
+      },
+      "result": {
+        "en": "Lineage table (Table 1): AI Scientist-v1 (topic-specific, linear Aider) -> v2 (domain-general, tree-based AIDE, parallel experiments) -> Agentic Scientist (domain-general, beam search over CLI agents, parallel + rubric-based verification + co-scientist option), evaluated at conference level rather than workshop level. A development version automated parts of the research process on Error Diffusion (Fujita 2026; Kaneko 2000) and a single paper built with the system was accepted at ALIFE 2026. The AI reviewer used for paper-quality proxy scoring was validated against ICLR acceptance decisions including a post-training-data-cutoff 2025 cohort; the authors state the reviewer score is a proxy for reviewer-perceived quality, not ground-truth correctness.",
+        "zh": "谱系表（表 1）：AI Scientist-v1（主题特定、线性 Aider）→ v2（领域通用、树搜索 AIDE、并行实验）→ Agentic Scientist（领域通用、CLI 智能体束搜索、并行 + rubric 校验 + 共科学家选项），评价级别从 workshop 提升到会议。系统开发版自动化了 Error Diffusion（Fujita 2026；Kaneko 2000）研究的部分流程，用系统构建的一篇论文被 ALIFE 2026 接收。作为论文质量代理的 AI 评审经 ICLR 接收决定验证（含训练数据截止后的 2025 队列）；作者明确评审分只是“评审感知质量”的代理、非正确性真值。"
+      },
+      "limits": {
+        "en": "Human-in-the-loop co-discovery by design, not closed autonomous RSI; reviewer scores are explicitly proxies; the 88-page system report's task-level SOTA comparisons were not re-derived by this verification. No dedicated repository for the system itself was found in the HTML (only the predecessor SakanaAI/AI-Scientist-v3 repo is linked).",
+        "zh": "设计上就是人在环的共发现，不是闭环自主 RSI；评审分明确是代理指标；88 页系统报告的任务级对比未由本次核验重推。HTML 中未找到系统本身的专属仓库（只链接了前代 SakanaAI/AI-Scientist-v3 仓库）。"
+      },
+      "availability": {
+        "en": "No dedicated code repository for The Agentic Scientist found in the paper; predecessor code at github.com/SakanaAI/AI-Scientist-v3 is linked.",
+        "zh": "论文未提供 The Agentic Scientist 的专属代码仓库；链接了前代代码 github.com/SakanaAI/AI-Scientist-v3。"
+      },
+      "application": {
+        "en": "Rubric verification enforced per stage by a meta-controller is the external template for the evidence ledger's stage gates; the ideation-radius / myopic-hill-climbing diagnosis matches our population-diversity concerns (ADOPTION items 38/45); autoillustrate extends agentic self-verification to figure generation - a cheap add-on for report quality auditing.",
+        "zh": "元控制器在每阶段强制 rubric 校验，是证据账本阶段闸门的外部模板；“想法半径有限/短视爬山”的诊断与我们的种群多样性关切（ADOPTION 38/45）吻合；autoillustrate 把智能体自验证延伸到插图生成，是报告质量审计的廉价附加项。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.18933",
+          "url": "https://arxiv.org/abs/2610.18933"
+        },
+        {
+          "kind": "repository",
+          "label": "Predecessor: AI-Scientist-v3 code",
+          "url": "https://github.com/SakanaAI/AI-Scientist-v3"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/agentic-scientist-pipeline.png",
+        "source_url": "https://arxiv.org/html/2610.18933v1/conceptual.png",
+        "locator": "Figure 1 (conceptual.png), arXiv HTML 2610.18933v1",
+        "caption": {
+          "en": "Original Figure 1: the four-stage workflow - task drafting, parallel investigation with rubric verification, retrospective evidence generation (controlled baselines and ablations, post-hoc analysis), and grounded paper writing.",
+          "zh": "原图 1：四阶段工作流——任务起草、带 rubric 校验的并行调查、回溯式证据生成（受控基线与消融、事后分析）、有据论文写作。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "adarsi-on-demand-weights",
+      "title": "AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents",
+      "organizations": [
+        "Northeastern University (China)",
+        "AgiBot",
+        "University of Chinese Academy of Sciences"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "parameter-learning",
+      "family": "skill-weight-coevolution",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.20474 v1 submitted 2026-10-14, announced in the 2026-10-15 batch.",
+        "zh": "arXiv 2610.20474 v1 提交于 2026-10-14，随 2026-10-15 批次公告。"
+      },
+      "affiliation": {
+        "en": "Peidong Wang (Northeastern University; work done during an internship at AgiBot), Zhiming Ma, Xiaocui Yang, Shi Feng, Daling Wang (Northeastern University); Ying Chang (University of Chinese Academy of Sciences); Daqi Liu, Yuzhe Yang, Xu Cao, Chuang Wang, Jian Su (AgiBot).",
+        "zh": "Peidong Wang（东北大学，工作于 AgiBot 实习期间完成）、Zhiming Ma、Xiaocui Yang、Shi Feng、Daling Wang（东北大学）；Ying Chang（中国科学院大学）；Daqi Liu、Yuzhe Yang、Xu Cao、Chuang Wang、Jian Su（AgiBot）。"
+      },
+      "mechanism": {
+        "en": "Asks when a self-improving embodied system should change the weights of its executor. A coding agent first improves its skills and harness; persistent failures are then attributed by retrying failing sub-steps from saved states (is the failure in how the executor is called, or in what it can do?); only the sub-steps that remain unreliable are fine-tuned, with demonstrations the system collects itself and experience carried over from earlier tasks.",
+        "zh": "回答“自改进具身系统何时该改执行器权重”：编码智能体先改进技能与 harness；再从保存的状态重试失败子步骤做失败归因（失败在调用方式还是能力本身）；只对仍不可靠的子步骤做微调，演示由系统自采、经验从早前任务迁移。"
+      },
+      "result": {
+        "en": "On all 50 target tasks of RoboCasa365 (50 scenes each), with GR00T N1.5 as executor and no human demonstrations, AdaRSI improves the VLA on all three suites and raises success on unseen composite tasks from 4.6% to 13.8%. Compared with fine-tuning every sub-step it reaches slightly higher success using only 28% of the GPU time and 22% of the self-collected demonstrations; fine-tuning without a harness trains more yet gains far less.",
+        "zh": "在 RoboCasa365 全部 50 个目标任务（各 50 场景）上，以 GR00T N1.5 为执行器、无人类演示：AdaRSI 在三个套件上均提升 VLA，未见组合任务成功率从 4.6% 升至 13.8%。与“每个子步骤都微调”相比，成功率略高而只用 28% GPU 时间与 22% 自采演示；不带 harness 的微调训练更多、收益远低。"
+      },
+      "limits": {
+        "en": "No code link found in the HTML; single executor (GR00T N1.5) and single benchmark family (RoboCasa365); sub-step attribution assumes saved-state resets faithfully isolate failures.",
+        "zh": "HTML 未找到代码链接；单一执行器（GR00T N1.5）与单一基准族（RoboCasa365）；子步骤归因假设保存状态重置能忠实隔离失败。"
+      },
+      "availability": {
+        "en": "No code or repository link found in the HTML full text.",
+        "zh": "HTML 全文未找到代码或仓库链接。"
+      },
+      "application": {
+        "en": "The harness-first, weights-only-for-persistently-unreliable-sub-steps boundary is the exact decision nanoRSI's frozen-executor doctrine draws: any future weights-side arm should copy this attribution-before-fine-tune gate (retry-from-saved-state) instead of fine-tuning on failure directly.",
+        "zh": "“先改 harness、只对持续不可靠子步骤改权重”的边界正是 nanoRSI 冻结执行器教义所在：将来任何权重侧实验臂都应照抄这种“先归因再微调”的闸门（从保存状态重试），而不是失败即微调。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.20474",
+          "url": "https://arxiv.org/abs/2610.20474"
+        },
+        {
+          "kind": "paper",
+          "label": "HTML full text v1",
+          "url": "https://arxiv.org/html/2610.20474v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/adarsi-on-demand-pipeline.jpg",
+        "source_url": "https://arxiv.org/html/2610.20474v1/figures/AdaRSI_pipeline.jpg",
+        "locator": "Figure 2 (figures/AdaRSI_pipeline.jpg), arXiv HTML 2610.20474v1",
+        "caption": {
+          "en": "Original Figure 2: AdaRSI pipeline - improve skills and harness first, attribute persistent failures by retrying failing sub-steps from saved states, fine-tune only the sub-steps that remain unreliable.",
+          "zh": "原图 2：AdaRSI 流程——先改进技能与 harness，从保存状态重试失败子步骤做归因，只对仍不可靠的子步骤微调。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "atomsearch-skill-state-tree",
+      "title": "AtomSearch: Evidence-Grounded Tree Search for Agent Skill Optimization",
+      "organizations": [
+        "360 Security Technology Inc."
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.19951 v1 submitted 2026-10-14, announced in the 2026-10-15 batch.",
+        "zh": "arXiv 2610.19951 v1 提交于 2026-10-14，随 2026-10-15 批次公告。"
+      },
+      "affiliation": {
+        "en": "Jia Tong, Senyou Deng, Min Peng, Jianfeng Pan - 360 Security Technology Inc., Beijing (three 360.cn author emails; shared affiliation line).",
+        "zh": "Jia Tong、Senyou Deng、Min Peng、Jianfeng Pan——360 安全技术（北京）（三个 360.cn 作者邮箱；共享机构行）。"
+      },
+      "mechanism": {
+        "en": "Keeps skill-revision actions local while using subsequent skill states to guide search. Contrastive Atomic Editing links each primitive rule edit to failed and successful executions, a behavioral hypothesis, and an intended scope. Skill-State Tree Search (STS) evaluates short edit compositions and selectively retains them as executable states that can be revisited and extended. Outcome Memory supplies later proposals with observed repair and regression statistics.",
+        "zh": "让技能修订动作保持局部，同时用后续技能状态引导搜索。对比原子编辑把每条最小规则编辑与失败/成功执行、一个行为假设和预期作用域绑定；技能状态树搜索评估短编辑组合并有选择地保留为可重访、可扩展的可执行状态；结果记忆向后续提案提供实测的修复与回归统计。"
+      },
+      "result": {
+        "en": "Across four tasks and five target models: with deepseek-v4-flash it exceeds SkillOpt on three of four tasks including a 9.68-percentage-point gain on LiveMathematicianBench, while SkillOpt's final skills contain 2.3-19.7 times as many characters. In 67% of completed searches, the best validation state passes through an ancestor that was not highest-scoring at its depth - immediate-score greedy selection would discard the path to the optimum.",
+        "zh": "四个任务 × 五个目标模型：deepseek-v4-flash 下在 3/4 任务上超过 SkillOpt，LiveMathematicianBench 领先 9.68 个百分点，而 SkillOpt 终版技能字符数是其 2.3-19.7 倍。67% 的已完成搜索中，最优验证状态经过了在其深度上并非最高分的祖先——按即时分数贪心会丢弃通往最优的路径。"
+      },
+      "limits": {
+        "en": "No code link found; the comparison set centers on SkillOpt at 4 tasks / 5 models; repair/regression statistics were described but not re-derived by this verification.",
+        "zh": "未找到代码链接；对比以 SkillOpt 为主、4 任务/5 模型；修复/回归统计未由本次核验重推。"
+      },
+      "availability": {
+        "en": "No code or repository link found in the HTML full text.",
+        "zh": "HTML 全文未找到代码或仓库链接。"
+      },
+      "application": {
+        "en": "The 67% ancestor finding is direct external evidence against pure strict-gating skill adoption (ADOPTION item 53): a bounded skill-state tree that retains-but-does-not-promote states is the missing middle ground between single-edit strict validation and multi-edit proposals; outcome memory (observed repair/regression per rule) maps one-to-one onto evidence-ledger fields for the skills track.",
+        "zh": "“67% 经由非最高分祖先”是对纯严格闸门技能采纳（ADOPTION 53）的直接外部反证：有界技能状态树（保留但不晋升）是单编辑严格验证与多编辑提案之间缺的中间层；结果记忆（每条规则实测修复/回归）与技能轨道的证据账本字段一一对应。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.19951",
+          "url": "https://arxiv.org/abs/2610.19951"
+        },
+        {
+          "kind": "paper",
+          "label": "HTML full text v1",
+          "url": "https://arxiv.org/html/2610.19951v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/atomsearch-skill-state-tree.svg",
+        "source_url": "https://arxiv.org/html/2610.19951v1/fig_overview.svg",
+        "locator": "Figure 1 (fig_overview.svg), arXiv HTML 2610.19951v1",
+        "caption": {
+          "en": "Original Figure 1: contrastive atomic editing turns failed/passed execution pairs into scoped edit specifications; skill-state tree search retains executable intermediate states; outcome memory feeds repair/regression statistics to later proposals.",
+          "zh": "原图 1：对比原子编辑把失败/通过执行对变成带作用域的编辑规格；技能状态树搜索保留可执行的中间状态；结果记忆把修复/回归统计喂给后续提案。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "lago-growing-options",
+      "title": "LAGO: Language Agents with Reusable Growing Options",
+      "organizations": [
+        "Shenzhen University",
+        "University of Hong Kong",
+        "Hunan University",
+        "National University of Singapore",
+        "Evolvent Research Team",
+        "Fudan University"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "program-evolution",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.19843 v1 submitted 2026-10-14, announced in the 2026-10-15 batch. Equal contribution: Yuran Wu, Mengkang Hu; corresponding author: Xu Wang.",
+        "zh": "arXiv 2610.19843 v1 提交于 2026-10-14，随 2026-10-15 批次公告。Yuran Wu 与 Mengkang Hu 同等贡献；通讯作者 Xu Wang。"
+      },
+      "affiliation": {
+        "en": "Yuran Wu, Qiudan Zhang, Xu Wang (Shenzhen University); Mengkang Hu (University of Hong Kong); Qionglin Qiu (Hunan University); Fanqing Meng (National University of Singapore); Qiguang Chen (Evolvent Research Team); Yuhang Zhou (Fudan University).",
+        "zh": "Yuran Wu、Qiudan Zhang、Xu Wang（深圳大学）；Mengkang Hu（香港大学）；Qionglin Qiu（湖南大学）；Fanqing Meng（新加坡国立大学）；Qiguang Chen（Evolvent Research Team）；Yuhang Zhou（复旦大学）。"
+      },
+      "mechanism": {
+        "en": "Treats specialized language agents as reusable temporally extended options. A meta-agent retrieves options from a persistent library or spawns new ones, dispatches sub-tasks, verifies results, and admits successful novel options; the library grows across tasks without updating model weights.",
+        "zh": "把专门化语言智能体当作可复用的时间扩展选项：元智能体从持久库检索选项或新生选项、派发子任务、验证结果、把成功的新选项准入库；库跨任务增长而不更新模型权重。"
+      },
+      "result": {
+        "en": "On 500 SWE-bench Verified tasks under single-attempt evaluation with the official Docker evaluator, frozen Qwen3.5-35B-A3B in both meta-agent and option roles resolves 58.6%. On a fixed 150-task controlled subset (identical policy, temperature, task ids, evaluator): mini-SWE-agent 49.3%, Terminus 2 57.3%, LAGO 60.3%. A 50-task component ablation: four fewer resolved without decomposition, two fewer with shuffled reused content, six fewer without the library. Cross-model experiments give evidence consistent with a role for decomposition quality.",
+        "zh": "在 500 个 SWE-bench Verified 任务上以官方 Docker 评测器单次尝试评测，冻结 Qwen3.5-35B-A3B 同时担任元智能体与选项角色解决 58.6%。在固定 150 任务受控子集（同策略、同温度、同任务 ID、同评测器）：mini-SWE-agent 49.3%、Terminus 2 57.3%、LAGO 60.3%。50 任务组件消融：去掉分解少解 4 题、复用内容乱序少 2 题、去掉库少 6 题。跨模型实验与“分解质量有作用”的解释一致。"
+      },
+      "limits": {
+        "en": "No code link found; meta-agent and options share one frozen model (capability ceiling bound); the controlled comparison covers 150 of the 500 tasks.",
+        "zh": "未找到代码链接；元智能体与选项共用同一冻结模型（能力上限受约束）；受控对比只覆盖 500 任务中的 150 个。"
+      },
+      "availability": {
+        "en": "No code or repository link found in the HTML full text.",
+        "zh": "HTML 全文未找到代码或仓库链接。"
+      },
+      "application": {
+        "en": "Option admission (spawn -> verify -> admit -> reuse) is the skill-library growth loop our skills template could mirror: verified sub-agent programs become first-class reusable units instead of one-shot trajectories. The -6-resolved without-library ablation quantifies what a persistent library is worth on a frozen model - the number to beat for any nanoRSI skill-bank variant.",
+        "zh": "选项准入（生成→验证→准入→复用）正是技能模板可以镜像的库增长环：经验证的子智能体程序成为一等可复用单元而非一次性轨迹。“去掉库少解 6 题”的消融量化了冻结模型上持久库的价值——这是 nanoRSI 任何技能库变体要打败的数字。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.19843",
+          "url": "https://arxiv.org/abs/2610.19843"
+        },
+        {
+          "kind": "paper",
+          "label": "HTML full text v1",
+          "url": "https://arxiv.org/html/2610.19843v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/lago-growing-options.png",
+        "source_url": "https://arxiv.org/html/2610.19843v1/LAGO_editable_no_footer.drawio.png",
+        "locator": "Figure 1 (LAGO_editable_no_footer.drawio.png), arXiv HTML 2610.19843v1",
+        "caption": {
+          "en": "Original Figure 1: LAGO turns task decomposition into a reusable action space - a meta-agent retrieves options from a persistent library or spawns new ones, dispatches sub-tasks, verifies results, and admits successful novel options.",
+          "zh": "原图 1：LAGO 把任务分解变成可复用动作空间——元智能体从持久库检索选项或新生选项、派发子任务、验证结果、把成功的新选项准入库。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "himeco-hippocampal-metacognitive",
+      "title": "Reflect After Failure: Brain-Inspired Self-Evolving Agents for Embodied Spatial Intelligence",
+      "organizations": [
+        "City University of Hong Kong",
+        "East China Normal University",
+        "University of Electronic Science and Technology of China",
+        "The Chinese University of Hong Kong, Shenzhen",
+        "The University of Hong Kong"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "memory-context",
+      "family": "experience-accumulation",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.20312 v1 submitted 2026-10-14, announced in the 2026-10-15 batch. System name HiMeco appears in the abstract; abs title kept verbatim.",
+        "zh": "arXiv 2610.20312 v1 提交于 2026-10-14，随 2026-10-15 批次公告。系统名 HiMeco 出现在摘要中；abs 标题按原样保留。"
+      },
+      "affiliation": {
+        "en": "Xin Li, Tianli Shi, Zhimeng Yin, Dapeng Wu, Yun Wang (City University of Hong Kong); Xiaohuan Gu (East China Normal University); Yifan Wang (University of Electronic Science and Technology of China); Shaobin Ling (The Chinese University of Hong Kong, Shenzhen); Jingao Xu (The University of Hong Kong; equal contribution with Xin Li).",
+        "zh": "Xin Li、Tianli Shi、Zhimeng Yin、Dapeng Wu、Yun Wang（香港城市大学）；Xiaohuan Gu（华东师范大学）；Yifan Wang（电子科技大学）；Shaobin Ling（香港中文大学（深圳））；Jingao Xu（香港大学，与 Xin Li 同等贡献）。"
+      },
+      "mechanism": {
+        "en": "Brain-inspired self-evolving agent for embodied spatial tasks. Hippocampal-Metacognitive Reflection diagnoses failures across perception-exploration-planning (PEP) - execution feedback alone rarely reveals which component is responsible, so simply accumulating experience can reinforce ineffective strategies. It compares execution attempts to derive reusable strategies and guidance for avoiding recurring errors, and abstracts interaction programs into parameterized skills using evidence contracts and execution-based validation.",
+        "zh": "受脑启发的具身空间任务自进化智能体。海马-元认知反思在感知-探索-规划三轴上诊断失败——执行反馈本身很少揭示哪个环节负责，单纯堆积经验反而会强化无效策略。系统对比多次执行尝试提炼可复用策略与规避重复错误的指引，并用证据契约与基于执行的校验把交互程序抽象为参数化技能。"
+      },
+      "result": {
+        "en": "Improves success rates on embodied spatial benchmarks with generalization (per abstract; the detailed table numbers were not re-derived in this verification pass).",
+        "zh": "在具身空间基准上提升成功率并具泛化性（据摘要；本核验未重推逐表数字）。"
+      },
+      "limits": {
+        "en": "Result numbers were not extracted verbatim in this pass (verification focused on mechanism, affiliations and figure); no code link found in the HTML.",
+        "zh": "本核验侧重机制、机构与配图，未逐字提取结果数字；HTML 未找到代码链接。"
+      },
+      "availability": {
+        "en": "No code or repository link found in the HTML full text.",
+        "zh": "HTML 全文未找到代码或仓库链接。"
+      },
+      "application": {
+        "en": "PEP failure attribution (perception vs exploration vs planning) before memory consolidation is the embodied analogue of our proposal-vs-evaluation attribution: reflections should be written only after the failing component is identified, otherwise accumulated skills reinforce the wrong repair.",
+        "zh": "记忆沉淀前先做感知/探索/规划三轴归因，是我们“提案问题还是评测问题”归因的具身版：只有定位到失效环节后才写反思，否则累积的技能会强化错误修复。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.20312",
+          "url": "https://arxiv.org/abs/2610.20312"
+        },
+        {
+          "kind": "paper",
+          "label": "HTML full text v1",
+          "url": "https://arxiv.org/html/2610.20312v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/himeco-hippocampal-metacognitive.png",
+        "source_url": "https://arxiv.org/html/2610.20312v1/Method.png",
+        "locator": "Figure 2 (Method.png), arXiv HTML 2610.20312v1",
+        "caption": {
+          "en": "Original Figure 2: HiMeco overview - (A) the frozen planner interacts with the environment and collects evidence; (B) PEP diagnosis attributes the failure; reflection derives reusable strategies; interaction programs are abstracted into parameterized skills under evidence contracts.",
+          "zh": "原图 2：HiMeco 总览——(A) 冻结规划器与环境交互收集证据；(B) PEP 诊断归因失败；反思提炼可复用策略；交互程序在证据契约下抽象为参数化技能。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "timersi-agentic-deployment",
+      "title": "TimeRSI: Towards Self-Improved Agentic Deployment for Time-Series Foundation Models",
+      "organizations": [
+        "Georgia Institute of Technology",
+        "University of Southern California",
+        "Samay AI"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "harness-search",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.19725 v1 submitted 2026-10-14; v2 (this verification) revised 2026-10-15. First public date follows the v1 convention.",
+        "zh": "arXiv 2610.19725 v1 提交于 2026-10-14；本次核验的 v2 修订于 2026-10-15。首次公开日期沿用 v1 惯例。"
+      },
+      "affiliation": {
+        "en": "Haoxin Liu, Lucheng Fu, Yiqiao Jin, Rushi Qiang, B. Aditya Prakash (Georgia Institute of Technology); Deqing Fu (University of Southern California); Harshavardhan Kamarthi (Georgia Institute of Technology; Samay AI).",
+        "zh": "Haoxin Liu、Lucheng Fu、Yiqiao Jin、Rushi Qiang、B. Aditya Prakash（佐治亚理工学院）；Deqing Fu（南加州大学）；Harshavardhan Kamarthi（佐治亚理工学院；Samay AI）。"
+      },
+      "mechanism": {
+        "en": "A self-improving agentic deployment system around frozen time-series foundation models. A coding agent translates task descriptions into executable pipeline changes; it tests each revision on historical forecasting windows and uses observed errors to guide subsequent revisions; during deployment an adaptive selector chooses among the resulting pipelines using completed forecasts under similar conditions. The TSFM weights remain fixed in both stages.",
+        "zh": "围绕冻结时序基础模型的自改进部署系统：编码智能体把任务描述翻译成可执行的流水线改动，在历史预测窗口上测试每次修订并用观测误差引导后续修订；部署期由自适应选择器按相似条件下已完成预测的表现，在积累的流水线中挑选。两个阶段 TSFM 权重均保持冻结。"
+      },
+      "result": {
+        "en": "Across 198 tasks on TIME and FEV-bench, TimeRSI outperforms all submissions on six point and probabilistic forecasting metrics (ranks first among compared submissions). Controlled comparisons support the value of feedback-guided revision over non-iterative pipeline search; further experiments verify generalization across different coding agents and forecasting models.",
+        "zh": "在 TIME 与 FEV-bench 的 198 个任务上，TimeRSI 在六项点预测与概率预测指标上全面超过所有参赛提交（对比提交中排名第一）。受控对比支持“反馈引导修订优于非迭代流水线搜索”；进一步实验验证了跨编码智能体与跨预测模型的泛化。"
+      },
+      "limits": {
+        "en": "Domain-specific (forecasting deployment); leaderboard-style comparison against prior submissions rather than same-compute re-runs of every baseline; code repository linked but its artifact completeness was not audited in this pass.",
+        "zh": "领域特定（预测部署）；排行榜式对比而非对每个基线的同算力重跑；代码仓库已链接但本核验未审计其产物完整性。"
+      },
+      "availability": {
+        "en": "Apache-2.0 code at github.com/haoxin1998/TimeRSI (LICENSE verified via raw.githubusercontent.com 2026-10-17).",
+        "zh": "代码 Apache-2.0，位于 github.com/haoxin1998/TimeRSI（LICENSE 已于 2026-10-17 经 raw.githubusercontent.com 核验）。"
+      },
+      "application": {
+        "en": "Historical-window pre-validation before adopting a pipeline edit is train/validation gating in deployment clothing - the same doctrine nanoRSI enforces before promotion; the adaptive selector over an accumulated pipeline portfolio is a lightweight population pattern (no weights, just versioned programs picked by past performance under matched conditions).",
+        "zh": "采纳流水线编辑前先在历史窗口预验证，就是换了部署外衣的训练/验证闸门——与 nanoRSI 晋升前教义一致；在积累的流水线组合上按匹配条件下的历史表现做自适应选择，是无权重的轻量种群模式。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.19725",
+          "url": "https://arxiv.org/abs/2610.19725"
+        },
+        {
+          "kind": "repository",
+          "label": "TimeRSI code (Apache-2.0)",
+          "url": "https://github.com/haoxin1998/TimeRSI"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/timersi-agentic-deployment.png",
+        "source_url": "https://arxiv.org/html/2610.19725v2",
+        "locator": "Figure 1 (inline SVG with 64 foreignObject blocks; in-browser screenshot of figure#S0.F1 at page-absolute coordinates), arXiv HTML 2610.19725v2",
+        "caption": {
+          "en": "Original Figure 1: from conventional to self-improved TSFM deployment - direct inference leaves task-specific adaptation to the user, hand-tailored pipelines need expert effort, and TimeRSI iterates executable pipeline revisions from observed forecast errors with an adaptive selector at deployment.",
+          "zh": "原图 1：从常规到自改进的 TSFM 部署——直接推理把任务适配丢给用户、手工流水线需要专家投入，TimeRSI 从观测预测误差迭代可执行的流水线修订，部署期由自适应选择器挑选。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "evoweave-operation-graphs",
+      "title": "EvoWeave: Composing Reusable Agent Experience through Operation Level Graphs",
+      "organizations": [
+        "New Jersey Institute of Technology",
+        "The Chinese University of Hong Kong"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "memory-context",
+      "family": "structured-knowledge",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.19381 v1 submitted 2026-10-14, announced in the 2026-10-15 batch.",
+        "zh": "arXiv 2610.19381 v1 提交于 2026-10-14，随 2026-10-15 批次公告。"
+      },
+      "affiliation": {
+        "en": "Guanhua Zhu, Lei Zhang, Fadi Deek (Department of Informatics, NJIT); Bo Shen (Department of Mechanical and Industrial Engineering, NJIT); Zhi Wei, Chenxi Yuan (NJIT); Mengnan Du (The Chinese University of Hong Kong).",
+        "zh": "Guanhua Zhu、Lei Zhang、Fadi Deek（NJIT 信息系）；Bo Shen（NJIT 机械与工业工程系）；Zhi Wei、Chenxi Yuan（NJIT）；Mengnan Du（香港中文大学）。"
+      },
+      "mechanism": {
+        "en": "Experience memory at operation granularity: abstract states as nodes, reusable operations as directed edges carrying input/output contracts, provenance, and capability references. A planner decomposes the current task into a dependency graph; operation retrieval and bounded directed search assemble relevant experience fragments; an execution agent inspects fragments and their referenced capabilities; reflection separates concrete execution evidence from reusable abstractions.",
+        "zh": "操作粒度的经验记忆：抽象状态为节点、可复用操作为有向边，边上带输入/输出契约、出处与能力引用。规划器把当前任务分解为依赖图；操作检索与有界定向搜索拼装相关经验片段；执行智能体可检查片段及其引用的能力；反思把具体执行证据与可复用抽象分离。"
+      },
+      "result": {
+        "en": "Studied across four benchmarks, five evaluation settings and three backbones. AppWorld Normal and Challenge task goal completion average 51.91 and 27.99, exceeding the no-memory baseline by 6.99 and 4.99 percentage points; an AppWorld ablation associates directed connections with an additional 2.08-point improvement over independent operation cards. The paper also exposes tradeoffs in retrieval overhead and conditions for valid reuse.",
+        "zh": "覆盖四基准 × 五评测设置 × 三骨干。AppWorld Normal 与 Challenge 任务目标完成度均值 51.91 与 27.99，高出无记忆基线 6.99 与 4.99 个百分点；AppWorld 消融显示有向连接比独立操作卡片再高 2.08 分。论文同时给出检索开销与有效复用条件的权衡。"
+      },
+      "limits": {
+        "en": "No code link found; headline gains are averages across settings (per-backbone variance not re-derived); the four-benchmark span is narrower than the memory-benchmark literature it builds on.",
+        "zh": "未找到代码链接；主要增益是跨设置均值（逐骨干方差未重推）；基准覆盖窄于其所构建的记忆基准文献。"
+      },
+      "availability": {
+        "en": "No code or repository link found in the HTML full text.",
+        "zh": "HTML 全文未找到代码或仓库链接。"
+      },
+      "application": {
+        "en": "Contracts + provenance on every reusable operation is the schema upgrade for nanoRSI skill files: each skill should carry typed input/output contracts and capability provenance so retrieval can check compatibility before spending a rollout - a read-only schema extension compatible with the existing skills surface.",
+        "zh": "给每个可复用操作加契约与出处，是 nanoRSI 技能文件的 schema 升级方向：每条技能携带类型化输入/输出契约与能力出处，让检索在花费一次 rollout 前先检查兼容性——只读的 schema 扩展，与现有技能面兼容。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.19381",
+          "url": "https://arxiv.org/abs/2610.19381"
+        },
+        {
+          "kind": "paper",
+          "label": "HTML full text v1",
+          "url": "https://arxiv.org/html/2610.19381v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/evoweave-operation-graphs.png",
+        "source_url": "https://arxiv.org/html/2610.19381v1/method.png",
+        "locator": "Figure 2 (method.png), arXiv HTML 2610.19381v1",
+        "caption": {
+          "en": "Original Figure 2: EvoWeave overview - a planner generates a task DAG that guides retrieval from an experience graph whose nodes are abstract states and whose edges are reusable operations with contracts, provenance and capability references.",
+          "zh": "原图 2：EvoWeave 总览——规划器生成任务 DAG，指导从经验图检索；图的节点是抽象状态，边是带契约、出处与能力引用的可复用操作。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "athanor-autoposttrain",
+      "title": "Athanor: An Agent-Native System for Autonomous Post-Training Research",
+      "organizations": [
+        "ByteDance",
+        "Duke University",
+        "The University of Chicago",
+        "Virginia Tech"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "autonomous-post-training",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.21055 v1 submitted 2026-10-15, announced in the 2026-10-16 batch (first Fri-16-batch entry catalogued). The paper frames RSI honestly as a weaker measurable form: frontier agents post-training a small raw base model. No HTML full text at verification (stub only); affiliations and Figure 2 from the PDF.",
+        "zh": "arXiv 2610.21055 v1 提交于 2026-10-15，随 2026-10-16 批次公告（首个入库的周五批次条目）。论文诚实地把 RSI 框定为较弱的可测形式：前沿智能体后训练小型裸基座模型。核验时无 HTML 全文（仅桩）；机构与图 2 取自 PDF。"
+      },
+      "affiliation": {
+        "en": "Yufa Zhou (ByteDance; Duke University; project lead), Yichen Wang (The University of Chicago), Jiakun Fan (ByteDance; Virginia Tech), Ziqi Shu, Zhichao Liu, Neiwen Ling (corresponding), Zijun Wei (corresponding) (ByteDance), Anru R. Zhang (Duke University).",
+        "zh": "Yufa Zhou（字节跳动；杜克大学；项目负责人）、Yichen Wang（芝加哥大学）、Jiakun Fan（字节跳动；弗吉尼亚理工）、Ziqi Shu、Zhichao Liu、Neiwen Ling（通讯）、Zijun Wei（通讯）（字节跳动）、Anru R. Zhang（杜克大学）。"
+      },
+      "mechanism": {
+        "en": "An open agent-native system for autonomous post-training research (AutoPostTrain) on real GPUs. Agents receive full research autonomy, low-friction engineering tools, and efficient starter code: they read datasets and evaluation results, build their training data, write and modify training algorithms, tune hyperparameters, and analyze results to decide what to try next, inside a sandbox with no external teacher models. Athanor services supply frozen evaluation, managed jobs, decontaminated data, a persistent research record, and a held-out suite the agents are unaware of.",
+        "zh": "在真实 GPU 上做自主后训练研究（AutoPostTrain）的开放智能体原生系统。智能体获得完全研究自主权、低摩擦工程工具与高效起始代码：在沙箱内读数据集与评测结果、构建训练数据、编写并修改训练算法、调超参、分析结果决定下一步，且不能使用外部教师模型。Athanor 服务侧提供冻结评测、托管作业、去污染数据、持久研究记录，以及智能体不知情的留出测试套件。"
+      },
+      "result": {
+        "en": "In a 104-hour campaign, a team of four Claude Opus 5.5 agents - each on an eight-GPU node, given no research advice - improves Qwen3-4B-Base from 15.9 to 67.3 on a six-task development suite and from 9.2 to 48.2 on the held-out suite, against 66.5 and 47.9 for the official Qwen3-4B-Instruct-2507. Reached via SFT + RL + cross-agent weight merges + self-distillation. The authors claim the first demonstration of frontier agents autonomously post-training a raw base model into a cross-domain instruct model.",
+        "zh": "在 104 小时的战役中，四个 Claude Opus 5.5 智能体（各占一个八卡节点、无任何研究建议）把 Qwen3-4B-Base 从六任务开发套件 15.9 分提升到 67.3、留出套件从 9.2 提升到 48.2，对照官方 Qwen3-4B-Instruct-2507 的 66.5 与 47.9。路径为 SFT + RL + 跨智能体权重合并 + 自蒸馏。作者称这是前沿智能体自主把裸基座模型后训练成跨域对话模型的首个演示。"
+      },
+      "limits": {
+        "en": "No code URL found at abs/HTML (system described as open but repository not located in this pass); the campaign is a single 104-hour run (no repeat-seed variance reported in the abstract); frontier agents (Claude Opus 5.5) are external and frozen - the recursion is at the research-workflow level, not model self-modification; evaluation suites are the authors' own selection.",
+        "zh": "abs/HTML 未见代码 URL（系统自称开放但本核验未找到仓库）；战役是单次 104 小时运行（摘要未报告重复种子方差）；前沿智能体（Claude Opus 5.5）是外部且冻结的——递归发生在研究工作流层而非模型自改；评测套件为作者自选。"
+      },
+      "availability": {
+        "en": "No code URL found in the abs page or HTML stub; the paper describes itself as an open system - repository to be located when published.",
+        "zh": "abs 页与 HTML 桩均未找到代码 URL；论文自称开放系统——待发布后定位仓库。"
+      },
+      "application": {
+        "en": "The services-side doctrine is the transferable part for nanoRSI: frozen evaluation, decontaminated data, persistent research record, and a held-out suite the improver cannot see are exactly the experimental-isolation guarantees our freeze/final-test protocol enforces - now with an external, weights-scale demonstration that they suffice for autonomous post-training campaigns.",
+        "zh": "可移植的是服务侧教义：冻结评测、去污染数据、持久研究记录、改进者不知情的留出套件，正是我们 freeze/final-test 协议维护的实验隔离保证——现在有了权重规模的外部演示：这些约束能支撑自主后训练战役。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.21055",
+          "url": "https://arxiv.org/abs/2610.21055"
+        },
+        {
+          "kind": "paper",
+          "label": "PDF full text v1",
+          "url": "https://arxiv.org/pdf/2610.21055"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure-crop",
+        "asset": "assets/paper-figures/athanor-autoposttrain-system.png",
+        "source_url": "https://arxiv.org/pdf/2610.21055",
+        "locator": "Figure 2 \"Athanor at a glance\", PDF page 3 (150 dpi render, cropped; no HTML full text available)",
+        "caption": {
+          "en": "Original Figure 2: each researcher agent works in its own sandbox on a GPU node and reaches the GPUs through one command; the environment runs jobs, decontaminates incoming data, scores checkpoints with a frozen evaluator, and records every request and result; the operator sets up and recovers nodes.",
+          "zh": "原图 2：每个研究智能体在各自 GPU 节点的沙箱内工作，经一条命令触达 GPU；环境侧运行作业、给流入数据去污染、用冻结评测器给检查点打分并记录每个请求与结果；操作员负责搭建与节点恢复。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "skillneo-non-elitist-skills",
+      "title": "SkillNEO: Non-Elitist Evolutionary Optimization of Agent Skills",
+      "organizations": [
+        "University of Illinois at Chicago",
+        "Mohamed bin Zayed University of Artificial Intelligence",
+        "University of California, San Diego",
+        "University of California, Los Angeles",
+        "University of Texas at Arlington",
+        "Independent Researcher"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.20926 v1 submitted 2026-10-15, announced in the 2026-10-16 batch; 21 authors across UIC/MBZUAI/UCSD/UCLA/UT Arlington + one independent researcher.",
+        "zh": "arXiv 2610.20926 v1 提交于 2026-10-15，随 2026-10-16 批次公告；21 位作者分布于 UIC/MBZUAI/UCSD/UCLA/UT Arlington 加一位独立研究者。"
+      },
+      "affiliation": {
+        "en": "Enze Ma, Chunyu Miao, Yankai Chen, Jie Yang, Liancheng Fang, Kening Zheng, Hanrong Zhang, Muyao Xu, Xinle Yu, Chengze Li, Wei-Chieh Huang, Ziwei Ren, Yunhao Du, Zhixiang Shen, Xue Liu, Philip S. Yu, Zhen Wang et al. - University of Illinois at Chicago; Mohamed bin Zayed University of Artificial Intelligence; University of California, San Diego; University of California, Los Angeles; University of Texas at Arlington; Independent Researcher (institution set as rendered in the HTML author block).",
+        "zh": "Enze Ma、Chunyu Miao、Yankai Chen、Jie Yang、Liancheng Fang、Kening Zheng、Hanrong Zhang、Muyao Xu、Xinle Yu、Chengze Li、Wei-Chieh Huang、Ziwei Ren、Yunhao Du、Zhixiang Shen、Xue Liu、Philip S. Yu、Zhen Wang 等——伊利诺伊大学芝加哥分校；穆罕默德·本·扎耶德人工智能大学；加州大学圣地亚哥分校；加州大学洛杉矶分校；德克萨斯大学阿灵顿分校；独立研究者（机构集合按 HTML 作者块原样记录）。"
+      },
+      "mechanism": {
+        "en": "Non-elitist skill evolution: separately selects the version to USE from the versions to KEEP EDITING - improvement may require several interdependent edits, so a low-scoring revision can still carry usable parts. By observing how related versions carry out the same task it identifies working steps to preserve and remaining failures to fix; it can return to earlier versions and revise them using what later attempts reveal.",
+        "zh": "非精英技能演化：把“选哪个版本来用”与“选哪些版本继续改”分开——提升可能需要多条相互依赖的编辑，低分修订仍可能带有可用部分。通过观察相关版本如何执行同一任务，识别应保留的可用步骤与待修复的残留失败；还能回到更早版本，用后续尝试揭示的信息重新修订。"
+      },
+      "result": {
+        "en": "Across 86 SkillsBench tasks spanning software engineering, office work and six other domains, SkillNEO raises GPT-5.4 Mini's average reward from 49.1% to 66.4%, bringing it into GPT-5.5 and GPT-5.6 Luna's original-skill performance range. The same evolved skills improve stronger models without further editing: on the 41 tasks with modified skills, reuse improves Luna by 10.5 percentage points and places GPT-5.5 10.6 points above its published original-skill reference.",
+        "zh": "在覆盖软件工程、办公与另外六个领域的 86 个 SkillsBench 任务上，SkillNEO 把 GPT-5.4 Mini 的平均奖励从 49.1% 提到 66.4%，进入 GPT-5.5 与 GPT-5.6 Luna 的原技能性能区间。演化出的技能无需再编辑即可改进更强模型：在有改动的 41 个任务上，复用使 Luna 提升 10.5 个百分点、GPT-5.5 高出其公开原技能参考 10.6 个百分点。"
+      },
+      "limits": {
+        "en": "No code URL for SkillNEO itself found in the HTML (only a SkillsBench trajectories data link); evaluation is on the authors' SkillsBench suite; gains concentrate on the weaker editing model with transfer measured on a 41-task subset.",
+        "zh": "HTML 未找到 SkillNEO 本体的代码 URL（只有 SkillsBench 轨迹数据链接）；评测在作者自建的 SkillsBench 套件上；增益集中在较弱的编辑模型上，迁移在 41 任务子集上测得。"
+      },
+      "availability": {
+        "en": "No dedicated repository found in the HTML; SkillsBench trajectory data referenced at github.com/benchflow-ai/skillsbench-trajectories.",
+        "zh": "HTML 未找到专属仓库；引用了 github.com/benchflow-ai/skillsbench-trajectories 的 SkillsBench 轨迹数据。"
+      },
+      "application": {
+        "en": "Non-elitist use-vs-edit separation is the missing half of ADOPTION item 53: keeping low-scoring versions editable (while never serving them) captures interdependent-edit gains that strict gating discards - directly complementary to AtomSearch's retained-but-unpromoted states (same batch, independent teams). Upward transfer (+10.5pp to a stronger model) is the skill-side answer to our cross-panel migration question.",
+        "zh": "“用与改”分离的非精英选择是 ADOPTION 53 缺的另一半：让低分版本保持可编辑（但绝不投入使用）能抓住严格闸门丢弃的相互依赖编辑收益——与同批次 AtomSearch 的“保留但不晋升”状态互补（不同团队独立得出）。向更强模型 +10.5 个百分点的向上迁移，是技能面对我们跨面板迁移问题的回答。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.20926",
+          "url": "https://arxiv.org/abs/2610.20926"
+        },
+        {
+          "kind": "paper",
+          "label": "HTML full text v1",
+          "url": "https://arxiv.org/html/2610.20926v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/skillneo-non-elitist-skills.png",
+        "source_url": "https://arxiv.org/html/2610.20926v1/skillneo_method_artwork.png",
+        "locator": "Figure 2 (skillneo_method_artwork.png), arXiv HTML 2610.20926v1",
+        "caption": {
+          "en": "Original Figure 2: SkillNEO separates choosing a skill to use from choosing versions to improve - a version can receive further edits (green) while another is served, and related versions are compared to identify working steps and remaining failures.",
+          "zh": "原图 2：SkillNEO 把“选技能来用”与“选版本来改”分开——一个版本可以继续接受编辑（绿色）而另一版本被投入使用，并通过比较相关版本识别可用步骤与残留失败。"
+        }
+      },
+      "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "selfimprovement-problem-impossibility",
+      "title": "The Self-Improvement Problem",
+      "organizations": [
+        "German Research Center for Artificial Intelligence (DFKI)",
+        "RPTU Kaiserslautern-Landau"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "analyses-audits",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv 2610.21646 v1 submitted 2026-10-15, announced in the 2026-10-16 batch. Theory paper (no experiments); formal proof code released.",
+        "zh": "arXiv 2610.21646 v1 提交于 2026-10-15，随 2026-10-16 批次公告。理论论文（无实验）；发布了形式化证明代码。"
+      },
+      "affiliation": {
+        "en": "Brian B. Moser (DFKI; RPTU Kaiserslautern-Landau), Stanislav Frolov (DFKI), Tobias C. Nauen (DFKI; RPTU Kaiserslautern-Landau), Federico Raue (DFKI), Andreas Dengel (DFKI; RPTU Kaiserslautern-Landau).",
+        "zh": "Brian B. Moser（DFKI；RPTU 凯泽斯劳滕-兰道）、Stanislav Frolov（DFKI）、Tobias C. Nauen（DFKI；RPTU 凯泽斯劳滕-兰道）、Federico Raue（DFKI）、Andreas Dengel（DFKI；RPTU 凯泽斯劳滕-兰道）。"
+      },
+      "mechanism": {
+        "en": "Formalizes safe self-improvement: agents are programs and improvement is a semantic score that need not be computable, while any automated gate (reward model, regression suite, automated reviewer) must be a terminating computable procedure. Two evaluation abstractions are studied - a certifier that approves/rejects an update, and a search procedure that outputs an improving candidate given a proposal generator. Theorem: in the fully general setting, no terminating procedure can simultaneously guarantee reliability (never accepting a non-improvement) and non-conservatism (never missing an available improvement); self-referential constructions force any such gate or searcher to fail, and randomized gates with bounded error face the same limit. In the bounded-evaluation, finite-proposal-budget regime, exhaustive simulation yields a terminating search with the desired guarantees - but a chain of accepted updates can raise the bounded score in every round while the true score falls.",
+        "zh": "把安全自改进形式化：智能体是程序、改进是未必可计算的语义分数，而任何自动闸门（奖励模型、回归测试套件、自动评审）都必须是可终止的可计算过程。研究两种评估抽象——批准/拒绝更新的证明器（certifier）与在给定提案生成器下输出改进候选的搜索过程。定理：在完全一般的设定下，不存在可同时保证可靠性（绝不接受非改进）与非保守性（绝不放过可得改进）的可终止过程；自指构造可迫使任何此类闸门或搜索器失败，有界误差的随机化闸门同样受限。在有界评估、有限提案预算的机制下，穷举模拟给出具备期望保证的可终止搜索——但被接受的更新链可以每轮都抬高有界分数而真实分数下降。"
+      },
+      "result": {
+        "en": "No experiments (theory). Impossibility in the unbounded universal setting; recovery of guarantees by design in bounded settings; and the explicit recovery limit (bounded score rising while true score falls) - a boundary result between where correctness guarantees collapse and where they can be engineered back.",
+        "zh": "无实验（理论）。结论：无界通用设定下不可能；有界设定下可按设计恢复保证；并给出恢复极限（有界分数逐轮上升而真实分数下降）——划出“正确性保证崩溃”与“可工程恢复”的边界。"
+      },
+      "limits": {
+        "en": "Pure theory with stylized abstractions (semantic scores, unbounded behavior); practical systems live inside the bounded regime the paper itself recovers, so the impossibility is a boundary statement rather than a doom claim - the authors say as much. Proof checking of the released code was not performed in this verification.",
+        "zh": "纯理论、采用风格化抽象（语义分数、无界行为）；实用系统本就生活在论文自己恢复的有界机制内，因此不可能性是边界陈述而非末日论——作者亦如此表述。本次核验未检查其证明代码。"
+      },
+      "availability": {
+        "en": "Formal proof code at github.com/Brian-Moser/SelfImprovementProof (license not yet checked).",
+        "zh": "形式化证明代码位于 github.com/Brian-Moser/SelfImprovementProof（许可尚未核对）。"
+      },
+      "application": {
+        "en": "This is the theoretical backbone of nanoRSI's gate doctrine: our frozen panels, finite proposal budgets and bounded evaluators are exactly the decidable regime where guarantees recover - and the bounded-score-rises-while-true-score-falls limit is the formal statement of why the counterfactual panel and held-out freeze/final-test exist. Every future ADOPTION item touching gates should cite this boundary.",
+        "zh": "这是 nanoRSI 闸门教义的理论支柱：冻结面板、有限提案预算与有界评测器正是保证得以恢复的可判定机制——而“有界分数升、真实分数降”的极限，正是反事实面板与留出 freeze/final-test 存在理由的形式化表述。今后凡触及闸门的 ADOPTION 条目都应引用这条边界。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.21646",
+          "url": "https://arxiv.org/abs/2610.21646"
+        },
+        {
+          "kind": "repository",
+          "label": "SelfImprovementProof code",
+          "url": "https://github.com/Brian-Moser/SelfImprovementProof"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/selfimprovement-problem-impossibility.svg",
+        "source_url": "https://arxiv.org/html/2610.21646v1/SelfImprovementProblem.svg",
+        "locator": "Figure 1 (SelfImprovementProblem.svg), arXiv HTML 2610.21646v1",
+        "caption": {
+          "en": "Original Figure 1: the structural impossibility of verification-gated self-improvement - the proposal mechanism (enumerator) generates candidates whose semantic behavior the terminating gate cannot fully inspect; self-referential constructions force failure.",
+          "zh": "原图 1：验证闸门式自改进的结构性不可能——提案机制（枚举器）生成的候选，其语义行为是可终止闸门无法完全检查的；自指构造迫使其失败。"
+        }
+      },
+      "last_verified": "2026-10-17",
       "local_reproduction": "not-run"
     }
   ]
