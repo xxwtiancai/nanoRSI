@@ -6,16 +6,16 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 25 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 26 |
 | [Harness search & evolution](#family-harness-search) | 25 |
-| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 12 |
-| [Program evolution & evolutionary search](#family-program-evolution) | 9 |
+| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 13 |
+| [Program evolution & evolutionary search](#family-program-evolution) | 10 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 6 |
 | [Safety & governance](#family-safety-governance) | 5 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (25)
+## Skill-file optimization & libraries (26)
 
 <a id="skillneo-non-elitist-skills"></a>
 
@@ -46,6 +46,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abs 2610.20926](https://arxiv.org/abs/2610.20926) · [HTML full text v1](https://arxiv.org/html/2610.20926v1)
+
+<a id="causalevo-causal-skill-credit"></a>
+
+### CausalEvo: Causal Skill Self-Evolution for Health LLM Agents
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-14; accepted to the GenAI for Health Workshop @ NeurIPS 2026, Sydney (workshop acceptance is not a first-publication date).
+
+**Institutional relationship** — Sole author Yuchen Zhang - The University of Texas Health Science Center at Houston (UTH.TMC email in the HTML author block).
+
+**What changes and how feedback is reused** — A frozen LLM proposes two new skill rules per step, pooled with the four incumbents into a candidate set where the incumbent always remains selectable. Skill value is estimated causally rather than by raw panel scores: for each directed edge of a randomly relabeled cycle over the pool, the same feedback case is run twice with a shared background of k-1 rules, swapping only the exchanged rule (equal rule counts separate content from size effects); a zero-sum constrained least-squares solve turns the paired score differences into relative skill values, and selection is lexicographic - highest summed value, ties resolved toward overlap with the incumbent set. A decision-loss bound decomposes error into candidate support, approximation (rule interactions beyond a first-order projection) and estimation terms, with an explicit counterexample where exact coefficients still select suboptimally under complementarity.
+
+**Author-reported result** — On six MedCalc-Bench-Verified tasks (120 held-out cases, 20 per task, thinking-off DeepSeek V4 Flash 0731): CausalEvo 60.00% vs SkillOpt 55.83% vs no-skill 51.67%, with 55.6% fewer training tokens (2.203M vs 4.961M; 336 vs 839 requests) and a 180-word final skill versus SkillOpt’s 999. Credit-assignment ablation on a separate 24-case set: 70.83% vs 62.50% with shuffled credit (+8.33pp, interval includes zero).
+
+**Evidence limits** — Gains concentrate almost entirely in Cockcroft-Gault (+9 cases) while the other five tasks net -4; Child-Pugh regresses 50%->30% and no-skill beats both methods there; not significant after Holm correction (paired intervals include zero, vs SkillOpt [-5.00, 13.33]); immediate learning acquisition is negative (-3.33pp); single training trajectory per method with differing budgets/backends/skill lengths; possible overfitting to the 3-case feedback panels; disputed reference labels; no clinical validation.
+
+**Code / weights / data / license** — Repository github.com/txbrook/CausalEvo exists (live 2026-10-18) but ships the manuscript source and a math checker only - the paper states complete training code and raw responses are not currently included; no license file (treat as all-rights-reserved); paper CC BY 4.0; MedCalc-Bench-Verified under CC-BY-SA-4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Paired exchanges against a shared background are a cheap attribution layer for the skills gate: score candidate edits in matched pairs instead of trusting raw panel deltas, so a skill is promoted for its marginal contribution rather than panel noise; the paper’s reporting pattern (per-task concentration named, Holm correction applied, single-trajectory caveat) is the honesty standard the selector study should match.
+
+![Original Figure 1: the method pipeline - candidate rule pool, fixed-capacity paired exchanges against shared backgrounds, least-squares credit estimation, incumbent-favouring top-k selection.](assets/paper-figures/causalevo-skill-credit-fig1.png)
+
+**Source figure / official image** — Original Figure 1: the method pipeline - candidate rule pool, fixed-capacity paired exchanges against shared backgrounds, least-squares credit estimation, incumbent-favouring top-k selection. · Figure 1 (figures/causalevo_overview.png), arXiv HTML 2610.21016v1 · [source](https://arxiv.org/html/2610.21016v1/figures/causalevo_overview.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-18.
+
+**Open code / weights / data links** — [CausalEvo code](https://github.com/txbrook/CausalEvo)
+
+**Primary sources** — [arXiv abs 2610.21016](https://arxiv.org/abs/2610.21016) · [arXiv HTML v1](https://arxiv.org/html/2610.21016v1) · [CausalEvo code](https://github.com/txbrook/CausalEvo)
 
 <a id="atomsearch-skill-state-tree"></a>
 
@@ -1523,7 +1553,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## Self-modifying meta-agents & lineages (12)
+## Self-modifying meta-agents & lineages (13)
+
+<a id="rsiflow-evolving-meta-agent"></a>
+
+### RSIFlow: Adaptive Self-Improvement Workflows with an Evolving Meta-Agent
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15; code repository pushed through 2026-10-13.
+
+**Institutional relationship** — Huan Zhang*, Mingju Chen*, Dongxu Zhou, Can Lv, Sen Cui, Faguo Wu, Shiji Zhou (corresponding) - Beijing Advanced Innovation Center for Future Blockchain and Privacy Computing, School of Artificial Intelligence, Beihang University (*equal contribution; affiliations read from the HTML author block).
+
+**What changes and how feedback is reused** — A Task-Agent (Qwen3-4B/8B) executes tasks and collects trajectories and environmental feedback; a Meta-Agent (GPT-5.6 Sol) diagnoses which component is the current bottleneck and adaptively selects a component-specific improvement workflow - model update (partial LoRA with fixed one-epoch hyperparameters and global batch 8), harness update, or task-artifact revision. The meta-level recursion: workflow outcomes are distilled into component-specific skills plus cross-component principles, which are integrated into the Meta-Harness (the meta-agent’s own orchestration layer) so later rounds diagnose and orchestrate better - meta-agent parameters never update. Five evolution rounds, at most two attempts per round.
+
+**Author-reported result** — Overall averages across six benchmarks (HumanEval+, MBPP+, BFCL-v3, ACEBench, HotpotQA, 2Wiki): Qwen3-4B 51.21 vs SIA 45.15, Hyperagent 41.26, AFlow 40.73 (and SFT 41.12, GRPO 42.04, HarnessForge 41.22, MermaidFlow 43.59); Qwen3-8B 59.86 vs SIA 56.00, AFlow 54.27. Ablations (4B, R=5): +13.72 three-domain average over vanilla; adaptive orchestration beats the best fixed-component routine by 4.13-8.81 on average; disabling meta-agent evolution costs 5.74 points.
+
+**Evidence limits** — Task-agent backbones limited to Qwen3-4B/8B (cluster scale and larger backbones unexplored); the meta loop adds computational overhead and a cheaper meta-agent may compromise evolution gains; stability of experience-driven Meta-Harness updates is not fully investigated (authors name counterfactual analysis and meta-agent parameter optimization as future work); headroom on these benchmarks is crowded with strong baselines.
+
+**Code / weights / data / license** — MIT-licensed code at github.com/1HUAN1/RSI-Flow (license verified via API 2026-10-18).
+
+**Possible nanoRSI experiment — not implemented here** — Bottleneck-diagnosis routing is a selector design for nanoRSI’s loop: before mutating anything, classify which surface (skill text, harness code, evaluator artifact) is the binding constraint and apply surface-specific operators, instead of spending the attempt budget on the wrong surface. Distilling orchestration outcomes into reusable meta-skills mirrors ADOPTION #53 for the skills track, and the paper’s fixed-vs-adaptive ablation is the exact control a surface-routing proposal would need.
+
+![Original Figure 2 overview: task domains and the Task-Agent, trajectory collection, the Meta-Agent adaptively orchestrating component-specific workflows (model / harness / artifacts), and intervention experience distilled into skills that update the Meta-Harness.](assets/paper-figures/rsiflow-evolving-meta-agent-fig2.png)
+
+**Source figure / official image** — Original Figure 2 overview: task domains and the Task-Agent, trajectory collection, the Meta-Agent adaptively orchestrating component-specific workflows (model / harness / artifacts), and intervention experience distilled into skills that update the Meta-Harness. · Figure 2 (Overview.png), arXiv HTML 2610.21791v1 · [source](https://arxiv.org/html/2610.21791v1/Overview.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-18.
+
+**Open code / weights / data links** — [RSI-Flow code](https://github.com/1HUAN1/RSI-Flow)
+
+**Primary sources** — [arXiv abs 2610.21791](https://arxiv.org/abs/2610.21791) · [arXiv HTML v1](https://arxiv.org/html/2610.21791v1) · [RSI-Flow code](https://github.com/1HUAN1/RSI-Flow)
 
 <a id="specrsi-speculative-rsi"></a>
 
@@ -1887,7 +1947,37 @@
 
 <a id="family-program-evolution"></a>
 
-## Program evolution & evolutionary search (9)
+## Program evolution & evolutionary search (10)
+
+<a id="self-dsl-oracle-free-operators"></a>
+
+### A Self-Improving Agent that Grows its Own DSL: Oracle-Free Operator Induction for Exact Question Answering
+
+**2026-10-14** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-14 (only version); title recorded verbatim from the abs page.
+
+**Institutional relationship** — Yun-Shiuan Chuang*, Yirou Ge*, Yixi Li* (*equal contribution), Yiming Bian, Zijie Pan, with Jenna L. Ballard, Uma Kona, Linsey Pang, Prakhar Mehrotra - all under a single collective PayPal AI affiliation line in the HTML author block.
+
+**What changes and how feedback is reused** — A single frozen model runs two nested loops over a small exact DSL, with no reward, no judge and no answer key. The inner loop expands the answerable question set inside a fixed operator library: each candidate expression must be matched by a second independently written expression that agrees on every validation record. The outer loop discovers recurring capability gaps, authors new operators as sandboxed method-free Python, and admits one only through a three-part oracle-free gate: differential testing (two independent implementations agree on all records plus fuzzed inputs), a metamorphic conservation law over already-trusted operators, and a round-trip pass through the inner loop’s independent-agreement check.
+
+**Author-reported result** — Answerable-set growth 10->336 (Merchant), 15->162 (BookSQL), 13->248 (EHRSQL over MIMIC-III), with the inner loop alone roughly tripling coverage (mean +18.3 across 13 starting sets). Gate soundness measured on every single-point mutant of the 14 admitted operators: 0/138 buggy variants admitted under an uncorrelated reference (10/138 under the correlated worst case where both implementations carry the same bug), versus admit-if-it-runs 129/138, self-consistency 129/138 and compression 101/138; an LLM judge wrongly rejects 2/14 correct operators. The unmodified mechanism transfers across model families (Qwen3.6-35B-A3B main; Mistral-Small-24B, Llama-3.3-70B, Gemma-3-27B also self-extend).
+
+**Evidence limits** — The mode (most-frequent-value) reducer is permanently unreachable because no conservation law exists for it; only up to 3 induction rounds were tested; 81% of admission rejections come from sandbox-forbidden method calls; one adversarial escape exists (a size-changing merge bug admitted when the witnessing relation names a bare builtin instead of a trusted operator); seeds centre on the per-group aggregation family; Gemma-3-27B self-extends on only one of its seeds (13% DSL compile rate).
+
+**Code / weights / data / license** — Supplementary material promised in the paper (DSL and its tests, both agent loops with exact prompts, generator and study scripts); no separate public repository URL found in the HTML; synthetic corpora regenerate from aggregate parameters without proprietary data; arXiv non-exclusive license only.
+
+**Possible nanoRSI experiment — not implemented here** — A template for oracle-free gates on exact tasks: dual independent implementations plus a conservation law replace held-out labels, directly usable where nanoRSI has verifiable invariants but no gold panel. Equally portable is the audit protocol - generate every single-point mutant of an accepted edit and measure the false-admit rate of the gate - which would give the counterfactual/challenge gate a published-style soundness score.
+
+![Original Figure 1: the two nested loops run by one frozen model with no ground-truth oracle and no judge - the inner loop expands the answerable set inside fixed operators, the outer loop inducts new operators under the oracle-free admission gate.](assets/paper-figures/self-dsl-oracle-free-operators-fig1.png)
+
+**Source figure / official image** — Original Figure 1: the two nested loops run by one frozen model with no ground-truth oracle and no judge - the inner loop expands the answerable set inside fixed operators, the outer loop inducts new operators under the oracle-free admission gate. · Figure 1 (method_overview.png), arXiv HTML 2610.20809v1 · [source](https://arxiv.org/html/2610.20809v1/method_overview.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.20809](https://arxiv.org/abs/2610.20809) · [arXiv HTML v1](https://arxiv.org/html/2610.20809v1)
 
 <a id="lago-growing-options"></a>
 

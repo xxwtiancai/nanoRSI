@@ -9,7 +9,7 @@
 | [Self-play & curriculum task generation](#family-self-play-curriculum) | 14 |
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 4 |
-| [Experience distillation & test-time adaptation](#family-experience-distillation) | 7 |
+| [Experience distillation & test-time adaptation](#family-experience-distillation) | 8 |
 | [Autonomous training agents & data pipelines](#family-autonomous-training) | 8 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
 
@@ -717,7 +717,37 @@
 
 <a id="family-experience-distillation"></a>
 
-## Experience distillation & test-time adaptation (7)
+## Experience distillation & test-time adaptation (8)
+
+<a id="terminal-rsi-rewrite-refine"></a>
+
+### Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15; 28 pages, 16 figures, 5 tables.
+
+**Institutional relationship** — Junyao Yang (Tencent Hy Frontier / NUS), Zongxia Li (Tencent Hy Frontier / UMD), Yucheng Shi (Tencent Hy Frontier), Zhongzhi Li (Tencent Hy Frontier / UGA), Ruhan Wang (Tencent Hy Frontier / Indiana), Ruiwen Zhou (NUS), Haitao Mi (Tencent Hy Frontier), Shuicheng Yan (NUS, corresponding with Leowei Liang), Leowei Liang (Tencent Hy Frontier, corresponding) - read from the HTML author block and footnote superscripts.
+
+**What changes and how feedback is reused** — Five stages from a Qwen3.8-27B base: RSR-1 -> RPR-1 -> RSR-2 -> RPR-2. Recursive Self-Rewrite (RSR, actor-only) discovers verified trajectories (retained only when the verifier passes), plans runbooks with the retained actor, screens them through a leakage/reviewer gate, executes fresh replays under the target harness and trains by SFT on the cleaned trajectories with critic weights frozen. Recursive Policy-Refine (RPR, joint actor-critic) runs PPO with a critic inherited from the previous phase and recalibrated by four critic-only updates first; asymmetric clipping [0.30, 5.00], no KL or entropy terms. Turn-Boundary Skip-Observation GAE gives token-specific baselines with turn-level decay while observation tokens condition values without being recursion nodes; Family Dense Reward calibrates semantic progress across task families and Success-Prioritized Reward separates strict success from bounded partial credit.
+
+**Author-reported result** — Every retained stage checkpoint is evaluated on all benchmarks (Mean@3): Terminal-Bench 4.0 0.00 -> 6.10 -> 16.67 -> 17.46 -> 19.84%; TB-2.1 51.70 -> 86.52%; TB-3.0 0.00 -> 16.95%; TB-Hard 31.00 -> 79.00%; LHTB process reward 0.21 -> 0.37 with strict completions 0/46 -> 5/46; SWR100 success doubles 3.00% -> 6.00%. External references at the final stage: 19.84% TB-4.0 vs 19.70% Gemini 3.8 Flash and 14.60% DeepSeek V4 Pro; 86.52% TB-2.1 vs 85.40% GPT-6 Sol and 85.00% Kimi K3. A direct-PPO control is included.
+
+**Evidence limits** — Authors’ own caveats: no compute-matched alternation, TB-GAE not deployed in isolation, and stage-specific hyperparameters co-vary with the stage effect; three evaluation runs are not independent training seeds; checkpoint selection lacks a protected validation set; verification coverage has gaps (a Rust-C case passes fuzz tests but fails on native architecture); one 27B backbone only; SWR100 plateaus.
+
+**Code / weights / data / license** — Paper CC BY 4.0; project page jyyang26.github.io/terminal-rsi live; the code URL printed in the paper (github.com/jyyang26/Terminal-RSI) returns 404 as of 2026-10-18; the printed Hugging Face organization Teriminal-RSI exists but hosts no public models yet (org spelling as printed).
+
+**Possible nanoRSI experiment — not implemented here** — The weights-side alternation is beyond nanoRSI’s local budget, but two protocols transfer directly: evaluate every retained intermediate checkpoint on the frozen panel and final test (the stage-ladder reporting the multiseed selector study should adopt), and separate strict success from bounded partial credit in reward shaping (the panel/final-test split nanoRSI already enforces). Critic inheritance across self-rewrite rounds is the published pattern for keeping value estimates stable while the data distribution shifts under self-modification.
+
+![Original Figure 2: the recursive loop carries critic weights through supervised transitions - blue blocks distinguish actor-only RSR from joint actor-critic RPR, the bypass preserves the critic, and feedback returns the retained policy to the next cycle.](assets/paper-figures/terminal-rsi-recursive-loop-fig2.png)
+
+**Source figure / official image** — Original Figure 2: the recursive loop carries critic weights through supervised transitions - blue blocks distinguish actor-only RSR from joint actor-critic RPR, the bypass preserves the critic, and feedback returns the retained policy to the next cycle. · Figure 2 (terminal_rsi_overall_from_ppt.png), arXiv HTML 2610.22192v1 · [source](https://arxiv.org/html/2610.22192v1/terminal_rsi_overall_from_ppt.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-18.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.22192](https://arxiv.org/abs/2610.22192) · [arXiv HTML v1](https://arxiv.org/html/2610.22192v1) · [Terminal-RSI project page](https://jyyang26.github.io/terminal-rsi/)
 
 <a id="mass-multi-agent-self-supervision"></a>
 

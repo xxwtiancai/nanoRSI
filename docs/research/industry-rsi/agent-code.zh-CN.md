@@ -6,16 +6,16 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 25 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 26 |
 | [Harness 搜索与进化](#family-harness-search) | 25 |
-| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 12 |
-| [程序进化与进化搜索](#family-program-evolution) | 9 |
+| [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 13 |
+| [程序进化与进化搜索](#family-program-evolution) | 10 |
 | [反馈审查与编排](#family-feedback-orchestration) | 6 |
 | [安全与治理](#family-safety-governance) | 5 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (25)
+## 技能文件优化与技能库 (26)
 
 <a id="skillneo-non-elitist-skills"></a>
 
@@ -46,6 +46,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abs 2610.20926](https://arxiv.org/abs/2610.20926) · [HTML full text v1](https://arxiv.org/html/2610.20926v1)
+
+<a id="causalevo-causal-skill-credit"></a>
+
+### CausalEvo: Causal Skill Self-Evolution for Health LLM Agents
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-14 提交；被 NeurIPS 2026 GenAI for Health 研讨会（悉尼）接收（研讨会接收不作为首发日期）。
+
+**机构关系** — 单作者 Yuchen Zhang——休斯敦德克萨斯大学健康科学中心（HTML 作者块的 UTH.TMC 邮箱）。
+
+**改变对象与反馈复用** — 冻结 LLM 每步提出两条新技能规则，与四条在位规则合并为候选集（在位者永远可选）。技能价值用因果方式估计而非裸面板分数：在候选集的随机重标环上，对每条有向边用相同反馈案例跑两次——共享 k-1 条背景规则、只交换被换的那条（等规则数把内容效应与规模效应分开）；零和约束的最小二乘把成对分数差解为相对技能价值，选择按字典序——先总和最高、平局偏向在位集合。决策损失界把误差分解为候选支撑、逼近（超出线性投影的规则交互）与估计三部分，并给出精确系数仍会因互补性选错的显式反例。
+
+**作者报告结果** — 在六个 MedCalc-Bench-Verified 任务上（120 留出例、每任务 20、DeepSeek V4 Flash 0731 关思考）：CausalEvo 60.00% 对 SkillOpt 55.83% 对无技能 51.67%，训练 token 少 55.6%（2.203M 对 4.961M；336 对 839 次请求），终版技能 180 词对 999 词。信用分配消融（独立 24 例集）：70.83% 对打乱信用 62.50%（+8.33pp，区间含零）。
+
+**证据边界** — 增益几乎全部集中在 Cockcroft-Gault（+9 例），其余五任务合计 -4；Child-Pugh 从 50% 回退到 30%，且该任务无技能基线胜过两个方法；Holm 校正后不显著（配对区间含零，对 SkillOpt [-5.00, 13.33])；即时学习获取为负（-3.33pp）；每方法单条训练轨迹且预算/后端/技能长度不一；可能过拟合 3 例反馈面板；参考标签存在争议；无临床验证。
+
+**代码／权重／数据／许可** — 仓库 github.com/txbrook/CausalEvo 存在（2026-10-18 在线）但仅含手稿源码与数学检查器——论文明言完整训练代码与原始响应暂未包含；无 LICENSE 文件（按保留所有权利对待）；论文 CC BY 4.0；MedCalc-Bench-Verified 为 CC-BY-SA-4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 共享背景下的成对交换是技能闸门上廉价的归因层：让候选编辑按配对方式计分而非信任裸面板差值，使技能因边际贡献而非面板噪声晋升；论文的报告范式（点名增益集中任务、做 Holm 校正、声明单轨迹局限）正是选择器研究应对齐的诚实标准。
+
+![原图 1：方法流水线——候选规则池、共享背景下定容量成对交换、最小二乘信用估计、偏向在位者的 top-k 选择。](assets/paper-figures/causalevo-skill-credit-fig1.png)
+
+**原文图／官方图片** — 原图 1：方法流水线——候选规则池、共享背景下定容量成对交换、最小二乘信用估计、偏向在位者的 top-k 选择。 · Figure 1 (figures/causalevo_overview.png), arXiv HTML 2610.21016v1 · [source](https://arxiv.org/html/2610.21016v1/figures/causalevo_overview.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-18.
+
+**开源代码／权重／数据链接** — [CausalEvo code](https://github.com/txbrook/CausalEvo)
+
+**一手来源** — [arXiv abs 2610.21016](https://arxiv.org/abs/2610.21016) · [arXiv HTML v1](https://arxiv.org/html/2610.21016v1) · [CausalEvo code](https://github.com/txbrook/CausalEvo)
 
 <a id="atomsearch-skill-state-tree"></a>
 
@@ -1523,7 +1553,37 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## 自改写元智能体与谱系 (12)
+## 自改写元智能体与谱系 (13)
+
+<a id="rsiflow-evolving-meta-agent"></a>
+
+### RSIFlow: Adaptive Self-Improvement Workflows with an Evolving Meta-Agent
+
+**2026-10-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-15 提交；代码仓库推送至 2026-10-13。
+
+**机构关系** — Huan Zhang*、Mingju Chen*、Dongxu Zhou、Can Lv、Sen Cui、Faguo Wu、Shiji Zhou（通讯）——北京航空航天大学人工智能学院、未来区块链与隐私计算北京前沿创新中心（*同等贡献；机构依 HTML 作者块读出）。
+
+**改变对象与反馈复用** — 任务智能体（Qwen3-4B/8B）执行任务并收集轨迹与环境反馈；元智能体（GPT-5.6 Sol）诊断当前瓶颈部件，自适应选择部件专属的改进工作流——模型更新（固定单 epoch 超参与全局批 8 的局部 LoRA）、harness 更新或任务产物修订。元层递归在于：工作流结果被蒸馏为部件专属技能与跨部件原则，并整合进 Meta-Harness（元智能体自己的编排层），使后续轮次诊断与编排更好——元智能体参数从不更新。共五轮演化，每轮至多两次尝试。
+
+**作者报告结果** — 六基准（HumanEval+、MBPP+、BFCL-v3、ACEBench、HotpotQA、2Wiki）总体均值：Qwen3-4B 51.21 对 SIA 45.15、Hyperagent 41.26、AFlow 40.73（另 SFT 41.12、GRPO 42.04、HarnessForge 41.22、MermaidFlow 43.59）；Qwen3-8B 59.86 对 SIA 56.00、AFlow 54.27。消融（4B、R=5）：相对原始版本三域均值 +13.72；自适应编排平均超最佳固定部件流程 4.13–8.81；关闭元智能体演化损失 5.74 点。
+
+**证据边界** — 任务侧基座仅 Qwen3-4B/8B（集群规模与更大基座未探索）；元环带来额外计算开销，更廉价的元智能体可能折损演化收益；经验驱动的 Meta-Harness 更新稳定性未充分研究（作者把反事实分析与元智能体参数优化列为未来工作）；这些基准上强基线密集、余量有限。
+
+**代码／权重／数据／许可** — 代码 MIT 许可，位于 github.com/1HUAN1/RSI-Flow（2026-10-18 经 API 核验许可）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 瓶颈诊断路由是 nanoRSI 主循环的一种选择器设计：先分类哪个面（技能文本、harness 代码、评测器产物）是约束瓶颈，再施加该面专属算子，而不是把尝试预算花在错误面上。把编排结果蒸馏为可复用元技能与 ADOPTION #53 在技能轨对应；论文的固定对自适应消融正是面路由提案需要的对照。
+
+![原图 2 总览：任务域与任务智能体、轨迹收集、元智能体自适应编排部件专属工作流（模型/harness/产物）、干预经验蒸馏为技能并更新 Meta-Harness。](assets/paper-figures/rsiflow-evolving-meta-agent-fig2.png)
+
+**原文图／官方图片** — 原图 2 总览：任务域与任务智能体、轨迹收集、元智能体自适应编排部件专属工作流（模型/harness/产物）、干预经验蒸馏为技能并更新 Meta-Harness。 · Figure 2 (Overview.png), arXiv HTML 2610.21791v1 · [source](https://arxiv.org/html/2610.21791v1/Overview.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-18.
+
+**开源代码／权重／数据链接** — [RSI-Flow code](https://github.com/1HUAN1/RSI-Flow)
+
+**一手来源** — [arXiv abs 2610.21791](https://arxiv.org/abs/2610.21791) · [arXiv HTML v1](https://arxiv.org/html/2610.21791v1) · [RSI-Flow code](https://github.com/1HUAN1/RSI-Flow)
 
 <a id="specrsi-speculative-rsi"></a>
 
@@ -1887,7 +1947,37 @@
 
 <a id="family-program-evolution"></a>
 
-## 程序进化与进化搜索 (9)
+## 程序进化与进化搜索 (10)
+
+<a id="self-dsl-oracle-free-operators"></a>
+
+### A Self-Improving Agent that Grows its Own DSL: Oracle-Free Operator Induction for Exact Question Answering
+
+**2026-10-14** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-14 提交（唯一版本）；题名逐字取自 abs 页。
+
+**机构关系** — Yun-Shiuan Chuang*、Yirou Ge*、Yixi Li*（*同等贡献）、Yiming Bian、Zijie Pan，以及 Jenna L. Ballard、Uma Kona、Linsey Pang、Prakhar Mehrotra——HTML 作者块以单一 PayPal AI 机构行集体署名。
+
+**改变对象与反馈复用** — 单一冻结模型在小而精确的 DSL 上跑双层循环：无奖励、无裁判、无答案钥匙。内层在固定算子库内扩张可答问题集：每条候选表达式必须由第二次独立重写的表达式在全部验证记录上一致才保留。外层发现重复出现的能力缺口，把新算子写成沙箱内无方法调用的 Python，且只有通过三段无 oracle 闸门才准入：差分测试（两个独立实现全记录加模糊输入一致）、已信任算子之上的蜕变守恒律、以及内层独立一致检查的往返验证。
+
+**作者报告结果** — 可答集增长：Merchant 10→336、BookSQL 15→162、EHRSQL（MIMIC-III）13→248；仅内层循环就把覆盖面约扩为三倍（13 个起始集平均 +18.3）。闸门健全性在 14 个被准入算子的全部单点突变体上测得：非相关参照下 0/138 缺陷变体被准入（两个实现带同一缺陷的相关最坏情形下 10/138），对照 admit-if-it-runs 129/138、self-consistency 129/138、压缩法 101/138；LLM 裁判还错误拒绝 2/14 个正确算子。机制不做修改即跨模型家族迁移（主模型 Qwen3.6-35B-A3B；Mistral-Small-24B、Llama-3.3-70B、Gemma-3-27B 也能自我扩展）。
+
+**证据边界** — mode（众数）归约器永久不可达，因为不存在对应的守恒律；只测了至多 3 轮归纳；81% 的准入拒绝源于沙箱禁用的方法调用；存在一例对抗逃逸（见证关系引用裸内建函数而非受信任算子时，改变尺寸的合并缺陷被准入）；种子集中在按组聚合族；Gemma-3-27B 只在一个种子上自我扩展（DSL 编译率 13%）。
+
+**代码／权重／数据／许可** — 论文承诺补充材料（DSL 及其测试、两个代理循环的完整提示词、生成与研究脚本）；HTML 中未发现独立公开仓库链接；合成语料可由聚合参数再生成，无需专有数据；仅 arXiv 非独占许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 精确任务上无 oracle 闸门的范本：双独立实现加守恒律替代留出标签，可直接用于 nanoRSI 有可验证不变量但无金标面板的场景。同样可移植的是审计协议——对每条被接受的编辑生成全部单点突变体并测闸门误准入率——可为反事实/挑战闸门给出论文级健全性分数。
+
+![原图 1：单一冻结模型跑的双层循环，无金标 oracle、无裁判——内层在固定算子内扩张可答集，外层在无 oracle 准入闸门下归纳新算子。](assets/paper-figures/self-dsl-oracle-free-operators-fig1.png)
+
+**原文图／官方图片** — 原图 1：单一冻结模型跑的双层循环，无金标 oracle、无裁判——内层在固定算子内扩张可答集，外层在无 oracle 准入闸门下归纳新算子。 · Figure 1 (method_overview.png), arXiv HTML 2610.20809v1 · [source](https://arxiv.org/html/2610.20809v1/method_overview.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.20809](https://arxiv.org/abs/2610.20809) · [arXiv HTML v1](https://arxiv.org/html/2610.20809v1)
 
 <a id="lago-growing-options"></a>
 

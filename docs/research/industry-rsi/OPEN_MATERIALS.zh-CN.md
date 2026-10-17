@@ -6,17 +6,21 @@
 
 | 日期 | 工作 | 已核验代码／权重／数据 | 许可与证据说明 |
 | --- | --- | --- | --- |
+| 2026-10-15 | [Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine](parameter-learning.zh-CN.md#terminal-rsi-rewrite-refine) | 未核验到公开资产链接 | 论文 CC BY 4.0；项目页 jyyang26.github.io/terminal-rsi 在线；论文所印代码 URL（github.com/jyyang26/Terminal-RSI）截至 2026-10-18 返回 404；所印 Hugging Face 组织 Teriminal-RSI 存在但尚无公开模型（组织名拼写照原文）。 |
 | 2026-10-15 | [SkillNEO: Non-Elitist Evolutionary Optimization of Agent Skills](agent-code.zh-CN.md#skillneo-non-elitist-skills) | 未核验到公开资产链接 | HTML 未找到专属仓库；引用了 github.com/benchflow-ai/skillsbench-trajectories 的 SkillsBench 轨迹数据。 |
 | 2026-10-15 | [The Self-Improvement Problem](research-workflows.zh-CN.md#selfimprovement-problem-impossibility) | [SelfImprovementProof code](https://github.com/Brian-Moser/SelfImprovementProof) | 形式化证明代码位于 github.com/Brian-Moser/SelfImprovementProof（许可尚未核对）。 |
+| 2026-10-15 | [RSIFlow: Adaptive Self-Improvement Workflows with an Evolving Meta-Agent](agent-code.zh-CN.md#rsiflow-evolving-meta-agent) | [RSI-Flow code](https://github.com/1HUAN1/RSI-Flow) | 代码 MIT 许可，位于 github.com/1HUAN1/RSI-Flow（2026-10-18 经 API 核验许可）。 |
 | 2026-10-15 | [Athanor: An Agent-Native System for Autonomous Post-Training Research](research-workflows.zh-CN.md#athanor-autoposttrain) | 未核验到公开资产链接 | abs 页与 HTML 桩均未找到代码 URL；论文自称开放系统——待发布后定位仓库。 |
 | 2026-10-14 | [VideoHarness-SRSI: Structured Recursive Self-Improvement for Video Understanding Harness](agent-code.zh-CN.md#videoharness-srsi-evidence-governed) | 未核验到公开资产链接 | 截至 2026-10-16 未声明代码或数据发布；arXiv 非独占许可。 |
 | 2026-10-14 | [TimeRSI: Towards Self-Improved Agentic Deployment for Time-Series Foundation Models](agent-code.zh-CN.md#timersi-agentic-deployment) | [TimeRSI code (Apache-2.0)](https://github.com/haoxin1998/TimeRSI) | 代码 Apache-2.0，位于 github.com/haoxin1998/TimeRSI（LICENSE 已于 2026-10-17 经 raw.githubusercontent.com 核验）。 |
 | 2026-10-14 | [SwarmRSI: Recursive Self-Improvement through Evolving Scientific Agent Swarm](research-workflows.zh-CN.md#swarmrsi-evolving-swarm) | 未核验到公开资产链接 | 未发现代码发布；扉页标注 CC BY-NC-SA 4.0 许可。 |
+| 2026-10-14 | [A Self-Improving Agent that Grows its Own DSL: Oracle-Free Operator Induction for Exact Question Answering](agent-code.zh-CN.md#self-dsl-oracle-free-operators) | 未核验到公开资产链接 | 论文承诺补充材料（DSL 及其测试、两个代理循环的完整提示词、生成与研究脚本）；HTML 中未发现独立公开仓库链接；合成语料可由聚合参数再生成，无需专有数据；仅 arXiv 非独占许可。 |
 | 2026-10-14 | [LAGO: Language Agents with Reusable Growing Options](agent-code.zh-CN.md#lago-growing-options) | 未核验到公开资产链接 | HTML 全文未找到代码或仓库链接。 |
 | 2026-10-14 | [L3M: A Verifiable Harness and Runtime for Self-Extending and Self-Improving Agents](agent-code.zh-CN.md#l3m-verifiable-runtime) | 未核验到公开资产链接 | 截至 2026-10-16 HTML 未声明代码、权重或数据发布；论文为 arXiv 非独占许可。 |
 | 2026-10-14 | [Reflect After Failure: Brain-Inspired Self-Evolving Agents for Embodied Spatial Intelligence](memory-context.zh-CN.md#himeco-hippocampal-metacognitive) | 未核验到公开资产链接 | HTML 全文未找到代码或仓库链接。 |
 | 2026-10-14 | [EvoWeave: Composing Reusable Agent Experience through Operation Level Graphs](memory-context.zh-CN.md#evoweave-operation-graphs) | 未核验到公开资产链接 | HTML 全文未找到代码或仓库链接。 |
 | 2026-10-14 | [Scaling Discovery Requires Forgetting](research-workflows.zh-CN.md#discovery-scaling-forgetting) | 未核验到公开资产链接 | Comments 字段无代码链接（2026-10-16 核对）；论文 CC BY 4.0。 |
+| 2026-10-14 | [CausalEvo: Causal Skill Self-Evolution for Health LLM Agents](agent-code.zh-CN.md#causalevo-causal-skill-credit) | [CausalEvo code](https://github.com/txbrook/CausalEvo) | 仓库 github.com/txbrook/CausalEvo 存在（2026-10-18 在线）但仅含手稿源码与数学检查器——论文明言完整训练代码与原始响应暂未包含；无 LICENSE 文件（按保留所有权利对待）；论文 CC BY 4.0；MedCalc-Bench-Verified 为 CC-BY-SA-4.0。 |
 | 2026-10-14 | [AtomSearch: Evidence-Grounded Tree Search for Agent Skill Optimization](agent-code.zh-CN.md#atomsearch-skill-state-tree) | 未核验到公开资产链接 | HTML 全文未找到代码或仓库链接。 |
 | 2026-10-14 | [AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents](parameter-learning.zh-CN.md#adarsi-on-demand-weights) | 未核验到公开资产链接 | HTML 全文未找到代码或仓库链接。 |
 | 2026-10-13 | [WorkRover: Scaling Long-Horizon Cowork Agent Training Via Recursive Environment Evolution](parameter-learning.zh-CN.md#workrover-recursive-env-evolution) | 未核验到公开资产链接 | 论文 CC BY 4.0；项目页 workrover.github.io；截至 2026-10-16 正文未声明代码、权重或数据发布。 |

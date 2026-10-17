@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-17",
-  "window_start": "2025-10-17",
+  "as_of": "2026-10-18",
+  "window_start": "2025-10-18",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -14883,6 +14883,281 @@
         }
       },
       "last_verified": "2026-10-17",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "self-dsl-oracle-free-operators",
+      "title": "A Self-Improving Agent that Grows its Own DSL: Oracle-Free Operator Induction for Exact Question Answering",
+      "organizations": [
+        "PayPal AI"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "program-evolution",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-14 (only version); title recorded verbatim from the abs page.",
+        "zh": "arXiv v1 于 2026-10-14 提交（唯一版本）；题名逐字取自 abs 页。"
+      },
+      "affiliation": {
+        "en": "Yun-Shiuan Chuang*, Yirou Ge*, Yixi Li* (*equal contribution), Yiming Bian, Zijie Pan, with Jenna L. Ballard, Uma Kona, Linsey Pang, Prakhar Mehrotra - all under a single collective PayPal AI affiliation line in the HTML author block.",
+        "zh": "Yun-Shiuan Chuang*、Yirou Ge*、Yixi Li*（*同等贡献）、Yiming Bian、Zijie Pan，以及 Jenna L. Ballard、Uma Kona、Linsey Pang、Prakhar Mehrotra——HTML 作者块以单一 PayPal AI 机构行集体署名。"
+      },
+      "mechanism": {
+        "en": "A single frozen model runs two nested loops over a small exact DSL, with no reward, no judge and no answer key. The inner loop expands the answerable question set inside a fixed operator library: each candidate expression must be matched by a second independently written expression that agrees on every validation record. The outer loop discovers recurring capability gaps, authors new operators as sandboxed method-free Python, and admits one only through a three-part oracle-free gate: differential testing (two independent implementations agree on all records plus fuzzed inputs), a metamorphic conservation law over already-trusted operators, and a round-trip pass through the inner loop’s independent-agreement check.",
+        "zh": "单一冻结模型在小而精确的 DSL 上跑双层循环：无奖励、无裁判、无答案钥匙。内层在固定算子库内扩张可答问题集：每条候选表达式必须由第二次独立重写的表达式在全部验证记录上一致才保留。外层发现重复出现的能力缺口，把新算子写成沙箱内无方法调用的 Python，且只有通过三段无 oracle 闸门才准入：差分测试（两个独立实现全记录加模糊输入一致）、已信任算子之上的蜕变守恒律、以及内层独立一致检查的往返验证。"
+      },
+      "result": {
+        "en": "Answerable-set growth 10->336 (Merchant), 15->162 (BookSQL), 13->248 (EHRSQL over MIMIC-III), with the inner loop alone roughly tripling coverage (mean +18.3 across 13 starting sets). Gate soundness measured on every single-point mutant of the 14 admitted operators: 0/138 buggy variants admitted under an uncorrelated reference (10/138 under the correlated worst case where both implementations carry the same bug), versus admit-if-it-runs 129/138, self-consistency 129/138 and compression 101/138; an LLM judge wrongly rejects 2/14 correct operators. The unmodified mechanism transfers across model families (Qwen3.6-35B-A3B main; Mistral-Small-24B, Llama-3.3-70B, Gemma-3-27B also self-extend).",
+        "zh": "可答集增长：Merchant 10→336、BookSQL 15→162、EHRSQL（MIMIC-III）13→248；仅内层循环就把覆盖面约扩为三倍（13 个起始集平均 +18.3）。闸门健全性在 14 个被准入算子的全部单点突变体上测得：非相关参照下 0/138 缺陷变体被准入（两个实现带同一缺陷的相关最坏情形下 10/138），对照 admit-if-it-runs 129/138、self-consistency 129/138、压缩法 101/138；LLM 裁判还错误拒绝 2/14 个正确算子。机制不做修改即跨模型家族迁移（主模型 Qwen3.6-35B-A3B；Mistral-Small-24B、Llama-3.3-70B、Gemma-3-27B 也能自我扩展）。"
+      },
+      "limits": {
+        "en": "The mode (most-frequent-value) reducer is permanently unreachable because no conservation law exists for it; only up to 3 induction rounds were tested; 81% of admission rejections come from sandbox-forbidden method calls; one adversarial escape exists (a size-changing merge bug admitted when the witnessing relation names a bare builtin instead of a trusted operator); seeds centre on the per-group aggregation family; Gemma-3-27B self-extends on only one of its seeds (13% DSL compile rate).",
+        "zh": "mode（众数）归约器永久不可达，因为不存在对应的守恒律；只测了至多 3 轮归纳；81% 的准入拒绝源于沙箱禁用的方法调用；存在一例对抗逃逸（见证关系引用裸内建函数而非受信任算子时，改变尺寸的合并缺陷被准入）；种子集中在按组聚合族；Gemma-3-27B 只在一个种子上自我扩展（DSL 编译率 13%）。"
+      },
+      "availability": {
+        "en": "Supplementary material promised in the paper (DSL and its tests, both agent loops with exact prompts, generator and study scripts); no separate public repository URL found in the HTML; synthetic corpora regenerate from aggregate parameters without proprietary data; arXiv non-exclusive license only.",
+        "zh": "论文承诺补充材料（DSL 及其测试、两个代理循环的完整提示词、生成与研究脚本）；HTML 中未发现独立公开仓库链接；合成语料可由聚合参数再生成，无需专有数据；仅 arXiv 非独占许可。"
+      },
+      "application": {
+        "en": "A template for oracle-free gates on exact tasks: dual independent implementations plus a conservation law replace held-out labels, directly usable where nanoRSI has verifiable invariants but no gold panel. Equally portable is the audit protocol - generate every single-point mutant of an accepted edit and measure the false-admit rate of the gate - which would give the counterfactual/challenge gate a published-style soundness score.",
+        "zh": "精确任务上无 oracle 闸门的范本：双独立实现加守恒律替代留出标签，可直接用于 nanoRSI 有可验证不变量但无金标面板的场景。同样可移植的是审计协议——对每条被接受的编辑生成全部单点突变体并测闸门误准入率——可为反事实/挑战闸门给出论文级健全性分数。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.20809",
+          "url": "https://arxiv.org/abs/2610.20809"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.20809v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/self-dsl-oracle-free-operators-fig1.png",
+        "source_url": "https://arxiv.org/html/2610.20809v1/method_overview.png",
+        "locator": "Figure 1 (method_overview.png), arXiv HTML 2610.20809v1",
+        "caption": {
+          "en": "Original Figure 1: the two nested loops run by one frozen model with no ground-truth oracle and no judge - the inner loop expands the answerable set inside fixed operators, the outer loop inducts new operators under the oracle-free admission gate.",
+          "zh": "原图 1：单一冻结模型跑的双层循环，无金标 oracle、无裁判——内层在固定算子内扩张可答集，外层在无 oracle 准入闸门下归纳新算子。"
+        }
+      },
+      "last_verified": "2026-10-18",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "causalevo-causal-skill-credit",
+      "title": "CausalEvo: Causal Skill Self-Evolution for Health LLM Agents",
+      "organizations": [
+        "University of Texas Health Science Center at Houston"
+      ],
+      "published": "2026-10-14",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-14; accepted to the GenAI for Health Workshop @ NeurIPS 2026, Sydney (workshop acceptance is not a first-publication date).",
+        "zh": "arXiv v1 于 2026-10-14 提交；被 NeurIPS 2026 GenAI for Health 研讨会（悉尼）接收（研讨会接收不作为首发日期）。"
+      },
+      "affiliation": {
+        "en": "Sole author Yuchen Zhang - The University of Texas Health Science Center at Houston (UTH.TMC email in the HTML author block).",
+        "zh": "单作者 Yuchen Zhang——休斯敦德克萨斯大学健康科学中心（HTML 作者块的 UTH.TMC 邮箱）。"
+      },
+      "mechanism": {
+        "en": "A frozen LLM proposes two new skill rules per step, pooled with the four incumbents into a candidate set where the incumbent always remains selectable. Skill value is estimated causally rather than by raw panel scores: for each directed edge of a randomly relabeled cycle over the pool, the same feedback case is run twice with a shared background of k-1 rules, swapping only the exchanged rule (equal rule counts separate content from size effects); a zero-sum constrained least-squares solve turns the paired score differences into relative skill values, and selection is lexicographic - highest summed value, ties resolved toward overlap with the incumbent set. A decision-loss bound decomposes error into candidate support, approximation (rule interactions beyond a first-order projection) and estimation terms, with an explicit counterexample where exact coefficients still select suboptimally under complementarity.",
+        "zh": "冻结 LLM 每步提出两条新技能规则，与四条在位规则合并为候选集（在位者永远可选）。技能价值用因果方式估计而非裸面板分数：在候选集的随机重标环上，对每条有向边用相同反馈案例跑两次——共享 k-1 条背景规则、只交换被换的那条（等规则数把内容效应与规模效应分开）；零和约束的最小二乘把成对分数差解为相对技能价值，选择按字典序——先总和最高、平局偏向在位集合。决策损失界把误差分解为候选支撑、逼近（超出线性投影的规则交互）与估计三部分，并给出精确系数仍会因互补性选错的显式反例。"
+      },
+      "result": {
+        "en": "On six MedCalc-Bench-Verified tasks (120 held-out cases, 20 per task, thinking-off DeepSeek V4 Flash 0731): CausalEvo 60.00% vs SkillOpt 55.83% vs no-skill 51.67%, with 55.6% fewer training tokens (2.203M vs 4.961M; 336 vs 839 requests) and a 180-word final skill versus SkillOpt’s 999. Credit-assignment ablation on a separate 24-case set: 70.83% vs 62.50% with shuffled credit (+8.33pp, interval includes zero).",
+        "zh": "在六个 MedCalc-Bench-Verified 任务上（120 留出例、每任务 20、DeepSeek V4 Flash 0731 关思考）：CausalEvo 60.00% 对 SkillOpt 55.83% 对无技能 51.67%，训练 token 少 55.6%（2.203M 对 4.961M；336 对 839 次请求），终版技能 180 词对 999 词。信用分配消融（独立 24 例集）：70.83% 对打乱信用 62.50%（+8.33pp，区间含零）。"
+      },
+      "limits": {
+        "en": "Gains concentrate almost entirely in Cockcroft-Gault (+9 cases) while the other five tasks net -4; Child-Pugh regresses 50%->30% and no-skill beats both methods there; not significant after Holm correction (paired intervals include zero, vs SkillOpt [-5.00, 13.33]); immediate learning acquisition is negative (-3.33pp); single training trajectory per method with differing budgets/backends/skill lengths; possible overfitting to the 3-case feedback panels; disputed reference labels; no clinical validation.",
+        "zh": "增益几乎全部集中在 Cockcroft-Gault（+9 例），其余五任务合计 -4；Child-Pugh 从 50% 回退到 30%，且该任务无技能基线胜过两个方法；Holm 校正后不显著（配对区间含零，对 SkillOpt [-5.00, 13.33])；即时学习获取为负（-3.33pp）；每方法单条训练轨迹且预算/后端/技能长度不一；可能过拟合 3 例反馈面板；参考标签存在争议；无临床验证。"
+      },
+      "availability": {
+        "en": "Repository github.com/txbrook/CausalEvo exists (live 2026-10-18) but ships the manuscript source and a math checker only - the paper states complete training code and raw responses are not currently included; no license file (treat as all-rights-reserved); paper CC BY 4.0; MedCalc-Bench-Verified under CC-BY-SA-4.0.",
+        "zh": "仓库 github.com/txbrook/CausalEvo 存在（2026-10-18 在线）但仅含手稿源码与数学检查器——论文明言完整训练代码与原始响应暂未包含；无 LICENSE 文件（按保留所有权利对待）；论文 CC BY 4.0；MedCalc-Bench-Verified 为 CC-BY-SA-4.0。"
+      },
+      "application": {
+        "en": "Paired exchanges against a shared background are a cheap attribution layer for the skills gate: score candidate edits in matched pairs instead of trusting raw panel deltas, so a skill is promoted for its marginal contribution rather than panel noise; the paper’s reporting pattern (per-task concentration named, Holm correction applied, single-trajectory caveat) is the honesty standard the selector study should match.",
+        "zh": "共享背景下的成对交换是技能闸门上廉价的归因层：让候选编辑按配对方式计分而非信任裸面板差值，使技能因边际贡献而非面板噪声晋升；论文的报告范式（点名增益集中任务、做 Holm 校正、声明单轨迹局限）正是选择器研究应对齐的诚实标准。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.21016",
+          "url": "https://arxiv.org/abs/2610.21016"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.21016v1"
+        },
+        {
+          "kind": "repository",
+          "label": "CausalEvo code",
+          "url": "https://github.com/txbrook/CausalEvo"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/causalevo-skill-credit-fig1.png",
+        "source_url": "https://arxiv.org/html/2610.21016v1/figures/causalevo_overview.png",
+        "locator": "Figure 1 (figures/causalevo_overview.png), arXiv HTML 2610.21016v1",
+        "caption": {
+          "en": "Original Figure 1: the method pipeline - candidate rule pool, fixed-capacity paired exchanges against shared backgrounds, least-squares credit estimation, incumbent-favouring top-k selection.",
+          "zh": "原图 1：方法流水线——候选规则池、共享背景下定容量成对交换、最小二乘信用估计、偏向在位者的 top-k 选择。"
+        }
+      },
+      "last_verified": "2026-10-18",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "terminal-rsi-rewrite-refine",
+      "title": "Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine",
+      "organizations": [
+        "Tencent Hy Frontier",
+        "National University of Singapore",
+        "University of Maryland",
+        "University of Georgia",
+        "Indiana University"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "parameter-learning",
+      "family": "experience-distillation",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-15; 28 pages, 16 figures, 5 tables.",
+        "zh": "arXiv v1 于 2026-10-15 提交；28 页、16 图、5 表。"
+      },
+      "affiliation": {
+        "en": "Junyao Yang (Tencent Hy Frontier / NUS), Zongxia Li (Tencent Hy Frontier / UMD), Yucheng Shi (Tencent Hy Frontier), Zhongzhi Li (Tencent Hy Frontier / UGA), Ruhan Wang (Tencent Hy Frontier / Indiana), Ruiwen Zhou (NUS), Haitao Mi (Tencent Hy Frontier), Shuicheng Yan (NUS, corresponding with Leowei Liang), Leowei Liang (Tencent Hy Frontier, corresponding) - read from the HTML author block and footnote superscripts.",
+        "zh": "Junyao Yang（腾讯 Hy Frontier / 新加坡国立大学）、Zongxia Li（腾讯 Hy Frontier / 马里兰大学）、Yucheng Shi（腾讯 Hy Frontier）、Zhongzhi Li（腾讯 Hy Frontier / 佐治亚大学）、Ruhan Wang（腾讯 Hy Frontier / 印第安纳大学）、Ruiwen Zhou（新加坡国立大学）、Haitao Mi（腾讯 Hy Frontier）、Shuicheng Yan（新加坡国立大学，与 Leowei Liang 共同通讯）、Leowei Liang（腾讯 Hy Frontier，通讯）——依 HTML 作者块与脚注上标注读出。"
+      },
+      "mechanism": {
+        "en": "Five stages from a Qwen3.8-27B base: RSR-1 -> RPR-1 -> RSR-2 -> RPR-2. Recursive Self-Rewrite (RSR, actor-only) discovers verified trajectories (retained only when the verifier passes), plans runbooks with the retained actor, screens them through a leakage/reviewer gate, executes fresh replays under the target harness and trains by SFT on the cleaned trajectories with critic weights frozen. Recursive Policy-Refine (RPR, joint actor-critic) runs PPO with a critic inherited from the previous phase and recalibrated by four critic-only updates first; asymmetric clipping [0.30, 5.00], no KL or entropy terms. Turn-Boundary Skip-Observation GAE gives token-specific baselines with turn-level decay while observation tokens condition values without being recursion nodes; Family Dense Reward calibrates semantic progress across task families and Success-Prioritized Reward separates strict success from bounded partial credit.",
+        "zh": "从 Qwen3.8-27B 基座起五个阶段：RSR-1 → RPR-1 → RSR-2 → RPR-2。递归自重写（RSR，仅演员）发现验证通过的轨迹（仅在验证器通过时保留）、用保留演员规划 runbook、经泄漏/审查闸门筛查、在目标 harness 下执行全新重放，并在清洗后的轨迹上做 SFT，critic 权重冻结。递归策略精炼（RPR，演员-critic 联合）跑 PPO，critic 继承上一阶段并先经四步仅 critic 更新重校准；非对称裁剪 [0.30, 5.00]，无 KL 与熵项。回合边界跳观测 GAE 在 token 级基线上加回合级衰减，观测 token 只条件化价值而不作递归节点；家族稠密奖励跨任务族校准语义进展，成功优先奖励把严格成功与有界部分得分分开。"
+      },
+      "result": {
+        "en": "Every retained stage checkpoint is evaluated on all benchmarks (Mean@3): Terminal-Bench 4.0 0.00 -> 6.10 -> 16.67 -> 17.46 -> 19.84%; TB-2.1 51.70 -> 86.52%; TB-3.0 0.00 -> 16.95%; TB-Hard 31.00 -> 79.00%; LHTB process reward 0.21 -> 0.37 with strict completions 0/46 -> 5/46; SWR100 success doubles 3.00% -> 6.00%. External references at the final stage: 19.84% TB-4.0 vs 19.70% Gemini 3.8 Flash and 14.60% DeepSeek V4 Pro; 86.52% TB-2.1 vs 85.40% GPT-6 Sol and 85.00% Kimi K3. A direct-PPO control is included.",
+        "zh": "每个被保留的阶段检查点在全部基准上评测（Mean@3）：Terminal-Bench 4.0 0.00→6.10→16.67→17.46→19.84%；TB-2.1 51.70→86.52%；TB-3.0 0.00→16.95%；TB-Hard 31.00→79.00%；LHTB 过程奖励 0.21→0.37、严格完成 0/46→5/46；SWR100 成功率翻倍 3.00%→6.00%。终阶段外部参照：TB-4.0 19.84% 对 Gemini 3.8 Flash 19.70%、DeepSeek V4 Pro 14.60%；TB-2.1 86.52% 对 GPT-6 Sol 85.40%、Kimi K3 85.00%。含直接 PPO 对照。"
+      },
+      "limits": {
+        "en": "Authors’ own caveats: no compute-matched alternation, TB-GAE not deployed in isolation, and stage-specific hyperparameters co-vary with the stage effect; three evaluation runs are not independent training seeds; checkpoint selection lacks a protected validation set; verification coverage has gaps (a Rust-C case passes fuzz tests but fails on native architecture); one 27B backbone only; SWR100 plateaus.",
+        "zh": "作者自陈局限：无算力对齐的交替实验、TB-GAE 未单独消融、各阶段超参数与阶段效应共变；三次评测运行不等于独立训练种子；检查点选择无受保护验证集；验证覆盖有缺口（Rust-C 案例过模糊测试但在原生架构上失败）；仅一个 27B 基座；SWR100 走平。"
+      },
+      "availability": {
+        "en": "Paper CC BY 4.0; project page jyyang26.github.io/terminal-rsi live; the code URL printed in the paper (github.com/jyyang26/Terminal-RSI) returns 404 as of 2026-10-18; the printed Hugging Face organization Teriminal-RSI exists but hosts no public models yet (org spelling as printed).",
+        "zh": "论文 CC BY 4.0；项目页 jyyang26.github.io/terminal-rsi 在线；论文所印代码 URL（github.com/jyyang26/Terminal-RSI）截至 2026-10-18 返回 404；所印 Hugging Face 组织 Teriminal-RSI 存在但尚无公开模型（组织名拼写照原文）。"
+      },
+      "application": {
+        "en": "The weights-side alternation is beyond nanoRSI’s local budget, but two protocols transfer directly: evaluate every retained intermediate checkpoint on the frozen panel and final test (the stage-ladder reporting the multiseed selector study should adopt), and separate strict success from bounded partial credit in reward shaping (the panel/final-test split nanoRSI already enforces). Critic inheritance across self-rewrite rounds is the published pattern for keeping value estimates stable while the data distribution shifts under self-modification.",
+        "zh": "权重侧交替超出 nanoRSI 本地预算，但两个协议可直接迁移：每个被保留的中间检查点都在冻结面板与终测上评测（多种子选择器研究应采用的阶梯报告），以及奖励整形中把严格成功与有界部分得分分开（nanoRSI 已有的面板/终测切分）。跨自重写轮次的 critic 继承是数据分布在自我修改下漂移时保持价值估计稳定的已发表模式。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.22192",
+          "url": "https://arxiv.org/abs/2610.22192"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.22192v1"
+        },
+        {
+          "kind": "project-page",
+          "label": "Terminal-RSI project page",
+          "url": "https://jyyang26.github.io/terminal-rsi/"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/terminal-rsi-recursive-loop-fig2.png",
+        "source_url": "https://arxiv.org/html/2610.22192v1/terminal_rsi_overall_from_ppt.png",
+        "locator": "Figure 2 (terminal_rsi_overall_from_ppt.png), arXiv HTML 2610.22192v1",
+        "caption": {
+          "en": "Original Figure 2: the recursive loop carries critic weights through supervised transitions - blue blocks distinguish actor-only RSR from joint actor-critic RPR, the bypass preserves the critic, and feedback returns the retained policy to the next cycle.",
+          "zh": "原图 2：递归循环让 critic 权重穿越监督过渡——蓝色块区分仅演员的 RSR 与演员-critic 联合的 RPR，旁路保持 critic，反馈把被保留的策略送回下一循环。"
+        }
+      },
+      "last_verified": "2026-10-18",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "rsiflow-evolving-meta-agent",
+      "title": "RSIFlow: Adaptive Self-Improvement Workflows with an Evolving Meta-Agent",
+      "organizations": [
+        "Beihang University"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "self-modifying-meta-agents",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-15; code repository pushed through 2026-10-13.",
+        "zh": "arXiv v1 于 2026-10-15 提交；代码仓库推送至 2026-10-13。"
+      },
+      "affiliation": {
+        "en": "Huan Zhang*, Mingju Chen*, Dongxu Zhou, Can Lv, Sen Cui, Faguo Wu, Shiji Zhou (corresponding) - Beijing Advanced Innovation Center for Future Blockchain and Privacy Computing, School of Artificial Intelligence, Beihang University (*equal contribution; affiliations read from the HTML author block).",
+        "zh": "Huan Zhang*、Mingju Chen*、Dongxu Zhou、Can Lv、Sen Cui、Faguo Wu、Shiji Zhou（通讯）——北京航空航天大学人工智能学院、未来区块链与隐私计算北京前沿创新中心（*同等贡献；机构依 HTML 作者块读出）。"
+      },
+      "mechanism": {
+        "en": "A Task-Agent (Qwen3-4B/8B) executes tasks and collects trajectories and environmental feedback; a Meta-Agent (GPT-5.6 Sol) diagnoses which component is the current bottleneck and adaptively selects a component-specific improvement workflow - model update (partial LoRA with fixed one-epoch hyperparameters and global batch 8), harness update, or task-artifact revision. The meta-level recursion: workflow outcomes are distilled into component-specific skills plus cross-component principles, which are integrated into the Meta-Harness (the meta-agent’s own orchestration layer) so later rounds diagnose and orchestrate better - meta-agent parameters never update. Five evolution rounds, at most two attempts per round.",
+        "zh": "任务智能体（Qwen3-4B/8B）执行任务并收集轨迹与环境反馈；元智能体（GPT-5.6 Sol）诊断当前瓶颈部件，自适应选择部件专属的改进工作流——模型更新（固定单 epoch 超参与全局批 8 的局部 LoRA）、harness 更新或任务产物修订。元层递归在于：工作流结果被蒸馏为部件专属技能与跨部件原则，并整合进 Meta-Harness（元智能体自己的编排层），使后续轮次诊断与编排更好——元智能体参数从不更新。共五轮演化，每轮至多两次尝试。"
+      },
+      "result": {
+        "en": "Overall averages across six benchmarks (HumanEval+, MBPP+, BFCL-v3, ACEBench, HotpotQA, 2Wiki): Qwen3-4B 51.21 vs SIA 45.15, Hyperagent 41.26, AFlow 40.73 (and SFT 41.12, GRPO 42.04, HarnessForge 41.22, MermaidFlow 43.59); Qwen3-8B 59.86 vs SIA 56.00, AFlow 54.27. Ablations (4B, R=5): +13.72 three-domain average over vanilla; adaptive orchestration beats the best fixed-component routine by 4.13-8.81 on average; disabling meta-agent evolution costs 5.74 points.",
+        "zh": "六基准（HumanEval+、MBPP+、BFCL-v3、ACEBench、HotpotQA、2Wiki）总体均值：Qwen3-4B 51.21 对 SIA 45.15、Hyperagent 41.26、AFlow 40.73（另 SFT 41.12、GRPO 42.04、HarnessForge 41.22、MermaidFlow 43.59）；Qwen3-8B 59.86 对 SIA 56.00、AFlow 54.27。消融（4B、R=5）：相对原始版本三域均值 +13.72；自适应编排平均超最佳固定部件流程 4.13–8.81；关闭元智能体演化损失 5.74 点。"
+      },
+      "limits": {
+        "en": "Task-agent backbones limited to Qwen3-4B/8B (cluster scale and larger backbones unexplored); the meta loop adds computational overhead and a cheaper meta-agent may compromise evolution gains; stability of experience-driven Meta-Harness updates is not fully investigated (authors name counterfactual analysis and meta-agent parameter optimization as future work); headroom on these benchmarks is crowded with strong baselines.",
+        "zh": "任务侧基座仅 Qwen3-4B/8B（集群规模与更大基座未探索）；元环带来额外计算开销，更廉价的元智能体可能折损演化收益；经验驱动的 Meta-Harness 更新稳定性未充分研究（作者把反事实分析与元智能体参数优化列为未来工作）；这些基准上强基线密集、余量有限。"
+      },
+      "availability": {
+        "en": "MIT-licensed code at github.com/1HUAN1/RSI-Flow (license verified via API 2026-10-18).",
+        "zh": "代码 MIT 许可，位于 github.com/1HUAN1/RSI-Flow（2026-10-18 经 API 核验许可）。"
+      },
+      "application": {
+        "en": "Bottleneck-diagnosis routing is a selector design for nanoRSI’s loop: before mutating anything, classify which surface (skill text, harness code, evaluator artifact) is the binding constraint and apply surface-specific operators, instead of spending the attempt budget on the wrong surface. Distilling orchestration outcomes into reusable meta-skills mirrors ADOPTION #53 for the skills track, and the paper’s fixed-vs-adaptive ablation is the exact control a surface-routing proposal would need.",
+        "zh": "瓶颈诊断路由是 nanoRSI 主循环的一种选择器设计：先分类哪个面（技能文本、harness 代码、评测器产物）是约束瓶颈，再施加该面专属算子，而不是把尝试预算花在错误面上。把编排结果蒸馏为可复用元技能与 ADOPTION #53 在技能轨对应；论文的固定对自适应消融正是面路由提案需要的对照。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.21791",
+          "url": "https://arxiv.org/abs/2610.21791"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.21791v1"
+        },
+        {
+          "kind": "repository",
+          "label": "RSI-Flow code",
+          "url": "https://github.com/1HUAN1/RSI-Flow"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/rsiflow-evolving-meta-agent-fig2.png",
+        "source_url": "https://arxiv.org/html/2610.21791v1/Overview.png",
+        "locator": "Figure 2 (Overview.png), arXiv HTML 2610.21791v1",
+        "caption": {
+          "en": "Original Figure 2 overview: task domains and the Task-Agent, trajectory collection, the Meta-Agent adaptively orchestrating component-specific workflows (model / harness / artifacts), and intervention experience distilled into skills that update the Meta-Harness.",
+          "zh": "原图 2 总览：任务域与任务智能体、轨迹收集、元智能体自适应编排部件专属工作流（模型/harness/产物）、干预经验蒸馏为技能并更新 Meta-Harness。"
+        }
+      },
+      "last_verified": "2026-10-18",
       "local_reproduction": "not-run"
     }
   ]

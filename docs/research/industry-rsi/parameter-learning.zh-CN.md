@@ -9,7 +9,7 @@
 | [自博弈与课程任务生成](#family-self-play-curriculum) | 14 |
 | [验证器与奖励进化](#family-verifier-reward) | 5 |
 | [技能-权重共进化](#family-skill-weight-coevolution) | 4 |
-| [经验蒸馏与测试时适应](#family-experience-distillation) | 7 |
+| [经验蒸馏与测试时适应](#family-experience-distillation) | 8 |
 | [自主训练智能体与数据管线](#family-autonomous-training) | 8 |
 | [支撑性适应机制](#family-enabling-adaptation) | 7 |
 
@@ -717,7 +717,37 @@
 
 <a id="family-experience-distillation"></a>
 
-## 经验蒸馏与测试时适应 (7)
+## 经验蒸馏与测试时适应 (8)
+
+<a id="terminal-rsi-rewrite-refine"></a>
+
+### Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine
+
+**2026-10-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-15 提交；28 页、16 图、5 表。
+
+**机构关系** — Junyao Yang（腾讯 Hy Frontier / 新加坡国立大学）、Zongxia Li（腾讯 Hy Frontier / 马里兰大学）、Yucheng Shi（腾讯 Hy Frontier）、Zhongzhi Li（腾讯 Hy Frontier / 佐治亚大学）、Ruhan Wang（腾讯 Hy Frontier / 印第安纳大学）、Ruiwen Zhou（新加坡国立大学）、Haitao Mi（腾讯 Hy Frontier）、Shuicheng Yan（新加坡国立大学，与 Leowei Liang 共同通讯）、Leowei Liang（腾讯 Hy Frontier，通讯）——依 HTML 作者块与脚注上标注读出。
+
+**改变对象与反馈复用** — 从 Qwen3.8-27B 基座起五个阶段：RSR-1 → RPR-1 → RSR-2 → RPR-2。递归自重写（RSR，仅演员）发现验证通过的轨迹（仅在验证器通过时保留）、用保留演员规划 runbook、经泄漏/审查闸门筛查、在目标 harness 下执行全新重放，并在清洗后的轨迹上做 SFT，critic 权重冻结。递归策略精炼（RPR，演员-critic 联合）跑 PPO，critic 继承上一阶段并先经四步仅 critic 更新重校准；非对称裁剪 [0.30, 5.00]，无 KL 与熵项。回合边界跳观测 GAE 在 token 级基线上加回合级衰减，观测 token 只条件化价值而不作递归节点；家族稠密奖励跨任务族校准语义进展，成功优先奖励把严格成功与有界部分得分分开。
+
+**作者报告结果** — 每个被保留的阶段检查点在全部基准上评测（Mean@3）：Terminal-Bench 4.0 0.00→6.10→16.67→17.46→19.84%；TB-2.1 51.70→86.52%；TB-3.0 0.00→16.95%；TB-Hard 31.00→79.00%；LHTB 过程奖励 0.21→0.37、严格完成 0/46→5/46；SWR100 成功率翻倍 3.00%→6.00%。终阶段外部参照：TB-4.0 19.84% 对 Gemini 3.8 Flash 19.70%、DeepSeek V4 Pro 14.60%；TB-2.1 86.52% 对 GPT-6 Sol 85.40%、Kimi K3 85.00%。含直接 PPO 对照。
+
+**证据边界** — 作者自陈局限：无算力对齐的交替实验、TB-GAE 未单独消融、各阶段超参数与阶段效应共变；三次评测运行不等于独立训练种子；检查点选择无受保护验证集；验证覆盖有缺口（Rust-C 案例过模糊测试但在原生架构上失败）；仅一个 27B 基座；SWR100 走平。
+
+**代码／权重／数据／许可** — 论文 CC BY 4.0；项目页 jyyang26.github.io/terminal-rsi 在线；论文所印代码 URL（github.com/jyyang26/Terminal-RSI）截至 2026-10-18 返回 404；所印 Hugging Face 组织 Teriminal-RSI 存在但尚无公开模型（组织名拼写照原文）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 权重侧交替超出 nanoRSI 本地预算，但两个协议可直接迁移：每个被保留的中间检查点都在冻结面板与终测上评测（多种子选择器研究应采用的阶梯报告），以及奖励整形中把严格成功与有界部分得分分开（nanoRSI 已有的面板/终测切分）。跨自重写轮次的 critic 继承是数据分布在自我修改下漂移时保持价值估计稳定的已发表模式。
+
+![原图 2：递归循环让 critic 权重穿越监督过渡——蓝色块区分仅演员的 RSR 与演员-critic 联合的 RPR，旁路保持 critic，反馈把被保留的策略送回下一循环。](assets/paper-figures/terminal-rsi-recursive-loop-fig2.png)
+
+**原文图／官方图片** — 原图 2：递归循环让 critic 权重穿越监督过渡——蓝色块区分仅演员的 RSR 与演员-critic 联合的 RPR，旁路保持 critic，反馈把被保留的策略送回下一循环。 · Figure 2 (terminal_rsi_overall_from_ppt.png), arXiv HTML 2610.22192v1 · [source](https://arxiv.org/html/2610.22192v1/terminal_rsi_overall_from_ppt.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-18.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.22192](https://arxiv.org/abs/2610.22192) · [arXiv HTML v1](https://arxiv.org/html/2610.22192v1) · [Terminal-RSI project page](https://jyyang26.github.io/terminal-rsi/)
 
 <a id="mass-multi-agent-self-supervision"></a>
 
