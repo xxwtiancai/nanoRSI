@@ -20,7 +20,13 @@ class Proposal:
     changed_paths: list[str]
 
 
-def load_proposal(directory: Path, include: list[str] | None = None, deny: list[str] | None = None, *, allow_noop=False) -> Proposal:
+def edit_lines(diff: str) -> int:
+    """Count add/delete payload lines in a unified diff (headers excluded)."""
+    return sum(1 for line in diff.splitlines()
+               if (line.startswith("+") or line.startswith("-")) and not line.startswith(("+++", "---")))
+
+
+def load_proposal(directory: Path, include: list[str] | None = None, deny: list[str] | None = None, *, allow_noop=False, max_edit_lines: int = 0) -> Proposal:
     diff_path = directory / "proposal.diff"
     hypothesis_path = directory / "hypothesis.json"
     try:
@@ -32,6 +38,10 @@ def load_proposal(directory: Path, include: list[str] | None = None, deny: list[
         raise ProposalError("proposal requires hypothesis.json and a non-empty diff")
     if not diff.strip():
         return Proposal(hypothesis, diff, [])
+    if max_edit_lines and edit_lines(diff) > max_edit_lines:
+        # ADOPTION 53 textual learning rate: over-budget edits fail the attempt
+        # and surface as negative feedback through the rejected-edit memory.
+        raise ProposalError(f"proposal exceeds edit budget: {edit_lines(diff)} changed lines > {max_edit_lines}")
     try:
         paths = changed_paths_from_unified_diff(diff)
         if include is not None:
@@ -62,4 +72,6 @@ def run_proposer(config: Config, parent: Path, output: Path, context: dict, *, e
     if (output / "usage.json").is_file():
         from .evaluator import _validate_usage
         _validate_usage(json.loads((output / "usage.json").read_text()), "proposal usage")
-    return load_proposal(output, config.surface.allow, config.surface.deny, allow_noop=config.experiment.schema_version == 2)
+    return load_proposal(output, config.surface.allow, config.surface.deny,
+                         allow_noop=config.experiment.schema_version == 2,
+                         max_edit_lines=config.proposer.max_edit_lines)

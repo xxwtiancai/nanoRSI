@@ -6,10 +6,8 @@ from urllib.parse import urlsplit
 from dataclasses import dataclass, field
 from pathlib import Path
 
-
 class ConfigError(ValueError):
     pass
-
 
 def validate_endpoint(value: str) -> str:
     try:
@@ -23,7 +21,6 @@ def validate_endpoint(value: str) -> str:
     except ValueError as error:
         raise ConfigError('agent.base_url must be an HTTP(S) URL without credentials, query or fragment') from error
     return value.rstrip('/')
-
 
 def credential_path(root: Path, value: str) -> Path:
     if not isinstance(value, str) or not value or not Path(value).is_absolute():
@@ -65,6 +62,9 @@ class CommandConfig:
 
 
 @dataclass(frozen=True)
+class ProposerConfig(CommandConfig):
+    max_edit_lines: int = 0  # ADOPTION 53 textual learning rate; 0 = unbounded.
+@dataclass(frozen=True)
 class EvaluatorConfig:
     command: list[str]
     timeout_s: int
@@ -94,7 +94,7 @@ class BudgetConfig:
 class Config:
     experiment: ExperimentConfig
     surface: SurfaceConfig
-    proposer: CommandConfig
+    proposer: ProposerConfig
     evaluator: EvaluatorConfig
     gate: GateConfig
     budget: BudgetConfig
@@ -262,6 +262,11 @@ def load_config(path: Path) -> Config:
     return _build(path, experiment, surface, proposer, evaluator, gate, budget, training, raw, agent, data)
 
 
+def _proposer(proposer: dict) -> ProposerConfig:
+    base = _command(proposer.get("command"), "proposer", _integer(proposer.get("timeout_s", 60), "proposer.timeout_s"))
+    return ProposerConfig(base.command, base.timeout_s, _integer(proposer.get("max_edit_lines", 0), "proposer.max_edit_lines", 0))
+
+
 def _build(path, experiment, surface, proposer, evaluator, gate, budget, training, raw, agent, data):
     mode = experiment["mode"]
     allow = surface["allow"]
@@ -269,7 +274,7 @@ def _build(path, experiment, surface, proposer, evaluator, gate, budget, trainin
         ExperimentConfig(str(experiment.get("id", path.parent.name)), str(experiment.get("goal", "")), mode,
                          experiment.get("schema_version", 1), _integer(experiment.get("seed", 0), "seed", 0), experiment.get("arm", "frozen"), _final_conditions(experiment)),
         SurfaceConfig([str(x) for x in allow], [str(x) for x in surface.get("deny", [])]),
-        _command(proposer.get("command"), "proposer", _integer(proposer.get("timeout_s", 60), "proposer.timeout_s")),
+        _proposer(proposer),
         EvaluatorConfig(
             _command(evaluator.get("command"), "evaluator", int(evaluator.get("timeout_s", 60))).command,
             _integer(evaluator.get("timeout_s", 60), "evaluator.timeout_s"),

@@ -34,6 +34,9 @@ def comparison_hash(root, config):
         gate.pop("noise_band")
     else:
         gate = asdict(config.gate)
+    proposer = asdict(config.proposer)
+    if not proposer.get("max_edit_lines"):  # An unbounded edit budget is inert machinery.
+        proposer.pop("max_edit_lines")
     return canonical_hash({
         "contract_version": 2,
         "mode": config.experiment.mode,
@@ -44,7 +47,7 @@ def comparison_hash(root, config):
         "initial_target": source_hash(root / "target"),
         "initial_checkpoint": source_hash(contained_path(root, config.training["checkpoint"])) if config.training else None,
         "agent": agent, "training": config.training,
-        "surface": asdict(config.surface), "proposer": asdict(config.proposer),
+        "surface": asdict(config.surface), "proposer": proposer,
         "evaluator": evaluator, "gate": gate,
         "budget": asdict(config.budget), "safety": config.safety,
     })
