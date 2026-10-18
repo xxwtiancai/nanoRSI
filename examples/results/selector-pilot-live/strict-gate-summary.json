@@ -1,0 +1,46 @@
+{
+  "changes": [
+    {
+      "attempt_id": 1,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "The failed episode lost by exhausting its step budget on an unprincipled sweep of every cabinet without opening them first and without prioritizing likely locations. Adding plausibility-ordered search, mandatory opening of closed receptacles, no-revisit discipline, a step budget, and chain planning (transform then deliver directly to the goal receptacle) should reduce wasted actions in unseen search-heavy episodes while leaving already-won task types unchanged."
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": 0.0,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement below minimum: 0.000000"
+    },
+    {
+      "attempt_id": 2,
+      "changed_paths": [],
+      "constraints": null,
+      "decision": "no-op",
+      "diagnosis": null,
+      "metric": {
+        "candidate": null,
+        "delta": null,
+        "direction": "maximize",
+        "name": "score",
+        "parent": null
+      },
+      "reason": "proposal and training change no files"
+    }
+  ],
+  "decisions": {
+    "no-op": 1,
+    "rejected": 1
+  },
+  "revision_count": 2,
+  "schema_version": 1
+}

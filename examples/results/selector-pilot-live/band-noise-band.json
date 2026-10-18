@@ -1,0 +1,48 @@
+{
+  "configured_gate_band": 0.13,
+  "final_repeats": {
+    "conditions": {
+      "baseline": {
+        "flip_rate": 0.0,
+        "score_spread": null,
+        "tasks": 12,
+        "unstable_tasks": 0
+      },
+      "candidate": {
+        "flip_rate": 0.0,
+        "score_spread": null,
+        "tasks": 12,
+        "unstable_tasks": 0
+      },
+      "no-skills": {
+        "flip_rate": 0.0,
+        "score_spread": null,
+        "tasks": 12,
+        "unstable_tasks": 0
+      }
+    },
+    "largest_band": null,
+    "schema_version": 1,
+    "source": "final-repeats"
+  },
+  "note": "derived read-only from repeats already recorded; apply via [gate] noise_band (opt-in, default keeps the strict gate)",
+  "parent_remeasures": {
+    "by_parent_generation": {
+      "0": {
+        "max": 1.0,
+        "min": 0.875,
+        "n": 3,
+        "spread": 0.125,
+        "values": [
+          0.875,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "largest_band": 0.125,
+    "schema_version": 1,
+    "source": "parent-remeasures"
+  },
+  "schema_version": 1
+}

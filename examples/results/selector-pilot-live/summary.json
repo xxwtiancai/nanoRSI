@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "study": "selector-pilot-live",
+  "created_at": "2026-10-19T09:30:00+08:00",
+  "question": "First live instantiation of the selector-study protocol: on real noisy ALFWorld episodes at the headroom-respecting panel size (validation 8), does a noise-band arm differ from the strict control gate, and what does the double-scoring accounting show?",
+  "design": {
+    "grid": "reduced pilot: one seed, two arms, two attempts (the protocol's full 3x3 grid remains the definitive study)",
+    "arms": {"control": "strict gate (noise_band 0)", "selector": "noise_band 0.13 (the measured one-game swing on 8-game validation)"},
+    "task": "ALFWorld flash, --train 8 --validation 8, frozen 6-seen + 6-unseen test panel",
+    "rationale": "the 2026-10-18 pilot was stopped by the protocol's headroom precondition at validation 4; this redesign keeps one game of headroom (baseline 0.875 on both arms)"
+  },
+  "results": {
+    "strict": {"validation_baseline": 0.875, "attempts": [{"attempt": 1, "decision": "rejected", "tie": true}], "accepted": 0,
+               "final": {"baseline": 1.0, "no_skills": 0.8333, "candidate": 1.0},
+               "double_scoring": {"agree": 1, "false_blocks": 0, "false_admits": 0}},
+    "noise-band-0.13": {"validation_baseline": 0.875, "attempts": [{"attempt": 1, "decision": "rejected", "tie": true}, {"attempt": 2, "decision": "rejected", "tie": true}], "accepted": 0,
+                        "final": {"baseline": 0.75, "no_skills": 0.9167, "candidate": 0.8333},
+                        "double_scoring": {"agree": 2, "false_blocks": 0, "false_admits": 0}}
+  },
+  "verdict": "DEGENERATE COMPARISON, HONESTLY NULL: no proposal cleared even the strict gate on either arm (all ties at 0.875), so the noise band never bound - zero false-blocks because there was nothing to block. The binding constraint at this scale is proposal quality, not gate noise sensitivity. The cross-arm final panels differ by up to two games with identical initial skills, reproducing the known single-draw noise. The pilot's value is machinery: the protocol ran live end-to-end (headroom check, two arms, lifecycle, freeze/final, verify, double-scoring accounting) and the full 3-seed study now has a costed, working template.",
+  "usage": {
+    "proposer": {"strict": {"model_calls": 2, "input_tokens": 8120, "output_tokens": 772},
+                  "band": {"model_calls": 2, "input_tokens": 8384, "output_tokens": 1239}},
+    "final_test": {"strict": 419, "band": 456},
+    "cost_usd": null
+  },
+  "limits": "One seed, two attempts, flash tier, single final repeat per condition. A degenerate selector comparison cannot inform selector design; it does establish that at this proposer tier and panel, gaining acceptance at all is the hard step. Next live study needs more attempts, a stronger proposer, or tasks where single edits move multiple games."
+}

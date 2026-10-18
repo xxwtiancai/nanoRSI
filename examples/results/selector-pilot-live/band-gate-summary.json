@@ -1,0 +1,51 @@
+{
+  "changes": [
+    {
+      "attempt_id": 1,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "The failed episode exhausted all steps searching cabinets without opening receptacles or prioritizing likely locations, leaving no budget to pick and place the object. Prioritized search order, opening containers on arrival, step-budget awareness, and task-type planning are general behaviors that should reduce wasted actions and timeouts on unseen episodes."
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": -0.125,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 1.0
+      },
+      "reason": "improvement below noise-adjusted minimum: -0.125000 (band 0.130000)"
+    },
+    {
+      "attempt_id": 2,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "reason": "The failed kettle episode burned all 24 steps hopping between cabinets without opening most of them and never left budget to pick/clean/place. The new guidance adds pipeline planning under a step budget, mandatory opening of closed receptacles on arrival, likely-location-first search order, and no-revisiting rules, which should cut wasted exploration and leave moves to complete the task on unseen episodes."
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": -0.125,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 1.0
+      },
+      "reason": "improvement below noise-adjusted minimum: -0.125000 (band 0.130000)"
+    }
+  ],
+  "decisions": {
+    "rejected": 2
+  },
+  "revision_count": 2,
+  "schema_version": 1
+}
