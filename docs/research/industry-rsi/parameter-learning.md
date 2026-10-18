@@ -7,9 +7,9 @@
 | Family | Records |
 | --- | ---: |
 | [Self-play & curriculum task generation](#family-self-play-curriculum) | 14 |
-| [Verifier- and reward-centric loops](#family-verifier-reward) | 5 |
+| [Verifier- and reward-centric loops](#family-verifier-reward) | 6 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 4 |
-| [Experience distillation & test-time adaptation](#family-experience-distillation) | 8 |
+| [Experience distillation & test-time adaptation](#family-experience-distillation) | 9 |
 | [Autonomous training agents & data pipelines](#family-autonomous-training) | 8 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
 
@@ -439,7 +439,37 @@
 
 <a id="family-verifier-reward"></a>
 
-## Verifier- and reward-centric loops (5)
+## Verifier- and reward-centric loops (6)
+
+<a id="rri-adversarial-rubric-repair"></a>
+
+### Recursive Reward Improvement via Adversarial Meta-Prompt Evolution
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15.
+
+**Institutional relationship** — Wei Dai (MIT), Qianchu Liu (Microsoft Research), Guanghui Qin (Microsoft Research), Xing Han (Johns Hopkins University), Tristan Naumann (Microsoft Research), Paul Pu Liang (MIT), Sheng Zhang (Microsoft Research) - affiliations read from the HTML author block.
+
+**What changes and how feedback is reused** — A proposer-solver RSI loop for expert tasks without answer keys (clinical report generation): the proposer generates tasks plus weighted rubrics from medical references; a frozen adversary answers each task twice - once as an exploit, once honestly - and the repair step rewrites the rubric, keeping only criteria that rank the honest answer above the exploit; patched rubrics are re-attacked in a hack-patch-admission loop; the solver trains with GRPO on rubric rewards; a meta-optimizer rewrites the proposer's generation prompts from training feedback and confirmed exploits.
+
+**Author-reported result** — HealthBench Professional, adjusted score with retrieval: RRI over Generation Only +10.9 points at 9B and +12.4 at 27B (at 27B the untrained 0.374 moves +1.8 under Generation Only but +14.2 under RRI); the all-self setting, with the frozen 9B serving every auxiliary role, gains +10.3. Full RRI 0.533 vs SibylSense 0.502, EvoRubrics 0.493, RaR-on-synthetic 0.433; orderings and margins hold under the benchmark's official GPT-5.4 judge. Writing +39.1 points at 9B (0.199->0.590), difficult tasks +18.6 vs +2.8 on typical. Out-of-domain at 27B: PRBench Hard +6.6 (0.189->0.255) and ProfBench +8.0 (0.345->0.425), versus a Generation-Only-trained Self-Improve arm at +1.2/+4.7 - most out-of-domain gain comes from repairing the reward; HealthBench Hard 0.246 vs 0.188 (Generation Only) and 0.143 (base).
+
+**Evidence limits** — The adversary still beats most repaired rubrics - after the first patch it finds a new exploit in 247 of 293 cases (each becomes the next round's target); admission rewrites shrink a fresh exploit's mean lead over the honest answer from 0.43 to 0.01 but the honest answer moves ahead on only about a third of tasks; without retrieval the all-self gain drops to +4.0; research tasks decline in the self-graded settings.
+
+**Code / weights / data / license** — Apache-2.0 code at github.com/DDVD233/RRI (license file verified via raw.githubusercontent.com 2026-10-19).
+
+**Possible nanoRSI experiment — not implemented here** — Hack-patch-admission is an evaluator-audit primitive for nanoRSI: before trusting a gain measured by criteria-style evaluation, require an adversary to produce an exploit artifact and check that the evaluator's criteria rank the honest artifact above the exploit; confirmed exploits feed a bounded criteria-repair step rather than a full evaluator rewrite. This is the rubric-side complement of the counterfactual panel.
+
+![Original Figure 1 overview: the frozen proposer writes tasks and weighted rubrics from references; the adversary produces an exploit and an honest answer; the patch step keeps criteria that separate them; the solver trains with GRPO on rubric rewards; training feedback and confirmed exploits return to the generation prompts.](assets/paper-figures/rri-overview.png)
+
+**Source figure / official image** — Original Figure 1 overview: the frozen proposer writes tasks and weighted rubrics from references; the adversary produces an exploit and an honest answer; the patch step keeps criteria that separate them; the solver trains with GRPO on rubric rewards; training feedback and confirmed exploits return to the generation prompts. · Figure 1 (RRIMed_main_figure.png), arXiv HTML 2610.21040v1 · [source](https://arxiv.org/html/2610.21040v1/RRIMed_main_figure.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-19.
+
+**Open code / weights / data links** — [RRI code](https://github.com/DDVD233/RRI) · [RRI LICENSE (Apache-2.0)](https://raw.githubusercontent.com/DDVD233/RRI/main/LICENSE)
+
+**Primary sources** — [arXiv abs 2610.21040](https://arxiv.org/abs/2610.21040) · [arXiv HTML v1](https://arxiv.org/html/2610.21040v1) · [RRI code](https://github.com/DDVD233/RRI) · [RRI LICENSE (Apache-2.0)](https://raw.githubusercontent.com/DDVD233/RRI/main/LICENSE)
 
 <a id="evors-reward-evolution"></a>
 
@@ -717,7 +747,7 @@
 
 <a id="family-experience-distillation"></a>
 
-## Experience distillation & test-time adaptation (8)
+## Experience distillation & test-time adaptation (9)
 
 <a id="terminal-rsi-rewrite-refine"></a>
 
@@ -748,6 +778,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abs 2610.22192](https://arxiv.org/abs/2610.22192) · [arXiv HTML v1](https://arxiv.org/html/2610.22192v1) · [Terminal-RSI project page](https://jyyang26.github.io/terminal-rsi/)
+
+<a id="metaexp-experience-capability"></a>
+
+### MetaExp: Learning to Self-Improve through Experience via Verifiable Cross-Task Environment Scaling
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15.
+
+**Institutional relationship** — Renhao Li (University of Macau; Shenzhen Institute of Advanced Technology CAS), Xinjie Shen (Georgia Tech), Yang Su, Jianhong Tu, Dayiheng Liu (Alibaba Token Hub, Alibaba Group), Derek F. Wong (University of Macau), Min Yang (SIAT CAS) - affiliations read from the HTML author block.
+
+**What changes and how feedback is reused** — Trains experience learning itself as a transferable model capability. Environments are scaled into verifiable task families with controlled cross-task structure: Shared-Tool families keep black-box tools fixed across tasks (eliciting operational experience) and Shared-Workflow families preserve a latent procedure across changing realizations (eliciting procedural experience). Sequential interaction and feedback-driven reflection trajectories are collected and filtered, and Qwen3.5-122B-A10B is fine-tuned on 4,956 trajectories from 1,000 families. At deployment the parameters stay frozen and experience accumulates from an empty bank on unseen task distributions.
+
+**Author-reported result** — With parameters frozen during downstream evolution: +8.5 points on SpreadsheetBench, peak +2.3 on APEX-Agents, +14.8 on AutomationBench over the matched backbone; gains persist under domain-excluded training (families from the evaluated domains removed) and extend to externally provided skills; the trained model consistently benefits more from accumulated experience than its matched backbone across heterogeneous held-out benchmarks.
+
+**Evidence limits** — Single trained backbone (Qwen3.5-122B-A10B); the APEX-Agents gain peaks at +2.3, the smallest of the three benchmarks; downstream evaluation always starts from an empty experience bank, so benefits of retaining experience across deployments are not measured; training relies on the two designed family structures, whose coverage of real task cross-structure is unquantified.
+
+**Code / weights / data / license** — No code or data repository linked in the paper's HTML; none found while verifying (not verified to exist).
+
+**Possible nanoRSI experiment — not implemented here** — Family-structured task splits are a design rule for nanoRSI's variant/counterfactual panels: organize training tasks into families that share a fixed tool or a latent workflow while varying realizations, so an accepted skill must generalize across the family rather than memorize instances - directly strengthening the cf-source-* counterfactual design and any future skills-transfer measurement.
+
+![Original Figure 1 overview: anchor seeds expanded into verifiable Shared-Tool / Shared-Workflow task families, family-interleaved task sequences producing execution and reflection trajectories that train the model, then frozen-parameter evaluation accumulating experience from an empty bank on unseen distributions.](assets/paper-figures/metaexp-framework.png)
+
+**Source figure / official image** — Original Figure 1 overview: anchor seeds expanded into verifiable Shared-Tool / Shared-Workflow task families, family-interleaved task sequences producing execution and reflection trajectories that train the model, then frozen-parameter evaluation accumulating experience from an empty bank on unseen distributions. · Figure 1 (framework.png), arXiv HTML 2610.21492v1 (section 3) · [source](https://arxiv.org/html/2610.21492v1/framework.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.21492](https://arxiv.org/abs/2610.21492) · [arXiv HTML v1](https://arxiv.org/html/2610.21492v1)
 
 <a id="mass-multi-agent-self-supervision"></a>
 

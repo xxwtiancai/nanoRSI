@@ -7,9 +7,9 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [自博弈与课程任务生成](#family-self-play-curriculum) | 14 |
-| [验证器与奖励进化](#family-verifier-reward) | 5 |
+| [验证器与奖励进化](#family-verifier-reward) | 6 |
 | [技能-权重共进化](#family-skill-weight-coevolution) | 4 |
-| [经验蒸馏与测试时适应](#family-experience-distillation) | 8 |
+| [经验蒸馏与测试时适应](#family-experience-distillation) | 9 |
 | [自主训练智能体与数据管线](#family-autonomous-training) | 8 |
 | [支撑性适应机制](#family-enabling-adaptation) | 7 |
 
@@ -439,7 +439,37 @@
 
 <a id="family-verifier-reward"></a>
 
-## 验证器与奖励进化 (5)
+## 验证器与奖励进化 (6)
+
+<a id="rri-adversarial-rubric-repair"></a>
+
+### Recursive Reward Improvement via Adversarial Meta-Prompt Evolution
+
+**2026-10-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-15 提交。
+
+**机构关系** — Wei Dai（MIT）、Qianchu Liu（微软研究院）、Guanghui Qin（微软研究院）、Xing Han（约翰霍普金斯大学）、Tristan Naumann（微软研究院）、Paul Pu Liang（MIT）、Sheng Zhang（微软研究院）——机构依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 面向无标准答案专业任务（临床报告生成）的提案者-求解者 RSI 环：提案者从医学参考资料生成任务与带权重的评分量表（rubric）；冻结的对抗者对每个任务作答两次——一次钻空子、一次诚实作答——修复步骤重写量表，只保留能将诚实答案排在钻空子答案之上的条目；修补后的量表在“攻击-修补-准入”环中被再攻击；求解者以 GRPO 在量表奖励上训练；元优化器依据训练反馈与已确认的攻击改写提案者的生成提示词。
+
+**作者报告结果** — HealthBench Professional（带检索的调整分）：RRI 相对 Generation Only 在 9B 上 +10.9 分、27B 上 +12.4 分（27B 未训练 0.374 在 Generation Only 下仅 +1.8，RRI 下 +14.2）；由冻结 9B 担纲全部辅助角色的 all-self 设置 +10.3。完整 RRI 0.533，对 SibylSense 0.502、EvoRubrics 0.493、合成任务 RaR 0.433；在基准官方 GPT-5.4 评判下排序与差距保持。写作类 9B +39.1 分（0.199→0.590）；难任务 +18.6 对普通任务 +2.8。27B 域外：PRBench Hard +6.6（0.189→0.255）、ProfBench +8.0（0.345→0.425），对以 Generation Only 数据训练的 Self-Improve 臂 +1.2/+4.7——域外增益主要来自修复奖励；HealthBench Hard 0.246 对 0.188/0.143。
+
+**证据边界** — 对抗者仍能攻破多数修补后的量表——首轮修补后 293 例中 247 例又找到新漏洞（每个成为下一轮目标）；准入改写把新漏洞对诚实答案的平均领先从 0.43 压到 0.01，但仅约三分之一任务上诚实答案反超；无检索时 all-self 增益降至 +4.0；自评设置下科研类任务下滑。
+
+**代码／权重／数据／许可** — 代码 Apache-2.0，位于 github.com/DDVD233/RRI（2026-10-19 经 raw.githubusercontent.com 核验许可文件）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — “攻击-修补-准入”是 nanoRSI 的评测器审计原语：在信任按判分标准测得的增益前，先要求对抗者产出钻空子产物，核验判分标准将诚实产物排在漏洞产物之上；已确认的漏洞进入有界的标准修补而非整体重写评测器。这是反事实面板在判分标准侧的补位。
+
+![原图 1 总览：冻结的提案者从参考资料写任务与带权量表；对抗者产出钻空子答案与诚实答案；修补步骤保留能区分二者的条目；求解者以 GRPO 在量表奖励上训练；训练反馈与已确认漏洞回流到生成提示词。](assets/paper-figures/rri-overview.png)
+
+**原文图／官方图片** — 原图 1 总览：冻结的提案者从参考资料写任务与带权量表；对抗者产出钻空子答案与诚实答案；修补步骤保留能区分二者的条目；求解者以 GRPO 在量表奖励上训练；训练反馈与已确认漏洞回流到生成提示词。 · Figure 1 (RRIMed_main_figure.png), arXiv HTML 2610.21040v1 · [source](https://arxiv.org/html/2610.21040v1/RRIMed_main_figure.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-19.
+
+**开源代码／权重／数据链接** — [RRI code](https://github.com/DDVD233/RRI) · [RRI LICENSE (Apache-2.0)](https://raw.githubusercontent.com/DDVD233/RRI/main/LICENSE)
+
+**一手来源** — [arXiv abs 2610.21040](https://arxiv.org/abs/2610.21040) · [arXiv HTML v1](https://arxiv.org/html/2610.21040v1) · [RRI code](https://github.com/DDVD233/RRI) · [RRI LICENSE (Apache-2.0)](https://raw.githubusercontent.com/DDVD233/RRI/main/LICENSE)
 
 <a id="evors-reward-evolution"></a>
 
@@ -717,7 +747,7 @@
 
 <a id="family-experience-distillation"></a>
 
-## 经验蒸馏与测试时适应 (8)
+## 经验蒸馏与测试时适应 (9)
 
 <a id="terminal-rsi-rewrite-refine"></a>
 
@@ -748,6 +778,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abs 2610.22192](https://arxiv.org/abs/2610.22192) · [arXiv HTML v1](https://arxiv.org/html/2610.22192v1) · [Terminal-RSI project page](https://jyyang26.github.io/terminal-rsi/)
+
+<a id="metaexp-experience-capability"></a>
+
+### MetaExp: Learning to Self-Improve through Experience via Verifiable Cross-Task Environment Scaling
+
+**2026-10-15** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-15 提交。
+
+**机构关系** — Renhao Li（澳门大学；中科院深圳先进技术研究院）、Xinjie Shen（佐治亚理工）、Yang Su、Jianhong Tu、Dayiheng Liu（阿里 Token Hub）、Derek F. Wong（澳门大学）、Min Yang（深圳先进院）——机构依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 把经验学习本身训练为可迁移的模型能力。环境被扩展为具有可控跨任务结构的可验证任务族：Shared-Tool 族跨任务固定黑盒工具（诱导操作型经验），Shared-Workflow 族在变化的任务实现中保持潜层流程（诱导流程型经验）。收集并过滤顺序交互与反馈驱动的反思轨迹，在来自 1,000 个任务族的 4,956 条轨迹上微调 Qwen3.5-122B-A10B。部署时参数冻结，经验在未见任务分布上从空库累积。
+
+**作者报告结果** — 下游演化期参数冻结：SpreadsheetBench +8.5 分、APEX-Agents 峰值 +2.3、AutomationBench +14.8（对匹配基座）；域排除训练（剔除被评测域的任务族）下增益保持，并延伸到外部供给的技能；在异质保留基准上，受训模型从累积经验中获得的收益持续高于其匹配基座。
+
+**证据边界** — 仅单一受训基座（Qwen3.5-122B-A10B）；APEX-Agents 增益峰值 +2.3，为三个基准中最小；下游评测一律从空经验库开始，未测跨部署保留经验的收益；训练依赖两种设计的族结构，其对真实任务跨结构的覆盖未量化。
+
+**代码／权重／数据／许可** — 论文 HTML 未链接代码或数据仓库；核验时未发现（未核验其存在）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 族结构任务切分是 nanoRSI 变体/反事实面板的设计规则：把训练任务组织成共享固定工具或潜层流程而任务实现变化的族，使被接受的技能必须跨族泛化而非记忆实例——直接加强 cf-source-* 反事实设计与未来的技能迁移度量。
+
+![原图 1 总览：锚点种子扩展为可验证的 Shared-Tool / Shared-Workflow 任务族，族间交错的任务序列产出执行与反思轨迹用于训练模型，随后冻结参数、在未见分布上从空库累积经验进行评测。](assets/paper-figures/metaexp-framework.png)
+
+**原文图／官方图片** — 原图 1 总览：锚点种子扩展为可验证的 Shared-Tool / Shared-Workflow 任务族，族间交错的任务序列产出执行与反思轨迹用于训练模型，随后冻结参数、在未见分布上从空库累积经验进行评测。 · Figure 1 (framework.png), arXiv HTML 2610.21492v1 (section 3) · [source](https://arxiv.org/html/2610.21492v1/framework.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-19.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.21492](https://arxiv.org/abs/2610.21492) · [arXiv HTML v1](https://arxiv.org/html/2610.21492v1)
 
 <a id="mass-multi-agent-self-supervision"></a>
 

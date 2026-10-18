@@ -10,7 +10,7 @@
 | [Experience accumulation & replay](#family-experience-accumulation) | 10 |
 | [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
-| [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 3 |
+| [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 4 |
 
 <a id="family-structured-knowledge"></a>
 
@@ -810,7 +810,37 @@
 
 <a id="family-memory-evolution-studies"></a>
 
-## Memory-evolution studies & benchmarks (3)
+## Memory-evolution studies & benchmarks (4)
+
+<a id="memscope-localized-memory-repair"></a>
+
+### MemScope: Evolving Agent Memory Architectures through Localized Code Repair
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15; first author line carries the State Key Laboratory of AI Safety (ICT CAS) affiliation.
+
+**Institutional relationship** — Miao Su, Yucan Guo, Zixuan Li, Long Bai, Zhongni Hou (Meituan), Jiafeng Guo - State Key Laboratory of AI Safety, Institute of Computing Technology CAS, and University of Chinese Academy of Sciences; affiliations read from the HTML author block.
+
+**What changes and how feedback is reused** — Memory is packaged as Agent Skills (a required SKILL.md plus an executable provider under scripts/, the activated provider maintaining its own runtime memory bank). A tool-using Patch Agent jointly inspects raw execution traces, the live memory state, the current provider code and the patch history, identifies a repair target, and applies a bounded in-place edit under provider-identity and memory-compatibility constraints - replacing a component rather than rewriting the architecture; each patch and its later outcome are recorded for subsequent evolution.
+
+**Author-reported result** — GAIA diagnostic ablation: trace-plus-memory inspection reaches 86.67% vs 70.00% trace-only and 63.33% summary-only feedback. Under matched sequential online evaluation (MemEvolve protocol): xBench 49->55 correct with DeepSeek V3.2 and 50->53 with Kimi K2.7 Code; GAIA 83.64% and xBench 78% vs 67.88% and 70% for MemEvolve + Flash-Searcher (DeepSeek V3.2); ALFWorld unseen tasks 50.75%->71.64%. Median code-change ratio across archived architecture-snapshot transitions: 4.4%.
+
+**Evidence limits** — Evolution targets a memory skill bank initialized from 12 human-designed MemEvolve/EvolveLab skills, so gains are measured on top of an inherited design; localization is enforced by constraints on the patch, not by a proof that the located region is the true fault; evaluation follows sequential online protocol with code persisting but memory resetting between episodes on xBench/ALFWorld, a specific comparability regime.
+
+**Code / weights / data / license** — No own code repository linked in the paper; external links found are to third-party assets (langfun, xbench) only (not verified to exist).
+
+**Possible nanoRSI experiment — not implemented here** — Evidence-grounded localization is a proposal-interface discipline for nanoRSI: let the proposer see execution traces, the runtime state it produced, the target code and prior patch outcomes together, and require bounded in-place edits with an explicit patch manifest (fault located, intended scope) instead of whole-file rewrites; the 4.4% median change ratio is the published reference point for what localized should mean.
+
+![Original Figure 2: (a) the Agent-Skills evolution target (SKILL.md plus executable provider with its runtime memory bank); (b) the MemScope loop - a Patch Agent inspecting traces, live memory, provider code and patch history to apply a localized in-place edit.](assets/paper-figures/memscope-method.png)
+
+**Source figure / official image** — Original Figure 2: (a) the Agent-Skills evolution target (SKILL.md plus executable provider with its runtime memory bank); (b) the MemScope loop - a Patch Agent inspecting traces, live memory, provider code and patch history to apply a localized in-place edit. · Figure 2 (method.png), arXiv HTML 2610.21170v1 · [source](https://arxiv.org/html/2610.21170v1/method.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.21170](https://arxiv.org/abs/2610.21170) · [arXiv HTML v1](https://arxiv.org/html/2610.21170v1)
 
 <a id="thinkflow-latent-memory"></a>
 

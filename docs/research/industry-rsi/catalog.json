@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-18",
-  "window_start": "2025-10-18",
+  "as_of": "2026-10-19",
+  "window_start": "2025-10-19",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -15158,6 +15158,352 @@
         }
       },
       "last_verified": "2026-10-18",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "metashare-failure-ledger",
+      "title": "MetaShare: Failure-Aware Collective Self-Improvement for Open-Ended Agents",
+      "organizations": [
+        "PricewaterhouseCoopers (PwC)"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "self-modifying-meta-agents",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-15; accepted at the NeurIPS 2026 workshop Managing Agents that Manage Agents: Workshop on Responsible Use of Meta-Agents (per abs comments).",
+        "zh": "arXiv v1 于 2026-10-15 提交；被 NeurIPS 2026 workshop “Managing Agents that Manage Agents: Workshop on Responsible Use of Meta-Agents” 接收（见 abs 页备注）。"
+      },
+      "affiliation": {
+        "en": "Vishal Bhutani, Prasang Gupta, Sumanth Chundru, Kevin Paul - all PricewaterhouseCoopers (PwC), pwc.com addresses read from the HTML author block.",
+        "zh": "Vishal Bhutani、Prasang Gupta、Sumanth Chundru、Kevin Paul——全部任职普华永道（PwC），机构依 HTML 作者块 pwc.com 邮箱读出。"
+      },
+      "mechanism": {
+        "en": "Every evaluated agent modification becomes a signed record (helped -> reuse, hurt -> avoid) in a bounded cross-lineage pool. Before each generation, failure-aware diverse retrieval rebuilds an adopt/avoid/must-try guidance context; K meta-agents then propose patches in parallel at heterogeneous temperatures behind a deterministic four-axis admissibility gate. A task-blind auditor periodically injects absent or underrepresented mechanism classes from a scrubbed digest, and embedding-based de-ranking limits retrieval redundancy.",
+        "zh": "每次被评测的智能体修改都成为一条带符号的记录（有帮助→复用，有损害→规避），存入有界的跨谱系池。每代生成前，失败感知的多样性检索重建“采纳/规避/必试”引导上下文；K 个元智能体以异构温度并行提案，经确定性的四轴准入闸门录取其一。任务盲审计器定期从脱敏摘要中注入缺失或代表性不足的机制类别；基于嵌入的去冗余排序限制检索重复。"
+      },
+      "result": {
+        "en": "Against DGM-H (five runs, medians with 95% bootstrap CI): paper review 0.71->0.79, Polyglot full 225 tasks 0.28->0.34, robotics reward design 0.37->0.40, three IMO-grading settings 0.61/0.64/0.60 -> 0.64/0.70/0.67, audit risk 0.45->0.55, while generations-to-best falls 1.7-2.9x (paper review 100->36, audit risk 44->26). On Polyglot small/medium, 0.912 [0.902, 0.922] over five runs within 10 iterations vs GEA's single-run 0.88 - read by the authors as competitive at lower iteration count, not a like-for-like win. Ablations: replacing true failure records with length-matched shuffled failures costs 0.07 (semantics, not tokens); removing the task-blind auditor costs 0.15; a compute-matched reference (pool disabled at k=3) isolates +0.11 validation accuracy and 19 fewer generations for the memory layer; the auditor reproducibly unlocks dynamic model selection (o3-mini -> GPT-4o-mini) that DGM-H, given the identical action, never proposes.",
+        "zh": "对 DGM-H（五次运行取中位数、95% bootstrap 置信区间）：论文评审 0.71→0.79、Polyglot 全量 225 任务 0.28→0.34、机器人奖励设计 0.37→0.40、三个 IMO 评分设置 0.61/0.64/0.60→0.64/0.70/0.67、审计风险 0.45→0.55，同时最优检查点出现代数下降 1.7–2.9 倍（论文评审 100→36、审计风险 44→26）。Polyglot 小/中集：五次运行 0.912 [0.902, 0.922]、10 次迭代内，对 GEA 单次运行 0.88——作者自述为更低迭代数下的竞争性而非同类对比胜利。消融：把真实失败记录换成长度匹配的打乱失败损失 0.07（语义而非 token）；移除任务盲审计器损失 0.15；算力匹配参照（k=3 时关闭池）分离出记忆层 +0.11 验证精度与少 19 代；审计器可复现地解锁动态模型选择（o3-mini→GPT-4o-mini），而拥有相同动作空间的 DGM-H 从未提出。"
+      },
+      "limits": {
+        "en": "DGM-H numbers on paper review, robotics and IMO are as reported by Zhang et al. (2026), not rerun, so the admissibility gate is not held fixed across arms on those domains; k=3 costs about 3x the self-modification tokens (a quality-and-speed claim, not token efficiency); NMAE regresses on two domains (0.175 vs 0.157 IMO-full, 0.357 vs 0.312 audit risk); the GEA comparison pits a five-run interval against a single point estimate.",
+        "zh": "论文评审、机器人与 IMO 上的 DGM-H 数字取自 Zhang et al. (2026) 报告值而非重跑，故这些域上两臂的准入闸门未保持一致；k=3 消耗约 3 倍自修改 token（是质量与速度主张，非 token 效率）；NMAE 在两个域回退（IMO-full 0.175 对 0.157、审计风险 0.357 对 0.312）；与 GEA 的对比是五次运行区间对单点估计。"
+      },
+      "availability": {
+        "en": "No code repository linked in the paper; none found while verifying (not verified to exist).",
+        "zh": "论文未链接代码仓库；核验时未发现（未核验其存在）。"
+      },
+      "application": {
+        "en": "The signed failure ledger with a shuffled-failure control is directly portable to nanoRSI's rejected_recent pool: store per-proposal signed deltas, retrieve them as avoid-guidance when steering the proposer, and run a length-matched shuffled-rejection arm to prove the ledger carries semantics rather than tokens; the task-blind must-try injection is a diversity mechanism for a proposal stream collapsing onto redundant edits.",
+        "zh": "带打乱失败对照的符号化失败账本可直接移植到 nanoRSI 的 rejected_recent 池：按提案存储带符号增益，引导提案器时作为规避信号检索，并跑长度匹配的打乱拒绝对照臂，证明账本承载语义而非 token；任务盲“必试”注入是防止提案流塌缩到冗余编辑的多样性机制。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.21887",
+          "url": "https://arxiv.org/abs/2610.21887"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.21887v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/metashare-architecture.png",
+        "source_url": "https://arxiv.org/html/2610.21887v1/arch.png",
+        "locator": "Figure 2 (arch.png), arXiv HTML 2610.21887v1",
+        "caption": {
+          "en": "Original Figure 2 architecture: one generation (signed guidance context, K parallel meta-agents, deterministic gate, apply-and-score) above the bounded cross-lineage pool of signed lessons with failure-aware diverse retrieval and the task-blind auditor's must-try injection.",
+          "zh": "原图 2 架构：上为一轮生成（符号引导上下文、K 个并行元智能体、确定性闸门、应用并评分），下为跨谱系有界符号教训池，含失败感知多样性检索与任务盲审计器的必试注入。"
+        }
+      },
+      "last_verified": "2026-10-19",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "rri-adversarial-rubric-repair",
+      "title": "Recursive Reward Improvement via Adversarial Meta-Prompt Evolution",
+      "organizations": [
+        "Massachusetts Institute of Technology",
+        "Microsoft Research",
+        "Johns Hopkins University"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "parameter-learning",
+      "family": "verifier-reward",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-15.",
+        "zh": "arXiv v1 于 2026-10-15 提交。"
+      },
+      "affiliation": {
+        "en": "Wei Dai (MIT), Qianchu Liu (Microsoft Research), Guanghui Qin (Microsoft Research), Xing Han (Johns Hopkins University), Tristan Naumann (Microsoft Research), Paul Pu Liang (MIT), Sheng Zhang (Microsoft Research) - affiliations read from the HTML author block.",
+        "zh": "Wei Dai（MIT）、Qianchu Liu（微软研究院）、Guanghui Qin（微软研究院）、Xing Han（约翰霍普金斯大学）、Tristan Naumann（微软研究院）、Paul Pu Liang（MIT）、Sheng Zhang（微软研究院）——机构依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "A proposer-solver RSI loop for expert tasks without answer keys (clinical report generation): the proposer generates tasks plus weighted rubrics from medical references; a frozen adversary answers each task twice - once as an exploit, once honestly - and the repair step rewrites the rubric, keeping only criteria that rank the honest answer above the exploit; patched rubrics are re-attacked in a hack-patch-admission loop; the solver trains with GRPO on rubric rewards; a meta-optimizer rewrites the proposer's generation prompts from training feedback and confirmed exploits.",
+        "zh": "面向无标准答案专业任务（临床报告生成）的提案者-求解者 RSI 环：提案者从医学参考资料生成任务与带权重的评分量表（rubric）；冻结的对抗者对每个任务作答两次——一次钻空子、一次诚实作答——修复步骤重写量表，只保留能将诚实答案排在钻空子答案之上的条目；修补后的量表在“攻击-修补-准入”环中被再攻击；求解者以 GRPO 在量表奖励上训练；元优化器依据训练反馈与已确认的攻击改写提案者的生成提示词。"
+      },
+      "result": {
+        "en": "HealthBench Professional, adjusted score with retrieval: RRI over Generation Only +10.9 points at 9B and +12.4 at 27B (at 27B the untrained 0.374 moves +1.8 under Generation Only but +14.2 under RRI); the all-self setting, with the frozen 9B serving every auxiliary role, gains +10.3. Full RRI 0.533 vs SibylSense 0.502, EvoRubrics 0.493, RaR-on-synthetic 0.433; orderings and margins hold under the benchmark's official GPT-5.4 judge. Writing +39.1 points at 9B (0.199->0.590), difficult tasks +18.6 vs +2.8 on typical. Out-of-domain at 27B: PRBench Hard +6.6 (0.189->0.255) and ProfBench +8.0 (0.345->0.425), versus a Generation-Only-trained Self-Improve arm at +1.2/+4.7 - most out-of-domain gain comes from repairing the reward; HealthBench Hard 0.246 vs 0.188 (Generation Only) and 0.143 (base).",
+        "zh": "HealthBench Professional（带检索的调整分）：RRI 相对 Generation Only 在 9B 上 +10.9 分、27B 上 +12.4 分（27B 未训练 0.374 在 Generation Only 下仅 +1.8，RRI 下 +14.2）；由冻结 9B 担纲全部辅助角色的 all-self 设置 +10.3。完整 RRI 0.533，对 SibylSense 0.502、EvoRubrics 0.493、合成任务 RaR 0.433；在基准官方 GPT-5.4 评判下排序与差距保持。写作类 9B +39.1 分（0.199→0.590）；难任务 +18.6 对普通任务 +2.8。27B 域外：PRBench Hard +6.6（0.189→0.255）、ProfBench +8.0（0.345→0.425），对以 Generation Only 数据训练的 Self-Improve 臂 +1.2/+4.7——域外增益主要来自修复奖励；HealthBench Hard 0.246 对 0.188/0.143。"
+      },
+      "limits": {
+        "en": "The adversary still beats most repaired rubrics - after the first patch it finds a new exploit in 247 of 293 cases (each becomes the next round's target); admission rewrites shrink a fresh exploit's mean lead over the honest answer from 0.43 to 0.01 but the honest answer moves ahead on only about a third of tasks; without retrieval the all-self gain drops to +4.0; research tasks decline in the self-graded settings.",
+        "zh": "对抗者仍能攻破多数修补后的量表——首轮修补后 293 例中 247 例又找到新漏洞（每个成为下一轮目标）；准入改写把新漏洞对诚实答案的平均领先从 0.43 压到 0.01，但仅约三分之一任务上诚实答案反超；无检索时 all-self 增益降至 +4.0；自评设置下科研类任务下滑。"
+      },
+      "availability": {
+        "en": "Apache-2.0 code at github.com/DDVD233/RRI (license file verified via raw.githubusercontent.com 2026-10-19).",
+        "zh": "代码 Apache-2.0，位于 github.com/DDVD233/RRI（2026-10-19 经 raw.githubusercontent.com 核验许可文件）。"
+      },
+      "application": {
+        "en": "Hack-patch-admission is an evaluator-audit primitive for nanoRSI: before trusting a gain measured by criteria-style evaluation, require an adversary to produce an exploit artifact and check that the evaluator's criteria rank the honest artifact above the exploit; confirmed exploits feed a bounded criteria-repair step rather than a full evaluator rewrite. This is the rubric-side complement of the counterfactual panel.",
+        "zh": "“攻击-修补-准入”是 nanoRSI 的评测器审计原语：在信任按判分标准测得的增益前，先要求对抗者产出钻空子产物，核验判分标准将诚实产物排在漏洞产物之上；已确认的漏洞进入有界的标准修补而非整体重写评测器。这是反事实面板在判分标准侧的补位。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.21040",
+          "url": "https://arxiv.org/abs/2610.21040"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.21040v1"
+        },
+        {
+          "kind": "repository",
+          "label": "RRI code",
+          "url": "https://github.com/DDVD233/RRI"
+        },
+        {
+          "kind": "license",
+          "label": "RRI LICENSE (Apache-2.0)",
+          "url": "https://raw.githubusercontent.com/DDVD233/RRI/main/LICENSE"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/rri-overview.png",
+        "source_url": "https://arxiv.org/html/2610.21040v1/RRIMed_main_figure.png",
+        "locator": "Figure 1 (RRIMed_main_figure.png), arXiv HTML 2610.21040v1",
+        "caption": {
+          "en": "Original Figure 1 overview: the frozen proposer writes tasks and weighted rubrics from references; the adversary produces an exploit and an honest answer; the patch step keeps criteria that separate them; the solver trains with GRPO on rubric rewards; training feedback and confirmed exploits return to the generation prompts.",
+          "zh": "原图 1 总览：冻结的提案者从参考资料写任务与带权量表；对抗者产出钻空子答案与诚实答案；修补步骤保留能区分二者的条目；求解者以 GRPO 在量表奖励上训练；训练反馈与已确认漏洞回流到生成提示词。"
+        }
+      },
+      "last_verified": "2026-10-19",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "memscope-localized-memory-repair",
+      "title": "MemScope: Evolving Agent Memory Architectures through Localized Code Repair",
+      "organizations": [
+        "Institute of Computing Technology, Chinese Academy of Sciences",
+        "University of Chinese Academy of Sciences",
+        "Meituan"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "memory-context",
+      "family": "memory-evolution-studies",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-15; first author line carries the State Key Laboratory of AI Safety (ICT CAS) affiliation.",
+        "zh": "arXiv v1 于 2026-10-15 提交；首行作者机构含人工智能安全全国重点实验室（中科院计算所）。"
+      },
+      "affiliation": {
+        "en": "Miao Su, Yucan Guo, Zixuan Li, Long Bai, Zhongni Hou (Meituan), Jiafeng Guo - State Key Laboratory of AI Safety, Institute of Computing Technology CAS, and University of Chinese Academy of Sciences; affiliations read from the HTML author block.",
+        "zh": "Miao Su、Yucan Guo、Zixuan Li、Long Bai、Zhongni Hou（美团）、Jiafeng Guo——人工智能安全全国重点实验室、中科院计算所、中国科学院大学；机构依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "Memory is packaged as Agent Skills (a required SKILL.md plus an executable provider under scripts/, the activated provider maintaining its own runtime memory bank). A tool-using Patch Agent jointly inspects raw execution traces, the live memory state, the current provider code and the patch history, identifies a repair target, and applies a bounded in-place edit under provider-identity and memory-compatibility constraints - replacing a component rather than rewriting the architecture; each patch and its later outcome are recorded for subsequent evolution.",
+        "zh": "记忆按 Agent Skills 形态打包（必备 SKILL.md 与 scripts/ 下可执行 provider，激活的 provider 维护自己的运行时记忆库）。会工具使用的 Patch Agent 联合检查原始执行轨迹、运行时记忆状态、当前 provider 代码与补丁历史，定位修复目标，并在 provider 身份不变与记忆兼容约束下施加有界的就地编辑——替换部件而非重写架构；每个补丁及其后续结果被记录用于后续演化。"
+      },
+      "result": {
+        "en": "GAIA diagnostic ablation: trace-plus-memory inspection reaches 86.67% vs 70.00% trace-only and 63.33% summary-only feedback. Under matched sequential online evaluation (MemEvolve protocol): xBench 49->55 correct with DeepSeek V3.2 and 50->53 with Kimi K2.7 Code; GAIA 83.64% and xBench 78% vs 67.88% and 70% for MemEvolve + Flash-Searcher (DeepSeek V3.2); ALFWorld unseen tasks 50.75%->71.64%. Median code-change ratio across archived architecture-snapshot transitions: 4.4%.",
+        "zh": "GAIA 诊断性消融：轨迹+记忆联合检查 86.67%，对纯轨迹 70.00% 与纯摘要 63.33%。匹配的顺序在线评测（MemEvolve 协议）下：xBench 用 DeepSeek V3.2 由 49 提升至 55、Kimi K2.7 Code 由 50 提升至 53；GAIA 83.64%、xBench 78%，对 MemEvolve + Flash-Searcher 的 67.88%/70%（DeepSeek V3.2）；ALFWorld 未见任务 50.75%→71.64%。归档架构快照间迁移的中位代码改动比例 4.4%。"
+      },
+      "limits": {
+        "en": "Evolution targets a memory skill bank initialized from 12 human-designed MemEvolve/EvolveLab skills, so gains are measured on top of an inherited design; localization is enforced by constraints on the patch, not by a proof that the located region is the true fault; evaluation follows sequential online protocol with code persisting but memory resetting between episodes on xBench/ALFWorld, a specific comparability regime.",
+        "zh": "演化的记忆技能库由 12 个人工设计的 MemEvolve/EvolveLab 技能初始化，增益是在继承设计之上测得的；局部性由补丁约束强制，而非证明定位区域即真实故障；评测遵循顺序在线协议，xBench/ALFWorld 上代码跨episode持久而记忆每episode重置，属特定可比性制度。"
+      },
+      "availability": {
+        "en": "No own code repository linked in the paper; external links found are to third-party assets (langfun, xbench) only (not verified to exist).",
+        "zh": "论文未链接自有代码仓库；发现的外链仅为第三方资产（langfun、xbench）（未核验自有代码存在）。"
+      },
+      "application": {
+        "en": "Evidence-grounded localization is a proposal-interface discipline for nanoRSI: let the proposer see execution traces, the runtime state it produced, the target code and prior patch outcomes together, and require bounded in-place edits with an explicit patch manifest (fault located, intended scope) instead of whole-file rewrites; the 4.4% median change ratio is the published reference point for what localized should mean.",
+        "zh": "证据接地的定位是 nanoRSI 的提案接口纪律：让提案者同时看到执行轨迹、其产出的运行时状态、目标代码与既往补丁结果，要求附带补丁清单（定位故障、预期范围）的有界就地编辑而非整文件重写；4.4% 的中位改动比例是“局部化”应有的已发表参考点。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.21170",
+          "url": "https://arxiv.org/abs/2610.21170"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.21170v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/memscope-method.png",
+        "source_url": "https://arxiv.org/html/2610.21170v1/method.png",
+        "locator": "Figure 2 (method.png), arXiv HTML 2610.21170v1",
+        "caption": {
+          "en": "Original Figure 2: (a) the Agent-Skills evolution target (SKILL.md plus executable provider with its runtime memory bank); (b) the MemScope loop - a Patch Agent inspecting traces, live memory, provider code and patch history to apply a localized in-place edit.",
+          "zh": "原图 2：(a) Agent Skills 形态的演化目标（SKILL.md + 可执行 provider 及其运行时记忆库）；(b) MemScope 环——Patch Agent 检查轨迹、活性记忆、provider 代码与补丁历史后施加局部就地编辑。"
+        }
+      },
+      "last_verified": "2026-10-19",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "metaexp-experience-capability",
+      "title": "MetaExp: Learning to Self-Improve through Experience via Verifiable Cross-Task Environment Scaling",
+      "organizations": [
+        "University of Macau",
+        "Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences",
+        "Georgia Institute of Technology",
+        "Alibaba Group"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "parameter-learning",
+      "family": "experience-distillation",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-15.",
+        "zh": "arXiv v1 于 2026-10-15 提交。"
+      },
+      "affiliation": {
+        "en": "Renhao Li (University of Macau; Shenzhen Institute of Advanced Technology CAS), Xinjie Shen (Georgia Tech), Yang Su, Jianhong Tu, Dayiheng Liu (Alibaba Token Hub, Alibaba Group), Derek F. Wong (University of Macau), Min Yang (SIAT CAS) - affiliations read from the HTML author block.",
+        "zh": "Renhao Li（澳门大学；中科院深圳先进技术研究院）、Xinjie Shen（佐治亚理工）、Yang Su、Jianhong Tu、Dayiheng Liu（阿里 Token Hub）、Derek F. Wong（澳门大学）、Min Yang（深圳先进院）——机构依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "Trains experience learning itself as a transferable model capability. Environments are scaled into verifiable task families with controlled cross-task structure: Shared-Tool families keep black-box tools fixed across tasks (eliciting operational experience) and Shared-Workflow families preserve a latent procedure across changing realizations (eliciting procedural experience). Sequential interaction and feedback-driven reflection trajectories are collected and filtered, and Qwen3.5-122B-A10B is fine-tuned on 4,956 trajectories from 1,000 families. At deployment the parameters stay frozen and experience accumulates from an empty bank on unseen task distributions.",
+        "zh": "把经验学习本身训练为可迁移的模型能力。环境被扩展为具有可控跨任务结构的可验证任务族：Shared-Tool 族跨任务固定黑盒工具（诱导操作型经验），Shared-Workflow 族在变化的任务实现中保持潜层流程（诱导流程型经验）。收集并过滤顺序交互与反馈驱动的反思轨迹，在来自 1,000 个任务族的 4,956 条轨迹上微调 Qwen3.5-122B-A10B。部署时参数冻结，经验在未见任务分布上从空库累积。"
+      },
+      "result": {
+        "en": "With parameters frozen during downstream evolution: +8.5 points on SpreadsheetBench, peak +2.3 on APEX-Agents, +14.8 on AutomationBench over the matched backbone; gains persist under domain-excluded training (families from the evaluated domains removed) and extend to externally provided skills; the trained model consistently benefits more from accumulated experience than its matched backbone across heterogeneous held-out benchmarks.",
+        "zh": "下游演化期参数冻结：SpreadsheetBench +8.5 分、APEX-Agents 峰值 +2.3、AutomationBench +14.8（对匹配基座）；域排除训练（剔除被评测域的任务族）下增益保持，并延伸到外部供给的技能；在异质保留基准上，受训模型从累积经验中获得的收益持续高于其匹配基座。"
+      },
+      "limits": {
+        "en": "Single trained backbone (Qwen3.5-122B-A10B); the APEX-Agents gain peaks at +2.3, the smallest of the three benchmarks; downstream evaluation always starts from an empty experience bank, so benefits of retaining experience across deployments are not measured; training relies on the two designed family structures, whose coverage of real task cross-structure is unquantified.",
+        "zh": "仅单一受训基座（Qwen3.5-122B-A10B）；APEX-Agents 增益峰值 +2.3，为三个基准中最小；下游评测一律从空经验库开始，未测跨部署保留经验的收益；训练依赖两种设计的族结构，其对真实任务跨结构的覆盖未量化。"
+      },
+      "availability": {
+        "en": "No code or data repository linked in the paper's HTML; none found while verifying (not verified to exist).",
+        "zh": "论文 HTML 未链接代码或数据仓库；核验时未发现（未核验其存在）。"
+      },
+      "application": {
+        "en": "Family-structured task splits are a design rule for nanoRSI's variant/counterfactual panels: organize training tasks into families that share a fixed tool or a latent workflow while varying realizations, so an accepted skill must generalize across the family rather than memorize instances - directly strengthening the cf-source-* counterfactual design and any future skills-transfer measurement.",
+        "zh": "族结构任务切分是 nanoRSI 变体/反事实面板的设计规则：把训练任务组织成共享固定工具或潜层流程而任务实现变化的族，使被接受的技能必须跨族泛化而非记忆实例——直接加强 cf-source-* 反事实设计与未来的技能迁移度量。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.21492",
+          "url": "https://arxiv.org/abs/2610.21492"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.21492v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/metaexp-framework.png",
+        "source_url": "https://arxiv.org/html/2610.21492v1/framework.png",
+        "locator": "Figure 1 (framework.png), arXiv HTML 2610.21492v1 (section 3)",
+        "caption": {
+          "en": "Original Figure 1 overview: anchor seeds expanded into verifiable Shared-Tool / Shared-Workflow task families, family-interleaved task sequences producing execution and reflection trajectories that train the model, then frozen-parameter evaluation accumulating experience from an empty bank on unseen distributions.",
+          "zh": "原图 1 总览：锚点种子扩展为可验证的 Shared-Tool / Shared-Workflow 任务族，族间交错的任务序列产出执行与反思轨迹用于训练模型，随后冻结参数、在未见分布上从空库累积经验进行评测。"
+        }
+      },
+      "last_verified": "2026-10-19",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "autosft-data-action-space",
+      "title": "AutoSFT: An Agentic System for Automated Data Research in Supervised Fine-Tuning",
+      "organizations": [
+        "Tsinghua University",
+        "University of Illinois Urbana-Champaign",
+        "ModelBest Inc.",
+        "The Chinese University of Hong Kong",
+        "Beijing University of Posts and Telecommunications"
+      ],
+      "published": "2026-10-15",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "autonomous-post-training",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-15; code repository announced in the paper existed at verification time but contained no source yet.",
+        "zh": "arXiv v1 于 2026-10-15 提交；论文公布的代码仓库核验时已存在但尚未包含源码。"
+      },
+      "affiliation": {
+        "en": "Bingxiang He, Pengqi Sun, Shihao Peng, Shaoxuan Li, Huiyu Xiao, Hongjian Shi, Zixuan Fu, Ziqing Qiao, Yuxin Zuo (UIUC), Cheng Qian (UIUC), Xinqiang Yu, Xiangyang Wang, Yudong Wang, Iofai Lei (Tsinghua), Yizhen Song (ModelBest), Xiusi Chen (CUHK), Jiayi Li (ModelBest), Ning Ding, Zhiyuan Liu, Xiaozhi Wang (Tsinghua; corresponding), Chaojun Xiao (BUPT) - affiliations read from the HTML author block.",
+        "zh": "Bingxiang He、Pengqi Sun、Shihao Peng、Shaoxuan Li、Huiyu Xiao、Hongjian Shi、Zixuan Fu、Ziqing Qiao、Yuxin Zuo（UIUC）、Cheng Qian（UIUC）、Xinqiang Yu、Xiangyang Wang、Yudong Wang、Iofai Lei（清华）、Yizhen Song（ModelBest）、Xiusi Chen（港中文）、Jiayi Li（ModelBest）、Ning Ding、Zhiyuan Liu、Xiaozhi Wang（清华，通讯）、Chaojun Xiao（北邮）——机构依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "Automated SFT data research over a full data action space - adjusting category proportions, pruning, repairing, replacing and synthesizing data - where prior systems allowed one action. A single-agent loop degenerates: it reaches only proportion adjustment while its context fills with execution output and is discarded mid-search. AutoSFT separates roles: a meta agent commits recipes; an executor trains and evaluates separately and returns artifact paths; analysis subagents read those artifacts from complementary angles; a synthesis subagent writes data for capabilities the pool cannot cover; all roles share a candidate data pool and a skill library, and every comparison retrains from the base model so each component's effect is individually attributable.",
+        "zh": "在完整数据动作空间——调整类别比例、剪枝、修复、替换与合成数据——上自动化 SFT 数据研究，此前系统只允许单一动作。单智能体环会退化：只做比例调整，上下文被执行输出填满并在搜索中途丢弃。AutoSFT 分离角色：元智能体提交配方；执行器独立训练与评测并返回产物路径；分析子智能体从互补角度读取产物；合成子智能体为池无法覆盖的能力写数据；所有角色共享候选数据池与技能库，且每次对照都从基座重训，使各组件效应可单独归因。"
+      },
+      "result": {
+        "en": "Component ladder (each addition helps, effects individually attributable since every round retrains from base): the executor halves context loss; analysis subagents lift best IFEval by +6.5; synthesis adds +3.4 IFEval and +2.9 IFBench; the same loop transfers to code, where analysis adds +3.7 MBPP+ over a single agent that does not improve.",
+        "zh": "组件阶梯（每轮从基座重训，故各效应可单独归因）：执行器使上下文丢失减半；分析子智能体将最佳 IFEval 提升 +6.5；合成再加 +3.4 IFEval 与 +2.9 IFBench；同一环路迁移到代码域，分析带来 +3.7 MBPP+，而单智能体在该域无改进。"
+      },
+      "limits": {
+        "en": "Findings are demonstrated on instruction-following and code data research with model, trainer and budget fixed within each comparison; the single-agent failure is partly a context-management artifact, so the claim is about covering diverse data actions rather than about scale; no external autonomous-post-training baseline (e.g. weights-side campaigns) is compared.",
+        "zh": "发现限于指令跟随与代码数据研究，各对照内模型、训练器与预算固定；单智能体失败部分是上下文管理问题，故主张是覆盖多样数据动作而非规模；未与外部自主后训练基线（如权重侧战役）对比。"
+      },
+      "availability": {
+        "en": "Repository github.com/Thinking-Space/AutoSFT is live but reads 'Source code coming soon.' with no license file found (checked 2026-10-19) - recorded as announced-but-not-yet-shipped.",
+        "zh": "仓库 github.com/Thinking-Space/AutoSFT 已上线但内容为“Source code coming soon.”，未发现许可文件（2026-10-19 核验）——如实记录为已宣布未放出。"
+      },
+      "application": {
+        "en": "The execution/analysis separation with artifact paths (instead of context dumps) is the interface pattern for nanoRSI's proposer whenever it must reason over long run outputs; the single-agent degeneration result is a design warning for any single-loop proposer given a broad edit surface - widen the action repertoire explicitly or the loop collapses onto one action type.",
+        "zh": "执行/分析分离并以产物路径（而非上下文倾倒）传递，是 nanoRSI 提案器在需要推理长运行输出时的接口范式；单智能体退化结果是对宽编辑面上任何单环提案器的设计警告——必须显式拓宽动作库，否则环路会塌缩到单一动作类型。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.22194",
+          "url": "https://arxiv.org/abs/2610.22194"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.22194v1"
+        },
+        {
+          "kind": "repository",
+          "label": "AutoSFT code (pending)",
+          "url": "https://github.com/Thinking-Space/AutoSFT"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/autosft-overview.png",
+        "source_url": "https://arxiv.org/html/2610.22194v1/AutoSFT_V26.png",
+        "locator": "Figure 1 (AutoSFT_V26.png), arXiv HTML 2610.22194v1",
+        "caption": {
+          "en": "Original Figure 1 overview: the meta agent commits a recipe; the executor trains and evaluates it separately and returns artifact paths; analysis subagents read artifacts from complementary angles; a synthesis subagent writes data for undersupplied capabilities; all roles share the candidate data pool and skill library.",
+          "zh": "原图 1 总览：元智能体提交配方；执行器独立训练与评测并返回产物路径；分析子智能体从互补角度读取产物；合成子智能体为供给不足的能力写数据；所有角色共享候选数据池与技能库。"
+        }
+      },
+      "last_verified": "2026-10-19",
       "local_reproduction": "not-run"
     }
   ]

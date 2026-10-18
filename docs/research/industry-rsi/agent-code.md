@@ -8,7 +8,7 @@
 | --- | ---: |
 | [Skill-file optimization & libraries](#family-skill-file-optimization) | 26 |
 | [Harness search & evolution](#family-harness-search) | 25 |
-| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 13 |
+| [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 14 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 10 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 6 |
 | [Safety & governance](#family-safety-governance) | 5 |
@@ -1553,7 +1553,7 @@
 
 <a id="family-self-modifying-meta-agents"></a>
 
-## Self-modifying meta-agents & lineages (13)
+## Self-modifying meta-agents & lineages (14)
 
 <a id="rsiflow-evolving-meta-agent"></a>
 
@@ -1584,6 +1584,36 @@
 **Open code / weights / data links** — [RSI-Flow code](https://github.com/1HUAN1/RSI-Flow)
 
 **Primary sources** — [arXiv abs 2610.21791](https://arxiv.org/abs/2610.21791) · [arXiv HTML v1](https://arxiv.org/html/2610.21791v1) · [RSI-Flow code](https://github.com/1HUAN1/RSI-Flow)
+
+<a id="metashare-failure-ledger"></a>
+
+### MetaShare: Failure-Aware Collective Self-Improvement for Open-Ended Agents
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15; accepted at the NeurIPS 2026 workshop Managing Agents that Manage Agents: Workshop on Responsible Use of Meta-Agents (per abs comments).
+
+**Institutional relationship** — Vishal Bhutani, Prasang Gupta, Sumanth Chundru, Kevin Paul - all PricewaterhouseCoopers (PwC), pwc.com addresses read from the HTML author block.
+
+**What changes and how feedback is reused** — Every evaluated agent modification becomes a signed record (helped -> reuse, hurt -> avoid) in a bounded cross-lineage pool. Before each generation, failure-aware diverse retrieval rebuilds an adopt/avoid/must-try guidance context; K meta-agents then propose patches in parallel at heterogeneous temperatures behind a deterministic four-axis admissibility gate. A task-blind auditor periodically injects absent or underrepresented mechanism classes from a scrubbed digest, and embedding-based de-ranking limits retrieval redundancy.
+
+**Author-reported result** — Against DGM-H (five runs, medians with 95% bootstrap CI): paper review 0.71->0.79, Polyglot full 225 tasks 0.28->0.34, robotics reward design 0.37->0.40, three IMO-grading settings 0.61/0.64/0.60 -> 0.64/0.70/0.67, audit risk 0.45->0.55, while generations-to-best falls 1.7-2.9x (paper review 100->36, audit risk 44->26). On Polyglot small/medium, 0.912 [0.902, 0.922] over five runs within 10 iterations vs GEA's single-run 0.88 - read by the authors as competitive at lower iteration count, not a like-for-like win. Ablations: replacing true failure records with length-matched shuffled failures costs 0.07 (semantics, not tokens); removing the task-blind auditor costs 0.15; a compute-matched reference (pool disabled at k=3) isolates +0.11 validation accuracy and 19 fewer generations for the memory layer; the auditor reproducibly unlocks dynamic model selection (o3-mini -> GPT-4o-mini) that DGM-H, given the identical action, never proposes.
+
+**Evidence limits** — DGM-H numbers on paper review, robotics and IMO are as reported by Zhang et al. (2026), not rerun, so the admissibility gate is not held fixed across arms on those domains; k=3 costs about 3x the self-modification tokens (a quality-and-speed claim, not token efficiency); NMAE regresses on two domains (0.175 vs 0.157 IMO-full, 0.357 vs 0.312 audit risk); the GEA comparison pits a five-run interval against a single point estimate.
+
+**Code / weights / data / license** — No code repository linked in the paper; none found while verifying (not verified to exist).
+
+**Possible nanoRSI experiment — not implemented here** — The signed failure ledger with a shuffled-failure control is directly portable to nanoRSI's rejected_recent pool: store per-proposal signed deltas, retrieve them as avoid-guidance when steering the proposer, and run a length-matched shuffled-rejection arm to prove the ledger carries semantics rather than tokens; the task-blind must-try injection is a diversity mechanism for a proposal stream collapsing onto redundant edits.
+
+![Original Figure 2 architecture: one generation (signed guidance context, K parallel meta-agents, deterministic gate, apply-and-score) above the bounded cross-lineage pool of signed lessons with failure-aware diverse retrieval and the task-blind auditor's must-try injection.](assets/paper-figures/metashare-architecture.png)
+
+**Source figure / official image** — Original Figure 2 architecture: one generation (signed guidance context, K parallel meta-agents, deterministic gate, apply-and-score) above the bounded cross-lineage pool of signed lessons with failure-aware diverse retrieval and the task-blind auditor's must-try injection. · Figure 2 (arch.png), arXiv HTML 2610.21887v1 · [source](https://arxiv.org/html/2610.21887v1/arch.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-19.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.21887](https://arxiv.org/abs/2610.21887) · [arXiv HTML v1](https://arxiv.org/html/2610.21887v1)
 
 <a id="specrsi-speculative-rsi"></a>
 

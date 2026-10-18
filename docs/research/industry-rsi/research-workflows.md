@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [AI-scientist systems](#family-ai-scientists) | 14 |
-| [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 4 |
+| [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 5 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
 | [Analyses & audits](#family-analyses-audits) | 19 |
@@ -439,7 +439,37 @@
 
 <a id="family-autonomous-post-training"></a>
 
-## Autonomous post-training & its evaluation (4)
+## Autonomous post-training & its evaluation (5)
+
+<a id="autosft-data-action-space"></a>
+
+### AutoSFT: An Agentic System for Automated Data Research in Supervised Fine-Tuning
+
+**2026-10-15** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15; code repository announced in the paper existed at verification time but contained no source yet.
+
+**Institutional relationship** — Bingxiang He, Pengqi Sun, Shihao Peng, Shaoxuan Li, Huiyu Xiao, Hongjian Shi, Zixuan Fu, Ziqing Qiao, Yuxin Zuo (UIUC), Cheng Qian (UIUC), Xinqiang Yu, Xiangyang Wang, Yudong Wang, Iofai Lei (Tsinghua), Yizhen Song (ModelBest), Xiusi Chen (CUHK), Jiayi Li (ModelBest), Ning Ding, Zhiyuan Liu, Xiaozhi Wang (Tsinghua; corresponding), Chaojun Xiao (BUPT) - affiliations read from the HTML author block.
+
+**What changes and how feedback is reused** — Automated SFT data research over a full data action space - adjusting category proportions, pruning, repairing, replacing and synthesizing data - where prior systems allowed one action. A single-agent loop degenerates: it reaches only proportion adjustment while its context fills with execution output and is discarded mid-search. AutoSFT separates roles: a meta agent commits recipes; an executor trains and evaluates separately and returns artifact paths; analysis subagents read those artifacts from complementary angles; a synthesis subagent writes data for capabilities the pool cannot cover; all roles share a candidate data pool and a skill library, and every comparison retrains from the base model so each component's effect is individually attributable.
+
+**Author-reported result** — Component ladder (each addition helps, effects individually attributable since every round retrains from base): the executor halves context loss; analysis subagents lift best IFEval by +6.5; synthesis adds +3.4 IFEval and +2.9 IFBench; the same loop transfers to code, where analysis adds +3.7 MBPP+ over a single agent that does not improve.
+
+**Evidence limits** — Findings are demonstrated on instruction-following and code data research with model, trainer and budget fixed within each comparison; the single-agent failure is partly a context-management artifact, so the claim is about covering diverse data actions rather than about scale; no external autonomous-post-training baseline (e.g. weights-side campaigns) is compared.
+
+**Code / weights / data / license** — Repository github.com/Thinking-Space/AutoSFT is live but reads 'Source code coming soon.' with no license file found (checked 2026-10-19) - recorded as announced-but-not-yet-shipped.
+
+**Possible nanoRSI experiment — not implemented here** — The execution/analysis separation with artifact paths (instead of context dumps) is the interface pattern for nanoRSI's proposer whenever it must reason over long run outputs; the single-agent degeneration result is a design warning for any single-loop proposer given a broad edit surface - widen the action repertoire explicitly or the loop collapses onto one action type.
+
+![Original Figure 1 overview: the meta agent commits a recipe; the executor trains and evaluates it separately and returns artifact paths; analysis subagents read artifacts from complementary angles; a synthesis subagent writes data for undersupplied capabilities; all roles share the candidate data pool and skill library.](assets/paper-figures/autosft-overview.png)
+
+**Source figure / official image** — Original Figure 1 overview: the meta agent commits a recipe; the executor trains and evaluates it separately and returns artifact paths; analysis subagents read artifacts from complementary angles; a synthesis subagent writes data for undersupplied capabilities; all roles share the candidate data pool and skill library. · Figure 1 (AutoSFT_V26.png), arXiv HTML 2610.22194v1 · [source](https://arxiv.org/html/2610.22194v1/AutoSFT_V26.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-19.
+
+**Open code / weights / data links** — [AutoSFT code (pending)](https://github.com/Thinking-Space/AutoSFT)
+
+**Primary sources** — [arXiv abs 2610.22194](https://arxiv.org/abs/2610.22194) · [arXiv HTML v1](https://arxiv.org/html/2610.22194v1) · [AutoSFT code (pending)](https://github.com/Thinking-Space/AutoSFT)
 
 <a id="athanor-autoposttrain"></a>
 
