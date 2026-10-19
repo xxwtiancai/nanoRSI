@@ -6,7 +6,7 @@
 
 | Family | Records |
 | --- | ---: |
-| [Self-play & curriculum task generation](#family-self-play-curriculum) | 14 |
+| [Self-play & curriculum task generation](#family-self-play-curriculum) | 15 |
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 6 |
 | [Skill-weight co-evolution](#family-skill-weight-coevolution) | 4 |
 | [Experience distillation & test-time adaptation](#family-experience-distillation) | 9 |
@@ -15,7 +15,37 @@
 
 <a id="family-self-play-curriculum"></a>
 
-## Self-play & curriculum task generation (14)
+## Self-play & curriculum task generation (15)
+
+<a id="r2orch-recursive-selfplay-orchestration"></a>
+
+### R$^2$Orch: Recursive Self-Improvement for Agent Orchestration via Self-Play within a Skill-Internalization Loop
+
+**2026-10-19** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15 23:21 UTC; announced in the 2026-10-19 batch (listing-verified; the OAI-PMH query for this id failed transiently twice), recorded as first public date.
+
+**Institutional relationship** — Mingda Zhang, Yun Huang, Na Zhao, Jian Wang, Xiaoying Tang (CUHK-Shenzhen), Qiang Huang, Rui Qian (Fudan University), Yanjin Li (UIUC), Qichao Zhao (Tsinghua University), Tiesunlong Shen (National University of Singapore) - read from the HTML author block.
+
+**What changes and how feedback is reused** — Two nested loops over a frozen Worker pool. Inner loop: Proposer-Director self-play on randomized rollout groups - the Proposer chooses tasks, the Director orchestrates Workers on them. Outer loop: skill withdrawal - failures are distilled into skills, skills are internalized into the Director by training, then withdrawn, so the orchestrator moves toward zero-skill deployment. Recursive Learnability is the training objective: reward the Proposer for tasks whose rollouts keep reaching different outcomes as skills are withdrawn, replacing hand-designed curricula, mitigating advantage collapse and single-noisy-score evaluation.
+
+**Author-reported result** — Twelve benchmarks across QA, math, code and interactive tasks (incl. AIME 2026, ALFWorld, WebShop; 128-item test sets disjoint from training): outperforms all baselines on every benchmark (five-run mean with std; baselines include uniform sampling, DAPO, SFL learnability, Absolute Zero solve-rate and R-Zero uncertainty proposer objectives); retains accuracy when tested at zero skills; the Director trained with Qwen3.5-9B Workers improves six other Worker backbones without retraining, narrowing the IID spread from 25.7 to 6.4 points.
+
+**Evidence limits** — Orchestrator-side learning only (Workers frozen during orchestration training); improvements measured on public benchmarks with 0/1 metrics; theory assumes the randomized rollout-group structure; anonymous repository content not verifiable by plain fetch.
+
+**Code / weights / data / license** — Anonymous repository anonymous.4open.science/r/R2Orch-36F1 stated in the paper; the link responds but its content requires JavaScript and was not verifiable by plain fetch (2026-10-20); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Skill withdrawal as a gate signal: periodically re-evaluate nanoRSI's accepted skills with the skill file removed from context; promote or retain only edits whose generation survives zero-skill evaluation, making context-crutch edits visible the way the counterfactual panel makes shortcut edits visible.
+
+![Original Figure 3 overview: Proposer-Director self-play (inner loop) and skill withdrawal (outer loop) share one randomized rollout group; Recursive Learnability rewards tasks whose outcomes keep differentiating as skills are withdrawn.](assets/paper-figures/r2orch-overview.png)
+
+**Source figure / official image** — Original Figure 3 overview: Proposer-Director self-play (inner loop) and skill withdrawal (outer loop) share one randomized rollout group; Recursive Learnability rewards tasks whose outcomes keep differentiating as skills are withdrawn. · Figure 3 (R2Orch-Figure3.png), arXiv HTML 2610.22740v1 · [source](https://arxiv.org/html/2610.22740v1/R2Orch-Figure3.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-20.
+
+**Open code / weights / data links** — [Anonymous code (JS-only)](https://anonymous.4open.science/r/R2Orch-36F1)
+
+**Primary sources** — [arXiv abs 2610.22740](https://arxiv.org/abs/2610.22740) · [arXiv HTML v1](https://arxiv.org/html/2610.22740v1) · [Anonymous code (JS-only)](https://anonymous.4open.science/r/R2Orch-36F1)
 
 <a id="stretch-unified-self-taught"></a>
 

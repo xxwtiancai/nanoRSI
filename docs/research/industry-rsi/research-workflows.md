@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [AI-scientist systems](#family-ai-scientists) | 14 |
+| [AI-scientist systems](#family-ai-scientists) | 15 |
 | [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 5 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 19 |
-| [Positions, roadmaps & labs](#family-positions-labs) | 6 |
+| [Analyses & audits](#family-analyses-audits) | 20 |
+| [Positions, roadmaps & labs](#family-positions-labs) | 7 |
 
 <a id="family-ai-scientists"></a>
 
-## AI-scientist systems (14)
+## AI-scientist systems (15)
+
+<a id="discoveryrsi-hypothesis-recursion"></a>
+
+### DiscoveryRSI: Recursively Learning to Discover Valuable Hypotheses
+
+**2026-10-19** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-16; announced in the 2026-10-19 batch (OAI-PMH datestamp 2026-10-19), recorded as first public date.
+
+**Institutional relationship** — 24 authors across 16 institutions; corresponding authors Leo Anthony Celi (Harvard Medical School / MIT), James Zou (Stanford), Zhenfei Yin (PhAI Labs / Oxford), Yingcheng Wu (PhAI Labs / Stanford), Ling Yang (PhAI Labs / Peking University / Princeton); equal contributions by Jianyuan Zhong, Chenwei Wu, Zhaochen Yu - read from the HTML affiliations block.
+
+**What changes and how feedback is reused** — Research trees of testable hypotheses developed by multi-agent evolutionary search, with selected computational investigations compiled into executable Harbor tasks carrying inputs, environments, required outputs and verification checks. Three coupled recursive mechanisms reuse retained research histories: hypothesis credit optimization attributes quality assessments to documented contributions and trains the model (DiscoveryRSI-27B); harness replay mines the same histories for productive strategies and recurring failures to refine coordination, evidence access and allocation; rediscovery applies accepted model and harness updates to fresh investigations, generating further experience.
+
+**Author-reported result** — Introduces DFM-Bench (hypotheses, revisions, development paths, research runs). Across four life-science domains, automated hypothesis quality rises from 4.86 (base model) to 5.39 after two self-improvement rounds, with the largest gains in falsifiability and data resolvability; evolve/repair action share rises from 77.5% to 91.7%. Blinded expert review of 292 proposals (clinicians and bioscience PhDs under three senior supervisors) rates DiscoveryRSI-27B above GPT-6 Luna on importance and on plausibility with evidence bounds; 6.3% of its hypotheses correspond to research published after the model cutoff, versus 2.5% for GPT-6 and 2.3% for Claude Opus 5; a battery-domain setting tests transfer beyond life science.
+
+**Evidence limits** — Post-cutoff hypothesis correspondence is a partial proxy for novelty; the expert assessment is described by the authors as preliminary; improvements are measured over two self-improvement rounds in life-science-plus-battery settings; automated DFM-Bench scores and human ratings are complementary rather than interchangeable.
+
+**Code / weights / data / license** — Apache-2.0 repository github.com/Gen-Verse/DiscoveryRSI live (LICENSE read from raw.githubusercontent.com main, 2026-10-20); model DiscoveryRSI-27B and a collection on Hugging Face; public arena site linked from the paper.
+
+**Possible nanoRSI experiment — not implemented here** — Harness replay is the transferable piece: a derived view over nanoRSI's evidence ledger that, after every N runs, aggregates recurring failure patterns across attempts and proposes loop-level changes (evaluation order, feedback format) rather than task-level edits - measurable as a second-order generation in the existing workspace protocol.
+
+![Original teaser figure (SVG rendered): the DiscoveryRSI loop - hypothesis trees developed by evolutionary search, compiled into executable Harbor tasks, with hypothesis credit optimization, harness replay and rediscovery feeding accepted improvements back into new investigations.](assets/paper-figures/discoveryrsi-fig1.png)
+
+**Source figure / official image** — Original teaser figure (SVG rendered): the DiscoveryRSI loop - hypothesis trees developed by evolutionary search, compiled into executable Harbor tasks, with hypothesis credit optimization, harness replay and rediscovery feeding accepted improvements back into new investigations. · Teaser figure (fig1_final.svg, rendered to PNG), arXiv HTML 2610.23839v1 · [source](https://arxiv.org/html/2610.23839v1/fig1_final.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-20.
+
+**Open code / weights / data links** — [Gen-Verse/DiscoveryRSI (Apache-2.0)](https://github.com/Gen-Verse/DiscoveryRSI) · [DiscoveryRSI LICENSE (Apache-2.0)](https://raw.githubusercontent.com/Gen-Verse/DiscoveryRSI/main/LICENSE)
+
+**Primary sources** — [arXiv abs 2610.23839](https://arxiv.org/abs/2610.23839) · [arXiv HTML v1](https://arxiv.org/html/2610.23839v1) · [Gen-Verse/DiscoveryRSI (Apache-2.0)](https://github.com/Gen-Verse/DiscoveryRSI) · [DiscoveryRSI LICENSE (Apache-2.0)](https://raw.githubusercontent.com/Gen-Verse/DiscoveryRSI/main/LICENSE) · [Hugging Face collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi)
 
 <a id="swarmrsi-evolving-swarm"></a>
 
@@ -901,7 +931,37 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (19)
+## Analyses & audits (20)
+
+<a id="cfoe-repair-generalization-gap"></a>
+
+### Self-Evolving Agents Can Repair Failures but Struggle to Generalize from Them
+
+**2026-10-19** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-16; announced in the 2026-10-19 batch (OAI-PMH datestamp 2026-10-19), recorded as first public date.
+
+**Institutional relationship** — Weixiang Zhao, Yichen Zhang (equal contribution), Yanyan Zhao, Jinming Bai, Bing Qin, Ting Liu (Harbin Institute of Technology), Bin Liang (The Chinese University of Hong Kong), Ruifeng Xu (Harbin Institute of Technology, Shenzhen) - read from the HTML author block.
+
+**What changes and how feedback is reused** — An audit setting, Cold-Start Failure-Only Evolution (CFOE): agents start from an empty external state and learn exclusively from failed online interactions - no accumulated experience, no ground-truth answers, no expert solutions, no verifier feedback. The audit runs three existing self-evolving paradigms (memory accumulation in the ReasoningBank style, skill editing in the SkillOpt style, harness modification in the Evo-Harness style) across four interactive environments (ALFWorld, tau2-Bench-Verified, WebArena-Verified, WebShop) and multiple LLM backbones, with a hired-annotator study of how experience updates go wrong.
+
+**Author-reported result** — A consistent repair-generalization gap: failure-derived experience raises recovery of previously failed source tasks but rarely yields sustained gains on held-out unseen tasks, across all paradigms, backbones and environments. Annotators identify recurring malformations - false-positive success attribution, misidentified or hallucinated failure attribution, distorted consolidation and harmful rule formation; even verified-correct experience transfers poorly. Relaxing CFOE: verifier feedback and extra interaction give limited gains, while access to successful trajectories substantially improves transfer.
+
+**Evidence limits** — An observational audit of existing frameworks rather than a new method; backbones are open mid-size models; the failure taxonomy comes from a small hired-annotator panel; absolute baseline scores for every paradigm are in the paper's figures rather than restated here.
+
+**Code / weights / data / license** — No repository link found in the paper HTML (checked 2026-10-20); paper under the default arXiv.org perpetual non-exclusive license (no CC license stated).
+
+**Possible nanoRSI experiment — not implemented here** — A direct metric for nanoRSI's evidence ledger: split every gate decision into repair effect (the failed tasks the edit fixes) and transfer effect (held-out tasks), report both, and treat failure-derived edits that only repair as context-crutch candidates for the counterfactual panel - the paper predicts these dominate when success signals are absent.
+
+![Original Figure 1 (rendered from PDF): the CFOE setting - a backbone-specific, failure-dense online task stream; agents start from an empty external state and learn only from failed interactions without ground truth, expert solutions or verifier feedback.](assets/paper-figures/cfoe-fig1.png)
+
+**Source figure / official image** — Original Figure 1 (rendered from PDF): the CFOE setting - a backbone-specific, failure-dense online task stream; agents start from an empty external state and learn only from failed interactions without ground truth, expert solutions or verifier feedback. · Figure 1 cropped from PDF page 1 (LaTeXML image missing in HTML); gs 150dpi render, bbox (598,308,1200,912) · [source](https://arxiv.org/pdf/2610.22984)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.22984](https://arxiv.org/abs/2610.22984) · [arXiv HTML v1](https://arxiv.org/html/2610.22984v1)
 
 <a id="selfimprovement-problem-impossibility"></a>
 
@@ -1475,7 +1535,37 @@
 
 <a id="family-positions-labs"></a>
 
-## Positions, roadmaps & labs (6)
+## Positions, roadmaps & labs (7)
+
+<a id="intelligence-explosion-rd-automation"></a>
+
+### What if automating AI R&D triggers an intelligence explosion?
+
+**2026-09-30** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-09-28; OAI-PMH datestamp 2026-09-30 (first public announcement), recorded as first public date. Missed by the late-September runs and recovered on 2026-10-20 via a media lead.
+
+**Institutional relationship** — 22 authors: Alan Chan (GovAI), Christoph Winter (CASP, University of Cambridge, Institute for Law & AI), Andrew Barto (UMass Amherst), Jakub Pachocki (OpenAI), Geoffrey Hinton (University of Toronto, Vector Institute), Eric Horvitz (Microsoft), Yoshua Bengio (Mila, Universite de Montreal, LawZero), Dawn Song (UC Berkeley), Jack Clark (Anthropic), Hilary Greaves (Oxford), Anton Korinek (UVA, Anthropic), Samuel Hammond (Foundation for American Innovation), Thore Graepel (UCL), Ben Bariach (Oxford), Philip H. S. Torr (Oxford), Sheila A. McIlraith (Toronto, Vector Institute), Jeff Clune (UBC), Sam Manning (GovAI, Foundation for American Innovation), Girish Sastry (Guidelight), Tom Davidson (Forethought), Daniel Eth (AI Policy Institute), Soren Mindermann (CASP, Cambridge) - read from the PDF title page; views are the authors' own, not institutional endorsements.
+
+**What changes and how feedback is reused** — A coalition position and evidence assessment, not a system: it reviews preliminary evidence that automating the AI R&D pipeline could trigger a software-driven intelligence explosion (AI expanding the effective R&D workforce and feedback loops accelerating progress), analyzes impacts (capability growth outpacing society, loss of control over superhuman systems, erosion of checks within and between states, companies and branches of government) and proposes policy responses (visibility into AI R&D automation, ways to steer and constrain an explosion, societal preparation).
+
+**Author-reported result** — Author-assessed claims rather than benchmark results: AI systems are on track to automate most AI R&D work within a few years and possibly all of it; preliminary evidence suggests an intelligence explosion could compress years of advances into months or less; the paper argues the high stakes warrant urgent policymaker attention even under remaining uncertainty.
+
+**Evidence limits** — A position paper: projections rest on trend extrapolation and author judgment, with no new experiments; the author coalition spans frontier labs, academia and policy organizations, and the paper itself states the views are the authors' own; uncertainty about explosion feasibility and timing is explicitly acknowledged.
+
+**Code / weights / data / license** — arXiv 2609.36054; no code or artifacts (position paper); no repository link in the abs page.
+
+**Possible nanoRSI experiment — not implemented here** — Its visibility ask translates to measurement: nanoRSI's request/token budget ledger is exactly the 'visibility into AI R&D automation' primitive the paper asks policymakers to obtain - publishing per-run automation telemetry (episodes, attempts, accepted edits) from the existing evidence pipeline is a direct, low-cost alignment.
+
+![Original Figure 2 (rendered from PDF): the mechanism for a software-driven intelligence explosion has two parts - AI systems expand the effective R&D workforce, and feedback loops accelerate progress.](assets/paper-figures/intexpl-fig2.png)
+
+**Source figure / official image** — Original Figure 2 (rendered from PDF): the mechanism for a software-driven intelligence explosion has two parts - AI systems expand the effective R&D workforce, and feedback loops accelerate progress. · Figure 2 cropped from PDF page 4 (no HTML version exists); gs 150dpi render, bbox (104,134,1136,668) · [source](https://arxiv.org/pdf/2609.36054)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2609.36054](https://arxiv.org/abs/2609.36054) · [arXiv PDF](https://arxiv.org/pdf/2609.36054)
 
 <a id="zhipu-glm-selftraining-filing"></a>
 

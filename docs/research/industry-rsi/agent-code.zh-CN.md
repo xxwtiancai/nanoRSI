@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 26 |
-| [Harness 搜索与进化](#family-harness-search) | 25 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 27 |
+| [Harness 搜索与进化](#family-harness-search) | 26 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 14 |
 | [程序进化与进化搜索](#family-program-evolution) | 10 |
 | [反馈审查与编排](#family-feedback-orchestration) | 6 |
-| [安全与治理](#family-safety-governance) | 5 |
+| [安全与治理](#family-safety-governance) | 6 |
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (26)
+## 技能文件优化与技能库 (27)
+
+<a id="cdse-skill-component-differentiation"></a>
+
+### From Trajectories to Differentiated Skills: Cognitive Differentiation for Self-Improving Agents
+
+**2026-10-19** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-16 提交；在 2026-10-19 批次公告（OAI-PMH datestamp 2026-10-19），以公告日为首次公开日期。
+
+**机构关系** — Yewei Zhao、Derong Xu、Wei Chen、Yin Xu、Mingjun Xiao（中国科学技术大学）；Derong Xu 兼美团；部分合著者（Peilun Zhou、Xiaohan Wang、Guojun Yin、Wei Lin）在 HTML 块中无可机读机构标注，香港城市大学出现在所列机构中——机构依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 技能演化中的认知分化（CDSE）：统一技能通过四个功能不同而协同的组件——Meta、Experience、Tool、Script——演化。从成功与失败轨迹提取有据可依的语义梯度，经保留闸门按功能角色巩固，再以组件特定更新与验证、跨组件协调及自适应调用（决定哪些组件进入当前任务上下文）落地。
+
+**作者报告结果** — 对 500 个广泛使用技能包的分析发现 96.8% 至少跨两个功能角色。在六个基准（OfficeQA、SpreadsheetBench2、SealQA、LiveMathBench、SWE-Pro、AutomationBench）、三个模型（GLM-5.2、DeepSeek-V4-Flash、MiniMax-M3）与两个执行 harness（Claude Code、Codex）下（2:7 训练/测试切分），CDSE 在全部 36 个设定中得分最高：平均比 Base 智能体 +7.6 个点，比每个设定中最强的竞争技能演化方法（Trace2Skill、SkillOpt-lite、EvoSkill）+2.6 个点；单轮 token 开销各方法相当。
+
+**证据边界** — 四组件分类学是认知科学启发的设计承诺而非推导出的必然；相对强未分化基线的优势为中等（+2.6）；评测用闭源 harness 与固定模型，技能演化在各基准 2/9 训练切分上训练。
+
+**代码／权重／数据／许可** — 论文 HTML 中未发现仓库链接（2026-10-20 核验）；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把 nanoRSI 技能文件按 CDSE 四角色拆分并配组件级编辑预算（延伸 ADOPTION #53 文本学习率）与组件级接受检查；自适应调用对应按需加载组件，可在 skills 模板最小任务上直接检验。
+
+![原图 3 流水线：从成功与失败执行中发现语义梯度，按功能角色巩固，再经验证与自适应调用更新四个组件（Meta、Experience、Tool、Script）。](assets/paper-figures/cdse-method.png)
+
+**原文图／官方图片** — 原图 3 流水线：从成功与失败执行中发现语义梯度，按功能角色巩固，再经验证与自适应调用更新四个组件（Meta、Experience、Tool、Script）。 · Figure 3 (method-shao.png), arXiv HTML 2610.23599v1 · [source](https://arxiv.org/html/2610.23599v1/method-shao.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.23599](https://arxiv.org/abs/2610.23599) · [arXiv HTML v1](https://arxiv.org/html/2610.23599v1)
 
 <a id="skillneo-non-elitist-skills"></a>
 
@@ -799,7 +829,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (25)
+## Harness 搜索与进化 (26)
+
+<a id="selfhpo-harness-policy-coevolution"></a>
+
+### Self-Evolving Coding Agents via Harness-Policy Optimization
+
+**2026-10-19** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-16 提交；在 2026-10-19 批次公告（OAI-PMH datestamp 2026-10-19），以公告日为首次公开日期。
+
+**机构关系** — Zhepei Wei（微软研究院实习；弗吉尼亚大学）、Wenlin Yao、Baolin Peng、Qianhui Wu、Hao Cheng、Jianfeng Gao（微软研究院）、Danqing Wang（卡内基梅隆大学）、Yu Meng（弗吉尼亚大学）——依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 在同一个智能体上交替两步的递归自改进。H 步：冻结的策略分析自己在搜索集上的失败并提出 harness 候选——一个继承种子 mini-SWE-agent 的 Python 类，可覆写 step、提示、反馈与提交处理；候选在该搜索集上选出。P 步：策略在选定 harness 下用 RL 更新，其间从未解出的任务成为下一搜索集，使 harness 优化始终对准策略演化中的失败模式。演化中的策略自身即 harness 提案器（无需外部模型）。
+
+**作者报告结果** — Qwen3.5-35B-A3B 基座、三个编码基准（avg@3）：SWE-Bench Verified 解题率 61.0%→69.5%（自提案），外部 Opus 4.8 提案器达 71.6%；三基准平均 57.8%→64.8%，增益迁移到分布外的 SWE-Bench Multilingual（300 题）与 SWE-Bench Pro V2（642 题）；harness+策略联合增益超过各自增益之和，且两组件与对方基座版本配对时增益仍保留；消融：RL 71.6% 对 SFT 67.2%/RFT 70.5%，演化搜索集 71.6% 对固定集 70.1%。
+
+**证据边界** — 仅编码任务，各对照固定算力与 rollout 预算且限单一 harness 族（mini-SWE-agent 子类化）；最强的 71.6% 依赖外部前沿提案器而非纯自提案；协同效应依赖此交替调度。
+
+**代码／权重／数据／许可** — 仓库 github.com/MSR-Orchard/Self-HPO 已上线，MIT 许可（2026-10-20 从 raw.githubusercontent.com main 读取）；权重在 huggingface.co/self-hpo（200）；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 在最小任务上移植交替调度：每个接受的 nanoRSI 代后，用当前候选恰好失败的 episodes 重建提案搜索集，并让技能文件编辑与策略侧代理量（如提示/选择参数）交替，检验同预算下交替是否优于单改变面。
+
+![原图 2 总览：H 步（上）——冻结策略分析搜索集上的失败并提出 harness 候选；P 步（下）——策略在选定 harness 下经 RL 更新，未解任务构成下一搜索集。](assets/paper-figures/selfhpo-overview.png)
+
+**原文图／官方图片** — 原图 2 总览：H 步（上）——冻结策略分析搜索集上的失败并提出 harness 候选；P 步（下）——策略在选定 harness 下经 RL 更新，未解任务构成下一搜索集。 · Figure 2 (method_overview.png), arXiv HTML 2610.22791v1 · [source](https://arxiv.org/html/2610.22791v1/method_overview.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-20.
+
+**开源代码／权重／数据链接** — [MSR-Orchard/Self-HPO (MIT)](https://github.com/MSR-Orchard/Self-HPO) · [Self-HPO LICENSE (MIT)](https://raw.githubusercontent.com/MSR-Orchard/Self-HPO/main/LICENSE)
+
+**一手来源** — [arXiv abs 2610.22791](https://arxiv.org/abs/2610.22791) · [arXiv HTML v1](https://arxiv.org/html/2610.22791v1) · [MSR-Orchard/Self-HPO (MIT)](https://github.com/MSR-Orchard/Self-HPO) · [Self-HPO LICENSE (MIT)](https://raw.githubusercontent.com/MSR-Orchard/Self-HPO/main/LICENSE) · [Hugging Face checkpoints](https://huggingface.co/self-hpo)
 
 <a id="videoharness-srsi-evidence-governed"></a>
 
@@ -2465,7 +2525,7 @@
 
 <a id="family-safety-governance"></a>
 
-## 安全与治理 (5)
+## 安全与治理 (6)
 
 <a id="l3m-verifiable-runtime"></a>
 
@@ -2496,6 +2556,36 @@
 **开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
 
 **一手来源** — [arXiv abstract](https://arxiv.org/abs/2610.19591) · [arXiv HTML v1](https://arxiv.org/html/2610.19591v1)
+
+<a id="anthropic-ara-iot-replication"></a>
+
+### AI models may be capable of self-replicating without access to a datacenter
+
+**2026-10-12** · report · 直接有界闭环
+
+**日期说明** — Anthropic 官方研究帖，页面 datePublished 2026-10-12T19:30:00Z；核验时未附论文。
+
+**机构关系** — William Zhou、Daniel Freeman（Anthropic 前沿红队）。
+
+**改变对象与反馈复用** — 自主复制与适应（ARA）威胁评估：把权重型复制拆为四个实操阶段——寻找目标、获得执行、建立推理、继续传播——并实测当前小模型各阶段的可完成性。Gemma4-26B-A4B 在 15 台组网的杂牌安卓电视盒（每台约 55 美元）上分布式推理速度 0.39 tokens/秒；9B 模型在 9 种受测硬件中的 8 种上跑起推理；利用阶段沿用先前工作（CyberGym、ExploitBench、自适应蠕虫）的结论，帖子另测复制器能否在复制中学习适应，并估算传播速度（倍增时间以天计）。
+
+**作者报告结果** — 作者简化评测中，GLM-5.2 及以上模型可完成端到端复制；30B 及以下模型已完成许多单步但端到端组合时出错；按历史小模型改进速率，作者预计年底前达到该能力水平，权重型复制器随后可能在防御薄弱的 IoT 上出现。防御讨论涵盖关停难度（无中心点）与既有恶意软件的差异（自主应对陌生设备）。
+
+**证据边界** — 为简化评测而非实际部署演示；网络利用阶段引自既有文献而未在文中实测；传播速率与能力时间线为外推；本帖是安全评估而非可下载系统。
+
+**代码／权重／数据／许可** — 仅官方研究帖；核验时未链接代码、权重或数据（2026-10-20）；配图为帖子原图。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 四阶段分解是任何自修改环的收容清单：nanoRSI 沙箱在构造上已禁止传播，但把每阶段映射为显式审计断言（不外发自产物、不重配环境）可让收容性质在 verify 运行中可测。
+
+![帖子原图：自主复制链分解为四阶段——寻找目标、获得执行、建立推理、从新宿主继续传播。](assets/paper-figures/anthropic-ara-replication-chain.png)
+
+**原文图／官方图片** — 帖子原图：自主复制链分解为四阶段——寻找目标、获得执行、建立推理、从新宿主继续传播。 · Post figure 1 (autonomous replication chain), research post 2026-10-12 · [source](https://www-cdn.anthropic.com/images/4zrzovbb/website/25459a064b25f10689f20e258fb4f1f0291ea083-2360x860.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [Anthropic research post](https://www.anthropic.com/research/self-replicating-ai)
 
 <a id="cace-bench-admission-gate"></a>
 

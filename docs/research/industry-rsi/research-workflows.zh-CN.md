@@ -6,16 +6,46 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [AI 科学家系统](#family-ai-scientists) | 14 |
+| [AI 科学家系统](#family-ai-scientists) | 15 |
 | [自主后训练及其评测](#family-autonomous-post-training) | 5 |
 | [公司研发遥测](#family-company-telemetry) | 7 |
 | [对齐自动化](#family-alignment-automation) | 3 |
-| [分析与审计](#family-analyses-audits) | 19 |
-| [立场、路线图与实验室](#family-positions-labs) | 6 |
+| [分析与审计](#family-analyses-audits) | 20 |
+| [立场、路线图与实验室](#family-positions-labs) | 7 |
 
 <a id="family-ai-scientists"></a>
 
-## AI 科学家系统 (14)
+## AI 科学家系统 (15)
+
+<a id="discoveryrsi-hypothesis-recursion"></a>
+
+### DiscoveryRSI: Recursively Learning to Discover Valuable Hypotheses
+
+**2026-10-19** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-16 提交；在 2026-10-19 批次公告（OAI-PMH datestamp 2026-10-19），以公告日为首次公开日期。
+
+**机构关系** — 24 位作者、16 家机构；通讯作者 Leo Anthony Celi（哈佛医学院/MIT）、James Zou（斯坦福）、Zhenfei Yin（PhAI Labs/牛津）、Yingcheng Wu（PhAI Labs/斯坦福）、Ling Yang（PhAI Labs/北大/普林斯顿）；Jianyuan Zhong、Chenwei Wu、Zhaochen Yu 同等贡献——依 HTML 机构块读出。
+
+**改变对象与反馈复用** — 多智能体演化搜索发展可检验假设的研究树，选中的计算调查被编译为携带输入、环境、必需输出与验证检查的可执行 Harbor 任务。三个耦合的递归机制复用保留的研究历史：假设信用优化把质量评估归因到有据可查的贡献并训练模型（DiscoveryRSI-27B）；harness 重放从同一历史挖掘有效策略与反复失败，精炼协调、证据访问与资源分配；再发现把已接受的模型与 harness 更新应用到新调查，产生进一步经验。
+
+**作者报告结果** — 提出 DFM-Bench（假设、修订、发展路径、研究运行四层）。四个生命科学域上，自动假设质量从基座的 4.86 经两轮自改进升至 5.39，可证伪性与数据可解性增益最大；演化/修复动作占比从 77.5% 升至 91.7%。对 292 份提案的盲评（三位资深导师下的临床医生与生物科学博士生）中，DiscoveryRSI-27B 在重要性与证据有界的可信度上高于 GPT-6 Luna；其假设与模型截止后发表研究的对应率为 6.3%，GPT-6 为 2.5%、Claude Opus 5 为 2.3%；另设电池域检验生命科学之外的迁移。
+
+**证据边界** — 截止后假设对应率只是新颖性的部分代理；专家评估被作者自述为初步；改进在生命科学加电池设定上仅测两轮自改进；DFM-Bench 自动分与人工评分互补而非可互换。
+
+**代码／权重／数据／许可** — Apache-2.0 仓库 github.com/Gen-Verse/DiscoveryRSI 已上线（2026-10-20 从 raw.githubusercontent.com main 读取 LICENSE）；权重 DiscoveryRSI-27B 与合集在 Hugging Face；论文另链接公开 Arena 站点。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 可移植的是 harness 重放：在 nanoRSI 证据账本上的派生视图，每 N 次运行后聚合跨尝试的反复失败模式，提出环路级改动（评测顺序、反馈格式）而非任务级编辑——可在既有工作区协议里作为二阶代测量。
+
+![原文头图（SVG 渲染）：DiscoveryRSI 环路——演化搜索发展假设树并编译为可执行 Harbor 任务，假设信用优化、harness 重放与再发现把已接受的改进回馈到新调查。](assets/paper-figures/discoveryrsi-fig1.png)
+
+**原文图／官方图片** — 原文头图（SVG 渲染）：DiscoveryRSI 环路——演化搜索发展假设树并编译为可执行 Harbor 任务，假设信用优化、harness 重放与再发现把已接受的改进回馈到新调查。 · Teaser figure (fig1_final.svg, rendered to PNG), arXiv HTML 2610.23839v1 · [source](https://arxiv.org/html/2610.23839v1/fig1_final.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-20.
+
+**开源代码／权重／数据链接** — [Gen-Verse/DiscoveryRSI (Apache-2.0)](https://github.com/Gen-Verse/DiscoveryRSI) · [DiscoveryRSI LICENSE (Apache-2.0)](https://raw.githubusercontent.com/Gen-Verse/DiscoveryRSI/main/LICENSE)
+
+**一手来源** — [arXiv abs 2610.23839](https://arxiv.org/abs/2610.23839) · [arXiv HTML v1](https://arxiv.org/html/2610.23839v1) · [Gen-Verse/DiscoveryRSI (Apache-2.0)](https://github.com/Gen-Verse/DiscoveryRSI) · [DiscoveryRSI LICENSE (Apache-2.0)](https://raw.githubusercontent.com/Gen-Verse/DiscoveryRSI/main/LICENSE) · [Hugging Face collection](https://huggingface.co/collections/Gen-Verse/discoveryrsi)
 
 <a id="swarmrsi-evolving-swarm"></a>
 
@@ -901,7 +931,37 @@
 
 <a id="family-analyses-audits"></a>
 
-## 分析与审计 (19)
+## 分析与审计 (20)
+
+<a id="cfoe-repair-generalization-gap"></a>
+
+### Self-Evolving Agents Can Repair Failures but Struggle to Generalize from Them
+
+**2026-10-19** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 于 2026-10-16 提交；在 2026-10-19 批次公告（OAI-PMH datestamp 2026-10-19），以公告日为首次公开日期。
+
+**机构关系** — Weixiang Zhao、Yichen Zhang（同等贡献）、Yanyan Zhao、Jinming Bai、Bing Qin、Ting Liu（哈尔滨工业大学）、Bin Liang（香港中文大学）、Ruifeng Xu（哈工大深圳）——依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 审计设定“冷启动仅失败演化”（CFOE）：智能体从空外部状态出发，只从失败的在线交互中学习——无既有经验、无标准答案、无专家解、无验证器反馈。审计在四个交互环境（ALFWorld、tau2-Bench-Verified、WebArena-Verified、WebShop）与多个 LLM 骨干上运行三种既有自演化范式（ReasoningBank 式记忆累积、SkillOpt 式技能编辑、Evo-Harness 式 harness 修改），并用人雇标注者研究经验更新如何出错。
+
+**作者报告结果** — 一致的修复-泛化鸿沟：失败来源的经验能提高先前失败任务的复原率，却很少在未见留出任务上带来持续增益，跨全部范式、骨干与环境成立。标注者识别出反复出现的经验畸变——假阳性成功归因、误判或幻觉式失败归因、失真巩固与有害规则形成；即便验证正确的经验也难以迁移。放宽 CFOE：验证器反馈与更多交互收益有限，而成功轨迹的引入显著改善迁移。
+
+**证据边界** — 是对既有框架的观察性审计而非新方法；骨干为中等规模开源模型；失败分类学来自小型雇佣标注组；各范式的绝对基线分数在论文图中，此处未复述。
+
+**代码／权重／数据／许可** — 论文 HTML 中未发现仓库链接（2026-10-20 核验）；论文为 arXiv 默认永久非独占许可（未声明 CC 许可）。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 给 nanoRSI 证据账本加一个直接指标：把每次闸门决定拆成修复效应（编辑修好的失败任务）与迁移效应（留出任务），两者并报；把只修不复迁的失败派生编辑视为 counterfactual 面板的上下文拐杖候选——论文预测在缺乏成功信号时这类编辑占主导。
+
+![原图 1（自 PDF 渲染）：CFOE 设定——骨干特定、失败密集的在线任务流；智能体从空外部状态出发，只从失败交互学习，无标准答案、专家解或验证器反馈。](assets/paper-figures/cfoe-fig1.png)
+
+**原文图／官方图片** — 原图 1（自 PDF 渲染）：CFOE 设定——骨干特定、失败密集的在线任务流；智能体从空外部状态出发，只从失败交互学习，无标准答案、专家解或验证器反馈。 · Figure 1 cropped from PDF page 1 (LaTeXML image missing in HTML); gs 150dpi render, bbox (598,308,1200,912) · [source](https://arxiv.org/pdf/2610.22984)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.22984](https://arxiv.org/abs/2610.22984) · [arXiv HTML v1](https://arxiv.org/html/2610.22984v1)
 
 <a id="selfimprovement-problem-impossibility"></a>
 
@@ -1475,7 +1535,37 @@
 
 <a id="family-positions-labs"></a>
 
-## 立场、路线图与实验室 (6)
+## 立场、路线图与实验室 (7)
+
+<a id="intelligence-explosion-rd-automation"></a>
+
+### What if automating AI R&D triggers an intelligence explosion?
+
+**2026-09-30** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 于 2026-09-28 提交；OAI-PMH datestamp 2026-09-30（首次公告），以公告日为首次公开日期。9 月末运行漏收，2026-10-20 经媒体线索回溯补收。
+
+**机构关系** — 22 位作者：Alan Chan（GovAI）、Christoph Winter（CASP、剑桥大学、Law & AI 研究所）、Andrew Barto（UMass Amherst）、Jakub Pachocki（OpenAI）、Geoffrey Hinton（多伦多大学、Vector Institute）、Eric Horvitz（微软）、Yoshua Bengio（Mila、蒙特利尔大学、LawZero）、Dawn Song（UC Berkeley）、Jack Clark（Anthropic）、Hilary Greaves（牛津）、Anton Korinek（弗吉尼亚大学、Anthropic）、Samuel Hammond（Foundation for American Innovation）、Thore Graepel（UCL）、Ben Bariach（牛津）、Philip H. S. Torr（牛津）、Sheila A. McIlraith（多伦多、Vector Institute）、Jeff Clune（UBC）、Sam Manning（GovAI、FAI）、Girish Sastry（Guidelight）、Tom Davidson（Forethought）、Daniel Eth（AI Policy Institute）、Soren Mindermann（CASP、剑桥）——依 PDF 扉页读出；观点属作者个人而非机构背书。
+
+**改变对象与反馈复用** — 联盟立场与证据评估而非系统：综述“自动化 AI 研发管线可能触发软件驱动的智能爆炸”的初步证据（AI 扩充有效研发人力、反馈环加速进展），分析影响（能力增长超出社会消化速度、对超人类系统失控、州/公司/政府部门间制衡被侵蚀）并提出政策回应（对 AI 研发自动化建立可见性、发展引导与约束手段、为社会适应做准备）。
+
+**作者报告结果** — 为作者论断而非基准结果：AI 系统数年内有望自动化大部分 AI 研发工作、甚至全部；初步证据提示智能爆炸可能把数年进展压缩到数月或更短；论文主张即便存在不确定性，高风险也足以要求政策制定者紧急关注。
+
+**证据边界** — 立场论文：预测基于趋势外推与作者判断，无新实验；作者联盟横跨前沿实验室、高校与政策组织，论文自述观点属作者个人；对爆炸可行性与时点的不确定性有明确承认。
+
+**代码／权重／数据／许可** — arXiv 2609.36054；立场论文无代码或产物；abs 页无仓库链接。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 其“可见性”诉求可翻译为度量：nanoRSI 的请求/token 预算账本正是论文希望政策侧获得的“AI 研发自动化可见性”原语——从既有证据管线发布每次运行的自动化遥测（episodes、尝试、接受编辑数）是直接且低成本的对接。
+
+![原图 2（自 PDF 渲染）：软件驱动智能爆炸的机制分两部分——AI 扩充有效研发人力，反馈环加速进展。](assets/paper-figures/intexpl-fig2.png)
+
+**原文图／官方图片** — 原图 2（自 PDF 渲染）：软件驱动智能爆炸的机制分两部分——AI 扩充有效研发人力，反馈环加速进展。 · Figure 2 cropped from PDF page 4 (no HTML version exists); gs 150dpi render, bbox (104,134,1136,668) · [source](https://arxiv.org/pdf/2609.36054)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-20.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2609.36054](https://arxiv.org/abs/2609.36054) · [arXiv PDF](https://arxiv.org/pdf/2609.36054)
 
 <a id="zhipu-glm-selftraining-filing"></a>
 

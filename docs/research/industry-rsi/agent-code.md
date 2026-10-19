@@ -6,16 +6,46 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 26 |
-| [Harness search & evolution](#family-harness-search) | 25 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 27 |
+| [Harness search & evolution](#family-harness-search) | 26 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 14 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 10 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 6 |
-| [Safety & governance](#family-safety-governance) | 5 |
+| [Safety & governance](#family-safety-governance) | 6 |
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (26)
+## Skill-file optimization & libraries (27)
+
+<a id="cdse-skill-component-differentiation"></a>
+
+### From Trajectories to Differentiated Skills: Cognitive Differentiation for Self-Improving Agents
+
+**2026-10-19** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-16; announced in the 2026-10-19 batch (OAI-PMH datestamp 2026-10-19), recorded as first public date.
+
+**Institutional relationship** — Yewei Zhao, Derong Xu, Wei Chen, Yin Xu, Mingjun Xiao (University of Science and Technology of China); Derong Xu also Meituan; several coauthors (Peilun Zhou, Xiaohan Wang, Guojun Yin, Wei Lin) carry no machine-readable affiliation in the HTML block, with City University of Hong Kong appearing among listed institutions - affiliations read from the HTML author block.
+
+**What changes and how feedback is reused** — Cognitive Differentiation in Skill Evolution (CDSE): a unified skill evolves through four functionally distinct, coordinated components - Meta, Experience, Tool and Script. Evidence-grounded semantic gradients are extracted from successful and failed trajectories, consolidated by functional role under a retention gate, then applied as component-specific updates with validation, cross-component coordination, and adaptive invocation that decides which components enter context for a task.
+
+**Author-reported result** — An analysis of 500 widely used skill packages finds 96.8% span at least two functional roles. Across six benchmarks (OfficeQA, SpreadsheetBench2, SealQA, LiveMathBench, SWE-Pro, AutomationBench), three agent models (GLM-5.2, DeepSeek-V4-Flash, MiniMax-M3) and two execution harnesses (Claude Code, Codex), CDSE scores highest in all 36 settings (2:7 train/test split): +7.6 points over the Base agent on average and +2.6 over the strongest competing skill-evolution method per setting (Trace2Skill, SkillOpt-lite, EvoSkill); single-round token costs comparable across methods.
+
+**Evidence limits** — The four-component taxonomy is a cognitive-science-inspired design commitment rather than a derived necessity; margins over strong undifferentiated baselines are moderate (+2.6); evaluation uses closed harnesses and fixed models, with skill evolution trained on a 2/9 training split per benchmark.
+
+**Code / weights / data / license** — No repository link found in the paper HTML (checked 2026-10-20); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Split nanoRSI skill files into the four CDSE roles with component-wise edit budgets (extends ADOPTION #53's textual learning rate) and per-component acceptance checks; adaptive invocation maps to loading only the components a task needs, directly testable on the skills template's minimal tasks.
+
+![Original Figure 3 pipeline: semantic gradients are discovered from successful and failed executions, consolidated by functional role, and applied to update the four components (Meta, Experience, Tool, Script) with validation and adaptive invocation.](assets/paper-figures/cdse-method.png)
+
+**Source figure / official image** — Original Figure 3 pipeline: semantic gradients are discovered from successful and failed executions, consolidated by functional role, and applied to update the four components (Meta, Experience, Tool, Script) with validation and adaptive invocation. · Figure 3 (method-shao.png), arXiv HTML 2610.23599v1 · [source](https://arxiv.org/html/2610.23599v1/method-shao.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.23599](https://arxiv.org/abs/2610.23599) · [arXiv HTML v1](https://arxiv.org/html/2610.23599v1)
 
 <a id="skillneo-non-elitist-skills"></a>
 
@@ -799,7 +829,37 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (25)
+## Harness search & evolution (26)
+
+<a id="selfhpo-harness-policy-coevolution"></a>
+
+### Self-Evolving Coding Agents via Harness-Policy Optimization
+
+**2026-10-19** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-16; announced in the 2026-10-19 batch (OAI-PMH datestamp 2026-10-19), which is recorded as first public date.
+
+**Institutional relationship** — Zhepei Wei (internship at Microsoft Research; University of Virginia), Wenlin Yao, Baolin Peng, Qianhui Wu, Hao Cheng, Jianfeng Gao (Microsoft Research), Danqing Wang (Carnegie Mellon University), Yu Meng (University of Virginia) - read from the HTML author block.
+
+**What changes and how feedback is reused** — Recursive self-improvement alternating two steps over the same agent. H-step: the frozen policy analyzes its own failures on a search set and proposes harness candidates - a Python class subclassing the seed mini-SWE-agent that overrides step, prompts, feedback and submission handling; candidates are selected on that search set. P-step: the policy is updated by RL under the selected harness, and tasks it never solves become the next search set, so harness optimization tracks the policy's evolving failure modes. The evolving policy itself is the harness proposer (no external model required).
+
+**Author-reported result** — Qwen3.5-35B-A3B base, three coding benchmarks (avg@3): SWE-Bench Verified resolve 61.0%->69.5% with self-proposal, 71.6% with an external Opus 4.8 proposer; three-benchmark average 57.8%->64.8% with gains transferring to out-of-distribution SWE-Bench Multilingual (300 tasks) and SWE-Bench Pro V2 (642 tasks); joint harness+policy gain exceeds the sum of individual gains and both components retain gains when cross-paired with base counterparts; ablations: RL 71.6% vs SFT 67.2% / RFT 70.5%, evolving search set 71.6% vs fixed 70.1%.
+
+**Evidence limits** — Coding tasks only, comparisons at fixed compute and rollout budgets within one harness family (mini-SWE-agent subclassing); the strongest 71.6% number depends on an external frontier proposer rather than pure self-proposal; synergy depends on this alternation schedule.
+
+**Code / weights / data / license** — Repository github.com/MSR-Orchard/Self-HPO live under MIT (License read from raw.githubusercontent.com main, 2026-10-20); checkpoints at huggingface.co/self-hpo (200); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — A minimal-task port of the alternating schedule: after each accepted nanoRSI generation, rebuild the proposal search set from exactly the episodes the current candidate failed, and alternate skill-file edits with a policy-side proxy (e.g. prompt/selection params) to test whether alternation beats either surface alone at matched attempt budget.
+
+![Original Figure 2 overview: H-step (top) - the frozen policy analyzes failures on the search set and proposes harness candidates; P-step (bottom) - RL updates the policy under the selected harness, and unsolved tasks form the next search set.](assets/paper-figures/selfhpo-overview.png)
+
+**Source figure / official image** — Original Figure 2 overview: H-step (top) - the frozen policy analyzes failures on the search set and proposes harness candidates; P-step (bottom) - RL updates the policy under the selected harness, and unsolved tasks form the next search set. · Figure 2 (method_overview.png), arXiv HTML 2610.22791v1 · [source](https://arxiv.org/html/2610.22791v1/method_overview.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-20.
+
+**Open code / weights / data links** — [MSR-Orchard/Self-HPO (MIT)](https://github.com/MSR-Orchard/Self-HPO) · [Self-HPO LICENSE (MIT)](https://raw.githubusercontent.com/MSR-Orchard/Self-HPO/main/LICENSE)
+
+**Primary sources** — [arXiv abs 2610.22791](https://arxiv.org/abs/2610.22791) · [arXiv HTML v1](https://arxiv.org/html/2610.22791v1) · [MSR-Orchard/Self-HPO (MIT)](https://github.com/MSR-Orchard/Self-HPO) · [Self-HPO LICENSE (MIT)](https://raw.githubusercontent.com/MSR-Orchard/Self-HPO/main/LICENSE) · [Hugging Face checkpoints](https://huggingface.co/self-hpo)
 
 <a id="videoharness-srsi-evidence-governed"></a>
 
@@ -2465,7 +2525,7 @@
 
 <a id="family-safety-governance"></a>
 
-## Safety & governance (5)
+## Safety & governance (6)
 
 <a id="l3m-verifiable-runtime"></a>
 
@@ -2496,6 +2556,36 @@
 **Open code / weights / data links** — No verified public code/asset link in the audited sources.
 
 **Primary sources** — [arXiv abstract](https://arxiv.org/abs/2610.19591) · [arXiv HTML v1](https://arxiv.org/html/2610.19591v1)
+
+<a id="anthropic-ara-iot-replication"></a>
+
+### AI models may be capable of self-replicating without access to a datacenter
+
+**2026-10-12** · report · Direct bounded loop
+
+**Publication date** — Official Anthropic research post, page datePublished 2026-10-12T19:30:00Z; no accompanying paper linked at verification time.
+
+**Institutional relationship** — William Zhou, Daniel Freeman (Anthropic Frontier Red Team).
+
+**What changes and how feedback is reused** — An autonomous-replication-and-adaptation (ARA) threat assessment that decomposes weight-based replication into four practical stages - finding targets, gaining execution, establishing inference, continuing propagation - and measures the stages current small models can perform. Distributed inference of Gemma4-26B-A4B across 15 networked off-brand Android TV boxes (~USD 55 each) runs at 0.39 tokens/second; a 9B model got inference running on 8 of 9 tested hardware types; exploit stages are assumed from prior work (CyberGym, ExploitBench, adaptive worms) and the post additionally tests whether a replicator can learn and adapt as it replicates, and estimates spread speed (doubling time of days).
+
+**Author-reported result** — In the authors' simplified evaluations, GLM-5.2 and stronger models complete end-to-end replication; models of 30B parameters and under already complete many individual replication steps but make mistakes when composing them end to end; at historical small-model improvement rates, the authors project matching the capable level by the end of 2026, with weight-based replicators on poorly defended IoT possible soon after. Defense discussion covers shutdown difficulty (no central point) and differences from pre-AI malware (novel-device autonomy).
+
+**Evidence limits** — Simplified evaluations rather than a deployed demonstration; the cyber-exploit stages are assumed from prior literature instead of measured here; spread-rate and capability-timeline figures are projections; the post is a safety assessment, not a released system.
+
+**Code / weights / data / license** — Official research post only; no code, weights or dataset linked at verification (2026-10-20); figures are original post images.
+
+**Possible nanoRSI experiment — not implemented here** — The four-stage decomposition is a containment checklist for any self-modifying loop: nanoRSI's sandbox already denies propagation by construction, but mapping each stage to an explicit audit assertion (no outbound transfer of self-artifacts, no environment reconfiguration) would make the containment property testable in verify runs.
+
+![Original post figure: the autonomous replication chain decomposed into four stages - finding targets, gaining execution, establishing inference, and propagating from the new host.](assets/paper-figures/anthropic-ara-replication-chain.png)
+
+**Source figure / official image** — Original post figure: the autonomous replication chain decomposed into four stages - finding targets, gaining execution, establishing inference, and propagating from the new host. · Post figure 1 (autonomous replication chain), research post 2026-10-12 · [source](https://www-cdn.anthropic.com/images/4zrzovbb/website/25459a064b25f10689f20e258fb4f1f0291ea083-2360x860.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [Anthropic research post](https://www.anthropic.com/research/self-replicating-ai)
 
 <a id="cace-bench-admission-gate"></a>
 

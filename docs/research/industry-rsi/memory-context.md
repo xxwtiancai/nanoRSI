@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Structured knowledge bases & graphs](#family-structured-knowledge) | 10 |
-| [Experience accumulation & replay](#family-experience-accumulation) | 10 |
+| [Experience accumulation & replay](#family-experience-accumulation) | 11 |
 | [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
 | [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 4 |
@@ -318,7 +318,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## Experience accumulation & replay (10)
+## Experience accumulation & replay (11)
+
+<a id="darwinclaw-experience-consolidation"></a>
+
+### Darwin-Claw: Environment-Adaptive Experience Consolidation for Recursively Self-Evolving Agents
+
+**2026-10-19** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-16; announced in the 2026-10-19 batch (OAI-PMH datestamp 2026-10-19), recorded as first public date.
+
+**Institutional relationship** — Mingze Yin (Zhejiang University and Tencent; equal contribution), Xiaohan Wang (Tencent; equal contribution), Dian Li (Tencent), Longfei Luo (Zhejiang University and Zhongguancun Academy), Jiahong Yan (Tencent), Yiheng Zhu (Zhongguancun Academy), Chang-Yu Hsieh (Zhejiang University; corresponding) - read from the HTML author block.
+
+**What changes and how feedback is reused** — A Hierarchical Experience Consolidation System extracts fine-grained error attributions from user interaction trajectories and generalizes them into dynamically updated environment prototype vectors; consolidated situational experience is used twice - as interaction patches injected for context-sensitive perception, and as explicit optimization signals that refine operational skills and durable memory under an externalized evolutionary lifecycle (causal validation and multi-dimensional scoring gate updates). Grounded as iterative agent-actor / evolver-critic co-adaptation with a frozen base model.
+
+**Author-reported result** — WildClawBench (60 human-authored long-horizon multimodal tasks, six categories): average +24.1 percentage points over the no-evolution baseline, web +27.3, tool-use +31.6, reasoning-intensive +22.7, long-horizon +23.8; by difficulty easy +18.5 to extreme +33.2. On RSIBench-Data auto-research tasks under Claude Code and Codex harnesses with four LLMs, better post-training than the base model in 19 of 24 tasks (absolute +32.00 SWE-V, +15.28 AIME, +15.08 Terminal-Bench 2.0) and beats a context-passing evolution baseline on all six benchmarks.
+
+**Evidence limits** — Improvements are relative to the authors' chosen baselines on their benchmark suite; prototype vectors and the experience pool require local storage infrastructure; no code released at verification, so the consolidation pipeline is not independently checkable.
+
+**Code / weights / data / license** — No repository link found in the paper HTML (checked 2026-10-20); paper CC BY-NC-SA 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Error-attribution clustering before any write: nanoRSI could classify each failed attempt's attribution vector and route it to skill-file edit, memory append, or discard - a structured alternative to editing skills on every failure, testable on the counterfactual panel.
+
+![Original Figure 1 overview: historical interactions flow through hierarchical experience consolidation (attribution, prototype vectors) into evolving skills and memory, which feed back into later interactions.](assets/paper-figures/darwinclaw-framework.png)
+
+**Source figure / official image** — Original Figure 1 overview: historical interactions flow through hierarchical experience consolidation (attribution, prototype vectors) into evolving skills and memory, which feed back into later interactions. · Figure 1 (figures/framework.png), arXiv HTML 2610.23574v1 · [source](https://arxiv.org/html/2610.23574v1/figures/framework.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-20.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.23574](https://arxiv.org/abs/2610.23574) · [arXiv HTML v1](https://arxiv.org/html/2610.23574v1)
 
 <a id="himeco-hippocampal-metacognitive"></a>
 
