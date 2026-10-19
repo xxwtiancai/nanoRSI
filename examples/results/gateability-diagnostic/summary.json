@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "study": "gateability-diagnostic",
+  "created_at": "2026-10-20T07:00:00+08:00",
+  "question": "After the degenerate selector pilot: is acceptance blocked by proposal quality or by the gate/panel? Replay the archived known-good skill edit (alfworld-flash attempt 4, the only edit that ever passed this gate) through a scripted proposer on the same 8/8 config, removing proposal quality from the equation.",
+  "design": {
+    "workspace": "fresh ALFWorld skills workspace, --train 8 --validation 8, flash, thinking disabled, max_steps 1",
+    "proposer": "scripted emitter writes the archived attempt4-proposal.diff verbatim (zero model calls for proposing)",
+    "panels": "frozen 6-seen + 6-unseen test panel identical to all prior studies"
+  },
+  "results": {
+    "validation": {"baseline": 0.875, "parent_remeasure": 0.875, "candidate": 0.875,
+                   "decision": "rejected (tie)",
+                   "per_task": "identical outcome vector to the parent re-measure - zero wins, zero losses"},
+    "final_panel": {"baseline": {"score": 0.8333, "seen": "4/6", "unseen": "6/6"},
+                    "no_skills": {"score": 0.8333, "seen": "5/6", "unseen": "5/6"},
+                    "candidate": {"score": 1.0, "seen": "6/6", "unseen": "6/6"}}
+  },
+  "diagnosis": "VALIDATION REPRESENTATIVENESS IS THE BINDING CONSTRAINT. The known-good edit - worth +2 games over both controls on the frozen test panel - was invisible on this validation draw: same mean (0.875) AND the same per-task outcome vector as the parent (train-split games, all solved identically). No mean-based or paired-task gate arithmetic could have accepted it, because the 8 train-split validation games carried no signal on this draw. The original 2026-10-12 acceptance was a lucky validation draw; the 2026-10-19 pilot nulls were unlucky draws of the same coin. Gate-ability at this design is noise-limited and split-limited, not quality-limited.",
+  "implications": [
+    "validation panels must be drawn from the same distribution as the test panels (seen/unseen layouts), not from leftover train-split games - a pack design change, not a gate mechanism change",
+    "a paired per-task gate was considered and rejected for now: on this real draw it would also have rejected (zero task flips), and the deeper fix is representative validation",
+    "the earlier selector-pilot verdict stands with a sharper cause: acceptance was impossible on that validation draw regardless of gate strictness"
+  ],
+  "usage": {"proposer": "0 model calls (scripted replay)", "final_test": 440, "cost_usd": null},
+  "audit": "zero expected-answer leakage, zero silent bypass; verify lineage ok",
+  "limits": "One replay draw, one seed, one archived edit. The diagnosis is about this pack design (train-split validation) at this panel size; other packs (BBH, HumanEval) evaluate their actual test distribution and are unaffected."
+}

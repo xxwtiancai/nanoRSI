@@ -1,0 +1,29 @@
+{
+  "candidate_commit": "1516808ccbf7785a9fc72ae3cf1e999aeef06840",
+  "declared_but_unloaded": [],
+  "declared_skills": [
+    "alfworld"
+  ],
+  "executable_skills": [],
+  "generation": 0,
+  "leakage": [],
+  "markdown_only_always_in_context": [
+    "alfworld"
+  ],
+  "panel_cases": 8,
+  "panel_status": "ok",
+  "schema_version": 1,
+  "skill_files": [
+    "alfworld/SKILL.md",
+    "edit/SKILL.md",
+    "inspect/SKILL.md",
+    "verify/SKILL.md"
+  ],
+  "surface_files": [
+    "target/agent/skills/alfworld/SKILL.md",
+    "target/agent/skills/edit/SKILL.md",
+    "target/agent/skills/inspect/SKILL.md",
+    "target/agent/skills/verify/SKILL.md"
+  ],
+  "uninvoked_scripts": []
+}

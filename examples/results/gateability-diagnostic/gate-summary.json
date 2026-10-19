@@ -1,0 +1,30 @@
+{
+  "changes": [
+    {
+      "attempt_id": 1,
+      "changed_paths": [
+        "target/agent/skills/alfworld/SKILL.md"
+      ],
+      "constraints": {
+        "tests_passed": true
+      },
+      "decision": "rejected",
+      "diagnosis": {
+        "hypothesis": "replay the archived known-good skill edit (gate-ability diagnostic)"
+      },
+      "metric": {
+        "candidate": 0.875,
+        "delta": 0.0,
+        "direction": "maximize",
+        "name": "score",
+        "parent": 0.875
+      },
+      "reason": "improvement below minimum: 0.000000"
+    }
+  ],
+  "decisions": {
+    "rejected": 1
+  },
+  "revision_count": 1,
+  "schema_version": 1
+}
