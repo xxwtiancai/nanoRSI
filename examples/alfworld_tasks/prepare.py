@@ -434,15 +434,16 @@ def _validation_tasks(count: int, test_per_split: int) -> list[dict]:
     never overlapping the test picks) while train keeps the train split.
     """
     half = (count + 1) // 2
-    tasks = []
+    tasks, index = [], 0
     for split, group, size in (("valid_seen", "validation-seen", half),
                                ("valid_unseen", "validation-unseen", count - half)):
         games = _games(split)
         test_set = set(_sample(games, test_per_split, 0))
         remaining = [game for game in games if game not in test_set]
         stride = max(1, len(remaining) // max(1, size))
-        for index, game in enumerate(remaining[::stride][:size]):
+        for game in remaining[::stride][:size]:
             tasks.append(_game_task(game, "validation", index, group))
+            index += 1
     return tasks
 
 

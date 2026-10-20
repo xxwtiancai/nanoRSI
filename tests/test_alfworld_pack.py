@@ -88,6 +88,8 @@ class ALFWorldPackTests(unittest.TestCase):
         games = [json.loads(task["input_files"]["game.json"])["game_file"]
                  for task in manifest["tasks"]]
         self.assertEqual(len(games), len(set(games)))
+        ids = [task["task_id"] for task in manifest["tasks"]]
+        self.assertEqual(len(ids), len(set(ids)))  # pools must not reset task ids
 
     @unittest.skipUnless(HAS_GAMES, "local ALFWorld games required for manifest selection")
     def test_validation_shares_the_test_distribution_and_stays_disjoint(self) -> None:
