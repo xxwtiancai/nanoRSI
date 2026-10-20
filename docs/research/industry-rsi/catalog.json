@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-20",
-  "window_start": "2025-10-20",
+  "as_of": "2026-10-21",
+  "window_start": "2025-10-21",
   "scope": "Selective primary-source industry and industry–academic RSI-related research; not a systematic or exhaustive review.",
   "records": [
     {
@@ -16093,6 +16093,727 @@
         }
       },
       "last_verified": "2026-10-20",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "coevo-rsi-brain-body-alignment",
+      "title": "CoEvo-RSI: When Harnesses Evolve, Which Models Should Follow?",
+      "organizations": [
+        "National University of Singapore",
+        "Agency for Science, Technology and Research (A*STAR)",
+        "SenseTime Group Inc."
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "parameter-learning",
+      "family": "skill-weight-coevolution",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-18; announced in the 2026-10-20 batch (listing day-group Tue, 20 Oct 2026), recorded as first public date.",
+        "zh": "arXiv v1 于 2026-10-18 提交；在 2026-10-20 批次公告（列表日组 Tue, 20 Oct 2026），以公告日为首次公开日期。"
+      },
+      "affiliation": {
+        "en": "Jiaqi Su, Guibin Zhang, Jie-Jing Shao, Cong Pang, Tiankuo Yao, Ivor Tsang, Haiyan Yin, Shuicheng Yan across National University of Singapore, A*STAR and SenseTime Group Inc. - read from the PDF title page (the HTML author block renders the first affiliation blank).",
+        "zh": "Jiaqi Su、Guibin Zhang、Jie-Jing Shao、Cong Pang、Tiankuo Yao、Ivor Tsang、Haiyan Yin、Shuicheng Yan 分属新加坡国立大学、A*STAR 与商汤集团——依 PDF 扉页读出（HTML 作者块把第一机构渲染为空）。"
+      },
+      "mechanism": {
+        "en": "Model-harness co-evolution with bidirectional historical inheritance. A shared evolutionary archive keeps historical harness designs, model checkpoints and outcomes; a Curator meta-agent guides evolution from this archive. Harness editors choose historical harness bases while checkpoint selection or merging supplies the paired models, which are then adapted (SFT on the agent's own rejection-sampled trajectories) under the selected harness, aligning inherited capabilities with evolving execution requirements. Each round evaluates candidate (harness, model) pairs and tracks a Turn-level Interface Mismatch Rate (TIMR) to detect the brain-body mismatch: an evolving harness demanding behaviors the model has not learned or restricting capabilities it already has.",
+        "zh": "带双向历史继承的模型-harness 协同演化。共享演化档案保存历史 harness 设计、模型检查点与结果；Curator 元智能体据此引导演化。Harness 编辑器选择历史 harness 基座，同时用检查点选择或合并提供配对模型，并在选定 harness 下适配（对自身拒绝采样轨迹做 SFT），使继承能力与演化中的执行要求对齐。每轮评估候选（harness, 模型）对，并追踪轮级接口失配率 TIMR，以检测“脑-身”失配：演化的 harness 要求模型未学会的行为、或限制模型已具备的能力。"
+      },
+      "result": {
+        "en": "Using only SFT on its own rejection-sampled trajectories, CoEvo-RSI makes Qwen3.5-9B competitive with larger models on three vertical applications (multi-agent failure attribution, role-aware text-to-SQL, smart-home instruction following): surpasses DeepSeek-V4-Pro on TraceElephant (+14.16 agent accuracy) and GLM-5.3 on HomeBench VM (+4.90 success rate); on TraceElephant both harness-evolution-only baselines drop below 10% When accuracy while CoEvo-RSI retains 28%.",
+        "zh": "仅用自身拒绝采样轨迹的 SFT，CoEvo-RSI 使 Qwen3.5-9B 在三个垂直应用（多智能体失败归因、角色感知 text-to-SQL、智能家居指令跟随）上与更大模型竞争：在 TraceElephant 上超过 DeepSeek-V4-Pro（+14.16 agent 准确率），在 HomeBench VM 上超过 GLM-5.3（+4.90 成功率）；TraceElephant 上两个仅演化 harness 的基线 When 准确率跌破 10%，而 CoEvo-RSI 保持 28%。"
+      },
+      "limits": {
+        "en": "Vertical application suite rather than public general benchmarks; model-side adaptation is SFT-only; TIMR measures task-interface mismatch, and gains are reported under this specific archive-and-curator design.",
+        "zh": "评估用垂直应用套件而非公开通用基准；模型侧仅 SFT 适配；TIMR 度量任务接口级失配，增益在该档案-Curator 设计下报告。"
+      },
+      "availability": {
+        "en": "Repository github.com/SuJQ0722/CoEvo-RSI (README titled CoEvoX) live but with NO license file at verification - treat as all-rights-reserved; Hugging Face collection nullptr04/coevo-rsi reachable (200); paper CC BY 4.0.",
+        "zh": "仓库 github.com/SuJQ0722/CoEvo-RSI（README 题为 CoEvoX）已上线，但核验时无 LICENSE 文件——按保留所有权利处理；Hugging Face collection nullptr04/coevo-rsi 可达（200）；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "Track a cheap interface-mismatch proxy per generation (e.g. rate of runner-rejected or retried actions) so harness-side edits and a lightweight parametric side are paired only when mismatch rises, and keep the population archive as recombinable (edit, checkpoint) pairs instead of a linear lineage.",
+        "zh": "每代追踪廉价的接口失配代理量（如 runner 拒绝/重试动作率），使 harness 侧编辑与轻量参数侧仅在失配上升时配对；并把种群档案保存为可重组的（编辑, 检查点）对而非线性谱系。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.25078",
+          "url": "https://arxiv.org/abs/2610.25078"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.25078v1"
+        },
+        {
+          "kind": "repository",
+          "label": "SuJQ0722/CoEvo-RSI (no license file)",
+          "url": "https://github.com/SuJQ0722/CoEvo-RSI"
+        },
+        {
+          "kind": "project-page",
+          "label": "Hugging Face collection coevo-rsi",
+          "url": "https://huggingface.co/collections/nullptr04/coevo-rsi"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/coevo-rsi-framework.png",
+        "source_url": "https://arxiv.org/html/2610.25078v1/coevox-framework.svg",
+        "locator": "Figure 3 (coevox-framework.svg), arXiv HTML 2610.25078v1, rendered to PNG",
+        "caption": {
+          "en": "Original Figure 3 overview: the Curator draws on archived designs, checkpoints and outcomes to guide evolution; harness editors choose historical harness bases while checkpoint selection or merging supplies the paired models; each round evaluates candidate pairs and tracks interface mismatch.",
+          "zh": "原图 3 总览：Curator 依据档案中的设计、检查点与结果引导演化；harness 编辑器选择历史 harness 基座，检查点选择或合并提供配对模型；每轮评估候选对并追踪接口失配。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "harnesspro-pareto-harness-evolution",
+      "title": "HarnessPro: Recursive Harness Self-Improvement with Pareto Optimization for Performance-Cost Trade-offs",
+      "organizations": [
+        "Tsinghua University",
+        "Z.AI Co., Ltd.",
+        "Shanghai Jiao Tong University",
+        "University of Warwick",
+        "Kuaishou Technology"
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "harness-search",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-19; announced in the 2026-10-20 batch; repository initial release also 2026-10-19.",
+        "zh": "arXiv v1 于 2026-10-19 提交；在 2026-10-20 批次公告；仓库同日首发。"
+      },
+      "affiliation": {
+        "en": "Zhuoshi Pan, ZhiYuan Feng, Honglin Lin, H. Vicky Zhao, Jie Tang (Tsinghua University), Yukuo Cen (Z.AI Co., Ltd.), Zhongxia Chen, Shuo Yang (Kuaishou Technology), Junru Lu (University of Warwick), plus Shanghai Jiao Tong University - read from the HTML author block.",
+        "zh": "Zhuoshi Pan、ZhiYuan Feng、Honglin Lin、H. Vicky Zhao、Jie Tang（清华大学），Yukuo Cen（智谱 Z.AI），Zhongxia Chen、Shuo Yang（快手），Junru Lu（华威大学），另有上海交通大学——依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "Label-free recursive harness evolution under a performance-cost Pareto objective. Each epoch: specialized agents diagnose execution trajectories, plan updates with different performance-cost priorities, and implement them as candidate harnesses; candidates are evaluated with LLM-generated tests (no ground-truth solutions or official tests), and normalized weighted squared-distance selection returns three representatives - cost-focused (lite), balanced (medium), performance-focused (heavy) - fixed before held-out evaluation; selected harnesses enter the next iteration with execution feedback guiding further updates.",
+        "zh": "性能-成本 Pareto 目标下的无标签递归 harness 演化。每轮：专用智能体诊断执行轨迹、按不同性能-成本优先级规划更新并实现为候选 harness；候选用 LLM 生成的测试评估（无标准答案或官方测试），经归一化加权平方距离选择给出三个代表——成本优先（lite）、均衡（medium）、性能优先（heavy）——在留出评估前固定；入选 harness 带执行反馈进入下一轮。"
+      },
+      "result": {
+        "en": "Across Terminal-Bench 2, SWE-Bench Pro and ProgramBench with GPT-5.5 + Codex, heavy mode gains an average +2.0 pass-rate points over RHO while cutting per-task cost 26.1% (mean latency 520s to 412s); the advantage holds with GLM-5.2 + Claude Code; lite mode beats the vanilla harness on all three benchmarks at still lower cost.",
+        "zh": "在 Terminal-Bench 2、SWE-Bench Pro 与 ProgramBench 上（GPT-5.5 + Codex），heavy 模式较 RHO 平均 +2.0 通过率点、每任务成本降 26.1%（平均延迟 520 秒降至 412 秒）；GLM-5.2 + Claude Code 下优势保持；lite 模式以更低成本在三基准上均胜过原始 harness。"
+      },
+      "limits": {
+        "en": "Evaluation validity rests on LLM-generated tests (their confusion against graded outcomes is reported but they are not ground truth); absolute gains are modest (~2 points); results are tied to two agent stacks (Codex, Claude Code) and three benchmarks.",
+        "zh": "评估效度依赖 LLM 生成的测试（对判分结果的混淆矩阵有报告但并非标准答案）；绝对增益温和（约 2 点）；结果绑定两套 agent 栈（Codex、Claude Code）与三个基准。"
+      },
+      "availability": {
+        "en": "Repository github.com/pzs19/HarnessPro live under MIT (initial release 2026-10-19, LICENSE read from raw.githubusercontent.com); live demo pzs19.github.io/HarnessPro; paper CC BY 4.0.",
+        "zh": "仓库 github.com/pzs19/HarnessPro 已上线，MIT 许可（2026-10-19 首发，LICENSE 从 raw.githubusercontent.com 读取）；在线演示 pzs19.github.io/HarnessPro；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "Make cost a first-class selection axis: the evidence ledger already counts tokens per candidate - report a Pareto front (cheap / balanced / expensive generations) fixed before the frozen test instead of a single argmax-score winner.",
+        "zh": "把成本变成一等选择轴：证据账本已按候选计 token——在冻结测试前固定并报告一条 Pareto 前沿（便宜/均衡/昂贵的代），而非单一最高分赢家。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.26770",
+          "url": "https://arxiv.org/abs/2610.26770"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.26770v1"
+        },
+        {
+          "kind": "repository",
+          "label": "pzs19/HarnessPro (MIT)",
+          "url": "https://github.com/pzs19/HarnessPro"
+        },
+        {
+          "kind": "license",
+          "label": "HarnessPro LICENSE (MIT)",
+          "url": "https://raw.githubusercontent.com/pzs19/HarnessPro/master/LICENSE"
+        },
+        {
+          "kind": "project-page",
+          "label": "Live demo",
+          "url": "https://pzs19.github.io/HarnessPro/"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/harnesspro-overview.png",
+        "source_url": "https://arxiv.org/html/2610.26770v1/HarnessPro_Main_Figure.svg",
+        "locator": "Figure 1 (HarnessPro_Main_Figure.svg), arXiv HTML 2610.26770v1, rendered to PNG",
+        "caption": {
+          "en": "Original Figure 1 overview: each epoch analyzes rollout trajectories, generates candidate harnesses, and selects representatives on performance and cost.",
+          "zh": "原图 1 总览：每轮分析 rollout 轨迹、生成候选 harness、并按性能与成本选出代表。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "vibetraining-bench-codesign",
+      "title": "VibeTraining-Bench: Data-Trainer-Harness Co-Design for Iterative System Improvement",
+      "organizations": [
+        "Zhejiang University",
+        "Westlake University",
+        "Alibaba Group (Token Hub)",
+        "South China University of Technology",
+        "The Chinese University of Hong Kong"
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "autonomous-post-training",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-19; announced in the 2026-10-20 batch, recorded as first public date.",
+        "zh": "arXiv v1 于 2026-10-19 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。"
+      },
+      "affiliation": {
+        "en": "Ruotian Peng, Shuaiqi Liu (Zhejiang University), Yuanyi Ren, Yue Wu, Yandong Wen, Zhihang Fu (Westlake University / Alibaba Token Hub, Alibaba Group), Xin Guo, Fang Zhu, Yangyi Huang, Zheng Wang (incl. South China University of Technology and The Chinese University of Hong Kong) - read from the HTML author block.",
+        "zh": "Ruotian Peng、Shuaiqi Liu（浙江大学），Yuanyi Ren、Yue Wu、Yandong Wen、Zhihang Fu（西湖大学 / 阿里巴巴 Token Hub、阿里巴巴集团），Xin Guo、Fang Zhu、Yangyi Huang、Zheng Wang（含华南理工大学与香港中文大学）——依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "A benchmark for the RSI capability the authors call cross-component co-design: research agents start from an identical initial agent system under a fixed resource budget and, guided by validation feedback, iteratively refine training data, the trainer and the inference harness, then select and submit a final system for hidden test-set evaluation. Three anti-reward-hacking safeguards are enforced: test-data isolation, separate research and grading containers, and network restrictions for research agents.",
+        "zh": "一个评测作者所称跨组件协同设计（cross-component co-design）RSI 能力的基准：研究智能体在同一初始智能体系统、固定资源预算下出发，在验证反馈引导下迭代改进训练数据、训练器与推理 harness，最终选定并提交一个系统做隐藏测试集评估。强制三重防奖励作弊保障：测试数据隔离、研究与判分容器分离、研究智能体断网。"
+      },
+      "result": {
+        "en": "Frontier research agents substantially improve the target agent systems: on SWE-bench Verified, GPT-6-Astra lifts the target system from 32.9% to 53.7%, comparable to the human-developed instruct model's 55.4%; across terminal operation, software engineering, multi-turn tool use and mathematical reasoning tasks, agents still leave room in co-designing data+trainer+harness for cumulative gains.",
+        "zh": "前沿研究智能体能实质改进目标智能体系统：SWE-bench Verified 上 GPT-6-Astra 把目标系统从 32.9% 提到 53.7%，接近人研 instruct 模型的 55.4%；在终端操作、软件工程、多轮工具使用与数学推理任务上，数据+训练器+harness 的协同累积增益仍有空间。"
+      },
+      "limits": {
+        "en": "Benchmark paper: the improving agents are frontier proprietary models (mechanism not inspectable); scores depend on the task mix; the resource budget and component interfaces define the playable action space.",
+        "zh": "基准论文：执行改进的是前沿闭源模型（机制不可检视）；分数依赖任务构成；资源预算与组件接口定义了可操作空间。"
+      },
+      "availability": {
+        "en": "Repository github.com/D2I-ai/VibeTraining-Bench live under MIT but code and benchmark badges read 'Coming Soon' at verification; the URL printed in the paper (without hyphen) 404s; project page d2i-ai.github.io/VibeTraining-Bench; paper arXiv non-exclusive license.",
+        "zh": "仓库 github.com/D2I-ai/VibeTraining-Bench 已上线（MIT），但核验时代码与基准徽章均为“Coming Soon”；论文印刷的无连字符 URL 404；项目页 d2i-ai.github.io/VibeTraining-Bench；论文为 arXiv 默认许可。"
+      },
+      "application": {
+        "en": "nanoRSI's loop is a single-agent instance of exactly this benchmark's task - adopt its safeguard triad (test isolation, grader separation, no network in the research container) as the standing checklist for any future self-modifying runner, and its per-component design counting (how many accepted generations touched data vs. trainer vs. harness) as a ledger dimension.",
+        "zh": "nanoRSI 主循环正是该基准任务的单智能体实例——把其三重保障（测试隔离、判分分离、研究容器断网）作为未来任何自改 runner 的常备清单；把按组件计数（被接受的代里多少动了数据/训练器/harness）作为账本维度。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.26342",
+          "url": "https://arxiv.org/abs/2610.26342"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.26342v1"
+        },
+        {
+          "kind": "repository",
+          "label": "D2I-ai/VibeTraining-Bench (MIT, code coming soon)",
+          "url": "https://github.com/D2I-ai/VibeTraining-Bench"
+        },
+        {
+          "kind": "license",
+          "label": "VibeTraining-Bench LICENSE (MIT)",
+          "url": "https://raw.githubusercontent.com/D2I-ai/VibeTraining-Bench/main/LICENSE"
+        },
+        {
+          "kind": "project-page",
+          "label": "Project page",
+          "url": "https://d2i-ai.github.io/VibeTraining-Bench/index.html"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/vibetraining-bench-overview.png",
+        "source_url": "https://arxiv.org/html/2610.26342v1/VibeTrain-Bench_Main_Figure2.png",
+        "locator": "Figure 1 (VibeTrain-Bench_Main_Figure2.png), arXiv HTML 2610.26342v1",
+        "caption": {
+          "en": "Original Figure 1 overview: research agents receive an identical initial system (model, harness, data) and a fixed budget, iteratively co-design data, trainer and harness under validation feedback, and submit a final system for hidden-test grading in an isolated container.",
+          "zh": "原图 1 总览：研究智能体获得同一初始系统（模型、harness、数据）与固定预算，在验证反馈下迭代协同设计数据、训练器与 harness，并提交最终系统到隔离容器做隐藏测试判分。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "evoskill-v2-stateful-evolver",
+      "title": "EvoSkill v2: Fully Agentic Skill Evolution from Benchmark Adaptation to a Stateful Evolver",
+      "organizations": [
+        "Sentient Labs"
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-19; announced in the 2026-10-20 batch, recorded as first public date.",
+        "zh": "arXiv v1 于 2026-10-19 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。"
+      },
+      "affiliation": {
+        "en": "Dastin Huang, Baran Nama, Salaheddin Alzubi - all Sentient Labs (author block lists sentient.xyz addresses), read from the HTML author block.",
+        "zh": "Dastin Huang、Baran Nama、Salaheddin Alzubi——均为 Sentient Labs（作者块为 sentient.xyz 邮箱），依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "Three-agent skill evolution that edits instruction files only (model and harness stay intact). A benchmark adaptor turns a user-described benchmark plus grader into a frozen plug-in; a solver attempts every training and validation task three times per epoch; the evolver is ONE stateful coding agent with a bash tool that persists across the whole run - unlike per-call optimizers (SkillOpt) or agents restarted each round (SkillBoost). The evolver measures how much the solver's rollouts vary between attempts, gets several attempts per training task, and accepts every epoch's skills instead of selecting among them on noisy scores.",
+        "zh": "只编辑指令文件的三智能体技能演化（模型与 harness 不动）。基准适配器把用户描述的基准与评分器冻结为插件；求解器每轮对全部训练/验证任务各尝试三次；演化器是一个带 bash 工具、跨整次运行持续存在的有状态编码智能体——区别于逐次调用的优化器（SkillOpt）与每轮重启的智能体（SkillBoost）。演化器测量求解器 rollout 的次间方差，每个训练任务给多次尝试，并接受每一轮的技能而不是在噪声分数上做选择。"
+      },
+      "result": {
+        "en": "With fine-grained ground truth, EvoSkill v2's skills raise held-out pass rates above the stronger of SkillOpt and SkillBoost by 7.7 points on SpreadsheetBench v2 and 5.4 on tau3-bench banking; in both benchmarks and both feedback settings its evolver costs less per point of held-out pass rate than either baseline's optimizer; a less capable model improving its own skills gains up to 21.5 points on tau3.",
+        "zh": "在有细粒度标准答案的设定下，EvoSkill v2 的技能把留出通过率在 SpreadsheetBench v2 上超过 SkillOpt/SkillBoost 中较强者 7.7 点、tau3-bench banking 上 5.4 点；两个基准、两种反馈设定下，其演化器每提升一点留出通过率的成本都低于两个基线优化器；较弱模型自我改进技能在 tau3 上最多 +21.5 点。"
+      },
+      "limits": {
+        "en": "Instruction-file surface only; two benchmarks with user-supplied graders; accepting every epoch trades measurement budget for selection robustness (no per-epoch filtering), so the held-out comparison carries the whole burden; rollout-variance handling is heuristic.",
+        "zh": "仅指令文件面；两个基准且评分器由用户提供；接受每轮以测量预算换选择稳健性（无逐轮过滤），留出对比独自承担全部检验；rollout 方差处理为启发式。"
+      },
+      "availability": {
+        "en": "No code repository link located in the paper at verification (the surveyed SkillOpt/SkillBoost ecosystems are cited as prior systems); paper CC BY 4.0.",
+        "zh": "核验时论文未给出代码仓库链接（所综述的 SkillOpt/SkillBoost 生态作为既有系统被引用）；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "Two protocol inputs for the selector study (ADOPTION 38/53): a stateful proposer session that carries memory across generations instead of per-attempt statelessness, and an accept-every-epoch arm whose final held-out panel compares all epochs' artifacts against gated selection at matched budget - directly testing whether per-edit gating discards optima (cf. AtomSearch's 67% non-best-ancestor finding).",
+        "zh": "给选择器研究（ADOPTION 38/53）两项协议输入：跨代携带记忆的有状态提案器会话（替代逐次无状态）；以及“接受每一轮”实验臂——同预算下用最终留出面板对比全部轮次产物与闸门选择，直接检验逐编辑闸门是否丢弃最优（对照 AtomSearch 的 67% 非最优祖先发现）。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.25931",
+          "url": "https://arxiv.org/abs/2610.25931"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.25931v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/evoskill-v2-architecture.png",
+        "source_url": "https://arxiv.org/html/2610.25931v1/figArch.svg",
+        "locator": "Figure 1 (figArch.svg), arXiv HTML 2610.25931v1, rendered to PNG",
+        "caption": {
+          "en": "Original Figure 1: before the run the benchmark adaptor freezes the user's benchmark and grader into a plug-in; each epoch the solver attempts training and validation tasks while the stateful evolver agent rewrites the skills.",
+          "zh": "原图 1：运行前基准适配器把用户的基准与评分器冻结为插件；每轮求解器尝试训练与验证任务，有状态演化智能体重写技能。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "token-parity-evolutionary-search",
+      "title": "LLM Evolutionary Search Strategies Should be Compared by Tokens",
+      "organizations": [
+        "IBM Research"
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "research-workflows",
+      "family": "analyses-audits",
+      "relationship": "enabling",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-13; announced in the 2026-10-20 batch, recorded as first public date.",
+        "zh": "arXiv v1 于 2026-10-13 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。"
+      },
+      "affiliation": {
+        "en": "Tal Oved (corresponding), Roi Pony, Oshri Naparstek, Udi Barzelay - IBM Research, read from the HTML author block.",
+        "zh": "Tal Oved（通讯）、Roi Pony、Oshri Naparstek、Udi Barzelay——IBM Research，依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "A measurement-standard audit of LLM evolutionary code search. Replaying 600 logged runs across 5 tasks and 3 methods (OpenEvolve among the studied systems), it shows proposal counts hide the true cost: tokens per proposal vary from 16k to 39k, so equal-proposal comparisons silently grant some methods up to 1.9x the compute and give evolution roughly 6x the budget of independent sampling. Re-comparison at matched token budgets (sampling gets six times more attempts) plus removal of scorer exploits.",
+        "zh": "对 LLM 演化式代码搜索的度量标准审计。重放 5 个任务、3 种方法的 600 份日志（研究对象含 OpenEvolve），指出提案计数掩盖真实成本：每提案 token 从 16k 到 39k 不等，等提案比较等于悄悄给某些方法 1.9 倍算力、给演化约 6 倍于独立采样的预算。改为等 token 预算（采样获得六倍尝试次数）并移除评分器漏洞后重比。"
+      },
+      "result": {
+        "en": "At token parity the evolutionary advantage largely vanishes: evolution beats independent sampling by 5% or less on 12 of 15 task-method pairs, retaining a 23-28% margin on only 3 pairs, all on a single task (Heilbronn); a Claude Haiku 4.5 replication reproduces the split, and a third backbone shows the margin size also depends on the model. Reporting tokens rather than proposals fixes the accounting at zero cost since logs already hold them.",
+        "zh": "等 token 下演化优势基本消失：15 个任务-方法对中 12 对演化对独立采样的优势不超过 5%，仅 3 对保留 23-28% 优势且全在同一任务（Heilbronn）；Claude Haiku 4.5 复现了这一分化，第三个骨干显示优势幅度还依赖模型。报告 token 而非提案零成本修复记账——日志里本来就有。"
+      },
+      "limits": {
+        "en": "Replay covers the logged runs of three methods on five tasks; scorer-exploit removal is task-specific engineering; the audit measures search efficiency, not whether evolution finds qualitatively different solutions.",
+        "zh": "重放覆盖三种方法在五个任务的日志；评分器漏洞的移除属任务特定的工程处理；审计度量搜索效率，不回答演化是否找到性质不同的解。"
+      },
+      "availability": {
+        "en": "No code or log release located in the paper at verification; arXiv non-exclusive license.",
+        "zh": "核验时论文未给出代码或日志发布；arXiv 默认许可。"
+      },
+      "application": {
+        "en": "Directly binding on this repo's evidence ledger: record per-candidate token cost, and run all selector/gate comparisons at matched token budgets (never matched attempt counts) - the token column already exists, so this is a reporting and protocol fix, not new machinery.",
+        "zh": "直接约束本仓库证据账本：逐候选记录 token 成本，一切选择器/闸门比较按等 token 预算执行（绝不按等尝试数）——token 列已存在，这是报告与协议修正而非新机制。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.23977",
+          "url": "https://arxiv.org/abs/2610.23977"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.23977v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/token-parity-cost-bars.png",
+        "source_url": "https://arxiv.org/html/2610.23977v1/cost_bars.svg",
+        "locator": "Figure 1 (cost_bars.svg), arXiv HTML 2610.23977v1, rendered to PNG",
+        "caption": {
+          "en": "Original Figure 1: tokens per proposal by method and task with the independent-sample cost as dashed line - equal-proposal comparisons yield equal compute only if these bars match, which they do not.",
+          "zh": "原图 1：按方法与任务统计的每提案 token 数，虚线为独立采样成本——只有这些条一致时等提案比较才等于等算力，而它们并不一致。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "hippo-hippocampal-replay-evolution",
+      "title": "Hippo: Training-Free Agent Self-Evolution via Hippocampal Replay",
+      "organizations": [
+        "University of California, Irvine",
+        "Rice University",
+        "Zillow Group"
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "memory-context",
+      "family": "experience-accumulation",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-17; announced in the 2026-10-20 batch, recorded as first public date. No HTML version exists; verified at the PDF.",
+        "zh": "arXiv v1 于 2026-10-17 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。无 HTML 版本，核验用 PDF。"
+      },
+      "affiliation": {
+        "en": "Yutong Song (UC Irvine), Jiang Wu (independent researcher), Yuxuan Ren (Rice University), Tony Qin and Baoyuan Wang (Zillow Group, corresponding) - read from the PDF title page.",
+        "zh": "Yutong Song（UC Irvine）、Jiang Wu（独立研究者）、Yuxuan Ren（莱斯大学）、Tony Qin 与 Baoyuan Wang（Zillow Group，通讯）——依 PDF 扉页读出。"
+      },
+      "mechanism": {
+        "en": "Training-free RSI-style self-evolution through external memory with selective encoding and replay, explicitly motivated by recursive self-improvement. Attempts at the same task are compared to identify reusable decisions and to refine when they apply (flawed reasoning can produce success; poor execution can obscure sound strategy); surprise-driven episodic reflection selects what is worth encoding; consolidation then merges overlaps and resolves conflicts through explicit applicability conditions, revising prior guidance in place instead of storing every lesson as a new entry.",
+        "zh": "显式以递归自改进为动机、经外部记忆的选择性编码与重放实现免训练自我演化。通过比较同任务多次尝试识别可复用决策并精炼其适用条件（错误推理可能碰巧成功；糟糕执行可能掩盖正确策略）；惊讶驱动的情景反思选择值得编码的内容；巩固阶段合并重叠、以显式适用条件解决冲突、就地修订既有指导而非为每条教训新增条目。"
+      },
+      "result": {
+        "en": "Performance gains on SWE-bench Verified, WebArena and Mind2Web with substantially fewer retained experiences than the accumulation baseline; gains extend across base models of varying capability. The accumulation baseline without consolidation initially improves but eventually performs BELOW the no-memory baseline (inverted-U) - the headline negative evidence for unconsolidated memory banks.",
+        "zh": "在 SWE-bench Verified、WebArena、Mind2Web 上取得增益，且保留的经验条目远少于累积基线；增益跨不同能力的基座模型成立。无巩固的累积基线先升后降至低于无记忆基线（倒 U 型）——这是未巩固记忆库的头条负面证据。"
+      },
+      "limits": {
+        "en": "No parameter updates (capability bounded by the frozen model); lessons derived from paired attempts at the same task, so cost grows with deliberate re-attempts; evaluation on three established suites.",
+        "zh": "无参数更新（能力受冻结模型限制）；教训来自同任务配对尝试，成本随刻意重试增长；在三个既有套件上评估。"
+      },
+      "availability": {
+        "en": "No code repository located in the paper at verification; arXiv default non-exclusive license.",
+        "zh": "核验时论文未给出代码仓库；arXiv 默认非独占许可。"
+      },
+      "application": {
+        "en": "For the skills/memory line: replace append-only lesson lists with revise-in-place consolidation under explicit applicability conditions, and keep the inverted-U accumulation curve as the standing honesty check whenever an experience bank grows without pruning.",
+        "zh": "用于技能/记忆线：把只增不减的教训清单换成显式适用条件下的就地修订巩固；凡经验库无修剪增长时，以倒 U 累积曲线作为常备诚实性检查。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.24453",
+          "url": "https://arxiv.org/abs/2610.24453"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv PDF (no HTML version)",
+          "url": "https://arxiv.org/pdf/2610.24453"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure-crop",
+        "asset": "assets/paper-figures/hippo-overview.png",
+        "source_url": "https://arxiv.org/pdf/2610.24453",
+        "locator": "Figure 2 cropped from PDF page 4 (no HTML version exists); gs 150dpi render, bbox (77,99,1199,585)",
+        "caption": {
+          "en": "Original Figure 2 (rendered from PDF): overview of Hippo - surprise-driven episodic reflection plus hippocampal-replay-inspired consolidation that merges overlaps and resolves conflicts through applicability conditions, with the agent policy kept fixed.",
+          "zh": "原图 2（自 PDF 渲染）：Hippo 总览——惊讶驱动的情景反思，加上受海马重放启发、以适用条件合并重叠与解决冲突的巩固，智能体策略保持冻结。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "trackrl-skill-lifecycle-rct",
+      "title": "Trackable Skill Library Lifecycle Management for Agentic Reinforcement Learning",
+      "organizations": [
+        "Rutgers University",
+        "Carnegie Mellon University",
+        "TikTok Inc."
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-18; announced in the 2026-10-20 batch, recorded as first public date.",
+        "zh": "arXiv v1 于 2026-10-18 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。"
+      },
+      "affiliation": {
+        "en": "Xi Zhu, Yuanlin Duan, Kai Mei, Riyang Bao, Dimitris N. Metaxas (Rutgers University), Changyi Yang (Carnegie Mellon University), Shichao Zhu (TikTok Inc.) - read from the PDF title page (the HTML author block renders affiliation placeholders).",
+        "zh": "Xi Zhu、Yuanlin Duan、Kai Mei、Riyang Bao、Dimitris N. Metaxas（罗格斯大学），Changyi Yang（卡内基梅隆大学），Shichao Zhu（TikTok Inc.）——依 PDF 扉页读出（HTML 作者块渲染为占位符）。"
+      },
+      "mechanism": {
+        "en": "Skill lifecycle management driven by per-skill randomized controlled evidence inside agentic RL. Within each GRPO group, grouped sampling is turned into online randomized controlled experiments: independent random injection of skills plus within-group contrasts on the same task isolate each skill's true contribution (addressing free-riding among co-retrieved skills and difficulty confounding), with reliability-weighted aggregation across groups. Skill utility (causal contribution as external scaffolding) and model mastery (how far the capability is internalized) are tracked continuously, and the skill library is managed by evidence-gated state transitions (retain, retire, remove, evict).",
+        "zh": "由技能级随机对照证据驱动的技能生命周期管理，嵌入智能体 RL。在每个 GRPO 组内，把成组采样变成在线随机对照实验：技能独立随机注入加同任务组内对照，分离每个技能的真实贡献（解决共同检索技能的搭便车与难度混淆），并跨组做可靠性加权聚合。持续追踪技能效用（作为外部脚手架的因果贡献）与模型掌握度（能力被内化的程度），技能库由证据门控的状态转移管理（保留、退役、移除、驱逐）。"
+      },
+      "result": {
+        "en": "Outperforms recent skill-augmented RL baselines in both skill-assisted and skill-free evaluation (main testbed ALFWorld plus further suites), including reflection-model variants; analyses show how skill value shifts as the policy learns and how evidence-driven transitions shape library composition, with library growth kept controlled under cold and warm starts.",
+        "zh": "在技能辅助与无技能两种评估下均优于近期的技能增强 RL 基线（主测试床 ALFWorld 及其他套件），含反思模型变体；分析展示技能价值随策略学习如何漂移、证据驱动转移如何塑造库构成，并使冷/热启动下的库规模增长受控。"
+      },
+      "limits": {
+        "en": "Requires an RL training loop (utility estimates are tied to GRPO-style groups); evidence accumulates only as fast as retrieval exposes each skill; benchmark scope limited to the evaluated suites.",
+        "zh": "需要 RL 训练循环（效用估计绑定 GRPO 式分组）；证据积累速度受检索暴露各技能的频率限制；基准范围为所测套件。"
+      },
+      "availability": {
+        "en": "Repository github.com/xizhu1022/TrackRL printed in the paper but 404 at verification (announced, not live); paper CC BY 4.0.",
+        "zh": "论文印刷的仓库 github.com/xizhu1022/TrackRL 核验时 404（已宣布未上线）；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "Extends ADOPTION 59's causal attribution line with a lifecycle output: per-skill treatment/control injection inside evaluation panels yields causal utility, and a utility-vs-mastery two-axis ledger turns existing accept/reject bookkeeping into evidence-gated retain/retire decisions on evolved skills.",
+        "zh": "把 ADOPTION 59 的因果归因线扩展出生命周期输出：评测面板内的技能级处理/对照注入给出因果效用，效用-掌握双轴账本把既有接受/拒绝记账升级为对演化技能的证据门控保留/退役决策。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.25126",
+          "url": "https://arxiv.org/abs/2610.25126"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.25126v1"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/trackrl-overview.png",
+        "source_url": "https://arxiv.org/html/2610.25126v1/TrackRL.png",
+        "locator": "Figure 2 (TrackRL.png), arXiv HTML 2610.25126v1",
+        "caption": {
+          "en": "Original Figure 2 overview: the skill library's task- and step-level skills are randomly injected within GRPO groups to create per-skill treatment and control arms; tracked utility, mastery and evidence drive skill lifecycle management.",
+          "zh": "原图 2 总览：技能库的任务级与步骤级技能在 GRPO 组内随机注入，形成每技能的处理与对照臂；追踪的效用、掌握度与证据驱动技能生命周期管理。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "foh-federated-harness-evolution",
+      "title": "Federation over Harness",
+      "organizations": [
+        "University of Chicago"
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "harness-search",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-15; announced in the 2026-10-20 batch, recorded as first public date.",
+        "zh": "arXiv v1 于 2026-10-15 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。"
+      },
+      "affiliation": {
+        "en": "Dixi Yao (correspondence), Tahseen Rabbani, Tian Li - University of Chicago, read from the HTML author block.",
+        "zh": "Dixi Yao（通讯）、Tahseen Rabbani、Tian Li——芝加哥大学，依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "Automatic evolution of BOTH harness levels in distributed multi-agent experience sharing. A server agent evolves each client's harness for task solving and self-reflection while simultaneously evolving its own harness for aggregating distributed reflections, maintaining the shared insight library, and updating subsequent client harnesses. Crucially, FoH requires no extra validation signals - no ground-truth labels or validation data - and learns solely from self-generated reflections produced by the distributed agents.",
+        "zh": "在分布式多智能体经验共享中同时自动演化两个层级的 harness。服务端智能体演化各客户端的任务求解与自我反思 harness，同时演化自己用于聚合分布式反思、维护共享洞察库、更新后续客户端 harness 的 harness。关键在于 FoH 不需要任何额外验证信号——无标准答案、无验证数据——仅从分布式智能体自生成的反思中学习。"
+      },
+      "result": {
+        "en": "On PinchBench (V1 existing tasks + 124 V2-only held-out tasks) and ClawEval, FoH improves over single-agent baselines with a fixed harness by 53.57% and over single-agent harness self-evolution by 29.76%; on ScienceAgentBench tasks isolated agents fail while FoH-evolved client harnesses solve them with the same LLM, with distinct per-task skill activation patterns; ablations show instability when the guide excludes the insight library or local reflection.",
+        "zh": "在 PinchBench（V1 既有任务 + 124 个仅 V2 的留出任务）与 ClawEval 上，FoH 较固定 harness 的单智能体基线提升 53.57%，较单智能体 harness 自演化提升 29.76%；ScienceAgentBench 上孤立智能体失败而 FoH 演化的客户端 harness 用同一 LLM 解出，且各任务技能激活模式各异；消融显示剔除洞察库或本地反思后不稳定。"
+      },
+      "limits": {
+        "en": "Reflection-only feedback: nothing verifies correctness of consolidated insights, so gains ride on reflection quality (the paper's own framing); everyday-agent benchmarks dominate; server-side harness updates consume almost all output tokens in the breakdown.",
+        "zh": "仅反思反馈：无任何环节验证沉淀洞察的正确性，增益取决于反思质量（论文自身表述）；以日常智能体基准为主；分解显示服务端 harness 更新占掉几乎全部输出 token。"
+      },
+      "availability": {
+        "en": "Repository github.com/dixiyao/FoH live under MIT (LICENSE read from raw.githubusercontent.com main); paper CC BY 4.0.",
+        "zh": "仓库 github.com/dixiyao/FoH 已上线，MIT 许可（LICENSE 从 raw.githubusercontent.com main 读取）；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "The no-validation-signal regime is the honest stress case for this repo's evaluator-frozen doctrine: any reflection-only variant must be labeled unverifiable-by-design and compared against the frozen-evaluator gate; the client/server split of edit surfaces also maps cleanly onto per-workspace skill files versus shared population-level files.",
+        "zh": "无验证信号设定是对本仓库“评测器冻结”教义的诚实压力测试：任何仅反思的变体都必须标注为设计上不可验证、并与冻结评测器闸门对照；其客户端/服务端双编辑面也恰映射到每工作区技能文件与种群级共享文件。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.24007",
+          "url": "https://arxiv.org/abs/2610.24007"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.24007v1"
+        },
+        {
+          "kind": "repository",
+          "label": "dixiyao/FoH (MIT)",
+          "url": "https://github.com/dixiyao/FoH"
+        },
+        {
+          "kind": "license",
+          "label": "FoH LICENSE (MIT)",
+          "url": "https://raw.githubusercontent.com/dixiyao/FoH/main/LICENSE"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/foh-workflow.png",
+        "source_url": "https://arxiv.org/html/2610.24007v1/workflow.svg",
+        "locator": "Figure 1 (workflow.svg), arXiv HTML 2610.24007v1, rendered to PNG",
+        "caption": {
+          "en": "Original Figure 1: overview of the FoH workflow - distributed client agents solve tasks and reflect under evolving client harnesses, while the server agent evolves its own harness to aggregate reflections, maintain shared knowledge and update subsequent client harnesses.",
+          "zh": "原图 1：FoH 工作流总览——分布式客户端智能体在演化中的客户端 harness 下解题并反思，服务端智能体演化自身 harness 以聚合反思、维护共享知识并更新后续客户端 harness。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "skill-rsi-compile-protocol",
+      "title": "Compile Once, Run Cheap: Frozen, Portable Skills for Embodied Agents, and What Recursive Self-Improvement Adds",
+      "organizations": [
+        "Beijing Ou Rui Ling Shi Technology (Orillusion)",
+        "ChangingTek Robotics Technology (Suzhou)",
+        "Shanghai Yunfan Intelligent Control Robot Technology"
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "direct-loop",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-18 (manuscript version 3.6 dated 2026-10-17); announced in the 2026-10-20 batch, recorded as first public date; repository v1.0 released 2026-10-17.",
+        "zh": "arXiv v1 于 2026-10-18 提交（稿件版本 3.6 落款 2026-10-17）；在 2026-10-20 批次公告，以公告日为首次公开日期；仓库 v1.0 于 2026-10-17 发布。"
+      },
+      "affiliation": {
+        "en": "Jingwen Bai, Canbo Zhang, Shuang Liu (Beijing Ou Rui Ling Shi Technology Co., Ltd. - Orillusion; corresponding shuang.liu@orillusion.com), Guochao Bai, Weichun Huang (ChangingTek Robotics Technology (Suzhou)), Shuangqi Li, Minchao Hu (Shanghai Yunfan Intelligent Control Robot Technology) - read from the HTML header block.",
+        "zh": "Jingwen Bai、Canbo Zhang、Shuang Liu（北京欧瑞灵识科技有限公司 Orillusion；通讯 shuang.liu@orillusion.com），Guochao Bai、Weichun Huang（常州 ChangingTECH 机器人技术（苏州）），Shuangqi Li、Minchao Hu（上海云帆智控机器人技术）——依 HTML 头部块读出。"
+      },
+      "mechanism": {
+        "en": "Skill-level recursive self-improvement with an explicit compile protocol. A strong general model acts only as an isolated, audited offline author that writes, runs, diagnoses and repairs a manipulation skill in simulation until it passes an exam on layouts drawn AFTER freezing; the frozen skill (SKILL.md, skills.py, perception.py plus a MANIFEST with hashes, seeds, environment fingerprint, exam outcome and compile cost) then runs as code alone or under a cheap caller that reads only its description. Controlled comparisons run throughout: a no-feedback control draft beside every repair round, an inherit-only control, hidden validation layouts never fed back, and a reuse protocol running identical files under executors from another model family.",
+        "zh": "带显式编译协议的技能级递归自改进。强通用模型仅作为隔离、受审计的离线作者，在仿真中编写、运行、诊断并修复一个操作技能，直到通过在冻结之后才抽取的布局考试；冻结技能（SKILL.md、skills.py、perception.py 加含哈希、种子、环境指纹、考试结果与编译成本的 MANIFEST）之后仅以代码独立运行、或由只读其描述的廉价调用者驱动。全程设对照：每轮修复旁有无反馈对照草稿、仅继承对照、永不回灌的隐藏验证布局、以及用另一模型家族执行器运行同一文件的复用协议。"
+      },
+      "result": {
+        "en": "On 7 RoboTwin 2.0 tasks, Claude Code compiled 4 tasks into 7 frozen skills (5 from a first draft needing only qualification) at USD 4.29-8.22 author cost each (USD 55 per skill counting the 13 failed campaigns); the other 3 tasks did not compile in 18 campaigns (including five with GPT-6 and a pre-registered 150-layout run) - on the hardest task every campaign scored 78-95/100 but had 3-16 safety aborts, failing the 95%-success-zero-aborts gate; repair inheriting earlier evidence beats rewriting on hidden layouts; frozen skills transfer across executor model families.",
+        "zh": "在 7 个 RoboTwin 2.0 任务上，Claude Code 把 4 个任务编译为 7 个冻结技能（5 个首稿即只需资格验证），单个作者成本 4.29-8.22 美元（计入 13 次失败战役后为每技能 55 美元）；另外 3 个任务在 18 次战役中未编译成功（含 5 次用 GPT-6 与一次预注册的 150 布局运行）——最难任务每次战役 78-95/100 但有 3-16 次安全中止，未过“95% 成功且零中止”闸门；继承早前证据的修复在隐藏布局上胜过重写；冻结技能跨执行器模型家族迁移。"
+      },
+      "limits": {
+        "en": "Simulation-compiled skills with a small task set; author cost accounting honestly includes failures; safety-abort bounds from 100-episode exams are wide; three non-compiling tasks are reported as failures, not smoothed over.",
+        "zh": "仿真编译技能、任务集小；作者成本如实计入失败；100 局考试对中止率的界很宽；三个未编译任务如实按失败报告、未做修饰。"
+      },
+      "availability": {
+        "en": "Repository github.com/Orillusion/embodied-skill-rsi live under Apache-2.0 (LICENSE read from raw.githubusercontent.com; release v1.0 2026-10-17); paper arXiv non-exclusive license.",
+        "zh": "仓库 github.com/Orillusion/embodied-skill-rsi 已上线，Apache-2.0 许可（LICENSE 从 raw.githubusercontent.com 读取；v1.0 发布于 2026-10-17）；论文为 arXiv 默认许可。"
+      },
+      "application": {
+        "en": "The compile protocol is this repo's freeze doctrine mirrored onto embodied skills: adopt the per-repair-round paired no-feedback control draft and the inherit-only control as standard arms, and ship accepted candidates with a release MANIFEST (hashes, seeds, environment fingerprint, exam outcome, compile cost) as the packaging standard.",
+        "zh": "该编译协议正是本仓库冻结教义在具身技能上的镜像：把“每轮修复旁配无反馈对照草稿”与“仅继承”对照作为标准实验臂；被接受候选用发布 MANIFEST（哈希、种子、环境指纹、考试结果、编译成本）打包为交付标准。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.25114",
+          "url": "https://arxiv.org/abs/2610.25114"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.25114v1"
+        },
+        {
+          "kind": "repository",
+          "label": "Orillusion/embodied-skill-rsi (Apache-2.0)",
+          "url": "https://github.com/Orillusion/embodied-skill-rsi"
+        },
+        {
+          "kind": "license",
+          "label": "embodied-skill-rsi LICENSE (Apache-2.0)",
+          "url": "https://raw.githubusercontent.com/Orillusion/embodied-skill-rsi/main/LICENSE"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure-crop",
+        "asset": "assets/paper-figures/skill-rsi-protocol.png",
+        "source_url": "https://arxiv.org/pdf/2610.25114",
+        "locator": "Figure 1 cropped from PDF page 2 (HTML figure assets absent); gs 150dpi render, bbox (77,99,1199,700)",
+        "caption": {
+          "en": "Original Figure 1 (rendered from PDF): Protocol A compiles offline with an isolated, audited strong author and freezes the skill through an independent gate; Protocol B runs the same files with executors that never see the skill code on new layouts; both share one non-bypassable runtime and a hash-chained manifest.",
+          "zh": "原图 1（自 PDF 渲染）：协议 A 由隔离、受审计的强作者离线编译并经独立闸门冻结技能；协议 B 用从未见过技能代码的执行器在新布局上运行同一文件；两者共享同一不可旁路运行时与哈希链清单。"
+        }
+      },
+      "last_verified": "2026-10-21",
+      "local_reproduction": "not-run"
+    },
+    {
+      "id": "skillclash-takeover-merge",
+      "title": "One Skill Takes Over: Clashing Agent Skills and a One-File Fix",
+      "organizations": [
+        "University of Southern California"
+      ],
+      "published": "2026-10-20",
+      "kind": "paper",
+      "category": "agent-code",
+      "family": "skill-file-optimization",
+      "relationship": "enabling",
+      "date_note": {
+        "en": "arXiv v1 submitted 2026-10-18; announced in the 2026-10-20 batch, recorded as first public date; repository committed 2026-10-18.",
+        "zh": "arXiv v1 于 2026-10-18 提交；在 2026-10-20 批次公告，以公告日为首次公开日期；仓库提交于 2026-10-18。"
+      },
+      "affiliation": {
+        "en": "Parsa Razmara (corresponding), Seyedarmin Azizi, Ardalan Aryashad - University of Southern California, Los Angeles, read from the HTML author block.",
+        "zh": "Parsa Razmara（通讯）、Seyedarmin Azizi、Ardalan Aryashad——南加州大学（洛杉矶），依 HTML 作者块读出。"
+      },
+      "mechanism": {
+        "en": "An empirical anatomy of skill interference. SkillClash is 16 pairs of same-job skills in which code checks every rule and a reference output shows the best achievable result; loading two same-job skills into one context produces takeover - outputs follow every exclusive rule of one skill and drop the other's - driven by the worked examples inside the files. Fixes tested: telling the model which skill has priority (does not recover the dropped skill), telling it to apply both (helps only on the two strongest models), ending each file with one shared correct worked example (takeover falls to 1-15% on six models), and one merged meta-skill file written by Claude Opus 5.5.",
+        "zh": "对技能干扰的实证解剖。SkillClash 含 16 对同职能技能，规则由代码校验并给出最佳可达参照输出；把两份同职能技能装入同一上下文会出现“接管”——输出遵循其一技能的全部独占规则、丢弃另一个——由文件内的示例驱动。测试的修复：告知模型哪个技能优先（救不回被丢技能）、要求两个都执行（仅对两个最强模型有效）、在每份文件末尾放一个共享的正确示例（六模型上接管率降到 1-15%）、以及由 Claude Opus 5.5 写的单文件合并元技能。"
+      },
+      "result": {
+        "en": "Across seven models from five families (4B open to Qwen3-235B and GPT-4.1), a skill's rules are followed 93-99% when loaded alone but 61-62% when a same-job skill is loaded next to it; the merged file restores 96-99% of achievable rules on all seven models (68-94% of outputs fully correct), and its correct worked example alone is worth +12-17 points - an incorrect example adds little or nothing.",
+        "zh": "五个家族的七个模型（4B 开源到 Qwen3-235B 与 GPT-4.1）上，技能单独加载时规则遵循 93-99%，并排装入同职能技能后降至 61-62%；合并文件在全部七模型上恢复 96-99% 可达规则（68-94% 输出完全正确），其中正确的示例单独就值 +12-17 点——错误示例几乎无增益。"
+      },
+      "limits": {
+        "en": "Instruction-file skills only (no tool/skill scripts); 16 job pairs with code-checkable rules; the strongest merge was written by a frontier model outside the loop rather than evolved; same-job pairs may overstate clashes across loosely related skills.",
+        "zh": "仅指令文件技能（不含工具/技能脚本）；16 个规则可代码校验的职能对；最强合并由循环外的前沿模型写出而非演化得到；同职能配对可能高估松散相关技能间的冲突。"
+      },
+      "availability": {
+        "en": "Repository github.com/prazmara/skillclash live (benchmark, code and results, committed 2026-10-18) with NO license file at verification - treat as all-rights-reserved; paper CC BY 4.0.",
+        "zh": "仓库 github.com/prazmara/skillclash 已上线（基准、代码与结果，2026-10-18 提交），核验时无 LICENSE 文件——按保留所有权利处理；论文 CC BY 4.0。"
+      },
+      "application": {
+        "en": "Skills-template hygiene for multi-skill workspaces: before a run, audit active skill files for same-job rule overlap (clash check); when overlap exists, require a shared correct worked example or a merged single file - a cheap pre-gate check for the skills line that directly matches this repo's per-workspace skill surfaces.",
+        "zh": "多技能工作区的技能模板卫生：运行前审计活跃技能文件的同职能规则重叠（冲突检查）；发现重叠时要求共享正确示例或合并为单文件——这是技能线一个廉价的前置检查，与本仓库每工作区技能面直接对应。"
+      },
+      "sources": [
+        {
+          "kind": "paper",
+          "label": "arXiv abs 2610.25064",
+          "url": "https://arxiv.org/abs/2610.25064"
+        },
+        {
+          "kind": "paper",
+          "label": "arXiv HTML v1",
+          "url": "https://arxiv.org/html/2610.25064v1"
+        },
+        {
+          "kind": "repository",
+          "label": "prazmara/skillclash (no license file)",
+          "url": "https://github.com/prazmara/skillclash"
+        }
+      ],
+      "visual": {
+        "kind": "paper-figure",
+        "asset": "assets/paper-figures/skillclash-takeover.png",
+        "source_url": "https://arxiv.org/html/2610.25064v1/fig_takeover.png",
+        "locator": "Figure 2 (fig_takeover.png), arXiv HTML 2610.25064v1",
+        "caption": {
+          "en": "Original Figure 2: (a) share of a skill's rules followed on seven models when loaded alone versus beside a same-job skill; (b-d) outputs with both skills loaded, counted by exclusive rules of each skill followed - most outputs sit in the two takeover corners.",
+          "zh": "原图 2：(a) 七个模型上技能单独加载与并排同职能技能时的规则遵循率；(b-d) 双技能加载下按各自独占规则遵循数统计的输出——大多数输出落在两个“接管”角落。"
+        }
+      },
+      "last_verified": "2026-10-21",
       "local_reproduction": "not-run"
     }
   ]

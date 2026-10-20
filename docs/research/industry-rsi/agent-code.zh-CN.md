@@ -6,8 +6,8 @@
 
 | 家族 | 条目数 |
 | --- | ---: |
-| [技能文件优化与技能库](#family-skill-file-optimization) | 27 |
-| [Harness 搜索与进化](#family-harness-search) | 26 |
+| [技能文件优化与技能库](#family-skill-file-optimization) | 31 |
+| [Harness 搜索与进化](#family-harness-search) | 28 |
 | [自改写元智能体与谱系](#family-self-modifying-meta-agents) | 14 |
 | [程序进化与进化搜索](#family-program-evolution) | 10 |
 | [反馈审查与编排](#family-feedback-orchestration) | 6 |
@@ -15,7 +15,127 @@
 
 <a id="family-skill-file-optimization"></a>
 
-## 技能文件优化与技能库 (27)
+## 技能文件优化与技能库 (31)
+
+<a id="trackrl-skill-lifecycle-rct"></a>
+
+### Trackable Skill Library Lifecycle Management for Agentic Reinforcement Learning
+
+**2026-10-20** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-18 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。
+
+**机构关系** — Xi Zhu、Yuanlin Duan、Kai Mei、Riyang Bao、Dimitris N. Metaxas（罗格斯大学），Changyi Yang（卡内基梅隆大学），Shichao Zhu（TikTok Inc.）——依 PDF 扉页读出（HTML 作者块渲染为占位符）。
+
+**改变对象与反馈复用** — 由技能级随机对照证据驱动的技能生命周期管理，嵌入智能体 RL。在每个 GRPO 组内，把成组采样变成在线随机对照实验：技能独立随机注入加同任务组内对照，分离每个技能的真实贡献（解决共同检索技能的搭便车与难度混淆），并跨组做可靠性加权聚合。持续追踪技能效用（作为外部脚手架的因果贡献）与模型掌握度（能力被内化的程度），技能库由证据门控的状态转移管理（保留、退役、移除、驱逐）。
+
+**作者报告结果** — 在技能辅助与无技能两种评估下均优于近期的技能增强 RL 基线（主测试床 ALFWorld 及其他套件），含反思模型变体；分析展示技能价值随策略学习如何漂移、证据驱动转移如何塑造库构成，并使冷/热启动下的库规模增长受控。
+
+**证据边界** — 需要 RL 训练循环（效用估计绑定 GRPO 式分组）；证据积累速度受检索暴露各技能的频率限制；基准范围为所测套件。
+
+**代码／权重／数据／许可** — 论文印刷的仓库 github.com/xizhu1022/TrackRL 核验时 404（已宣布未上线）；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把 ADOPTION 59 的因果归因线扩展出生命周期输出：评测面板内的技能级处理/对照注入给出因果效用，效用-掌握双轴账本把既有接受/拒绝记账升级为对演化技能的证据门控保留/退役决策。
+
+![原图 2 总览：技能库的任务级与步骤级技能在 GRPO 组内随机注入，形成每技能的处理与对照臂；追踪的效用、掌握度与证据驱动技能生命周期管理。](assets/paper-figures/trackrl-overview.png)
+
+**原文图／官方图片** — 原图 2 总览：技能库的任务级与步骤级技能在 GRPO 组内随机注入，形成每技能的处理与对照臂；追踪的效用、掌握度与证据驱动技能生命周期管理。 · Figure 2 (TrackRL.png), arXiv HTML 2610.25126v1 · [source](https://arxiv.org/html/2610.25126v1/TrackRL.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-21.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.25126](https://arxiv.org/abs/2610.25126) · [arXiv HTML v1](https://arxiv.org/html/2610.25126v1)
+
+<a id="skillclash-takeover-merge"></a>
+
+### One Skill Takes Over: Clashing Agent Skills and a One-File Fix
+
+**2026-10-20** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 于 2026-10-18 提交；在 2026-10-20 批次公告，以公告日为首次公开日期；仓库提交于 2026-10-18。
+
+**机构关系** — Parsa Razmara（通讯）、Seyedarmin Azizi、Ardalan Aryashad——南加州大学（洛杉矶），依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 对技能干扰的实证解剖。SkillClash 含 16 对同职能技能，规则由代码校验并给出最佳可达参照输出；把两份同职能技能装入同一上下文会出现“接管”——输出遵循其一技能的全部独占规则、丢弃另一个——由文件内的示例驱动。测试的修复：告知模型哪个技能优先（救不回被丢技能）、要求两个都执行（仅对两个最强模型有效）、在每份文件末尾放一个共享的正确示例（六模型上接管率降到 1-15%）、以及由 Claude Opus 5.5 写的单文件合并元技能。
+
+**作者报告结果** — 五个家族的七个模型（4B 开源到 Qwen3-235B 与 GPT-4.1）上，技能单独加载时规则遵循 93-99%，并排装入同职能技能后降至 61-62%；合并文件在全部七模型上恢复 96-99% 可达规则（68-94% 输出完全正确），其中正确的示例单独就值 +12-17 点——错误示例几乎无增益。
+
+**证据边界** — 仅指令文件技能（不含工具/技能脚本）；16 个规则可代码校验的职能对；最强合并由循环外的前沿模型写出而非演化得到；同职能配对可能高估松散相关技能间的冲突。
+
+**代码／权重／数据／许可** — 仓库 github.com/prazmara/skillclash 已上线（基准、代码与结果，2026-10-18 提交），核验时无 LICENSE 文件——按保留所有权利处理；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 多技能工作区的技能模板卫生：运行前审计活跃技能文件的同职能规则重叠（冲突检查）；发现重叠时要求共享正确示例或合并为单文件——这是技能线一个廉价的前置检查，与本仓库每工作区技能面直接对应。
+
+![原图 2：(a) 七个模型上技能单独加载与并排同职能技能时的规则遵循率；(b-d) 双技能加载下按各自独占规则遵循数统计的输出——大多数输出落在两个“接管”角落。](assets/paper-figures/skillclash-takeover.png)
+
+**原文图／官方图片** — 原图 2：(a) 七个模型上技能单独加载与并排同职能技能时的规则遵循率；(b-d) 双技能加载下按各自独占规则遵循数统计的输出——大多数输出落在两个“接管”角落。 · Figure 2 (fig_takeover.png), arXiv HTML 2610.25064v1 · [source](https://arxiv.org/html/2610.25064v1/fig_takeover.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-21.
+
+**开源代码／权重／数据链接** — [prazmara/skillclash (no license file)](https://github.com/prazmara/skillclash)
+
+**一手来源** — [arXiv abs 2610.25064](https://arxiv.org/abs/2610.25064) · [arXiv HTML v1](https://arxiv.org/html/2610.25064v1) · [prazmara/skillclash (no license file)](https://github.com/prazmara/skillclash)
+
+<a id="skill-rsi-compile-protocol"></a>
+
+### Compile Once, Run Cheap: Frozen, Portable Skills for Embodied Agents, and What Recursive Self-Improvement Adds
+
+**2026-10-20** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-18 提交（稿件版本 3.6 落款 2026-10-17）；在 2026-10-20 批次公告，以公告日为首次公开日期；仓库 v1.0 于 2026-10-17 发布。
+
+**机构关系** — Jingwen Bai、Canbo Zhang、Shuang Liu（北京欧瑞灵识科技有限公司 Orillusion；通讯 shuang.liu@orillusion.com），Guochao Bai、Weichun Huang（常州 ChangingTECH 机器人技术（苏州）），Shuangqi Li、Minchao Hu（上海云帆智控机器人技术）——依 HTML 头部块读出。
+
+**改变对象与反馈复用** — 带显式编译协议的技能级递归自改进。强通用模型仅作为隔离、受审计的离线作者，在仿真中编写、运行、诊断并修复一个操作技能，直到通过在冻结之后才抽取的布局考试；冻结技能（SKILL.md、skills.py、perception.py 加含哈希、种子、环境指纹、考试结果与编译成本的 MANIFEST）之后仅以代码独立运行、或由只读其描述的廉价调用者驱动。全程设对照：每轮修复旁有无反馈对照草稿、仅继承对照、永不回灌的隐藏验证布局、以及用另一模型家族执行器运行同一文件的复用协议。
+
+**作者报告结果** — 在 7 个 RoboTwin 2.0 任务上，Claude Code 把 4 个任务编译为 7 个冻结技能（5 个首稿即只需资格验证），单个作者成本 4.29-8.22 美元（计入 13 次失败战役后为每技能 55 美元）；另外 3 个任务在 18 次战役中未编译成功（含 5 次用 GPT-6 与一次预注册的 150 布局运行）——最难任务每次战役 78-95/100 但有 3-16 次安全中止，未过“95% 成功且零中止”闸门；继承早前证据的修复在隐藏布局上胜过重写；冻结技能跨执行器模型家族迁移。
+
+**证据边界** — 仿真编译技能、任务集小；作者成本如实计入失败；100 局考试对中止率的界很宽；三个未编译任务如实按失败报告、未做修饰。
+
+**代码／权重／数据／许可** — 仓库 github.com/Orillusion/embodied-skill-rsi 已上线，Apache-2.0 许可（LICENSE 从 raw.githubusercontent.com 读取；v1.0 发布于 2026-10-17）；论文为 arXiv 默认许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 该编译协议正是本仓库冻结教义在具身技能上的镜像：把“每轮修复旁配无反馈对照草稿”与“仅继承”对照作为标准实验臂；被接受候选用发布 MANIFEST（哈希、种子、环境指纹、考试结果、编译成本）打包为交付标准。
+
+![原图 1（自 PDF 渲染）：协议 A 由隔离、受审计的强作者离线编译并经独立闸门冻结技能；协议 B 用从未见过技能代码的执行器在新布局上运行同一文件；两者共享同一不可旁路运行时与哈希链清单。](assets/paper-figures/skill-rsi-protocol.png)
+
+**原文图／官方图片** — 原图 1（自 PDF 渲染）：协议 A 由隔离、受审计的强作者离线编译并经独立闸门冻结技能；协议 B 用从未见过技能代码的执行器在新布局上运行同一文件；两者共享同一不可旁路运行时与哈希链清单。 · Figure 1 cropped from PDF page 2 (HTML figure assets absent); gs 150dpi render, bbox (77,99,1199,700) · [source](https://arxiv.org/pdf/2610.25114)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-21.
+
+**开源代码／权重／数据链接** — [Orillusion/embodied-skill-rsi (Apache-2.0)](https://github.com/Orillusion/embodied-skill-rsi) · [embodied-skill-rsi LICENSE (Apache-2.0)](https://raw.githubusercontent.com/Orillusion/embodied-skill-rsi/main/LICENSE)
+
+**一手来源** — [arXiv abs 2610.25114](https://arxiv.org/abs/2610.25114) · [arXiv HTML v1](https://arxiv.org/html/2610.25114v1) · [Orillusion/embodied-skill-rsi (Apache-2.0)](https://github.com/Orillusion/embodied-skill-rsi) · [embodied-skill-rsi LICENSE (Apache-2.0)](https://raw.githubusercontent.com/Orillusion/embodied-skill-rsi/main/LICENSE)
+
+<a id="evoskill-v2-stateful-evolver"></a>
+
+### EvoSkill v2: Fully Agentic Skill Evolution from Benchmark Adaptation to a Stateful Evolver
+
+**2026-10-20** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-19 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。
+
+**机构关系** — Dastin Huang、Baran Nama、Salaheddin Alzubi——均为 Sentient Labs（作者块为 sentient.xyz 邮箱），依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 只编辑指令文件的三智能体技能演化（模型与 harness 不动）。基准适配器把用户描述的基准与评分器冻结为插件；求解器每轮对全部训练/验证任务各尝试三次；演化器是一个带 bash 工具、跨整次运行持续存在的有状态编码智能体——区别于逐次调用的优化器（SkillOpt）与每轮重启的智能体（SkillBoost）。演化器测量求解器 rollout 的次间方差，每个训练任务给多次尝试，并接受每一轮的技能而不是在噪声分数上做选择。
+
+**作者报告结果** — 在有细粒度标准答案的设定下，EvoSkill v2 的技能把留出通过率在 SpreadsheetBench v2 上超过 SkillOpt/SkillBoost 中较强者 7.7 点、tau3-bench banking 上 5.4 点；两个基准、两种反馈设定下，其演化器每提升一点留出通过率的成本都低于两个基线优化器；较弱模型自我改进技能在 tau3 上最多 +21.5 点。
+
+**证据边界** — 仅指令文件面；两个基准且评分器由用户提供；接受每轮以测量预算换选择稳健性（无逐轮过滤），留出对比独自承担全部检验；rollout 方差处理为启发式。
+
+**代码／权重／数据／许可** — 核验时论文未给出代码仓库链接（所综述的 SkillOpt/SkillBoost 生态作为既有系统被引用）；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 给选择器研究（ADOPTION 38/53）两项协议输入：跨代携带记忆的有状态提案器会话（替代逐次无状态）；以及“接受每一轮”实验臂——同预算下用最终留出面板对比全部轮次产物与闸门选择，直接检验逐编辑闸门是否丢弃最优（对照 AtomSearch 的 67% 非最优祖先发现）。
+
+![原图 1：运行前基准适配器把用户的基准与评分器冻结为插件；每轮求解器尝试训练与验证任务，有状态演化智能体重写技能。](assets/paper-figures/evoskill-v2-architecture.png)
+
+**原文图／官方图片** — 原图 1：运行前基准适配器把用户的基准与评分器冻结为插件；每轮求解器尝试训练与验证任务，有状态演化智能体重写技能。 · Figure 1 (figArch.svg), arXiv HTML 2610.25931v1, rendered to PNG · [source](https://arxiv.org/html/2610.25931v1/figArch.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-21.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.25931](https://arxiv.org/abs/2610.25931) · [arXiv HTML v1](https://arxiv.org/html/2610.25931v1)
 
 <a id="cdse-skill-component-differentiation"></a>
 
@@ -829,7 +949,67 @@
 
 <a id="family-harness-search"></a>
 
-## Harness 搜索与进化 (26)
+## Harness 搜索与进化 (28)
+
+<a id="harnesspro-pareto-harness-evolution"></a>
+
+### HarnessPro: Recursive Harness Self-Improvement with Pareto Optimization for Performance-Cost Trade-offs
+
+**2026-10-20** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-19 提交；在 2026-10-20 批次公告；仓库同日首发。
+
+**机构关系** — Zhuoshi Pan、ZhiYuan Feng、Honglin Lin、H. Vicky Zhao、Jie Tang（清华大学），Yukuo Cen（智谱 Z.AI），Zhongxia Chen、Shuo Yang（快手），Junru Lu（华威大学），另有上海交通大学——依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 性能-成本 Pareto 目标下的无标签递归 harness 演化。每轮：专用智能体诊断执行轨迹、按不同性能-成本优先级规划更新并实现为候选 harness；候选用 LLM 生成的测试评估（无标准答案或官方测试），经归一化加权平方距离选择给出三个代表——成本优先（lite）、均衡（medium）、性能优先（heavy）——在留出评估前固定；入选 harness 带执行反馈进入下一轮。
+
+**作者报告结果** — 在 Terminal-Bench 2、SWE-Bench Pro 与 ProgramBench 上（GPT-5.5 + Codex），heavy 模式较 RHO 平均 +2.0 通过率点、每任务成本降 26.1%（平均延迟 520 秒降至 412 秒）；GLM-5.2 + Claude Code 下优势保持；lite 模式以更低成本在三基准上均胜过原始 harness。
+
+**证据边界** — 评估效度依赖 LLM 生成的测试（对判分结果的混淆矩阵有报告但并非标准答案）；绝对增益温和（约 2 点）；结果绑定两套 agent 栈（Codex、Claude Code）与三个基准。
+
+**代码／权重／数据／许可** — 仓库 github.com/pzs19/HarnessPro 已上线，MIT 许可（2026-10-19 首发，LICENSE 从 raw.githubusercontent.com 读取）；在线演示 pzs19.github.io/HarnessPro；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 把成本变成一等选择轴：证据账本已按候选计 token——在冻结测试前固定并报告一条 Pareto 前沿（便宜/均衡/昂贵的代），而非单一最高分赢家。
+
+![原图 1 总览：每轮分析 rollout 轨迹、生成候选 harness、并按性能与成本选出代表。](assets/paper-figures/harnesspro-overview.png)
+
+**原文图／官方图片** — 原图 1 总览：每轮分析 rollout 轨迹、生成候选 harness、并按性能与成本选出代表。 · Figure 1 (HarnessPro_Main_Figure.svg), arXiv HTML 2610.26770v1, rendered to PNG · [source](https://arxiv.org/html/2610.26770v1/HarnessPro_Main_Figure.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-21.
+
+**开源代码／权重／数据链接** — [pzs19/HarnessPro (MIT)](https://github.com/pzs19/HarnessPro) · [HarnessPro LICENSE (MIT)](https://raw.githubusercontent.com/pzs19/HarnessPro/master/LICENSE)
+
+**一手来源** — [arXiv abs 2610.26770](https://arxiv.org/abs/2610.26770) · [arXiv HTML v1](https://arxiv.org/html/2610.26770v1) · [pzs19/HarnessPro (MIT)](https://github.com/pzs19/HarnessPro) · [HarnessPro LICENSE (MIT)](https://raw.githubusercontent.com/pzs19/HarnessPro/master/LICENSE) · [Live demo](https://pzs19.github.io/HarnessPro/)
+
+<a id="foh-federated-harness-evolution"></a>
+
+### Federation over Harness
+
+**2026-10-20** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-15 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。
+
+**机构关系** — Dixi Yao（通讯）、Tahseen Rabbani、Tian Li——芝加哥大学，依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 在分布式多智能体经验共享中同时自动演化两个层级的 harness。服务端智能体演化各客户端的任务求解与自我反思 harness，同时演化自己用于聚合分布式反思、维护共享洞察库、更新后续客户端 harness 的 harness。关键在于 FoH 不需要任何额外验证信号——无标准答案、无验证数据——仅从分布式智能体自生成的反思中学习。
+
+**作者报告结果** — 在 PinchBench（V1 既有任务 + 124 个仅 V2 的留出任务）与 ClawEval 上，FoH 较固定 harness 的单智能体基线提升 53.57%，较单智能体 harness 自演化提升 29.76%；ScienceAgentBench 上孤立智能体失败而 FoH 演化的客户端 harness 用同一 LLM 解出，且各任务技能激活模式各异；消融显示剔除洞察库或本地反思后不稳定。
+
+**证据边界** — 仅反思反馈：无任何环节验证沉淀洞察的正确性，增益取决于反思质量（论文自身表述）；以日常智能体基准为主；分解显示服务端 harness 更新占掉几乎全部输出 token。
+
+**代码／权重／数据／许可** — 仓库 github.com/dixiyao/FoH 已上线，MIT 许可（LICENSE 从 raw.githubusercontent.com main 读取）；论文 CC BY 4.0。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 无验证信号设定是对本仓库“评测器冻结”教义的诚实压力测试：任何仅反思的变体都必须标注为设计上不可验证、并与冻结评测器闸门对照；其客户端/服务端双编辑面也恰映射到每工作区技能文件与种群级共享文件。
+
+![原图 1：FoH 工作流总览——分布式客户端智能体在演化中的客户端 harness 下解题并反思，服务端智能体演化自身 harness 以聚合反思、维护共享知识并更新后续客户端 harness。](assets/paper-figures/foh-workflow.png)
+
+**原文图／官方图片** — 原图 1：FoH 工作流总览——分布式客户端智能体在演化中的客户端 harness 下解题并反思，服务端智能体演化自身 harness 以聚合反思、维护共享知识并更新后续客户端 harness。 · Figure 1 (workflow.svg), arXiv HTML 2610.24007v1, rendered to PNG · [source](https://arxiv.org/html/2610.24007v1/workflow.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-21.
+
+**开源代码／权重／数据链接** — [dixiyao/FoH (MIT)](https://github.com/dixiyao/FoH) · [FoH LICENSE (MIT)](https://raw.githubusercontent.com/dixiyao/FoH/main/LICENSE)
+
+**一手来源** — [arXiv abs 2610.24007](https://arxiv.org/abs/2610.24007) · [arXiv HTML v1](https://arxiv.org/html/2610.24007v1) · [dixiyao/FoH (MIT)](https://github.com/dixiyao/FoH) · [FoH LICENSE (MIT)](https://raw.githubusercontent.com/dixiyao/FoH/main/LICENSE)
 
 <a id="selfhpo-harness-policy-coevolution"></a>
 

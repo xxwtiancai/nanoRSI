@@ -8,7 +8,7 @@
 | --- | ---: |
 | [Self-play & curriculum task generation](#family-self-play-curriculum) | 15 |
 | [Verifier- and reward-centric loops](#family-verifier-reward) | 6 |
-| [Skill-weight co-evolution](#family-skill-weight-coevolution) | 4 |
+| [Skill-weight co-evolution](#family-skill-weight-coevolution) | 5 |
 | [Experience distillation & test-time adaptation](#family-experience-distillation) | 9 |
 | [Autonomous training agents & data pipelines](#family-autonomous-training) | 8 |
 | [Enabling adaptation mechanisms](#family-enabling-adaptation) | 7 |
@@ -653,7 +653,37 @@
 
 <a id="family-skill-weight-coevolution"></a>
 
-## Skill-weight co-evolution (4)
+## Skill-weight co-evolution (5)
+
+<a id="coevo-rsi-brain-body-alignment"></a>
+
+### CoEvo-RSI: When Harnesses Evolve, Which Models Should Follow?
+
+**2026-10-20** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-18; announced in the 2026-10-20 batch (listing day-group Tue, 20 Oct 2026), recorded as first public date.
+
+**Institutional relationship** — Jiaqi Su, Guibin Zhang, Jie-Jing Shao, Cong Pang, Tiankuo Yao, Ivor Tsang, Haiyan Yin, Shuicheng Yan across National University of Singapore, A*STAR and SenseTime Group Inc. - read from the PDF title page (the HTML author block renders the first affiliation blank).
+
+**What changes and how feedback is reused** — Model-harness co-evolution with bidirectional historical inheritance. A shared evolutionary archive keeps historical harness designs, model checkpoints and outcomes; a Curator meta-agent guides evolution from this archive. Harness editors choose historical harness bases while checkpoint selection or merging supplies the paired models, which are then adapted (SFT on the agent's own rejection-sampled trajectories) under the selected harness, aligning inherited capabilities with evolving execution requirements. Each round evaluates candidate (harness, model) pairs and tracks a Turn-level Interface Mismatch Rate (TIMR) to detect the brain-body mismatch: an evolving harness demanding behaviors the model has not learned or restricting capabilities it already has.
+
+**Author-reported result** — Using only SFT on its own rejection-sampled trajectories, CoEvo-RSI makes Qwen3.5-9B competitive with larger models on three vertical applications (multi-agent failure attribution, role-aware text-to-SQL, smart-home instruction following): surpasses DeepSeek-V4-Pro on TraceElephant (+14.16 agent accuracy) and GLM-5.3 on HomeBench VM (+4.90 success rate); on TraceElephant both harness-evolution-only baselines drop below 10% When accuracy while CoEvo-RSI retains 28%.
+
+**Evidence limits** — Vertical application suite rather than public general benchmarks; model-side adaptation is SFT-only; TIMR measures task-interface mismatch, and gains are reported under this specific archive-and-curator design.
+
+**Code / weights / data / license** — Repository github.com/SuJQ0722/CoEvo-RSI (README titled CoEvoX) live but with NO license file at verification - treat as all-rights-reserved; Hugging Face collection nullptr04/coevo-rsi reachable (200); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Track a cheap interface-mismatch proxy per generation (e.g. rate of runner-rejected or retried actions) so harness-side edits and a lightweight parametric side are paired only when mismatch rises, and keep the population archive as recombinable (edit, checkpoint) pairs instead of a linear lineage.
+
+![Original Figure 3 overview: the Curator draws on archived designs, checkpoints and outcomes to guide evolution; harness editors choose historical harness bases while checkpoint selection or merging supplies the paired models; each round evaluates candidate pairs and tracks interface mismatch.](assets/paper-figures/coevo-rsi-framework.png)
+
+**Source figure / official image** — Original Figure 3 overview: the Curator draws on archived designs, checkpoints and outcomes to guide evolution; harness editors choose historical harness bases while checkpoint selection or merging supplies the paired models; each round evaluates candidate pairs and tracks interface mismatch. · Figure 3 (coevox-framework.svg), arXiv HTML 2610.25078v1, rendered to PNG · [source](https://arxiv.org/html/2610.25078v1/coevox-framework.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — [SuJQ0722/CoEvo-RSI (no license file)](https://github.com/SuJQ0722/CoEvo-RSI)
+
+**Primary sources** — [arXiv abs 2610.25078](https://arxiv.org/abs/2610.25078) · [arXiv HTML v1](https://arxiv.org/html/2610.25078v1) · [SuJQ0722/CoEvo-RSI (no license file)](https://github.com/SuJQ0722/CoEvo-RSI) · [Hugging Face collection coevo-rsi](https://huggingface.co/collections/nullptr04/coevo-rsi)
 
 <a id="adarsi-on-demand-weights"></a>
 

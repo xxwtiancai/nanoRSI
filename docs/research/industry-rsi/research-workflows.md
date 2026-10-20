@@ -7,10 +7,10 @@
 | Family | Records |
 | --- | ---: |
 | [AI-scientist systems](#family-ai-scientists) | 15 |
-| [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 5 |
+| [Autonomous post-training & its evaluation](#family-autonomous-post-training) | 6 |
 | [Company R&D telemetry](#family-company-telemetry) | 7 |
 | [Alignment automation](#family-alignment-automation) | 3 |
-| [Analyses & audits](#family-analyses-audits) | 20 |
+| [Analyses & audits](#family-analyses-audits) | 21 |
 | [Positions, roadmaps & labs](#family-positions-labs) | 7 |
 
 <a id="family-ai-scientists"></a>
@@ -469,7 +469,37 @@
 
 <a id="family-autonomous-post-training"></a>
 
-## Autonomous post-training & its evaluation (5)
+## Autonomous post-training & its evaluation (6)
+
+<a id="vibetraining-bench-codesign"></a>
+
+### VibeTraining-Bench: Data-Trainer-Harness Co-Design for Iterative System Improvement
+
+**2026-10-20** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-19; announced in the 2026-10-20 batch, recorded as first public date.
+
+**Institutional relationship** — Ruotian Peng, Shuaiqi Liu (Zhejiang University), Yuanyi Ren, Yue Wu, Yandong Wen, Zhihang Fu (Westlake University / Alibaba Token Hub, Alibaba Group), Xin Guo, Fang Zhu, Yangyi Huang, Zheng Wang (incl. South China University of Technology and The Chinese University of Hong Kong) - read from the HTML author block.
+
+**What changes and how feedback is reused** — A benchmark for the RSI capability the authors call cross-component co-design: research agents start from an identical initial agent system under a fixed resource budget and, guided by validation feedback, iteratively refine training data, the trainer and the inference harness, then select and submit a final system for hidden test-set evaluation. Three anti-reward-hacking safeguards are enforced: test-data isolation, separate research and grading containers, and network restrictions for research agents.
+
+**Author-reported result** — Frontier research agents substantially improve the target agent systems: on SWE-bench Verified, GPT-6-Astra lifts the target system from 32.9% to 53.7%, comparable to the human-developed instruct model's 55.4%; across terminal operation, software engineering, multi-turn tool use and mathematical reasoning tasks, agents still leave room in co-designing data+trainer+harness for cumulative gains.
+
+**Evidence limits** — Benchmark paper: the improving agents are frontier proprietary models (mechanism not inspectable); scores depend on the task mix; the resource budget and component interfaces define the playable action space.
+
+**Code / weights / data / license** — Repository github.com/D2I-ai/VibeTraining-Bench live under MIT but code and benchmark badges read 'Coming Soon' at verification; the URL printed in the paper (without hyphen) 404s; project page d2i-ai.github.io/VibeTraining-Bench; paper arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — nanoRSI's loop is a single-agent instance of exactly this benchmark's task - adopt its safeguard triad (test isolation, grader separation, no network in the research container) as the standing checklist for any future self-modifying runner, and its per-component design counting (how many accepted generations touched data vs. trainer vs. harness) as a ledger dimension.
+
+![Original Figure 1 overview: research agents receive an identical initial system (model, harness, data) and a fixed budget, iteratively co-design data, trainer and harness under validation feedback, and submit a final system for hidden-test grading in an isolated container.](assets/paper-figures/vibetraining-bench-overview.png)
+
+**Source figure / official image** — Original Figure 1 overview: research agents receive an identical initial system (model, harness, data) and a fixed budget, iteratively co-design data, trainer and harness under validation feedback, and submit a final system for hidden-test grading in an isolated container. · Figure 1 (VibeTrain-Bench_Main_Figure2.png), arXiv HTML 2610.26342v1 · [source](https://arxiv.org/html/2610.26342v1/VibeTrain-Bench_Main_Figure2.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — [D2I-ai/VibeTraining-Bench (MIT, code coming soon)](https://github.com/D2I-ai/VibeTraining-Bench) · [VibeTraining-Bench LICENSE (MIT)](https://raw.githubusercontent.com/D2I-ai/VibeTraining-Bench/main/LICENSE)
+
+**Primary sources** — [arXiv abs 2610.26342](https://arxiv.org/abs/2610.26342) · [arXiv HTML v1](https://arxiv.org/html/2610.26342v1) · [D2I-ai/VibeTraining-Bench (MIT, code coming soon)](https://github.com/D2I-ai/VibeTraining-Bench) · [VibeTraining-Bench LICENSE (MIT)](https://raw.githubusercontent.com/D2I-ai/VibeTraining-Bench/main/LICENSE) · [Project page](https://d2i-ai.github.io/VibeTraining-Bench/index.html)
 
 <a id="autosft-data-action-space"></a>
 
@@ -931,7 +961,37 @@
 
 <a id="family-analyses-audits"></a>
 
-## Analyses & audits (20)
+## Analyses & audits (21)
+
+<a id="token-parity-evolutionary-search"></a>
+
+### LLM Evolutionary Search Strategies Should be Compared by Tokens
+
+**2026-10-20** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-13; announced in the 2026-10-20 batch, recorded as first public date.
+
+**Institutional relationship** — Tal Oved (corresponding), Roi Pony, Oshri Naparstek, Udi Barzelay - IBM Research, read from the HTML author block.
+
+**What changes and how feedback is reused** — A measurement-standard audit of LLM evolutionary code search. Replaying 600 logged runs across 5 tasks and 3 methods (OpenEvolve among the studied systems), it shows proposal counts hide the true cost: tokens per proposal vary from 16k to 39k, so equal-proposal comparisons silently grant some methods up to 1.9x the compute and give evolution roughly 6x the budget of independent sampling. Re-comparison at matched token budgets (sampling gets six times more attempts) plus removal of scorer exploits.
+
+**Author-reported result** — At token parity the evolutionary advantage largely vanishes: evolution beats independent sampling by 5% or less on 12 of 15 task-method pairs, retaining a 23-28% margin on only 3 pairs, all on a single task (Heilbronn); a Claude Haiku 4.5 replication reproduces the split, and a third backbone shows the margin size also depends on the model. Reporting tokens rather than proposals fixes the accounting at zero cost since logs already hold them.
+
+**Evidence limits** — Replay covers the logged runs of three methods on five tasks; scorer-exploit removal is task-specific engineering; the audit measures search efficiency, not whether evolution finds qualitatively different solutions.
+
+**Code / weights / data / license** — No code or log release located in the paper at verification; arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — Directly binding on this repo's evidence ledger: record per-candidate token cost, and run all selector/gate comparisons at matched token budgets (never matched attempt counts) - the token column already exists, so this is a reporting and protocol fix, not new machinery.
+
+![Original Figure 1: tokens per proposal by method and task with the independent-sample cost as dashed line - equal-proposal comparisons yield equal compute only if these bars match, which they do not.](assets/paper-figures/token-parity-cost-bars.png)
+
+**Source figure / official image** — Original Figure 1: tokens per proposal by method and task with the independent-sample cost as dashed line - equal-proposal comparisons yield equal compute only if these bars match, which they do not. · Figure 1 (cost_bars.svg), arXiv HTML 2610.23977v1, rendered to PNG · [source](https://arxiv.org/html/2610.23977v1/cost_bars.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.23977](https://arxiv.org/abs/2610.23977) · [arXiv HTML v1](https://arxiv.org/html/2610.23977v1)
 
 <a id="cfoe-repair-generalization-gap"></a>
 

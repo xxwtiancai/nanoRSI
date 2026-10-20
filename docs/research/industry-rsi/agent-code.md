@@ -6,8 +6,8 @@
 
 | Family | Records |
 | --- | ---: |
-| [Skill-file optimization & libraries](#family-skill-file-optimization) | 27 |
-| [Harness search & evolution](#family-harness-search) | 26 |
+| [Skill-file optimization & libraries](#family-skill-file-optimization) | 31 |
+| [Harness search & evolution](#family-harness-search) | 28 |
 | [Self-modifying meta-agents & lineages](#family-self-modifying-meta-agents) | 14 |
 | [Program evolution & evolutionary search](#family-program-evolution) | 10 |
 | [Feedback review & orchestration](#family-feedback-orchestration) | 6 |
@@ -15,7 +15,127 @@
 
 <a id="family-skill-file-optimization"></a>
 
-## Skill-file optimization & libraries (27)
+## Skill-file optimization & libraries (31)
+
+<a id="trackrl-skill-lifecycle-rct"></a>
+
+### Trackable Skill Library Lifecycle Management for Agentic Reinforcement Learning
+
+**2026-10-20** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-18; announced in the 2026-10-20 batch, recorded as first public date.
+
+**Institutional relationship** — Xi Zhu, Yuanlin Duan, Kai Mei, Riyang Bao, Dimitris N. Metaxas (Rutgers University), Changyi Yang (Carnegie Mellon University), Shichao Zhu (TikTok Inc.) - read from the PDF title page (the HTML author block renders affiliation placeholders).
+
+**What changes and how feedback is reused** — Skill lifecycle management driven by per-skill randomized controlled evidence inside agentic RL. Within each GRPO group, grouped sampling is turned into online randomized controlled experiments: independent random injection of skills plus within-group contrasts on the same task isolate each skill's true contribution (addressing free-riding among co-retrieved skills and difficulty confounding), with reliability-weighted aggregation across groups. Skill utility (causal contribution as external scaffolding) and model mastery (how far the capability is internalized) are tracked continuously, and the skill library is managed by evidence-gated state transitions (retain, retire, remove, evict).
+
+**Author-reported result** — Outperforms recent skill-augmented RL baselines in both skill-assisted and skill-free evaluation (main testbed ALFWorld plus further suites), including reflection-model variants; analyses show how skill value shifts as the policy learns and how evidence-driven transitions shape library composition, with library growth kept controlled under cold and warm starts.
+
+**Evidence limits** — Requires an RL training loop (utility estimates are tied to GRPO-style groups); evidence accumulates only as fast as retrieval exposes each skill; benchmark scope limited to the evaluated suites.
+
+**Code / weights / data / license** — Repository github.com/xizhu1022/TrackRL printed in the paper but 404 at verification (announced, not live); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Extends ADOPTION 59's causal attribution line with a lifecycle output: per-skill treatment/control injection inside evaluation panels yields causal utility, and a utility-vs-mastery two-axis ledger turns existing accept/reject bookkeeping into evidence-gated retain/retire decisions on evolved skills.
+
+![Original Figure 2 overview: the skill library's task- and step-level skills are randomly injected within GRPO groups to create per-skill treatment and control arms; tracked utility, mastery and evidence drive skill lifecycle management.](assets/paper-figures/trackrl-overview.png)
+
+**Source figure / official image** — Original Figure 2 overview: the skill library's task- and step-level skills are randomly injected within GRPO groups to create per-skill treatment and control arms; tracked utility, mastery and evidence drive skill lifecycle management. · Figure 2 (TrackRL.png), arXiv HTML 2610.25126v1 · [source](https://arxiv.org/html/2610.25126v1/TrackRL.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.25126](https://arxiv.org/abs/2610.25126) · [arXiv HTML v1](https://arxiv.org/html/2610.25126v1)
+
+<a id="skillclash-takeover-merge"></a>
+
+### One Skill Takes Over: Clashing Agent Skills and a One-File Fix
+
+**2026-10-20** · paper · Enabling technique / evaluation
+
+**Publication date** — arXiv v1 submitted 2026-10-18; announced in the 2026-10-20 batch, recorded as first public date; repository committed 2026-10-18.
+
+**Institutional relationship** — Parsa Razmara (corresponding), Seyedarmin Azizi, Ardalan Aryashad - University of Southern California, Los Angeles, read from the HTML author block.
+
+**What changes and how feedback is reused** — An empirical anatomy of skill interference. SkillClash is 16 pairs of same-job skills in which code checks every rule and a reference output shows the best achievable result; loading two same-job skills into one context produces takeover - outputs follow every exclusive rule of one skill and drop the other's - driven by the worked examples inside the files. Fixes tested: telling the model which skill has priority (does not recover the dropped skill), telling it to apply both (helps only on the two strongest models), ending each file with one shared correct worked example (takeover falls to 1-15% on six models), and one merged meta-skill file written by Claude Opus 5.5.
+
+**Author-reported result** — Across seven models from five families (4B open to Qwen3-235B and GPT-4.1), a skill's rules are followed 93-99% when loaded alone but 61-62% when a same-job skill is loaded next to it; the merged file restores 96-99% of achievable rules on all seven models (68-94% of outputs fully correct), and its correct worked example alone is worth +12-17 points - an incorrect example adds little or nothing.
+
+**Evidence limits** — Instruction-file skills only (no tool/skill scripts); 16 job pairs with code-checkable rules; the strongest merge was written by a frontier model outside the loop rather than evolved; same-job pairs may overstate clashes across loosely related skills.
+
+**Code / weights / data / license** — Repository github.com/prazmara/skillclash live (benchmark, code and results, committed 2026-10-18) with NO license file at verification - treat as all-rights-reserved; paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Skills-template hygiene for multi-skill workspaces: before a run, audit active skill files for same-job rule overlap (clash check); when overlap exists, require a shared correct worked example or a merged single file - a cheap pre-gate check for the skills line that directly matches this repo's per-workspace skill surfaces.
+
+![Original Figure 2: (a) share of a skill's rules followed on seven models when loaded alone versus beside a same-job skill; (b-d) outputs with both skills loaded, counted by exclusive rules of each skill followed - most outputs sit in the two takeover corners.](assets/paper-figures/skillclash-takeover.png)
+
+**Source figure / official image** — Original Figure 2: (a) share of a skill's rules followed on seven models when loaded alone versus beside a same-job skill; (b-d) outputs with both skills loaded, counted by exclusive rules of each skill followed - most outputs sit in the two takeover corners. · Figure 2 (fig_takeover.png), arXiv HTML 2610.25064v1 · [source](https://arxiv.org/html/2610.25064v1/fig_takeover.png)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — [prazmara/skillclash (no license file)](https://github.com/prazmara/skillclash)
+
+**Primary sources** — [arXiv abs 2610.25064](https://arxiv.org/abs/2610.25064) · [arXiv HTML v1](https://arxiv.org/html/2610.25064v1) · [prazmara/skillclash (no license file)](https://github.com/prazmara/skillclash)
+
+<a id="skill-rsi-compile-protocol"></a>
+
+### Compile Once, Run Cheap: Frozen, Portable Skills for Embodied Agents, and What Recursive Self-Improvement Adds
+
+**2026-10-20** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-18 (manuscript version 3.6 dated 2026-10-17); announced in the 2026-10-20 batch, recorded as first public date; repository v1.0 released 2026-10-17.
+
+**Institutional relationship** — Jingwen Bai, Canbo Zhang, Shuang Liu (Beijing Ou Rui Ling Shi Technology Co., Ltd. - Orillusion; corresponding shuang.liu@orillusion.com), Guochao Bai, Weichun Huang (ChangingTek Robotics Technology (Suzhou)), Shuangqi Li, Minchao Hu (Shanghai Yunfan Intelligent Control Robot Technology) - read from the HTML header block.
+
+**What changes and how feedback is reused** — Skill-level recursive self-improvement with an explicit compile protocol. A strong general model acts only as an isolated, audited offline author that writes, runs, diagnoses and repairs a manipulation skill in simulation until it passes an exam on layouts drawn AFTER freezing; the frozen skill (SKILL.md, skills.py, perception.py plus a MANIFEST with hashes, seeds, environment fingerprint, exam outcome and compile cost) then runs as code alone or under a cheap caller that reads only its description. Controlled comparisons run throughout: a no-feedback control draft beside every repair round, an inherit-only control, hidden validation layouts never fed back, and a reuse protocol running identical files under executors from another model family.
+
+**Author-reported result** — On 7 RoboTwin 2.0 tasks, Claude Code compiled 4 tasks into 7 frozen skills (5 from a first draft needing only qualification) at USD 4.29-8.22 author cost each (USD 55 per skill counting the 13 failed campaigns); the other 3 tasks did not compile in 18 campaigns (including five with GPT-6 and a pre-registered 150-layout run) - on the hardest task every campaign scored 78-95/100 but had 3-16 safety aborts, failing the 95%-success-zero-aborts gate; repair inheriting earlier evidence beats rewriting on hidden layouts; frozen skills transfer across executor model families.
+
+**Evidence limits** — Simulation-compiled skills with a small task set; author cost accounting honestly includes failures; safety-abort bounds from 100-episode exams are wide; three non-compiling tasks are reported as failures, not smoothed over.
+
+**Code / weights / data / license** — Repository github.com/Orillusion/embodied-skill-rsi live under Apache-2.0 (LICENSE read from raw.githubusercontent.com; release v1.0 2026-10-17); paper arXiv non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — The compile protocol is this repo's freeze doctrine mirrored onto embodied skills: adopt the per-repair-round paired no-feedback control draft and the inherit-only control as standard arms, and ship accepted candidates with a release MANIFEST (hashes, seeds, environment fingerprint, exam outcome, compile cost) as the packaging standard.
+
+![Original Figure 1 (rendered from PDF): Protocol A compiles offline with an isolated, audited strong author and freezes the skill through an independent gate; Protocol B runs the same files with executors that never see the skill code on new layouts; both share one non-bypassable runtime and a hash-chained manifest.](assets/paper-figures/skill-rsi-protocol.png)
+
+**Source figure / official image** — Original Figure 1 (rendered from PDF): Protocol A compiles offline with an isolated, audited strong author and freezes the skill through an independent gate; Protocol B runs the same files with executors that never see the skill code on new layouts; both share one non-bypassable runtime and a hash-chained manifest. · Figure 1 cropped from PDF page 2 (HTML figure assets absent); gs 150dpi render, bbox (77,99,1199,700) · [source](https://arxiv.org/pdf/2610.25114)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — [Orillusion/embodied-skill-rsi (Apache-2.0)](https://github.com/Orillusion/embodied-skill-rsi) · [embodied-skill-rsi LICENSE (Apache-2.0)](https://raw.githubusercontent.com/Orillusion/embodied-skill-rsi/main/LICENSE)
+
+**Primary sources** — [arXiv abs 2610.25114](https://arxiv.org/abs/2610.25114) · [arXiv HTML v1](https://arxiv.org/html/2610.25114v1) · [Orillusion/embodied-skill-rsi (Apache-2.0)](https://github.com/Orillusion/embodied-skill-rsi) · [embodied-skill-rsi LICENSE (Apache-2.0)](https://raw.githubusercontent.com/Orillusion/embodied-skill-rsi/main/LICENSE)
+
+<a id="evoskill-v2-stateful-evolver"></a>
+
+### EvoSkill v2: Fully Agentic Skill Evolution from Benchmark Adaptation to a Stateful Evolver
+
+**2026-10-20** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-19; announced in the 2026-10-20 batch, recorded as first public date.
+
+**Institutional relationship** — Dastin Huang, Baran Nama, Salaheddin Alzubi - all Sentient Labs (author block lists sentient.xyz addresses), read from the HTML author block.
+
+**What changes and how feedback is reused** — Three-agent skill evolution that edits instruction files only (model and harness stay intact). A benchmark adaptor turns a user-described benchmark plus grader into a frozen plug-in; a solver attempts every training and validation task three times per epoch; the evolver is ONE stateful coding agent with a bash tool that persists across the whole run - unlike per-call optimizers (SkillOpt) or agents restarted each round (SkillBoost). The evolver measures how much the solver's rollouts vary between attempts, gets several attempts per training task, and accepts every epoch's skills instead of selecting among them on noisy scores.
+
+**Author-reported result** — With fine-grained ground truth, EvoSkill v2's skills raise held-out pass rates above the stronger of SkillOpt and SkillBoost by 7.7 points on SpreadsheetBench v2 and 5.4 on tau3-bench banking; in both benchmarks and both feedback settings its evolver costs less per point of held-out pass rate than either baseline's optimizer; a less capable model improving its own skills gains up to 21.5 points on tau3.
+
+**Evidence limits** — Instruction-file surface only; two benchmarks with user-supplied graders; accepting every epoch trades measurement budget for selection robustness (no per-epoch filtering), so the held-out comparison carries the whole burden; rollout-variance handling is heuristic.
+
+**Code / weights / data / license** — No code repository link located in the paper at verification (the surveyed SkillOpt/SkillBoost ecosystems are cited as prior systems); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Two protocol inputs for the selector study (ADOPTION 38/53): a stateful proposer session that carries memory across generations instead of per-attempt statelessness, and an accept-every-epoch arm whose final held-out panel compares all epochs' artifacts against gated selection at matched budget - directly testing whether per-edit gating discards optima (cf. AtomSearch's 67% non-best-ancestor finding).
+
+![Original Figure 1: before the run the benchmark adaptor freezes the user's benchmark and grader into a plug-in; each epoch the solver attempts training and validation tasks while the stateful evolver agent rewrites the skills.](assets/paper-figures/evoskill-v2-architecture.png)
+
+**Source figure / official image** — Original Figure 1: before the run the benchmark adaptor freezes the user's benchmark and grader into a plug-in; each epoch the solver attempts training and validation tasks while the stateful evolver agent rewrites the skills. · Figure 1 (figArch.svg), arXiv HTML 2610.25931v1, rendered to PNG · [source](https://arxiv.org/html/2610.25931v1/figArch.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.25931](https://arxiv.org/abs/2610.25931) · [arXiv HTML v1](https://arxiv.org/html/2610.25931v1)
 
 <a id="cdse-skill-component-differentiation"></a>
 
@@ -829,7 +949,67 @@
 
 <a id="family-harness-search"></a>
 
-## Harness search & evolution (26)
+## Harness search & evolution (28)
+
+<a id="harnesspro-pareto-harness-evolution"></a>
+
+### HarnessPro: Recursive Harness Self-Improvement with Pareto Optimization for Performance-Cost Trade-offs
+
+**2026-10-20** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-19; announced in the 2026-10-20 batch; repository initial release also 2026-10-19.
+
+**Institutional relationship** — Zhuoshi Pan, ZhiYuan Feng, Honglin Lin, H. Vicky Zhao, Jie Tang (Tsinghua University), Yukuo Cen (Z.AI Co., Ltd.), Zhongxia Chen, Shuo Yang (Kuaishou Technology), Junru Lu (University of Warwick), plus Shanghai Jiao Tong University - read from the HTML author block.
+
+**What changes and how feedback is reused** — Label-free recursive harness evolution under a performance-cost Pareto objective. Each epoch: specialized agents diagnose execution trajectories, plan updates with different performance-cost priorities, and implement them as candidate harnesses; candidates are evaluated with LLM-generated tests (no ground-truth solutions or official tests), and normalized weighted squared-distance selection returns three representatives - cost-focused (lite), balanced (medium), performance-focused (heavy) - fixed before held-out evaluation; selected harnesses enter the next iteration with execution feedback guiding further updates.
+
+**Author-reported result** — Across Terminal-Bench 2, SWE-Bench Pro and ProgramBench with GPT-5.5 + Codex, heavy mode gains an average +2.0 pass-rate points over RHO while cutting per-task cost 26.1% (mean latency 520s to 412s); the advantage holds with GLM-5.2 + Claude Code; lite mode beats the vanilla harness on all three benchmarks at still lower cost.
+
+**Evidence limits** — Evaluation validity rests on LLM-generated tests (their confusion against graded outcomes is reported but they are not ground truth); absolute gains are modest (~2 points); results are tied to two agent stacks (Codex, Claude Code) and three benchmarks.
+
+**Code / weights / data / license** — Repository github.com/pzs19/HarnessPro live under MIT (initial release 2026-10-19, LICENSE read from raw.githubusercontent.com); live demo pzs19.github.io/HarnessPro; paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — Make cost a first-class selection axis: the evidence ledger already counts tokens per candidate - report a Pareto front (cheap / balanced / expensive generations) fixed before the frozen test instead of a single argmax-score winner.
+
+![Original Figure 1 overview: each epoch analyzes rollout trajectories, generates candidate harnesses, and selects representatives on performance and cost.](assets/paper-figures/harnesspro-overview.png)
+
+**Source figure / official image** — Original Figure 1 overview: each epoch analyzes rollout trajectories, generates candidate harnesses, and selects representatives on performance and cost. · Figure 1 (HarnessPro_Main_Figure.svg), arXiv HTML 2610.26770v1, rendered to PNG · [source](https://arxiv.org/html/2610.26770v1/HarnessPro_Main_Figure.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — [pzs19/HarnessPro (MIT)](https://github.com/pzs19/HarnessPro) · [HarnessPro LICENSE (MIT)](https://raw.githubusercontent.com/pzs19/HarnessPro/master/LICENSE)
+
+**Primary sources** — [arXiv abs 2610.26770](https://arxiv.org/abs/2610.26770) · [arXiv HTML v1](https://arxiv.org/html/2610.26770v1) · [pzs19/HarnessPro (MIT)](https://github.com/pzs19/HarnessPro) · [HarnessPro LICENSE (MIT)](https://raw.githubusercontent.com/pzs19/HarnessPro/master/LICENSE) · [Live demo](https://pzs19.github.io/HarnessPro/)
+
+<a id="foh-federated-harness-evolution"></a>
+
+### Federation over Harness
+
+**2026-10-20** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-15; announced in the 2026-10-20 batch, recorded as first public date.
+
+**Institutional relationship** — Dixi Yao (correspondence), Tahseen Rabbani, Tian Li - University of Chicago, read from the HTML author block.
+
+**What changes and how feedback is reused** — Automatic evolution of BOTH harness levels in distributed multi-agent experience sharing. A server agent evolves each client's harness for task solving and self-reflection while simultaneously evolving its own harness for aggregating distributed reflections, maintaining the shared insight library, and updating subsequent client harnesses. Crucially, FoH requires no extra validation signals - no ground-truth labels or validation data - and learns solely from self-generated reflections produced by the distributed agents.
+
+**Author-reported result** — On PinchBench (V1 existing tasks + 124 V2-only held-out tasks) and ClawEval, FoH improves over single-agent baselines with a fixed harness by 53.57% and over single-agent harness self-evolution by 29.76%; on ScienceAgentBench tasks isolated agents fail while FoH-evolved client harnesses solve them with the same LLM, with distinct per-task skill activation patterns; ablations show instability when the guide excludes the insight library or local reflection.
+
+**Evidence limits** — Reflection-only feedback: nothing verifies correctness of consolidated insights, so gains ride on reflection quality (the paper's own framing); everyday-agent benchmarks dominate; server-side harness updates consume almost all output tokens in the breakdown.
+
+**Code / weights / data / license** — Repository github.com/dixiyao/FoH live under MIT (LICENSE read from raw.githubusercontent.com main); paper CC BY 4.0.
+
+**Possible nanoRSI experiment — not implemented here** — The no-validation-signal regime is the honest stress case for this repo's evaluator-frozen doctrine: any reflection-only variant must be labeled unverifiable-by-design and compared against the frozen-evaluator gate; the client/server split of edit surfaces also maps cleanly onto per-workspace skill files versus shared population-level files.
+
+![Original Figure 1: overview of the FoH workflow - distributed client agents solve tasks and reflect under evolving client harnesses, while the server agent evolves its own harness to aggregate reflections, maintain shared knowledge and update subsequent client harnesses.](assets/paper-figures/foh-workflow.png)
+
+**Source figure / official image** — Original Figure 1: overview of the FoH workflow - distributed client agents solve tasks and reflect under evolving client harnesses, while the server agent evolves its own harness to aggregate reflections, maintain shared knowledge and update subsequent client harnesses. · Figure 1 (workflow.svg), arXiv HTML 2610.24007v1, rendered to PNG · [source](https://arxiv.org/html/2610.24007v1/workflow.svg)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — [dixiyao/FoH (MIT)](https://github.com/dixiyao/FoH) · [FoH LICENSE (MIT)](https://raw.githubusercontent.com/dixiyao/FoH/main/LICENSE)
+
+**Primary sources** — [arXiv abs 2610.24007](https://arxiv.org/abs/2610.24007) · [arXiv HTML v1](https://arxiv.org/html/2610.24007v1) · [dixiyao/FoH (MIT)](https://github.com/dixiyao/FoH) · [FoH LICENSE (MIT)](https://raw.githubusercontent.com/dixiyao/FoH/main/LICENSE)
 
 <a id="selfhpo-harness-policy-coevolution"></a>
 

@@ -7,7 +7,7 @@
 | Family | Records |
 | --- | ---: |
 | [Structured knowledge bases & graphs](#family-structured-knowledge) | 10 |
-| [Experience accumulation & replay](#family-experience-accumulation) | 11 |
+| [Experience accumulation & replay](#family-experience-accumulation) | 12 |
 | [Context organization policies](#family-context-policies) | 5 |
 | [Exploration-driven memory construction](#family-exploration-memory) | 1 |
 | [Memory-evolution studies & benchmarks](#family-memory-evolution-studies) | 4 |
@@ -318,7 +318,37 @@
 
 <a id="family-experience-accumulation"></a>
 
-## Experience accumulation & replay (11)
+## Experience accumulation & replay (12)
+
+<a id="hippo-hippocampal-replay-evolution"></a>
+
+### Hippo: Training-Free Agent Self-Evolution via Hippocampal Replay
+
+**2026-10-20** · paper · Direct bounded loop
+
+**Publication date** — arXiv v1 submitted 2026-10-17; announced in the 2026-10-20 batch, recorded as first public date. No HTML version exists; verified at the PDF.
+
+**Institutional relationship** — Yutong Song (UC Irvine), Jiang Wu (independent researcher), Yuxuan Ren (Rice University), Tony Qin and Baoyuan Wang (Zillow Group, corresponding) - read from the PDF title page.
+
+**What changes and how feedback is reused** — Training-free RSI-style self-evolution through external memory with selective encoding and replay, explicitly motivated by recursive self-improvement. Attempts at the same task are compared to identify reusable decisions and to refine when they apply (flawed reasoning can produce success; poor execution can obscure sound strategy); surprise-driven episodic reflection selects what is worth encoding; consolidation then merges overlaps and resolves conflicts through explicit applicability conditions, revising prior guidance in place instead of storing every lesson as a new entry.
+
+**Author-reported result** — Performance gains on SWE-bench Verified, WebArena and Mind2Web with substantially fewer retained experiences than the accumulation baseline; gains extend across base models of varying capability. The accumulation baseline without consolidation initially improves but eventually performs BELOW the no-memory baseline (inverted-U) - the headline negative evidence for unconsolidated memory banks.
+
+**Evidence limits** — No parameter updates (capability bounded by the frozen model); lessons derived from paired attempts at the same task, so cost grows with deliberate re-attempts; evaluation on three established suites.
+
+**Code / weights / data / license** — No code repository located in the paper at verification; arXiv default non-exclusive license.
+
+**Possible nanoRSI experiment — not implemented here** — For the skills/memory line: replace append-only lesson lists with revise-in-place consolidation under explicit applicability conditions, and keep the inverted-U accumulation curve as the standing honesty check whenever an experience bank grows without pruning.
+
+![Original Figure 2 (rendered from PDF): overview of Hippo - surprise-driven episodic reflection plus hippocampal-replay-inspired consolidation that merges overlaps and resolves conflicts through applicability conditions, with the agent policy kept fixed.](assets/paper-figures/hippo-overview.png)
+
+**Source figure / official image** — Original Figure 2 (rendered from PDF): overview of Hippo - surprise-driven episodic reflection plus hippocampal-replay-inspired consolidation that merges overlaps and resolves conflicts through applicability conditions, with the agent policy kept fixed. · Figure 2 cropped from PDF page 4 (no HTML version exists); gs 150dpi render, bbox (77,99,1199,585) · [source](https://arxiv.org/pdf/2610.24453)
+
+**nanoRSI reproduction** — not-run. Last source check: 2026-10-21.
+
+**Open code / weights / data links** — No verified public code/asset link in the audited sources.
+
+**Primary sources** — [arXiv abs 2610.24453](https://arxiv.org/abs/2610.24453) · [arXiv PDF (no HTML version)](https://arxiv.org/pdf/2610.24453)
 
 <a id="darwinclaw-experience-consolidation"></a>
 

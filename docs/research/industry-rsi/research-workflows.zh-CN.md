@@ -7,10 +7,10 @@
 | 家族 | 条目数 |
 | --- | ---: |
 | [AI 科学家系统](#family-ai-scientists) | 15 |
-| [自主后训练及其评测](#family-autonomous-post-training) | 5 |
+| [自主后训练及其评测](#family-autonomous-post-training) | 6 |
 | [公司研发遥测](#family-company-telemetry) | 7 |
 | [对齐自动化](#family-alignment-automation) | 3 |
-| [分析与审计](#family-analyses-audits) | 20 |
+| [分析与审计](#family-analyses-audits) | 21 |
 | [立场、路线图与实验室](#family-positions-labs) | 7 |
 
 <a id="family-ai-scientists"></a>
@@ -469,7 +469,37 @@
 
 <a id="family-autonomous-post-training"></a>
 
-## 自主后训练及其评测 (5)
+## 自主后训练及其评测 (6)
+
+<a id="vibetraining-bench-codesign"></a>
+
+### VibeTraining-Bench: Data-Trainer-Harness Co-Design for Iterative System Improvement
+
+**2026-10-20** · paper · 直接有界闭环
+
+**日期说明** — arXiv v1 于 2026-10-19 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。
+
+**机构关系** — Ruotian Peng、Shuaiqi Liu（浙江大学），Yuanyi Ren、Yue Wu、Yandong Wen、Zhihang Fu（西湖大学 / 阿里巴巴 Token Hub、阿里巴巴集团），Xin Guo、Fang Zhu、Yangyi Huang、Zheng Wang（含华南理工大学与香港中文大学）——依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 一个评测作者所称跨组件协同设计（cross-component co-design）RSI 能力的基准：研究智能体在同一初始智能体系统、固定资源预算下出发，在验证反馈引导下迭代改进训练数据、训练器与推理 harness，最终选定并提交一个系统做隐藏测试集评估。强制三重防奖励作弊保障：测试数据隔离、研究与判分容器分离、研究智能体断网。
+
+**作者报告结果** — 前沿研究智能体能实质改进目标智能体系统：SWE-bench Verified 上 GPT-6-Astra 把目标系统从 32.9% 提到 53.7%，接近人研 instruct 模型的 55.4%；在终端操作、软件工程、多轮工具使用与数学推理任务上，数据+训练器+harness 的协同累积增益仍有空间。
+
+**证据边界** — 基准论文：执行改进的是前沿闭源模型（机制不可检视）；分数依赖任务构成；资源预算与组件接口定义了可操作空间。
+
+**代码／权重／数据／许可** — 仓库 github.com/D2I-ai/VibeTraining-Bench 已上线（MIT），但核验时代码与基准徽章均为“Coming Soon”；论文印刷的无连字符 URL 404；项目页 d2i-ai.github.io/VibeTraining-Bench；论文为 arXiv 默认许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — nanoRSI 主循环正是该基准任务的单智能体实例——把其三重保障（测试隔离、判分分离、研究容器断网）作为未来任何自改 runner 的常备清单；把按组件计数（被接受的代里多少动了数据/训练器/harness）作为账本维度。
+
+![原图 1 总览：研究智能体获得同一初始系统（模型、harness、数据）与固定预算，在验证反馈下迭代协同设计数据、训练器与 harness，并提交最终系统到隔离容器做隐藏测试判分。](assets/paper-figures/vibetraining-bench-overview.png)
+
+**原文图／官方图片** — 原图 1 总览：研究智能体获得同一初始系统（模型、harness、数据）与固定预算，在验证反馈下迭代协同设计数据、训练器与 harness，并提交最终系统到隔离容器做隐藏测试判分。 · Figure 1 (VibeTrain-Bench_Main_Figure2.png), arXiv HTML 2610.26342v1 · [source](https://arxiv.org/html/2610.26342v1/VibeTrain-Bench_Main_Figure2.png)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-21.
+
+**开源代码／权重／数据链接** — [D2I-ai/VibeTraining-Bench (MIT, code coming soon)](https://github.com/D2I-ai/VibeTraining-Bench) · [VibeTraining-Bench LICENSE (MIT)](https://raw.githubusercontent.com/D2I-ai/VibeTraining-Bench/main/LICENSE)
+
+**一手来源** — [arXiv abs 2610.26342](https://arxiv.org/abs/2610.26342) · [arXiv HTML v1](https://arxiv.org/html/2610.26342v1) · [D2I-ai/VibeTraining-Bench (MIT, code coming soon)](https://github.com/D2I-ai/VibeTraining-Bench) · [VibeTraining-Bench LICENSE (MIT)](https://raw.githubusercontent.com/D2I-ai/VibeTraining-Bench/main/LICENSE) · [Project page](https://d2i-ai.github.io/VibeTraining-Bench/index.html)
 
 <a id="autosft-data-action-space"></a>
 
@@ -931,7 +961,37 @@
 
 <a id="family-analyses-audits"></a>
 
-## 分析与审计 (20)
+## 分析与审计 (21)
+
+<a id="token-parity-evolutionary-search"></a>
+
+### LLM Evolutionary Search Strategies Should be Compared by Tokens
+
+**2026-10-20** · paper · 支撑技术／评测
+
+**日期说明** — arXiv v1 于 2026-10-13 提交；在 2026-10-20 批次公告，以公告日为首次公开日期。
+
+**机构关系** — Tal Oved（通讯）、Roi Pony、Oshri Naparstek、Udi Barzelay——IBM Research，依 HTML 作者块读出。
+
+**改变对象与反馈复用** — 对 LLM 演化式代码搜索的度量标准审计。重放 5 个任务、3 种方法的 600 份日志（研究对象含 OpenEvolve），指出提案计数掩盖真实成本：每提案 token 从 16k 到 39k 不等，等提案比较等于悄悄给某些方法 1.9 倍算力、给演化约 6 倍于独立采样的预算。改为等 token 预算（采样获得六倍尝试次数）并移除评分器漏洞后重比。
+
+**作者报告结果** — 等 token 下演化优势基本消失：15 个任务-方法对中 12 对演化对独立采样的优势不超过 5%，仅 3 对保留 23-28% 优势且全在同一任务（Heilbronn）；Claude Haiku 4.5 复现了这一分化，第三个骨干显示优势幅度还依赖模型。报告 token 而非提案零成本修复记账——日志里本来就有。
+
+**证据边界** — 重放覆盖三种方法在五个任务的日志；评分器漏洞的移除属任务特定的工程处理；审计度量搜索效率，不回答演化是否找到性质不同的解。
+
+**代码／权重／数据／许可** — 核验时论文未给出代码或日志发布；arXiv 默认许可。
+
+**可用于 nanoRSI 的实验方向——本次未实现** — 直接约束本仓库证据账本：逐候选记录 token 成本，一切选择器/闸门比较按等 token 预算执行（绝不按等尝试数）——token 列已存在，这是报告与协议修正而非新机制。
+
+![原图 1：按方法与任务统计的每提案 token 数，虚线为独立采样成本——只有这些条一致时等提案比较才等于等算力，而它们并不一致。](assets/paper-figures/token-parity-cost-bars.png)
+
+**原文图／官方图片** — 原图 1：按方法与任务统计的每提案 token 数，虚线为独立采样成本——只有这些条一致时等提案比较才等于等算力，而它们并不一致。 · Figure 1 (cost_bars.svg), arXiv HTML 2610.23977v1, rendered to PNG · [source](https://arxiv.org/html/2610.23977v1/cost_bars.svg)
+
+**nanoRSI 复现状态** — not-run. 来源最近核验：2026-10-21.
+
+**开源代码／权重／数据链接** — 核验来源中没有确认的公开代码／资产链接。
+
+**一手来源** — [arXiv abs 2610.23977](https://arxiv.org/abs/2610.23977) · [arXiv HTML v1](https://arxiv.org/html/2610.23977v1)
 
 <a id="cfoe-repair-generalization-gap"></a>
 
