@@ -9,12 +9,30 @@
     "panels": "frozen 6-seen + 6-unseen test panel identical to all prior studies"
   },
   "results": {
-    "validation": {"baseline": 0.875, "parent_remeasure": 0.875, "candidate": 0.875,
-                   "decision": "rejected (tie)",
-                   "per_task": "identical outcome vector to the parent re-measure - zero wins, zero losses"},
-    "final_panel": {"baseline": {"score": 0.8333, "seen": "4/6", "unseen": "6/6"},
-                    "no_skills": {"score": 0.8333, "seen": "5/6", "unseen": "5/6"},
-                    "candidate": {"score": 1.0, "seen": "6/6", "unseen": "6/6"}}
+    "validation": {
+      "baseline": 0.875,
+      "parent_remeasure": 0.875,
+      "candidate": 0.875,
+      "decision": "rejected (tie)",
+      "per_task": "identical outcome vector to the parent re-measure - zero wins, zero losses"
+    },
+    "final_panel": {
+      "baseline": {
+        "score": 0.8333,
+        "seen": "4/6",
+        "unseen": "6/6"
+      },
+      "no_skills": {
+        "score": 0.8333,
+        "seen": "5/6",
+        "unseen": "5/6"
+      },
+      "candidate": {
+        "score": 1.0,
+        "seen": "6/6",
+        "unseen": "6/6"
+      }
+    }
   },
   "diagnosis": "VALIDATION REPRESENTATIVENESS IS THE BINDING CONSTRAINT. The known-good edit - worth +2 games over both controls on the frozen test panel - was invisible on this validation draw: same mean (0.875) AND the same per-task outcome vector as the parent (train-split games, all solved identically). No mean-based or paired-task gate arithmetic could have accepted it, because the 8 train-split validation games carried no signal on this draw. The original 2026-10-12 acceptance was a lucky validation draw; the 2026-10-19 pilot nulls were unlucky draws of the same coin. Gate-ability at this design is noise-limited and split-limited, not quality-limited.",
   "implications": [
@@ -22,7 +40,33 @@
     "a paired per-task gate was considered and rejected for now: on this real draw it would also have rejected (zero task flips), and the deeper fix is representative validation",
     "the earlier selector-pilot verdict stands with a sharper cause: acceptance was impossible on that validation draw regardless of gate strictness"
   ],
-  "usage": {"proposer": "0 model calls (scripted replay)", "final_test": 440, "cost_usd": null},
+  "usage": {
+    "proposer": "0 model calls (scripted replay)",
+    "final_test": 440,
+    "cost_usd": null
+  },
   "audit": "zero expected-answer leakage, zero silent bypass; verify lineage ok",
-  "limits": "One replay draw, one seed, one archived edit. The diagnosis is about this pack design (train-split validation) at this panel size; other packs (BBH, HumanEval) evaluate their actual test distribution and are unaffected."
+  "limits": "One replay draw, one seed, one archived edit. The diagnosis is about this pack design (train-split validation) at this panel size; other packs (BBH, HumanEval) evaluate their actual test distribution and are unaffected.",
+  "recheck_2026_10_21": {
+    "question": "Does representative validation (4 seen + 4 unseen, disjoint from test) make the archived edit gateable?",
+    "result": {
+      "validation": {
+        "parent_remeasure": 0.875,
+        "candidate": 0.875,
+        "decision": "rejected (tie)",
+        "per_task": "identical outcome vectors again - zero wins, zero losses"
+      },
+      "final_panel": {
+        "baseline": 1.0,
+        "no_skills": 0.9167,
+        "candidate": 1.0,
+        "note": "this draw the baseline condition also saturated 12/12, so the edit showed no test-panel advantage either"
+      }
+    },
+    "conclusion": "Representative validation is necessary but not sufficient: across three replays the edit's effect is small and draw-dependent on every panel. Single-draw gate-ability at 8 games is a lottery regardless of validation source. The empirically demonstrated acceptance path is persistence: the original study accepted on attempt 4 of 4 after three failures - each attempt is a fresh draw. Pilots ran 1-2 attempts and saw nothing. Implication for study design: attempts >= 4 for small-effect edits, or larger panels; both cost budget by the (1+attempts)*(train+2*validation) rule.",
+    "usage": {
+      "proposer": "0 model calls (scripted replay)",
+      "final_test": 443
+    }
+  }
 }

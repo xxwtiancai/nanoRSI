@@ -35,3 +35,17 @@ Implications:
 Files: [summary.json](summary.json) · [final.json](final.json) ·
 [attempt panels](attempt-parent-panel.json) · [audit.json](audit.json) ·
 [noise-band.json](noise-band.json). Final test: 440 model calls; proposer: zero (scripted).
+
+
+## Recheck 2026-10-21: representative validation, same lottery
+
+After the [pack redesign](../../alfworld_tasks/README.md) (validation now drawn 4+4 from the
+seen/unseen pools, disjoint from test), the same archived edit was replayed once more:
+**still a tie with identical per-task vectors** — and this draw the baseline condition also
+saturated the test panel (12/12), so the edit showed no test advantage either. Across three
+replays the effect is small and draw-dependent everywhere; representative validation was
+necessary but not sufficient. The empirically demonstrated acceptance path is **persistence**:
+the original study accepted on attempt 4 of 4 — every attempt is a fresh draw. Pilots ran 1-2
+attempts. Study-design implication: ≥4 attempts for small-effect edits, or larger panels, both
+costed by the (1+attempts)×(train+2×validation) budget rule. Files:
+[recheck-final.json](recheck-final.json) · [recheck panels](recheck-parent-panel.json).
