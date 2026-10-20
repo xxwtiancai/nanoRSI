@@ -83,11 +83,25 @@ class ALFWorldPackTests(unittest.TestCase):
         splits = Counter(task["split"] for task in manifest["tasks"])
         groups = Counter(task["group_id"] for task in manifest["tasks"])
         self.assertEqual(splits, {"train": 4, "validation": 6, "test": 12})
-        self.assertEqual(groups, {"train-games": 4, "validation-games": 6,
-                                  "test-seen": 6, "test-unseen": 6})
+        self.assertEqual(groups, {"train-games": 4, "validation-seen": 3,
+                                  "validation-unseen": 3, "test-seen": 6, "test-unseen": 6})
         games = [json.loads(task["input_files"]["game.json"])["game_file"]
                  for task in manifest["tasks"]]
         self.assertEqual(len(games), len(set(games)))
+
+    @unittest.skipUnless(HAS_GAMES, "local ALFWorld games required for manifest selection")
+    def test_validation_shares_the_test_distribution_and_stays_disjoint(self) -> None:
+        # The 2026-10-20 gate-ability diagnostic: validation must see the same
+        # layout distribution the frozen test panel measures, without overlap.
+        manifest = json.loads(self.pack["manifest.json"])
+        pools = {"train": set(), "validation": set(), "test": set()}
+        for task in manifest["tasks"]:
+            path = json.loads(task["input_files"]["game.json"])["game_file"]
+            pools[task["split"]].add(path)
+        self.assertFalse(pools["validation"] & pools["test"])
+        self.assertFalse(pools["validation"] & pools["train"])
+        for path in pools["validation"]:
+            self.assertRegex(path, r"json_2\.1\.1/valid_(seen|unseen)/")
 
     def test_runner_compiles_on_any_python(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

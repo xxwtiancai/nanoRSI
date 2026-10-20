@@ -425,19 +425,39 @@ def _game_task(game: Path, split: str, index: int, group: str) -> dict:
             "expected_files": {"game-report.json": ""}}
 
 
+def _validation_tasks(count: int, test_per_split: int) -> list[dict]:
+    """Validation drawn from the SAME distribution as the frozen test panels.
+
+    The 2026-10-20 gate-ability diagnostic showed train-split validation games
+    can carry no signal for edits whose value lives on seen/unseen layouts, so
+    validation now samples the valid_seen / valid_unseen pools (evenly split,
+    never overlapping the test picks) while train keeps the train split.
+    """
+    half = (count + 1) // 2
+    tasks = []
+    for split, group, size in (("valid_seen", "validation-seen", half),
+                               ("valid_unseen", "validation-unseen", count - half)):
+        games = _games(split)
+        test_set = set(_sample(games, test_per_split, 0))
+        remaining = [game for game in games if game not in test_set]
+        stride = max(1, len(remaining) // max(1, size))
+        for index, game in enumerate(remaining[::stride][:size]):
+            tasks.append(_game_task(game, "validation", index, group))
+    return tasks
+
+
 def build_manifest(train_count: int = TRAIN_COUNT, validation_count: int = VALIDATION_COUNT,
                    test_per_split: int = TEST_PER_SPLIT) -> dict:
     """Deterministic game selection; defaults are pinned by tests and studies.
 
     The test split selection depends only on test_per_split (stride over the
-    sorted valid_seen / valid_unseen games), so validation-size changes keep
+    sorted valid_seen / valid_seen games), so validation-size changes keep
     the frozen test panels comparable across studies.
     """
     train_games = _games("train")
     tasks = ([_game_task(game, "train", i, "train-games")
               for i, game in enumerate(_sample(train_games, train_count, 0))]
-             + [_game_task(game, "validation", i, "validation-games")
-                for i, game in enumerate(_sample(train_games, validation_count, 1))]
+             + _validation_tasks(validation_count, test_per_split)
              + [_game_task(game, "test", i, "test-seen")
                 for i, game in enumerate(_sample(_games("valid_seen"), test_per_split, 0))]
              + [_game_task(game, "test", test_per_split + i, "test-unseen")

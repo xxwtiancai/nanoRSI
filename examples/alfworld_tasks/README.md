@@ -19,7 +19,11 @@ engine's own `won` flag — no custom scoring.
 - The frozen final panel reports the literature's split convention separately:
   **seen** layouts (valid_seen) and **unseen** layouts (valid_unseen).
 - Deterministic pack: games are selected from the local ALFWorld cache by sorted path
-  and stride (4 train / 6 validation from the train split; 6 seen + 6 unseen test).
+  and stride. Since the 2026-10-20 gate-ability diagnostic, **validation is drawn from
+  the same seen/unseen distribution as the frozen test panel** (evenly split, never
+  overlapping the test picks — train-split validation carried no signal for edits whose
+  value lives on unseen layouts); train keeps the train split (defaults: 4 train /
+  3+3 validation / 6+6 test).
   `prepare.py` is the sole generator; never hand-edit the manifest.
 
 ## Requirements and run
