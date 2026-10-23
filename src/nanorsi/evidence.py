@@ -56,7 +56,44 @@ def _cases(payload: dict | None) -> list[dict] | None:
         rows = json.loads(payload["text"])["case_results"]
     except (KeyError, TypeError, ValueError):
         return None
-    return [{field: row.get(field) for field in CASE_FIELDS} for row in rows]
+    result = []
+    for row in rows:
+        case = {field: row.get(field) for field in CASE_FIELDS}
+        if "split" in row:
+            case["split"] = row["split"]
+        result.append(case)
+    return result
+
+
+def _case_effects(parent: list[dict] | None, child: list[dict] | None) -> dict:
+    """Classify per-task changes without inferring missing split metadata.
+
+    ``repair`` is an improvement on a train task whose parent failed; ``transfer``
+    is an improvement on validation/test; and ``regressions`` records losses on
+    any explicitly split task.  Results without a declared split stay visible in
+    ``unclassified`` rather than being guessed from task or group names.
+    """
+    buckets = {name: [] for name in ("repair", "transfer", "regressions", "unclassified")}
+    if not parent or not child:
+        return {name: {"tasks": []} for name in buckets}
+    old = {(row.get("task_id"), row.get("group_id"), row.get("repeat_id")): row for row in parent}
+    new = {(row.get("task_id"), row.get("group_id"), row.get("repeat_id")): row for row in child}
+    for key in sorted(set(old) & set(new)):
+        before, after = old[key], new[key]
+        old_score, new_score = before.get("score"), after.get("score")
+        task = key[0]
+        if not all(isinstance(value, (int, float)) and not isinstance(value, bool) for value in (old_score, new_score)):
+            buckets["unclassified"].append(task)
+            continue
+        if new_score < old_score:
+            buckets["regressions"].append(task)
+        elif new_score > old_score and before.get("split") == "train" and old_score < 1:
+            buckets["repair"].append(task)
+        elif new_score > old_score and before.get("split") in {"validation", "test"}:
+            buckets["transfer"].append(task)
+        else:
+            buckets["unclassified"].append(task)
+    return {name: {"tasks": tasks, "count": len(tasks)} for name, tasks in buckets.items()}
 
 
 def _diff_summary(payload: dict | None) -> dict | None:
@@ -71,6 +108,8 @@ def _revision(root: Path, config, event: dict) -> dict:
     parent_metrics, child_metrics = event.get("parent_gate_metrics") or {}, event.get("gate_metrics") or {}
     parent_value, child_value = parent_metrics.get(metric), child_metrics.get(metric)
     delta = child_value - parent_value if isinstance(parent_value, (int, float)) and isinstance(child_value, (int, float)) else None
+    parent_cases = _cases(_artifact_text(root, event, "parent.json"))
+    candidate_cases = _cases(_artifact_text(root, event, "gate.json"))
     return {"schema_version": 1, "attempt_id": event.get("attempt_id"), "generation": event.get("generation"),
             "decision": event.get("decision"), "reason": event.get("reason"), "diagnosis": event.get("hypothesis"),
             "surface": event.get("changed_paths"), "candidate_commit": event.get("candidate_commit"),
@@ -79,8 +118,8 @@ def _revision(root: Path, config, event: dict) -> dict:
                        "parent": parent_value, "candidate": child_value, "delta": delta},
             "gate_constraints": event.get("gate_constraints"),
             "diff": _diff_summary(_artifact_text(root, event, "proposal/proposal.diff")),
-            "evaluator": {"parent_cases": _cases(_artifact_text(root, event, "parent.json")),
-                          "candidate_cases": _cases(_artifact_text(root, event, "gate.json"))}}
+            "evaluator": {"parent_cases": parent_cases, "candidate_cases": candidate_cases},
+            "effects": _case_effects(parent_cases, candidate_cases)}
 
 
 def revisions(root: Path) -> list[dict]:

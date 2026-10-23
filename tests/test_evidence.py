@@ -3,7 +3,7 @@ import json
 import tempfile
 import unittest
 
-from nanorsi.evidence import revisions, write_ledger
+from nanorsi.evidence import _case_effects, revisions, write_ledger
 from tests.test_end_to_end import run_cli
 from tests.test_v2_lifecycle import make_v2
 
@@ -100,6 +100,29 @@ class EvidenceLedgerTests(unittest.TestCase):
             markdown = (root / 'reports/evidence.md').read_text()
             self.assertIn('## Gate summary', markdown)
             self.assertIn('accepted: 1', markdown)
+
+    def test_case_effects_split_repair_from_transfer(self):
+        parent = [
+            {'task_id': 'train-1', 'group_id': 'train', 'split': 'train', 'repeat_id': 0, 'score': 0.0, 'status': 'failed'},
+            {'task_id': 'validation-1', 'group_id': 'validation', 'split': 'validation', 'repeat_id': 0, 'score': 0.0, 'status': 'failed'},
+            {'task_id': 'validation-2', 'group_id': 'validation', 'split': 'validation', 'repeat_id': 0, 'score': 1.0, 'status': 'ok'},
+        ]
+        child = [
+            {'task_id': 'train-1', 'group_id': 'train', 'split': 'train', 'repeat_id': 0, 'score': 1.0, 'status': 'ok'},
+            {'task_id': 'validation-1', 'group_id': 'validation', 'split': 'validation', 'repeat_id': 0, 'score': 1.0, 'status': 'ok'},
+            {'task_id': 'validation-2', 'group_id': 'validation', 'split': 'validation', 'repeat_id': 0, 'score': 0.0, 'status': 'failed'},
+        ]
+        effects = _case_effects(parent, child)
+        self.assertEqual(effects['repair']['tasks'], ['train-1'])
+        self.assertEqual(effects['transfer']['tasks'], ['validation-1'])
+        self.assertEqual(effects['regressions']['tasks'], ['validation-2'])
+        self.assertEqual(effects['unclassified']['tasks'], [])
+
+    def test_case_effects_does_not_guess_split_without_metadata(self):
+        parent = [{'task_id': 'custom-a', 'group_id': 'custom', 'repeat_id': 0, 'score': 0.0, 'status': 'failed'}]
+        child = [{'task_id': 'custom-a', 'group_id': 'custom', 'repeat_id': 0, 'score': 1.0, 'status': 'ok'}]
+        effects = _case_effects(parent, child)
+        self.assertEqual(effects['unclassified']['tasks'], ['custom-a'])
 
 
 if __name__ == '__main__':
