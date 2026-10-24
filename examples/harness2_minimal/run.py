@@ -172,7 +172,8 @@ def process_task(args, config, api_key, task_name, ledger):
     def log(phase, event, **fields):
         row = {"ts": time.strftime("%H:%M:%S"), "task": task_name,
                "phase": phase, "event": event, **fields}
-        ledger.append(json.dumps(row, ensure_ascii=False))
+        ledger.write(json.dumps(row, ensure_ascii=False) + "\n")
+        ledger.flush()
         print(f"[{task_name}] {phase} {event}", flush=True)
 
     bind_reader, convert = lab.document_reader(args.lab_root, args.lab_python)
@@ -275,6 +276,12 @@ def main():
         parser.error("pass --tasks or --domain")
     if args.max_tasks:
         names = names[:args.max_tasks]
+    args.lab_root = str(Path(args.lab_root).resolve())
+    # absolute() on purpose: the LAB venv python is a symlink into uv's managed
+    # interpreter, and resolve() would strip it, executing the base interpreter
+    # without the venv's site-packages.
+    args.lab_python = str(Path(args.lab_python).absolute())
+    args.runs_dir = str(Path(args.runs_dir).resolve())
     Path(args.runs_dir).mkdir(parents=True, exist_ok=True)
     config = AgentConfig(model=args.model)
     api_key = __import__("agent").load_api_key(config)
