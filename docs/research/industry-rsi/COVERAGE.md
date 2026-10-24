@@ -1,5 +1,7 @@
 # Coverage and date decisions / 检索覆盖与日期说明
 
+> **Archived 2026-10-24 / 已归档** — daily collection continues in [RSI_NOTES.md](../RSI_NOTES.md); this coverage audit covers the frozen catalogue window only. / 每日收录继续于 [RSI_NOTES.md](../RSI_NOTES.md)；本页覆盖说明仅针对已冻结的 catalog 窗口。
+
 [Research map](README.md) · [中文入口](README.zh-CN.md)
 
 This initial audit was checked on **2026-09-13**, covering **2025-09-13–2026-09-13**. We searched company research pages, first-party repositories and paper publication histories, then opened the relevant primary documents. This is a selective engineering-oriented collection, not a systematic review or a ranking of labs. Newer paper versions may exist; a record pins the version supporting its result rather than silently changing its evidence. Daily midnight sweeps since **2026-09-14** append verified records to the rolling window (see [RADAR.md](RADAR.md)); the tables below cover the initial audit plus institutions added by those sweeps. The analytical synthesis of all records lives in the [living survey](../RSI_SURVEY.md) / [活综述](../RSI_SURVEY.zh-CN.md). / 本次首批资料核验于 **2026-09-13**，窗口为 **2025-09-13–2026-09-13**。检索覆盖公司研究页面、第一方仓库及论文发布记录，再打开相关原始材料核对。它面向工程实践，是精选集合，不是系统综述或机构排名；部分论文已有新版，条目固定引用提供该结果的版本。自 **2026-09-14** 起每日零点检索会把核验过的记录追加进滚动窗口（见 [RADAR.md](RADAR.md)）；下表覆盖首批审计及后续每日新增机构。

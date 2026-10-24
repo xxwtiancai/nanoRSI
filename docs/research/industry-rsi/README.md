@@ -1,5 +1,7 @@
 # Industry RSI research map
 
+> **Archived 2026-10-24** — the living research notes moved to [RSI_NOTES.md](../RSI_NOTES.md) (taxonomy of the 1,250-paper RSI survey, arXiv 2607.07663). This page and catalog.json are frozen and no longer updated. / 2026-10-24 起归档：研究笔记已迁移至 [RSI_NOTES.md](../RSI_NOTES.md)；本页与 catalog.json 冻结，不再更新。
+
 **2025-10-21 → 2026-10-21** · **225** in-window records
 
 A selective, primary-source catalogue of company and company–university papers, systems and results. Every detail entry includes a locally stored paper figure, official research image or source-page screenshot, with its locator and source URL, plus an explicit list of verified code, weights or data links when available. Classification and proposed nanoRSI applications are our interpretation. All numbers are authors' reports unless an entry links local reproduction evidence. These heterogeneous results are not a leaderboard or proof of general RSI.

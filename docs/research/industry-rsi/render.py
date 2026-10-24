@@ -15,6 +15,14 @@ from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parent
+BANNER = (
+    "> **Archived 2026-10-24** — the living research notes moved to "
+    "[RSI_NOTES.md](../RSI_NOTES.md) (taxonomy of the 1,250-paper RSI survey, "
+    "arXiv 2607.07663). This page and catalog.json are frozen and no longer updated. "
+    "/ 2026-10-24 起归档：研究笔记已迁移至 [RSI_NOTES.md](../RSI_NOTES.md)；"
+    "本页与 catalog.json 冻结，不再更新。",
+    "",
+)
 CATEGORIES = {
     "parameter-learning": ("Parameters and training data", "参数与训练数据"),
     "agent-code": ("Agents and code", "Agent 与代码"),
@@ -182,7 +190,7 @@ def materials(rows, lang):
     links = tr(("[← Research map](README.md) · [Quickstart](QUICKSTART.md) · [Landscape](LANDSCAPE.md) · [Format](FORMAT.md)",
                 "[← 研究地图](README.zh-CN.md) · [快速开始](QUICKSTART.zh-CN.md) · [研究全景](LANDSCAPE.zh-CN.md) · [记录格式](FORMAT.md)"), lang)
     heading = tr(("Date | Work | Verified code / weights / data | License and evidence note", "日期 | 工作 | 已核验代码／权重／数据 | 许可与证据说明"), lang)
-    lines = [f"# {title}", "", links, "", intro, "", f"| {heading} |", "| --- | --- | --- | --- |"]
+    lines = [f"# {title}", "", *BANNER, links, "", intro, "", f"| {heading} |", "| --- | --- | --- | --- |"]
     for row in rows:
         releases = [source for source in row["sources"] if source["kind"] in {"repository", "license"}]
         if releases:
@@ -214,7 +222,7 @@ def overview(data, rows, lang):
     ), lang)
     links = tr(("[Quickstart](QUICKSTART.md) · [Landscape and taxonomy](LANDSCAPE.md) · [Open materials](OPEN_MATERIALS.md) · [Tencent coverage audit](TENCENT.md) · [Coverage and dates](COVERAGE.md) · [Experiments to build next](ADOPTION.md) · [Source-image manifest](assets/paper-figures/README.md)",
                 "[快速开始](QUICKSTART.zh-CN.md) · [研究全景与分类](LANDSCAPE.zh-CN.md) · [开放材料](OPEN_MATERIALS.zh-CN.md) · [Tencent 覆盖审计](TENCENT.zh-CN.md) · [检索覆盖与日期](COVERAGE.md) · [下一步可实现的实验](ADOPTION.md) · [原文图片清单](assets/paper-figures/README.md)"), lang)
-    lines = [f"# {title}", "", f"**{start} → {end}** · **{len(active)}** " + tr(("in-window records", "条窗口内记录"), lang), "", intro, "", terms, "", links + " · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)", "", "## " + tr(("Browse by what changes", "按改变对象浏览"), lang), "", "| " + tr(("Category | Records | Mechanism families", "分类 | 条目数 | 机制家族"), lang) + " |", "| --- | ---: | --- |"]
+    lines = [f"# {title}", "", *BANNER, f"**{start} → {end}** · **{len(active)}** " + tr(("in-window records", "条窗口内记录"), lang), "", intro, "", terms, "", links + " · [catalog.json](catalog.json) · [English](README.md) / [中文](README.zh-CN.md)", "", "## " + tr(("Browse by what changes", "按改变对象浏览"), lang), "", "| " + tr(("Category | Records | Mechanism families", "分类 | 条目数 | 机制家族"), lang) + " |", "| --- | ---: | --- |"]
     for category, label in CATEGORIES.items():
         fams = []
         for slug in CATEGORY_FAMILIES[category]:
@@ -237,7 +245,7 @@ def overview(data, rows, lang):
 
 def details(category, rows, lang):
     members = [row for row in rows if row["category"] == category]
-    lines = [f"# {tr(CATEGORIES[category], lang)}", "", f"[← {tr(('Research map', '研究地图'), lang)}]({name('README', lang)})", ""]
+    lines = [f"# {tr(CATEGORIES[category], lang)}", "", *BANNER, f"[← {tr(('Research map', '研究地图'), lang)}]({name('README', lang)})", ""]
     grouped = {slug: [row for row in members if row.get("family") == slug] for slug in CATEGORY_FAMILIES[category]}
     stray = [row for row in members if row.get("family") not in CATEGORY_FAMILIES[category]]
     if stray:

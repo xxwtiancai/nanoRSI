@@ -1,5 +1,7 @@
 # 开放材料索引
 
+> **Archived 2026-10-24** — the living research notes moved to [RSI_NOTES.md](../RSI_NOTES.md) (taxonomy of the 1,250-paper RSI survey, arXiv 2607.07663). This page and catalog.json are frozen and no longer updated. / 2026-10-24 起归档：研究笔记已迁移至 [RSI_NOTES.md](../RSI_NOTES.md)；本页与 catalog.json 冻结，不再更新。
+
 [← 研究地图](README.zh-CN.md) · [快速开始](QUICKSTART.zh-CN.md) · [研究全景](LANDSCAPE.zh-CN.md) · [记录格式](FORMAT.md)
 
 这张表先回答一个实际问题：打开论文前，是否有可检查的公开实现、检查点或数据集？仓库和许可链接来自条目已核验的一手来源。没有链接表示本轮未核实，不表示资产一定不存在。

@@ -1,5 +1,7 @@
 # Catalogue format / 记录格式
 
+> **Archived 2026-10-24 / 已归档** — new research entries go to [RSI_NOTES.md](../RSI_NOTES.md) in the survey-based note format (标题｜机构｜日期｜链接｜核心思想｜关键数字｜代码与许可｜一句话点评＋闭环档位). catalog.json and these format rules are frozen for the archived pages only. / 新收录一律写入 [RSI_NOTES.md](../RSI_NOTES.md)（综述两轴分类的论文笔记格式）；本格式规则仅服务归档页面，随 catalog.json 一并冻结。
+
 [Research map](README.md) · [中文入口](README.zh-CN.md)
 
 `catalog.json` is the canonical data. `render.py` generates the two indexes and eight category pages using only Python's standard library. Each record's `visual` points to a checked-in paper figure, official research-page image, or source-page screenshot. Edit the JSON, regenerate, then run `--check`; do not edit generated Markdown directly. `COVERAGE.md` and `ADOPTION.md` are maintained prose.

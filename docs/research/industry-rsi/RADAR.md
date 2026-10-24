@@ -1,5 +1,7 @@
 # RSI radar — daily research log
 
+> **Archived 2026-10-24** — daily research notes moved to [RSI_NOTES.md](../RSI_NOTES.md)（按 1250 篇 RSI 综述两轴分类的活文档，每日更新）。本日志与 catalog.json 冻结保留，作为 2025-09 ～ 2026-10-24 的历史记录；此后的每日记录见 RSI_NOTES.md 的「最近更新」区。
+
 The radar log is the daily heartbeat of nanoRSI's research track: one dated entry per day, newest first, recording newly verified RSI results, catalogue updates, engineering signals and coverage gaps. The structured data lives in [catalog.json](catalog.json); this log indexes it by day. A day with no qualified findings is still logged, with the searched scope and remaining gaps stated explicitly.
 
 Entry format rules live in [FORMAT.md](FORMAT.md). The research map itself is [README.md](README.md) · [中文](README.zh-CN.md).
