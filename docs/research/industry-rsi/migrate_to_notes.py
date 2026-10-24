@@ -2,8 +2,9 @@
 
 The living research notes live in docs/research/RSI_NOTES.md, organized on the
 two axes of the 1,250-paper RSI survey (arXiv 2607.07663). catalog.json is the
-frozen 2026-10-24 archive this file was first built from; `--check` fails when
-the notes no longer match that archive.
+frozen 2026-10-24 archive this file was first built from; `--check` verifies
+that every archived record remains present while allowing newer, manually
+verified notes to be added to the living document.
 """
 import argparse
 import json
@@ -146,9 +147,16 @@ def main():
     content = build(data)
     if args.check:
         current = NOTES.read_text(encoding="utf-8") if NOTES.exists() else ""
-        if current != content:
-            raise SystemExit("RSI_NOTES.md is out of sync with the frozen catalog; rerun the migration")
-        print(f"notes in sync: {len(data['records'])} records")
+        missing = [row["title"] for row in data["records"] if row["title"] not in current]
+        missing_assets = [row["visual"]["asset"] for row in data["records"] if row["visual"]["asset"] not in current]
+        if missing or missing_assets:
+            details = []
+            if missing:
+                details.append(f"missing titles: {', '.join(missing[:3])}")
+            if missing_assets:
+                details.append(f"missing visual references: {', '.join(missing_assets[:3])}")
+            raise SystemExit("RSI_NOTES.md is missing frozen catalogue content; rerun the migration: " + "; ".join(details))
+        print(f"notes retain frozen catalogue: {len(data['records'])} records; living additions allowed")
     else:
         NOTES.write_text(content, encoding="utf-8")
         print(f"wrote {NOTES} with {len(data['records'])} records")

@@ -4,11 +4,19 @@
 
 ## 最近更新
 
+- 2026-10-25 · 补录 R² Flow：首发 2026-09-27、v3 修订 2026-10-22；论文与 Figure 3 已核验，官方代码仓库可读但仓库级许可未核验，因此只采纳协议启发，不复制代码。
 - 2026-10-24 · 体系切换：按综述两轴把存量 236 条整理论文笔记，此后每日收录直接写入本文件；industry-rsi 旧体系（catalog/render/分类页/RADAR）冻结归档。
 
-## 1. 部署时自进化 / Deployment-time self-evolution（124 条）
+## 1. 部署时自进化 / Deployment-time self-evolution（125 条）
 
-### 技能文件优化与技能库（30）
+### 技能文件优化与技能库（31）
+
+- **[R² Flow: Recursive Self-Improvement via Recursive Skill Evolution](https://arxiv.org/abs/2609.33867)**（The Chinese University of Hong Kong, Shenzhen / Fudan University / University of Illinois Urbana-Champaign / University of Oxford / National University of Singapore，首发 2026-09-27，v3 修订 2026-10-22，闭环）
+  - 核心：把技能库更新放进两个嵌套环：阶段内在共享状态编排图上训练 Supervisor 的 flow，分别读出技能的 flow share 与有符号 utility；阶段边界由独立验证器证据、残差方差平台期和版本化技能库触发提案、配对验证、提交或回滚。独立步骤的不同排列合并为同一状态，避免树状历史重复分摊证据。
+  - 数字：论文报告五次运行均值中，R² Flow 在所有 IID 数据集与指标上领先；相对 SkillOpt 平均高 2.03 个 EM 点与 5.57 个 accuracy 点。固定 Supervisor 迁移到六个冻结执行器时，IID/OOD 平均提升 15.70/24.64 点；八阶段 OOD 均值 71.2→81.02，37 次提交编辑中 33 次提高留出验证分（精度 0.89），并移除 12 个注入有害技能中的 11 个。以上是作者结果，不是 nanoRSI 复现。
+  - 代码／权重／数据／许可：代码仓库 [beita6969/r2flow](https://github.com/beita6969/r2flow) 公开，包含训练入口、数据、配置和 Figure 1/3，但核验时仓库没有 LICENSE 文件，不能把代码许可写成已确认；论文页面标注 CC BY 4.0。Supervisor 使用 Qwen3.5-9B LoRA，执行需要 CUDA、80GB 级 GPU、SGLang、ALFWorld/EvalPlus 等外部资源；未核验到可直接下载的训练权重或完整可复现实验包。
+  - 点评：对 nanoRSI 最可移植的是协议而非 flow 训练：在不改变默认选择器的前提下，把共享状态键、技能调用频次与独立验证证据分开记账，并将“高调用率不等于有益”作为审计字段；先做离线报告和配对验证对照，不引入 GPU/RL 依赖。 · [原文图](industry-rsi/assets/paper-figures/r2flow-framework.png) · [仓库](https://github.com/beita6969/r2flow)
+  - 原文图／来源：论文原始 Figure 3（共享状态编排、flow share/utility 分离、验证器闸门及配对验证）；[arXiv HTML v3](https://arxiv.org/html/2609.33867v3)，图号 Figure 3，图片源地址为 `https://arxiv.org/html/2609.33867v3/fig3.png`。
 
 - **[Trackable Skill Library Lifecycle Management for Agentic Reinforcement Learning](https://arxiv.org/abs/2610.25126)**（Rutgers University / Carnegie Mellon University / TikTok Inc.，2026-10-20，闭环）
   - 核心：由技能级随机对照证据驱动的技能生命周期管理，嵌入智能体 RL。在每个 GRPO 组内，把成组采样变成在线随机对照实验：技能独立随机注入加同任务组内对照，分离每个技能的真实贡献（解决共同检索技能的搭便车与难度混淆），并跨组做可靠性加权聚合。
