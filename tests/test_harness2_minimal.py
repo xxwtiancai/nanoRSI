@@ -117,6 +117,14 @@ class ProposeComposeTest(unittest.TestCase):
             decision = run.compose(run.AgentConfig(), "key", TASK, {}, [], {}, {"trajectory": ""})
         self.assertEqual(decision["files"]["systemprompt.md"].strip(), "Merged prompt.")
 
+    def test_compose_tolerates_plain_fenced_files_without_markers(self):
+        reply = ('{"decision": "adopt_dom", "observation": "dom mitigates", "files": ["tool_guidance.md"]}\n'
+                 '```markdown\nRetry failed conversions, then disclose gaps.\n```')
+        with mock.patch.object(run, "chat") as fake:
+            fake.return_value = (reply, {"input_tokens": 1, "output_tokens": 1})
+            decision = run.compose(run.AgentConfig(), "key", TASK, {}, [], {}, {"trajectory": ""})
+        self.assertIn("Retry failed conversions", decision["files"]["tool_guidance.md"])
+
     def test_contrast_rejects_unknown_verdict(self):
         empty_run = {"trajectory": "", "deliverable_text": ""}
         with mock.patch.object(run, "chat") as fake:

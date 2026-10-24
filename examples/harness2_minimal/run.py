@@ -129,8 +129,17 @@ def compose(config, api_key, task, harness_files, candidates, contrasts, referen
     if decision not in {"adopt_inv", "adopt_dom", "merge", "keep"}:
         raise ModelError(f"invalid compose decision: {head}")
     listed = head.get("files") if isinstance(head.get("files"), list) else []
-    blocks = {name.strip(): body.strip() for name, body in re.findall(
-        r"===FILE\s+([\w./-]+)===\s*```[a-zA-Z0-9_-]*\n(.*?)```", content, re.S)}
+    marker_block = re.compile(r"===FILE\s+([\w./-]+)===\s*```[a-zA-Z0-9_-]*\n(.*?)```", re.S)
+    blocks = {name.strip(): body.strip() for name, body in marker_block.findall(content)}
+    missing = [name for name in listed if name not in blocks or not blocks[name]]
+    if missing:
+        # Tolerant fallback: models often emit the files as plain fenced blocks
+        # in the listed order, without the ===FILE name=== markers.
+        remainder = marker_block.sub("", content)
+        fences = [body.strip() for body in re.findall(r"```[a-zA-Z0-9_-]*\n(.*?)```", remainder, re.S)]
+        if len(fences) == len(missing):
+            for name, body in zip(missing, fences):
+                blocks[name] = body
     files = {}
     for name in listed:
         if name not in blocks or not blocks[name]:
@@ -226,15 +235,21 @@ def process_task(args, config, api_key, task_name, ledger):
             except ModelError as error:
                 contrasts[cand["dim"]] = {"contrast": "neutral", "observation": f"contrast call failed: {error}"}
                 log(phase="contrast", event=cand["dim"], error=str(error))
-        try:
-            decision = compose(config, api_key, task, base_harness, candidates, contrasts, reference)
-            spend(decision["usage"])
-            log(phase="compose", event=decision["decision"], observation=decision["observation"])
-            final_harness = dict(base_harness)
-            final_harness.update(decision["files"]) if decision["decision"] != "keep" else None
-        except ModelError as error:
-            log(phase="compose", event="failed", error=str(error))
-            decision, final_harness = {"decision": "keep", "observation": f"compose failed: {error}", "files": {}}, base_harness
+        decision, final_harness, compose_error = None, None, None
+        for attempt in range(2):
+            try:
+                decision = compose(config, api_key, task, base_harness, candidates, contrasts, reference)
+                spend(decision["usage"])
+                log(phase="compose", event=decision["decision"], observation=decision["observation"])
+                final_harness = dict(base_harness)
+                final_harness.update(decision["files"]) if decision["decision"] != "keep" else None
+                break
+            except ModelError as error:
+                compose_error = error
+        if decision is None:
+            log(phase="compose", event="failed", error=str(compose_error))
+            decision = {"decision": "keep", "observation": f"compose failed: {compose_error}", "files": {}}
+            final_harness = base_harness
         if decision["decision"] == "keep":
             final = reference
             log(phase="exec", event="final(kept reference)")
