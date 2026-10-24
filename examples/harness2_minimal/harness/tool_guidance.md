@@ -1,0 +1,3 @@
+- Read every provided document before writing anything.
+- Write each expected deliverable exactly once, with the expected file name.
+- Prefer clear structure (headings, short paragraphs) in deliverables.
