@@ -1,0 +1,155 @@
+{
+  "benchmark": "lab",
+  "substrate": "oc",
+  "k": 1,
+  "modes": [
+    "agg"
+  ],
+  "seed": null,
+  "tag": "",
+  "domain_order": [
+    "banking-finance",
+    "bankruptcy-restructuring",
+    "capital-markets",
+    "emerging-companies-venture-capital",
+    "employment-labor",
+    "litigation-dispute-resolution",
+    "tax",
+    "trusts-estates-private-client"
+  ],
+  "max_tasks": null,
+  "only_tasks": [],
+  "started_at": "2026-10-25T03:55:10.360691+00:00",
+  "finished_at": "2026-10-25T10:50:56.926274+00:00",
+  "n_domains": 8,
+  "domains": [
+    {
+      "domain": "bankruptcy-restructuring",
+      "n_tasks": 1,
+      "seed": null,
+      "done": 1,
+      "failed": 0,
+      "tasks": [
+        {
+          "task": "bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection",
+          "status": "ok",
+          "library_entries_before": {
+            "agg": 0
+          }
+        }
+      ]
+    },
+    {
+      "domain": "banking-finance",
+      "n_tasks": 1,
+      "seed": null,
+      "done": 1,
+      "failed": 0,
+      "tasks": [
+        {
+          "task": "banking-finance/compare-closing-documents-against-restructuring-conditions",
+          "status": "ok",
+          "library_entries_before": {
+            "agg": 0
+          }
+        }
+      ]
+    },
+    {
+      "domain": "capital-markets",
+      "n_tasks": 1,
+      "seed": null,
+      "done": 1,
+      "failed": 0,
+      "tasks": [
+        {
+          "task": "capital-markets/review-form-8",
+          "status": "ok",
+          "library_entries_before": {
+            "agg": 0
+          }
+        }
+      ]
+    },
+    {
+      "domain": "emerging-companies-venture-capital",
+      "n_tasks": 1,
+      "seed": null,
+      "done": 1,
+      "failed": 0,
+      "tasks": [
+        {
+          "task": "emerging-companies-venture-capital/extract-key-terms-from-cap-table",
+          "status": "ok",
+          "library_entries_before": {
+            "agg": 0
+          }
+        }
+      ]
+    },
+    {
+      "domain": "litigation-dispute-resolution",
+      "n_tasks": 1,
+      "seed": null,
+      "done": 1,
+      "failed": 0,
+      "tasks": [
+        {
+          "task": "litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss",
+          "status": "ok",
+          "library_entries_before": {
+            "agg": 0
+          }
+        }
+      ]
+    },
+    {
+      "domain": "employment-labor",
+      "n_tasks": 1,
+      "seed": null,
+      "done": 1,
+      "failed": 0,
+      "tasks": [
+        {
+          "task": "employment-labor/identify-issues-in-counterparty-motion-brief",
+          "status": "ok",
+          "library_entries_before": {
+            "agg": 0
+          }
+        }
+      ]
+    },
+    {
+      "domain": "trusts-estates-private-client",
+      "n_tasks": 1,
+      "seed": null,
+      "done": 1,
+      "failed": 0,
+      "tasks": [
+        {
+          "task": "trusts-estates-private-client/draft-consent-to-adoption",
+          "status": "ok",
+          "library_entries_before": {
+            "agg": 0
+          }
+        }
+      ]
+    },
+    {
+      "domain": "tax",
+      "n_tasks": 1,
+      "seed": null,
+      "done": 1,
+      "failed": 0,
+      "tasks": [
+        {
+          "task": "tax/review-iss-tax-transaction-structure",
+          "status": "ok",
+          "library_entries_before": {
+            "agg": 0
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "benchmark": "lab",
+  "seed": 0,
+  "train_fraction": 0.0,
+  "train": [],
+  "test": [
+    "banking-finance/compare-closing-documents-against-restructuring-conditions",
+    "bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection",
+    "capital-markets/review-form-8",
+    "emerging-companies-venture-capital/extract-key-terms-from-cap-table",
+    "employment-labor/identify-issues-in-counterparty-motion-brief",
+    "litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss",
+    "tax/review-iss-tax-transaction-structure",
+    "trusts-estates-private-client/draft-consent-to-adoption"
+  ]
+}

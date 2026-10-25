@@ -1,0 +1,177 @@
+diff --git a/harness2/benchmarks/lab.py b/harness2/benchmarks/lab.py
+index 77320b2..c9681e7 100644
+--- a/harness2/benchmarks/lab.py
++++ b/harness2/benchmarks/lab.py
+@@ -975,6 +975,8 @@ class LabAdapter:
+                 task_id,
+                 "--judge-model",
+                 self.judge_model,
++                "--parallel",
++                "3",  # nanoRSI local: criterion-level concurrency capped for the Z.ai endpoint
+             ]
+             log = Path(run_dir) / "judge.log"
+             try:
+diff --git a/harness2/cli/judge.py b/harness2/cli/judge.py
+index 6e8be6f..6dc299a 100644
+--- a/harness2/cli/judge.py
++++ b/harness2/cli/judge.py
+@@ -42,7 +42,7 @@ from . import _common as C
+ _DERIVED = ("frac", "graded")
+ 
+ 
+-_PARALLEL = 8
++_PARALLEL = 2  # nanoRSI local: Z.ai endpoint throttles at the default 8
+ 
+ 
+ def _load_rows(path: Path) -> list[J.Scored]:
+diff --git a/third_party/patches/harvey-labs-judge-vertex-anthropic.diff b/third_party/patches/harvey-labs-judge-vertex-anthropic.diff
+index f1dbfe1..ace3758 100644
+--- a/third_party/patches/harvey-labs-judge-vertex-anthropic.diff
++++ b/third_party/patches/harvey-labs-judge-vertex-anthropic.diff
+@@ -1,20 +1,24 @@
++diff --git a/evaluation/judge.py b/evaluation/judge.py
++index ffad89de..36582b9d 100644
+ --- a/evaluation/judge.py
+ +++ b/evaluation/judge.py
+-@@ -28,8 +28,12 @@
++@@ -28,8 +28,14 @@ _VERDICT_SCHEMA = {
+  }
+  
+  def _detect_provider(model: str) -> str:
+ -    """Return 'anthropic', 'google', 'openai', or 'mistral' from the model name."""
+-+    """Return 'vertex-anthropic', 'anthropic', 'google', 'openai', or 'mistral'."""
+++    """Return 'vertex-anthropic', 'anthropic', 'google', 'openai', 'mistral', or 'custom-openai'."""
+      name = model.lower()
+ +    if name.startswith("vertex/gemini"):
+ +        return "vertex-google"
+ +    if name.startswith("vertex/"):
+ +        return "vertex-anthropic"
+++    if name.startswith("custom/"):
+++        return "custom-openai"
+      if name.startswith("claude"):
+          return "anthropic"
+      if name.startswith("gemini"):
+-@@ -50,9 +54,24 @@
++@@ -50,14 +56,40 @@ class Judge:
+              model: Model ID (e.g. 'claude-sonnet-4-6', 'gemini-3-flash-preview',
+                  'gpt-5.4', 'mistral-medium-3.5').
+          """
+@@ -23,7 +27,11 @@
+ -        if self.provider == "anthropic":
+ +        # 'vertex/claude-opus-4-8' -> API model id 'claude-opus-4-8'. The bare
+ +        # id is what lands in scores_<model>.json filenames, so keep it clean.
+-+        self.model = model.split("/", 1)[1] if self.provider.startswith("vertex-") else model
+++        self.model = (
+++            model.split("/", 1)[1]
+++            if self.provider.startswith(("vertex-", "custom-"))
+++            else model
+++        )
+ +        if self.provider == "vertex-anthropic":
+ +            # Claude on Vertex via ADC — no API key. Anthropic models on
+ +            # Vertex are served from the global endpoint.
+@@ -41,7 +49,19 @@
+              self.client = anthropic.Anthropic(max_retries=1)
+          elif self.provider == "google":
+              self.client = genai.Client()
+-@@ -65,7 +84,13 @@
++         elif self.provider == "openai":
++             self.client = openai.OpenAI()
+++        elif self.provider == "custom-openai":
+++            # nanoRSI local patch: any OpenAI-compatible /chat/completions endpoint
+++            # via OPENAI_BASE_URL + OPENAI_API_KEY; model id is the suffix after
+++            # 'custom/' (e.g. 'custom/glm-5.3').
+++            if not os.environ.get("OPENAI_BASE_URL"):
+++                raise ValueError("custom/ judge requires OPENAI_BASE_URL")
+++            self.client = openai.OpenAI()
++         else:  # mistral
++             self.client = Mistral(
++                 api_key=os.environ["MISTRAL_API_KEY"],
++@@ -65,7 +97,13 @@ class Judge:
+              )
+  
+      def evaluate(
+@@ -56,7 +76,7 @@
+      ) -> dict:
+          """Send a formatted prompt to the judge and parse the JSON response.
+  
+-@@ -78,13 +103,78 @@
++@@ -78,14 +116,124 @@ class Judge:
+              Parsed JSON dict from the judge's response.
+          """
+          prompt = prompt_template.format(**variables)
+@@ -69,7 +89,52 @@
+              return self._evaluate_google(prompt, temperature, _retries)
+          if self.provider == "openai":
+              return self._evaluate_openai(prompt, temperature, _retries)
+++        if self.provider == "custom-openai":
+++            return self._evaluate_custom(prompt, temperature, _retries)
+          return self._evaluate_mistral(prompt, temperature, _retries)
++ 
+++    def _evaluate_custom(self, prompt: str, temperature: float, _retries: int) -> dict:
+++        """nanoRSI local patch: chat.completions against OPENAI_BASE_URL.
+++
+++        Rate-limit (429) and transient (5xx) responses back off exponentially
+++        instead of burning the parse-retry budget; this endpoint throttles
+++        aggressively under the judge's criterion-level concurrency."""
+++        import time as _time
+++        last_err: Exception | None = None
+++        transport_budget = 8
+++        attempt = 0
+++        while attempt < _retries:
+++            kwargs = {
+++                "model": self.model,
+++                "max_tokens": 16384,
+++                "temperature": temperature,
+++                "messages": [
+++                    {"role": "system", "content": self._VERTEX_SYSTEM},
+++                    {"role": "user", "content": prompt},
+++                ],
+++            }
+++            if attempt < _retries - 1:
+++                kwargs["response_format"] = {"type": "json_object"}
+++            try:
+++                response = self.client.chat.completions.create(**kwargs)
+++            except Exception as e:
+++                last_err = e
+++                status = getattr(e, "status_code", None)
+++                if status in (429, 500, 502, 503, 504) and transport_budget > 0:
+++                    transport_budget -= 1
+++                    _time.sleep(min(60, 4 * 2 ** (8 - transport_budget)))
+++                    continue
+++                attempt += 1
+++                continue
+++            text = (response.choices[0].message.content or "") if response.choices else ""
+++            try:
+++                return self._parse_json(text)
+++            except (ValueError, json.JSONDecodeError) as e:
+++                last_err = e
+++                attempt += 1
+++        raise ValueError(
+++            f"Judge returned unparseable response after {_retries} attempts: {last_err}"
+++        )
+ +
+ +    # System steer replaces the structured-output constraint we can't use on
+ +    # Vertex (see _evaluate_anthropic_vertex). The rubric prompt already asks
+@@ -133,10 +198,11 @@
+ +        raise ValueError(
+ +            f"Judge returned unparseable response after {_retries} attempts: {last_err}"
+ +        )
+- 
+++
+      def _evaluate_anthropic(self, prompt: str, temperature: float, _retries: int) -> dict:
+          last_err: Exception | None = None
+-@@ -236,11 +326,21 @@
++         for attempt in range(_retries):
++@@ -236,11 +384,21 @@ class Judge:
+          match = re.search(r"```(?:json)?\s*\n?(.*?)\n?```", text, re.DOTALL)
+          if match:
+              try:
+@@ -160,7 +226,7 @@
+          for i, ch in enumerate(text):
+              if ch == '{':
+                  depth = 0
+-@@ -251,9 +351,61 @@
++@@ -251,9 +409,61 @@ class Judge:
+                          depth -= 1
+                      if depth == 0:
+                          try:

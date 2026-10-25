@@ -1,0 +1,154 @@
+[
+  {
+    "task_id": "banking-finance/compare-closing-documents-against-restructuring-conditions",
+    "mode": "agg",
+    "k": 1,
+    "label": "agg1",
+    "run_id": "lab-oc-agg1/banking-finance/compare-closing-documents-against-restructuring-conditions/agg1",
+    "chosen_is_base": false,
+    "n_passed": 38,
+    "n_criteria": 38,
+    "all_pass": true,
+    "raw": {
+      "n_passed": 38,
+      "n_criteria": 38,
+      "all_pass": true
+    },
+    "error": "",
+    "frac": 1.0,
+    "graded": true
+  },
+  {
+    "task_id": "bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection",
+    "mode": "agg",
+    "k": 1,
+    "label": "agg1",
+    "run_id": "lab-oc-agg1/bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection/agg1",
+    "chosen_is_base": false,
+    "n_passed": 25,
+    "n_criteria": 28,
+    "all_pass": false,
+    "raw": {
+      "n_passed": 25,
+      "n_criteria": 28,
+      "all_pass": false
+    },
+    "error": "",
+    "frac": 0.8928571428571429,
+    "graded": true
+  },
+  {
+    "task_id": "capital-markets/review-form-8",
+    "mode": "agg",
+    "k": 1,
+    "label": "agg1",
+    "run_id": "lab-oc-agg1/capital-markets/review-form-8/agg1",
+    "chosen_is_base": false,
+    "n_passed": 31,
+    "n_criteria": 32,
+    "all_pass": false,
+    "raw": {
+      "n_passed": 31,
+      "n_criteria": 32,
+      "all_pass": false
+    },
+    "error": "",
+    "frac": 0.96875,
+    "graded": true
+  },
+  {
+    "task_id": "emerging-companies-venture-capital/extract-key-terms-from-cap-table",
+    "mode": "agg",
+    "k": 1,
+    "label": "agg1",
+    "run_id": "lab-oc-agg1/emerging-companies-venture-capital/extract-key-terms-from-cap-table/agg1",
+    "chosen_is_base": false,
+    "n_passed": 39,
+    "n_criteria": 41,
+    "all_pass": false,
+    "raw": {
+      "n_passed": 39,
+      "n_criteria": 41,
+      "all_pass": false
+    },
+    "error": "",
+    "frac": 0.9512195121951219,
+    "graded": true
+  },
+  {
+    "task_id": "employment-labor/identify-issues-in-counterparty-motion-brief",
+    "mode": "agg",
+    "k": 1,
+    "label": "agg1",
+    "run_id": "lab-oc-agg1/employment-labor/identify-issues-in-counterparty-motion-brief/agg1",
+    "chosen_is_base": false,
+    "n_passed": 16,
+    "n_criteria": 23,
+    "all_pass": false,
+    "raw": {
+      "n_passed": 16,
+      "n_criteria": 23,
+      "all_pass": false
+    },
+    "error": "",
+    "frac": 0.6956521739130435,
+    "graded": true
+  },
+  {
+    "task_id": "litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss",
+    "mode": "agg",
+    "k": 1,
+    "label": "agg1",
+    "run_id": "lab-oc-agg1/litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss/agg1",
+    "chosen_is_base": false,
+    "n_passed": 33,
+    "n_criteria": 34,
+    "all_pass": false,
+    "raw": {
+      "n_passed": 33,
+      "n_criteria": 34,
+      "all_pass": false
+    },
+    "error": "",
+    "frac": 0.9705882352941176,
+    "graded": true
+  },
+  {
+    "task_id": "tax/review-iss-tax-transaction-structure",
+    "mode": "agg",
+    "k": 1,
+    "label": "agg1",
+    "run_id": "lab-oc-agg1/tax/review-iss-tax-transaction-structure/agg1",
+    "chosen_is_base": false,
+    "n_passed": 24,
+    "n_criteria": 28,
+    "all_pass": false,
+    "raw": {
+      "n_passed": 24,
+      "n_criteria": 28,
+      "all_pass": false
+    },
+    "error": "",
+    "frac": 0.8571428571428571,
+    "graded": true
+  },
+  {
+    "task_id": "trusts-estates-private-client/draft-consent-to-adoption",
+    "mode": "agg",
+    "k": 1,
+    "label": "agg1",
+    "run_id": "lab-oc-agg1/trusts-estates-private-client/draft-consent-to-adoption/agg1",
+    "chosen_is_base": false,
+    "n_passed": 28,
+    "n_criteria": 35,
+    "all_pass": false,
+    "raw": {
+      "n_passed": 28,
+      "n_criteria": 35,
+      "all_pass": false
+    },
+    "error": "",
+    "frac": 0.8,
+    "graded": true
+  }
+]

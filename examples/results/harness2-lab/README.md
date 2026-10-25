@@ -1,4 +1,12 @@
-# Harness² minimal on LAB with GLM-5.3 — baseline vs one recursion step
+# Harness² minimal on LAB with GLM-5.3 — baseline vs one recursion step (pilot)
+
+> **Status: pilot on a simplified substrate, not a replication of the paper.**
+> This study ran the paper's *mechanism shape* through a ~300-line standard-library
+> agent loop, not through the paper's OpenCode harness, improver sessions or judge.
+> Its numbers therefore cannot be compared with the paper's and do not test the
+> paper's claim. The faithful run — the original `google-research/harness2`
+> code, OpenCode substrate, GLM-5.3 wired in as an OpenCode provider — is the
+> follow-up study in [`harness2-lab-opencode/`](../harness2-lab-opencode/README.md).
 
 The engineering track's first study after the 2026-10-24 reorganization: run
 the Harness² paper's task-level recursion (k=1) end to end on its own LAB
@@ -63,7 +71,7 @@ rule fallback kept the reference harness.
 | Reference − Baseline (identical harness, two draws) | −10.6 pp |
 | Paper, GLM-5 / OpenCode, LAB partial, one step | **+11.8 pp** (59.6 → 71.4) |
 
-**Verdict: the paper's single-step gain did not reproduce in this setting.**
+**Verdict: no gain observed on this simplified substrate; not a test of the paper's claim.**
 Against the baseline arm the recursion step lost 8.4 pp; against its own
 same-session reference it gained 2.2 pp. Both deltas sit inside the measured
 same-harness noise band: two draws of the *identical* base harness differ by

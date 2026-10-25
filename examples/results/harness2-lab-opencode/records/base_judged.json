@@ -1,0 +1,82 @@
+[
+ {
+  "task": "banking-finance/compare-closing-documents-against-restructuring-conditions",
+  "label": "base1",
+  "run_id": "lab-oc-agg1/banking-finance/compare-closing-documents-against-restructuring-conditions/base1",
+  "score": {
+   "n_passed": 37,
+   "n_criteria": 38,
+   "all_pass": false
+  }
+ },
+ {
+  "task": "bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection",
+  "label": "base1",
+  "run_id": "lab-oc-agg1/bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection/base1",
+  "score": {
+   "n_passed": 24,
+   "n_criteria": 28,
+   "all_pass": false
+  }
+ },
+ {
+  "task": "capital-markets/review-form-8",
+  "label": "base1",
+  "run_id": "lab-oc-agg1/capital-markets/review-form-8/base1",
+  "score": {
+   "n_passed": 30,
+   "n_criteria": 32,
+   "all_pass": false
+  }
+ },
+ {
+  "task": "emerging-companies-venture-capital/extract-key-terms-from-cap-table",
+  "label": "base1",
+  "run_id": "lab-oc-agg1/emerging-companies-venture-capital/extract-key-terms-from-cap-table/base1",
+  "score": {
+   "n_passed": 37,
+   "n_criteria": 41,
+   "all_pass": false
+  }
+ },
+ {
+  "task": "employment-labor/identify-issues-in-counterparty-motion-brief",
+  "label": "base1",
+  "run_id": "lab-oc-agg1/employment-labor/identify-issues-in-counterparty-motion-brief/base1",
+  "score": {
+   "n_passed": 17,
+   "n_criteria": 23,
+   "all_pass": false
+  }
+ },
+ {
+  "task": "litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss",
+  "label": "base1",
+  "run_id": "lab-oc-agg1/litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss/base1",
+  "score": {
+   "n_passed": 29,
+   "n_criteria": 34,
+   "all_pass": false
+  }
+ },
+ {
+  "task": "tax/review-iss-tax-transaction-structure",
+  "label": "base1",
+  "run_id": "lab-oc-agg1/tax/review-iss-tax-transaction-structure/base1",
+  "score": {
+   "n_passed": 24,
+   "n_criteria": 28,
+   "all_pass": false
+  }
+ },
+ {
+  "task": "trusts-estates-private-client/draft-consent-to-adoption",
+  "label": "base1",
+  "run_id": "lab-oc-agg1/trusts-estates-private-client/draft-consent-to-adoption/base1",
+  "score": {
+   "n_passed": 30,
+   "n_criteria": 35,
+   "all_pass": false
+  }
+ }
+]

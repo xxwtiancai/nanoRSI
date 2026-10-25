@@ -1,0 +1,48 @@
+{
+  "method_version": 2,
+  "executor": "zai/glm-5.3",
+  "improver": "zai/glm-5.3",
+  "judge": "custom/glm-5.3",
+  "project": "",
+  "location": "global",
+  "judge_endpoint": "",
+  "endpoint": "",
+  "split": "all",
+  "tasks": [
+    [
+      "banking-finance",
+      "banking-finance/compare-closing-documents-against-restructuring-conditions"
+    ],
+    [
+      "bankruptcy-restructuring",
+      "bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection"
+    ],
+    [
+      "capital-markets",
+      "capital-markets/review-form-8"
+    ],
+    [
+      "emerging-companies-venture-capital",
+      "emerging-companies-venture-capital/extract-key-terms-from-cap-table"
+    ],
+    [
+      "employment-labor",
+      "employment-labor/identify-issues-in-counterparty-motion-brief"
+    ],
+    [
+      "litigation-dispute-resolution",
+      "litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss"
+    ],
+    [
+      "tax",
+      "tax/review-iss-tax-transaction-structure"
+    ],
+    [
+      "trusts-estates-private-client",
+      "trusts-estates-private-client/draft-consent-to-adoption"
+    ]
+  ],
+  "max_tasks": null,
+  "domains": [],
+  "seed": null
+}

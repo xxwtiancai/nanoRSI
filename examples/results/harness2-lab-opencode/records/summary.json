@@ -1,0 +1,90 @@
+{
+ "banking-finance/compare-closing-documents-against-restructuring-conditions": {
+  "base": "37/38",
+  "final": "38/38",
+  "base_frac": 0.974,
+  "final_frac": 1.0,
+  "decision_chain": {
+   "inv1": true,
+   "dom1": true,
+   "agg1": true
+  }
+ },
+ "bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection": {
+  "base": "24/28",
+  "final": "25/28",
+  "base_frac": 0.857,
+  "final_frac": 0.893,
+  "decision_chain": {
+   "inv1": true,
+   "dom1": true,
+   "agg1": true
+  }
+ },
+ "capital-markets/review-form-8": {
+  "base": "30/32",
+  "final": "31/32",
+  "base_frac": 0.938,
+  "final_frac": 0.969,
+  "decision_chain": {
+   "inv1": true,
+   "dom1": true,
+   "agg1": true
+  }
+ },
+ "emerging-companies-venture-capital/extract-key-terms-from-cap-table": {
+  "base": "37/41",
+  "final": "39/41",
+  "base_frac": 0.902,
+  "final_frac": 0.951,
+  "decision_chain": {
+   "inv1": true,
+   "dom1": true,
+   "agg1": true
+  }
+ },
+ "employment-labor/identify-issues-in-counterparty-motion-brief": {
+  "base": "17/23",
+  "final": "16/23",
+  "base_frac": 0.739,
+  "final_frac": 0.696,
+  "decision_chain": {
+   "inv1": true,
+   "dom1": true,
+   "agg1": true
+  }
+ },
+ "litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss": {
+  "base": "29/34",
+  "final": "33/34",
+  "base_frac": 0.853,
+  "final_frac": 0.971,
+  "decision_chain": {
+   "inv1": true,
+   "dom1": true,
+   "agg1": true
+  }
+ },
+ "tax/review-iss-tax-transaction-structure": {
+  "base": "24/28",
+  "final": "24/28",
+  "base_frac": 0.857,
+  "final_frac": 0.857,
+  "decision_chain": {
+   "inv1": true,
+   "dom1": true,
+   "agg1": true
+  }
+ },
+ "trusts-estates-private-client/draft-consent-to-adoption": {
+  "base": "30/35",
+  "final": "28/35",
+  "base_frac": 0.857,
+  "final_frac": 0.8,
+  "decision_chain": {
+   "inv1": true,
+   "dom1": true,
+   "agg1": true
+  }
+ }
+}
