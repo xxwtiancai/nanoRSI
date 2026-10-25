@@ -109,12 +109,19 @@ class Session:
 
     def _kept(self, reference, label, run_root, tree) -> runner.Rollout:
         """A keep decision reuses the reference execution instead of paying a rollout."""
-        kept = runner.Rollout(label, reference.run_dir, reference.ok, reference.delivered, reference.trajectory,
-                              dict(reference.deliverables), {}, reference.error)
+        import shutil
+        keep_dir = run_root / label
+        keep_dir.mkdir(parents=True, exist_ok=True)
         from . import harness
-        harness.write_tree(tree, run_root / label / "harness")
-        self.ledger.append("rollout_reused", task=None, label=label, source=reference.label)
-        return kept
+        harness.write_tree(tree, keep_dir / "harness")
+        for name in ("output", "deliverables"):
+            source = Path(reference.run_dir) / name
+            if source.is_dir():
+                shutil.copytree(source, keep_dir / name, dirs_exist_ok=True)
+        self.ledger.append("rollout_reused", label=label, source=reference.label,
+                           reference_run_dir=str(reference.run_dir))
+        return runner.Rollout(label, keep_dir, reference.ok, reference.delivered, reference.trajectory,
+                              dict(reference.deliverables), {}, reference.error)
 
     # --- a whole task ---------------------------------------------------------
     def evolve_task(self, task: dict, base: dict) -> TaskResult:

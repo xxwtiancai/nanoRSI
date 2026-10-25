@@ -72,6 +72,13 @@ class LifecycleTests(unittest.TestCase):
             self.assertEqual(events.count("rollout_reused"), 1)
             self.assertEqual(events.count("experience"), 0)
             self.assertFalse((root / ".nanorsi" / "library.jsonl").exists())
+            # the reused final must still be judgeable on its own directory
+            kept = root / ".nanorsi" / "runs" / "ops__meeting-action-items" / "agg1"
+            self.assertTrue((kept / "deliverables" / "action-items.md").is_file())
+            self.assertEqual(cli.main(["freeze", "--workspace", str(root)]), 0)
+            self.assertEqual(cli.main(["judge", "--workspace", str(root)]), 0)
+            summary = report.summarize(Ledger(root / ".nanorsi" / "ledger.jsonl"))
+            self.assertEqual(summary["means"]["n"], 1)
 
     def test_seq_k2_chains_and_blind_selects(self):
         with tempfile.TemporaryDirectory() as tmp:
