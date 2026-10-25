@@ -1,0 +1,152 @@
+{
+  "score": 0.0,
+  "max_score": 1.0,
+  "summary": "12/23 criteria passed.  Missed 11 \u2014 task FAIL.",
+  "all_pass": false,
+  "n_criteria": 23,
+  "n_passed": 12,
+  "criteria_results": [
+    {
+      "id": "C-001",
+      "title": "Identifies faltering company exception limited to plant closings only",
+      "verdict": "fail",
+      "reasoning": "The memo discusses the faltering company exception (\u00a7 2102(b)(1)) at length in Section III.B.5, but nowhere identifies that the exception applies only to plant closings and not to mass layoffs. In fact, the memo treats the exception as fully available and even emphasizes it as a core opposition strategy, despite elsewhere noting (in Section III.A.3) that Voss confirmed no plant closed and that the terminations constitute mass layoffs under \u00a7 2101(a)(3). This omission is significant because the limitation would substantially undermine (or at least complicate) the memo's recommended reliance on the faltering company exception, particularly since the facilities at issue experienced mass layoffs rather than plant closings. The memo misses a critical legal constraint on one of its central arguments."
+    },
+    {
+      "id": "C-002",
+      "title": "Notes inconsistent application of faltering company argument across facilities",
+      "verdict": "fail",
+      "reasoning": "The memo addresses the faltering company exception only in general terms (elements, favorable/adverse facts, and strategy in Section III.B.5), and never identifies any inconsistency in how Plaintiff's brief applies the faltering company argument across the three facilities (Nashville, Chattanooga, Huntsville). It also never connects the plant closing vs. mass layoff distinction to differing vulnerability per plant under the faltering company exception \u2014 the closest reference (Section III.A.3) notes no plant closed, but only in the coverage context, not as a critique of Plaintiff's exception argument. Section IV's list of Plaintiff's errors concerns the headcount exhibit, privileged testimony, the Briggs declaration, and attorney bar numbers, not the faltering company exception. The specific inconsistency required by the criterion is not identified anywhere in the memo."
+    },
+    {
+      "id": "C-003",
+      "title": "Identifies Huntsville fails independent WARN Act mass layoff threshold (37 < 50)",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the threshold problem in Section III.A.1, stating that a WARN Act mass layoff under 29 U.S.C. \u00a7 2101(a)(3) requires at least 50 employees terminated at a single site (and 33%) or 500+ employees, and that Huntsville's 37 of 143 terminations (25.9%) fail both the 50-employee and 33% thresholds. It further highlights in Part IV that Plaintiff's own Exhibit F erroneously asserts '37 \u2265 50' is a false mathematical statement, and correctly frames Huntsville liability as contingent solely on the alternative single-site theory."
+    },
+    {
+      "id": "C-004",
+      "title": "Identifies Plaintiff's aggregation theory for single site of employment",
+      "verdict": "pass",
+      "reasoning": "The memo squarely identifies Plaintiff's single-site-of-employment aggregation theory. The Executive Summary notes Plaintiff argues 'alternatively all three facilities are a single site of employment,' and Section III.A devotes substantial analysis to the theory: it explains that Huntsville's 37 terminations fail both the 50-employee and 33% thresholds at a single site, that 'Huntsville liability exists *only* if the single-site theory succeeds,' and that defeating aggregation 'eliminates ~37 employees from the class.' The memo engages the aggregation mechanics (counting employees across the three plants in Nashville, Chattanooga, and Huntsville as one site), cites Plaintiff's supporting rationale (centralized management/HR/payroll, unified Pinnacle plan), and applies the 20 C.F.R. \u00a7 639.3(i)(2) factors to rebut it. The 247 total terminations figure also appears in the damages discussion ($329.47 \u00d7 247 \u00d7 60 \u2248 $4.88M), which only holds if all three facilities' terminations are counted. The memo thus identifies both the aggregation theory and its centrality to covering Huntsville under WARN."
+    },
+    {
+      "id": "C-005",
+      "title": "Identifies misquotation of Hargrove v. Consolidated Logistics (insertion of 'completely')",
+      "verdict": "fail",
+      "reasoning": "The memo never mentions Hargrove v. Consolidated Logistics Corp. or any misquotation of Sixth Circuit case law involving insertion of the word 'completely' before 'beyond the employer's control.' Its 'Errors and Weaknesses in Plaintiff's Papers' section (Part IV) identifies only the Headcount Data math error, motion overstatement, payroll entries, privilege issues, Briggs Declaration defects, and attorney bar number discrepancies \u2014 but not the misquoted UBC standard from Hargrove."
+    },
+    {
+      "id": "C-006",
+      "title": "Identifies omission of 'as much notice as practicable' argument under \u00a7 2102(b)(3)",
+      "verdict": "fail",
+      "reasoning": "The memo never identifies the omission described in the criterion. It discusses the 'as much notice as practicable' requirement only as an element/weak prong of the defense's own unforeseeable-business-circumstances exception analysis (\u00a7 2102(b)(2)(A)), and it affirmatively states that Plaintiff argued in Motion \u00a7 II.C that the exceptions never excuse 'complete inaction' \u2014 the opposite of flagging a failure to brief the point. Nowhere does the memo cite 29 U.S.C. \u00a7 2102(b)(3), nor does it note that Plaintiff's brief failed to argue, in the alternative, that even if a WARN exception applied, Greenleaf still was required to give as much notice as practicable plus a brief statement of the basis for reducing the notice period, and that its zero notice fails that requirement. Part IV's catalogue of errors/weaknesses in Plaintiff's papers (headcount error, overstatement, payroll anomalies, privilege, Briggs declaration, bar numbers) omits this point entirely."
+    },
+    {
+      "id": "C-007",
+      "title": "Notes zero-notice fact as vulnerability for Greenleaf despite omission in Plaintiff's brief",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly treats the zero-notice fact as a vulnerability for Greenleaf, not merely an omission in Plaintiff's papers. In Section III.B.4, it identifies the UBC exception's 'as much notice as practicable' element as 'the weak prong' and states that 'Zero notice and the \"hold off\" direction hurt' \u2014 recognizing that even under the WARN Act exceptions, some notice is required and Greenleaf gave none. It also acknowledges Plaintiff's argument that exceptions never excuse 'complete inaction' (Section III.B.6), lists zero notice as an adverse fact framing the risk profile (Section II.1: 'Liability for some violation... is very difficult to avoid'), and in Section V.6 notes that 'conceded zero notice... make[s] full defense of Nashville/Chattanooga liability risky.' This satisfies the criterion's requirement that the memo identify absolute zero notice (rather than shortened notice) as a defense vulnerability under the exceptions framework."
+    },
+    {
+      "id": "C-008",
+      "title": "Identifies damages calculation arithmetic error ($4,876,200 vs. $4,882,876.20)",
+      "verdict": "fail",
+      "reasoning": "The memo recites the damages calculation as \"$329.47 \u00d7 247 \u00d7 60 \u2248 $4.88M (SUMF \u00b6 31)\" but never identifies that Plaintiff's stated figure of $4,876,200 does not match the actual product of that calculation (~$4,882,876.20, a discrepancy of ~$6,676.20). The memo attacks the damages figure on other grounds (mitigation offsets, benefits proof, Exhibit F headcount error, data integrity, class scope), but it treats the stated total as arithmetically consistent with the inputs and does not flag the specific arithmetic error or discrepancy between the stated figure and the computed amount. The 'Headcount Data error' and 'suspicious payroll entries' points concern the 37 \u2265 50 false statement and duplicate names, not the damages math. Because the memo fails to identify the mathematical mismatch in the damages calculation, the criterion is not satisfied."
+    },
+    {
+      "id": "C-009",
+      "title": "Identifies 90-day aggregation rule and staggered termination dates issue",
+      "verdict": "fail",
+      "reasoning": "The memo does reference staggered termination dates (January 17, 2025 for Nashville/Chattanooga and '94 days to Huntsville,' implying January 24, 2025, plus the 'final week' gap), so the first element is at least implicitly covered. However, the memo never discusses the WARN Act's 90-day aggregation rule under 20 C.F.R. \u00a7 639.5(a)(1), does not note that the one-week gap falls within the 90-day window, does not explain that aggregation applies separately to each single site of employment, and does not argue that Plaintiff's motion conflates these concepts. The memo cites \u00a7\u00a7 639.3(i)(2) and 639.9 but omits the aggregation analysis required by the criterion. Because the 90-day aggregation rule discussion is entirely absent, the output fails the criterion."
+    },
+    {
+      "id": "C-010",
+      "title": "Identifies selective quotation of CEO Voss deposition testimony",
+      "verdict": "fail",
+      "reasoning": "The memo quotes Voss's 'suspected as early as September 2024' testimony as an adverse fact (noting 'Plaintiff uses this to argue foreseeability') and separately cites her testimony about SunHarvest's prior-year renewal history (Voss Dep. 15:18\u201316:5) as a favorable foreseeability fact. However, it never identifies that Plaintiff's brief selectively quoted or truncated Voss's answer \u2014 i.e., that Plaintiff omitted the remainder of her statement about prior non-renewal threats and last-minute renewals, materially changing the meaning. The issue is not flagged in Part IV's list of errors/weaknesses in Plaintiff's papers or anywhere else as a selective-quotation problem; the two pieces of testimony are simply treated as independent adverse and favorable facts rather than as evidence of misleading truncation by Plaintiff."
+    },
+    {
+      "id": "C-011",
+      "title": "Identifies Tennessee state WARN Act interplay and potential preclusion issues",
+      "verdict": "fail",
+      "reasoning": "The memo addresses only the federal WARN Act (29 U.S.C. \u00a7 2101 et seq.) and never mentions the Tennessee Plant Closing and Reduction in Operations Act (Tenn. Code Ann. \u00a7 50-1-601 et seq.), any state-law WARN analog, or the differing exception structures between federal and Tennessee law. The only references to Tennessee are the forum (M.D. Tenn.), the notice recipient list, and counsel's bar number. Critically, the memo contains no analysis of issue preclusion or collateral estoppel risks arising from Plaintiff's sweeping 'no applicable exceptions' arguments in the federal partial summary judgment motion potentially binding the Tennessee state law claims. The criterion's required interplay analysis is entirely absent."
+    },
+    {
+      "id": "C-012",
+      "title": "Identifies improper legal conclusion in Angela Briggs declaration",
+      "verdict": "pass",
+      "reasoning": "The memo, in Part IV item 5 and again in Section V.3, expressly identifies that the Briggs Declaration (\u00b6 12) states an improper legal conclusion \u2014 quoting 'The company violated the WARN Act' \u2014 and recommends a motion to strike it as improper legal opinion (also repeating the strike recommendation in the procedural recommendations). This satisfies the core requirement of identifying the improper legal conclusion and suggesting a motion to strike. The only shortfall is that the memo does not cite Fed. R. Civ. P. 56(c)(4) by name or explicitly invoke the personal-knowledge/admissibility rationale, but the substantive identification and strike recommendation \u2014 which the criterion's FAIL condition targets \u2014 are both present."
+    },
+    {
+      "id": "C-013",
+      "title": "Identifies internal inconsistency in single-site-of-employment theory",
+      "verdict": "fail",
+      "reasoning": "The memo acknowledges that Plaintiff advances two coverage theories \u2014 per-facility independent triggers and, 'alternatively,' a single-site theory \u2014 but it treats them as coherent alternative pleading rather than identifying any internal inconsistency. It never points out the 'having it both ways' contradiction: that Plaintiff's site-specific percentage-of-workforce calculations (e.g., 138/312 at 44.2%, 72/189 at 38.1%) treat each plant as its own site of employment, which is logically inconsistent with simultaneously arguing all three facilities are one single site to aggregate the 247 terminations. The memo instead attacks the single-site theory on the merits (geography, no shared staff) and flags other alleged errors (the false '37 \u2265 50' Huntsville threshold line, motion/SUMF discrepancies, payroll anomalies, privilege, Briggs declaration issues), none of which is the single-site internal inconsistency. Because the memo nowhere notes that Plaintiff's brief contradicts itself on the single-site question, the criterion is not satisfied."
+    },
+    {
+      "id": "C-014",
+      "title": "Identifies inadequate evidentiary support for SUMF \u00b6 14 on lack of notice efforts",
+      "verdict": "fail",
+      "reasoning": "The criterion requires the memo to specifically identify that SUMF \u00b6 14 \u2014 asserting Greenleaf made no efforts to provide conditional or partial WARN notice \u2014 is inadequately supported because the cited Kowalski testimony shows she raised WARN compliance with outside counsel in mid-November 2024, suggesting the company was considering notice and creating a genuine factual dispute. The memo never cites SUMF \u00b6 14 or challenges its evidentiary support. While the memo mentions Kowalski's mid-November warnings and the November 25\u201326 draft notice template, it frames these as adverse facts to be managed (Part II) and as support for the 'as much notice as practicable' prong \u2014 not as evidence contradicting Plaintiff's SUMF \u00b6 14 assertion that no notice efforts were made. The Part IV list of Plaintiff's paper errors omits any challenge to \u00b6 14's sufficiency. The specific evidentiary-insufficiency issue identified in the criterion is therefore not addressed."
+    },
+    {
+      "id": "C-015",
+      "title": "Correctly states Nashville pre-RIF headcount and termination numbers",
+      "verdict": "pass",
+      "reasoning": "In Section III.A.3, the memo states '138/312 (44.2%)' for Nashville, correctly identifying 312 pre-RIF employees and 138 terminated. The percentage (44.2%) is also mathematically consistent, and the figures match the criterion's required numbers exactly."
+    },
+    {
+      "id": "C-016",
+      "title": "Correctly states Huntsville pre-RIF headcount and termination numbers",
+      "verdict": "pass",
+      "reasoning": "The memo correctly states Huntsville's figures as 37 terminated out of 143 pre-RIF employees (Section III.A.1: 'Huntsville: 37 of 143 (25.9%)'), and consistently references the 37 Huntsville employees elsewhere (Sections III.A.2 and III.C.7). The percentage calculation is also accurate (37/143 \u2248 25.9%)."
+    },
+    {
+      "id": "C-017",
+      "title": "Correctly states Chattanooga pre-RIF headcount and termination numbers",
+      "verdict": "pass",
+      "reasoning": "In Section III.A.3, the memo states '138/312 (44.2%) and 72/189 (38.1%) plainly meet \u00a7 2101(a)(3),' correctly identifying Chattanooga's pre-RIF headcount as 189 employees and 72 terminations (38.1%), matching the required figures."
+    },
+    {
+      "id": "C-018",
+      "title": "Recommends motion to strike or objection regarding Briggs declaration",
+      "verdict": "pass",
+      "reasoning": "The memo both identifies the issue and provides a concrete recommended approach. In Part IV.5, it flags that Briggs Declaration \u00b6 12 states an improper legal conclusion ('The company violated the WARN Act') and expressly recommends moving to strike it as improper legal opinion. Part V.3 reinforces this as part of the opposition strategy, listing a motion to strike/exclude of the legal conclusions and irrelevant hardship testimony in the Briggs Declaration among the recommended filings. This satisfies the criterion's requirement of a recommended challenge, not mere identification."
+    },
+    {
+      "id": "C-019",
+      "title": "Identifies that Plaintiff mischaracterizes or omits key Sixth Circuit precedent on single site of employment",
+      "verdict": "pass",
+      "reasoning": "The memo substantively engages with Plaintiff's treatment of precedent on the single-site-of-employment question. In Section III.A.2, it identifies that Plaintiff relies on centralized management/HR/payroll to argue aggregation, and it directly attacks Plaintiff's use of the cited single-site authorities (Teamsters Local 413 and Rifkin) by pointing out those cases 'involved far more integration' than the geographically separate Nashville, Chattanooga, and Huntsville facilities \u2014 i.e., Plaintiff is citing them for a broader aggregation proposition than they support. The memo further argues Plaintiff's legal framing misstates the controlling standard, which under 20 C.F.R. \u00a7 639.3(i)(2) is location-focused and treats centralized administration as insufficient for geographically separate facilities. This is precisely the type of 'citing a case for a broader proposition than it supports' flaw the criterion targets, and it goes beyond a generic factual response by critiquing Plaintiff's authorities. Although the memo does not expressly label the cases as 'Sixth Circuit,' it clearly identifies and exploits deficiencies in Plaintiff's treatment of the precedent governing the single-site issue, satisfying the criterion."
+    },
+    {
+      "id": "C-020",
+      "title": "Assigns Critical severity to key dispositive issues",
+      "verdict": "fail",
+      "reasoning": "The memo never assigns any severity ratings (Critical/High/Medium/Low) or an equivalent highest-severity designation to any issue. The Huntsville threshold issue is called \"our strongest coverage point\" and the single-site issue \"contestable,\" but these are strategic characterizations, not severity ratings. Moreover, the faltering company exception's scope limitation (that it applies only to plant closings, not mass layoffs) is not identified anywhere in the memo \u2014 the memo applies \u00a7 2102(b)(1) to the RIF without flagging that limitation. Since none of the three enumerated issues receives a Critical (or equivalent highest) severity rating, fewer than two satisfy the criterion, and the memo fails."
+    },
+    {
+      "id": "C-021",
+      "title": "Correctly identifies WARN Act 60-day notice requirement",
+      "verdict": "pass",
+      "reasoning": "The memo correctly and repeatedly identifies the WARN Act's 60-day advance notice requirement: it notes the Answer admits 'no 60-day notice was given to employees, Tennessee, Alabama, or any local government'; uses the 60-day framework in its foreseeability/timing analysis (87-day gap, notices sent ~Nov. 15 would have achieved 'mathematical compliance (63 days before Jan. 17)'); describes the faltering company exception's element that the employer believed 'the 60-day notice would have precluded the capital'; and calculates damages as 60 days of back pay ($329.47 \u00d7 247 \u00d7 60). It references the correct statutory provisions (29 U.S.C. \u00a7\u00a7 2101(a)(3), 2102, 2104) and never states an incorrect notice period. The 'written' character of the notice is implicitly reflected in references to the draft notice template and notices to affected employees and government entities, satisfying the criterion."
+    },
+    {
+      "id": "C-022",
+      "title": "Identifies the unforeseeable business circumstances exception",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the unforeseeable business circumstances exception with the correct statutory citation, 29 U.S.C. \u00a7 2102(b)(2)(A), in Section III.B.4, and treats it as a core defense/exception for Greenleaf (also referenced in the Executive Summary as the UBC exception). The memo correctly states its elements (circumstances not reasonably foreseeable at the time notice was required, and notice given as much as practicable), discusses favorable and adverse facts, and builds the opposition strategy around it. The exception is neither omitted nor misidentified."
+    },
+    {
+      "id": "C-023",
+      "title": "Identifies the faltering company exception",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the faltering company exception with the correct statutory citation, 29 U.S.C. \u00a7 2102(b)(1) (Section III.B.5), accurately sets out its three elements (actively seeking capital/business, realistic opportunity to obtain it, and good-faith belief that notice would preclude it), and treats it as a defense Greenleaf is asserting against Plaintiff's motion (which seeks to defeat both the UBC and faltering company exceptions). The exception is neither omitted nor misidentified."
+    }
+  ],
+  "run_id": "/Users/xiongweixiao/main/OpenSource/nanoRSI/.omx/harness2_minimal_runs/employment-labor/identify-issues-in-counterparty-motion-brief/reference",
+  "task": "employment-labor/identify-issues-in-counterparty-motion-brief",
+  "judge_model": "glm-5.3",
+  "scored_at": "2026-10-24T16:59:58.170753+00:00"
+}

@@ -1,0 +1,206 @@
+{
+  "score": 0.0,
+  "max_score": 1.0,
+  "summary": "30/32 criteria passed.  Missed 2 \u2014 task FAIL.",
+  "all_pass": false,
+  "n_criteria": 32,
+  "n_passed": 30,
+  "criteria_results": [
+    {
+      "id": "C-001",
+      "title": "Identifies incorrect Item number for CFO departure (Item 5.01 vs 5.02)",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the mislabeling. Section II is captioned 'Item 5.01 (should be Item 5.02) \u2014 MISLABELED; REVISE (ACTION REQUIRED)' and states directly that 'The CFO departure and interim appointment belong under Item 5.02, not Item 5.01,' noting that the draft incorrectly uses 'Item 5.01 \u2014 Changes in Control of Registrant' as the caption for the Brennan/Lindqvist disclosure and that no change in control occurred. It instructs that the heading and items-reported list be corrected to Item 5.02, and reinforces this in Section IV (updating the items-reported list to remove 5.01 and add 5.02) and Section VII action item 4 ('Re-caption Item 5.01 as Item 5.02'). This fully satisfies the criterion."
+    },
+    {
+      "id": "C-002",
+      "title": "Recommends correction to Item 5.02 for CFO departure disclosure",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies that the CFO departure (Brennan) and interim CFO appointment (Lindqvist) disclosure is mislabeled as Item 5.01 (Changes in Control of Registrant) and specifically recommends re-labeling it as Item 5.02 \u2014 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers. This correction appears in the item-by-item review, the cross-document consistency table, the cover page items-reported list update (removing 5.01, adding 5.02), and the summary of required actions ('Re-caption Item 5.01 as Item 5.02')."
+    },
+    {
+      "id": "C-003",
+      "title": "Identifies missing age for Sarah Lindqvist",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies that the draft 8-K omits Sarah Lindqvist's age (43). It appears in Section II, Item 5.02, point 3 ('The draft omits: her age (43)...') and again in the Section V cross-document consistency table ('Missing age, prior role, education, CPA... Age 43'), with a directive to add it per Item 401(b) of Regulation S-K."
+    },
+    {
+      "id": "C-004",
+      "title": "Identifies missing prior employment history for Lindqvist",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly flags that the draft 8-K omits Lindqvist's prior position as Controller at Vantage Cloud Solutions, Inc. from 2017\u20132022, along with her age and education/credentials, citing the Item 401(b) of Regulation S-K business-experience disclosure requirement (which Item 5.02 incorporates). This finding appears in the Item 5.02 analysis, the cross-document consistency table, and the summary of required actions."
+    },
+    {
+      "id": "C-005",
+      "title": "Identifies missing educational background for Lindqvist",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly flags the omission of Lindqvist's educational background. In Section II (Item 5.02 review, point 3), it states the draft omits 'her education/credentials (B.S. Accounting, University of Michigan; CPA licensed in Texas)' and directs that they be added per Item 401(b) of Regulation S-K. This is reinforced in the Section V cross-document consistency table ('Lindqvist bio \u2014 Missing age, prior role, education, CPA') and again in the Section VII action list (action item 4, 'complete Lindqvist Item 401(b) biography'). The specific details required by the criterion \u2014 B.S. in Accounting from University of Michigan and Texas CPA \u2014 are both identified."
+    },
+    {
+      "id": "C-006",
+      "title": "Cites board resolutions or press release as source for Lindqvist bio",
+      "verdict": "fail",
+      "reasoning": "The memo provides the correct Lindqvist biographical details (age 43, Controller at Vantage Cloud Solutions 2017-2022, B.S. Accounting University of Michigan, Texas CPA) but never attributes this information to the board resolutions (board-resolutions.docx) or press release (press-release.docx). In the Item 5.02 discussion, point 3 simply states the missing details with no source citation, and in the cross-document consistency table, the 'Lindqvist bio' row's Source Documents column contains only the corrected facts themselves (e.g., 'Age 43; Controller at Vantage Cloud Solutions 2017\u20132022; U. Michigan B.S.; TX CPA') without naming any source document \u2014 unlike other rows that do cite sources (e.g., 'APA summary, Board resolutions, press release'). Since no source document is cited for the correct biographical details, the criterion is not met."
+    },
+    {
+      "id": "C-007",
+      "title": "Identifies inconsistent share count for Ridgeline stock consideration",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the share count inconsistency in Section II (Item 1.01, finding #1), stating that the draft 8-K's figure of 1,500,000 shares at $8.00/share is wrong, and that the correct figure per the APA summary, Board resolutions, and press release is 1,562,500 shares, showing the exact calculation ($12,500,000 \u00f7 $8.00 = 1,562,500). The inconsistency is also reiterated in the Cross-Document Consistency table (Section V), the corrected Item 3.02 disclosure, and the summary of required actions (#7). This fully satisfies the criterion."
+    },
+    {
+      "id": "C-008",
+      "title": "Cites APA summary as source for correct Ridgeline share count",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly cites the APA summary as a source for the correct share count of 1,562,500 in two places: (1) in the Item 1.01 review ('The APA summary, Board resolutions, and press release all confirm 1,562,500 shares ($12,500,000 \u00f7 $8.00 = 1,562,500)') and (2) in the cross-document consistency table ('1,562,500 (APA summary, Board resolutions, press release)')."
+    },
+    {
+      "id": "C-009",
+      "title": "Recommends correcting share count to 1,562,500",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the share count error in Item 1.01, stating the draft's figure of 1,500,000 shares at $8.00/share is wrong and that the correct figure is 1,562,500 shares ($12,500,000 \u00f7 $8.00 = 1,562,500), with instructions to 'Correct throughout.' This correction is reinforced in the cross-document consistency table ('1,500,000' vs. '1,562,500... Correct'), the Item 3.02 disclosure (1,562,500 shares to Ridgeline Data Systems, LLC), and the priority action list ('Correct factual errors: 1,562,500 shares'). The specific corrected number is clearly provided."
+    },
+    {
+      "id": "C-010",
+      "title": "Identifies missing standalone Item 2.03 disclosure",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the missing standalone Item 2.03 disclosure in a dedicated section titled 'Missing Item 2.03 \u2014 Creation of a Direct Financial Obligation \u2014 ADD (ACTION REQUIRED)'. It states that the $15,000,000 draw on July 7, 2025 and the $20,000,000 commitment increase (revolving commitment raised from $30,000,000 to $50,000,000) 'clearly trigger Item 2.03' and notes the draft improperly relegates the credit facility to the Item 1.01 funding paragraph. The memo provides detailed recommended Item 2.03 content (rate, maturity, fees, covenants, security, events of default), flags it as the top priority action in Section VII, and references Pinnacle National Bank (the lender) in the related compliance items."
+    },
+    {
+      "id": "C-011",
+      "title": "Notes credit facility only mentioned in passing under Item 1.01",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly notes under the 'Missing Item 2.03' section that 'The draft relegates the credit facility to the Item 1.01 funding paragraph' and directs the addition of a standalone Item 2.03 section with full terms (obligation amount, rate, maturity, fees, financial covenants, security, and events of default). This directly satisfies the criterion."
+    },
+    {
+      "id": "C-012",
+      "title": "Specifies key terms needed in Item 2.03 disclosure",
+      "verdict": "pass",
+      "reasoning": "The memo's Item 2.03 section identifies all six key terms listed in the criterion: (1) the $20,000,000 commitment increase ($30M to $50M); (2) the $15,000,000 draw amount; (3) the interest rate (Term SOFR + 2.75%, with history from SOFR + 2.25% plus 0.10% credit spread adjustment); (4) the maturity date (September 15, 2027); (5) financial covenants (new $10,000,000 minimum liquidity covenant, 3.50:1.00 maximum net leverage ratio, plus $8,000,000 minimum EBITDA); and (6) material events of default (no cure period for covenant breach, cross-default above $2,000,000, change of control, judgments over $3,000,000). This far exceeds the three-term threshold."
+    },
+    {
+      "id": "C-013",
+      "title": "Identifies missing Item 3.02 disclosure for private placement",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the missing Item 3.02 disclosure in a dedicated section titled 'Missing Item 3.02 \u2014 Unregistered Sales of Equity Securities \u2014 ADD (ACTION REQUIRED)'. It specifies the PIPE of 562,500 shares at $16.00/share for $9,000,000 gross proceeds to the three named accredited investors (Clearwater Growth Fund IV, LP; Belmont Ventures Partners, LLC; Tidewater Capital Advisors, LP), with per-investor allocations, exemption basis (Section 4(a)(2)/Rule 506(b)), lock-ups, registration rights, and Form D deadline. This deficiency is also flagged in the overall conclusion, the cross-document consistency table, and the priority action list (#2). The criterion is fully satisfied."
+    },
+    {
+      "id": "C-014",
+      "title": "Identifies missing Item 3.02 disclosure for Ridgeline shares",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the Ridgeline share issuance as requiring Item 3.02 treatment. Under the 'Missing Item 3.02' section, it lists 'Acquisition shares: 1,562,500 shares to Ridgeline Data Systems, LLC at a deemed $8.00/share ($12,500,000) as APA stock consideration, issued July 7, 2025' as one of three unregistered issuances that must be disclosed under Item 3.02, including the applicable 12-month lock-up expiring July 7, 2026. This directly satisfies the criterion."
+    },
+    {
+      "id": "C-015",
+      "title": "Identifies required Item 3.02 content elements",
+      "verdict": "pass",
+      "reasoning": "The memo's Item 3.02 section identifies all five required content elements: (a) the exemption relied upon (Section 4(a)(2) and Rule 506(b) of Regulation D), (b) the number of shares issued (562,500 PIPE shares, 1,562,500 Ridgeline shares, 28,125 warrant shares), (c) the offering price per share ($16.00 and $8.00 deemed price), (d) the identity of purchasers (Clearwater Growth Fund IV, Belmont Ventures, Tidewater Capital, Ridgeline Data Systems, Calloway Marsh Capital), and (e) that no general solicitation occurred. This far exceeds the three-element threshold."
+    },
+    {
+      "id": "C-016",
+      "title": "Identifies omission of placement agent warrants from disclosure",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the omission of the placement agent warrants in multiple places. In the Item 3.02 section, it states: 'Placement Agent Warrants: warrants to purchase 28,125 shares at $16.00/share, 5-year term (through July 7, 2030), cashless exercise, issued to Calloway Marsh Capital LLC --- not disclosed anywhere in the draft.' This is reinforced in the cross-document consistency table ('Placement agent warrants | Not disclosed | 28,125 warrants @ $16.00, 5-yr, Calloway Marsh'), the exhibit index (Exhibit 10.5 'Missing from draft'), and the summary of required actions. All specific details required by the criterion (28,125 shares, $16.00 per share, 5-year term, Calloway Marsh Capital LLC) are included."
+    },
+    {
+      "id": "C-017",
+      "title": "Identifies warrants as requiring Item 3.02 and/or exhibit treatment",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the placement agent warrants to Calloway Marsh Capital LLC (28,125 shares at $16.00, 5-year term) as an unregistered issuance requiring Item 3.02 disclosure \u2014 noting they are 'not disclosed anywhere in the draft' \u2014 and also flags the Form of Warrant as a missing exhibit (Exhibit 10.5) that must be added to the exhibit index. Both the Item 3.02 and exhibit requirements are addressed."
+    },
+    {
+      "id": "C-018",
+      "title": "Cites SPA summary or APA summary as source for warrant details",
+      "verdict": "pass",
+      "reasoning": "The memo references the SPA summary as the source for the placement agent warrant information. In the Exhibit Index Review, the row for Exhibit 10.5 ('Form of Warrant issued to Calloway Marsh Capital LLC (28,125 shares @ $16.00, 5-year)') states 'Add (SPA summary expressly notes this form should be filed with the 8-K),' explicitly citing the Securities Purchase Agreement summary as the source document for the warrant form/exhibit requirement. The warrant terms (28,125 shares @ $16.00, 5-year term, Calloway Marsh) also appear in the cross-document consistency table's 'Source Documents' column, further attributing the warrant details to the reviewed source documents."
+    },
+    {
+      "id": "C-019",
+      "title": "Identifies missing Brennan Separation Agreement exhibit",
+      "verdict": "pass",
+      "reasoning": "The memo clearly and repeatedly identifies the missing Brennan Separation Agreement exhibit. In the Item 5.02 discussion, it notes that the draft incorrectly relies on Brennan's 'existing employment agreement' filed as Exhibit 10.7 to the Form 10-K, when the Board authorized a Separation Agreement and General Release (executed July 7, 2025) that must be filed as an exhibit. In the exhibit index table (Section III), it explicitly flags that Exhibit 10.3 incorrectly lists the Lindqvist Employment Agreement and states '10.3 must be the Brennan Separation Agreement.' The cross-document consistency table also lists 'Brennan Separation Agreement \u2014 Not filed/listed \u2014 Add as Exhibit 10.3,' and the summary of required actions includes fixing the exhibit index accordingly. The memo references the 25,000 accelerated RSUs tied to Brennan's separation; while it does not recite the specific $281,250 salary continuation or COBRA reimbursement figures, the criterion's core requirement\u2014flagging that the Separation Agreement is missing from the draft 8-K's exhibit index\u2014is fully satisfied."
+    },
+    {
+      "id": "C-020",
+      "title": "Identifies mislabeling of Exhibit 10.3",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the mislabeling in Section III's exhibit index table: it states the draft incorrectly lists 'Employment Agreement... Sarah Lindqvist' as Exhibit 10.3 and specifies that 10.3 must instead be the Brennan Separation Agreement and General Release. It further directs renumbering the Lindqvist document as Exhibit 10.6 with the corrected title ('Interim CFO Appointment Letter'), and repeats this correction in the summary of required actions (Section VII, item 6: '10.3 = Brennan Separation Agreement'). This fully satisfies the criterion."
+    },
+    {
+      "id": "C-021",
+      "title": "Identifies incorrect date of earliest event reported on cover page",
+      "verdict": "fail",
+      "reasoning": "The memo does not identify the cover page 'date of earliest event reported' issue. While Section IV reviews cover page items (shares outstanding, exchange designation, checkboxes, signature block, items-reported list), it never mentions that the date of earliest event reported is listed as July 7, 2025, nor that it should be July 5, 2025 (the date Brennan notified the Board of his resignation). The memo's only timeliness discussion concerns the July 3 SPA execution and four-business-day filing deadline, and the date July 5, 2025 and Brennan's notification date are never mentioned anywhere in the memo."
+    },
+    {
+      "id": "C-022",
+      "title": "Identifies Form D filing requirement or recommendation",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly flags the Form D filing requirement multiple times: in the Item 3.02 discussion it notes 'the intended Form D filing (due on or before July 22, 2025)' tied to the Section 4(a)(2)/Rule 506(b) private placement; in Section VI it states 'Form D for the private placement (including the warrant compensation) must be filed within 15 days of first sale \u2014 on or before July 22, 2025'; and in Section VII it lists calendaring the Form D (July 22, 2025) as a required action. While it does not cite 'Rule 503' verbatim, it identifies the Form D SEC filing requirement, the 15-day-from-first-sale deadline, and the connection to the Rule 506(b) placement, satisfying the substance of the criterion."
+    },
+    {
+      "id": "C-023",
+      "title": "Identifies incorrect or outdated share count on cover page",
+      "verdict": "pass",
+      "reasoning": "Section IV(1) of the memo explicitly identifies the cover page share count issue: it notes the draft states 42,500,000 shares outstanding as of July 1, 2025, explains this fails to account for the 1,562,500 Ridgeline acquisition shares and 562,500 PIPE shares issued at the July 7 closings, and computes the correct post-transaction total of 44,625,000 shares (warrants excluded). It also recommends updating to the latest practicable date, fully satisfying the criterion."
+    },
+    {
+      "id": "C-024",
+      "title": "Provides correct post-transaction share count of 44,625,000",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly states the correct post-transaction share count of 44,625,000 and shows the calculation (42,500,000 + 1,562,500 Ridgeline shares + 562,500 PIPE shares, warrants excluded) in Section IV, and reiterates the 44,625,000 figure (excluding 28,125 warrant shares) in the Item 3.02 discussion."
+    },
+    {
+      "id": "C-025",
+      "title": "Identifies missing forward-looking statements safe harbor disclaimer",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly flags the forward-looking synergy paragraph in the filed Item 1.01 disclosure (regarding 'significant revenue synergies' and ARR growth) as promotional forward-looking language that should not appear in a filed Item without safe-harbor/forward-looking statement cautionary language, and recommends either deletion or addition of appropriate cautionary language. This directly identifies the missing PSLRA-style cautionary statement for the revenue synergy/ARR projections, satisfying the criterion."
+    },
+    {
+      "id": "C-026",
+      "title": "Flags Item 9.01 financial statements / pro forma requirement",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly flags in its Item 9.01 review that subsection (a)'s 'Not applicable' designation is likely wrong because the Ridgeline acquisition may trigger Rule 3-05 of Regulation S-X audited financial statement requirements if any significance test (investment, asset, or income at \u226520%) is met, requiring either inclusion of the audited financials or a 71-day amendment undertaking. It applies the same analysis to subsection (b) for Article 11 pro forma financial information, reiterates the Rule 3-05 significance testing requirement in Section VI, and lists it as a required action in Section VII. This fully satisfies the criterion."
+    },
+    {
+      "id": "C-027",
+      "title": "Mentions 71-day amendment deadline for financial statements",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly mentions the 71-day amendment deadline in multiple places. In the Item 9.01 review, it states that if the Rule 3-05 significance test is met, the draft must include audited Ridgeline financial statements or state they 'will be filed by amendment not later than 71 calendar days after the date the initial 8-K must be filed (approximately September 16, 2025),' and separately notes the same 71-day undertaking applies to Article 11 pro forma financial information. The 71-day deadline is also reiterated in the Summary of Required Actions (Sections VII.5 and VII.10). This satisfies the criterion's requirement that both financial statements and pro forma information may be filed by amendment within 71 calendar days."
+    },
+    {
+      "id": "C-028",
+      "title": "Identifies share count error impacts stock consideration math",
+      "verdict": "pass",
+      "reasoning": "The memo identifies the share count error and its impact on the stock consideration value. In the Item 1.01 review, it states the draft incorrectly uses 1,500,000 shares at $8.00/share, while the correct figure is 1,562,500 shares, and explicitly demonstrates the correct consideration math ($12,500,000 \u00f7 $8.00 = 1,562,500). By juxtaposing the draft's 1,500,000 shares at $8.00/share (implying $12,000,000) against the confirmed $12,500,000 consideration tied to 1,562,500 shares, and noting the error 'propagates to the lock-up description and share-count math' and the Purchase Price section, the memo captures the cascading impact of the share count error on the stock consideration dollar amount."
+    },
+    {
+      "id": "C-029",
+      "title": "Verifies total APA consideration components",
+      "verdict": "pass",
+      "reasoning": "The memo performs explicit mathematical verification of the APA consideration components. Most notably, it catches the draft's share count error and verifies the stock component with arithmetic: '$12,500,000 \u00f7 $8.00 = 1,562,500 shares' (confirmed against the APA summary, Board resolutions, and press release), and repeats this verification in the Item 3.02 analysis ('1,562,500 shares to Ridgeline Data Systems, LLC at a deemed $8.00/share ($12,500,000)'). It also references the total purchase price ('the acquisition of Ridgeline for up to $47,500,000') in the Rule 3-05 significance analysis and engages with the earnout component's structure (12-/24-month milestones, independent measurement, payment timing, dispute-resolution mechanics). While the memo does not restate the $28,000,000 cash figure or the $7,000,000 earnout amount verbatim, it clearly performed verification of the total purchase price components\u2014including the correction of the share-count math\u2014so the fail condition ('no verification of the total purchase price components is performed') is not met."
+    },
+    {
+      "id": "C-030",
+      "title": "Identifies that Exhibit 10.5 (Form of Warrant) is missing from exhibit index",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the missing Form of Warrant exhibit. In Section III (Exhibit Index Review), it lists Exhibit 10.5 as 'Form of Warrant issued to Calloway Marsh Capital LLC (28,125 shares @ $16.00, 5-year)' with draft status 'Missing from draft' and action 'Add (SPA summary expressly notes this form should be filed with the 8-K).' This is reinforced in the Item 3.02 discussion ('Placement Agent Warrants... not disclosed anywhere in the draft') and in the Section VII summary of required actions ('add... 10.5 (Placement Agent Warrant)')."
+    },
+    {
+      "id": "C-031",
+      "title": "Identifies Brennan departure was not due to disagreement",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly addresses the Item 5.02 no-disagreement disclosure, stating: 'Brennan \"no disagreement\" statement and transition-assistance disclosure are consistent with the resolutions and press release; retained.' This confirms the draft 8-K correctly includes the required statement that Brennan's departure was not due to a disagreement and verifies it against the Board resolutions and press release, satisfying the criterion."
+    },
+    {
+      "id": "C-032",
+      "title": "Identifies that the credit amendment exhibit (10.1) should be included",
+      "verdict": "pass",
+      "reasoning": "The memo's Exhibit Index Review (Section III) expressly addresses Exhibit 10.1 (Amendment No. 2 to Credit Agreement), confirming it is 'Listed' and marking its status as 'OK --- but must tie to new standalone Item 2.03, not just Item 1.01.' Far from recommending removal, the memo affirms its inclusion and even strengthens its treatment by linking it to the newly required Item 2.03 disclosure. This satisfies the criterion of identifying that the credit amendment exhibit should be included/confirmed as listed."
+    }
+  ],
+  "run_id": "/Users/xiongweixiao/main/OpenSource/nanoRSI/.omx/harness2_minimal_runs/capital-markets/review-form-8/reference",
+  "task": "capital-markets/review-form-8",
+  "judge_model": "glm-5.3",
+  "scored_at": "2026-10-24T18:08:00.797715+00:00"
+}

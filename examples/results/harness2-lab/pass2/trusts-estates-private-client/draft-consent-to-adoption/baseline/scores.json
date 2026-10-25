@@ -1,0 +1,224 @@
+{
+  "score": 0.0,
+  "max_score": 1.0,
+  "summary": "27/35 criteria passed.  Missed 8 \u2014 task FAIL.",
+  "all_pass": false,
+  "n_criteria": 35,
+  "n_passed": 27,
+  "criteria_results": [
+    {
+      "id": "C-001",
+      "title": "ISSUE_001: Consent includes 30-day revocation period",
+      "verdict": "pass",
+      "reasoning": "Section 5 of the document ('Right of Rescission (Statutory Notice)') explicitly states that the biological mother, Keisha R. Whitfield, has the right to rescind her consent by written notice within thirty (30) days after signing, or before entry of an interlocutory or final decree, whichever occurs first, and that this statutory right cannot be waived. The document does not state the consent is immediately irrevocable; the reference to the mother's wish for immediate irrevocability is expressly overridden by the statutory 30-day notice, and the drafting note confirms the 'immediately irrevocable' language was deliberately excluded. This satisfies the criterion of an explicit 30-day revocation period."
+    },
+    {
+      "id": "C-002",
+      "title": "ISSUE_001: Memo flags client's 'irrevocable immediately' request",
+      "verdict": "pass",
+      "reasoning": "The memorandum explicitly identifies Keisha's request that the consent be 'final and irrevocable immediately' with no waiting period (Discrepancy Item 5) and explains that Maryland law (Fam. Law \u00a7\u00a7 5-335, 5-336) provides statutory rescission rights (30 days / before decree) that cannot be waived, noting that drafting such a waiver would be ineffective and risks invalidating the consent. It also reiterates this in Section 4 (Open Legal Issues) and includes a mandatory statutory rescission notice in the draft. This fully addresses the conflict between the client's desire for immediate irrevocability and the mandatory 30-day revocation period."
+    },
+    {
+      "id": "C-003",
+      "title": "ISSUE_002: Consent includes independent counsel attestation",
+      "verdict": "pass",
+      "reasoning": "The document satisfies the criterion in two places. Section 3.3 explicitly states that Keisha Whitfield was advised of her right to independent counsel and that she is represented by Danica Okafor, Esq. of Okafor Legal Services LLC, with whom she consulted or was offered the opportunity to consult before signing. Additionally, Section 9 contains a formal 'Certificate of Independent Counsel' in which Danica Okafor, Esq. certifies she explained the consent to the client, including its legal effect and rescission rights, and that the client executes it freely, knowingly, and voluntarily. This clearly meets the requirement for an independent counsel attestation."
+    },
+    {
+      "id": "C-004",
+      "title": "ISSUE_002: Danica Okafor identified as Keisha's independent counsel",
+      "verdict": "pass",
+      "reasoning": "Section 3.3 of the consent document explicitly names Danica Okafor, Esq., of Okafor Legal Services LLC (with full address) as Keisha's independent counsel in connection with the right to independent representation. Section 9 further includes a Certificate of Independent Counsel signed by Danica Okafor, Esq., identifying herself as counsel for Keisha R. Whitfield. This goes beyond a generic reference and specifically identifies the attorney by name."
+    },
+    {
+      "id": "C-005",
+      "title": "ISSUE_003: Consent uses correct DOB of March 17, 2017",
+      "verdict": "fail",
+      "reasoning": "The document does not affirmatively state Elijah's date of birth as March 17, 2017. Section 1.1 lists the DOB only as 'March 17' followed by a bracketed internal note flagging an unresolved year discrepancy (intake records say 2018; the Temporary Guardianship Order and Home Study Report say 2017) and instructing confirmation against the original birth certificate. While the agent responsibly flagged the conflict, the executed-form text of the consent omits the year entirely rather than stating the correct date of March 17, 2017, so the criterion is not satisfied."
+    },
+    {
+      "id": "C-006",
+      "title": "ISSUE_003: Memo identifies DOB discrepancy between documents",
+      "verdict": "pass",
+      "reasoning": "The memorandum explicitly identifies the DOB discrepancy in Section 3, Item 1: it states the intake memo lists March 17, 2018, while the Guardianship Order and Home Study state March 17, 2017. It also notes the resolution in favor of 2017, observing that the intake's own 'age 7' notation is consistent with 2017 (and Item 2 corroborates this with the guardianship order reciting the child was six as of August 2023), concluding the 2018 date appears to be a typographical error pending confirmation against the certified birth certificate. All elements of the criterion are satisfied."
+    },
+    {
+      "id": "C-007",
+      "title": "ISSUE_004: Memo flags paternity establishment gap",
+      "verdict": "fail",
+      "reasoning": "The memorandum never addresses the paternity establishment issue. It contains no mention of Darnell Whitfield, an Affidavit of Parentage, or any court adjudication of paternity, and does not discuss whether the father's name on the birth certificate establishes legal paternity under Maryland law. While the memo discusses obtaining the father's executed Consent and Relinquishment (via Gerald Tate) and obtaining a certified birth certificate to resolve a DOB discrepancy, it does not flag the gap in documented paternity establishment or recommend confirming/establishing legal paternity as required by the criterion."
+    },
+    {
+      "id": "C-008",
+      "title": "ISSUE_005: Memo flags BCDSS notice requirement",
+      "verdict": "fail",
+      "reasoning": "The memorandum never mentions BCDSS, the prior BCDSS investigation of Elijah (Case Ref. BCDSS-2023-07421), or the need to give BCDSS notice of the adoption proceeding. The closest reference is Item 4.5 ('Notice to DHR/TANF'), which concerns confirming notice to the Maryland Department of Human Services regarding TANF receipt and assignment of support rights \u2014 a distinct issue that neither identifies the prior BCDSS investigation nor flags BCDSS notice of the adoption proceeding as required by the criterion."
+    },
+    {
+      "id": "C-009",
+      "title": "ISSUE_006a: Consent includes sound mind attestation",
+      "verdict": "pass",
+      "reasoning": "The document contains competency/sound mind language. Section 6.2 includes an attestation that, given her treatment history, her 'decision to consent is made knowingly and free of impairment,' and Section 7 recites that she has read the consent, 'fully understand[s] its contents and consequences,' and signs as her free and voluntary act. The 'free of impairment' and 'knowingly' language constitutes a representation that she is of sound mind and competent to execute the consent, satisfying the criterion."
+    },
+    {
+      "id": "C-010",
+      "title": "ISSUE_006b: Consent includes substance/medication non-impairment attestation",
+      "verdict": "fail",
+      "reasoning": "The document's closest language is Section 6.2, in which the mother acknowledges her inpatient treatment and states her decision is made 'knowingly and free of impairment.' However, this is a general impairment statement; the document nowhere contains a representation that she is not under the influence of any substance or medication that would impair her judgment. The words 'substance,' 'medication,' 'drugs,' or 'alcohol' never appear in any attestation. The criterion specifically requires a substance/medication non-impairment attestation, and that specific representation is absent."
+    },
+    {
+      "id": "C-011",
+      "title": "ISSUE_006: Memo addresses substance abuse history and competency risk",
+      "verdict": "fail",
+      "reasoning": "The memorandum never mentions Keisha's opioid use disorder, outpatient treatment, or any substance abuse history. Its discussion of execution safeguards (e.g., counsel present, execution before a judge/notary) addresses voluntariness generally, not competency risks arising from her substance abuse history. There is no recommendation for a competency evaluation, detailed attestation, or other steps to protect against future challenges based on her documented substance abuse history, so the criterion is not satisfied."
+    },
+    {
+      "id": "C-012",
+      "title": "ISSUE_007: Consent does not include enforceable visitation terms",
+      "verdict": "pass",
+      "reasoning": "The consent document does not include any enforceable or binding post-adoption visitation or contact agreement. The only reference to post-adoption contact is in Section 4.2, which expressly states that Keisha will have 'no legal right to contact or visitation with the child' and that 'any post-adoption contact will be solely at the discretion of the adoptive parents unless otherwise ordered by a court of competent jurisdiction.' This language affirms the absence of any binding visitation terms rather than incorporating visitation promises into the consent. No visitation schedule, contact promises, or enforceable agreement provisions appear anywhere in the document."
+    },
+    {
+      "id": "C-013",
+      "title": "ISSUE_007: Memo addresses informal visitation arrangement",
+      "verdict": "pass",
+      "reasoning": "Section 4, Item 2 of the memorandum explicitly addresses the visitation issue: it identifies that 'the parties have an informal understanding of holiday/birthday visits,' explains that a post-adoption contact agreement should be 'a separate, court-approved agreement \u2014 not embedded in the consent, because the consent must be unconditional,' and notes that the mother's current 'reasonable contact' rights under the Guardianship Order 'will terminate upon adoption.' It recommends a separate post-adoption contact agreement (per Fam. Law \u00a7 5-543/\u00a7 5-549) if the parties want enforceable contact, and Section 5 reiterates addressing visitation 'through a separate written agreement rather than the consent instrument.' This satisfies all elements of the criterion: identifying the informal arrangement, explaining why it should not be in the consent, and recommending a separate agreement."
+    },
+    {
+      "id": "C-014",
+      "title": "ISSUE_008: Consent includes proper witnessing/acknowledgment blocks",
+      "verdict": "pass",
+      "reasoning": "Section 8 of the document contains a formal 'Acknowledgment of Notary Public / Judge' block with proper acknowledgment/jurat language: it includes venue ('State of Maryland, City of Baltimore, to wit'), a statement that the signatory 'personally appeared' before the undersigned officer, was 'known to me (or satisfactorily proven),' and 'acknowledged that she executed the same for the purposes therein contained and made the statements therein pursuant to the penalties of perjury,' along with signature line for 'Notary Public / Judge of a court of record' and commission expiration line. The attorney's Certificate of Independent Counsel in Section 9 is merely supplemental, not the sole witnessing mechanism, so the criterion is satisfied."
+    },
+    {
+      "id": "C-015",
+      "title": "ISSUE_008: Memo flags witnessing requirements beyond office signing",
+      "verdict": "pass",
+      "reasoning": "The memorandum addresses this issue in Section 4, item 3 (Execution Logistics): it notes that while Keisha will sign at the firm's office, it recommends that 'the consent be executed before a judge or notary per statute.' This acknowledges that Maryland law requires execution/acknowledgment before a judge or an officer authorized to take acknowledgments, and that office signing alone (with counsel present) is not sufficient without such acknowledgment \u2014 satisfying the criterion."
+    },
+    {
+      "id": "C-016",
+      "title": "ISSUE_009: Memo addresses child support arrearages not discharged",
+      "verdict": "pass",
+      "reasoning": "The memorandum explicitly addresses the child support arrearages issue. In Section 3 (Discrepancies, Item 4), it flags that Gerald Tate's characterization of the consent as resolving 'all obligations related to the child' is 'incorrect as to child support,' citing the existing support order (Case No. 19-FS-0008714) with approximately $14,421 in arrears as of March 1, 2024, and noting that TANF payments (Oct. 2021\u2013June 2023) create a likely state reimbursement claim that a private consent does not extinguish. It further recommends advising clients that arrears/state claims must be addressed in a proper proceeding. Section 4 (Item 5) also flags the need to confirm notice to the Maryland Department of Human Services and address assignment of support rights given the TANF receipt. All components of the criterion\u2014the arrearage amount, survival of TANF-assigned arrearages, and the misleading nature of Tate's 'all obligations' statement\u2014are covered."
+    },
+    {
+      "id": "C-017",
+      "title": "ISSUE_010: Consent uses full legal name 'Keisha Renee Whitfield'",
+      "verdict": "fail",
+      "reasoning": "The document consistently uses 'Keisha R. Whitfield' (with the middle initial 'R.') rather than the full legal name 'Keisha Renee Whitfield.' This appears in the opening statement (\u00b6 'I, Keisha R. Whitfield'), the signature block, the notary acknowledgment, and the certificate of independent counsel. The criterion explicitly states that using 'Keisha R. Whitfield' as the primary identification constitutes a FAIL."
+    },
+    {
+      "id": "C-018",
+      "title": "ISSUE_010: Memo notes naming inconsistencies across documents",
+      "verdict": "fail",
+      "reasoning": "The memorandum flags several discrepancies (child's date of birth, child's age, presiding judges, father's counsel's characterization, rescission issues, intake timing anomaly), but it nowhere identifies any naming inconsistency for Keisha \u2014 it does not note that the source documents use varying forms of her name (e.g., 'Keisha R. Whitfield,' 'Keisha Whitfield,' 'Keisha Renee Whitfield'), nor does it state a resolution to use her full legal name. The criterion is therefore not satisfied."
+    },
+    {
+      "id": "C-019",
+      "title": "Consent identifies correct adoption case number",
+      "verdict": "pass",
+      "reasoning": "The consent document's caption states 'IN THE CIRCUIT COURT FOR BALTIMORE CITY --- STATE OF MARYLAND' and references 'Case No. 24-A-0001537' in the adoption matter of Elijah James Whitfield. This matches the required adoption case number and court exactly. The separate guardianship case number (23-G-0004218) is cited only as background regarding the child's residence, not as the adoption case number."
+    },
+    {
+      "id": "C-020",
+      "title": "Consent identifies the child by full name",
+      "verdict": "pass",
+      "reasoning": "The consent document identifies the child by his full name 'Elijah James Whitfield' in both the caption ('In re: The Adoption of ELIJAH JAMES WHITFIELD, a Minor Child') and in Section 1.1, where the biological mother states 'I am the biological mother of Elijah James Whitfield.' The name is consistently used throughout the document and matches the required name exactly."
+    },
+    {
+      "id": "C-021",
+      "title": "Consent identifies Marcus Holloway as prospective adoptive parent",
+      "verdict": "pass",
+      "reasoning": "Section 2.1 of the consent explicitly identifies Marcus Holloway (along with Diana Holloway) as the prospective adoptive parents: 'I hereby consent to the adoption of my son, Elijah James Whitfield, by Marcus Holloway and Diana Holloway (n\u00e9e Whitfield), husband and wife.' His name is present and correctly spelled."
+    },
+    {
+      "id": "C-022",
+      "title": "Consent identifies Diana Holloway as prospective adoptive parent",
+      "verdict": "pass",
+      "reasoning": "Section 2.1 of the consent document explicitly identifies Diana Holloway (n\u00e9e Whitfield) as a prospective adoptive parent, alongside Marcus Holloway: 'I hereby consent to the adoption of my son, Elijah James Whitfield, by Marcus Holloway and Diana Holloway (n\u00e9e Whitfield), husband and wife.' Her name is present and correctly stated."
+    },
+    {
+      "id": "C-023",
+      "title": "Consent includes voluntariness attestation",
+      "verdict": "pass",
+      "reasoning": "Section 3.1 of the document contains an explicit voluntariness attestation: 'I make this consent freely and voluntarily, without coercion, duress, fraud, or undue influence of any kind.' This directly satisfies the criterion, and it is reinforced by Section 7's execution statement that the consent is signed as a 'free and voluntary act.'"
+    },
+    {
+      "id": "C-024",
+      "title": "Consent states termination of all parental rights",
+      "verdict": "pass",
+      "reasoning": "Section 4 (Understanding of Legal Effect) explicitly states the consenting mother's understanding that by signing she 'permanently and irrevocably relinquish[es] all parental rights to Elijah James Whitfield, including the right to custody, visitation, and decision-making' (\u00a74.1), that she will have no legal relationship with the child (\u00a74.2), and that the consent may serve as a basis for termination of her parental rights (\u00a74.3). This directly satisfies the requirement that the consent address the legal consequence of terminating all parental rights."
+    },
+    {
+      "id": "C-025",
+      "title": "Consent includes signature line for Keisha Renee Whitfield",
+      "verdict": "pass",
+      "reasoning": "Section 7 (Execution) of the document includes a designated signature line for the biological mother, identified as 'Keisha R. Whitfield, Biological Mother,' along with her address and a date field. The middle initial 'R.' corresponds to 'Renee' in the criterion, and the name appears consistently throughout the document, so this clearly designates the consenting biological mother's signature line."
+    },
+    {
+      "id": "C-026",
+      "title": "Consent references Maryland Family Law Article, Title 5",
+      "verdict": "pass",
+      "reasoning": "The consent document cites 'Md. Code Ann., Fam. Law \u00a7 5-335' in Section 3.4 (regarding the ten-day review period after the petition is filed), which is a specific section of the Maryland Family Law Article, Title 5 governing adoption consents. This satisfies the criterion requiring a reference to Maryland Family Law Article, Title 5 or specific sections thereof as the governing statutory authority."
+    },
+    {
+      "id": "C-027",
+      "title": "Consent references Elijah's birth certificate number",
+      "verdict": "pass",
+      "reasoning": "Section 1.1 of the consent document explicitly includes Elijah's Birth Certificate No. 2017-03-127845 and identifies it as issued by the Maryland Division of Vital Records, satisfying the criterion's requirement for birth record identifying information."
+    },
+    {
+      "id": "C-028",
+      "title": "Consent identifies Darnell Tyrone Whitfield as biological father",
+      "verdict": "pass",
+      "reasoning": "Section 1.3 of the consent explicitly identifies Darnell Tyrone Whitfield as the child's biological father, noting he is named as the father on the child's birth certificate, is unmarried to the biological mother, and executed a Consent and Relinquishment of Parental Rights on March 1, 2024. The father is correctly and clearly named."
+    },
+    {
+      "id": "C-029",
+      "title": "Consent references biological father's separate consent",
+      "verdict": "pass",
+      "reasoning": "Section 1.3 of the consent document explicitly identifies the biological father, Darnell Tyrone Whitfield, and states that he 'executed a Consent and Relinquishment of Parental Rights on March 1, 2024,' directly satisfying the criterion that the document reference the father's separate consent."
+    },
+    {
+      "id": "C-030",
+      "title": "Consent references guardianship order Case No. 23-G-0004218",
+      "verdict": "pass",
+      "reasoning": "The consent document explicitly references the Temporary Guardianship Order with Case No. 23-G-0004218 in Section 1.1 and again in Section 6.1, which acknowledges the child has resided with the prospective adoptive parents since August 3, 2023 pursuant to that Temporary Guardianship Order entered by the Circuit Court for Baltimore City. This satisfies the criterion's requirement of referencing the guardianship order as part of the recitals/background."
+    },
+    {
+      "id": "C-031",
+      "title": "Consent identifies Keisha's relationship to child as biological mother",
+      "verdict": "pass",
+      "reasoning": "The document explicitly states the biological mother-child relationship. Section 1.1 provides: 'I am the biological mother of Elijah James Whitfield, a minor child,' and this statement is made by Keisha R. Whitfield, who is identified by name, address, and date of birth in section 1.2. Additionally, the document is titled 'CONSENT OF BIOLOGICAL MOTHER TO ADOPTION' and the signature block identifies her as 'Keisha R. Whitfield, Biological Mother.' The relationship is clearly and repeatedly stated."
+    },
+    {
+      "id": "C-032",
+      "title": "Two deliverables are produced",
+      "verdict": "pass",
+      "reasoning": "The agent produced two distinct deliverables: (1) consent-to-adoption.docx, a complete Consent to Adoption by Parent document for the biological mother, and (2) drafting-memorandum.docx, a separate Drafting Memorandum flagging discrepancies and open issues. They are presented as two separate documents, not combined into one."
+    },
+    {
+      "id": "C-033",
+      "title": "Consent states parents were never married",
+      "verdict": "pass",
+      "reasoning": "Section 1.3 of the consent document explicitly states: 'I have never been married to the child's biological father, Darnell Tyrone Whitfield.' This directly recites that the biological parents, Keisha R. Whitfield and Darnell Tyrone Whitfield, were never married to each other, satisfying the criterion."
+    },
+    {
+      "id": "C-034",
+      "title": "Consent references home study completion",
+      "verdict": "fail",
+      "reasoning": "The consent document contains no substantive reference to home study completion. It does not state that a home study was completed (by Carolyn Voss, Brightpath Family Services, or generally), does not mention any favorable recommendation, and does not reference the home study being filed on or about April 12, 2024. The only mention of a 'Home Study Report' appears incidentally within an internal bracketed drafting note about a birth-year discrepancy (a note explicitly marked 'REMOVE BEFORE EXECUTION'), which merely cites the report as a conflicting source for the child's birth year. This tangential citation does not satisfy the criterion's requirement of referencing home study completion with a favorable recommendation or its filing date."
+    },
+    {
+      "id": "C-035",
+      "title": "Memo provides actionable recommendations for at least three identified issues",
+      "verdict": "pass",
+      "reasoning": "The memorandum far exceeds the threshold of three actionable recommendations tied to identified issues. It provides concrete next steps for numerous issues: (1) verify the child's DOB against a certified birth certificate before execution; (2) do not rely on the father's counsel's characterization and advise clients that arrears/state TANF claims must be addressed in the proper proceeding; (3) include the mandatory statutory rescission notice and explain to Keisha that immediate irrevocability cannot be honored; (4) prepare a separate, court-approved post-adoption contact agreement rather than embedding visitation in the consent; (5) have the mother's counsel present and sign the certificate of independent counsel and execute before a judge or notary; (6) obtain and review the father's executed consent for statutory compliance; (7) confirm notice to Maryland DHS regarding TANF assignment; and (8) review the three unopened email files. Each recommendation is specific and tied to an identified issue."
+    }
+  ],
+  "run_id": "/Users/xiongweixiao/main/OpenSource/nanoRSI/.omx/harness2_minimal_runs/trusts-estates-private-client/draft-consent-to-adoption/baseline",
+  "task": "trusts-estates-private-client/draft-consent-to-adoption",
+  "judge_model": "glm-5.3",
+  "scored_at": "2026-10-24T19:27:07.158901+00:00"
+}

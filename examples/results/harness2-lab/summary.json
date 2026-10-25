@@ -1,0 +1,66 @@
+{
+ "banking-finance/compare-closing-documents-against-restructuring-conditions": {
+  "baseline": 0.763,
+  "reference": 0.711,
+  "probe_inv": null,
+  "probe_dom": null,
+  "final": 0.711,
+  "decision": "keep"
+ },
+ "bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection": {
+  "baseline": 0.857,
+  "reference": 0.0,
+  "probe_inv": null,
+  "probe_dom": null,
+  "final": 0.714,
+  "decision": "merge"
+ },
+ "capital-markets/review-form-8": {
+  "baseline": 0.906,
+  "reference": 0.938,
+  "probe_inv": null,
+  "probe_dom": null,
+  "final": 0.938,
+  "decision": "failed"
+ },
+ "emerging-companies-venture-capital/extract-key-terms-from-cap-table": {
+  "baseline": 0.512,
+  "reference": 0.463,
+  "probe_inv": null,
+  "probe_dom": null,
+  "final": 0.463,
+  "decision": "adopt_dom"
+ },
+ "employment-labor/identify-issues-in-counterparty-motion-brief": {
+  "baseline": 0.565,
+  "reference": 0.652,
+  "probe_inv": null,
+  "probe_dom": null,
+  "final": 0.0,
+  "decision": "adopt_dom"
+ },
+ "litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss": {
+  "baseline": 0.882,
+  "reference": 0.794,
+  "probe_inv": null,
+  "probe_dom": null,
+  "final": 0.912,
+  "decision": "adopt_inv"
+ },
+ "tax/review-iss-tax-transaction-structure": {
+  "baseline": 0.75,
+  "reference": 0.857,
+  "probe_inv": null,
+  "probe_dom": null,
+  "final": 0.857,
+  "decision": "keep"
+ },
+ "trusts-estates-private-client/draft-consent-to-adoption": {
+  "baseline": 0.771,
+  "reference": 0.743,
+  "probe_inv": null,
+  "probe_dom": null,
+  "final": 0.743,
+  "decision": "keep"
+ }
+}

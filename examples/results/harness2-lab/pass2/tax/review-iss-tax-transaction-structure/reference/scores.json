@@ -1,0 +1,182 @@
+{
+  "score": 0.0,
+  "max_score": 1.0,
+  "summary": "24/28 criteria passed.  Missed 4 \u2014 task FAIL.",
+  "all_pass": false,
+  "n_criteria": 28,
+  "n_passed": 24,
+  "criteria_results": [
+    {
+      "id": "C-001",
+      "title": "ISSUE_001: Identifies ADSP calculation error",
+      "verdict": "pass",
+      "reasoning": "The report clearly identifies the ADSP calculation error as its top critical finding (Executive Summary item 1 and Severity 1.1). It explains the double-counting mechanism precisely: the memo's $473M ADSP (enterprise value of $425M plus $48M funded debt) improperly adds debt that was already netted out to derive the $370M equity value. It provides the corrected computation per Treas. Reg. \u00a71.338-4 \u2014 $370M amount realized ($333M cash + $37M rollover) + $48M debt + $7M seller expenses = $425M \u2014 which falls within the acceptable ~$418M\u2013$425M range, and notes the downstream distortions to the Class VII goodwill, \u00a71060 allocation, and Form 8883."
+    },
+    {
+      "id": "C-002",
+      "title": "ISSUE_001: Notes Class VII residual is overstated due to ADSP error",
+      "verdict": "pass",
+      "reasoning": "The report explicitly connects the ADSP error to the Class VII residual in multiple places. The Executive Summary states the ADSP is overstated by $48M (memo's $473M vs. correct $425M under Treas. Reg. \u00a71.338-4, within the criterion's ~$418M\u2013$425M range) and that 'The error inflates the Class VII goodwill residual by $48M and distorts the entire \u00a71060 allocation and Form 8883.' Finding 1.1 repeats this, contrasting the memo's Class VII of $272.8M against Thornfield's corrected $196.3M and directing that ADSP be recomputed and the memo reissued. Finding 1.3 further quantifies the combined overstatement ($76.5M including the Beacon omission), and the reconciled figures table shows Class VII goodwill of $272,800,000 needing recalculation to $196.3M. The ADSP-to-Class VII residual linkage is clearly and repeatedly established."
+    },
+    {
+      "id": "C-003",
+      "title": "ISSUE_001: References Treas. Reg. 1.338-4 for correct ADSP formula",
+      "verdict": "pass",
+      "reasoning": "The report explicitly cites Treas. Reg. \u00a71.338-4 as the governing authority for the ADSP calculation in multiple places. In the Executive Summary (Finding 1) and Severity 1 Finding 1.1, it states \"Thornfield's computation under Treas. Reg. \u00a71.338-4 is $370M (cash $333M + rollover $37M) + $48M debt + $7M seller expenses = $425,000,000,\" which correctly explains the ADSP formula as the amount realized on the stock sale ($370M) plus liabilities of the target ($48M funded debt, plus seller expenses). It also recommends recomputing ADSP \"per Treas. Reg. \u00a71.338-4.\" The regulatory framework reference is clearly provided."
+    },
+    {
+      "id": "C-004",
+      "title": "ISSUE_001: Cross-references asset valuation summary discrepancies",
+      "verdict": "pass",
+      "reasoning": "The report explicitly lists asset-valuation-summary.xlsx (Thornfield preliminary PPA) among the documents reviewed and repeatedly cross-references Thornfield's figures against the memo's allocation when discussing both the ADSP and allocation issues. It cites 'Thornfield allocation summary (Note 1)' for the correct $425M ADSP versus the memo's $473M, itemizes Thornfield's $97M Class V breakdown versus the memo's $68.5M, compares Class VII goodwill ($196.3M vs. $272.8M), and includes a dedicated 'Reconciled Key Figures' table directly comparing memo figures to Thornfield/document figures for ADSP, each asset class, and equity value. Discrepancies are clearly noted and quantified."
+    },
+    {
+      "id": "C-005",
+      "title": "ISSUE_002: Identifies rollover equity conflict with 338(h)(10) election",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the $37 million rollover equity as a complication for the \u00a7338(h)(10) election. Finding 2.5 ('Rollover equity mechanics inconsistent and unanalyzed against \u00a7338(h)(10)'), the Executive Summary ('the rollover-structure interaction with \u00a7338(h)(10)'), and Section 4 item 6 all flag the issue. Critically, the report notes the memo 'does not address whether the rollover affects the ADSP/consideration computations, gain allocation among shareholders, or the qualified stock purchase analysis' \u2014 the qualified stock purchase reference implicates the 100% stock-sale requirement of the deemed complete sale \u2014 and recommends analyzing 'rollover interaction with the \u00a7338(h)(10) election and allocation of deemed sale gain.' While the report does not spell out every nuance in the criterion (e.g., sequencing before/after the deemed sale or boot recharacterization), it clearly identifies the core tension between the rollover equity and the \u00a7338(h)(10) deemed complete sale treatment, satisfying the criterion's pass condition."
+    },
+    {
+      "id": "C-006",
+      "title": "ISSUE_002: Notes all S corp shareholders must consent to 338(h)(10)",
+      "verdict": "fail",
+      "reasoning": "The report never mentions that a \u00a7338(h)(10) election for an S corporation requires the consent of all shareholders (i.e., all target shareholders must consent on Form 8023). Although the report discusses shareholder eligibility for S status (Finding 1.2), rollover mechanics (Finding 2.5), and briefly references the 'shareholder consent process' in the context of \u00a71202 disclosure (Finding 2.4), it does not identify the shareholder-consent requirement for the election itself, does not note the memorandum's failure to address how consent interacts with the rollover, and does not flag whether all consents have been or must be obtained."
+    },
+    {
+      "id": "C-007",
+      "title": "ISSUE_003: Flags failure to verify S corp eligibility of restricted stockholders",
+      "verdict": "pass",
+      "reasoning": "The report clearly and prominently identifies the S corporation eligibility verification gap for restricted stock holders. Executive Summary finding #2 and Severity 1 finding 1.2 state that the memo categorically asserts no termination events or ineligible shareholders exist, while the cap table and Thornfield diligence show three restricted stock holders with unverified eligibility (Zhang \u2014 H-1B/PRC citizen, Al-Rashidi \u2014 dual citizen with missing documentation, Petrova \u2014 unconfirmed green card status) plus a possible 2021 transfer of restricted stock to a family LLC (an ineligible shareholder type). The report explicitly explains the consequence: an inadvertent termination under \u00a71362(d)(2) would make the \u00a7338(h)(10) election unavailable, trigger entity-level C corp tax for open years with penalties and interest, and undermine the SPA rep. It also recommends documentary confirmation of S eligibility for all 8 restricted stock holders for every year since 1/1/2017 as a closing condition, and suggests \u00a71362(f) relief if a termination is found. This fully satisfies the criterion."
+    },
+    {
+      "id": "C-008",
+      "title": "ISSUE_003: Cross-references cap table for shareholder eligibility data",
+      "verdict": "pass",
+      "reasoning": "The report explicitly references both source documents in connection with the S corporation eligibility issue. Finding 1.2 cites the cap table ('three holders flagged Unconfirmed/Not verified - Zhang, Al-Rashidi, Petrova') and the Thornfield tax due diligence report (Section III.B: same three plus a possible 2021 transfer to a family LLC) to contradict the memo's blanket assertion of valid S status, and the recommended closing conditions call for verifying eligibility for all restricted stock holders based on these documents. Both prism-cap-table.xlsx and tax-due-diligence-report.docx are also listed in the reviewed documents."
+    },
+    {
+      "id": "C-009",
+      "title": "ISSUE_004: Identifies Section 751 hot assets issue for Beacon interest",
+      "verdict": "fail",
+      "reasoning": "The report addresses the Beacon partnership interest in several places (omission from Class V allocation, \u00a7754 election/\u00a7743(b) step-up mechanics, and ROFR), and Section 2.3 even notes 'no look-through analysis of Beacon's underlying assets' \u2014 but only in connection with the basis step-up computation, not with Section 751. Nowhere does the report cite \u00a7751, unrealized receivables, substantially appreciated inventory, or 'hot assets,' nor does it state that a portion of the deemed sale gain on the Beacon interest could be recharacterized from capital gain to ordinary income under \u00a7751. The ordinary-income-on-receivables comment in Finding 3.1 concerns Prism's own deemed asset sale character at the shareholder level, not the Beacon partnership's hot assets. The specific \u00a7751 hot assets issue required by the criterion is therefore not identified."
+    },
+    {
+      "id": "C-010",
+      "title": "ISSUE_005: Flags Beacon ROFR triggered by change of control",
+      "verdict": "pass",
+      "reasoning": "The report explicitly flags the Beacon ROFR issue. Finding 2.1 (also raised in the Executive Summary and in Section 4's recommended closing conditions) identifies that the Beacon Operating Agreement \u00a78.03(a)(ii) contains a right of first refusal triggered by a Change of Control of an entity Member (i.e., Prism), states that the Merger is expressly a 'change of control' under SPA \u00a72.3(d), notes the ROFR notice deadline appears to have already passed, and criticizes the memorandum for mentioning the ROFR only in passing ('customary transfer restrictions') and never analyzing it, recommending ROFR waivers from Delano and Avesta as closing conditions. These satisfy the core elements of the criterion: the ROFR's existence and change-of-control trigger, the merger constituting that trigger, and the memorandum's failure to analyze the issue. The report does not elaborate the specific point that a forced sale of the Beacon interest would be a separate pre-closing taxable event outside the \u00a7338(h)(10) framework (treating the matter primarily as a deal-execution/waiver item rather than articulating the forced-sale tax mechanics), which is a depth shortfall; however, the issue itself\u2014the Beacon ROFR, its trigger by the transaction, and the memo's omission\u2014is clearly and prominently identified, meeting the criterion's requirement to flag the Beacon ROFR and its implications."
+    },
+    {
+      "id": "C-011",
+      "title": "ISSUE_005: References Beacon operating agreement as source",
+      "verdict": "pass",
+      "reasoning": "The report cites the Beacon Operating Agreement as the source for the ROFR provision. Finding 2.1 explicitly states 'Beacon Operating Agreement \u00a78.03(a)(ii): a Change of Control of any entity Member triggers the ROFR for the other Members,' and the document list includes 'beacon-operating-agreement.docx' among the documents reviewed. This directly satisfies the criterion of referencing the Beacon Insights LLC Operating Agreement as the source document for the ROFR provision."
+    },
+    {
+      "id": "C-012",
+      "title": "ISSUE_006: Identifies non-transferable NC data processing license issue",
+      "verdict": "pass",
+      "reasoning": "The report's Severity 2 finding (Section 2.2) explicitly identifies the NC Data Processing License (No. DIT-2019-04821) as non-transferable/non-assignable per SPA \u00a74.9(i) and Thornfield asset A-008, notes it was assigned $0 FMV in the allocation (also reflected in the Class V itemization 'NC license ($0)'), explains that if terminated the government business value migrates to (or impairs) goodwill with valuation/PPA impact, and states that the license's survivability needs legal confirmation (possibly needing to be re-obtained from NC DIT). It also explicitly flags that the memorandum omitted this issue ('omitted from the memo' heading; listed in the Executive Summary among issues the memo does not address). While the survivability discussion is framed around the reverse triangular merger rather than expressly tying the $0/goodwill reallocation to the 338(h)(10) deemed asset sale mechanics, the report substantively captures all required elements: non-transferability, zero allocation value/reassignment to goodwill, termination risk, and the memo's failure to address it."
+    },
+    {
+      "id": "C-013",
+      "title": "ISSUE_006: Notes Thornfield valued the license at $0",
+      "verdict": "pass",
+      "reasoning": "The report explicitly cross-references the Thornfield valuation of the non-transferable NC data processing license at $0 due to non-transferability: Finding 2.2 cites 'Thornfield (asset A-008): the license is non-transferable/non-assignable... assigned $0 FMV,' and Finding 1.3's Class V itemization lists 'NC license ($0)' per Thornfield. The report also identifies the discrepancy with the memorandum, which is silent on the license issue entirely (framing it as an omission from the memo's analysis with valuation/PPA impact if the license terminates). The specific cross-reference to the Thornfield $0 valuation required by the criterion is clearly made."
+    },
+    {
+      "id": "C-014",
+      "title": "ISSUE_007: Challenges installment sale treatment for escrow",
+      "verdict": "fail",
+      "reasoning": "The report never addresses the installment sale treatment of the $22 million escrow under Section 453. It mentions the escrow only in passing \u2014 verifying the amount/duration ($22M/18 months) as 'Agreed,' confirming the release-date arithmetic as 'no issue,' and referencing escrow for indemnity coverage and pro-rata math reconciliation. There is no discussion of \u00a7453, Rev. Proc. 96-53, FMV inclusion of escrow in the year of sale, or the fact that gain in a \u00a7338(h)(10) deemed asset sale is recognized at the deemed sale regardless of escrow release timing. The criterion requires the report to challenge the installment sale conclusion for the escrow, and it does not."
+    },
+    {
+      "id": "C-015",
+      "title": "ISSUE_008a: Identifies missing California state tax analysis for California-resident shareholders",
+      "verdict": "pass",
+      "reasoning": "Finding 3.7 ('State tax items underdeveloped') explicitly identifies the two California-resident shareholders (Mu\u00f1oz, Yoon) and flags that the memo fails to adequately analyze California-specific consequences, specifically citing California's 1.5% entity-level S corporation tax (with $800 minimum, rep'd paid at SPA 4.9(c)), California's nonconformity to \u00a7338(h)(10) in all cases, and the need for state-level deemed-sale treatment and shareholder-level filing guidance that the memo defers to individual advisors. This satisfies the criterion's requirement of flagging missing California shareholder tax analysis including at least one enumerated element (the 1.5% entity-level S tax)."
+    },
+    {
+      "id": "C-016",
+      "title": "ISSUE_008b: Notes California retroactive C corp tax risk if S election invalid",
+      "verdict": "fail",
+      "reasoning": "The report addresses S election invalidity (Finding 1.2), noting it would trigger 'entity-level tax for open years,' and separately discusses California tax items (Finding 3.7: CA entity-level S tax, CA nonconformity to \u00a7338(h)(10)). However, nowhere does it connect the two\u2014that is, it never notes the specific risk that if Prism's S election were found invalid, California could retroactively impose C corporation taxes."
+    },
+    {
+      "id": "C-017",
+      "title": "ISSUE_009: Flags complete omission of QSBS analysis",
+      "verdict": "pass",
+      "reasoning": "The report explicitly flags the missing QSBS analysis in Finding 2.4 ('QSBS / \u00a71202 interaction unanalyzed'), stating 'the memo nowhere analyzes this.' It notes that angel holders raised QSBS questions (via Thornfield Finding 4, the cap table, and the QSBS email thread referenced in diligence), and correctly explains the substantive tax point: a \u00a7338(h)(10) deemed asset sale 'generally eliminates the capital-gain framework on which QSBS exclusion depends,' i.e., \u00a71202 applies to gain on qualified small business stock and a deemed asset sale may not qualify. It also recommends prompt counsel analysis and shareholder communication, and separately discloses (Section 4.1) that the QSBS email thread could not be read directly. All elements of the criterion are satisfied."
+    },
+    {
+      "id": "C-018",
+      "title": "ISSUE_009: References email thread showing QSBS was raised",
+      "verdict": "pass",
+      "reasoning": "The report cites shareholder-qsbs-email-thread.eml specifically in connection with the QSBS/\u00a71202 omission. Section 2.4 states that the memo 'nowhere analyzes' the QSBS/deemed asset sale interaction 'even though shareholder expectations (per the QSBS email thread referenced in diligence...) may be misaligned,' and Section 4.1 flags the thread as a supporting document that should be reviewed by counsel because it could not be converted. The thread is listed in the documents reviewed and referenced again in the closing footnote. This ties the email thread to evidence that shareholders raised the QSBS question that the memorandum failed to address. The report does not name Linden Rock Advisory as the specific advisor and notes the thread was unreadable by the review tool, but the core requirement \u2014 citing the email thread in connection with the QSBS omission \u2014 is satisfied, and the stated FAIL condition (thread not cited in connection with the QSBS omission) is not met."
+    },
+    {
+      "id": "C-019",
+      "title": "ISSUE_010: Identifies trapped C corp R&D credits issue",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the suspended C-corporation R&D credits ($3.8M) in both the Executive Summary and Finding 2.6. It notes the credits stem from the 2016 C corporation year, are unusable in S years under \u00a71371(b), and that the memorandum dismisses rather than analyzes their fate\u2014quoting the memo's deferral to 'post-closing tax planning.' It further flags that a \u00a7338(h)(10) deemed liquidation may permanently destroy the credits and calls for completing the \u00a7\u00a71371(b)/(e), 1374, and 338(h)(10) interaction analysis to determine whether any value can be salvaged against the deemed sale gain, satisfying all elements of the criterion."
+    },
+    {
+      "id": "C-020",
+      "title": "ISSUE_011: Flags lack of transfer pricing documentation for Prism-Beacon",
+      "verdict": "pass",
+      "reasoning": "Finding 3.2 explicitly identifies the \u00a7482 transfer pricing exposure arising from the intercompany charges between Prism and Beacon: it cites the $850,000 management fee and $400,000 IP license fee, notes the fee has never been benchmarked (i.e., lacks arm's-length transfer pricing documentation), quantifies cumulative historical exposure at ~$6.3M for 2019\u20132024, and explains that the exposure runs to the pre-closing period (seller risk of IRS challenge to historical income allocation). It also criticizes the memo for merely describing the fees without analysis and recommends quantifying indemnity/escrow coverage and repricing the agreements. This satisfies the criterion's requirement to flag the transfer pricing documentation gap and Section 482 risk."
+    },
+    {
+      "id": "C-021",
+      "title": "ISSUE_012a: Identifies missing New York state conformity analysis for 338(h)(10)",
+      "verdict": "pass",
+      "reasoning": "The report's finding 3.7 ('State tax items underdeveloped') explicitly flags that the memorandum defers state tax analysis to individual advisors without analyzing state-level conformity with the \u00a7338(h)(10) deemed asset sale. It specifically identifies New York among the states ('state-level deemed-sale treatment and filing obligations for NC/CA/NY/VA shareholders need shareholder-level guidance') and criticizes the memo for not even flagging nonconformity risk, citing CA's nonconformity with \u00a7338(h)(10) as an example. This directly identifies the missing New York state conformity analysis required by the criterion."
+    },
+    {
+      "id": "C-022",
+      "title": "ISSUE_012b: Identifies missing Virginia state conformity analysis for 338(h)(10)",
+      "verdict": "pass",
+      "reasoning": "Finding 3.7 ('State tax items underdeveloped') flags that the memo does not analyze state-level conformity with the \u00a7338(h)(10) deemed-sale treatment, explicitly noting 'CA does not conform to \u00a7338(h)(10) in all cases' and that 'state-level deemed-sale treatment and filing obligations for NC/CA/NY/VA shareholders need shareholder-level guidance,' while criticizing that the memo 'should at least flag nonconformity risk.' Virginia (VA) is expressly included among the states whose \u00a7338(h)(10) conformity/deemed-sale treatment the memo fails to analyze, satisfying the criterion's requirement to flag the missing Virginia state conformity analysis."
+    },
+    {
+      "id": "C-023",
+      "title": "DISTRACTOR_001: Does not flag BIG tax period expiration as error",
+      "verdict": "pass",
+      "reasoning": "The report does not flag the BIG tax conclusion as an error. In the Reconciled Key Figures table, it lists 'BIG tax (\u00a71374) \u2014 None (period expired 12/31/2021)' versus the documents' 'Same' and marks it 'Agreed.' In Section 2.6, it affirmatively states 'no BIG tax applies,' consistent with the memo's correct conclusion. The report never asserts the BIG tax period expiration analysis was an error, inconsistency, or issue requiring correction \u2014 it explicitly concurs with the memorandum's analysis."
+    },
+    {
+      "id": "C-024",
+      "title": "ADSP error rated as Critical/highest severity",
+      "verdict": "pass",
+      "reasoning": "The ADSP calculation error ($48,000,000 overstatement) is explicitly classified under 'Severity 1 --- Critical (transaction-structure or valuation-level impact)', the highest severity tier used in the report (which spans Severity 1/Critical through Severity 4/Low). It is listed as the first finding under the Critical tier and is also identified in the Executive Summary as one of the 'Most consequential findings (Severity 1 --- Critical).'"
+    },
+    {
+      "id": "C-025",
+      "title": "S corp validity risk rated as Critical/highest severity",
+      "verdict": "pass",
+      "reasoning": "The S corporation validity risk (unverified eligibility of restricted stock holders threatening the \u00a7338(h)(10) election) is classified at the highest severity tier. It appears as item 1.2 under 'Severity 1 --- Critical (transaction-structure or valuation-level impact)' and is also highlighted in the Executive Summary as the second of three 'Most consequential findings (Severity 1 --- Critical)'. This satisfies the criterion that the S corp validity risk be rated at the top severity level."
+    },
+    {
+      "id": "C-026",
+      "title": "Each issue includes supporting document references",
+      "verdict": "pass",
+      "reasoning": "Virtually every identified issue includes specific supporting document references, far exceeding the threshold of 8. Examples: Issue 1.1 cites the memo and Thornfield allocation summary Note 1; 1.2 cites memo Section III.A, cap table, and Thornfield Section III.B; 1.3 cites memo Section III.C and Thornfield's itemization; 2.1 cites Beacon Operating Agreement \u00a78.03(a)(ii) and SPA \u00a72.3(d); 2.2 cites SPA \u00a74.9(i) and Thornfield asset A-008; 2.3 cites Thornfield Note 2 and Beacon OA \u00a74.03(e); 2.4 cites Thornfield Finding 4, cap table, and the QSBS email thread; 2.5 cites memo Section II.A/B, SPA definitions, and cap table; 2.6 cites memo III.D and Thornfield IV.B; 3.3 cites SPA \u00a77.1; 3.4 cites the memo sections and SPA; 3.5 cites the memo, cap table, and SPA Schedule 1.1(a); 3.6 cites Thornfield; 3.7 cites SPA 4.9(c). At least 15+ issues carry precise document and section references."
+    },
+    {
+      "id": "C-027",
+      "title": "Each issue includes recommended action or further analysis",
+      "verdict": "pass",
+      "reasoning": "The report identifies roughly 18 issues across four severity tiers, and nearly all include explicit corrective action or further-analysis recommendations (marked 'Action:'). Issues 1.1-1.3, 2.1-2.6, 3.1, 3.2, 3.3, 3.5, and 4.1-4.2 each contain specific recommended actions (e.g., recompute ADSP per Treas. Reg. \u00a71.338-4, obtain immigration documentation for restricted stock holders, secure Beacon ROFR waivers, confirm NC license survivability, model shareholder-level gain character), and Section 4 consolidates closing conditions keyed to each finding. Even counting the few items lacking a formal 'Action' line (3.4, 3.6, 3.7), at least 15 of the identified issues include recommendations \u2014 far exceeding the threshold of 8. The criterion is satisfied."
+    },
+    {
+      "id": "C-028",
+      "title": "Each issue includes description of tax consequence or risk",
+      "verdict": "pass",
+      "reasoning": "The report identifies roughly 16 substantive issues, and well over 8 of them explicitly describe the potential tax consequence or risk. Clear examples include: (1.1) ADSP overstatement misstating the \u00a71060 allocation, Form 8883, step-up, and depreciation/amortization benefits on the parties' tax returns; (1.2) inadvertent S termination making the \u00a7338(h)(10) election unavailable and triggering entity-level C corp tax for all open years with penalties and interest; (1.3) omitted Beacon interest distorting the Class VII goodwill/Form 8883 allocation; (2.3) loss of tax step-up on the partnership interest absent a \u00a7754 election and \u00a7743(b) computations; (2.4) deemed asset sale potentially eliminating \u00a71202 QSBS exclusion; (2.6) \u00a7338(h)(10) deemed liquidation permanently destroying $3.8M of suspended C-corp R&D credits; (3.1) shareholders facing ordinary income recharacterization on receivables/recapture items; (3.2) ~$6.3M \u00a7482 transfer pricing exposure; (3.6) AAA balance affecting shareholder-level distribution/EBP characterization; and (3.7) state nonconformity to \u00a7338(h)(10) creating state deemed-sale treatment and filing obligations. At least 10 issues describe tax consequences/risks, satisfying the \u22658 threshold; only minor process items (citation error, date discrepancy, document unreadable) lack consequence descriptions."
+    }
+  ],
+  "run_id": "/Users/xiongweixiao/main/OpenSource/nanoRSI/.omx/harness2_minimal_runs/tax/review-iss-tax-transaction-structure/reference",
+  "task": "tax/review-iss-tax-transaction-structure",
+  "judge_model": "glm-5.3",
+  "scored_at": "2026-10-24T18:57:26.301192+00:00"
+}

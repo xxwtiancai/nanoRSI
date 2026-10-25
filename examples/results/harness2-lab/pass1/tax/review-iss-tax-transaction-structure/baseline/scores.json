@@ -1,0 +1,182 @@
+{
+  "score": 0.0,
+  "max_score": 1.0,
+  "summary": "21/28 criteria passed.  Missed 7 \u2014 task FAIL.",
+  "all_pass": false,
+  "n_criteria": 28,
+  "n_passed": 21,
+  "criteria_results": [
+    {
+      "id": "C-001",
+      "title": "ISSUE_001: Identifies ADSP calculation error",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the ADSP error as Critical Issue C-2 (and in Executive Summary point 1). It states the memo's $473M ADSP (enterprise value $425M + $48M liabilities) is overstated by $48M due to double-counting, explaining that 'Enterprise value already embeds the debt (EV = equity + net debt). Starting from EV and adding debt back again double-counts the $48M.' It provides the correct computation: ADSP = $370M amount realized on the stock (equity value, = $333M cash + $37M rollover) + liabilities ($48M debt + $7M expenses) = $425M, which falls within the criterion's acceptable $418M\u2013$425M range. It also quantifies the downstream impact ($48M goodwill overstatement; ~$3.2M/year excess amortization) and cites the correct regulatory framework (Treas. Reg. 1.338-4). All elements of the criterion are satisfied."
+    },
+    {
+      "id": "C-002",
+      "title": "ISSUE_001: Notes Class VII residual is overstated due to ADSP error",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the ADSP error (memo's $473,000,000 vs. Thornfield's correct $425,000,000, within the ~$418M\u2013$425M range) and directly connects it to the overstatement of the Class VII goodwill residual, stating the error inflates Class VII goodwill by $48M (memo's $272.8M vs. Thornfield's $196.3M). It further notes the resulting ~$3.2M/year amortization overstatement and recommends recomputing ADSP and reconciling the PPA before filing Forms 8023/8883. Issue H-1 additionally ties the ADSP error (together with the Beacon Class V omission) to the full $76.5M Class VII variance. The ADSP-to-Class VII impact is clearly made."
+    },
+    {
+      "id": "C-003",
+      "title": "ISSUE_001: References Treas. Reg. 1.338-4 for correct ADSP formula",
+      "verdict": "pass",
+      "reasoning": "The report explicitly cites Treas. Reg. 1.338-4 as the governing authority for the ADSP calculation (in Issue C-2's action item: 'Recompute ADSP under Treas. Reg. 1.338-4 before Form 8023/8883') and explains the correct formula: ADSP = amount realized on the stock ($370M = $333M cash + $37M rollover) plus target liabilities ($48M debt + $7M seller transaction expenses) = $425M. This satisfies the criterion's requirements both for the regulatory reference and the substantive explanation of the ADSP formula."
+    },
+    {
+      "id": "C-004",
+      "title": "ISSUE_001: Cross-references asset valuation summary discrepancies",
+      "verdict": "pass",
+      "reasoning": "The report explicitly cross-references the Thornfield Asset Valuation Summary / preliminary PPA in its source documents, and repeatedly contrasts its figures against the memorandum's allocation: C-2 identifies the ADSP discrepancy (Thornfield's $425,000,000 vs. the memo's $473,000,000) and the resulting Class VII goodwill variance ($196.3M vs. $272.8M); H-1 identifies the Class V discrepancy ($97.0M vs. $68.5M, attributable to the omitted $28.5M Beacon interest); H-4 cites valuation summary asset A-008; and the Issue Summary Table lists 'Valuation summary' as a source for both the ADSP and Class V issues. The criterion is fully satisfied."
+    },
+    {
+      "id": "C-005",
+      "title": "ISSUE_002: Identifies rollover equity conflict with 338(h)(10) election",
+      "verdict": "pass",
+      "reasoning": "The report squarely identifies the rollover/338(h)(10) tension. In Issue H-3 (and the Executive Summary), it flags that the memo never analyzes the 'rollover's interaction with the 338(h)(10) deemed sale and the qualified stock purchase tests.' Specifically, it asks (i) whether the rollover shares count toward the 80% purchase requirement of \u00a7338(d)(3) (related-person taint risking the election itself), and (ii) whether the rollover is 'treated as part of the deemed asset sale (taxable at Dr. Chandra's 52% share of deemed gain) with reinvestment, or as a non-taxable exchange' \u2014 i.e., it recognizes that a 338(h)(10) election deems 100% of the stock sold in a deemed asset sale with no partial transaction, so the rolled shares cannot simply ride along tax-free without analysis, and it raises sequencing/timing of gain recognition on the rollover. It also notes inconsistent deal-document descriptions of the rollover vehicle that carry different tax results. This satisfies the criterion's requirement of identifying the conflict between rollover equity and deemed complete-sale treatment (including whether the rollover is inside or outside the deemed sale), even though it does not use the specific 'boot in a reorganization' framing."
+    },
+    {
+      "id": "C-006",
+      "title": "ISSUE_002: Notes all S corp shareholders must consent to 338(h)(10)",
+      "verdict": "fail",
+      "reasoning": "The report never states the substantive rule that a Section 338(h)(10) election for an S corporation requires the consent of ALL shareholders, nor does it flag that the CSW memorandum fails to confirm all consents are obtained or analyze how the consent requirement interacts with Dr. Chandra's $37M rollover. The closest references are minor documentation points ("
+    },
+    {
+      "id": "C-007",
+      "title": "ISSUE_003: Flags failure to verify S corp eligibility of restricted stockholders",
+      "verdict": "pass",
+      "reasoning": "The report's Critical Issue C-1 directly and thoroughly flags the S corporation eligibility verification gap for restricted stock holders. It identifies specific restricted stock holders with unverified eligibility (Lin Wei Zhang, a PRC citizen on an H-1B who may be a nonresident alien; Yusuf Al-Rashidi and Nina Petrova with unconfirmed residency documentation), notes a possible 2021 transfer to a family LLC (an ineligible shareholder type), and quotes the memo's unsupported blanket assertion that all shareholders are eligible. It expressly explains the consequence chain: an ineligible holder in any year would terminate the S election under Section 1362(d)(2), retroactively making Prism a C corporation, rendering the Section 338(h)(10) election unavailable and destroying the entire structure. The report also references the eight restricted stock holders (Minor issue 2), the \u00a71362(f) relief path, and concrete remediation steps. This fully satisfies the criterion's requirement to flag the restricted-stockholder S eligibility verification gap and its catastrophic downstream effect on the 338(h)(10) election."
+    },
+    {
+      "id": "C-008",
+      "title": "ISSUE_003: Cross-references cap table for shareholder eligibility data",
+      "verdict": "pass",
+      "reasoning": "The report explicitly references the Prism capitalization table and the Thornfield Tax Due Diligence Report as sources for shareholder eligibility verification. Issue C-1 cites the cap table for the three restricted stock holders with unverified eligibility (Zhang, Al-Rashidi, Petrova), the diligence report for the possible 2021 family LLC transfer and expired W-9s, and the Issue Summary Table lists 'Cap table; DD report \u00a7III.B' as sources for the S election validity issue."
+    },
+    {
+      "id": "C-009",
+      "title": "ISSUE_004: Identifies Section 751 hot assets issue for Beacon interest",
+      "verdict": "fail",
+      "reasoning": "The report addresses the Beacon Insights partnership interest (H-1) by calling for a look-through of Beacon's underlying assets and a Section 754 election with \u00a7743(b) computations, but it never identifies the Section 751 hot assets issue. There is no mention of Section 751, unrealized receivables, substantially appreciated inventory, or the recharacterization of any portion of the deemed sale gain on the Beacon interest as ordinary income rather than capital gain. The look-through discussion is framed solely around basis step-up and amortizability, not the hot-assets ordinary income recharacterization required by the criterion."
+    },
+    {
+      "id": "C-010",
+      "title": "ISSUE_005: Flags Beacon ROFR triggered by change of control",
+      "verdict": "fail",
+      "reasoning": "The report substantially flags the Beacon ROFR issue (H-2): it correctly identifies that Beacon OA \u00a78.03(a)(ii) contains a ROFR triggered by a Change of Control of an entity Member, that the merger plainly constitutes a Change of Control of Prism (SPA \u00a72.3(d)), that the ROFR notice clock has likely lapsed, and that the memorandum provides no analysis of the ROFR. However, the criterion specifically requires the report to identify that the memorandum fails to analyze the tax consequences of a potential forced sale of the Beacon interest as a separate pre-closing taxable event outside the 338(h)(10) framework. The report treats the ROFR purely as a compliance/validity/litigation-risk matter (notice delivery, waivers, closing condition, indemnity) and never addresses the tax angle \u2014 i.e., that exercise of the ROFR forcing a pre-closing sale of the Beacon partnership interest would be a taxable event separate from and outside the 338(h)(10) deemed asset sale, with consequences for gain recognition, the PPA/Class V allocation, and shareholder-level tax. Because this required element of the criterion is absent, the output does not fully satisfy it."
+    },
+    {
+      "id": "C-011",
+      "title": "ISSUE_005: References Beacon operating agreement as source",
+      "verdict": "pass",
+      "reasoning": "The report explicitly references the Beacon Insights, LLC Amended and Restated Operating Agreement as the source for the ROFR provision. Issue H-2 (\"Beacon right of first refusal triggered by the merger\") cites 'Beacon OA \u00a78.03(a)(ii)' and '\u00a78.03(b)' for the ROFR triggering event and notice mechanics, and the Issue Summary Table lists 'Beacon OA \u00a78.03' as a source for the ROFR issue. The operating agreement is also identified by name in the header's list of reviewed documents."
+    },
+    {
+      "id": "C-012",
+      "title": "ISSUE_006: Identifies non-transferable NC data processing license issue",
+      "verdict": "pass",
+      "reasoning": "The agent's report addresses this issue directly in High-Severity item H-4. It identifies the NC Data Processing License (No. DIT-2019-04821, held by Prism Data Services) as non-transferable and non-assignable (citing SPA \u00a74.9(i)), notes that the valuation summary assigns the license $0 FMV (asset A-008), discusses the tension between the reverse triangular merger's legal continuity and the license being 'deemed transferred' in the 338(h)(10) asset context, and warns the license may terminate (putting ~$19M of annual revenue at risk and affecting the PPA). The recommended action explicitly states to 'reallocate any embedded value to goodwill,' matching the criterion's requirement that value be zeroed or reassigned to goodwill. The report also expressly states 'The memo does not address this at all,' satisfying the final element of the criterion. The issue is also flagged in the Executive Summary, the Issue Summary Table, and the Recommended Action Plan (item 5: adjust the PPA, obtain NC DIT confirmation)."
+    },
+    {
+      "id": "C-013",
+      "title": "ISSUE_006: Notes Thornfield valued the license at $0",
+      "verdict": "pass",
+      "reasoning": "The report explicitly cross-references the Thornfield valuation summary: in issue H-4 it states 'valuation summary asset A-008 assigns $0 FMV' for the non-transferable NC Data Processing License (citing SPA \u00a74.9(i) and 'valuation A-008' in the summary table), and the Asset Valuation Summary is identified in the header as a Thornfield work product. The report ties the $0 value to non-transferability, notes the PPA/enterprise-value impact, and recommends reallocating any embedded license value to goodwill \u2014 capturing the discrepancy with the memorandum's allocation treatment."
+    },
+    {
+      "id": "C-014",
+      "title": "ISSUE_007: Challenges installment sale treatment for escrow",
+      "verdict": "pass",
+      "reasoning": "Issue M-3 directly challenges the escrow gain-recognition treatment. The report questions 'whether deemed asset sale gain is recognized in full at closing notwithstanding the escrow' \u2014 which is the core of criterion (a): in a 338(h)(10) deemed asset sale, gain is recognized in the year of the deemed sale regardless of when escrow is released. It frames the issue using the open/closed transaction framework, and its analysis of the character of later escrow releases/forfeitures (capital loss vs. ordinary claim-of-right) presupposes full inclusion of the escrow value in the year of sale, consistent with criterion (c). It also flags the practical consequence \u2014 shareholders' 2025 estimated-payment obligations for the deemed gain \u2014 which only matters if no deferral is available. The report does not cite Section 453 or Rev. Proc. 96-53 by name, and characterizes the memo as failing to analyze the issue rather than affirmatively asserting installment treatment was wrong, but the substantive challenge to deferral/installment treatment of the $22M escrow is clearly present."
+    },
+    {
+      "id": "C-015",
+      "title": "ISSUE_008a: Identifies missing California state tax analysis for California-resident shareholders",
+      "verdict": "pass",
+      "reasoning": "Issue M-4 ('State tax analysis is thin') explicitly identifies that the memorandum only 'notes' California without adequate analysis, and specifies the missing California-specific items: 'California 1.5% entity-level S corp tax and CA-source pass-through gain for Mu\u00f1oz and Yoon' (the two California-resident shareholders, also referenced in C-1 as the two California angel shareholders). This satisfies the criterion's requirement of flagging the missing California shareholder tax analysis with at least one of the enumerated items\u2014in fact covering both the 1.5% entity-level S corporation tax and gain pass-through apportionment to California."
+    },
+    {
+      "id": "C-016",
+      "title": "ISSUE_008b: Notes California retroactive C corp tax risk if S election invalid",
+      "verdict": "fail",
+      "reasoning": "The report never connects the S election invalidity risk (C-1) to California retroactive C corporation taxation. C-1 discusses only generic 'entity-level C corp tax, penalties, and interest for open years' under Section 1362(d)(2) without mentioning California. The only California-specific discussion (M-4) covers the 1.5% entity-level S corp tax and CA-source pass-through gain for Mu\u00f1oz and Yoon, but does not note that an invalid S election would cause California to retroactively impose C corporation taxes. The specific California retroactive risk identified in the criterion is absent."
+    },
+    {
+      "id": "C-017",
+      "title": "ISSUE_009: Flags complete omission of QSBS analysis",
+      "verdict": "pass",
+      "reasoning": "The report prominently flags the complete omission of QSBS analysis: the Executive Summary lists it among key omissions, and dedicated issue M-1 states 'The memo contains no \u00a71202 discussion.' It notes that shareholder QSBS questions were raised (flagged in the diligence report, referenced shareholder .eml thread, and 'shareholders are making decisions based on expected gain character'), and it addresses the Section 338(h)(10)/QSBS interaction \u2014 noting that the election's effect on stock-sale gain character for \u00a71202 purposes must be confirmed and communicated to shareholders. It also appears in the issue summary table and recommended action plan (shareholder tax letter covering QSBS status). The report thus satisfies the criterion's requirement to flag the missing QSBS analysis and its interaction with the deemed asset sale structure."
+    },
+    {
+      "id": "C-018",
+      "title": "ISSUE_009: References email thread showing QSBS was raised",
+      "verdict": "fail",
+      "reasoning": "The report mentions the shareholder QSBS email thread only to note that it could not be opened/converted, and expressly bases its QSBS findings on the diligence report and cap table instead. It never cites the email thread as evidence that the QSBS question was specifically raised by the shareholders' advisors (Linden Rock Advisory) \u2014 who are never mentioned \u2014 or that the question was acknowledged but left unaddressed in the CSW memorandum. Because the thread was not used as evidence in connection with the QSBS omission, the criterion is not satisfied."
+    },
+    {
+      "id": "C-019",
+      "title": "ISSUE_010: Identifies trapped C corp R&D credits issue",
+      "verdict": "pass",
+      "reasoning": "The report explicitly flags the $3.8 million in suspended 2016 R&D credits (C corporation period) in the Executive Summary, in High-severity issue H-5, in the Issue Summary Table, and in the Recommended Action Plan (item 6). H-5 notes the memorandum treats the credits dismissively ('addressed in post-closing tax planning'), explains that under \u00a71371(b) the credits cannot be used in S years, and directly addresses whether they can be utilized against tax on the deemed sale gain\u2014concluding that with no \u00a71374 BIG tax (recognition period expired) and no C-corp tax from the deemed sale, the credits are at significant risk of permanent loss upon the deemed liquidation. It also recommends counsel analyze \u00a7\u00a71371(b)/(e) and 338(h)(10) interactions for any salvage path. This satisfies all elements of the criterion."
+    },
+    {
+      "id": "C-020",
+      "title": "ISSUE_011: Flags lack of transfer pricing documentation for Prism-Beacon",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the transfer pricing documentation gap and Section 482 risk in Issue M-2 (and the Executive Summary/Issue Summary Table). It notes the $850,000 annual management fee and $400,000 IP license fee, that the management fee has never been benchmarked, that no transfer pricing study exists (contradicting the SPA's arm's-length rep), and that Thornfield estimates ~$6.3M of Section 482 exposure for 2019\u20132024 from apparently below-arm's-length fees, which the IRS could use to reallocate historical income between Prism and Beacon. It also recommends obtaining a transfer pricing study pre-closing and addressing exposure via indemnity/escrow. This fully satisfies the criterion."
+    },
+    {
+      "id": "C-021",
+      "title": "ISSUE_012a: Identifies missing New York state conformity analysis for 338(h)(10)",
+      "verdict": "fail",
+      "reasoning": "The report's state tax discussion (M-4) flags North Carolina conformity to the Section 338(h)(10) election, and mentions New York only regarding the fixed-dollar minimum tax and NY-resident shareholder (Okoye) consequences. It never identifies the missing analysis of whether New York conforms to the federal 338(h)(10) election for S corporations, which is the specific issue required by the criterion."
+    },
+    {
+      "id": "C-022",
+      "title": "ISSUE_012b: Identifies missing Virginia state conformity analysis for 338(h)(10)",
+      "verdict": "fail",
+      "reasoning": "The report's state tax analysis (M-4) flags North Carolina conformity, California entity-level tax, and New York consequences, but never mentions Virginia or identifies the missing analysis of whether Virginia conforms to the federal Section 338(h)(10) election. A general 'state tax analysis is thin' observation does not satisfy the criterion, which specifically requires flagging the omitted Virginia conformity analysis."
+    },
+    {
+      "id": "C-023",
+      "title": "DISTRACTOR_001: Does not flag BIG tax period expiration as error",
+      "verdict": "pass",
+      "reasoning": "The report does not flag the memorandum's Section 1374 BIG tax expiration conclusion as an error. In fact, the Executive Summary affirmatively states the CSW memorandum 'correctly identifies' the expiration of the Section 1374 built-in gains recognition period on December 31, 2021. Elsewhere, BIG tax references are contextual only: C-1 notes the Section 1374 analysis would change only if the S election itself terminated (a conditional based on shareholder eligibility, not a challenge to the expiration analysis), and H-5 references 'no \u00a71374 BIG tax (recognition period expired)' as accepted background in analyzing the suspended R&D credits. The report never asserts the BIG tax analysis was erroneous or recommends correcting it."
+    },
+    {
+      "id": "C-024",
+      "title": "ADSP error rated as Critical/highest severity",
+      "verdict": "pass",
+      "reasoning": "The ADSP calculation error (double-counting of $48M funded debt, overstating ADSP at $473M vs. the correct $425M) is identified as issue C-2 and is explicitly classified under the 'Critical Issues' section\u2014the highest tier in the agent's four-level severity framework (Critical/High/Medium/Minor). The Issue Summary Table also lists C-2 with severity 'Critical'. This satisfies the criterion that the ADSP error be rated at the highest severity level."
+    },
+    {
+      "id": "C-025",
+      "title": "S corp validity risk rated as Critical/highest severity",
+      "verdict": "pass",
+      "reasoning": "The agent classified the S corporation validity risk (Issue C-1: unverified shareholder eligibility for restricted stock holders and possible family LLC transfer threatening the S election and thus the 338(h)(10) election) as 'Critical' \u2014 the highest severity tier in the report's four-level framework (Critical/High/Medium/Minor). It is listed first under 'Critical Issues' and shown as 'Critical' in the Issue Summary Table."
+    },
+    {
+      "id": "C-026",
+      "title": "Each issue includes supporting document references",
+      "verdict": "pass",
+      "reasoning": "Virtually every issue identified in the report includes specific supporting document references. Critical issues C-1 (cap table, Thornfield DD report, SPA \u00a72.5) and C-2 (valuation summary/Thornfield computation, SPA \u00a72.6(a)) are well-sourced. High-severity issues H-1 through H-5 cite the valuation summary, Beacon OA \u00a78.03, SPA \u00a7\u00a71.1, 2.3(d), 2.4(b), 4.9(i), valuation asset A-008, and DD report \u00a7IV.B. Medium issues M-1 through M-6 cite the DD report (\u00a7\u00a7V, VII, VIII.B, IV.A, Art. V), cap table, Beacon OA \u00a79.01, SPA \u00a7\u00a72.6(c), 4.9(h), and 7.1. Minor items cite SPA \u00a74.9(k), Schedule 1.1(a), and the cap table. The summary table even includes a dedicated 'Source(s)' column for every issue. All 18 identified issues\u2014far exceeding the 8-issue threshold\u2014include specific document references."
+    },
+    {
+      "id": "C-027",
+      "title": "Each issue includes recommended action or further analysis",
+      "verdict": "pass",
+      "reasoning": "The report includes explicit 'Action:' recommendations for the two Critical issues (C-1, C-2) and all five High-severity issues (H-1 through H-5), plus M-2, totaling 9 issues with direct corrective recommendations. Additionally, M-1 calls for confirmation/communication of QSBS analysis, M-5 requests confirmation of AAA analysis, M-3/M-4/M-6 and the Minor items are addressed through a dedicated 9-item 'Recommended Action Plan (Pre-Closing)' that maps recommendations to specific issue numbers. This exceeds the threshold of at least 8 issues with recommended actions or further analysis."
+    },
+    {
+      "id": "C-028",
+      "title": "Each issue includes description of tax consequence or risk",
+      "verdict": "pass",
+      "reasoning": "The report identifies 13+ discrete issues (C-1, C-2, H-1 through H-5, M-1 through M-6, plus minor items), and nearly all explicitly describe tax consequences or risks. Examples: C-1 details entity-level C-corp tax, penalties, interest, and unavailability of the 338(h)(10) election upon S-election termination; C-2 quantifies ~$3.2M/year overstated \u00a7197 amortization and audit risk from the ADSP double-count; H-1 explains that without a \u00a7754 election the Class V step-up yields no amortizable basis; H-3 addresses QSP tainting/election validity and taxable vs. non-taxable rollover treatment; H-5 notes permanent loss of $3.8M suspended R&D credits; M-1 covers \u00a71202 exclusion/gain character; M-2 quantifies ~$6.3M \u00a7482 exposure plus penalties; M-3 through M-6 address estimated payment obligations, state tax exposure, distribution character, and compliance/filing risk. Well over 8 issues include tax consequence/risk descriptions, satisfying the criterion."
+    }
+  ],
+  "run_id": "/Users/xiongweixiao/main/OpenSource/nanoRSI/.omx/harness2_minimal_runs/tax/review-iss-tax-transaction-structure/baseline",
+  "task": "tax/review-iss-tax-transaction-structure",
+  "judge_model": "glm-5.3",
+  "scored_at": "2026-10-24T17:48:15.865072+00:00"
+}

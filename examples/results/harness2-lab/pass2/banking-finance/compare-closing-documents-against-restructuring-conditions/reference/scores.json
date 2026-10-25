@@ -1,0 +1,242 @@
+{
+  "score": 0.0,
+  "max_score": 1.0,
+  "summary": "27/38 criteria passed.  Missed 11 \u2014 task FAIL.",
+  "all_pass": false,
+  "n_criteria": 38,
+  "n_passed": 27,
+  "criteria_results": [
+    {
+      "id": "C-001",
+      "title": "ISSUE_001: Identifies TLB participation shortfall below 95% threshold",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the TLB participation shortfall in Section II.A (labeled CRITICAL), stating the Exchange Agreement reports $446,200,000 tendered (94.34%) against the RSA's 95% Minimum Participation Threshold ($449,350,000), notes the failed Condition Precedent, flags the Officer's Certificate's contradictory certification, and lists it as Critical item #1 in both the Executive Summary and the Summary Table. All figures match the criterion exactly."
+    },
+    {
+      "id": "C-002",
+      "title": "ISSUE_001: Correct dollar shortfall of $3.15M ($449.35M \u2212 $446.2M)",
+      "verdict": "fail",
+      "reasoning": "The report identifies both the required threshold ($449,350,000) and the actual participation ($446,200,000), and even notes '$446,200,000 \u2260 $449,350,000' in the recommendations, but it never computes or states the specific dollar shortfall of approximately $3.15 million. The criterion explicitly fails if no specific dollar shortfall figure is provided."
+    },
+    {
+      "id": "C-003",
+      "title": "ISSUE_001: Flags Officer's Certificate false certification of 95% threshold",
+      "verdict": "pass",
+      "reasoning": "The report explicitly flags the false certification in Officer's Certificate Section 4(f). Section II.A states the Officer's Certificate 'certifies that holders of \"not less than 95%\" have tendered' and that 'this certification is factually contradicted by the Exchange Agreement and appears to be inaccurate.' It correctly identifies the actual participation as $446,200,000 = 94.34% versus the 95% minimum (with $26.8M/5.66% held by Non-Exchanging Lenders), matching the criterion's figures ($446.2M of $473M). The finding is reinforced in the Section G comparison table ('False certification of a failed CP'), the summary table (Item 1, Critical severity), and Recommended Action 1, which demands the Exchange Agent report be produced and reconciled and notes $446,200,000 \u2260 $449,350,000."
+    },
+    {
+      "id": "C-004",
+      "title": "ISSUE_002: Identifies ES sale net cash proceeds below $55M minimum",
+      "verdict": "pass",
+      "reasoning": "Section II.B of the report explicitly identifies this deficiency as a CRITICAL issue: it correctly states the RSA requires Net Cash Proceeds of not less than $55,000,000, walks through the ES APA's $58,000,000 gross purchase price, deducts the $4,200,000 escrow holdback and $1,100,000 estimated transaction costs (plus taxes), and computes Net Cash Proceeds of approximately $52.7 million or less\u2014below the $55M minimum. The report further notes the Officer's Certificate incorrectly conflates gross purchase price with Net Cash Proceeds, flags the escrow-until-released deduction, and includes the issue in the Executive Summary, Summary Table (Item 2), and Recommended Actions. This fully satisfies the criterion."
+    },
+    {
+      "id": "C-005",
+      "title": "ISSUE_002: Correct net proceeds calculation (~$52.7M) and ~$2.3M shortfall",
+      "verdict": "pass",
+      "reasoning": "Section II.B of the report performs the exact calculation the criterion requires: it shows $58,000,000 purchase price minus $4,200,000 escrow minus $1,100,000 transaction costs \u2248 $52.7 million (or less, before taxes), matching the required formula and falling within the accepted $52.5M\u2013$52.8M range. It then explicitly identifies the deficiency versus the $55,000,000 Net Cash Proceeds minimum ('below the $55,000,000 minimum even before tax deductions') and correctly flags the Officer's Certificate as conflating gross purchase price with Net Cash Proceeds. Although the report does not state the '$2.3 million' shortfall figure verbatim, it presents both the computed net proceeds ($52.7M) and the requirement ($55M), fully identifying the shortfall, and the calculation is neither materially wrong nor omitted. This satisfies the substance of the criterion."
+    },
+    {
+      "id": "C-006",
+      "title": "ISSUE_002: Identifies escrow holdback as reducing net cash proceeds",
+      "verdict": "pass",
+      "reasoning": "Section II.B of the report explicitly identifies the $4,200,000 escrow (with 18-month Escrow Release Date) as a deduction in computing Net Cash Proceeds: $58,000,000 \u2212 $4,200,000 (escrow) \u2212 $1,100,000 (costs) \u2212 taxes \u2248 $52.7 million or less, below the $55,000,000 threshold. The report also notes the RSA's Net Cash Proceeds definition deducts escrow/holdback amounts until actually released, and flags the Officer's Certificate for conflating gross purchase price with Net Cash Proceeds."
+    },
+    {
+      "id": "C-007",
+      "title": "ISSUE_003: Identifies MIP equity reserve of 9.5% exceeds RSA cap of 8%",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the MIP overallocation in multiple places. Section II.F states that while the MIP Executive Summary claims 8%, Sections 2.1 and 4.1 define the Aggregate Share Reserve as 9.5% of Fully Diluted equity, exceeding the RSA's hard cap of 8% (a 1.5 percentage point overage). The finding is also flagged in the Executive Summary (critical item 6), the Summary Table (Item 8: '9.5% reserve vs. 8% cap', severity High), and Recommended Action 6 (amend MIP to an 8% reserve). The discrepancy is clearly and repeatedly flagged, satisfying the criterion."
+    },
+    {
+      "id": "C-008",
+      "title": "ISSUE_003: Notes internal MIP inconsistency (summary says 8%, definitions say 9.5%)",
+      "verdict": "pass",
+      "reasoning": "Section II.F explicitly identifies the internal inconsistency within the MIP document: 'The MIP Executive Summary (Section 1) states 8%, but Sections 2.1 and 4.1 define the Aggregate Share Reserve as 9.5% of Fully Diluted equity --- exceeding the RSA's hard cap of 8% and internally inconsistent within the MIP itself.' The report cites both figures and directly flags the internal conflict within the MIP, satisfying the criterion."
+    },
+    {
+      "id": "C-009",
+      "title": "ISSUE_004: Identifies board seat allocation deviation (Ad Hoc Group gets 2 instead of 3)",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the board composition deviation in Section II.E, stating that the Equity Shareholders Agreement provides 2 Ad Hoc Group designees and 3 Backstop Party designees, whereas the RSA requires 3 Ad Hoc Group designates (one each from Stonebridge, Clearfield, Northvane) and 2 Backstop designees. It flags this as a material governance departure, notes the seat reallocation from the Ad Hoc Group to the Backstop Parties, and repeats the finding in the Executive Summary, Summary Table (Item 7), and Recommended Actions (Item 5)."
+    },
+    {
+      "id": "C-010",
+      "title": "ISSUE_004: Notes board seat swap reduces Ad Hoc Group seats from majority (3 of 5) to minority (2 of 5)",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the board seat swap in Section II.E and the summary table: the SHA provides 2 Ad Hoc Group designees and 3 Backstop Party designees, versus the RSA's requirement of 3 Ad Hoc Group designates (one each from Stonebridge, Clearfield, Northvane) and 2 Backstop designees. The report states the SHA 'reallocates a board seat from the Ad Hoc Group to the Backstop Parties \u2014 a material governance departure,' flags it as High (governance) severity, and notes the Backstop designees improperly apply even though the Backstop Parties appear to be the same institutions as the Ad Hoc Group. By laying out the 3-to-2 seat reduction for the Ad Hoc Group (and corresponding 2-to-3 increase for Backstop Parties) among the five lender-designated seats and characterizing the shift as a material governance departure, the report conveys that the swap shifts board control away from the Ad Hoc Group to the Backstop Parties."
+    },
+    {
+      "id": "C-011",
+      "title": "ISSUE_005: Identifies missing Intercreditor Agreement from closing package",
+      "verdict": "fail",
+      "reasoning": "The report comprehensively reviews the closing set (Exchange Agreement, ES APA, New TL Credit Agreement, New RCF, Equity SHA, MIP, Officer's Certificate, Opinion) but never identifies that the Amended & Restated Intercreditor Agreement required by RSA Section 7(a) is absent from the closing document package. The closest reference is a passing note that the New RCF has a 'super-priority lien structure,' but the report does not flag the missing Intercreditor Agreement itself as a condition-precedent gap, nor is it listed in the findings, summary table, or recommended actions."
+    },
+    {
+      "id": "C-012",
+      "title": "ISSUE_005: Notes Intercreditor Agreement is omitted from Officer's Certificate deliverables list",
+      "verdict": "fail",
+      "reasoning": "The report does not mention an Intercreditor Agreement anywhere. The Officer's Certificate review (Section II.G) identifies several inaccuracies (incorrect principal amounts, false participation certification, overstated liquidity, skipped subsection) but never notes that the Notes Intercreditor Agreement is omitted from the Officer's Certificate deliverables list, nor does the summary table or recommended actions reference any intercreditor agreement issue."
+    },
+    {
+      "id": "C-013",
+      "title": "ISSUE_006: Identifies intercompany claims exceed $12M RSA cap",
+      "verdict": "fail",
+      "reasoning": "The agent's report treats intercompany claims as compliant, citing only the Officer's Certificate figure of $11.8 million subordinated as being within the RSA's $12 million cap (Section J), and separately notes the New TL Credit Agreement's Schedule 6.14 cap of $12 million as 'consistent' (Section C). The report never aggregates the scheduled intercompany claims from the New TL Credit Agreement ($4.6M + $3.2M + $2.9M + $1.8M + $1.5M = $14.0M) or identifies that actual claims exceed the RSA cap by $2.0 million. The criterion's required finding of a $2M excess is therefore not identified anywhere in the output."
+    },
+    {
+      "id": "C-014",
+      "title": "ISSUE_006: Flags discrepancy between Officer's Certificate ($11.8M) and schedule ($14.0M)",
+      "verdict": "fail",
+      "reasoning": "The report's Section J (Intercompany Claims) only compares the Officer's Certificate's $11,800,000 figure against the RSA's $12,000,000 cap, concluding it is 'Compliant.' It never mentions the New TL Credit Agreement schedule's actual total of $14.0 million or the $2.2 million discrepancy ($14.0M \u2212 $11.8M) between the Officer's Certificate and the schedule. The specific discrepancy required by the criterion is not flagged anywhere in the report."
+    },
+    {
+      "id": "C-015",
+      "title": "ISSUE_007: Identifies New 2L Notes maturity date mismatch (April vs. October 2030)",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the maturity date discrepancy in Section II.C, stating that the New TL Credit Agreement defines the New 2L Notes Maturity Date as April 28, 2030 (concurrent with the New TL maturity), while the RSA requires October 28, 2030 (six months after the New TL maturity). The issue is also flagged in the Executive Summary (Critical item 4), the Summary Table (item 6, rated High/structural), and Recommended Actions (item 3, directing amendment to fix the maturity date to October 28, 2030). This fully satisfies the criterion."
+    },
+    {
+      "id": "C-016",
+      "title": "ISSUE_007: Notes elimination of 6-month structural subordination timing buffer",
+      "verdict": "pass",
+      "reasoning": "Section II.C of the report explicitly identifies that the New TL Credit Agreement sets the New 2L Notes Maturity Date at April 28, 2030 \u2014 the same day as the New TL maturity \u2014 while the RSA requires October 28, 2030 (six months after New TL maturity), and states that this error 'eliminates the intended 1L/2L maturity separation.' This directly captures the loss of the 6-month structural subordination timing buffer resulting from both tranches maturing on the same date, satisfying the criterion."
+    },
+    {
+      "id": "C-017",
+      "title": "ISSUE_008: Identifies interest rate discrepancy (SOFR+500 vs. SOFR+550)",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the interest rate discrepancy in multiple places. Section II.C states the New TL Credit Agreement defines the Applicable Margin as 5.00% (500 bps) while the RSA and Term Sheet require SOFR + 550 bps, calling it 'a 50 bps economic deficiency on $280,000,000.' The discrepancy is also flagged in the Executive Summary (item 3), the Summary Table (item 5, severity High/economic), and Recommended Actions (item 3, directing amendment of the New TL Credit Agreement to fix the 550 bps margin). This fully satisfies the criterion."
+    },
+    {
+      "id": "C-018",
+      "title": "ISSUE_008: Notes deviation is unauthorized despite being borrower-favorable",
+      "verdict": "pass",
+      "reasoning": "The report prominently identifies the pricing deviation (Section II.C): the New TL Credit Agreement's Applicable Margin of 500 bps versus the RSA-required SOFR + 550 bps, correctly noting the Exchange Agreement and Officer's Certificate recite 550 bps. It explicitly characterizes this as 'a 50 bps economic deficiency on $280,000,000' \u2014 acknowledging the borrower-favorable direction of the error (Company pays less; lenders receive less) \u2014 and states the credit agreement 'must be corrected.' The issue is elevated in the Executive Summary (critical items list), rated 'High (economic)' in the Summary Table (item 5), and Recommended Action 3 requires amendment to 550 bps 'prior to funding,' treating the deviation as non-consensual and incapable of standing as executed. The report neither ignores the issue nor dismisses it on the basis that it favors the borrower; instead it insists on conformity with the RSA. While it does not use the verbatim phrase 'unauthorized absent documented consent,' it plainly treats the borrower-favorable error as a material compliance failure requiring correction, satisfying the criterion's substance."
+    },
+    {
+      "id": "C-019",
+      "title": "ISSUE_009: Identifies missing 'no conflicts' opinion from Company Counsel",
+      "verdict": "fail",
+      "reasoning": "The report's Section H discusses several deficiencies in the Company Counsel legal opinion (incorrect New 2L Notes description, ES APA date inconsistencies, and a German-law scope limitation), but it never identifies the omission of a 'no conflicts' opinion. The report does not mention that the opinion covers enforceability and corporate authority while missing the required no-conflicts coverage, nor does it cite the RSA Section 7(e) condition requiring all three opinion components. The missing no-conflicts opinion is therefore not flagged."
+    },
+    {
+      "id": "C-020",
+      "title": "ISSUE_010: Identifies MIP vesting split deviation (60/40 vs. 50/50)",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the MIP vesting split deviation in Section II.F, stating that the MIP allocates 60% time-based / 40% performance-based vesting while the RSA requires 50%/50%. The issue is also surfaced in the Executive Summary, the Summary Table (Item 8: '60/40 vs. 50/50'), and Recommended Action #6 (amend MIP to 50/50 allocation), fully satisfying the criterion."
+    },
+    {
+      "id": "C-021",
+      "title": "ISSUE_010: Identifies MIP time-vesting period deviation (3 years vs. 4 years)",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the MIP time-based vesting deviation in Section II.F: 'Time-based awards vest over 3 years with a 6-month cliff; the RSA requires vesting over 4 years with a 1-year cliff.' It is also reiterated in the Summary Table (Item 8: '3-yr/6-mo cliff vs. 4-yr/1-yr') and in Recommended Action #6 (amend MIP to '4-year/1-year-cliff vesting'). The criterion is fully satisfied."
+    },
+    {
+      "id": "C-022",
+      "title": "ISSUE_010: Identifies MIP cliff deviation (6 months vs. 1 year)",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the MIP time-based vesting schedule deviation in Section II.F: 'Time-based awards vest over 3 years with a 6-month cliff; the RSA requires vesting over 4 years with a 1-year cliff.' The deviation is also reiterated in the Summary Table (Item 8: '3-yr/6-mo cliff vs. 4-yr/1-yr') and addressed in Recommended Action 6 ('4-year/1-year-cliff vesting'). The specific 6-month vs. 1-year cliff deviation is clearly identified."
+    },
+    {
+      "id": "C-023",
+      "title": "ISSUE_011: Identifies no evidence of Ad Hoc Group professional fee payment",
+      "verdict": "fail",
+      "reasoning": "The report never addresses the Ad Hoc Group professional fee payment condition. There is no mention of RSA condition precedent 7(k), the requirement to pay professional fees/expenses of Ashworth, Beckett & Lowe LLP or Pinnacle Advisory Group LLC at or prior to closing, the Officer's Certificate's failure to certify compliance with this condition, or the absence of any closing documents evidencing such payment. Ashworth, Beckett & Lowe LLP is referenced only as the report's preparer in the header, and Pinnacle Advisory Group LLC is not mentioned anywhere. The Officer's Certificate findings (Section G) and the 21-item summary table omit this unmet/unevidenced condition entirely."
+    },
+    {
+      "id": "C-024",
+      "title": "ISSUE_012: Identifies New RCF initial draw of $47M vs. RSA's $40M",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the discrepancy in Section II.D: the RSA specifies an initial Closing Date draw of $40,000,000, while the New RCF Credit Agreement requires a Closing Date Revolving Loan of $47,000,000 \u2014 a $7 million departure. This is also captured in the Summary Table (Item 9: 'Closing draw $47M vs. RSA $40M') and reflected in the Section IV recommended actions (conform the Closing Date draw or obtain lender consent), as well as in the Officer's Certificate liquidity analysis. The criterion is fully satisfied."
+    },
+    {
+      "id": "C-025",
+      "title": "ISSUE_012: Identifies that $47M draw reduces projected closing liquidity to approximately $60M, at or near the $60M RSA minimum",
+      "verdict": "pass",
+      "reasoning": "The report explicitly analyzes the liquidity impact of the higher draw. In Section II.G (Officer's Certificate table), it notes that the New RCF Closing Date draw of $47,000,000 leaves only $38,000,000 of RCF availability ($85M \u2212 $47M), overstating available commitments by $7,000,000 versus the certificate's $45,000,000 claim. It then recomputes Minimum Liquidity as $60,000,000 ($22M cash + $38M remaining RCF availability), stating this is 'exactly at, not above, the RSA minimum' \u2014 i.e., at the $60M minimum with zero cushion. Section II.D also flags the $47M draw vs. the RSA's $40M requirement and recommends assessing the effect of the 25% commitment reduction on Minimum Liquidity testing. This satisfies the criterion's requirement to identify the liquidity impact of the higher draw."
+    },
+    {
+      "id": "C-026",
+      "title": "Report uses unique issue identifiers for each gap",
+      "verdict": "pass",
+      "reasoning": "The report uniquely identifies each gap via a numbered Summary Table of Discrepancies (Items #1\u2013#21, each tied to a specific document and issue) and corroborating lettered sections in the detailed findings (Sections II.A\u2013II.J), with the Executive Summary cross-referencing critical items to those identifiers. Every identified deviation carries a distinct, unambiguous identifier."
+    },
+    {
+      "id": "C-027",
+      "title": "Report includes RSA section/provision references for identified issues",
+      "verdict": "pass",
+      "reasoning": "The report anchors its findings to specific RSA provisions, condition precedents, and Term Sheet references across well more than 8 identified issues. Explicit citations include: (1) RSA Section 7 / 'Minimum Participation Threshold' Condition Precedent for the 94.34% vs. 95% participation failure; (2) the RSA's defined 'Net Cash Proceeds' condition ($55M minimum) for the ES APA proceeds shortfall; (3) 'The RSA and Term Sheet require SOFR + 550 bps' for the pricing error; (4) the RSA maturity requirement (Oct 28, 2030) for the 2L maturity error; (5) the RSA 'New Board' provision (3 AHG designees / 2 Backstop) for the board composition issue; (6) RSA Section 7(j) plus the RSA's 8% cap, 50/50 allocation, and 4-year/1-year-cliff vesting requirements for the MIP findings; (7) the RSA-specified $40M Closing Date draw / Term Sheet for the RCF draw discrepancy; (8) the RSA's MAE definition (by reference to the New TL CA) for the divergent MAE issue; and (9) additional Term Sheet (Exhibit A) references for the equity split and RCF commitment reduction. Counting issues with RSA section citations, condition-precedent/defined-term references, or Term Sheet citations yields at least 8\u201310, satisfying the criterion."
+    },
+    {
+      "id": "C-028",
+      "title": "Report includes severity ratings for identified issues",
+      "verdict": "pass",
+      "reasoning": "The report assigns explicit severity ratings to identified issues throughout. Section III provides a Summary Table of Discrepancies listing 21 issues, each with a severity rating (Critical, High, High (economic/structural/governance), Medium, Medium/High, Low). Additionally, the Executive Summary flags critical items, and the detailed findings label threshold failures as 'CRITICAL' and characterize other findings by materiality. Every identified compliance gap in the report carries a severity rating, satisfying the criterion."
+    },
+    {
+      "id": "C-029",
+      "title": "Report includes recommended remedial actions for identified issues",
+      "verdict": "pass",
+      "reasoning": "The report includes a dedicated 'Recommended Actions' section (Section IV) with 8 substantive remedial recommendations that map to nearly all of the 21 identified gaps: (1) do not waive the participation condition absent express Required Consenting Lender waiver and Exchange Agent confirmation; (2) require correction/re-certification of ES Sale proceeds or a price increase/escrow reduction/waiver; (3) amend the New TL Credit Agreement to fix the margin and 2L maturity; (4) amend the New RCF to correct the 2L Notes principal, harmonize MAE, and conform the Closing Date draw; (5) amend the SHA to restore board composition and reconcile the Backstop date; (6) amend and complete execution of the MIP (8% reserve, 50/50, 4-yr/1-yr cliff, definitive Effective Date); (7) obtain a corrected Officer's Certificate and corrected legal opinion (covering the $285M/$130M misstatements, liquidity computations, participation, and 2L Notes description); and (8) correct the Exchange Agreement guarantor jurisdictions. Additional inline recommendations appear throughout the findings (e.g., produce Exchange Agent report, diligence environmental liability retention, assess commitment-reduction effect on Minimum Liquidity, confirm noteholder equity/warrant package). Only a few low-severity items (par value discrepancy, \u00a74(k) numbering) lack explicit standalone recommendations, and these are implicitly subsumed within the broader corrective actions. The clear majority \u2014 indeed nearly all \u2014 of identified gaps have remedial recommendations, satisfying the criterion."
+    },
+    {
+      "id": "C-030",
+      "title": "Report identifies the source closing document for each gap",
+      "verdict": "pass",
+      "reasoning": "The report consistently identifies the specific source closing document for every gap. Each detailed findings section (II.A\u2013II.J) is organized by and names the deviating document (Exchange Agreement, ES APA, New TL Credit Agreement, New RCF Credit Agreement, Equity Shareholders Agreement, MIP, Officer's Certificate, Company Counsel Opinion), often with pinpoint section references (e.g., Exchange Agreement \u00a73.01, Officer's Cert. \u00a74(f)\u2013(g), MIP \u00a7\u00a72.1/4.1). The Summary Table of Discrepancies includes a dedicated 'Document' column attributing all 21 issues to specific closing documents, and cross-document inconsistencies (e.g., three different ES APA dates, divergent MAE definitions, Backstop Commitment Agreement date discrepancy) explicitly name each document involved."
+    },
+    {
+      "id": "C-031",
+      "title": "TLB participation rated Critical severity",
+      "verdict": "pass",
+      "reasoning": "The report rates the TLB participation shortfall (94.34% vs. 95% required) at Critical severity: Section II.A is expressly labeled 'CRITICAL', it is the first item listed under 'Critical items requiring immediate resolution or waiver' in the Executive Summary, and Summary Table item 1 assigns it 'Critical' severity, which is the highest severity level used in the report."
+    },
+    {
+      "id": "C-032",
+      "title": "Missing Intercreditor Agreement rated Critical severity",
+      "verdict": "fail",
+      "reasoning": "The report never identifies the missing Amended & Restated Intercreditor Agreement at all. The Executive Summary, detailed findings (Sections II.A\u2013J), the 21-item Summary Table of Discrepancies, and the Recommended Actions contain no reference to an Intercreditor Agreement (the only related mention is 'intercompany claims' and the RCF's super-priority lien structure, which is not the same document). Because the issue is entirely omitted rather than rated as Critical or the report's highest severity level, the criterion is not satisfied."
+    },
+    {
+      "id": "C-033",
+      "title": "Interest rate discrepancy not rated Critical",
+      "verdict": "fail",
+      "reasoning": "The agent's Executive Summary explicitly lists the pricing discrepancy (item 3: 'New TL pricing (SOFR + 500 bps vs. SOFR + 550 bps)') under the heading 'Critical items requiring immediate resolution or waiver by the Required Consenting Lenders.' Although the summary table rates it 'High (economic),' the Executive Summary treats it as Critical, violating the criterion that this borrower-favorable interest rate discrepancy be rated only Medium/moderate, not Critical or highest severity."
+    },
+    {
+      "id": "C-034",
+      "title": "ISSUE_001: References Exchange Agreement as source document",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the Exchange Agreement as the source of the participation data. In Section II.A, it cites 'Exchange Agreement (Section 3.01): Participating amount of $446,200,000 = 94.34%,' and the Summary Table (Item 1) attributes the 94.34% vs. 95% figure to the 'Exchange Agreement / Officer's Cert.' The report consistently uses the Exchange Agreement as the closing document reporting the $446.2M / 94.34% TLB participation figure."
+    },
+    {
+      "id": "C-035",
+      "title": "ISSUE_006: Itemizes individual intercompany amounts from schedule",
+      "verdict": "fail",
+      "reasoning": "The report's intercompany claims discussion (Section II.J and Section II.C) only cites the Officer's Certificate's $11,800,000 figure and the $12,000,000 cap from Schedule 6.14. It never itemizes the individual intercompany claim amounts from the New TL Credit Agreement schedule (e.g., Ridgewater Precision Components $4.6M, Ridgewater Industrial Services $3.2M, Tidemark Coatings $2.9M, Vantage Fabrication $1.8M, Ridgewater Europe GmbH $1.5M) and does not cite or independently compute the $14.0M schedule total. This means the report missed the key discrepancy that the scheduled claims total ($14.0M) exceeds both the RSA's $12M cap and the certified $11.8M figure. Per the criterion, relying solely on the Officer's Certificate's $11.8M figure without referencing the schedule itemization or total constitutes a FAIL."
+    },
+    {
+      "id": "C-036",
+      "title": "ISSUE_004: References Equity Shareholders Agreement as source document",
+      "verdict": "pass",
+      "reasoning": "Section II.E of the report explicitly identifies the Equity Shareholders Agreement (SHA, Section 3.01(a)) as the document containing the board composition deviation, stating it provides '2 Ad Hoc Group designees, 3 Backstop Party designees' versus the RSA's required 3 Ad Hoc Group designates and 2 Backstop designees. This is also reiterated in the Summary Table (item 7: 'Equity SHA | Board 2 AHG / 3 Backstop vs. RSA 3 AHG / 2 Backstop') and in Recommended Action 5, which calls for amending the Equity Shareholders Agreement to restore RSA board composition."
+    },
+    {
+      "id": "C-037",
+      "title": "ISSUE_007: References New TL Credit Agreement intercreditor provisions",
+      "verdict": "pass",
+      "reasoning": "The report explicitly identifies the New TL Credit Agreement as the source of the incorrect New 2L Notes Maturity Date. Section II.C ('New TL Credit Agreement \u2014 Pricing and Maturity Errors') states: 'The New TL Credit Agreement defines the \"New 2L Notes Maturity Date\" as April 28, 2030... The RSA requires the New 2L Notes to mature October 28, 2030.' This is reinforced in the Summary Table (Item 6: 'New TL CA | 2L maturity April 28, 2030 vs. Oct 28, 2030') and Recommended Action #3, which directs amendment of the New TL Credit Agreement to fix the maturity date. The criterion is satisfied."
+    },
+    {
+      "id": "C-038",
+      "title": "Report identifies at least 10 of the 12 planted issues",
+      "verdict": "fail",
+      "reasoning": "The report identifies only 8 of the 12 planted issues. Correctly identified: (1) TLB participation 94.34% vs. 95%; (2) ES sale net proceeds ~$52.7M vs. $55M minimum; (3) MIP reserve 9.5% vs. 8% cap; (4) board composition 2 Ad Hoc/3 Backstop vs. RSA's 3/2; (7) New 2L Notes maturity April 28, 2030 vs. October 28, 2030; (8) pricing SOFR+500 vs. SOFR+550; (10) MIP vesting 60/40 vs. 50/50 plus 3-yr/6-mo vs. 4-yr/1-yr deviations; (12) RCF $47M closing draw vs. $40M. However, the report misses 4 planted issues: (5) missing Intercreditor Agreement \u2014 never mentioned; (6) intercompany claims exceeding the $12M cap \u2014 the agent affirmatively concluded $11.8M was 'Compliant'; (9) missing no-conflicts legal opinion \u2014 Section H only notes German-law scope limits, no conflicts-opinion gap; (11) no evidence of professional fee payment \u2014 not addressed anywhere. The report does flag numerous additional discrepancies (officer's certificate errors, guarantor jurisdictions, date inconsistencies), but these do not correspond to the 12 planted issues, and the criterion requires at least 10 of the 12. 8 < 10, so FAIL."
+    }
+  ],
+  "run_id": "/Users/xiongweixiao/main/OpenSource/nanoRSI/.omx/harness2_minimal_runs/banking-finance/compare-closing-documents-against-restructuring-conditions/reference",
+  "task": "banking-finance/compare-closing-documents-against-restructuring-conditions",
+  "judge_model": "glm-5.3",
+  "scored_at": "2026-10-24T19:40:03.178013+00:00"
+}

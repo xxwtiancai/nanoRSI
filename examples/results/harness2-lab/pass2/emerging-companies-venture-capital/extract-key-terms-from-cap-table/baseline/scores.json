@@ -1,0 +1,260 @@
+{
+  "score": 0.0,
+  "max_score": 1.0,
+  "summary": "21/41 criteria passed.  Missed 20 \u2014 task FAIL.",
+  "all_pass": false,
+  "n_criteria": 41,
+  "n_passed": 21,
+  "criteria_results": [
+    {
+      "id": "C-001",
+      "title": "ISSUE_001: Identifies option pool available shares miscalculation",
+      "verdict": "pass",
+      "reasoning": "The memo substantively identifies the issue. It flags the available option pool as a high-priority discrepancy (Executive Summary \u00b63, \u00a7 4.2, and Recommendation \u00a7 6.2), shows the cap table's 1,275,000 figure (5,000,000 \u2212 3,725,000 granted), itemizes the 175,000 forfeited options (OPT-010: 100,000; OPT-014: 75,000), and explicitly cites the EIP \u00a7 2.3 forfeiture-reversion provision as indicating 'the true available reserve may be higher still,' requiring exact reconciliation because the pool count feeds the price denominator. It does not accept 1,275,000 as correct. The only shortcoming is that the memo hedges ('may be higher') and does not compute the precise corrected figure of 1,450,000, but it clearly identifies the discrepancy \u2014 that the cap table's available pool fails to reflect forfeited shares returning to the reserve \u2014 satisfying the criterion's core requirement and avoiding both FAIL conditions."
+    },
+    {
+      "id": "C-002",
+      "title": "ISSUE_001: States correct available pool figure of 1,450,000",
+      "verdict": "fail",
+      "reasoning": "The memo never states or calculates the correct available pool figure of 1,450,000 shares. It reports the erroneous 1,275,000 figure (from the Summary tab), the 1,204,000 figure (from the FD buildup/term sheet), and vaguely references a 'potentially higher figure' under EIP \u00a7 2.3 reversion, but it never performs the reversion calculation or arrives at 1,450,000. While the memo commendably flags the discrepancy as a high-priority open issue, the criterion requires stating or calculating the specific correct figure of 1,450,000, which the memo fails to do."
+    },
+    {
+      "id": "C-003",
+      "title": "ISSUE_002: Identifies missing convertible note conversion shares for Firstvale",
+      "verdict": "pass",
+      "reasoning": "The memo clearly and repeatedly identifies the issue: Section 1 (Executive Summary) states the term sheet denominator omits '320,616 shares of Series A Preferred issued on conversion of the Firstvale convertible note (per the Restated COI, 3,820,616 Series A shares are outstanding, not 3,500,000)'. Section 2.3 details the $750,000 note (plus accrued interest of $769,479.45) converting at $2.40/share into 320,616 Series A shares, notes these shares are not reflected in the cap table or term sheet fully diluted count, and even quotes the cap table footnote. Section 4.1 flags it as a high-priority discrepancy between the COI (3,820,616 shares) and the cap table/term sheet (3,500,000 shares). All elements of the criterion are satisfied."
+    },
+    {
+      "id": "C-004",
+      "title": "ISSUE_002: Calculates correct note conversion share count",
+      "verdict": "pass",
+      "reasoning": "Section 2.3 of the memo explicitly states that the convertible note converted at $2.40/share (correctly identified as the $3.00 Series A price less the 20% discount) on a total conversion amount of $769,479.45 (principal plus accrued interest), producing 320,616 Series A shares. This exactly matches the expected calculation ($769,479.45 \u00f7 $2.40 \u2248 320,616), and the 320,616 figure is consistently referenced throughout the memo (Sections 1, 2.1, 3.2, 4.1, and Recommendations), including its impact on the corrected fully diluted denominator."
+    },
+    {
+      "id": "C-005",
+      "title": "ISSUE_002: States Firstvale correct total of 3,820,616 Series A shares",
+      "verdict": "pass",
+      "reasoning": "The memo correctly states Firstvale's total Series A holdings as 3,820,616 shares in multiple places (Section 2.1 table, Section 2.3 note history, and Section 4.1), and clearly explains the composition as 3,500,000 shares from the round plus 320,616 shares from the note conversion (at $2.40/share on $769,479.45 of principal plus accrued interest), while flagging the cap table's incorrect 3,500,000 figure."
+    },
+    {
+      "id": "C-006",
+      "title": "ISSUE_003: Identifies Series B pre-money valuation inconsistency",
+      "verdict": "fail",
+      "reasoning": "The memo never addresses the Series B pre-money valuation inconsistency. There is no mention of the $84,000,000 figure from the cap table spreadsheet, the correct $81,000,000 valuation (13,500,000 shares \u00d7 $6.00/share), or the 500,000 phantom shares implied by the overstated figure. While the memo thoroughly covers other discrepancies (Series A share count, option pool figures, warrant details, founder name, board designees), it omits the Series B pre-money valuation issue entirely. Series B is only mentioned in passing regarding Summit Arc Capital's 4,200,000 shares at $6.00 OIP and the pool increase at the Series B closing date, with no valuation analysis."
+    },
+    {
+      "id": "C-007",
+      "title": "ISSUE_003: States correct Series B pre-money as $81,000,000",
+      "verdict": "fail",
+      "reasoning": "The memo never states the Series B pre-money valuation. It lists Series B as 4,200,000 shares held by Summit Arc at a $6.00 Original Issue Price, but nowhere does it state the Series B pre-money of $81,000,000 or the equivalent 13,500,000 fully diluted shares at $6.00/share, nor does it address/flag any Series B pre-money figure (correct or incorrect). Since the criterion requires the memo to state the correct Series B pre-money of $81,000,000 (or its equivalent), and the memo is silent on this term, the criterion is not satisfied."
+    },
+    {
+      "id": "C-008",
+      "title": "ISSUE_004: Identifies term sheet price per share based on wrong share count",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies that the term sheet's $8.18 price per share is derived from the 22,004,000 fully diluted share count and that this denominator is understated/incorrect. It quantifies the omitted components (450,000 exercised-option shares, 320,616 Series A note-conversion shares, 150,000 warrant shares), computes a corrected denominator (~22,924,616, implying ~$7.85/share), and additionally flags the remaining pool discrepancies (1,204,000 vs. 1,275,000 available pool and the EIP \u00a7 2.3 forfeiture-reversion suggesting an even higher reserve) \u2014 the components that reconcile to the fully correct count of 23,170,616. The discrepancy between the term sheet's share count and the correct fully diluted count is thoroughly flagged (Executive Summary finding #1, \u00a7 3.2, \u00a7 4.1, Recommendation #1), satisfying the criterion even though the memo's headline corrected figure (~22,924,616) stops short of the full 23,170,616 while separately flagging the remaining pool items as requiring reconciliation."
+    },
+    {
+      "id": "C-009",
+      "title": "ISSUE_004: Calculates correct Series C price per share (~$7.77)",
+      "verdict": "fail",
+      "reasoning": "The memo never calculates a Series C price per share of ~$7.77 (or anything in the $7.76\u2013$7.78 range). The prices it presents are $8.18 (term sheet as written), ~$7.85 (corrected denominator of 22,924,616), ~$7.34, and ~$7.08. The expected correct calculation ($180,000,000 / 23,170,616 \u2248 $7.7686) requires a denominator of 23,170,616 \u2014 i.e., one that includes the fully corrected share counts (450,000 exercised-option shares, 320,616 note-conversion Series A shares, 150,000 warrant shares) AND the properly adjusted available option pool (5,000,000 \u2212 3,725,000 granted + 175,000 forfeited reverted = 1,450,000). The agent identified most of the denominator errors but left the available pool at the term sheet's 1,204,000 (or the summary's 1,275,000) figure rather than applying the EIP \u00a7 2.3 forfeiture-reversion math to reach 1,450,000, yielding ~$7.85 instead of ~$7.77. The criterion's target price was therefore not calculated."
+    },
+    {
+      "id": "C-010",
+      "title": "ISSUE_004: States correct fully diluted share count of 23,170,616",
+      "verdict": "fail",
+      "reasoning": "The criterion requires the memo to state the correct fully diluted share count of 23,170,616, which is built using the 3,820,616 Series A figure (COI), the 150,000 warrant, 450,000 exercised-option common, 3,100,000 unexercised options, and a 1,450,000 available pool (reflecting forfeiture reversion under EIP \u00a7 2.3: 1,275,000 + 175,000). The memo never states 23,170,616. Its closest figures are 22,924,616 (term sheet denominator plus exercised options, note-conversion shares, and warrant \u2014 which retains the term sheet's 1,204,000 pool figure rather than the corrected 1,450,000), 25,424,616 (adding the proposed pool increase), and 27,504,000 (post-close). While the memo commendably flags the Series A count, warrant, exercised options, and pool discrepancies as open items, it does not compute or state the required 23,170,616 total, and its stated corrected denominator (22,924,616) is materially different."
+    },
+    {
+      "id": "C-011",
+      "title": "ISSUE_004: Discusses implications of $0.41/share price difference",
+      "verdict": "pass",
+      "reasoning": "The memo clearly identifies that the term sheet's 22,004,000-share fully diluted denominator is understated, yielding a corrected price of ~$7.85 vs. the stated $8.18 (a price discrepancy in the same ~$0.33\u2013$0.41 range contemplated by the criterion), and it discusses multiple concrete implications: the number of Series C shares issued changes (~5,500,000 vs. ~5,732,000, with additional scenarios up to ~6,356,000), roughly 230,000\u2013856,000 additional shares of value transfer to investors, and existing holders are correspondingly diluted (e.g., founders' stake decline quantified in \u00a73.3). The memo goes further with a scenario table quantifying price and share-count impacts, satisfying the criterion's requirement of identifying the price difference and discussing at least one concrete implication."
+    },
+    {
+      "id": "C-012",
+      "title": "ISSUE_005: Flags inconsistent anti-dilution mechanisms across series",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the inconsistent anti-dilution mechanisms across preferred series. The Executive Summary notes Series C carries 'full ratchet anti-dilution (vs. broad-based weighted average on Series A/B)', the capitalization table in \u00a7 2.1 labels Series A and Series B as 'BBWA anti-dilution', \u00a7 4.9 is devoted to flagging that 'Series C carries full ratchet... Series A/B are broad-based weighted average' with commentary on the increased downside dilution risk, and Recommendation 3 urges negotiating for broad-based weighted average instead of full ratchet. This fully satisfies the criterion of flagging the structural inconsistency in anti-dilution protection across the preferred series."
+    },
+    {
+      "id": "C-013",
+      "title": "ISSUE_005: Explains full ratchet vs. BBWA impact in down round",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly addresses the practical difference between the two anti-dilution mechanisms. Executive Summary point 4 flags full ratchet as materially investor-favorable 'vs. broad-based weighted average on Series A/B,' and Section 4.9 states that Series C carries full ratchet while Series A/B carry BBWA, and that 'full ratchet materially increases downside dilution risk to common holders in any down round.' Recommendation 3 advises pushing for BBWA instead of full ratchet, and Recommendation 7 advises modeling full-ratchet down-round scenarios against realistic exit values. Together these convey that full ratchet is materially more aggressive/dilutive than broad-based weighted average and would cause greater down-round dilution, satisfying the criterion."
+    },
+    {
+      "id": "C-014",
+      "title": "ISSUE_005: Notes mixed anti-dilution regimes across preferred series",
+      "verdict": "fail",
+      "reasoning": "The memo repeatedly documents that Series C carries full ratchet while Series A/B carry broad-based weighted average (e.g., Executive Summary \u00b64 and \u00a7 4.9), and it critiques full ratchet itself as 'materially increas[ing] downside dilution risk to common holders in any down round.' However, it never states that having *different* anti-dilution regimes across the preferred series is unusual, non-standard, or creates interaction effects (e.g., cascading adjustment complexity in a down round). The parenthetical contrast '(vs. broad-based weighted average on Series A/B)' merely documents the difference and frames full ratchet as investor-favorable; the analysis of the mixed regime itself and its interaction consequences is absent."
+    },
+    {
+      "id": "C-015",
+      "title": "ISSUE_006: Identifies Series B consent required for 1.5x preference",
+      "verdict": "fail",
+      "reasoning": "The memo thoroughly discusses the Series C's 1.5x non-participating liquidation preference (Executive Summary \u00b64, \u00a7 3.4) and notes it is senior to the Series A/B 1x preferences in the waterfall analysis, but it never identifies that the existing Series B Investors' Rights Agreement contains a protective provision requiring majority Series B approval for any financing granting a liquidation preference senior to or greater than Series B's 1x, nor that the proposed Series C 1.5x preference triggers that consent requirement. The only consent discussions concern Series C's new protective provisions (\u00a7\u00a7 2.5(b)-(k)), Voting Agreement board-size amendments (VA \u00a7 6.1), and pro rata mechanics \u2014 none address the Series B consent triggered by the senior 1.5x preference. The specific issue is therefore not identified."
+    },
+    {
+      "id": "C-016",
+      "title": "ISSUE_006: Notes term sheet fails to address Series B consent",
+      "verdict": "fail",
+      "reasoning": "The memo never mentions Series B consent or its absence from the term sheet. It discusses Series B throughout only descriptively (share counts, liquidation preference, board designee, BBWA anti-dilution), and its closing-conditions discussion (Section 5) cites only cap table accuracy and board/stockholder approval of the pool increase. The closest related point is \u00a7 4.7, which notes that amending the Voting Agreement's board structure requires consent of designating parties and affected preferred series \u2014 but this addresses board-size amendments, not Series B consent to the Series C issuance itself. Nowhere does the memo flag that the term sheet fails to address obtaining Series B consent or that such consent is a condition precedent to closing the Series C round."
+    },
+    {
+      "id": "C-017",
+      "title": "ISSUE_007: Computes drag-along threshold of ~$312.4M",
+      "verdict": "fail",
+      "reasoning": "The memo mentions drag-along mechanics (Section 5: requiring Board + majority Preferred + majority Common approval) and computes a total stacked liquidation preference of ~$103M in Section 3.4 (Series C \u2248 $67.5M, Series A $10.5M\u2013$11.5M, Series B $25.2M). However, it never computes a drag-along dollar threshold \u2014 there is no calculation of ~$312.4M or any application of a 3x liquidation preference multiplier to derive a drag-along threshold. The criterion explicitly fails if the drag-along dollar threshold is not computed, which is the case here."
+    },
+    {
+      "id": "C-018",
+      "title": "ISSUE_007: Analyzes drag-along implications for common holders",
+      "verdict": "fail",
+      "reasoning": "The memo mentions drag-along only in passing in Section 5, noting it requires Board + majority Preferred + majority Common approval per Voting Agreement \u00a7 3.2. It never computes a drag-along threshold (~$312.4M), never compares it to the post-money valuation (~$225M / ~1.4x), and never analyzes how a forced sale at that threshold\u2014after ~$103-104M in stacked preferences\u2014would leave common holders with minimal proceeds. The liquidation waterfall in \u00a7 3.4 and Recommendation 7 address stacked preferences in the abstract, but do not connect them to the drag-along mechanism or its adverse implications for common stockholders."
+    },
+    {
+      "id": "C-019",
+      "title": "ISSUE_008: Flags board reduction requires Series A consent",
+      "verdict": "fail",
+      "reasoning": "The memo never identifies a board reduction from five to three seats. It correctly describes the current five-member board (including the Series A seat designated by Firstvale/Allison Trang) and notes in general terms that amending the Voting Agreement's board structure (VA \u00a7 2.1) is a protected provision requiring consent of each designating party and the affected preferred series (\u00a7 4.7, citing VA \u00a7 6.1). However, the memo frames the Series C governance change solely as *adding* a Ridgeline designee (board expansion) plus Series C consent rights over board size \u2014 it nowhere flags that the financing contemplates reducing the board from 5 to 3 seats, that such a reduction would eliminate the Series A designated board seat, or that Series A preferred holders' consent would be required to remove their seat. Because the specific issue identified in the criterion \u2014 the 5-to-3 board reduction eliminating the Series A seat and triggering the Series A consent requirement \u2014 is not identified, the memo does not satisfy the PASS condition."
+    },
+    {
+      "id": "C-020",
+      "title": "ISSUE_008: Notes elimination of independent director seats",
+      "verdict": "fail",
+      "reasoning": "The memo describes the current five-seat board (including independents Dr. Samuel Otieno and Karen Lindqvist) and states the Series C will 'add a Ridgeline designee,' but it never mentions that the proposed term sheet reduces the board to three seats and thereby eliminates the two independent director seats. The loss of independent directors is not flagged anywhere in the memo, so the criterion is not satisfied."
+    },
+    {
+      "id": "C-021",
+      "title": "ISSUE_009: Flags Series C veto over routine option grants",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly flags this issue in Section 4.8, quoting Term Sheet \u00a7 2.5(b) requiring Series C majority consent for 'any equity issuance, including any shares issued pursuant to the Company's equity incentive plan or any option... granted under any equity incentive plan, whether or not previously approved by the Board,' and states this 'effectively gives Ridgeline a veto over all hiring-related equity.' It is also highlighted in the Executive Summary (item 4) and addressed in the Recommendations (item 3, calling for deletion or narrowing of the equity-plan consent right), fully satisfying the criterion."
+    },
+    {
+      "id": "C-022",
+      "title": "ISSUE_009: Notes blanket option veto differs from standard NVCA terms and discusses operational impact",
+      "verdict": "fail",
+      "reasoning": "The memo does flag the blanket option grant veto (\u00a7 4.8, Term Sheet \u00a7 2.5(b)) and notes an operational impact (Ridgeline gains 'a veto over all hiring-related equity'). However, it never compares the provision to standard NVCA protective provisions or explains that NVCA-style protective provisions typically carve out issuances under a board-approved equity incentive plan. Instead, it compares the provision only to the Company's own EIP (\u00a7\u00a7 3.2, 6.1) and to the existing Series A/B protections, and uses only a generic 'beyond market' label (directed at the other operational consent rights like budget and executive hiring). Because the required comparison to NVCA standard terms and the typical equity-plan carve-out is absent, the criterion is not satisfied."
+    },
+    {
+      "id": "C-023",
+      "title": "ISSUE_010: Identifies pay-to-play conversion-to-common risk",
+      "verdict": "fail",
+      "reasoning": "The memo never identifies or discusses a pay-to-play provision. While it addresses pro rata participation mechanics (\u00a7 4.10) and full ratchet anti-dilution (\u00a7 4.9), it does not mention any provision converting non-participating preferred holders to common stock in future down rounds, nor does it analyze the coercive risk to existing investors (e.g., Firstvale) who cannot fund pro rata in a down round and would lose liquidation preference and anti-dilution protection. The pay-to-play issue is entirely absent from the analysis."
+    },
+    {
+      "id": "C-024",
+      "title": "ISSUE_010: Notes conversion to common is harsh end of spectrum",
+      "verdict": "fail",
+      "reasoning": "The memo does not discuss pay-to-play provisions at all. While it addresses pro rata participation mechanics (\u00a74.10), anti-dilution (\u00a74.9), and automatic conversion upon a Qualified IPO (\u00a73.4), nowhere does it address pay-to-play consequences for non-participating investors, nor does it note that automatic conversion to common stock (versus shadow preferred or other less punitive alternatives like loss of anti-dilution or pro rata rights only) is on the harsher end of the pay-to-play spectrum. The specific severity comparison required by the criterion is entirely absent."
+    },
+    {
+      "id": "C-025",
+      "title": "Correct common stock outstanding count",
+      "verdict": "pass",
+      "reasoning": "The memo's capitalization table (\u00a72.1) correctly lists common stock components: Maya Chen 5,000,000 + Raj Venkatesh 3,500,000 + Lena Ostrowski 1,500,000 + 450,000 exercised-option common = 10,450,000 total common outstanding. No conflicting common total is used; the stated 18,300,000 total outstanding figure is consistent with this (10,450,000 common + 3,500,000 Series A + 4,200,000 Series B + 150,000 warrant), and the pro forma table in \u00a73.3 repeats the same correct common components. The correct 10,450,000 figure is therefore accurately stated and implied throughout."
+    },
+    {
+      "id": "C-026",
+      "title": "Correct unexercised options count of 3,100,000",
+      "verdict": "pass",
+      "reasoning": "The memo consistently states the unexercised outstanding options count as 3,100,000. Section 2.1 lists 'Options outstanding (2019 EIP)' at 3,100,000 shares, and Section 2.2 explicitly shows the reconciliation: 3,725,000 granted \u2212 450,000 exercised \u2212 175,000 forfeited = 3,100,000 outstanding unexercised. The pro forma table in Section 3.3 also uses 3,100,000 for outstanding options. This matches the criterion exactly."
+    },
+    {
+      "id": "C-027",
+      "title": "Includes warrant in fully diluted calculation",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly includes the 150,000-share Pinnacle National Bank warrant in its fully diluted capitalization analysis. Section 2.1 identifies the warrant and notes it was omitted from the term sheet's FD count; Section 3.2's corrected scenarios add the warrant (150,000) along with exercised options (450,000) and note-conversion shares (320,616) to arrive at the 22,924,616 denominator (22,004,000 + 920,616); and Recommendation 1 lists the 150,000 warrant shares for incorporation into the definitive pre-money denominator. The warrant is therefore fully integrated into the FD calculation."
+    },
+    {
+      "id": "C-028",
+      "title": "Correct Series A aggregate liquidation preference (~$11.46M)",
+      "verdict": "pass",
+      "reasoning": "The criterion requires the Series A aggregate liquidation preference to be stated as approximately $11,461,848 (3,820,616 \u00d7 $3.00 \u00d7 1x), with reasonable rounding such as ~$11.46M or ~$11.5M. In Section 3.4, the memo calculates the Series A preference as $10.5M based on the cap table's 3,500,000 shares, but expressly provides the corrected figure: \"~$11.5M if 3,820,616 shares,\" which is a reasonable rounding of $11,461,848. The failure condition is using only 3,500,000 shares (yielding $10.5M) without correction; here the memo explicitly corrects the figure using the COI share count of 3,820,616 and also flags the share count discrepancy as a high-priority open issue (Section 4.1) that directly affects the cap table accuracy representation. The corrected ~$11.5M figure is therefore stated in the memo, satisfying the criterion."
+    },
+    {
+      "id": "C-029",
+      "title": "Notes Series C 1.5x preference vs. 1x for prior series",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the discrepancy in multiple places. The Executive Summary notes Series C carries a '1.5x non-participating liquidation preference' as materially investor-favorable; Section 2.1 lists Series A and Series B as having '1x non-participating' preferences; and the Section 3.4 liquidation waterfall quantifies Series C's 1.5x preference ($12.27/share, ~$67.5M) ahead of the pari passu Series A/B 1x preferences. The comparison of 1.5x (Series C) vs. 1x (Series A/B) is clearly noted."
+    },
+    {
+      "id": "C-030",
+      "title": "Corrected pre-money ownership table includes Firstvale's corrected Series A shares (3,820,616)",
+      "verdict": "pass",
+      "reasoning": "Section 2.1 of the memo provides a pre-money capitalization table ('Current Capitalization (As of November 8, 2024)') that explicitly shows Firstvale's Series A shares as 3,500,000 (cap table) / 3,820,616 (per COI \u00a7\u00a7 4.2(b), 5A.1), with the corrected 3,820,616 figure bolded and sourced. The correction is also carried through the corrected pre-money FD denominator scenarios in \u00a7 3.2 (which add the 320,616 note-conversion shares) and prominently flagged in the Executive Summary and \u00a7 4.1. While the \u00a7 3.3 post-closing table uses the term sheet's uncorrected 3,500,000 figure, it expressly labels itself as based on the term sheet's stated figures and notes it will shift once corrections are resolved. The criterion \u2014 a pre-money ownership table showing Firstvale's corrected 3,820,616 Series A shares \u2014 is satisfied by \u00a7 2.1."
+    },
+    {
+      "id": "C-031",
+      "title": "Corrected pre-money ownership table includes corrected available option pool (1,450,000)",
+      "verdict": "fail",
+      "reasoning": "The memo never presents a corrected pre-money ownership table, and the corrected available pool figure of 1,450,000 (i.e., 1,275,000 + 175,000 forfeited shares reverting per EIP \u00a7 2.3) appears nowhere in the output. The memo flags the pool discrepancy in \u00a7\u00a7 1, 2.1, and 4.2 but only lists the conflicting figures (1,275,000 and 1,204,000) and vaguely notes the EIP reversion provision 'may' yield a higher number without calculating it. The only ownership table provided (\u00a7 3.3) is a post-closing pro forma that uses the uncorrected 1,204,000 available pool figure. This fails both prongs of the criterion: no corrected pre-money table is provided, and the corrected 1,450,000 figure is absent."
+    },
+    {
+      "id": "C-032",
+      "title": "Corrected pre-money ownership table uses fully diluted basis of 23,170,616 shares",
+      "verdict": "fail",
+      "reasoning": "The memo never presents a corrected pre-money ownership table on a fully diluted basis of 23,170,616 shares. Its corrected denominator in Section 3.2 and Recommendation 1 is 22,924,616 shares (22,004,000 + 450,000 exercised options + 320,616 note-conversion shares + 150,000 warrant shares). While the memo flags the option pool discrepancy (1,204,000 vs. 1,275,000 vs. a potentially higher figure under EIP \u00a7 2.3 forfeiture reversion, which would add ~246,000 shares and yield 23,170,616), it never quantifies or incorporates that adjustment into a corrected total. Moreover, the only ownership percentage table provided (Section 3.3) is a post-closing pro forma on ~27,504,000 shares, not a corrected pre-money table. Because the corrected fully diluted total used (22,924,616) differs from the required 23,170,616 and no pre-money ownership summary table on that basis is provided, the criterion is not met."
+    },
+    {
+      "id": "C-033",
+      "title": "Provides pro forma post-money ownership table",
+      "verdict": "pass",
+      "reasoning": "Section 3.3 provides a pro forma post-closing ownership table listing each holder/class, share counts, and fully diluted post-money percentages, including the Series C shares (Ridgeline ~4,278,973 and existing preferred pro rata ~1,221,027) and the option pool line (1,204,000 available shares). The memo also quantifies how the \u00a71.10 pool increase would shift the denominator, price, and Series C share counts (Section 3.2 scenarios), and notes the table figures will change once the pool increase and corrections are resolved. While the expanded 7,500,000-share pool is not separately broken out as its own row in the table, the memo clearly presents a post-Series C ownership summary showing the impact of the new financing and the option pool on ownership percentages, satisfying the criterion."
+    },
+    {
+      "id": "C-034",
+      "title": "Notes option pool increase to 7,500,000 shares pre-money",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly and repeatedly notes the pool increase requirement: Executive Summary item 2 states \"Section 1.10 requires a 2,500,000-share pool increase (5,000,000 \u2192 7,500,000) to be included in pre-money fully diluted capitalization,\" and Section 2.2 confirms \"Term Sheet \u00a7 1.10 requires a pre-closing increase to 7,500,000 shares (+2,500,000), with all dilution borne by existing common and preferred holders and included in the pre-money denominator.\" The pre-money treatment and impact on pricing/share count are also quantified in Sections 3.2 and 4.3."
+    },
+    {
+      "id": "C-035",
+      "title": "Identifies convertible note conversion price as $2.40 (discount)",
+      "verdict": "pass",
+      "reasoning": "Section 2.3 of the memo explicitly identifies the convertible note conversion price as $2.40/share, explaining it as 'the $3.00 Series A price less the 20% discount,' and correctly applies it to principal plus accrued interest ($769,479.45 \u00f7 $2.40 = 320,616 Series A shares), consistent with the COI. The memo thus identifies both the correct conversion price and the discount-based mechanics as required by the criterion."
+    },
+    {
+      "id": "C-036",
+      "title": "Provides actionable recommendation on anti-dilution negotiation",
+      "verdict": "pass",
+      "reasoning": "The memo explicitly identifies the full ratchet anti-dilution provision in Section 4.9 (noting it materially increases downside dilution risk vs. the broad-based weighted average in Series A/B) and, in Recommendation 3 of Section 6, directly advises the company to 'push for broad-based weighted average instead of full-ratchet anti-dilution.' This squarely satisfies the criterion of providing an actionable recommendation to negotiate the anti-dilution mechanism from full ratchet to broad-based weighted average."
+    },
+    {
+      "id": "C-037",
+      "title": "Provides actionable recommendation on option grant veto carve-out",
+      "verdict": "pass",
+      "reasoning": "The memo identifies the option-grant veto problem (Section 4.8: Series C consent required for any equity plan issuance 'whether or not previously approved by the Board,' conflicting with the EIP) and provides an actionable recommendation in Section 6, Recommendation 3: 'Negotiate the \u00a7 2.5 protective provisions, particularly deletion or narrowing of the equity-plan consent right (\u00a7 2.5(b))...' Recommending deletion or narrowing of the veto as applied to equity incentive plan grants directly addresses the option grant veto issue \u2014 a deletion is even stronger than a carve-out, and 'narrowing' encompasses carving out board-approved plan grants. This satisfies the criterion."
+    },
+    {
+      "id": "C-038",
+      "title": "Provides recommendation on obtaining Series B consent",
+      "verdict": "fail",
+      "reasoning": "The memo never addresses the need to obtain majority Series B (Summit Arc Capital) consent as a condition to the Series C financing. It discusses Series C protective provisions, pro rata participation rights, Voting Agreement amendments (board size changes requiring consent of designating parties), and various cap table discrepancies, but nowhere analyzes or recommends obtaining Series A/B protective-provision consent triggered by the new senior 1.5x preference series. Recommendations 1\u20137 in Section 6 omit any Series B consent requirement."
+    },
+    {
+      "id": "C-039",
+      "title": "Provides recommendation on board composition/Series A consent",
+      "verdict": "fail",
+      "reasoning": "The memo identifies the board-structure issue \u2014 \u00a7 4.7 and \u00a7 5 note that the Series C financing will add a Ridgeline director, requires amending the five-member board structure in Voting Agreement \u00a7 2.1, and that such amendments are protected provisions requiring consent of each designating party and affected preferred series (VA \u00a7 6.1). However, this is presented only as descriptive analysis/observation, not as a recommendation. The memo never recommends obtaining Series A consent for the change to their board representation, negotiating to preserve the Series A seat, or addressing the Voting Agreement amendment requirement in Series C negotiations. The Recommendations section (\u00a7 6) omits the board seat/Voting Agreement issue entirely \u2014 the closest items are correcting board designee *names* on the cap table (Recommendation 5) and negotiating \u00a7 2.5 protective provisions (Recommendation 3, focused on the equity-plan veto, operational consents, and anti-dilution, not board composition). Because no recommendation regarding the board seat/Voting Agreement conflict is made, the criterion is not satisfied."
+    },
+    {
+      "id": "C-040",
+      "title": "Correct Series B post-money valuation of $106,200,000",
+      "verdict": "fail",
+      "reasoning": "The memo never addresses the Series B pre-money or post-money valuation at all. It lists Series B as 4,200,000 shares at a $6.00 OIP (implying $25,200,000 raised) but nowhere states the Series B post-money valuation of $106,200,000, nor does it flag that a post-money figure should be recalculated using a corrected $81,000,000 pre-money (or identify any $84M/$109,200,000 discrepancy in the source documents). Because the memo omits this key term entirely, it neither states the correct figure nor identifies the needed correction, so it does not satisfy the criterion."
+    },
+    {
+      "id": "C-041",
+      "title": "IPO conversion threshold correctly noted as $16.36/share",
+      "verdict": "pass",
+      "reasoning": "Section 3.4 of the memo explicitly states that 'Automatic conversion of Series C requires a Qualified IPO (\u2265$50M gross proceeds at \u2265$16.36/share, i.e., 2x OIP),' directly noting the $16.36/share IPO conversion threshold as required by the criterion."
+    }
+  ],
+  "run_id": "/Users/xiongweixiao/main/OpenSource/nanoRSI/.omx/harness2_minimal_runs/emerging-companies-venture-capital/extract-key-terms-from-cap-table/baseline",
+  "task": "emerging-companies-venture-capital/extract-key-terms-from-cap-table",
+  "judge_model": "glm-5.3",
+  "scored_at": "2026-10-24T19:49:05.508138+00:00"
+}
