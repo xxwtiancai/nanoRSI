@@ -1,3 +1,2 @@
-"""nanoRSI: a small evidence-gated RSI experiment kernel."""
-
-__version__ = "0.4.1"
+"""nanoRSI: a minimal, auditable recursive harness-improvement loop."""
+__version__ = "0.5.0"

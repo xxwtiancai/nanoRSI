@@ -1,0 +1,16 @@
+Weekly platform sync — 2026-10-27
+
+Attendees: Priya (eng lead), Marcus (SRE), Dana (finance), Lee (product)
+
+1. Incident review. The Tuesday outage traced to an expired certificate on the
+   status page. Marcus will rotate the status page certificate and add an expiry
+   alert by 2026-10-31.
+2. Vendor contract. The monitoring vendor contract renews on 2026-11-15. Priya
+   will send the renewal recommendation to Dana by 2026-11-03.
+3. Budget. Dana reported the Q4 budget freeze is in effect; new tooling requests
+   are paused until January. Someone should draft the exception process for
+   urgent security tooling — no owner was assigned.
+4. Roadmap. Lee asked for a one-page summary of platform work for the board
+   deck. Priya will draft it by 2026-11-07.
+5. Open question: whether to move the status page to the new provider. Decision
+   deferred to next sync.

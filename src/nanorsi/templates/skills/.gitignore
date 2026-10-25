@@ -1,6 +1,0 @@
-__pycache__/
-*.py[cod]
-.nanorsi/
-lineage.jsonl
-reports/
-.venv/

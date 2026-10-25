@@ -1,3 +1,0 @@
-base_model = "external://base-model"
-dataset = "external://dataset"
-objective = "declared by the external training contract"

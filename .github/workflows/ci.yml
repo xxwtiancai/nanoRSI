@@ -21,22 +21,15 @@ jobs:
         run: python -m pip install -e .
       - name: Tests
         run: python -m unittest discover -v
-      - name: CLI smoke
+      - name: CLI smoke (offline)
         run: |
-          nanorsi new artifact-fixture ./artifact-demo
-          nanorsi baseline --workspace ./artifact-demo
-          nanorsi step --workspace ./artifact-demo
-          nanorsi verify --workspace ./artifact-demo
-          nanorsi report --workspace ./artifact-demo --format html
-          nanorsi new skills ./skills-contract
-          test -f ./skills-contract/tasks/manifest.json
-          test -f ./skills-contract/adapters/model.py
-          nanorsi new coding ./coding-contract
-          test -f ./coding-contract/evaluator/_skills.py
-          test -f ./coding-contract/adapters/python_tests.py
-          nanorsi configure --workspace ./coding-contract --model offline-ci --base-url http://127.0.0.1:8000/v1 --no-api-key --max-steps 1
-          nanorsi doctor --workspace ./coding-contract
-          python examples/coding_tasks/prepare.py --check
+          nanorsi new ./lab --goal "ci smoke"
+          echo ci-offline-key > ./ci.key
+          nanorsi configure --workspace ./lab --model offline-ci --base-url http://127.0.0.1:8000/v1 --api-key-file ./ci.key
+          nanorsi doctor --workspace ./lab
+          nanorsi verify --workspace ./lab
+          nanorsi report --workspace ./lab
+          test -f ./lab/reports/report.md
 
   package:
     runs-on: ubuntu-latest
@@ -45,34 +38,22 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
-      - name: Research catalogue consistency
-        run: python docs/research/industry-rsi/render.py --check
+      - name: Research notes consistency
+        run: |
+          python docs/research/industry-rsi/render.py --check
+          python docs/research/industry-rsi/migrate_to_notes.py --check
       - name: Build and install wheel
         run: |
           python -m pip wheel --no-deps --wheel-dir dist .
           python -m venv .wheel-venv
           .wheel-venv/bin/python -m pip install --no-deps dist/*.whl
-      - name: Installed coding template
+      - name: Installed template and zero runtime dependencies
         run: |
-          .wheel-venv/bin/nanorsi new coding ./coding-wheel
-          test -f ./coding-wheel/evaluator/_skills.py
-          test -f ./coding-wheel/adapters/python_tests.py
-          .wheel-venv/bin/nanorsi configure --workspace ./coding-wheel --model offline-ci --base-url http://127.0.0.1:8000/v1 --no-api-key --max-steps 1
-          .wheel-venv/bin/nanorsi doctor --workspace ./coding-wheel
+          .wheel-venv/bin/nanorsi new ./wheel-lab
+          test -f ./wheel-lab/harness/systemprompt.md
+          test -f ./wheel-lab/tasks/manifest.json
+          test -f ./wheel-lab/judge/judge.py
+          echo ci-offline-key > ./ci.key
+          .wheel-venv/bin/nanorsi configure --workspace ./wheel-lab --model offline-ci --base-url http://127.0.0.1:8000/v1 --api-key-file ./ci.key
+          .wheel-venv/bin/nanorsi doctor --workspace ./wheel-lab
           .wheel-venv/bin/python -c 'import importlib.metadata; assert not importlib.metadata.requires("nanorsi")'
-      - name: Installed parameter-learning lifecycle
-        run: |
-          .wheel-venv/bin/nanorsi new model ./model-wheel
-          .wheel-venv/bin/nanorsi baseline --workspace ./model-wheel
-          .wheel-venv/bin/nanorsi run --workspace ./model-wheel
-          .wheel-venv/bin/nanorsi freeze --workspace ./model-wheel --repeats 1
-          .wheel-venv/bin/nanorsi final-test --workspace ./model-wheel
-          .wheel-venv/bin/nanorsi report --workspace ./model-wheel --format html
-          .wheel-venv/bin/nanorsi verify --workspace ./model-wheel
-      - name: Installed live templates (offline)
-        run: |
-          for template in artifact harness; do
-            .wheel-venv/bin/nanorsi new "$template" "./$template-wheel"
-            .wheel-venv/bin/nanorsi configure --workspace "./$template-wheel" --model offline-ci --base-url http://127.0.0.1:8000/v1 --no-api-key --max-steps 1
-            .wheel-venv/bin/nanorsi doctor --workspace "./$template-wheel"
-          done

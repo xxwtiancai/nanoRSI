@@ -1,8 +1,0 @@
-{
-  "batch_size": 24,
-  "focus_task_ids": [],
-  "lr": 0.12,
-  "method": "sft",
-  "seed": 0,
-  "steps": 200
-}

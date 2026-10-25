@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "task_id": "ops/meeting-action-items",
+      "domain": "ops",
+      "instruction": "Read the meeting notes and produce `action-items.md`: a table of every action item with owner, due date and the sentence in the notes it comes from. Flag any item with no owner.",
+      "documents": {"notes.txt": "tasks/docs/meeting-notes.txt"},
+      "deliverables": ["action-items.md"],
+      "extra": {"expected_points": ["Priya", "2026-11-03", "vendor contract", "no owner", "Marcus", "status page", "budget freeze"]}
+    },
+    {
+      "task_id": "legal/lease-obligations",
+      "domain": "legal",
+      "instruction": "Read the lease excerpt and produce `obligations.md`: list each tenant obligation with its clause number, deadline or trigger, and the penalty for breach where stated. Note any clause whose penalty is unstated.",
+      "documents": {"lease.txt": "tasks/docs/lease-excerpt.txt"},
+      "deliverables": ["obligations.md"],
+      "extra": {"expected_points": ["4.2", "fifth business day", "1.5%", "7.1", "thirty (30) days", "unstated", "9.3", "insurance", "2,000,000"]}
+    }
+  ]
+}

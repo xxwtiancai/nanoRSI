@@ -1,0 +1,3 @@
+- Read every provided document before writing anything.
+- Write each expected deliverable exactly once, with the expected file name.
+- If a document cannot be read, say so inside the deliverable instead of guessing.

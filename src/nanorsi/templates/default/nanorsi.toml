@@ -1,0 +1,33 @@
+[experiment]
+id = "harness-lab"
+goal = "{{GOAL}}"
+mode = "agg"
+k = 1
+seed = 0
+
+[model]
+model = "configure-your-model"
+base_url = ""
+api_key_file = ""
+max_tokens = 8192
+timeout_s = 600
+thinking = "disabled"
+
+[runner]
+kind = "loopback"
+timeout_s = 3600
+
+[harness]
+root = "harness"
+
+[tasks]
+manifest = "tasks/manifest.json"
+
+[judge]
+command = ["{{PYTHON}}", "judge/judge.py"]
+model = ""
+
+[budget]
+max_proposer_calls = 40
+max_rollouts = 40
+max_output_bytes = 2000000

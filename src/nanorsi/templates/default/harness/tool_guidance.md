@@ -1,0 +1,2 @@
+- Prefer clear structure in deliverables: headings, short paragraphs, explicit lists.
+- Quote figures and names exactly as they appear in the source documents.
