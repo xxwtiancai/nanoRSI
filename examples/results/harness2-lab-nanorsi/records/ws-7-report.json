@@ -1,0 +1,52 @@
+{
+ "tasks": {
+  "emerging-companies-venture-capital/extract-key-terms-from-cap-table": {
+   "proposals": 2,
+   "contrasts": {
+    "mitigates": 1,
+    "neutral": 1,
+    "regresses": 0
+   },
+   "decisions": [
+    {
+     "decision": "adopt_inv",
+     "observation": "The INV tool-guidance edit mitigates a real defect: the reference trajectory burned two failed sandbox-mode script calls, while the candidate's guidance led to checking --help first and discovering --in host with zero wasted calls. The DOM ",
+     "files": []
+    }
+   ],
+   "chosen": "agg1",
+   "lesson": "Run --help (or skim the header) before the first real call; if a first call fails, diagnose and retry once with a changed flag (e.g., sandbox vs. in-process mode) rather than abandoning the script or repeating the same call",
+   "scores": {
+    "base": {
+     "n_passed": 37,
+     "n_criteria": 41,
+     "all_pass": false,
+     "partial": 0.9024390243902439
+    },
+    "final": {
+     "n_passed": 39,
+     "n_criteria": 41,
+     "all_pass": false,
+     "partial": 0.9512195121951219
+    }
+   }
+  }
+ },
+ "means": {
+  "base": 0.9024390243902439,
+  "final": 0.9512195121951219,
+  "n": 1,
+  "delta_pp": 4.8780487804877986,
+  "wins": 1,
+  "ties": 0,
+  "losses": 0
+ },
+ "usage": {
+  "proposer_calls": 7,
+  "rollouts": 4,
+  "input_tokens": 7548424,
+  "output_tokens": 368073
+ },
+ "frozen": true,
+ "events": 17
+}

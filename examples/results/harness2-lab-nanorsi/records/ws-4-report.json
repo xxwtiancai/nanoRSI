@@ -1,0 +1,55 @@
+{
+ "tasks": {
+  "litigation-dispute-resolution/analyze-counterparty-motion-to-dismiss": {
+   "proposals": 2,
+   "contrasts": {
+    "mitigates": 1,
+    "neutral": 1,
+    "regresses": 0
+   },
+   "decisions": [
+    {
+     "decision": "adopt_dom",
+     "observation": "DOM mitigates the citation-verification failure mode (verbatim-quote appendices, cite-check flags) that empty guardrails leave unchecked; INV was neutral since both runs recovered from extraction failures equally. Prior rejection was proced",
+     "files": [
+      "guardrails.md",
+      "memory.md"
+     ]
+    }
+   ],
+   "chosen": "agg1",
+   "lesson": "Invest in record-verification guardrails (verbatim-quote appendices, pin-cites, citation flags) rather than broader analysis, because output quality differentiates on citation integrity, not issue discovery",
+   "scores": {
+    "base": {
+     "n_passed": 33,
+     "n_criteria": 34,
+     "all_pass": false,
+     "partial": 0.9705882352941176
+    },
+    "final": {
+     "n_passed": 28,
+     "n_criteria": 34,
+     "all_pass": false,
+     "partial": 0.8235294117647058
+    }
+   }
+  }
+ },
+ "means": {
+  "base": 0.9705882352941176,
+  "final": 0.8235294117647058,
+  "n": 1,
+  "delta_pp": -14.70588235294118,
+  "wins": 0,
+  "ties": 0,
+  "losses": 1
+ },
+ "usage": {
+  "proposer_calls": 8,
+  "rollouts": 4,
+  "input_tokens": 7521054,
+  "output_tokens": 332089
+ },
+ "frozen": true,
+ "events": 17
+}

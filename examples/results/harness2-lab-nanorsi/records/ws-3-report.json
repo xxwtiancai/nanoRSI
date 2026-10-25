@@ -1,0 +1,52 @@
+{
+ "tasks": {
+  "capital-markets/review-form-8": {
+   "proposals": 2,
+   "contrasts": {
+    "mitigates": 0,
+    "neutral": 2,
+    "regresses": 0
+   },
+   "decisions": [
+    {
+     "decision": "keep",
+     "observation": "Both candidate tool_guidance.md edits showed neutral contrast: the read_doc.py failure occurred in both candidate and reference runs despite the guidance, and both runs recovered to produce complete, comparable form-check memos (missing Ite",
+     "files": []
+    }
+   ],
+   "chosen": "agg1",
+   "lesson": null,
+   "scores": {
+    "base": {
+     "n_passed": 31,
+     "n_criteria": 32,
+     "all_pass": false,
+     "partial": 0.96875
+    },
+    "final": {
+     "n_passed": 31,
+     "n_criteria": 32,
+     "all_pass": false,
+     "partial": 0.96875
+    }
+   }
+  }
+ },
+ "means": {
+  "base": 0.96875,
+  "final": 0.96875,
+  "n": 1,
+  "delta_pp": 0.0,
+  "wins": 0,
+  "ties": 1,
+  "losses": 0
+ },
+ "usage": {
+  "proposer_calls": 6,
+  "rollouts": 3,
+  "input_tokens": 2537133,
+  "output_tokens": 138162
+ },
+ "frozen": true,
+ "events": 16
+}

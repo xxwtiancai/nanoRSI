@@ -1,0 +1,52 @@
+{
+ "tasks": {
+  "tax/review-iss-tax-transaction-structure": {
+   "proposals": 2,
+   "contrasts": {
+    "mitigates": 1,
+    "neutral": 1,
+    "regresses": 0
+   },
+   "decisions": [
+    {
+     "decision": "keep",
+     "observation": "compose failed: decision adopt_dom lists 1 files but 0 bodies arrived",
+     "files": []
+    }
+   ],
+   "chosen": "agg1",
+   "lesson": null,
+   "scores": {
+    "base": {
+     "n_passed": 22,
+     "n_criteria": 28,
+     "all_pass": false,
+     "partial": 0.7857142857142857
+    },
+    "final": {
+     "n_passed": 23,
+     "n_criteria": 28,
+     "all_pass": false,
+     "partial": 0.8214285714285714
+    }
+   }
+  }
+ },
+ "means": {
+  "base": 0.7857142857142857,
+  "final": 0.8214285714285714,
+  "n": 1,
+  "delta_pp": 3.57142857142857,
+  "wins": 1,
+  "ties": 0,
+  "losses": 0
+ },
+ "usage": {
+  "proposer_calls": 8,
+  "rollouts": 3,
+  "input_tokens": 5575775,
+  "output_tokens": 442423
+ },
+ "frozen": true,
+ "events": 16
+}

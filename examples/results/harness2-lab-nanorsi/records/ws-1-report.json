@@ -1,0 +1,52 @@
+{
+ "tasks": {
+  "bankruptcy-restructuring/identify-issues-in-counterparty-sale-objection": {
+   "proposals": 2,
+   "contrasts": {
+    "mitigates": 0,
+    "neutral": 2,
+    "regresses": 0
+   },
+   "decisions": [
+    {
+     "decision": "keep",
+     "observation": "Both candidates' contrasts are neutral: both runs recovered from the read_doc.py sandbox failure, extracted all sources, and produced complete validated issue-memorandum.docx deliverables with comparable structure (A–F issue analysis, pin-c",
+     "files": []
+    }
+   ],
+   "chosen": "agg1",
+   "lesson": null,
+   "scores": {
+    "base": {
+     "n_passed": 25,
+     "n_criteria": 28,
+     "all_pass": false,
+     "partial": 0.8928571428571429
+    },
+    "final": {
+     "n_passed": 25,
+     "n_criteria": 28,
+     "all_pass": false,
+     "partial": 0.8928571428571429
+    }
+   }
+  }
+ },
+ "means": {
+  "base": 0.8928571428571429,
+  "final": 0.8928571428571429,
+  "n": 1,
+  "delta_pp": 0.0,
+  "wins": 0,
+  "ties": 1,
+  "losses": 0
+ },
+ "usage": {
+  "proposer_calls": 6,
+  "rollouts": 3,
+  "input_tokens": 4872936,
+  "output_tokens": 137481
+ },
+ "frozen": true,
+ "events": 16
+}

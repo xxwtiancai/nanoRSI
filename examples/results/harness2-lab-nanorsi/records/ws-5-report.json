@@ -1,0 +1,54 @@
+{
+ "tasks": {
+  "trusts-estates-private-client/draft-consent-to-adoption": {
+   "proposals": 2,
+   "contrasts": {
+    "mitigates": 1,
+    "neutral": 1,
+    "regresses": 0
+   },
+   "decisions": [
+    {
+     "decision": "adopt_dom",
+     "observation": "DOM mitigates: its memo pinpoint-sources every fact and correctly preserves the statutory withdrawal right instead of drafting irrevocable-on-execution language; INV's tool guidance was neutral since the candidate still fumbled readers and ",
+     "files": [
+      "memory.md"
+     ]
+    }
+   ],
+   "chosen": "agg1",
+   "lesson": "Before drafting, build a fact inventory with pinpoint citations per fact and map the governing statute's formalities (e.g., revocation windows) so the instrument neither fabricates unsourced facts nor waives statutory rights like revocability; surfaced guidance alone is insufficient without this discipline",
+   "scores": {
+    "base": {
+     "n_passed": 29,
+     "n_criteria": 35,
+     "all_pass": false,
+     "partial": 0.8285714285714286
+    },
+    "final": {
+     "n_passed": 30,
+     "n_criteria": 35,
+     "all_pass": false,
+     "partial": 0.8571428571428571
+    }
+   }
+  }
+ },
+ "means": {
+  "base": 0.8285714285714286,
+  "final": 0.8571428571428571,
+  "n": 1,
+  "delta_pp": 2.857142857142847,
+  "wins": 1,
+  "ties": 0,
+  "losses": 0
+ },
+ "usage": {
+  "proposer_calls": 9,
+  "rollouts": 4,
+  "input_tokens": 5709858,
+  "output_tokens": 217356
+ },
+ "frozen": true,
+ "events": 17
+}

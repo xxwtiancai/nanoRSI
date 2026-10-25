@@ -1,0 +1,54 @@
+{
+ "tasks": {
+  "employment-labor/identify-issues-in-counterparty-motion-brief": {
+   "proposals": 2,
+   "contrasts": {
+    "mitigates": 2,
+    "neutral": 0,
+    "regresses": 0
+   },
+   "decisions": [
+    {
+     "decision": "adopt_dom",
+     "observation": "Both candidates edit the same component (tool_guidance.md), so a merge is unavailable; the DOM candidate's guidance directly produced the citation-integrity, arithmetic, and SUMF-mapping defects the reference missed, and its document-readin",
+     "files": [
+      "tool_guidance.md"
+     ]
+    }
+   ],
+   "chosen": "agg1",
+   "lesson": "Read every input document in full with the native read tool (re-reading in chunks if truncated) and independently recompute numeric tests from raw exhibits instead of trusting party characterizations",
+   "scores": {
+    "base": {
+     "n_passed": 15,
+     "n_criteria": 23,
+     "all_pass": false,
+     "partial": 0.6521739130434783
+    },
+    "final": {
+     "n_passed": 12,
+     "n_criteria": 23,
+     "all_pass": false,
+     "partial": 0.5217391304347826
+    }
+   }
+  }
+ },
+ "means": {
+  "base": 0.6521739130434783,
+  "final": 0.5217391304347826,
+  "n": 1,
+  "delta_pp": -13.043478260869568,
+  "wins": 0,
+  "ties": 0,
+  "losses": 1
+ },
+ "usage": {
+  "proposer_calls": 7,
+  "rollouts": 4,
+  "input_tokens": 5453324,
+  "output_tokens": 337139
+ },
+ "frozen": true,
+ "events": 17
+}

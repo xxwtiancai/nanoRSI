@@ -77,7 +77,7 @@ nanorsi report --workspace ./lab && nanorsi verify --workspace ./lab
 
 | 研究 | 设置 | base → final partial |
 | --- | --- | --- |
-| [nanoRSI v0.5 on LAB](examples/results/harness2-lab-nanorsi/README.md) | 本循环，OpenCode 执行器，GLM-5.3 兼任执行器/改进器/judge | 见研究 |
+| [nanoRSI v0.5 on LAB](examples/results/harness2-lab-nanorsi/README.md) | 本循环，OpenCode 执行器，GLM-5.3 兼任执行器/改进器/judge | 0.859 → 0.838（−2.1 pp，3W/3T/2L）——两个 `mitigates` 采纳在终跑退化 |
 | [Harness² 原始代码 on LAB](examples/results/harness2-lab-opencode/README.md) | `google-research/harness2`，同一套模型 | 0.872 → 0.892（+2.0 pp，5W/1T/2L） |
 | 论文（GLM-5 / OpenCode） | 作者报告 | 0.596 → 0.714（+11.8 pp） |
 

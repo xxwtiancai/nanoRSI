@@ -1,0 +1,52 @@
+{
+ "tasks": {
+  "banking-finance/compare-closing-documents-against-restructuring-conditions": {
+   "proposals": 2,
+   "contrasts": {
+    "mitigates": 0,
+    "neutral": 2,
+    "regresses": 0
+   },
+   "decisions": [
+    {
+     "decision": "keep",
+     "observation": "Both candidate tool_guidance edits are graded neutral: the candidate executions did not avoid the script crash (both also ran it before falling back), and finding coverage was comparable or lower (32 vs 48) with no accuracy gain. Since neut",
+     "files": []
+    }
+   ],
+   "chosen": "agg1",
+   "lesson": null,
+   "scores": {
+    "base": {
+     "n_passed": 33,
+     "n_criteria": 38,
+     "all_pass": false,
+     "partial": 0.868421052631579
+    },
+    "final": {
+     "n_passed": 33,
+     "n_criteria": 38,
+     "all_pass": false,
+     "partial": 0.868421052631579
+    }
+   }
+  }
+ },
+ "means": {
+  "base": 0.868421052631579,
+  "final": 0.868421052631579,
+  "n": 1,
+  "delta_pp": 0.0,
+  "wins": 0,
+  "ties": 1,
+  "losses": 0
+ },
+ "usage": {
+  "proposer_calls": 6,
+  "rollouts": 3,
+  "input_tokens": 6122093,
+  "output_tokens": 258943
+ },
+ "frozen": true,
+ "events": 16
+}
