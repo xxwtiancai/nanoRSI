@@ -94,6 +94,37 @@ class ReplyGrammarTests(unittest.TestCase):
         self.assertEqual((text, usage["input_tokens"], calls["n"]), ("OK", 3, 1))
 
 
+class ComposeTests(unittest.TestCase):
+    def _compose(self, reply: str):
+        from nanorsi import propose, runner
+        config = load_config(_template_config())
+        transport = lambda payload: {"choices": [{"message": {"content": reply}}], "usage": {}}
+        model = Model(config.model, api_key="k", transport=transport)
+        base = {"systemprompt.md": "Be careful.\n"}
+        inv = propose.Candidate("INV", "guardrails.md", "verify figures", {**base, "guardrails.md": "- Verify figures.\n"})
+        dom = propose.Candidate("DOM", "tool_guidance.md", "cite clauses", {**base, "tool_guidance.md": "- Cite clauses.\n"})
+        ref = runner.Rollout("base1", Path("."), True, True, "trace")
+        contrasts = {"INV": {"contrast": "mitigates", "observation": "o"}, "DOM": {"contrast": "mitigates", "observation": "o"}}
+        return propose.compose(model, {"task_id": "t", "instruction": "do"}, base, [inv, dom], contrasts, ref)
+
+    def test_adopt_takes_the_candidate_tree_without_bodies(self):
+        record, tree = self._compose('{"decision": "adopt_dom", "observation": "dom mitigated", "files": ["tool_guidance.md"]}')
+        self.assertEqual(record["decision"], "adopt_dom")
+        self.assertEqual(tree["tool_guidance.md"], "- Cite clauses.\n")
+        self.assertNotIn("guardrails.md", tree)
+
+    def test_adopt_applies_extra_bodies_on_top(self):
+        record, tree = self._compose('{"decision": "adopt_inv", "observation": "o", "files": ["memory.md"]}\n```markdown\nLesson: verify.\n```')
+        self.assertEqual(tree["guardrails.md"], "- Verify figures.\n")
+        self.assertEqual(tree["memory.md"], "Lesson: verify.\n")
+
+    def test_merge_requires_bodies_and_falls_back_to_keep(self):
+        record, tree = self._compose('{"decision": "merge", "observation": "o", "files": ["guardrails.md", "tool_guidance.md"]}')
+        self.assertEqual(record["decision"], "keep")
+        self.assertIn("merge lists 2 files", record["error"])
+        self.assertEqual(tree, {"systemprompt.md": "Be careful.\n"})
+
+
 def _template_config() -> Path:
     tmp = Path(tempfile.mkdtemp()) / "ws"
     render(tmp, goal="g")

@@ -90,9 +90,10 @@ COMPOSE_SYSTEM = (
     "You compose the next harness from probe evidence. Reply with one JSON header line "
     '{"decision": "adopt_inv|adopt_dom|merge|keep", "observation": "<decision tied to the contrasts>", '
     '"files": ["<component>", ...]} and then, for EVERY listed file in order, one fenced block with its COMPLETE '
-    "content. Rules: adopt only edits whose contrast is mitigates; keep beats adopting neutral or regressing "
-    "edits; merge only when both candidates mitigate and touch different components; files may include "
-    "memory.md to record a lesson supported by the contrasts."
+    "content. For adopt_inv / adopt_dom the chosen candidate's edit is applied for you — list files only for "
+    "additional changes (e.g. memory.md recording a lesson the contrasts support). For merge, list and supply "
+    "every merged component. Rules: adopt only edits whose contrast is mitigates; keep beats adopting neutral "
+    "or regressing edits; merge only when both candidates mitigate and touch different components."
 )
 
 
@@ -115,9 +116,18 @@ def compose(model, task: dict, base: dict, candidates: list, contrasts: dict, re
             if decision not in {"adopt_inv", "adopt_dom", "merge", "keep"}:
                 raise harness.HarnessError(f"unknown decision {decision!r}")
             files = header.get("files") if isinstance(header.get("files"), list) else []
-            if decision != "keep" and (not files or len(bodies) < len(files)):
-                raise harness.HarnessError(f"decision {decision} lists {len(files)} files but {len(bodies)} bodies arrived")
-            tree = dict(base)
+            by_dim = {cand.dim: cand for cand in candidates}
+            if decision in {"adopt_inv", "adopt_dom"}:
+                # Adopting a candidate means taking its probed tree; bodies are optional
+                # overrides (e.g. a memory.md lesson) and must never be required.
+                chosen = by_dim.get(decision[-3:].upper())
+                if chosen is None or chosen.error:
+                    raise harness.HarnessError(f"{decision} names a candidate that does not exist or failed")
+                tree = dict(chosen.tree)
+            else:
+                if decision == "merge" and (not files or len(bodies) < len(files)):
+                    raise harness.HarnessError(f"merge lists {len(files)} files but {len(bodies)} bodies arrived")
+                tree = dict(base)
             for name, body in zip(files, bodies):
                 tree = harness.apply_edit(tree, str(name), body)
             record = {"decision": decision, "observation": str(header.get("observation", ""))[:600],
