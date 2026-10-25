@@ -4,12 +4,20 @@
 
 ## 最近更新
 
+- 2026-10-26 · 收录 EvoForesight/DeepEvolve（arXiv:2610.29784 v2，首发 2026-10-21、修订 2026-10-22）：论文原始 Figure 1、官方仓库和资源页已核验；仓库未见 LICENSE，完整训练实现/权重未公开，因此只记录闭环协议启发，不复制代码或声称本地复现。
 - 2026-10-25 · 补录 R² Flow：首发 2026-09-27、v3 修订 2026-10-22；论文与 Figure 3 已核验，官方代码仓库可读但仓库级许可未核验，因此只采纳协议启发，不复制代码。
 - 2026-10-24 · 体系切换：按综述两轴把存量 236 条整理论文笔记，此后每日收录直接写入本文件；industry-rsi 旧体系（catalog/render/分类页/RADAR）冻结归档。
 
 ## 1. 部署时自进化 / Deployment-time self-evolution（125 条）
 
 ### 技能文件优化与技能库（31）
+
+- **[Evolving with Open Worlds: Towards Recursive Self-Improvement for Future Forecasting](https://arxiv.org/abs/2610.29784)**（中国人民大学高瓴人工智能学院 / 南洋理工大学 / IQuest Research，首发 2026-10-21，v2 修订 2026-10-22，闭环）
+  - 核心：EvoForesight 将递归闭环拆成 Prometheus（从实时新闻与日程生成、去重、冲突检测和多样性选择可验证问题）、Branchus（把时效性搜索团队与只读取冻结证据的预测团队分开）和 Athena（用已解析结果驱动参数更新、技能蒸馏及面向弱点的任务合成技能）。同一条预测轨迹同时供参数、行为和环境三条更新轴使用，环境也随失败暴露的弱点而变难。
+  - 数字：论文报告 FutureX 连续三周总榜第一、最高 rating 提升 195%；合成评测在四个基础模型上进入前三，最强基线差距最高 10.7 Bradley–Terry 点。另报告 RLVR 在两个模型上各提升 1.3 个 choice accuracy 点，GLM-4.7-Flash 的两轮 RFT 将 Brier 0.651→0.636→0.630、relative WIS 1.02→0.99→0.98。以上均为作者结果，不是 nanoRSI 复现。
+  - 代码／权重／数据／许可：官方仓库 [RUCAIBox/EvoForesight](https://github.com/RUCAIBox/EvoForesight) 公开 README 与资源快照，核验时仓库仅 4 个提交、未见 LICENSE；论文称资源公开，但未核验完整训练代码、权重或可直接复现的训练包。论文与 Figure 1 可从 [arXiv HTML v2](https://arxiv.org/html/2610.29784v2) 获取。
+  - 点评：可移植的是“冻结可见证据后再训练/蒸馏”的污染隔离、参数/技能/环境更新分账，以及把环境更新保持在独立评测之外；对 nanoRSI 先作为报告字段与实验协议输入，不引入新闻采集、RL 或外部数据依赖。· [原文 Figure 1](industry-rsi/assets/paper-figures/deepevolve-overview.png) · [官方仓库](https://github.com/RUCAIBox/EvoForesight)
+  - 原文图／来源：论文原始 Figure 1（EvoForesight 总体闭环、三模块及三条更新轴）；[arXiv HTML v2](https://arxiv.org/html/2610.29784v2)，Figure 1，图片源地址为 `https://arxiv.org/html/2610.29784v2/deepevolve_overview.png`。
 
 - **[R² Flow: Recursive Self-Improvement via Recursive Skill Evolution](https://arxiv.org/abs/2609.33867)**（The Chinese University of Hong Kong, Shenzhen / Fudan University / University of Illinois Urbana-Champaign / University of Oxford / National University of Singapore，首发 2026-09-27，v3 修订 2026-10-22，闭环）
   - 核心：把技能库更新放进两个嵌套环：阶段内在共享状态编排图上训练 Supervisor 的 flow，分别读出技能的 flow share 与有符号 utility；阶段边界由独立验证器证据、残差方差平台期和版本化技能库触发提案、配对验证、提交或回滚。独立步骤的不同排列合并为同一状态，避免树状历史重复分摊证据。

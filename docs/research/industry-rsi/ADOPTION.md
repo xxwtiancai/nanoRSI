@@ -22,6 +22,18 @@ copied. / **2026-10-25 状态说明：** 补录 R² Flow 作为一手核验的�
 闸门下的配对验证，扩展了现有证据账本方向。官方仓库未核验到仓库级许可，且需要
 多 GPU 训练栈，因此未复制代码或增加依赖。
 
+**2026-10-26 status note:** EvoForesight/DeepEvolve adds a protocol input rather
+than a runtime feature: keep search-time evidence frozen before outcome labels
+resolve, and report parameter, behavior/skill, and environment updates as
+separate effects. Its official repository does not expose a verified license or
+complete training implementation, so no code was copied; the existing selector
+study remains the next executable work and still requires matched budgets,
+held-out scoring, parent re-measurement, and false-block accounting. /
+**2026-10-26 状态说明：** EvoForesight/DeepEvolve 提供的是协议输入而非运行时
+功能：在结果标签揭示前冻结搜索时证据，并把参数、行为/技能和环境更新作为独立效果
+报告。官方仓库未核验到许可或完整训练实现，因此未复制代码；当前选择器研究仍是
+下一项可执行工作，仍须匹配预算、留出评分、父代重测和误拦统计。
+
 **2026-10-21 status note:** The midnight run catalogued ten primary-verified records (CoEvo-RSI, HarnessPro, VibeTraining-Bench, EvoSkill v2, the IBM token-parity audit, Hippo, TrackRL, FoH, Skill-RSI, SkillClash) and added items 67–70. Implementation order is unchanged — item 38 first. Item 67 is strictly additive measurement discipline (the token column already exists in the ledger); items 68–70 are protocol inputs for the frozen selector study rather than new default behaviors. Two external validations worth naming: VibeTraining-Bench enforces exactly this repo's safeguard triad (test isolation, grader separation, network restriction) as its anti-reward-hacking baseline, and Skill-RSI's compile protocol (post-freeze hidden exams, tamper-evident manifests, per-repair no-feedback control drafts) independently mirrors the freeze/verify pipeline. / **2026-10-21 状态说明：** 零点运行收录 10 条一手核验记录（CoEvo-RSI、HarnessPro、VibeTraining-Bench、EvoSkill v2、IBM token 对齐审计、Hippo、TrackRL、FoH、Skill-RSI、SkillClash），新增第 67–70 项。实现顺序不变——第 38 项优先。第 67 项是纯增量的度量纪律（账本里 token 列已存在）；第 68–70 项是冻结选择器研究的协议输入而非新默认行为。两项外部印证值得点名：VibeTraining-Bench 把本仓库的三重保障（测试隔离、判分分离、断网）作为防奖励作弊基线；Skill-RSI 的编译协议（冻结后隐藏考试、防篡改清单、每轮修复旁的无反馈对照草稿）独立复刻了 freeze/verify 流水线。
 
 **2026-10-16 status note:** The selector-study prerequisite is now complete at the tooling level: `examples/double_scoring/run.py` provides read-only control recomputation for false-block/false-admit accounting and an isolated-worktree path for archived pre-evaluation-blocked proposals. This is measurement-only; no selector behavior is enabled, and the three-seed × three-budget study still needs to be frozen and run before any arm can change promotion decisions. / **2026-10-16 状态说明：** 选择器研究的工具前置条件已在工具层完成：`examples/double_scoring/run.py` 提供只读的控制重算，用于误拦/误放统计，并为评测前被拦的归档提案提供隔离工作树重评估路径。这只是测量，不启用任何选择器行为；在任何臂改变晋升决定前，仍须冻结并执行三种子 × 三预算研究。

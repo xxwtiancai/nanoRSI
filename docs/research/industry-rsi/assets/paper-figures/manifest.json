@@ -516,4 +516,15 @@
   },
   "id": "cace-bench-admission-gate"
  }
+ ,{
+  "id": "evoforesight-deepevolve",
+  "kind": "paper-figure",
+  "asset": "assets/paper-figures/deepevolve-overview.png",
+  "source_url": "https://arxiv.org/html/2610.29784v2",
+  "locator": "Figure 1; source image deepevolve_overview.png",
+  "caption": {
+   "en": "Original Figure 1: EvoForesight closes the loop between a living forecasting environment, a search/predict forecaster, and recursive parameter, skill, and environment updates.",
+   "zh": "原始 Figure 1：EvoForesight 将动态预测环境、搜索/预测分工的预测器，以及参数、技能和环境递归更新连接成闭环。"
+  }
+ }
 ]
