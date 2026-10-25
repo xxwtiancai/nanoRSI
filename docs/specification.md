@@ -88,6 +88,19 @@ where the reference had one is `regresses` without a model call. Compose may ado
 mitigating edits on different components. A failed contrast call reads as `neutral`
 and records the error.
 
+## Final confirmation (`[experiment] final_repeats`)
+
+A single probe draw is weak evidence on noisy agentic tasks: in the first LAB study two
+`mitigates` adoptions collapsed at the final rollout. With `final_repeats = N > 1`, an
+adopted or merged harness is rolled out N times (`agg1`, `agg1r2`, …) and every draw is
+contrasted against the reference as a `FINAL` pseudo-candidate. The adoption is
+**confirmed** only if no draw regresses and at least one mitigates (`final_confirmed`
+event); otherwise it is **rolled back** (`rollback` event, decision recorded as
+`rollback`) and the task keeps the base harness and its reference deliverable under
+`<label>keep`. Confirmed draws all enter blind selection. In `seq` mode a rollback leaves
+the next round on the previous harness. The default `final_repeats = 1` preserves the
+paper's single final rollout.
+
 ## Selection, experience, judging
 
 With more than one delivered final, `select.blind` shows anonymised deliverables (ids

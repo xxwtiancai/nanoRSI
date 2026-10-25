@@ -6,8 +6,10 @@ import json
 
 
 class StubTransport:
-    def __init__(self, *, contrast="mitigates", decision="adopt_inv", select_choice="A", fail_compose_once=False):
+    def __init__(self, *, contrast="mitigates", decision="adopt_inv", select_choice="A", fail_compose_once=False,
+                 final_contrast=None):
         self.contrast = contrast
+        self.final_contrast = final_contrast or contrast
         self.decision = decision
         self.select_choice = select_choice
         self.fail_compose_once = fail_compose_once
@@ -32,7 +34,8 @@ class StubTransport:
             return json.dumps({"component": component, "note": f"{dim} edit from stub"}) + f"\n```markdown\n{body}```"
         if "Classify the CANDIDATE relative to the REFERENCE" in system:
             self.calls.append("contrast")
-            return json.dumps({"contrast": self.contrast, "observation": "stub observation"})
+            verdict = self.final_contrast if "(FINAL," in messages[-1]["content"] else self.contrast
+            return json.dumps({"contrast": verdict, "observation": "stub observation"})
         if "compose the next harness" in system:
             self.calls.append("compose")
             if self.fail_compose_once:

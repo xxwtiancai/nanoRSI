@@ -4,6 +4,7 @@ goal = "{{GOAL}}"
 mode = "agg"
 k = 1
 seed = 0
+final_repeats = 1
 
 [model]
 model = "configure-your-model"

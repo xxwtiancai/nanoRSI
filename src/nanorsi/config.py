@@ -41,9 +41,10 @@ class Config:
     mode: str  # agg | seq — the paper's parallel / sequential recursion
     k: int
     seed: int
-    model: ModelConfig
-    runner: RunnerConfig
-    budget: BudgetConfig
+    final_repeats: int = 1
+    model: ModelConfig = field(default_factory=ModelConfig)
+    runner: RunnerConfig = field(default_factory=RunnerConfig)
+    budget: BudgetConfig = field(default_factory=BudgetConfig)
     harness_root: str = "harness"
     tasks_manifest: str = "tasks/manifest.json"
     judge_command: list[str] = field(default_factory=list)
@@ -64,12 +65,7 @@ def _command(section: dict, key: str) -> list[str]:
     return list(value)
 
 
-def load_config(path: Path) -> Config:
-    try:
-        data = tomllib.loads(Path(path).read_text(encoding="utf-8"))
-    except (OSError, tomllib.TOMLDecodeError) as error:
-        raise ConfigError(f"cannot read {path}: {error}") from error
-    exp = _section(data, "experiment")
+def _experiment(exp: dict) -> tuple[str, str, int, int]:
     goal = str(exp.get("goal", "")).strip()
     mode = str(exp.get("mode", "agg"))
     if not goal:
@@ -79,6 +75,19 @@ def load_config(path: Path) -> Config:
     k = int(exp.get("k", 1))
     if not 1 <= k <= 8:
         raise ConfigError("[experiment] k must be between 1 and 8")
+    final_repeats = int(exp.get("final_repeats", 1))
+    if not 1 <= final_repeats <= 5:
+        raise ConfigError("[experiment] final_repeats must be between 1 and 5")
+    return goal, mode, k, final_repeats
+
+
+def load_config(path: Path) -> Config:
+    try:
+        data = tomllib.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, tomllib.TOMLDecodeError) as error:
+        raise ConfigError(f"cannot read {path}: {error}") from error
+    exp = _section(data, "experiment")
+    goal, mode, k, final_repeats = _experiment(exp)
     model = ModelConfig(
         model=str(_section(data, "model").get("model", "configure-your-model")),
         base_url=str(_section(data, "model").get("base_url", "")),
@@ -107,7 +116,7 @@ def load_config(path: Path) -> Config:
         raise ConfigError("[budget] limits must be positive")
     return Config(
         experiment_id=str(exp.get("id", Path(path).parent.name)),
-        goal=goal, mode=mode, k=k, seed=int(exp.get("seed", 0)),
+        goal=goal, mode=mode, k=k, seed=int(exp.get("seed", 0)), final_repeats=final_repeats,
         model=model, runner=runner, budget=budget,
         harness_root=str(_section(data, "harness").get("root", "harness")),
         tasks_manifest=str(_section(data, "tasks").get("manifest", "tasks/manifest.json")),

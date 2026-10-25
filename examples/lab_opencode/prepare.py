@@ -24,6 +24,7 @@ goal = "Improve the agent harness for professional legal document work on LAB"
 mode = "{mode}"
 k = {k}
 seed = 0
+final_repeats = {final_repeats}
 
 [model]
 model = "{chat_model}"
@@ -69,6 +70,7 @@ def main() -> int:
     parser.add_argument("--api-key-file", default="~/.nanorsi/keys/glm-coding-plan.key")
     parser.add_argument("--mode", choices=["agg", "seq"], default="agg")
     parser.add_argument("--k", type=int, default=1)
+    parser.add_argument("--final-repeats", type=int, default=1)
     parser.add_argument("--max-rollouts", type=int, default=40)
     parser.add_argument("--max-calls", type=int, default=80)
     args = parser.parse_args()
@@ -100,7 +102,7 @@ def main() -> int:
                 "judge_base_url": args.base_url, "api_key_file": args.api_key_file, "rollout_timeout_s": 3600}
     (dest / "lab_opencode.json").write_text(json.dumps(settings, indent=1), encoding="utf-8")
     (dest / "nanorsi.toml").write_text(TOML.format(
-        mode=args.mode, k=args.k, chat_model=args.chat_model, base_url=args.base_url,
+        mode=args.mode, k=args.k, final_repeats=args.final_repeats, chat_model=args.chat_model, base_url=args.base_url,
         api_key_file=str(Path(args.api_key_file).expanduser()), python=json.dumps(sys.executable),
         runner=json.dumps(str(HERE / "runner.py")), judge=json.dumps(str(HERE / "judge.py")),
         judge_model=args.judge_model, runner_timeout=4500, max_calls=args.max_calls, max_rollouts=args.max_rollouts),

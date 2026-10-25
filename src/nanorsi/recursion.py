@@ -91,8 +91,7 @@ class Session:
         for i, (candidates, contrasts) in enumerate(pool, 1):
             record, tree = self.compose(task, base, candidates, contrasts, reference)
             result.decisions.append(record)
-            result.finals.append(self.rollout(task, tree, f"agg{i}", run_root) if record["decision"] != "keep"
-                                 else self._kept(reference, f"agg{i}", run_root, tree))
+            result.finals.extend(self._finals(task, tree, f"agg{i}", run_root, reference, record))
         return result
 
     def _sequential(self, task, base, reference, lessons, run_root, result):
@@ -101,11 +100,34 @@ class Session:
             candidates, contrasts = self._pair(task, current_tree, current_ref, lessons, run_root, t)
             record, tree = self.compose(task, current_tree, candidates, contrasts, current_ref)
             result.decisions.append(record)
-            final = (self.rollout(task, tree, f"c{t}", run_root) if record["decision"] != "keep"
-                     else self._kept(current_ref, f"c{t}", run_root, tree))
-            result.finals.append(final)
-            current_tree, current_ref = tree, final
+            finals = self._finals(task, tree, f"c{t}", run_root, current_ref, record)
+            result.finals.extend(finals)
+            current_tree = tree if record["decision"] not in {"keep", "rollback"} else current_tree
+            current_ref = finals[0]
         return result
+
+    def _finals(self, task, tree, label, run_root, reference, record) -> list:
+        """Roll the composed harness `final_repeats` times and confirm the adoption.
+
+        Adoption is confirmed only if no final draw regresses against the reference
+        and at least one mitigates; otherwise the decision is rolled back to keep.
+        A single-draw probe verdict is not enough evidence on noisy agentic tasks."""
+        if record["decision"] == "keep":
+            return [self._kept(reference, label, run_root, tree)]
+        draws = [self.rollout(task, tree, label if n == 1 else f"{label}r{n}", run_root)
+                 for n in range(1, self.config.final_repeats + 1)]
+        if self.config.final_repeats == 1:
+            return draws
+        pseudo = propose.Candidate("FINAL", ", ".join(record.get("files") or ["composed"]),
+                                   record.get("observation", "")[:200], tree)
+        verdicts = [self.contrast(task, reference, draw, pseudo)["contrast"] for draw in draws]
+        confirmed = "regresses" not in verdicts and "mitigates" in verdicts
+        self.ledger.append("final_confirmed" if confirmed else "rollback", task=task["task_id"],
+                           label=label, verdicts=verdicts, decision=record["decision"])
+        if confirmed:
+            return draws
+        record["decision"], record["rolled_back_from"] = "rollback", record["decision"]
+        return [self._kept(reference, f"{label}keep", run_root, self._tree_of(run_root, "base1"))]
 
     def _kept(self, reference, label, run_root, tree) -> runner.Rollout:
         """A keep decision reuses the reference execution instead of paying a rollout."""

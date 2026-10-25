@@ -110,6 +110,36 @@ class LifecycleTests(unittest.TestCase):
             self.assertIn("budget_exhausted", events)
             self.assertEqual(events.count("rollout"), 2)
 
+    def test_final_repeats_confirm_an_adoption_and_blind_select_among_draws(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _workspace(Path(tmp), **{"experiment.final_repeats": 2})
+            stub = StubTransport(contrast="mitigates", decision="adopt_inv", final_contrast="mitigates", select_choice="B")
+            self.assertEqual(_run_cli(["evolve", "--workspace", str(root), "--max-tasks", "1"], stub), 0)
+            ledger = Ledger(root / ".nanorsi" / "ledger.jsonl")
+            labels = [row["label"] for row in ledger.events() if row["event"] == "rollout"]
+            self.assertEqual(labels, ["base1", "inv1", "dom1", "agg1", "agg1r2"])
+            self.assertEqual(ledger.count("final_confirmed"), 1)
+            selection = next(row for row in ledger.events() if row["event"] == "selection")
+            self.assertIn(selection["chosen"], {"agg1", "agg1r2"})
+            self.assertEqual(ledger.count("experience"), 1)
+
+    def test_final_repeats_roll_back_a_regressing_adoption(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _workspace(Path(tmp), **{"experiment.final_repeats": 2})
+            stub = StubTransport(contrast="mitigates", decision="adopt_inv", final_contrast="regresses")
+            self.assertEqual(_run_cli(["evolve", "--workspace", str(root), "--max-tasks", "1"], stub), 0)
+            ledger = Ledger(root / ".nanorsi" / "ledger.jsonl")
+            self.assertEqual(ledger.count("rollback"), 1)
+            done = next(row for row in ledger.events() if row["event"] == "task_done")
+            self.assertEqual((done["chosen"], done["decisions"]), ("agg1keep", ["rollback"]))
+            self.assertEqual(ledger.count("experience"), 0)
+            kept = root / ".nanorsi" / "runs" / "ops__meeting-action-items" / "agg1keep"
+            self.assertTrue((kept / "deliverables" / "action-items.md").is_file())
+            self.assertEqual(cli.main(["freeze", "--workspace", str(root)]), 0)
+            self.assertEqual(cli.main(["judge", "--workspace", str(root)]), 0)
+            summary = report.summarize(ledger)
+            self.assertEqual(summary["means"]["base"], summary["means"]["final"])
+
 
 class CommandRunnerProtocolTests(unittest.TestCase):
     def test_external_runner_contract(self):
