@@ -30,7 +30,7 @@ class LedgerTests(unittest.TestCase):
             ledger.append("configured", x=1)
             ledger.append("reserved", kind="rollout")
             ledger.append("rollout", task="t", usage={"input_tokens": 5, "output_tokens": 1})
-            self.assertEqual(ledger.verify(), 2)
+            self.assertEqual(ledger.verify(), 3)
             self.assertEqual(ledger.usage()["rollouts"], 1)
             lines = ledger.path.read_text().splitlines()
             lines[0] = lines[0].replace('"x": 1', '"x": 2')
