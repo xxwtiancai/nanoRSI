@@ -4,6 +4,8 @@
 
 ## 最近更新
 
+- 2026-10-27 · 复核 round 3 的 LAB 研究配置已登记但尚无可公开结果：当前配置按论文规则采用 GLM-5 executor、分层 practice-area 子集、k=1 和单次 final draw，仍不能把运行中的配置写成收益或本地复现。同期复核 OpenAI Third Moment 的官方工程说明与 Anthropic 的 RSI 综述页：两者提供的是受监督研究自动化与能力趋势证据，不是已公开、可独立复现的通用 RSI；OpenAI 的公开表述还明确区分了研究加速与“完全自主 RSI”。跟踪的 RSIHub（文档/论文消息）、Anton（artifact repair / approval / memory 修复）、OpenEvolve（岛初始程序与 diff 解析修复）及 Hermes Agent（Windows/desktop/plugin 维护）均未提供可在 nanoRSI 标准库核心中直接移植且许可边界清晰的新运行时能力；因此不复制代码、不增加依赖，继续以冻结预算、留出评测和失败记录作为下一步可验证工作。
+
 - 2026-10-26 · 收录 EvoForesight/DeepEvolve（arXiv:2610.29784 v2，首发 2026-10-21、修订 2026-10-22）：论文原始 Figure 1、官方仓库和资源页已核验；仓库未见 LICENSE，完整训练实现/权重未公开，因此只记录闭环协议启发，不复制代码或声称本地复现。
 - 2026-10-25 · 补录 R² Flow：首发 2026-09-27、v3 修订 2026-10-22；论文与 Figure 3 已核验，官方代码仓库可读但仓库级许可未核验，因此只采纳协议启发，不复制代码。
 - 2026-10-24 · 体系切换：按综述两轴把存量 236 条整理论文笔记，此后每日收录直接写入本文件；industry-rsi 旧体系（catalog/render/分类页/RADAR）冻结归档。
