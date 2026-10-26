@@ -87,7 +87,11 @@ class LifecycleTests(unittest.TestCase):
             self.assertEqual(_run_cli(["evolve", "--workspace", str(root), "--max-tasks", "1"], stub), 0)
             ledger = Ledger(root / ".nanorsi" / "ledger.jsonl")
             rollouts = [row["label"] for row in ledger.events() if row["event"] == "rollout"]
-            self.assertEqual(rollouts, ["base1", "inv1", "dom1", "c1", "inv2", "dom2", "c2"])
+            self.assertEqual(rollouts[0], "base1")
+            self.assertEqual(set(rollouts[1:3]), {"inv1", "dom1"})     # probes run concurrently
+            self.assertEqual(rollouts[3], "c1")
+            self.assertEqual(set(rollouts[4:6]), {"inv2", "dom2"})
+            self.assertEqual(rollouts[6:], ["c2"])
             selection = next(row for row in ledger.events() if row["event"] == "selection")
             self.assertIn(selection["chosen"], {"c1", "c2"})
             self.assertFalse(selection["fallback"])
@@ -117,7 +121,9 @@ class LifecycleTests(unittest.TestCase):
             self.assertEqual(_run_cli(["evolve", "--workspace", str(root), "--max-tasks", "1"], stub), 0)
             ledger = Ledger(root / ".nanorsi" / "ledger.jsonl")
             labels = [row["label"] for row in ledger.events() if row["event"] == "rollout"]
-            self.assertEqual(labels, ["base1", "inv1", "dom1", "agg1", "agg1r2"])
+            self.assertEqual(labels[0], "base1")
+            self.assertEqual(set(labels[1:3]), {"inv1", "dom1"})
+            self.assertEqual(set(labels[3:5]), {"agg1", "agg1r2"})     # confirmation draws run concurrently
             self.assertEqual(ledger.count("final_confirmed"), 1)
             selection = next(row for row in ledger.events() if row["event"] == "selection")
             self.assertIn(selection["chosen"], {"agg1", "agg1r2"})

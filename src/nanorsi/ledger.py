@@ -54,15 +54,17 @@ class Ledger:
                    and all(row.get(key) == value for key, value in match.items()))
 
     def usage(self) -> dict:
+        """Counts are by *initiation* (reserved events), so concurrent charges cannot both pass a limit."""
         totals = {"proposer_calls": 0, "rollouts": 0, "input_tokens": 0, "output_tokens": 0}
         for row in self.events():
             use = row.get("usage") or {}
             totals["input_tokens"] += int(use.get("input_tokens") or 0)
             totals["output_tokens"] += int(use.get("output_tokens") or 0)
-            if row.get("event") == "rollout":
-                totals["rollouts"] += 1
-            if row.get("event") in {"proposal", "contrast", "compose", "selection", "experience"}:
-                totals["proposer_calls"] += int(use.get("calls") or 1)
+            if row.get("event") == "reserved":
+                if row.get("kind") == "rollout":
+                    totals["rollouts"] += 1
+                else:
+                    totals["proposer_calls"] += 1
         return totals
 
     def frozen(self) -> bool:

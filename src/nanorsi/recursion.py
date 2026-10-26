@@ -7,6 +7,8 @@ the composition becomes the next round's base — depth. Every rollout, proposal
 contrast and composition is a ledger event with its usage."""
 from __future__ import annotations
 
+import threading
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -30,60 +32,75 @@ class TaskResult:
 class Session:
     """One evolve run over a workspace: shared budget, ledger, library."""
 
-    def __init__(self, config, model, workspace: Path, ledger):
+    def __init__(self, config, model, workspace: Path, ledger, *, workers: int = 2):
         self.config, self.model, self.workspace, self.ledger = config, model, Path(workspace), ledger
         self.rejected: list[str] = []
+        self.workers = max(1, workers)
+        self._lock = threading.Lock()  # ledger appends and budget checks are atomic; rollouts run outside it
 
     # --- budget -----------------------------------------------------------
     def _charge(self, kind: str):
-        used = self.ledger.usage()
-        if kind == "rollout" and used["rollouts"] >= self.config.budget.max_rollouts:
-            self.ledger.append("budget_exhausted", kind=kind, used=used)
-            raise BudgetExhausted(f"rollout budget {self.config.budget.max_rollouts} reached")
-        if kind == "proposer" and used["proposer_calls"] >= self.config.budget.max_proposer_calls:
-            self.ledger.append("budget_exhausted", kind=kind, used=used)
-            raise BudgetExhausted(f"proposer budget {self.config.budget.max_proposer_calls} reached")
+        """Reserve budget atomically: with concurrent rollouts, reservations are what the limit bounds."""
+        with self._lock:
+            used = self.ledger.usage()
+            spent = used["rollouts"] if kind == "rollout" else used["proposer_calls"]
+            limit = self.config.budget.max_rollouts if kind == "rollout" else self.config.budget.max_proposer_calls
+            if spent >= limit:
+                self.ledger.append("budget_exhausted", kind=kind, used=used)
+                raise BudgetExhausted(f"{kind} budget {limit} reached")
+            self.ledger.append("reserved", kind=kind)
+
+    def _record(self, event, **fields):
+        with self._lock:
+            return self.ledger.append(event, **fields)
 
     # --- primitives -------------------------------------------------------
     def rollout(self, task, tree, label, run_root) -> runner.Rollout:
         self._charge("rollout")
         result = runner.run(self.config, self.model, self.workspace, task, tree, label, run_root / label)
-        self.ledger.append("rollout", task=task["task_id"], **result.record())
+        self._record("rollout", task=task["task_id"], **result.record())
         return result
 
     def propose(self, dim, task, tree, reference, lessons):
         self._charge("proposer")
-        cand = propose.propose(self.model, dim, task, tree, reference, rejected=self.rejected, lessons=lessons)
-        self.ledger.append("proposal", task=task["task_id"], **cand.record())
+        cand = propose.propose(self.model, dim, task, tree, reference, rejected=list(self.rejected), lessons=lessons)
+        self._record("proposal", task=task["task_id"], **cand.record())
         return cand
 
     def contrast(self, task, reference, probed, cand):
         self._charge("proposer")
         verdict = probe.contrast(self.model, task, reference, probed, cand)
-        self.ledger.append("contrast", task=task["task_id"], dim=cand.dim, component=cand.component, **verdict)
+        self._record("contrast", task=task["task_id"], dim=cand.dim, component=cand.component, **verdict)
         if verdict["contrast"] != "mitigates":
-            self.rejected.append(f"{cand.dim} {cand.component}: {cand.note} -> {verdict['contrast']}: {verdict['observation'][:160]}")
+            with self._lock:
+                self.rejected.append(f"{cand.dim} {cand.component}: {cand.note} -> {verdict['contrast']}: {verdict['observation'][:160]}")
         return verdict
 
     def compose(self, task, base, candidates, contrasts, reference):
         self._charge("proposer")
         record, tree = propose.compose(self.model, task, base, candidates, contrasts, reference)
-        self.ledger.append("compose", task=task["task_id"], **record)
+        self._record("compose", task=task["task_id"], **record)
         return record, tree
+
+    def _map(self, fn, items):
+        """Run independent rollouts concurrently, results in input order."""
+        if self.workers == 1 or len(items) <= 1:
+            return [fn(item) for item in items]
+        with ThreadPoolExecutor(max_workers=min(self.workers, len(items))) as pool:
+            return list(pool.map(fn, items))
 
     # --- one candidate pair: propose both, probe both, contrast both -----
     def _pair(self, task, tree, reference, lessons, run_root, index):
-        candidates, contrasts = [], {}
-        for dim in propose.DIMS:
-            cand = self.propose(dim, task, tree, reference, lessons)
+        candidates = [self.propose(dim, task, tree, reference, lessons) for dim in propose.DIMS]
+
+        def probe_one(cand):
             if cand.error:
-                contrasts[dim] = {"contrast": "regresses", "observation": cand.error}
-                candidates.append(cand)
-                continue
-            probed = self.rollout(task, cand.tree, f"{dim.lower()}{index}", run_root)
-            contrasts[dim] = self.contrast(task, reference, probed, cand)
-            candidates.append(cand)
-        return candidates, contrasts
+                return {"contrast": "regresses", "observation": cand.error}
+            probed = self.rollout(task, cand.tree, f"{cand.dim.lower()}{index}", run_root)
+            return self.contrast(task, reference, probed, cand)
+
+        verdicts = self._map(probe_one, candidates)
+        return candidates, {cand.dim: verdict for cand, verdict in zip(candidates, verdicts)}
 
     # --- modes --------------------------------------------------------------
     def _parallel(self, task, base, reference, lessons, run_root, result):
@@ -114,15 +131,15 @@ class Session:
         A single-draw probe verdict is not enough evidence on noisy agentic tasks."""
         if record["decision"] == "keep":
             return [self._kept(reference, label, run_root, tree)]
-        draws = [self.rollout(task, tree, label if n == 1 else f"{label}r{n}", run_root)
-                 for n in range(1, self.config.final_repeats + 1)]
+        labels = [label if n == 1 else f"{label}r{n}" for n in range(1, self.config.final_repeats + 1)]
+        draws = self._map(lambda name: self.rollout(task, tree, name, run_root), labels)
         if self.config.final_repeats == 1:
             return draws
         pseudo = propose.Candidate("FINAL", ", ".join(record.get("files") or ["composed"]),
                                    record.get("observation", "")[:200], tree)
         verdicts = [self.contrast(task, reference, draw, pseudo)["contrast"] for draw in draws]
         confirmed = "regresses" not in verdicts and "mitigates" in verdicts
-        self.ledger.append("final_confirmed" if confirmed else "rollback", task=task["task_id"],
+        self._record("final_confirmed" if confirmed else "rollback", task=task["task_id"],
                            label=label, verdicts=verdicts, decision=record["decision"])
         if confirmed:
             return draws
@@ -140,7 +157,7 @@ class Session:
             source = Path(reference.run_dir) / name
             if source.is_dir():
                 shutil.copytree(source, keep_dir / name, dirs_exist_ok=True)
-        self.ledger.append("rollout_reused", label=label, source=reference.label,
+        self._record("rollout_reused", label=label, source=reference.label,
                            reference_run_dir=str(reference.run_dir))
         return runner.Rollout(label, keep_dir, reference.ok, reference.delivered, reference.trajectory,
                               dict(reference.deliverables), {}, reference.error)

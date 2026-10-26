@@ -28,6 +28,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             ledger = Ledger(Path(tmp) / "ledger.jsonl")
             ledger.append("configured", x=1)
+            ledger.append("reserved", kind="rollout")
             ledger.append("rollout", task="t", usage={"input_tokens": 5, "output_tokens": 1})
             self.assertEqual(ledger.verify(), 2)
             self.assertEqual(ledger.usage()["rollouts"], 1)
