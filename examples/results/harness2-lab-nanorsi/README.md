@@ -179,3 +179,20 @@ Round-2 records: `records/round2/` (ledger with every confirmation verdict, libr
 report, workspace toml); the full 40-rollout judge matrix is recoverable from
 `judge-result.json` in each rollout directory of the local workspace and is tabulated
 above.
+
+## Round 3 — the paper's own configuration (running)
+
+The paper's exact configuration, everything available on this account aligned:
+
+| Role | Paper | This run |
+| --- | --- | --- |
+| Executor | GLM-5, OpenCode baseline harness | **`zai/glm-5`** (same model, same LAB base harness) |
+| Improver | Claude Opus 4.8 under OpenCode | glm-5.3 single structured calls (no Anthropic account; keeps the paper's editor-stronger-than-executor structure) |
+| Judge | Claude Sonnet 4.6, one grading per output | glm-5.3 through the same LAB rubric pipeline (same substitution constraint) |
+| Selector | the editor model | the improver model (structural match) |
+| Tasks | 100 held-out LAB tasks, stratified by practice area, all work types, full context range | the same rule drawn locally — 30 tasks, 25 practice areas, criteria 32–608 (`examples/lab_opencode/paper_subset.py`; 30 of 100 under budget) |
+| Recursion | k=1 single contrastive step, parallel | agg, k=1, `final_repeats = 1` (the paper has no confirmation stage) |
+
+The comparison target is the paper's own reported numbers for this configuration:
+GLM-5 / OpenCode 0.596 → 0.714 partial (+11.8 pp). Results land here when the run
+completes.
