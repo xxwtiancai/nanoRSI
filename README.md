@@ -91,7 +91,7 @@ benchmark through the paper's own executor substrate this way.
 
 | Study | Setup | Base → final partial |
 | --- | --- | --- |
-| [nanoRSI v0.5 on LAB](examples/results/harness2-lab-nanorsi/README.md) | this loop, OpenCode executor, GLM-5.3 as executor/improver/judge | 0.859 → 0.838 (−2.1 pp, 3W/3T/2L) — two `mitigates` adopts collapsed at the final draw |
+| [nanoRSI v0.5 on LAB](examples/results/harness2-lab-nanorsi/README.md) | this loop (final-confirmation round), OpenCode executor, GLM-5.3 as executor/improver/judge | 0.862 → 0.850 (−1.2 pp); averaged −1.5 pp — confirmation killed the collapse losses, contrast verdicts misdirect (2/5) |
 | [Original Harness² code on LAB](examples/results/harness2-lab-opencode/README.md) | `google-research/harness2`, same models | 0.872 → 0.892 (+2.0 pp, 5W/1T/2L) |
 | Paper (GLM-5 / OpenCode) | authors' report | 0.596 → 0.714 (+11.8 pp) |
 

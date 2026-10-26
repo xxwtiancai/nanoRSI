@@ -106,9 +106,76 @@ context dominates). Wall time ≈ 7 h at three concurrent workspaces plus ≈ 1.
 Every event is in `records/ws-*-ledger.jsonl`; per-rollout trajectories in
 `records/runs/`; the four lessons in `records/ws-*-library.jsonl`.
 
-### What this changes next
+## Round 2 — final confirmation (`final_repeats = 2`), one workspace, shared library
 
-The nano loop needs a `repeats` parameter on probes and finals — N draws per rollout,
-contrast on the set, judge on the set — before any adopt decision can be trusted on
-tasks this noisy. That is a budget multiplier (3× rollouts for N = 3), not a design
-change, and it is the first follow-up.
+The first round's diagnosis (single-draw lottery) was built into the loop: an adopted
+harness is now rolled out twice, every draw is contrasted against the reference, and the
+adoption is confirmed only if no draw regresses and at least one mitigates; confirmed
+draws enter blind selection. Probes and confirmation draws run concurrently; budgets are
+charged by reservation. All eight tasks ran in **one workspace**, so the experience
+library and the rejected-edit memory accumulate across tasks — the paper's
+harnessing-level setting, which round 1's eight isolated workspaces lost. 34 rollouts,
+60 improver calls, 57.5 M input tokens.
+
+| Task | INV / DOM contrast | Compose | Confirmation | Base | Final (chosen) | Δ pp |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| identify-issues-in-counterparty-motion-brief | neutral / mitigates | adopt_dom | confirmed (neutral, mitigates) | 0.696 | 0.565 | −13.0 |
+| identify-issues-in-counterparty-sale-objection | mitigates / neutral | adopt_inv | confirmed (mitigates, neutral) | 0.893 | 0.929 | +3.6 |
+| review-form-8 | mitigates / neutral | adopt_inv | confirmed (mitigates, neutral) | 0.906 | 0.969 | +6.3 |
+| extract-key-terms-from-cap-table | mitigates / mitigates | adopt_dom | confirmed (mitigates, mitigates) | 0.927 | 0.829 | −9.8 |
+| analyze-counterparty-motion-to-dismiss | neutral / neutral | keep | — | 0.882 | 0.882 | 0.0 |
+| review-iss-tax-transaction-structure | neutral / neutral | keep | — | 0.786 | 0.821 | +3.6 ‡ |
+| draft-consent-to-adoption | mitigates / neutral | adopt_inv | confirmed (mitigates, mitigates) | 0.857 | 0.829 | −2.9 |
+| compare-closing-documents-against-restructuring-conditions | neutral / neutral | keep | — | 0.947 | 0.974 | +2.7 ‡ |
+| **Mean** | 7 m / 9 n / 0 r | 5 adopt · 3 keep · **0 rollback** | 5/5 confirmed | **0.862** | **0.850** | **−1.2** (4W/1T/3L) |
+
+‡ keep finals are the base deliverable; both +deltas are judge noise on the same `.docx`.
+With every one of the 40 produced rollouts judged (probes included), the averaged
+measurement — final = mean of both confirmation draws — gives **0.862 → 0.847, −1.5 pp**.
+Adopted tasks: 0.856 → 0.820 (−3.6 pp); kept tasks: 0.872 → 0.892 (+2.1 pp, judge noise).
+
+### The decisive measurement: contrast verdicts do not track rubric deltas
+
+| Probe judged `mitigates` | probe − base (judged) | | Probe judged `neutral` | probe − base (judged) |
+| --- | ---: | --- | --- | ---: |
+| form-8 INV | **+9.4 pp** ✓ | | litigation INV | **+5.9 pp** missed |
+| trusts INV | +2.9 pp ✓ | | litigation DOM | +3.0 pp missed |
+| employment DOM | −4.4 pp ✗ | | tax DOM | +3.5 pp missed |
+| vc DOM | −9.8 pp ✗ | | | |
+| bankruptcy INV | −10.7 pp ✗ | | | |
+
+Two of five `mitigates` probes actually scored below their base; **all three** `neutral`
+probes scored above it. The behavioral contrast — comparing trajectories and deliverable
+appearance without ground truth — does not predict the direction of hidden-rubric change:
+GLM sees "equally complete memos covering the same findings" while the rubric counts
+specific criteria, and "stronger verification discipline" while the rubric does not
+reward it. harness2's composer judges the same kind of evidence inside a full agent
+session; on this round its luck differed (its one large win, litigation, is the task
+nano's contrast called neutral on twice).
+
+### Verdict after two rounds
+
+| Run | Base → final | Δ | Note |
+| --- | ---: | ---: | --- |
+| nanoRSI round 1 (single draw) | 0.859 → 0.838 | −2.1 pp | two `mitigates` adopts collapsed at the final draw |
+| nanoRSI round 2 (confirmed, shared library) | 0.862 → 0.850 (−1.5 pp averaged) | −1.2 pp | collapse losses gone; remaining losses are contrast misdirection |
+| harness2, paper's code, same models/tasks/judge | 0.872 → 0.892 | +2.0 pp | |
+| Paper (GLM-5 / OpenCode) | 0.596 → 0.714 | +11.8 pp | from a far lower base |
+
+**Confirmation did what it was designed to do — round 1's catastrophic post-adoption
+regressions (−13.0, −14.7 from harness-induced losses) did not recur, and every kept
+task finished at or above base. What it cannot fix is the gate's signal itself: with a
+verdict-to-score direction agreement of 2/5 on adoptions and 0/3 on misses, the loop
+adopts the wrong edits and passes over the right ones.** Closing the remaining ~3.5 pp
+to harness2 needs a decision signal that correlates with the rubric — a stronger judge
+of behaviour, rubric-aware probe scoring (which the benchmark's rules and the paper's
+verifier-free claim both push back on), or more draws per decision than the budget
+allows here. The honest reading of both runs together: on eight tasks whose single-task
+deltas swing ±10–15 pp, nanoRSI and harness2 are inside each other's noise, and the
+paper's +11.8 pp remains unreproduced by either implementation at this configuration's
+0.86+ baseline.
+
+Round-2 records: `records/round2/` (ledger with every confirmation verdict, library,
+report, workspace toml); the full 40-rollout judge matrix is recoverable from
+`judge-result.json` in each rollout directory of the local workspace and is tabulated
+above.
