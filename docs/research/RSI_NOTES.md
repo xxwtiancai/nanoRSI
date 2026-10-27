@@ -4,6 +4,7 @@
 
 ## 最近更新
 
+- 2026-10-28 · 收录 RSI-Opt（arXiv:2610.32026，Purdue University / 独立研究者，首发 2026-10-23）：跨运行演化提示、操作手册、已验证优化器代码库与决策节奏，并在运行内按训练动态修改优化器/诊断程序；论文 Figure 1、CC BY 4.0 论文许可和作者指标已核验，但未找到专属代码、权重或数据包，因此只作为既有“可编辑策略/技能记忆”协议输入，不声称 nanoRSI 复现或移植。
 - 2026-10-27 · 复核 round 3 的 LAB 研究配置已登记但尚无可公开结果：当前配置按论文规则采用 GLM-5 executor、分层 practice-area 子集、k=1 和单次 final draw，仍不能把运行中的配置写成收益或本地复现。同期复核 OpenAI Third Moment 的官方工程说明与 Anthropic 的 RSI 综述页：两者提供的是受监督研究自动化与能力趋势证据，不是已公开、可独立复现的通用 RSI；OpenAI 的公开表述还明确区分了研究加速与“完全自主 RSI”。跟踪的 RSIHub（文档/论文消息）、Anton（artifact repair / approval / memory 修复）、OpenEvolve（岛初始程序与 diff 解析修复）及 Hermes Agent（Windows/desktop/plugin 维护）均未提供可在 nanoRSI 标准库核心中直接移植且许可边界清晰的新运行时能力；因此不复制代码、不增加依赖，继续以冻结预算、留出评测和失败记录作为下一步可验证工作。
 
 - 2026-10-26 · 收录 EvoForesight/DeepEvolve（arXiv:2610.29784 v2，首发 2026-10-21、修订 2026-10-22）：论文原始 Figure 1、官方仓库和资源页已核验；仓库未见 LICENSE，完整训练实现/权重未公开，因此只记录闭环协议启发，不复制代码或声称本地复现。
@@ -13,6 +14,13 @@
 ## 1. 部署时自进化 / Deployment-time self-evolution（125 条）
 
 ### 技能文件优化与技能库（31）
+
+- **[RSI-Opt: Recursive Self-Improvement Optimizer Agents For Model Training](https://arxiv.org/abs/2610.32026)**（Purdue University / 独立研究者，2026-10-23，闭环）
+  - 核心：把优化器智能体的持久策略显式拆成 prompt、procedural playbook、已测试的 optimizer/diagnostic code library 和 decision cadence；跨运行由 meta-agent 基于历史证据重写并验证子策略，归档所有已评估策略；运行内的 agent 再按 loss/diagnostic 在预定决策点修改训练优化器和诊断程序。论文把“可复用知识跨运行继承”和“当前任务适应”分开测量。
+  - 数字：五代、三个训练任务；Opus 5.5 的 evolution-suite raw-space summary z-score +10.48→+14.33，GPT-5.5 的 held-out tasks -0.36→+3.11；Burgers PDE 相对固定 prompt agent 的 mean relative L2 error 约降低 2.7 倍（Opus 5.5）和 8.8 倍（GPT-6.1）。这些是作者报告，不是 nanoRSI 本地复现；论文也指出 PDE 迁移随模型和任务变化。
+  - 代码／权重／数据／许可：论文与原始 Figure 1 在 [arXiv HTML](https://arxiv.org/html/2610.32026) 可读，论文页面标注 CC BY 4.0；截至 2026-10-28 未核验到专属公开代码仓库、权重或可直接下载的数据包，不能把论文许可外推为实现代码许可。
+  - 点评：对 nanoRSI 的直接方向是把候选 harness 的“可复用策略资产”和“本轮任务适配”在 evidence ledger 中分栏，比较跨运行继承、独立重写和冻结策略的匹配 token 成本，并保留被验证的可执行片段及其适用任务；这只是既有 ADOPTION #3/#7/#38 的实验协议输入，不启用新默认行为、不引入训练依赖。· [原始 Figure 1](industry-rsi/assets/paper-figures/rsi-opt-overview.svg)
+  - 原文图／来源：论文原始 Figure 1（跨运行策略演化与运行内优化器适应的双层闭环）；[arXiv HTML](https://arxiv.org/html/2610.32026)，Figure 1，图源 `https://arxiv.org/html/2610.32026v1/overview.svg`。
 
 - **[Evolving with Open Worlds: Towards Recursive Self-Improvement for Future Forecasting](https://arxiv.org/abs/2610.29784)**（中国人民大学高瓴人工智能学院 / 南洋理工大学 / IQuest Research，首发 2026-10-21，v2 修订 2026-10-22，闭环）
   - 核心：EvoForesight 将递归闭环拆成 Prometheus（从实时新闻与日程生成、去重、冲突检测和多样性选择可验证问题）、Branchus（把时效性搜索团队与只读取冻结证据的预测团队分开）和 Athena（用已解析结果驱动参数更新、技能蒸馏及面向弱点的任务合成技能）。同一条预测轨迹同时供参数、行为和环境三条更新轴使用，环境也随失败暴露的弱点而变难。

@@ -1,5 +1,7 @@
 # From research to experiments / 从研究到可运行实验
 
+**2026-10-28 status note:** RSI-Opt provides a primary-verified protocol input for the existing strategy/skill-memory direction: separate reusable cross-run policy assets from within-run task adaptation, and compare inheritance against independent rewriting at matched token cost. The paper is CC BY 4.0, but no dedicated code, weights or data package were verified; no implementation or dependency was copied, and no default behavior changed. / **2026-10-28 状态说明：** RSI-Opt 为现有策略/技能记忆方向提供了一手核验的协议输入：把跨运行可复用的策略资产与本轮任务适应分开，并在匹配 token 成本下比较继承与独立重写。论文标注 CC BY 4.0，但未核验到专属代码、权重或数据包；未复制实现或增加依赖，也未改变默认行为。
+
 **2026-10-27 status note:** Registered the paper-aligned LAB round-3 configuration in the published result README (GLM-5 executor, stratified 30-task subset, `k=1`, one final draw). No round-3 result is published yet, so the configuration is not evidence of an effect or a local reproduction. The latest tracked upstream activity remained documentation, artifact-repair, parser/configuration, and desktop/plugin maintenance; no license-cleared standard-library runtime change justified a port. / **2026-10-27 状态说明：** 已在公开结果 README 中登记对齐论文的 LAB 第三轮配置（GLM-5 执行器、分层 30 任务子集、`k=1`、一次最终抽样）。第三轮尚未发布结果，因此配置不构成效果证据或本地复现。最新跟踪上游活动仍是文档、产物修复、解析器/配置和桌面/插件维护；没有新的许可清晰、适合标准库核心的运行时变化值得移植。
 
 **2026-10-24 status note:** Implemented the report-only portion of item 64. The
