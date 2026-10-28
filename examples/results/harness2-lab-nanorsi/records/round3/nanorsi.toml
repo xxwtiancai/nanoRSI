@@ -1,0 +1,35 @@
+[experiment]
+id = "lab-opencode"
+goal = "Improve the agent harness for professional legal document work on LAB"
+mode = "agg"
+k = 1
+seed = 0
+final_repeats = 1
+
+[model]
+model = "glm-5.3"
+base_url = "https://api.z.ai/api/coding/paas/v4"
+api_key_file = "/Users/xiongweixiao/.nanorsi/keys/glm-coding-plan.key"
+max_tokens = 8192
+timeout_s = 900
+thinking = "disabled"
+
+[runner]
+kind = "command"
+command = ["/Users/xiongweixiao/main/OpenSource/nanoRSI/.venv/bin/python", "/Users/xiongweixiao/main/OpenSource/nanoRSI/examples/lab_opencode/runner.py"]
+timeout_s = 4500
+
+[harness]
+root = "harness"
+
+[tasks]
+manifest = "tasks/manifest.json"
+
+[judge]
+command = ["/Users/xiongweixiao/main/OpenSource/nanoRSI/.venv/bin/python", "/Users/xiongweixiao/main/OpenSource/nanoRSI/examples/lab_opencode/judge.py"]
+model = "custom/glm-5.3"
+
+[budget]
+max_proposer_calls = 220
+max_rollouts = 140
+max_output_bytes = 4000000

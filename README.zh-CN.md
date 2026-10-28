@@ -77,7 +77,7 @@ nanorsi report --workspace ./lab && nanorsi verify --workspace ./lab
 
 | 研究 | 设置 | base → final partial |
 | --- | --- | --- |
-| [nanoRSI v0.5 on LAB](examples/results/harness2-lab-nanorsi/README.md) | 本循环（终跑确认制一轮），OpenCode 执行器，GLM-5.3 兼任执行器/改进器/judge | 0.862 → 0.850（−1.2 pp）、均值口径 −1.5 pp——确认制消除了退化损失，反差判定方向失准（2/5） |
+| [nanoRSI v0.5 on LAB，论文原配置](examples/results/harness2-lab-nanorsi/README.md) | GLM-5 执行器、论文分层规则 30 任务、k=1、glm-5.3 改进器/judge | **0.852 → 0.908（+5.6 pp，17W/3T/9L）**——增益全部来自对两次基线执行失败的救援（0.04→0.87、0.00→0.80） |
 | [Harness² 原始代码 on LAB](examples/results/harness2-lab-opencode/README.md) | `google-research/harness2`，同一套模型 | 0.872 → 0.892（+2.0 pp，5W/1T/2L） |
 | 论文（GLM-5 / OpenCode） | 作者报告 | 0.596 → 0.714（+11.8 pp） |
 

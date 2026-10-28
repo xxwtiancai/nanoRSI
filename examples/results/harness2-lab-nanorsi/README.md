@@ -194,5 +194,45 @@ The paper's exact configuration, everything available on this account aligned:
 | Recursion | k=1 single contrastive step, parallel | agg, k=1, `final_repeats = 1` (the paper has no confirmation stage) |
 
 The comparison target is the paper's own reported numbers for this configuration:
-GLM-5 / OpenCode 0.596 → 0.714 partial (+11.8 pp). Results land here when the run
-completes.
+GLM-5 / OpenCode 0.596 → 0.714 partial (+11.8 pp).
+
+### Result
+
+30 tasks, 114 rollouts, 174 improver calls, 281 M input tokens, one shared workspace
+(cross-task library: 23 lessons). **Base 0.852 → final 0.908 partial, +5.6 pp, 17W/3T/9L**
+(n = 29 judged; the largest task — diligence, 600+ criteria — failed grading in both
+arms and stays ungraded, never zero).
+
+| Comparison | Base → final | Δ | Note |
+| --- | ---: | ---: | --- |
+| **nanoRSI v0.5, the paper's configuration** | **0.852 → 0.908** | **+5.6 pp** (17W/3T/9L) | this run |
+| harness2, paper's code (GLM-5.3 executor, 8 tasks) | 0.872 → 0.892 | +2.0 pp | earlier faithful run |
+| Paper (GLM-5 / OpenCode, 100 tasks, Claude editor & Sonnet judge) | 0.596 → 0.714 | +11.8 pp | authors' report |
+
+**Where the gain comes from — and it is honest and mechanistic: two rescues.** GLM-5's
+base rollout failed outright on 2 of 29 tasks (energy 0.036, tax 0.000 — broken
+deliverables), and the loop's adopted edits brought both back to 0.873 and 0.804
+(+83.6 / +80.4 pp). That is +5.7 pp of mean, i.e. the entire net gain. On the other 27
+tasks the net effect of adoption is exactly zero (0.913 → 0.913) — the same null on
+high-baseline tasks that all three runs share. This is the paper's mechanism doing what
+it can actually do at a 0.85 baseline: fix execution failures, not polish near-ceiling
+deliverables. The paper's +11.8 pp from 0.596 lives in a regime with vastly more
+headroom and more failure mass; our judge substitution (GLM-5.3 vs Sonnet 4.6) and the
+30-of-100 subset keep absolute levels from being comparable — deltas are the comparison.
+
+Decisions: 8 merges, 12 adoptions, 9 keeps; 23 mitigates / 33 neutral / 2 regresses
+across 60 probes. The two regressing probes were correctly not adopted (the rules bar
+it), and both would-be regressing tasks finished at keep. The experience library shows
+a converging lesson family — "inspect the tool before first use; persist extractions
+and verify full coverage before drafting" — recorded independently by five tasks.
+
+### Verdict after three rounds
+
+Round 1 (single draw, GLM-5.3 executor): −2.1 pp. Round 2 (final confirmation):
+−1.2 pp with the collapse losses gone. Round 3 (the paper's own configuration): **+5.6 pp**,
+all of it from rescuing failed base executions. The full picture across runs: the loop's
+value at high baselines is failure recovery, and its contrast gate — GLM judging
+trajectory/deliverable appearance without ground truth — still does not pick winners
+among good-but-different deliverables (rounds 1–2 measured that directly). Rescue
+requires no such discrimination: a 0.03 deliverable is visibly broken, which is exactly
+where behavior-only evidence is reliable.
