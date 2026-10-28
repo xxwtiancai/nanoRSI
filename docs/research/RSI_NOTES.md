@@ -4,6 +4,8 @@
 
 ## 最近更新
 
+- 2026-10-29 · LAB round 3 已发布结果：按论文配置（GLM-5.3 executor、分层 30 任务子集、`k=1`、一次 final draw）实际评测 29 个可判分任务，base `0.852` → final `0.908`（+5.6 个百分点，17W/3T/9L）。报告明确说明收益全部来自失败修复（failure rescue），预算为 114 rollouts、174 次 improver calls、280,606,836 input / 11,377,445 output tokens；这是 nanoRSI 在该配置和单次抽样下的本地实验记录，不是通用 RSI 结论。报告还保留了逐任务父/子分数、选择决定和完整 ledger，下一步仍应以重复抽样、冻结留出集和匹配预算检验迁移，而不是把该增益写成稳定收益。
+- 2026-10-29 · 新增 [Skill$^{\\infty}$](https://arxiv.org/abs/2610.35434) 线索（首发 2026-10-26）：把 meta-skill 与 task skill 放进同一套 agent-led 优化流程，并让 meta-skill 本身递归重写；论文在 SkillsBench 83 个任务上报告 60.7%，对比 human-curated 56.4% 与 SkillEvolver 54.5%。这是一条直接的技能/改进程序递归信号，但当前[官方仓库](https://github.com/taowangcheng/skill-infinity)只有 README、LICENSE 和 assets，README 明确代码尚未发布，未核验权重或数据包；因此不纳入冻结 catalog、不复制代码，也不把作者结果说成本地复现。其最可验证的 nanoRSI 方向是把“改任务技能”和“改优化技能”分成两个可审计版本流，并在匹配 token、冻结留出集和父代重测下比较，而不是启用递归 meta-skill 默认行为。
 - 2026-10-28 · 收录 RSI-Opt（arXiv:2610.32026，Purdue University / 独立研究者，首发 2026-10-23）：跨运行演化提示、操作手册、已验证优化器代码库与决策节奏，并在运行内按训练动态修改优化器/诊断程序；论文 Figure 1、CC BY 4.0 论文许可和作者指标已核验，但未找到专属代码、权重或数据包，因此只作为既有“可编辑策略/技能记忆”协议输入，不声称 nanoRSI 复现或移植。
 - 2026-10-27 · 复核 round 3 的 LAB 研究配置已登记但尚无可公开结果：当前配置按论文规则采用 GLM-5 executor、分层 practice-area 子集、k=1 和单次 final draw，仍不能把运行中的配置写成收益或本地复现。同期复核 OpenAI Third Moment 的官方工程说明与 Anthropic 的 RSI 综述页：两者提供的是受监督研究自动化与能力趋势证据，不是已公开、可独立复现的通用 RSI；OpenAI 的公开表述还明确区分了研究加速与“完全自主 RSI”。跟踪的 RSIHub（文档/论文消息）、Anton（artifact repair / approval / memory 修复）、OpenEvolve（岛初始程序与 diff 解析修复）及 Hermes Agent（Windows/desktop/plugin 维护）均未提供可在 nanoRSI 标准库核心中直接移植且许可边界清晰的新运行时能力；因此不复制代码、不增加依赖，继续以冻结预算、留出评测和失败记录作为下一步可验证工作。
 
