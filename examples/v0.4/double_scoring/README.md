@@ -1,7 +1,7 @@
 # Offline double-scoring (selector-study false-block accounting)
 
 `run.py` measures what a control gate would have decided, so selector arms can report the
-false-block / false-admit accounting the [selector-study protocol](../../docs/SELECTOR_STUDY_PROTOCOL.md)
+false-block / false-admit accounting the [selector-study protocol](../../docs/v0.4/SELECTOR_STUDY_PROTOCOL.md)
 requires. Two modes:
 
 - **Recompute (default, zero cost)** — replays the pure gate decision under a control
@@ -16,9 +16,9 @@ requires. Two modes:
   costs outside the search budget.
 
 ```bash
-python examples/double_scoring/run.py ./my-workspace                     # recompute
-python examples/double_scoring/run.py ./my-workspace --out report.json   # write report
-python examples/double_scoring/run.py ./my-workspace --evaluate-blocked  # for pre-eval selectors
+python examples/v0.4/double_scoring/run.py ./my-workspace                     # recompute
+python examples/v0.4/double_scoring/run.py ./my-workspace --out report.json   # write report
+python examples/v0.4/double_scoring/run.py ./my-workspace --evaluate-blocked  # for pre-eval selectors
 ```
 
 The script never modifies the workspace journal; re-evaluation panel outputs land under

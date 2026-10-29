@@ -1,7 +1,7 @@
 """Run a workspace template across multiple seeds through the ordinary CLI lifecycle.
 
 This is the multi-seed orchestration named as a prerequisite in
-docs/SELECTOR_STUDY_PROTOCOL.md: every seed is a fresh, independently
+docs/v0.4/SELECTOR_STUDY_PROTOCOL.md: every seed is a fresh, independently
 baselined workspace (the frozen protocol is immutable per workspace, so
 repeats or seeds cannot be raised after the fact). The template must be a
 fully assembled but NOT yet baselined workspace - task pack swapped in,

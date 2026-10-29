@@ -70,7 +70,7 @@ Task packs: BBH (program track), ALFWorld (agent track; split sizes parameterize
 frozen test panels comparable across studies), HumanEval (coding track; 3-repeat final
 testing demonstrated). Tooling: noise-band report, evidence ledger with gate summary,
 audit, counterfactual challenger, multi-seed orchestration, and the read-only offline
-double-scoring harness at `examples/double_scoring/run.py`. The harness recomputes
+double-scoring harness at `examples/v0.4/double_scoring/run.py`. The harness recomputes
 control decisions from recorded metrics and can re-evaluate archived pre-evaluation-
 blocked diffs in isolated worktrees; it does not select, promote or mutate the source
 study. Before any selector arm changes behavior, the first study must still freeze the

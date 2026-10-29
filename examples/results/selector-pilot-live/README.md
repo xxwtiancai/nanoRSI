@@ -1,6 +1,6 @@
 # Live selector pilot: protocol machinery on real noise, degenerate comparison (2026-10-19)
 
-First **live** run of the [selector-study protocol](../../../docs/SELECTOR_STUDY_PROTOCOL.md),
+First **live** run of the [selector-study protocol](../../../docs/v0.4/SELECTOR_STUDY_PROTOCOL.md),
 redesigned after the [2026-10-18 headroom stop](../../results): validation raised to 8 games
 (baseline 0.875 on both arms — one game of headroom, the protocol's floor), one seed, two
 attempts, two arms — strict control vs **noise_band 0.13** (the measured one-game swing).

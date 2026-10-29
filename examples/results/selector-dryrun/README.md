@@ -1,10 +1,10 @@
 # Selector-study dry-run: the protocol toolchain, exercised end to end (2026-10-17)
 
-The first instantiation of the [selector-study protocol](../../../docs/SELECTOR_STUDY_PROTOCOL.md)
+The first instantiation of the [selector-study protocol](../../../docs/v0.4/SELECTOR_STUDY_PROTOCOL.md)
 — deliberately offline and deterministic: a program-mode fixture (scripted proposer always
 proposes the same one-line fix; the **stock** program evaluator exact-matches) runs through
-the [multi-seed orchestrator](../../multiseed/run.py) under two arms, and every workspace is
-double-scored ([double_scoring](../../double_scoring/run.py)) against the control gate.
+the [multi-seed orchestrator](../../v0.4/multiseed/run.py) under two arms, and every workspace is
+double-scored ([double_scoring](../../v0.4/double_scoring/run.py)) against the control gate.
 
 | Arm | Seeds | Decisions | Final candidate | false-blocks |
 | --- | --- | --- | ---: | ---: |

@@ -35,7 +35,7 @@ same way, and its ADOPTION annotation has been amended accordingly.
 What survives unchanged: the platform capability (real engine-scored agent tasks through
 the full gated lifecycle), the gate's harm-blocking (three ties honestly rejected here),
 and the central measured lesson — **single-run gate acceptances on panels this size are
-noise-dominated**, which is precisely why the [selector-study protocol](../../../docs/SELECTOR_STUDY_PROTOCOL.md)
+noise-dominated**, which is precisely why the [selector-study protocol](../../../docs/v0.4/SELECTOR_STUDY_PROTOCOL.md)
 requires noise-band measurement and multi-seed designs before any selector claim.
 
 A non-replication at n=2 does not prove the original effect was pure noise — both searches

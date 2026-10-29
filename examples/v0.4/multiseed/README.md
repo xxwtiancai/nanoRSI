@@ -5,7 +5,7 @@ through the ordinary CLI lifecycle — per seed it copies the template, patches
 `[experiment] seed`, and executes baseline → run → freeze `--repeats R` → final-test →
 report → verify, then aggregates per-seed decisions and cross-seed condition statistics
 (mean/spread over every seed × repeat draw) into `summary.json`. This is the
-[selector-study protocol](../../docs/SELECTOR_STUDY_PROTOCOL.md) multi-seed requirement:
+[selector-study protocol](../../docs/v0.4/SELECTOR_STUDY_PROTOCOL.md) multi-seed requirement:
 every seed is an independent frozen workspace, because the frozen protocol is immutable
 per workspace (raising repeats or changing seeds after freeze is refused by design).
 

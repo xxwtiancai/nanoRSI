@@ -1,6 +1,6 @@
 """First selector-study dry-run: noise-band arm vs strict gate on an offline fixture.
 
-This exercises the full [selector-study protocol](../../docs/SELECTOR_STUDY_PROTOCOL.md)
+This exercises the full [selector-study protocol](../../docs/v0.4/SELECTOR_STUDY_PROTOCOL.md)
 toolchain end to end at zero API cost: a deterministic program-mode fixture (a scripted
 proposer always proposes the same one-line fix; the stock program evaluator exact-matches)
 runs through the multi-seed orchestrator under two arms — control (strict gate) and a
