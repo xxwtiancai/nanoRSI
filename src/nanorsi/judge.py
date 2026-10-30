@@ -15,6 +15,21 @@ class JudgeError(RuntimeError):
     pass
 
 
+def _parse_score(data: object) -> dict | None:
+    if not isinstance(data, dict):
+        return None
+    passed = data.get("n_passed")
+    criteria = data.get("n_criteria")
+    if (isinstance(passed, bool) or not isinstance(passed, int)
+            or isinstance(criteria, bool) or not isinstance(criteria, int)
+            or criteria <= 0 or passed < 0 or passed > criteria):
+        return None
+    all_pass = data.get("all_pass", passed == criteria)
+    if not isinstance(all_pass, bool):
+        return None
+    return {"n_passed": passed, "n_criteria": criteria, "all_pass": all_pass}
+
+
 def frozen_choices(ledger) -> dict[str, str]:
     """task_id -> chosen final label, as recorded at freeze time."""
     for row in reversed(ledger.events()):
@@ -34,11 +49,7 @@ def _request(config, workspace, task, label, run_dir, result_path) -> dict | Non
         (run_dir / "judge.log").write_text(proc.stdout[-20000:] + "\n--stderr--\n" + proc.stderr[-20000:], encoding="utf-8")
         if not result_path.is_file():
             return None
-        data = json.loads(result_path.read_text(encoding="utf-8"))
-        if not isinstance(data.get("n_criteria"), int) or not isinstance(data.get("n_passed"), int) or data["n_criteria"] <= 0:
-            return None
-        return {"n_passed": data["n_passed"], "n_criteria": data["n_criteria"],
-                "all_pass": bool(data.get("all_pass", data["n_passed"] == data["n_criteria"]))}
+        return _parse_score(json.loads(result_path.read_text(encoding="utf-8")))
     except (subprocess.TimeoutExpired, OSError, ValueError):
         return None
 
@@ -57,8 +68,10 @@ def judge(config, workspace: Path, tasks: list[dict], ledger, *, bases: bool = T
             run_dir = run_root / label
             result_path = run_dir / "judge-result.json"
             if result_path.is_file():
-                score = json.loads(result_path.read_text(encoding="utf-8"))
-                score = score if isinstance(score.get("n_criteria"), int) else None
+                try:
+                    score = _parse_score(json.loads(result_path.read_text(encoding="utf-8")))
+                except (OSError, ValueError):
+                    score = None
             else:
                 score = _request(config, workspace, task, label, run_dir, result_path)
             row = {"task": task["task_id"], "label": label, "role": "base" if label == "base1" else "final",
