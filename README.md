@@ -18,7 +18,7 @@ A frozen model. An editable harness around it. A recursion that proposes, probes
   <a href="#the-loop">The loop</a> ·
   <a href="#attach-a-real-executor">Real executor</a> ·
   <a href="#results">Results</a> ·
-  <a href="docs/research/RSI_NOTES.md">Research notes</a> ·
+  <a href="docs/research/notes/">Research notes</a> ·
   <a href="README.zh-CN.md">简体中文</a>
 </p>
 
@@ -37,7 +37,7 @@ judgement is a hash-chained ledger event.
 
 Two tracks live under this name. The **engineering track** is this loop. The
 **research track** is a daily living document of RSI papers, classified on the two axes
-of the 1,250-paper RSI survey: [docs/research/RSI_NOTES.md](docs/research/RSI_NOTES.md).
+of the 1,250-paper RSI survey: [docs/research/notes/](docs/research/notes/).
 
 ## Quick start
 

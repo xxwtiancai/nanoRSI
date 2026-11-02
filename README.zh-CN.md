@@ -11,7 +11,7 @@
   <a href="#循环">循环</a> ·
   <a href="#接入真实执行器">真实执行器</a> ·
   <a href="#结果">结果</a> ·
-  <a href="docs/research/RSI_NOTES.md">研究笔记</a>
+  <a href="docs/research/notes/">研究笔记</a>
 </p>
 
 ---
@@ -26,7 +26,7 @@ nanoRSI v0.5 是对 **Harness²**（Google Cloud AI Research，[arXiv 2610.14224
 | system prompt · guardrails · memory · tool guidance · skills · scripts | 匹配配置下探测 → `mitigates` / `neutral` / `regresses` 反差，不用真值 | 分数只在 `freeze` 之后存在；预算逐次扣减；账本 `verify` 对任何改写报错 |
 
 同一名字下有两条线。**工程轨**就是这个循环。**调研轨**是每日更新的 RSI 论文活文档，按 1250 篇
-RSI 综述的两轴分类：[docs/research/RSI_NOTES.md](docs/research/RSI_NOTES.md)。
+RSI 综述的两轴分类：[docs/research/notes/](docs/research/notes/)。
 
 ## 快速开始
 
