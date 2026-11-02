@@ -41,7 +41,7 @@ jobs:
       - name: Research notes consistency
         run: |
           python docs/research/industry-rsi/render.py --check
-          python docs/research/industry-rsi/migrate_to_notes.py --check
+          python docs/research/industry-rsi/generate_notes.py --check
       - name: Build and install wheel
         run: |
           python -m pip wheel --no-deps --wheel-dir dist .
