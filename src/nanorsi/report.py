@@ -43,7 +43,9 @@ def summarize(ledger) -> dict:
         means["wins"] = sum(t["scores"]["final"]["partial"] > t["scores"]["base"]["partial"] for t in graded)
         means["ties"] = sum(t["scores"]["final"]["partial"] == t["scores"]["base"]["partial"] for t in graded)
         means["losses"] = len(graded) - means["wins"] - means["ties"]
-    return {"tasks": tasks, "means": means, "usage": ledger.usage(), "frozen": ledger.frozen(), "events": len(events)}
+    return {"tasks": tasks, "means": means, "generation_failures": sum(
+        row.get("reason") == "no_candidate" for row in events if row.get("event") == "evolution_failed"
+    ), "usage": ledger.usage(), "frozen": ledger.frozen(), "events": len(events)}
 
 
 def render(summary: dict, config) -> str:
@@ -54,6 +56,7 @@ def render(summary: dict, config) -> str:
     if means:
         lines += [f"**Judged (n={means['n']}): base {means['base']:.3f} → final {means['final']:.3f} partial, "
                   f"{means['delta_pp']:+.1f} pp, {means['wins']}W/{means['ties']}T/{means['losses']}L**", ""]
+    lines += [f"Zero candidate generations: {summary['generation_failures']}", ""]
     lines += ["| task | proposals | mitigates / neutral / regresses | decisions | chosen | base | final |",
               "| --- | ---: | --- | --- | --- | ---: | ---: |"]
     for task_id, entry in summary["tasks"].items():

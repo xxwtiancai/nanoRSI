@@ -1,5 +1,7 @@
 # From research to experiments / 从研究到可运行实验
 
+**2026-11-04 implementation note:** OpenEvolve v0.4.1's explicit zero-candidate failure handling was adapted as a report-only boundary. nanoRSI preserves the existing parent/`keep` fallback, but now records a hash-chained `evolution_failed` event with `reason=no_candidate` and reports the count separately, so an uneventful generation is not conflated with a proposer failure. No promotion rule, selector default, dependency or model/API behavior changed. / **2026-11-04 实现说明：** 已将 OpenEvolve v0.4.1 对“整轮无候选产出”的显式失败处理适配为只读报告边界。nanoRSI 仍保留既有父代/`keep` 回退，但现在追加带哈希链的 `evolution_failed` 事件（`reason=no_candidate`）并单独报告次数，避免把“没有改进”与“提案器失效”混为一谈。未改变晋升规则、选择器默认值、依赖或模型/API 行为。
+
 **2026-11-01 status note:** Google Research's Sleep framework is a verified parameter/memory self-improvement signal, not a nanoRSI runtime change. Its wake/sleep cycle motivates a future evidence-ledger extension that separates active-context collection, offline consolidation, dreaming selection, parameter-state change, forgetting, and token/compute cost. Any local study must use frozen evaluators, disjoint held-out tasks, an old-capability retention panel, and a frozen-memory control; no MoE or weight-update dependency is enabled.
 
 **2026-11-01 实现状态：** Google Research 的 Sleep 框架已核验为参数/记忆自改进信号，但不是 nanoRSI 运行时变更。其 wake/sleep 周期可用于未来扩展证据账本，分别记录主动上下文收集、离线巩固、dreaming 筛选、参数状态变化、遗忘以及 token/计算成本；任何本地研究都必须使用冻结评测器、不相交留出任务、旧能力保持面板和冻结记忆对照，不启用 MoE 或权重更新依赖。

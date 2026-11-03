@@ -114,6 +114,17 @@ class LifecycleTests(unittest.TestCase):
             self.assertIn("budget_exhausted", events)
             self.assertEqual(events.count("rollout"), 2)
 
+    def test_zero_candidate_generation_is_reported_separately_from_keep(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _workspace(Path(tmp))
+            stub = StubTransport(fail_proposals=True)
+            self.assertEqual(_run_cli(["evolve", "--workspace", str(root), "--max-tasks", "1"], stub), 0)
+            ledger = Ledger(root / ".nanorsi" / "ledger.jsonl")
+            self.assertEqual(ledger.count("evolution_failed", reason="no_candidate"), 1)
+            summary = report.summarize(ledger)
+            self.assertEqual(summary["generation_failures"], 1)
+            self.assertIn("Zero candidate generations: 1", report.render(summary, load_config(root / "nanorsi.toml")))
+
     def test_final_repeats_confirm_an_adoption_and_blind_select_among_draws(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = _workspace(Path(tmp), **{"experiment.final_repeats": 2})

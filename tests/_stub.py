@@ -7,12 +7,13 @@ import json
 
 class StubTransport:
     def __init__(self, *, contrast="mitigates", decision="adopt_inv", select_choice="A", fail_compose_once=False,
-                 final_contrast=None):
+                 final_contrast=None, fail_proposals=False):
         self.contrast = contrast
         self.final_contrast = final_contrast or contrast
         self.decision = decision
         self.select_choice = select_choice
         self.fail_compose_once = fail_compose_once
+        self.fail_proposals = fail_proposals
         self.calls: list[str] = []
 
     def __call__(self, payload: dict) -> dict:
@@ -27,6 +28,8 @@ class StubTransport:
             return self._agent(messages, system)
         if "editing exactly ONE component" in system:
             self.calls.append("propose")
+            if self.fail_proposals:
+                return "proposal output without the required JSON header"
             dim = "INV" if "(INV)" in messages[-1]["content"] else "DOM"
             component = "guardrails.md" if dim == "INV" else "skills/domain-check/SKILL.md"
             body = ("- Verify every figure against the source before writing.\n" if dim == "INV"

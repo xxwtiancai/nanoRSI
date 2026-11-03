@@ -92,6 +92,8 @@ class Session:
     # --- one candidate pair: propose both, probe both, contrast both -----
     def _pair(self, task, tree, reference, lessons, run_root, index):
         candidates = [self.propose(dim, task, tree, reference, lessons) for dim in propose.DIMS]
+        if not any(not candidate.error for candidate in candidates):
+            self._record("evolution_failed", task=task["task_id"], reason="no_candidate", round=index)
 
         def probe_one(cand):
             if cand.error:
